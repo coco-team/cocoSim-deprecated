@@ -1,0 +1,126 @@
+==========================================================================
+== Test for /home/arnaud/data/work/repositories/bitbucket/NASA2015/coco-simulink/test/gac/pre_processing/discretefilter_test.mdl
+==========================================================================
+==== Lustre code generation
+==========================================================================
+(Info)[cocoSim] Welcome to the CocoSim Simulink compiler and verifier
+	 cocoSim compiler + verifier is free software: you can redistribute it
+	 and/or modify it under the terms of the GNU General Public License as 
+	 published by the Free Software Foundation, either version 3 of
+	 the License, or (at your option) any later version.
+	 cocoSim compiler + verifier is distributed in the hope that it will be
+	 useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+	 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+	 General Public License for more details.
+	 You should have received a copy of the GNU General Public License.
+(Info)[cocoSim] Generating Lustre code from Simulink model: /home/arnaud/data/work/repositories/bitbucket/NASA2015/coco-simulink/test/gac/pre_processing/discretefilter_test.mdl
+(Info)[cocoSim] Loading model: /home/arnaud/data/work/repositories/bitbucket/NASA2015/coco-simulink/test/gac/pre_processing/discretefilter_test.mdl
+(Info)[cocoSim] Pre-processing of the model
+(Info)[preprocess_model] Pre-processing has been done on some blocks.
+	 discretefilter_test_cocoSim_pp/Discrete Filter ==> discretefilter_test_cocoSim_pp/Discrete Filter_pp
+	 discretefilter_test_cocoSim_pp/Discrete Filter1 ==> discretefilter_test_cocoSim_pp/Discrete Filter1_pp
+	 discretefilter_test_cocoSim_pp/Discrete Filter2 ==> discretefilter_test_cocoSim_pp/Discrete Filter2_pp
+	 discretefilter_test_cocoSim_pp/Discrete Filter3 ==> discretefilter_test_cocoSim_pp/Discrete Filter3_pp
+	 discretefilter_test_cocoSim_pp/Discrete Filter4 ==> discretefilter_test_cocoSim_pp/Discrete Filter4_pp
+(Warning)[preprocess_model] The code generation will now be applied on this new model
+(Info)[cocoSim] Internal representation building
+(Info)[cocoSim] Flattening of virtual SubSytems
+(Info)[cocoSim] Internal representation browsing for implicit data type conversions detection
+(Info)[cocoSim] Code printing
+(Info)[cocoSim] End of code generation
+(Info)[Traceability] Traceability data generated in file: /home/arnaud/data/work/repositories/bitbucket/NASA2015/coco-simulink/test/gac/pre_processing/src_discretefilter_test_cocoSim_pp/discretefilter_test_cocoSim_pp.trace.xml
+(Info)[Generation result] Lustre code generated in file: /home/arnaud/data/work/repositories/bitbucket/NASA2015/coco-simulink/test/gac/pre_processing/src_discretefilter_test_cocoSim_pp/discretefilter_test_cocoSim_pp.lus
+(Info)[cocoSim] Cleaning temporary files
+(Info)[Time] Total computation time: 00:00:01.002
+==========================================================================
+==== C code generation
+==========================================================================
+
+.. parsing source file /home/arnaud/data/work/repositories/bitbucket/NASA2015/coco-simulink/test/gac/pre_processing/src_discretefilter_test_cocoSim_pp/discretefilter_test_cocoSim_pp.lus
+.. extracting dependencies
+  
+.. typing
+  discretefilter_test_cocoSim_pp: (real*real*real*real*real*real*real*real*real*real*real*real*real*real) -> (real*real*real*real*real*real*real*real*real*real*real*real*real*real)
+  
+.. clock calculus
+  discretefilter_test_cocoSim_pp: ('a * 'a * 'a * 'a * 'a * 'a * 'a * 'a * 'a * 'a * 'a * 'a * 'a * 'a)->('a * 'a * 'a * 'a * 'a * 'a * 'a * 'a * 'a * 'a * 'a * 'a * 'a * 'a)
+  
+.. checking stateless/stateful status
+.. generating compiled header file ./discretefilter_test_cocoSim_pp.lusic
+.. normalization
+.. scheduling
+
+  .. machines generation.. machines optimization (phase 1).. C code generation
+.. done !
+
+==========================================================================
+==== Diff with expected test result
+==========================================================================
+==========================================================================
+== End of test for /home/arnaud/data/work/repositories/bitbucket/NASA2015/coco-simulink/test/gac/pre_processing/discretefilter_test.mdl
+==========================================================================
+
+==========================================================================
+== Test for /home/arnaud/data/work/repositories/bitbucket/NASA2015/coco-simulink/test/gac/pre_processing/discretefilter_ref_test.mdl
+==========================================================================
+==== Lustre code generation
+==========================================================================
+(Info)[cocoSim] Welcome to the CocoSim Simulink compiler and verifier
+	 cocoSim compiler + verifier is free software: you can redistribute it
+	 and/or modify it under the terms of the GNU General Public License as 
+	 published by the Free Software Foundation, either version 3 of
+	 the License, or (at your option) any later version.
+	 cocoSim compiler + verifier is distributed in the hope that it will be
+	 useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+	 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+	 General Public License for more details.
+	 You should have received a copy of the GNU General Public License.
+(Info)[cocoSim] Generating Lustre code from Simulink model: /home/arnaud/data/work/repositories/bitbucket/NASA2015/coco-simulink/test/gac/pre_processing/discretefilter_ref_test.mdl
+(Info)[cocoSim] Loading model: /home/arnaud/data/work/repositories/bitbucket/NASA2015/coco-simulink/test/gac/pre_processing/discretefilter_ref_test.mdl
+(Info)[cocoSim] Pre-processing of the model
+(Info)[preprocess_model] Pre-processing has been done on some blocks.
+	 ref_sub_discretefilter_cocoSim_pp/Discrete Filter ==> ref_sub_discretefilter_cocoSim_pp/Discrete Filter_pp
+	 ref_sub_discretefilter_cocoSim_pp/Discrete Filter1 ==> ref_sub_discretefilter_cocoSim_pp/Discrete Filter1_pp
+	 discretefilter_ref_test_cocoSim_pp/Discrete Filter2 ==> discretefilter_ref_test_cocoSim_pp/Discrete Filter2_pp
+	 discretefilter_ref_test_cocoSim_pp/Discrete Filter3 ==> discretefilter_ref_test_cocoSim_pp/Discrete Filter3_pp
+	 discretefilter_ref_test_cocoSim_pp/Discrete Filter4 ==> discretefilter_ref_test_cocoSim_pp/Discrete Filter4_pp
+(Warning)[preprocess_model] The code generation will now be applied on this new model
+(Info)[cocoSim] Internal representation building
+(Info)[cocoSim] Flattening of virtual SubSytems
+(Info)[cocoSim] Internal representation browsing for implicit data type conversions detection
+(Info)[cocoSim] Code printing
+(Info)[cocoSim] End of code generation
+(Info)[Traceability] Traceability data generated in file: /home/arnaud/data/work/repositories/bitbucket/NASA2015/coco-simulink/test/gac/pre_processing/src_discretefilter_ref_test_cocoSim_pp/discretefilter_ref_test_cocoSim_pp.trace.xml
+(Info)[Generation result] Lustre code generated in file: /home/arnaud/data/work/repositories/bitbucket/NASA2015/coco-simulink/test/gac/pre_processing/src_discretefilter_ref_test_cocoSim_pp/discretefilter_ref_test_cocoSim_pp.lus
+(Info)[cocoSim] Cleaning temporary files
+(Info)[Time] Total computation time: 00:00:02.154
+==========================================================================
+==== C code generation
+==========================================================================
+
+.. parsing source file /home/arnaud/data/work/repositories/bitbucket/NASA2015/coco-simulink/test/gac/pre_processing/src_discretefilter_ref_test_cocoSim_pp/discretefilter_ref_test_cocoSim_pp.lus
+.. extracting dependencies
+  
+.. typing
+  ref_sub_discretefilter_cocoSim_pp: real -> (real*real)
+  discretefilter_ref_test_cocoSim_pp: (real*real*real*real*real*real*real*real*real*real*real*real*real*real) -> (real*real*real*real*real*real*real*real*real*real*real*real*real*real*real*real)
+  
+.. clock calculus
+  ref_sub_discretefilter_cocoSim_pp: 'a->('a * 'a)
+  discretefilter_ref_test_cocoSim_pp: ('a * 'a * 'a * 'a * 'a * 'a * 'a * 'a * 'a * 'a * 'a * 'a * 'a * 'a)->('a * 'a * 'a * 'a * 'a * 'a * 'a * 'a * 'a * 'a * 'a * 'a * 'a * 'a * 'a * 'a)
+  
+.. checking stateless/stateful status
+.. generating compiled header file ./discretefilter_ref_test_cocoSim_pp.lusic
+.. normalization
+.. scheduling
+
+  .. machines generation.. machines optimization (phase 1).. C code generation
+.. done !
+
+==========================================================================
+==== Diff with expected test result
+==========================================================================
+==========================================================================
+== End of test for /home/arnaud/data/work/repositories/bitbucket/NASA2015/coco-simulink/test/gac/pre_processing/discretefilter_ref_test.mdl
+==========================================================================
+

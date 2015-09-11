@@ -1,0 +1,17 @@
+type bus_creator_out_struct = struct {signal1: real; signal2: real; signal3: real};
+
+node bus (in1: real; in2: real; in3: real)
+returns (out1: real; out2: real)
+var
+	bus_creator_out_1_1: bus_creator_out_struct;
+	bus_assignment_out_1_1: bus_creator_out_struct;
+	bus_selector_out_1_1: real;
+	bus_selector_out_2_1: real;
+let
+	bus_creator_out_1_1 = bus_creator_out_struct{signal1 = in1; signal2 = in2; signal3 = in3};
+	bus_assignment_out_1_1 = bus_creator_out_struct{signal1 = in3; signal2 = bus_creator_out_1_1.signal2; signal3 = in2};
+	bus_selector_out_1_1 = bus_assignment_out_1_1.signal1;
+	bus_selector_out_2_1 = bus_assignment_out_1_1.signal2;
+	out1 = bus_selector_out_1_1;
+	out2 = bus_selector_out_2_1;
+tel

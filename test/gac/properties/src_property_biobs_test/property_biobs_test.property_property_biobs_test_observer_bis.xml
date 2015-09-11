@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+   <Results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+     <Property name="property_biobs_test_observer_bis">
+      <Date>2015-06-22 07:41</Date>
+      <Lustre2Horn unit="sec">0.00</Lustre2Horn>
+      <Parse unit="sec">0.00</Parse>
+      <Query unit="sec">0.02</Query>
+      <Answer>CEX</Answer>
+      <Counterexample>
+                 <Signal name="In1_1_1" node="property_biobs_test" type="real">
+            <Value time="0">-2</Value>
+         </Signal>
+         <Signal name="In2_1_1" node="property_biobs_test" type="real">
+            <Value time="0">-1</Value>
+         </Signal>
+         <Signal name="Out1_1_1" node="property_biobs_test" type="real">
+            <Value time="0">-1</Value>
+         </Signal>
+         <Signal name="In1_1_1" node="property_biobs_test_observer_bis" type="real">
+            <Value time="0">-2</Value>
+         </Signal>
+         <Signal name="In2_1_1" node="property_biobs_test_observer_bis" type="real">
+            <Value time="0">-1</Value>
+         </Signal>
+         <Signal name="Out1_1_1" node="property_biobs_test_observer_bis" type="bool">
+            <Value time="0">1</Value>
+         </Signal>
+
+      </Counterexample>
+     </Property>
+   </Results>
+

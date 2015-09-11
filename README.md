@@ -2,11 +2,13 @@
 
 CoCoSim is a modular, integrated analysis framework for Simulink(c) models. It consists of a compiler and a model checker:
 
-* **Compiler**: It modularly compiles a Simulink(c) model (+ design property) into Lustre code. This module was originally developed by Claire Pagetti, Thomas Loquen and Eric Noulard at ONERA (France). The current version has been re-designed by Arnaud Dieumegard (CMU) and Temesghen Kahsai (NASA Ames / CMU).
+* **Compiler**: It modularly compiles a Simulink(c) model (+ design property) into Lustre code. An earlier version of this module was developed by Claire Pagetti, Thomas Loquen and Eric Noulard at ONERA (France). The current version has been re-designed by Arnaud Dieumegard (CMU) and Temesghen Kahsai (NASA Ames / CMU).
 * **Model Checker**: In principle CoCoSim can use any model checker that inputs Lustre code. The current version uses [Zustre](https://github.com/lememta/zustre) as the underlying model checker.
 
 
 ## Installation ##
+
+CoCoSim can be installed and use as follows.
 
 ### Dependencies ###
 
@@ -31,24 +33,26 @@ CoCoSim is a modular, integrated analysis framework for Simulink(c) models. It c
 + Type ```cocoSim help```
 
 ```
-	cocoSim(MODEL_PATH, [CONSTANTS_FILES], [TIME_STEP], [TRACE], [EXPORT_MODEL])
+	cocoSim [OPTIONS] MODEL_PATH
 
 	MODEL_PATH: a string containing the path to the model (e.g. '../../mymodel.mdl')
 
-	CONSTANTS_FILES: an optional list of strings containing the path to some files (.m or .mat) containing the simulation constant	(e.g. {'../../constants1.m','../../constants2.mat},	default: {})
+        OPTIONS:
 
-	TIME_STEP: an optional numeric value for the simulation time step (e.g. 0.1, default: 0.1)
+         	CONSTANTS_FILES: an optional list of strings containing the path to some files (.m or .mat) containing the simulation constant	(e.g. {'../../constants1.m','../../constants2.mat},	default: {})
 
-	TRACE: a optional boolean value stating if we need to print the traceability informations (e.g. true, default: false)
+	        TIME_STEP: an optional numeric value for the simulation time step (e.g. 0.1, default: 0.1)
 
-	EXPORT_MODEL: an optional boolean value stating if the simplified data flow model should be exported (e.g. true, default: false)
+	        TRACE: a optional boolean value stating if we need to print the traceability informations (e.g. true, default: false)
+
+	        EXPORT_MODEL: an optional boolean value stating if the simplified data flow model should be exported (e.g. true, default: false)
 ```
 
 
 + The output Lustre files are generated in a new folder named `src_[name of the input model]` in the folder containing the input model.
 
 
-#### CoCoSim Supported Simulink Blocks ####
+## CoCoSim Supported Simulink Blocks ##
 
 We only support a sub-set of the blocks provided by the Simulink(c)
 toolset. We provide here a list of the supported blocks and the limitations
@@ -220,3 +224,8 @@ Reference to the previous clock time is done using the "pre" operator:
 
 + pre(Input_1) is the value at time t-1 of the variable Input_1.
 
+
+##People##
+
+* Arnaud Dieumegard
+* [Temesghen Kahsai](http://www.lememta.info/)

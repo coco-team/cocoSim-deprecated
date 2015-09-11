@@ -1,0 +1,37 @@
+-- CoCoSpec --
+contract property_biobs_test_observer (In1_1_1:real;In2_1_1:real) returns (Out1_1_1:bool);
+ 
+ let
+   -- INITIAL STATES Contract
+   ensure 
+	Out1_1_1;
+
+    -- TRANSITION RELATION Contract
+    ensure ;
+ tel
+ 
+contract property_biobs_test (In1_1_1:real;In2_1_1:real) returns (Out1_1_1:real);
+ 
+ let
+   -- INITIAL STATES Contract
+   ensure 
+	not (not (In1_1_1 + -1*Out1_1_1 >= 0) or 
+	     not (In1_1_1 + -1*Out1_1_1 <= 0)) or 
+	not (not (In2_1_1 + -1*Out1_1_1 >= 0) or 
+	     not (In2_1_1 + -1*Out1_1_1 <= 0));
+
+    -- TRANSITION RELATION Contract
+    ensure ;
+ tel
+ 
+contract property_biobs_test_observer_bis (In1_1_1:real;In2_1_1:real) returns (Out1_1_1:bool);
+ 
+ let
+   -- INITIAL STATES Contract
+   ensure 
+	true;
+
+    -- TRANSITION RELATION Contract
+    ensure ;
+ tel
+ 
