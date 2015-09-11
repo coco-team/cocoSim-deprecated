@@ -1,9 +1,9 @@
 # CoCoSim #
 
-CoCoSim is a modular integrated analysis framework for Simulink(c) models. It consists of a compiler and a model checker:
+CoCoSim is a modular, integrated analysis framework for Simulink(c) models. It consists of a compiler and a model checker:
 
-* Compiler: It modularly compiles a Simulink(c) model (+ property to be verified as an observer) into Lustre.
-* Model Checker: In principle CoCoSim can use any model checker that inputs Lustre code. The current version uses [Zustre](https://github.com/lememta/zustre) as the underlying model checker.
+* **Compiler**: It modularly compiles a Simulink(c) model (+ design property) into Lustre.
+* **Model Checker**: In principle CoCoSim can use any model checker that inputs Lustre code. The current version uses [Zustre](https://github.com/lememta/zustre) as the underlying model checker.
 
 
 
