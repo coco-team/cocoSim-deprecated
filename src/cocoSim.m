@@ -67,9 +67,9 @@ t_start = now;
 % Retrieving of the path containing the model for which we generate the code
 [model_path, file_name, ext] = fileparts(model_full_path);
 
-addpath(fullfile(cocoSim_path, 'backend'));
-addpath(fullfile(cocoSim_path, 'middlend'));
-addpath(fullfile(cocoSim_path, 'frontend'));
+addpath(fullfile(cocoSim_path, 'backEnd'));
+addpath(fullfile(cocoSim_path, 'middleEnd'));
+addpath(fullfile(cocoSim_path, 'frontEnd'));
 addpath(fullfile(cocoSim_path, 'utils'));
 
 launch_display_msg(model_full_path);

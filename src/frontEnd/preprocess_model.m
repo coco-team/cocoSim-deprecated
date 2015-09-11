@@ -24,7 +24,7 @@ function [new_model_name models] = preprocess_model(model_name, cocoSim_path, ex
     pp_post = '_cocoSim_pp';
 
 	% Add path to the preprocessing_scripts in the accessible paths
-	preprocess_path = [cocoSim_path filesep '..' filesep 'preprocessing_scripts'];
+	preprocess_path = [cocoSim_path filesep 'frontEnd'];
 	addpath(preprocess_path);
 
     lookups = {};

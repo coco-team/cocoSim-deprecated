@@ -364,12 +364,12 @@ function createAnnotation(lustre_file_name, property_node_names, IO_struct, conf
     
 	[path file_name ext] = fileparts(lustre_file_name);
 
-	annot_text = fileread([cocoSim_path filesep 'templates' filesep 'header.html']);
-	title = fileread([cocoSim_path filesep 'templates' filesep 'title.html']);
+	annot_text = fileread([cocoSim_path filesep 'backEnd' filesep 'templates' filesep 'header.html']);
+	title = fileread([cocoSim_path filesep 'backEnd' filesep 'templates' filesep 'title.html']);
 	title = strrep(title, '[observer_full_name]', property_node_name);
 	annot_text = [annot_text title];
 
-	list_title = fileread([cocoSim_path filesep 'templates' filesep 'list_title.html']);
+	list_title = fileread([cocoSim_path filesep 'backEnd' filesep 'templates' filesep 'list_title.html']);
 	list_title = strrep(list_title, '[Title]', 'Actions');
 	
 	% Define clear, load and replay actions
@@ -377,7 +377,7 @@ function createAnnotation(lustre_file_name, property_node_names, IO_struct, conf
 	list_title = strrep(list_title, '[List_Content]', actions);
 	annot_text = [annot_text list_title];
 
-	footer = fileread([cocoSim_path filesep 'templates' filesep 'footer.html']);
+	footer = fileread([cocoSim_path filesep 'backEnd' filesep 'templates' filesep 'footer.html']);
 	annot_text = [annot_text footer];
 	
 	annot = Simulink.Annotation([file_name '/Counter example annotation']);
@@ -537,7 +537,7 @@ end
 
 %% Create the html content for one action in the Annotation
 function action = createAction(title, content, cocoSim_path)
-	action = fileread([cocoSim_path filesep 'templates' filesep 'list_item_mat_code.html']);
+	action = fileread([cocoSim_path filesep 'backEnd' filesep 'templates' filesep 'list_item_mat_code.html']);
 	action = strrep(action, '[Item]', title);
 	disp_content = sprintf('disp(''[CEX annotation] (%s) action done'');\n', title);
 	content = [content disp_content];
@@ -545,6 +545,6 @@ function action = createAction(title, content, cocoSim_path)
 end
 
 function add_plotting_function(cocoSim_path, path)
-	src = [cocoSim_path filesep 'templates' filesep 'plotting.m'];
+	src = [cocoSim_path filesep 'backEnd' filesep 'templates' filesep 'plotting.m'];
 	copyfile(src, path);
 end

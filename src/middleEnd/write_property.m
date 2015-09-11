@@ -224,7 +224,7 @@ for idx_block=2:obs_nblk
 			% Create the "Variables" traceability information element
 			xml_trace.create_Variables_Element();
 		end
-		list_output = list_var_sortie_prelude(obs_inter_blk{idx_block}, xml_trace, 'Variable');
+		list_output = list_var_input(obs_inter_blk{idx_block}, xml_trace, 'Variable');
 		list_output_final = Utils.concat_delim(list_output, '; ');
 		header = app_sprintf(header, '\t%s;\n', char(list_output_final));
 		cpt_var = cpt_var+1;
