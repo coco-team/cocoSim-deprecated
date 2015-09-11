@@ -5,7 +5,7 @@ CoCoSim is a modular, integrated analysis framework for Simulink(c) models. It c
 * **Compiler**: It modularly compiles a Simulink(c) model (+ design property) into Lustre code. An earlier version of this module was developed by Claire Pagetti, Thomas Loquen and Eric Noulard at ONERA (France). The current version has been re-designed by Arnaud Dieumegard (CMU) and Temesghen Kahsai (NASA Ames / CMU).
 * **Model Checker**: In principle CoCoSim can use any model checker that inputs Lustre code. The current version uses [Zustre](https://github.com/lememta/zustre) as the underlying model checker.
 
-<iframe width="420" height="315" src="https://www.youtube.com/embed/KA_Wdnn668M" frameborder="0" allowfullscreen></iframe>
+[![ScreenCast of CoCoSim](http://img.youtube.com/vi/KA_Wdnn668M/0.jpg)](http://www.youtube.com/watch?v=KA_Wdnn668M)
 
 ## Installation ##
 
