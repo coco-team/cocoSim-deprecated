@@ -33,19 +33,19 @@ CoCoSim can be installed and use as follows.
 + Type ```cocoSim help```
 
 ```
-	cocoSim [OPTIONS] MODEL_PATH
+  cocoSim [OPTIONS] MODEL_PATH
 
-	MODEL_PATH: a string containing the path to the model (e.g. '../../mymodel.mdl')
+     MODEL_PATH: a string containing the path to the model (e.g. '../../Simulink.mdl')
 
-        OPTIONS:
+     OPTIONS:
 
-         	CONSTANTS_FILES: an optional list of strings containing the path to some files (.m or .mat) containing the simulation constant	(e.g. {'../../constants1.m','../../constants2.mat},	default: {})
+         CONSTANTS_FILES: an optional list of strings containing the path to some files (.m or .mat) containing the simulation constant	(e.g. {'../../constants1.m','../../constants2.mat},	default: {})
 
-	        TIME_STEP: an optional numeric value for the simulation time step (e.g. 0.1, default: 0.1)
+	 TIME_STEP: an optional numeric value for the simulation time step (e.g. 0.1, default: 0.1)
 
-	        TRACE: a optional boolean value stating if we need to print the traceability informations (e.g. true, default: false)
+	 TRACE: a optional boolean value stating if we need to print the traceability informations (e.g. true, default: false)
 
-	        EXPORT_MODEL: an optional boolean value stating if the simplified data flow model should be exported (e.g. true, default: false)
+	 EXPORT_MODEL: an optional boolean value stating if the simplified data flow model should be exported (e.g. true, default: false)
 ```
 
 
