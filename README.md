@@ -2,9 +2,8 @@
 
 CoCoSim is a modular, integrated analysis framework for Simulink(c) models. It consists of a compiler and a model checker:
 
-* **Compiler**: It modularly compiles a Simulink(c) model (+ design property) into Lustre.
+* **Compiler**: It modularly compiles a Simulink(c) model (+ design property) into Lustre code. This module was originally developed by Claire Pagetti, Thomas Loquen and Eric Noulard at ONERA (France). The current version has been re-designed by Arnaud Dieumegard (CMU) and Temesghen Kahsai (NASA Ames / CMU).
 * **Model Checker**: In principle CoCoSim can use any model checker that inputs Lustre code. The current version uses [Zustre](https://github.com/lememta/zustre) as the underlying model checker.
-
 
 
 ## Installation ##
@@ -14,9 +13,7 @@ CoCoSim is a modular, integrated analysis framework for Simulink(c) models. It c
 * MATLAB(c) version **R2014b** or newer
 * [Zustre](https://github.com/lememta/zustre) and its dependencies: [LustreC](https://github.com/lememta/lustrec) and [SPACER](https://github.com/seahorn/z3)
 * Python2.7
-
-(Optional)
-+ lus2lic (https://www-verimag.imag.fr/Lustre-V6.html) from the Verimag LustreV6 toolbox for testing purpose
+* (Optional) lus2lic (https://www-verimag.imag.fr/Lustre-V6.html) from the Verimag LustreV6 toolbox for testing purpose
 
 ### Configuration ###
 
