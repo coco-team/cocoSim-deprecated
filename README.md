@@ -1,20 +1,18 @@
-# cocoSim #
+# CoCoSim #
 
-CoCoSim is a modular integrated analysis framework for Simulink models. It consists of a compiler and a model checker:
+CoCoSim is a modular integrated analysis framework for Simulink(c) models. It consists of a compiler and a model checker:
 
-* Compiler: It modularly compiles a Simulink model (+ property to be verified as an observer) into Lustre.
+* Compiler: It modularly compiles a Simulink(c) model (+ property to be verified as an observer) into Lustre.
 * Model Checker: In principle CoCoSim can use any model checker that inputs Lustre code. The current version uses [Zustre](https://github.com/lememta/zustre) as the underlying model checker.
 
 
 
-## Quick start ##
+## Installation ##
 
 ### Dependencies ###
 
 * MATLAB(c) version **R2014b** or newer
-* [Zustre](https://github.com/lememta/zustre) and its dependencies
-	+ [LustreC](https://github.com/lememta/lustrec)
-	+ [SPACER](https://github.com/seahorn/z3)
+* [Zustre](https://github.com/lememta/zustre) and its dependencies: [LustreC](https://github.com/lememta/lustrec) and [SPACER](https://github.com/seahorn/z3)
 * Python2.7
 
 (Optional)
@@ -22,9 +20,7 @@ CoCoSim is a modular integrated analysis framework for Simulink models. It consi
 
 ### Configuration ###
 
-Finally a bit of configuration is necessary in order to setup the tool:
-
-+ Set the paths to the tools and libraries
+ Set the paths to the tools and libraries:
 	+ In the `tools/gac/path_config.m` file set the values for variables:
 		+ LUSTREC: path to the previously installed lustrec binary file
 		+ SPACER: path to the `build` directory of the `SPACER` tool
@@ -33,58 +29,41 @@ Finally a bit of configuration is necessary in order to setup the tool:
 
 ### Launching ###
 
-+ Launch the Matlab toolset with the `cocoSim` function located in
-  `tools/gac`. Use `help cocoSim` in this same folder for detailed
-  instructions. More informations are available [farther in this
-  document](#cocoSimLaunch).
-
-## Tools details ##
-
-The main tool for this part of the project is the **cocoSim** code generator.
-From a mdl file, this tool will generate the corresponding Lustre source file.
-
-###**cocoSim** code generator ###
-
-+ Launching the tool is done from the src/ folder.
-
-	```
-	cd src/
-	```
-
-+ Launch the Matlab toolset with the `cocoSim` function. The parameters of this function are detailed here and are available in the Matlab tools by calling `help cocoSim`.
++ Launch the Matlab(c) toolset 
++ Navigate to `src/`
++ Type ```cocoSim help```
 
 >	cocoSim(MODEL_PATH, [CONSTANTS_FILES], [TIME_STEP], [TRACE], [EXPORT_MODEL])
 >
 >	MODEL\_PATH: a string containing the path to the model
 >
->	>	ex: '../../mymodel.mdl'
+>	>	e.g. '../../mymodel.mdl'
 >
 >	CONSTANTS\_FILES: an optional list of strings containing the path to some files (.m or .mat) containing the simulation constants
 >
->	>	ex: {'../../constants1.m','../../constants2.mat}
+>	>	e.g. {'../../constants1.m','../../constants2.mat}
 >	>	default: {}
 >
 >	TIME\_STEP: an optional numeric value for the simulation time step
 >
->	>	ex: 0.1
+>	>	e.g. 0.1
 >	>	default: 0.1
 >
 >	TRACE: a optional boolean value stating if we need to print the traceability informations
 >
->	>	ex: true
+>	>	e.g. true
 >	>	default: false
 >
 >	EXPORT\_MODEL: an optional boolean value stating if the simplified data flow model should be exported
 >
->	>	ex: true
+>	>	e.g. true
 >	>	default: false
 
 
 + The output Lustre files are generated in a new folder named `src_[name of the input model]` in the folder containing the input model.
 
-#### Limitations on the use of the cocoSim tool ###
 
-##### CoCoSim Supported Simulink Blocks #####
+#### CoCoSim Supported Simulink Blocks ####
 
 We only support a sub-set of the blocks provided by the Simulink(c)
 toolset. We provide here a list of the supported blocks and the limitations
@@ -95,8 +74,7 @@ on their semantics if it applies:
 + Gain
 + Abs
 + Logic
-+ Product
-	+ no support for matrix inversion
++ Product (no support for matrix inversion)
 + Minmax
 + Switch
 + Sum
@@ -180,34 +158,6 @@ on their semantics if it applies:
 
 + Bus signals are not yet handled but will be in the future by relying on structures on the generated Lustre code.
 
-### Pre-processing scripts ###
-
-+ lookuptable.m
-
-	Converts a lookup table block to its equivalent using only simple Simulink(c)
-	blocks.
-
-+ ztransform.m
-
-	Converts a discrete integrator block to its equivalent using only simple
-	Simulink(c) blocks. Based on the tf2ss Matlab function and the ss2subsyst.m
-	function.
-
-+ ss2subsyst.m
-
-	A sub-script for the ztransform transformation
-
-### Post-processing scripts ###
-
-+ func2node.py
-
-	Converts Lustre generated functions into nodes (not used in the **cocoSim**
-	tool).
-
-+ generate-tables.py
-
-	Generates the Lustre nodes for the sin, cos, tan, asin, acos, atan, atan2,
-	based on interpolation tables.
 
 ### Simulink(c) tools ###
 
