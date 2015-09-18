@@ -97,7 +97,7 @@ for idx_fun=1:numel(functions)
 			% Write include and write external trigo functions nodes
 			out_trigo_file = fullfile(output_dir, 'trigo_utils.lus');
 			[exec_path, m_fil_name, ext] = fileparts(mfilename('fullpath'));
-			pp_path = [exec_path filesep '..' filesep '..' filesep 'postprocessing_scripts' filesep 'generate-tables.py'];
+			pp_path = [exec_path filesep '..' filesep 'utils' filesep 'generate-tables.py'];
 			command = ['python ' pp_path];
 			[status res] = system(command);
 			fid = fopen(out_trigo_file, 'w');
