@@ -33,6 +33,10 @@ classdef Constants
 		detect_fall_nonpos = sprintf('Detect Fall Nonpositive');
 
 		observer = 'Observer';
+        
+        assume = 'Assumptions'
+        ensure = 'Ensures'
+        
 		% Display message type constants
 		INFO = 1;
 		WARNING = 2;
@@ -65,6 +69,10 @@ classdef Constants
 		REF_MASKS = {Constants.sat_dyn_ref, Constants.zero_pole_ref, Constants.compare_to_zero, Constants.compare_to_constant};
 
 		PROPERTY_BLOCKS = {Constants.observer};
+        
+        ASSUME_BLOCK = {Constants.assume};
+        
+        ENSURE_BLOCK = {Constants.ensure};
 
 		COMPARETO_BLOCKS = {Constants.compare_to_zero, Constants.compare_to_constant};
 
@@ -92,6 +100,12 @@ classdef Constants
 		end
 		function [res] = is_property(name)
 			res = ismember(name, Constants.PROPERTY_BLOCKS);
+        end
+        function [res] = is_assume(name)
+			res = ismember(name, Constants.ASSUME_BLOCKS);
+        end
+        function [res] = is_ensure(name)
+			res = ismember(name, Constants.ENSURE_BLOCKS);
 		end
 		function [res] = isCompareToMask(mask_type)
 			res = ismember(mask_type, Constants.COMPARETO_BLOCKS);

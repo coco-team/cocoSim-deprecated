@@ -532,6 +532,34 @@ for idx_block=1:nblk
 				property_node_names{nb}.prop_name = property_name;
 				property_node_names{nb}.origin_block_name = inter_blk{idx_block}.origin_name{1};
 				property_node_names{nb}.annotation = inter_blk{idx_block}.annotation;
+            
+                %%%%%%%%%%%%%%%%%% Assumption %%%%%%%%%%%%%%%%%
+			elseif Constants.is_assume(inter_blk{idx_block}.mask_type)
+                
+				annot_type = get_param(blks{idx_block}, 'AnnotationType');
+				observer_type = get_param(blks{idx_block}, 'RequiresType');
+
+				[property_node extern_funs property_name] = write_cocospec(inter_blk{idx_block}, inter_blk, main_blk, main_blks, nom_lustre_file, print_node, trace, annot_type, observer_type, xml_trace);
+				properties_nodes = [properties_nodes property_node];
+            
+				nb = numel(property_node_names)+1;
+				property_node_names{nb}.prop_name = property_name;
+				property_node_names{nb}.origin_block_name = inter_blk{idx_block}.origin_name{1};
+				property_node_names{nb}.annotation = inter_blk{idx_block}.annotation;
+                
+                %%%%%%%%%%%%%%%%%% Ensures %%%%%%%%%%%%%%%%%
+			elseif Constants.is_ensure(inter_blk{idx_block}.mask_type)
+
+				annot_type = get_param(blks{idx_block}, 'AnnotationType');
+				observer_type = get_param(blks{idx_block}, 'EnsuresType');
+
+				[property_node extern_funs property_name] = write_cocospec(inter_blk{idx_block}, inter_blk, main_blk, main_blks, nom_lustre_file, print_node, trace, annot_type, observer_type, xml_trace);
+				properties_nodes = [properties_nodes property_node];
+            
+				nb = numel(property_node_names)+1;
+				property_node_names{nb}.prop_name = property_name;
+				property_node_names{nb}.origin_block_name = inter_blk{idx_block}.origin_name{1};
+				property_node_names{nb}.annotation = inter_blk{idx_block}.annotation;
 
 			%%%%%%%%%%%%%%%%% Detect %%%%%%%%%%
 			elseif Constants.isDetectMask(inter_blk{idx_block}.mask_type)

@@ -280,6 +280,9 @@ for idx_subsys=numel(inter_blk):-1:1
 	is_matlab_function = false;
 	if idx_subsys ~= 1 && ~strcmp(inter_blk{idx_subsys}{1}.type, 'ModelReference')
 		sf_sub = get_param(inter_blk{idx_subsys}{1}.annotation, 'SFBlockType');
+        if strcmp(sf_sub, 'CoCoSpec')
+            
+        display_msg(msg, Constants.INFO, 'HERE', 'HERE');
 		if strcmp(sf_sub, 'MATLAB Function')
 			is_matlab_function = true;
 		end
@@ -539,4 +542,5 @@ function [nodes] = print_dt_conversion_nodes(rounding)
 		end
 	end
 	nodes = sprintf('%s', nodes);
+end
 end
