@@ -21,9 +21,10 @@ CoCoSim can be installed and use as follows.
 ### Configuration ###
 
  Set the paths to the tools and libraries:
-	+ In the `tools/gac/path_config.m` file set the values for variables:
-		+ LUSTREC: path to the previously installed lustrec binary file
-		+ SPACER: path to the `build` directory of the `SPACER` tool
+
+     + In the `tools/gac/path_config.m` file set the values for variables:
+		++ LUSTREC: path to the previously installed lustrec binary file
+		++ SPACER: path to the `build` directory of the `SPACER` tool
 	  These paths cannot be automatically retrieved from the system paths
      by MATLAB(c) and thus needs to be set by hand.
 
