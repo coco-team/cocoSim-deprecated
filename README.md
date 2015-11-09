@@ -229,7 +229,7 @@ Reference to the previous clock time is done using the "pre" operator:
 + pre(Input_1) is the value at time t-1 of the variable Input_1.
 
 
-##People##
+##Developers##
 
-* Arnaud Dieumegard
 * [Temesghen Kahsai](http://www.lememta.info/)
+* Arnaud Dieumegard
