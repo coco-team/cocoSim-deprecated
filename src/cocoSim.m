@@ -274,21 +274,46 @@ property_node_names = {};
 nodes_string = '';
 node_header = '';
 
+cocospec = '';
+spec_names = [];
+print_spec = false;
+
 display_msg('Code printing', Constants.INFO, 'cocoSim', '');
 for idx_subsys=numel(inter_blk):-1:1
-	%%%%%%% Matlab functions code generation %%%%%%%%%%%%%%%
+	%%%%%%% Matlab functions and CoCoSpec code generation %%%%%%%%%%%%%%%
 	is_matlab_function = false;
+    is_cocospec = false;
 	if idx_subsys ~= 1 && ~strcmp(inter_blk{idx_subsys}{1}.type, 'ModelReference')
 		sf_sub = get_param(inter_blk{idx_subsys}{1}.annotation, 'SFBlockType');
-        if strcmp(sf_sub, 'CoCoSpec')
-            
-        display_msg(msg, Constants.INFO, 'HERE', 'HERE');
+        cocospec_name = get_param(inter_blk{idx_subsys}{1}.annotation, 'Name');
+        if strcmp(cocospec_name, 'CoCoSpec')
+            is_cocospec = true;
+        end
 		if strcmp(sf_sub, 'MATLAB Function')
 			is_matlab_function = true;
-		end
-	end
+        end
+    end
 
-	if is_matlab_function
+    if is_cocospec
+        display_msg('Getting CoCoSpec', Constants.INFO, 'cocoSim', '');
+        [fun_name, chart] = Utils.get_MATLAB_function_name(inter_blk{idx_subsys}{1});
+        spec_lines = regexp(chart.Script, sprintf('\n'), 'split');
+		blk_path_elems = regexp(inter_blk{idx_subsys}{1}.name{1}, '/', 'split');
+		node_call_name = Utils.concat_delim(blk_path_elems, '_');
+        cocospec_file = fullfile(output_dir, strcat([fun_name], '.cocospec'));   
+        raw_spec = Utils.concat_delim(spec_lines, sprintf('\n'));
+        fid = fopen(cocospec_file, 'w');
+		fprintf(fid, '%s', raw_spec);
+		fclose(fid);
+        [cocospec, spec_names] = CoCoSpec.get_cocospec(cocospec_file);
+        if strcmp(cocospec,'')
+            display_msg('NO CoCoSpec found', Constants.WARNING, 'cocoSim', '');
+        else
+            print_spec = true;
+        end
+        
+        %fprintf('%s', cocospec);
+    elseif is_matlab_function
 		
 		[fun_name, chart] = Utils.get_MATLAB_function_name(inter_blk{idx_subsys}{1});
 		[mat_fun_node] = write_matlab_function_node(inter_blk{idx_subsys}{1}, inter_blk, inter_blk{idx_subsys}, fun_name, chart, xml_trace);
@@ -347,6 +372,7 @@ for idx_subsys=numel(inter_blk):-1:1
 	end
 end
 
+
 %%%%%%%%%%%%%%%%% Printing %%%%%%%%%%%%%%%%%%%%%%
 
 % Open file for writing
@@ -358,6 +384,12 @@ if ~strcmp(str_include, '')
    fprintf(fid, str_include);
 end
 
+% Write in case we have cocospec
+if print_spec
+    fprintf(fid, '-- CoCoSpec Start\n');
+    fprintf(fid, cocospec);
+    fprintf(fid, '-- CoCoSpec End\n');
+end
 % Write complex struct declarations
 if ~strcmp(complex_structs, '')
     fprintf(fid, complex_structs);
@@ -542,5 +574,4 @@ function [nodes] = print_dt_conversion_nodes(rounding)
 		end
 	end
 	nodes = sprintf('%s', nodes);
-end
 end
