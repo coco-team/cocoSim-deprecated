@@ -48,6 +48,8 @@
 %
 function [property_node extern_functions node_call_name] = write_property(block, inter_blk, main_blk, main_blks, nom_lustre_file, print_node, trace, annot_type, observer_type, xml_trace)
 
+[SOLVER lustrec spacer zustre_dir kind2] = path_config();
+
 property_node = '';
 extern_functions = '';
 xml_trace_node = '';
@@ -209,7 +211,7 @@ for idx_block=1:obs_nblk
 	end
 end
 list_output = Utils.concat_delim(list_outputs, ';\n\t');
-header = app_sprintf(header, '%s)\n', list_output);
+header = app_sprintf(header, '%s);\n', list_output);
 
 % Get observer variables
 cpt_var=1;
@@ -305,11 +307,13 @@ property_node = app_sprintf(property_node, '\n\t%s = %s(%s);\n', list_parent_cal
 
 % Add property
 for idx_prop=1:numel(list_output_names)
-	prop_str = sprintf('\t--!PROPERTY: %s = true;\n', list_output_names{idx_prop});
+    if strcmp(SOLVER, 'Z')
+	    prop_str = sprintf('\t--!PROPERTY: %s = true;\n', list_output_names{idx_prop});
+    elseif strcmp(SOLVER, 'K')
+        prop_str = sprintf('\t--%%%%%%%%PROPERTY %s ;\n tel\n\n', list_output_names{idx_prop});
+    end
 	property_node = app_sprintf(property_node, prop_str);
 end
-
-property_node = app_sprintf(property_node, 'tel\n');
 
 end
 

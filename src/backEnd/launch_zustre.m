@@ -1,3 +1,21 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This file is part of cocoSim.
+% Copyright (C) 2014-2015  Carnegie Mellon University
+% Original contribution from ONERA
+%
+%    cocoSim  is free software: you can redistribute it 
+%    and/or modify it under the terms of the GNU General Public License as 
+%    published by the Free Software Foundation, either version 3 of the 
+%    License, or (at your option) any later version.
+%
+%    cocoSim compiler + verifier is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % Launch the Zustre tool and handle its results
 % For each property for which a counter example is found, a IO_struct is created:
 % 	IO_struct fields
@@ -24,7 +42,7 @@ function launch_zustre(lustre_file_name, property_node_names, property_file_base
 	pythonpath_env = getenv('PYTHONPATH');
 	ld_lib_path_env = getenv('LD_LIBRARY_PATH');
 
-	[lustrec spacer zustre_dir] = path_config();
+	[solver lustrec spacer zustre_dir kind2] = path_config();
 	setenv('LUSTREC', lustrec);
 	setenv('PYTHONPATH', [pythonpath_env ':' spacer]);
 	setenv('LD_LIBRARY_PATH', spacer);
@@ -37,7 +55,7 @@ function launch_zustre(lustre_file_name, property_node_names, property_file_base
 		date_value = datestr(now, 'ddmmyyyyHHMMSS');
 		for idx_prop=1:numel(property_node_names)
 			command = sprintf('python %s "%s" --node %s --xml --cg', zustre_bin, lustre_file_name, property_node_names{idx_prop}.prop_name);
-			[status, zustre_out] = system(command);
+            [status, zustre_out] = system(command);
 			if status == 0
 				[answer cex] = check_zustre_result(zustre_out, property_node_names{idx_prop}.prop_name, property_file_base_name);
 				% Change the observer block display according to answer

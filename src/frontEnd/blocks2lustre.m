@@ -157,7 +157,7 @@ list_output = Utils.concat_delim(list_outputs, ';\n\t');
 node_header = app_sprintf(node_header, list_output);
 
 % Close the returns statement
-node_header = app_sprintf(node_header, ') \n');
+node_header = app_sprintf(node_header, '); \n');
 
 %%%%%%%%%%%%%%%% Var section declaration
 
