@@ -31,13 +31,15 @@ function launch_zustre(lustre_file_name, property_node_names, property_file_base
 
 	[path file ext] = fileparts(lustre_file_name);
 
-	zustre_bin = fullfile(zustre_dir, 'zustre.py');
+	zustre_bin = fullfile(zustre_dir, 'zustre');
 	if exist(zustre_bin,'file')
 		% Create a date time value to be used for files post-fixing
 		date_value = datestr(now, 'ddmmyyyyHHMMSS');
 		for idx_prop=1:numel(property_node_names)
-			command = sprintf('python %s "%s" --node %s --xml --cg', zustre_bin, lustre_file_name, property_node_names{idx_prop}.prop_name);
-			[status, zustre_out] = system(command);
+			%command = sprintf('python %s "%s" --node %s --xml --cg', zustre_bin, lustre_file_name, property_node_names{idx_prop}.prop_name);
+			command = sprintf('%s "%s" --node %s --xml --cg', zustre_bin, lustre_file_name, property_node_names{idx_prop}.prop_name);
+            disp(command)
+            [status, zustre_out] = system(command);
 			if status == 0
 				[answer cex] = check_zustre_result(zustre_out, property_node_names{idx_prop}.prop_name, property_file_base_name);
 				% Change the observer block display according to answer
