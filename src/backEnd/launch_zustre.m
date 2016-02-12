@@ -37,9 +37,7 @@ function launch_zustre(lustre_file_name, property_node_names, property_file_base
 		date_value = datestr(now, 'ddmmyyyyHHMMSS');
 		for idx_prop=1:numel(property_node_names)
 			command = sprintf('%s "%s" --node %s --xml --cg', zustre_bin, lustre_file_name, property_node_names{idx_prop}.prop_name);
-			[status, zustre_out] = system(command);
-            disp(command)
-            disp(zustre_out)
+            [status, zustre_out] = system(command);
 			if status == 0
 				[answer cex] = check_zustre_result(zustre_out, property_node_names{idx_prop}.prop_name, property_file_base_name);
 				% Change the observer block display according to answer
