@@ -20,24 +20,26 @@
 function launch_zustre(lustre_file_name, property_node_names, property_file_base_name, model_inter_blk, xml_trace)
 
 	% Get original environment variables
-	lustrec_env = getenv('LUSTREC');
-	pythonpath_env = getenv('PYTHONPATH');
-	ld_lib_path_env = getenv('LD_LIBRARY_PATH');
+	%lustrec_env = getenv('LUSTREC');
+	%pythonpath_env = getenv('PYTHONPATH');
+	%ld_lib_path_env = getenv('LD_LIBRARY_PATH');
 
 	[lustrec spacer zustre_dir] = path_config();
-	setenv('LUSTREC', lustrec);
-	setenv('PYTHONPATH', [pythonpath_env ':' spacer]);
-	setenv('LD_LIBRARY_PATH', spacer);
+	%setenv('LUSTREC', lustrec);
+	%setenv('PYTHONPATH', [pythonpath_env ':' spacer]);
+	%setenv('LD_LIBRARY_PATH', spacer);
 
 	[path file ext] = fileparts(lustre_file_name);
 
-	zustre_bin = fullfile(zustre_dir, 'zustre.py');
+	zustre_bin = fullfile(zustre_dir, 'zustre');
 	if exist(zustre_bin,'file')
 		% Create a date time value to be used for files post-fixing
 		date_value = datestr(now, 'ddmmyyyyHHMMSS');
 		for idx_prop=1:numel(property_node_names)
-			command = sprintf('python %s "%s" --node %s --xml --cg', zustre_bin, lustre_file_name, property_node_names{idx_prop}.prop_name);
+			command = sprintf('%s "%s" --node %s --xml --cg', zustre_bin, lustre_file_name, property_node_names{idx_prop}.prop_name);
 			[status, zustre_out] = system(command);
+            disp(command)
+            disp(zustre_out)
 			if status == 0
 				[answer cex] = check_zustre_result(zustre_out, property_node_names{idx_prop}.prop_name, property_file_base_name);
 				% Change the observer block display according to answer
@@ -108,9 +110,9 @@ function launch_zustre(lustre_file_name, property_node_names, property_file_base
 	end
 
 	% Restore environment variables
-	setenv('LUSTREC', lustrec_env);
-	setenv('PYTHONPATH', pythonpath_env);
-	setenv('LD_LIBRARY_PATH', ld_lib_path_env);
+	%setenv('LUSTREC', lustrec_env);
+	%setenv('PYTHONPATH', pythonpath_env);
+	%setenv('LD_LIBRARY_PATH', ld_lib_path_env);
 
 end
 
