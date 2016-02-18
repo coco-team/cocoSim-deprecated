@@ -48,7 +48,6 @@
 %
 function [property_node extern_functions node_call_name] = write_property(block, inter_blk, main_blk, main_blks, nom_lustre_file, print_node, trace, annot_type, observer_type, xml_trace)
 
-[SOLVER lustrec spacer zustre_dir kind2] = path_config();
 
 property_node = '';
 extern_functions = '';
@@ -306,9 +305,10 @@ property_node = app_sprintf(property_node, '\n\t%s = %s(%s);\n', list_parent_cal
 
 
 % Add property
+config;
 for idx_prop=1:numel(list_output_names)
     if strcmp(SOLVER, 'Z')
-	    prop_str = sprintf('\t--!PROPERTY: %s = true;\n', list_output_names{idx_prop});
+	    prop_str = sprintf('\t--!PROPERTY: %s = true; \n tel\n\n', list_output_names{idx_prop});
     elseif strcmp(SOLVER, 'K')
         prop_str = sprintf('\t--%%%%%%%%PROPERTY %s ;\n tel\n\n', list_output_names{idx_prop});
     end

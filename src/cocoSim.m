@@ -69,17 +69,26 @@ t_start = now;
 % Retrieving of the path containing the model for which we generate the code
 [model_path, file_name, ext] = fileparts(model_full_path);
 
-disp(cocoSim_path)
-
 addpath(fullfile(cocoSim_path, 'backEnd'));
 addpath(fullfile(cocoSim_path, 'middleEnd'));
 addpath(fullfile(cocoSim_path, 'frontEnd'));
 addpath(fullfile(cocoSim_path, 'utils'));
 addpath(fullfile(cocoSim_path, '.'));
-[SOLVER lustrec spacer zustre_dir kind2] = path_config();
-
 
 launch_display_msg(model_full_path);
+
+addpath(cocoSim_path);
+config;
+
+config_msg = ['CoCoSim Configuration, Change this configuration in src/config.m\n'];
+config_msg = [config_msg '  SOLVER: ' SOLVER '\n'];
+config_msg = [config_msg '  ZUSTRE: ' ZUSTRE '\n'];
+config_msg = [config_msg '  KIND2: ' KIND2 '\n'];
+config_msg = [config_msg '  LUSTREC: ' LUSTREC '\n'];
+config_msg = [config_msg '  Z3: ' Z3 '\n'];
+config_msg = [config_msg ''];
+display_msg(config_msg, Constants.INFO, 'cocoSim', '');
+
 
 msg = ['Loading model: ' model_full_path];
 display_msg(msg, Constants.INFO, 'cocoSim', '');
@@ -370,15 +379,15 @@ for idx_subsys=numel(inter_blk):-1:1
 
 		nodes_string = [nodes_string node_header];
 		nodes_string = [nodes_string let_tel_code];
-		if idx_subsys == 1
-			main_node_annotation = '';
-            if strcmp(SOLVER,'Z')
-                main_node_annotation='\t--!MAIN: true;\n';
-            elseif strcmp(SOLVER, 'K')
-                main_node_annotation=sprintf('\t--%%%%MAIN;\n');
-            end
-			nodes_string = [nodes_string main_node_annotation];
-        end
+% 		if idx_subsys == 1
+% 			main_node_annotation = '';
+%             if strcmp(SOLVER,'Z')
+%                 main_node_annotation='\t--!MAIN: true;\n';
+%             elseif strcmp(SOLVER, 'K')
+%                 main_node_annotation=sprintf('\t--%%%%MAIN;\n');
+%             end
+% 			nodes_string = [nodes_string main_node_annotation];
+%         end
         %disp(nodes_string)
 		nodes_string = [nodes_string 'tel\n\n'];
 	end
@@ -469,6 +478,24 @@ display_msg(msg, Constants.INFO, 'Traceability', '');
 msg = sprintf('Lustre code generated in file: %s', nom_lustre_file);
 display_msg(msg, Constants.INFO, 'Generation result', '');
 
+%%%%%%%%%%%%% Code Generation %%%%%%%%%%%%%
+
+if RUST_GEN
+    display_msg('Generating Rust Code', Constants.INFO, 'Code Generation', '');
+    try
+        rust(nom_lustre_file);
+    catch ME
+        display_msg(ME.message, Constants.ERROR, 'Verification', '');
+    end
+elseif C_GEN
+    display_msg('Generating C Code', Constants.INFO, 'Code Generation', '');
+    try
+        lustrec(nom_lustre_file);
+    catch ME
+        display_msg(ME.message, Constants.ERROR, 'Verification', '');
+    end
+end
+
 %%%%%%%%%%%%% Verification %%%%%%%%%%%%%%%
 
 % Verify the properties if they exists
@@ -478,17 +505,21 @@ if numel(property_node_names) > 0
        display_msg('Available solvers are Z for Zustre and K for Kind2', Constants.WARNING, 'cocoSim', '');
        return
     end
+    open(models{end});
     if strcmp(SOLVER, 'Z')
 	      display_msg('Running Zustre', Constants.INFO, 'Verification', '');
-	      launch_zustre(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace);
-	      % TODO: return status
-	      open(models{end});
+          try
+            zustre(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace);
+          catch ME
+             display_msg(ME.message, Constatns.ERROR, 'Verification', '');
+          end    
     elseif strcmp(SOLVER, 'K')
          display_msg('Running Kind2', Constants.INFO, 'Verification', '');
-         disp(nom_lustre_file)
-	     kind(nom_lustre_file);
-	     % TODO: return status
-	     % open(models{end});
+         try
+            kind2(nom_lustre_file, property_node_names, property_file_base_name, inter_blk);
+         catch ME
+             display_msg(ME.message, Constants.ERROR, 'Verification', '');
+         end
     end
 end
 
@@ -518,7 +549,7 @@ function display_help_message()
 	msg = ['\n'];
 	msg = [msg '  CoCoSiM: A framework for the formal analysis of Simulink models\n'];
 	msg = [msg '\n'];
-	msg = [msg '    cocoSim(MODEL_PATH, [MAT_CONSTANTS_FILES], [TIME_STEP], [TRACE], [SOLVER])\n'];
+	msg = [msg '    cocoSim(MODEL_PATH, [MAT_CONSTANTS_FILES], [TIME_STEP], [TRACE])\n'];
 	msg = [msg '\n'];
 	msg = [msg '      MODEL_PATH: a string containing the path to the model\n'];
 	msg = [msg '        e.g. ''../../mymodel.mdl\''\n'];
@@ -533,11 +564,16 @@ function display_help_message()
 	msg = [msg '      traceability informations\n'];
 	msg = [msg '        e.g. true\n'];
 	msg = [msg '        default: false\n'];
-    msg = [msg '      SOLVER: Choose a solver Zustre or KIND2\n'];
-	msg = [msg '        e.g. Z for Zustre, K for KIND2\n'];
-	msg = [msg '        default: Zustre\n'];
+%     msg = [msg '      SOLVER: Choose a solver Zustre or KIND2\n'];
+% 	msg = [msg '        e.g. Z for Zustre, K for KIND2. Setup path in src/config.m\n'];
+% 	msg = [msg '        default: Zustre\n'];
 	disp(sprintf(msg));
 end
+
+
+
+
+
 
 function launch_display_msg(model_full_path)
 	msg = {};
