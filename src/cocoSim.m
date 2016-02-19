@@ -81,12 +81,16 @@ addpath(cocoSim_path);
 config;
 
 config_msg = ['CoCoSim Configuration, Change this configuration in src/config.m\n'];
-config_msg = [config_msg '  SOLVER: ' SOLVER '\n'];
-config_msg = [config_msg '  ZUSTRE: ' ZUSTRE '\n'];
-config_msg = [config_msg '  KIND2: ' KIND2 '\n'];
-config_msg = [config_msg '  LUSTREC: ' LUSTREC '\n'];
-config_msg = [config_msg '  Z3: ' Z3 '\n'];
-config_msg = [config_msg ''];
+config_msg = [config_msg '--------------------------------------------------\n'];
+config_msg = [config_msg '|  SOLVER: ' SOLVER '\n'];
+config_msg = [config_msg '|  ZUSTRE: ' ZUSTRE '\n'];
+config_msg = [config_msg '|  KIND2: ' KIND2 '\n'];
+config_msg = [config_msg '|  LUSTREC: ' LUSTREC '\n'];
+config_msg = [config_msg '|  SEAHORN: ' SEAHORN '\n'];
+config_msg = [config_msg '|  Z3: ' Z3 '\n'];
+config_msg = [config_msg '|  RUST_GEN: ' int2str(RUST_GEN) '\n'];
+config_msg = [config_msg '|  C_GEN: ' int2str(C_GEN) '\n'];
+config_msg = [config_msg '--------------------------------------------------\n'];
 display_msg(config_msg, Constants.INFO, 'cocoSim', '');
 
 
@@ -171,7 +175,8 @@ initialize_files(file_name, nom_lustre_file, nom_prelude_file, nom_lusi_file);
 display_msg('Internal representation building', Constants.INFO, 'cocoSim', '');
 
 %%%%%%% Load all the systems including the referenced ones %%%%
-[models subsystems] = find_mdlrefs(file_name);
+[models, subsystems] = find_mdlrefs(file_name);
+
 inter_blk = {};
 blks = {};
 uses_complex = false;
@@ -183,6 +188,7 @@ code_on=sprintf('%s([], [], [], ''compile'')', models{end});
 eval(code_on);
 
 for idx_model=numel(models):-1:1
+    
 	load_system(models{idx_model});
  
 	% Retrieve the subsystem block structure for the referenced model
@@ -207,9 +213,10 @@ for idx_model=numel(models):-1:1
 				end
 			end
 		end
-	end
-
+    end
+      
 	[tmp_inter_blk tmp_blks] = blocks_interconnection_complet(models{idx_model}, mat_files, default_Ts, [],[], 0, referencing_sub_struct);
+     error('bla')
 	inter_blk = cat(2, inter_blk, tmp_inter_blk);
 	blks = cat(2, blks, tmp_blks);
 end
@@ -299,14 +306,18 @@ for idx_subsys=numel(inter_blk):-1:1
 	%%%%%%% Matlab functions and CoCoSpec code generation %%%%%%%%%%%%%%%
 	is_matlab_function = false;
     is_cocospec = false;
+    is_s_function = false;
 	if idx_subsys ~= 1 && ~strcmp(inter_blk{idx_subsys}{1}.type, 'ModelReference')
 		sf_sub = get_param(inter_blk{idx_subsys}{1}.annotation, 'SFBlockType');
         cocospec_name = get_param(inter_blk{idx_subsys}{1}.annotation, 'Name');
+        disp(sf_sub);
+        error('bla')
         if strcmp(cocospec_name, 'CoCoSpec')
             is_cocospec = true;
-        end
-		if strcmp(sf_sub, 'MATLAB Function')
+        elseif strcmp(sf_sub, 'MATLAB Function')
 			is_matlab_function = true;
+        elseif strcmp(sf_sub, 'SFunction')
+            is_s_function = true;
         end
     end
 
@@ -329,12 +340,14 @@ for idx_subsys=numel(inter_blk):-1:1
         end
         
         %fprintf('%s', cocospec);
+       
     elseif is_matlab_function
-		
+		display_msg('Dealing with Embedded Matlab', Constants.INFO, 'cocoSim', '');
 		[fun_name, chart] = Utils.get_MATLAB_function_name(inter_blk{idx_subsys}{1});
 		[mat_fun_node] = write_matlab_function_node(inter_blk{idx_subsys}{1}, inter_blk, inter_blk{idx_subsys}, fun_name, chart, xml_trace);
 		extern_nodes_string = [extern_nodes_string mat_fun_node];
 
+        
 		% Add Matlab function code to an m file
 		blk_path_elems = regexp(inter_blk{idx_subsys}{1}.name{1}, '/', 'split');
 		node_call_name = Utils.concat_delim(blk_path_elems, '_');
@@ -345,7 +358,7 @@ for idx_subsys=numel(inter_blk):-1:1
 		fid = fopen(fun_file, 'w');
 		fprintf(fid, '%s', script);
 		fclose(fid);
-
+        display_msg('Done with Embedded Matlab', Constants.INFO, 'cocoSim', '');
 	%%%%% Classical blocks code generation %%%%%%%%%%%%%%%
 	elseif (idx_subsys == 1 || ~Constants.is_property(inter_blk{idx_subsys}{1}.mask_type)) && inter_blk{idx_subsys}{1}.num_output ~= 0
 

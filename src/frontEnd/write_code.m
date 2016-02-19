@@ -363,7 +363,7 @@ for idx_block=1:nblk
 
 	%%%%%%%%%%%%%%%%%%% S-Function %%%%%%%%%%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'S-Function')
-
+        disp('here')
 		function_name = get_param(blks{idx_block}, 'FunctionName');
 		parameters = get_param(blks{idx_block}, 'Parameters');
 
@@ -465,7 +465,7 @@ for idx_block=1:nblk
 	%%%%%%%%%%%%%%%%% SubSystem %%%%%%%%%%%%%%%%%%%%%%%%
 	% Print SubSystem as a node call only if it is not the first of the list (aka the current SubSystem)
 	elseif (strcmp(inter_blk{idx_block}.type, 'SubSystem') || strcmp(inter_blk{idx_block}.type, 'ModelReference')) && not(idx_block == 1)
-
+       
 		mask = get_param(blks{idx_block}, 'Mask');
 		if strcmp(mask, 'on') && ~strcmp(inter_blk{idx_block}.mask_type, '')
 

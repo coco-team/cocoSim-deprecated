@@ -70,9 +70,9 @@ classdef Constants
 
 		PROPERTY_BLOCKS = {Constants.observer};
         
-        ASSUME_BLOCK = {Constants.assume};
+        ASSUME_BLOCKS = {Constants.assume};
         
-        ENSURE_BLOCK = {Constants.ensure};
+        ENSURE_BLOCKS = {Constants.ensure};
 
 		COMPARETO_BLOCKS = {Constants.compare_to_zero, Constants.compare_to_constant};
 

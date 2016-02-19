@@ -519,6 +519,7 @@ for idx_block=1:numel(blks)
 	% Get S-Function parameters data types
 	if strcmp(myblk{idx_block}.type, 'S-Function')
         if strcmp(get_param(myblk{idx_block}.annotation, 'Mask'), 'on')
+            disp(get_param(myblk{idx_block}.annotation, 'MaskType'))
             if strcmp(get_param(myblk{idx_block}.annotation, 'MaskType'), 'Bitwise Operator')
                 myblk{idx_block}.type = 'Bitwise Operator';
             else
