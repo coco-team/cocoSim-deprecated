@@ -30,10 +30,10 @@ if exist(LUSTREC,'file')
     command = sprintf('%s -d %s %s', LUSTREC, new_dir, lustre_file_name);
     [status, lustrec_out] = system(command);
     if isempty(strfind(lustrec_out, '.. done'))
-        display_msg('Error Generating C code', Constants.ERROR, 'Rust Generation', '');
+        display_msg('Error Generating C code', Constants.ERROR, 'C Generation', '');
     else
         msg = ['C code is generated in :  ' new_dir] ;
-        display_msg(msg, Constants.INFO, 'C Generation', '');
+        display_msg(msg, Constants.RESULT, 'C Generation', '');
     end
 else
     msg = 'Running C: Impossible to find LustreC';

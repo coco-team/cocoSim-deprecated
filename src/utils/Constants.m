@@ -42,6 +42,7 @@ classdef Constants
 		WARNING = 2;
 		ERROR = 3;
 		DEBUG = 4;
+        RESULT = 5;
 
 		% Combinatorial block types (having rounding)
 		SWITCH = 'Switch';

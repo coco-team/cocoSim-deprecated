@@ -23,7 +23,7 @@ function kind2(lustre_file_name, property_node_names, property_file_base_name, m
     config;
      
     for idx_prop=1:numel(property_node_names)
-        if exist(KIND2,'file')
+        if exist(KIND2,'file') && exist(Z3,'file')
             date_value = datestr(now, 'ddmmyyyyHHMMSS');
             command = sprintf('%s --z3_bin %s -xml %s', KIND2, Z3, lustre_file_name);
             [status, kind2_out] = system(command);
@@ -55,7 +55,7 @@ function kind2(lustre_file_name, property_node_names, property_file_base_name, m
 %                 end
             end
         else
-            msg = 'Running Kind2: Impossible to find Kind2';
+            msg = 'Running Kind2: Impossible to find Kind2 and/or Z3';
             display_msg(msg, Constants.ERROR, 'Kind2 property checking', '');
         end
     end

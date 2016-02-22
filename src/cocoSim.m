@@ -216,7 +216,7 @@ for idx_model=numel(models):-1:1
     end
       
 	[tmp_inter_blk tmp_blks] = blocks_interconnection_complet(models{idx_model}, mat_files, default_Ts, [],[], 0, referencing_sub_struct);
-     error('bla')
+
 	inter_blk = cat(2, inter_blk, tmp_inter_blk);
 	blks = cat(2, blks, tmp_blks);
 end
@@ -310,8 +310,6 @@ for idx_subsys=numel(inter_blk):-1:1
 	if idx_subsys ~= 1 && ~strcmp(inter_blk{idx_subsys}{1}.type, 'ModelReference')
 		sf_sub = get_param(inter_blk{idx_subsys}{1}.annotation, 'SFBlockType');
         cocospec_name = get_param(inter_blk{idx_subsys}{1}.annotation, 'Name');
-        disp(sf_sub);
-        error('bla')
         if strcmp(cocospec_name, 'CoCoSpec')
             is_cocospec = true;
         elseif strcmp(sf_sub, 'MATLAB Function')
@@ -524,7 +522,7 @@ if numel(property_node_names) > 0
           try
             zustre(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace);
           catch ME
-             display_msg(ME.message, Constatns.ERROR, 'Verification', '');
+             display_msg(ME.message, Constants.ERROR, 'Verification', '');
           end    
     elseif strcmp(SOLVER, 'K')
          display_msg('Running Kind2', Constants.INFO, 'Verification', '');

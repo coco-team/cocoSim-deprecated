@@ -31,6 +31,7 @@ if exist(KIND2,'file')
     [status, rust_out] = system(command);
     if isempty(strfind(rust_out, 'Success'))
         display_msg('Error Generating Rust code', Constants.ERROR, 'Rust Generation', '');
+        display_msg(rust_out, Constants.ERROR, 'Rust Generation', '');
     else
         msg = ['Rust code is generated in :  ' new_dir] ;
         display_msg(msg, Constants.INFO, 'Rust Generation', '');

@@ -44,7 +44,7 @@ function [answer, cex] = solver_result(solver, xml_result, property_node_name, p
             end
                 
     		msg = [solver ' result for property node [' property_node_name ']: ' char(answer)];
-    		display_msg(msg, Constants.INFO, 'Zustre property checking', '');
+    		display_msg(msg, Constants.RESULT, 'Zustre property checking', '');
 			if strcmp(answer, 'CEX') || strcmp(answer, 'falsifiable')
 				xml_cex = xml_doc.getElementsByTagName('Counterexample');
 				if xml_cex.getLength > 0

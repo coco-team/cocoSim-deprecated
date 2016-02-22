@@ -363,10 +363,14 @@ for idx_block=1:nblk
 
 	%%%%%%%%%%%%%%%%%%% S-Function %%%%%%%%%%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'S-Function')
-        disp('here')
+        
 		function_name = get_param(blks{idx_block}, 'FunctionName');
 		parameters = get_param(blks{idx_block}, 'Parameters');
 
+        disp(function_name)
+        disp(parameters)
+        disp('inter')
+        disp(inter_blk{idx_block})
 		% Write S-Function call
 		block_string = write_s_function(inter_blk{idx_block}, function_name, parameters, inter_blk);
 		

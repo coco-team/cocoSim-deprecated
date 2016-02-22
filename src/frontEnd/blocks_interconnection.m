@@ -531,21 +531,25 @@ for idx_block=1:numel(blks)
             end
         else
             param_string = get_param(blks{idx_block}, 'Parameters');
-            parameters = regexp(param_string, ',', 'split');
-            for idx_param=1:numel(parameters)
-                try
-                    param_value = evalin('base', parameters{idx_param});
-                catch ERR
-                    param_value = get_param(blks{idx_block}, parameters{idx_param});
+            %param_string = get_param(blks{idx_block}, 'PortHandles');
+            disp(param_string)
+            if ~strcmp(param_string,'')
+                parameters = regexp(param_string, ',', 'split');
+                for idx_param=1:numel(parameters)
                     try
-                        param_value_eval = evalin('base', param_value);
-                        param_value = param_value_eval;
-                    catch
+                        param_value = evalin('base', parameters{idx_param});
+                    catch ERR
+                        param_value = get_param(blks{idx_block}, parameters{idx_param});
+                        try
+                            param_value_eval = evalin('base', param_value);
+                            param_value = param_value_eval;
+                        catch
+                        end
                     end
+                    param_class = class(param_value);
+                    myblk{idx_block}.parameters_value{idx_param} = param_value;
+                    myblk{idx_block}.parameters_dt{idx_param} = param_class;
                 end
-                param_class = class(param_value);
-                myblk{idx_block}.parameters_value{idx_param} = param_value;
-                myblk{idx_block}.parameters_dt{idx_param} = param_class;
             end
         end
     end
