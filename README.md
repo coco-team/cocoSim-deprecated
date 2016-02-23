@@ -14,19 +14,22 @@ CoCoSim can be installed and use as follows.
 ### Dependencies ###
 
 * MATLAB(c) version **R2014b** or newer
-* [Zustre](https://github.com/lememta/zustre) and its dependencies: [LustreC](https://github.com/lememta/lustrec) and [SPACER](https://github.com/seahorn/z3)
+* [Zustre](https://github.com/lememta/zustre) 
 * Python2.7
 * (Optional) lus2lic (https://www-verimag.imag.fr/Lustre-V6.html) from the Verimag LustreV6 toolbox for testing purpose
 
 ### Configuration ###
 
- Set the paths to the tools and libraries:
+ Set the configuration for the backend solvers in `src/config.m`:
 
-     + In the `tools/gac/path_config.m` file set the values for variables:
-		++ LUSTREC: path to the previously installed lustrec binary file
-		++ SPACER: path to the `build` directory of the `SPACER` tool
-	  These paths cannot be automatically retrieved from the system paths
-     by MATLAB(c) and thus needs to be set by hand.
+* `SOLVER`: `K` to use Kind2, `Z` to use Zustre.
+* `ZUSTRE`: Path to [Zustre](https://github.com/coco-team/zustre) binary.
+* `KIND2`: Path to [Kind2](https://github.com/kind2-mc/kind2) binary.
+* `LUSTREC`: Path to [LustreC](https://github.com/coco-team/lustrec) binary.
+* `Z3`: Path to Z3 binary. If you install Zustre, Z3 can be found in `ZUSTRE_PATH/build/run/bin/z3`.
+* `RUST_GEN`: `1` to generate RUST code (using Kind2). `0` do not generate. 
+* `C_GEN`: `1` to generate C code (using LustreC). `0` do not generate. 
+
 
 ### Launching ###
 

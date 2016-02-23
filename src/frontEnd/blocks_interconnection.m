@@ -519,7 +519,6 @@ for idx_block=1:numel(blks)
 	% Get S-Function parameters data types
 	if strcmp(myblk{idx_block}.type, 'S-Function')
         if strcmp(get_param(myblk{idx_block}.annotation, 'Mask'), 'on')
-            disp(get_param(myblk{idx_block}.annotation, 'MaskType'))
             if strcmp(get_param(myblk{idx_block}.annotation, 'MaskType'), 'Bitwise Operator')
                 myblk{idx_block}.type = 'Bitwise Operator';
             else
@@ -531,8 +530,6 @@ for idx_block=1:numel(blks)
             end
         else
             param_string = get_param(blks{idx_block}, 'Parameters');
-            %param_string = get_param(blks{idx_block}, 'PortHandles');
-            disp(param_string)
             if ~strcmp(param_string,'')
                 parameters = regexp(param_string, ',', 'split');
                 for idx_param=1:numel(parameters)

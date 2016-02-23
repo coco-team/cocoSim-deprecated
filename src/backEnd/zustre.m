@@ -88,7 +88,7 @@ function launch_zustre(lustre_file_name, property_node_names, property_file_base
 						catch ERR
 							found = false;
 							msg = ['Zustre: FAILURE to parse the counter example provided by Zustre: ' property_node_names{idx_prop}.prop_name '\n' getReport(ERR)];
-							display_msg(msg, Constants.INFO, 'Zustre property checking', '');
+							display_msg(msg, Constants.INFO, 'Zustre', '');
 						end
 
 						if found

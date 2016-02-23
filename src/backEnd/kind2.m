@@ -56,7 +56,7 @@ function kind2(lustre_file_name, property_node_names, property_file_base_name, m
             end
         else
             msg = 'Running Kind2: Impossible to find Kind2 and/or Z3';
-            display_msg(msg, Constants.ERROR, 'Kind2 property checking', '');
+            display_msg(msg, Constants.ERROR, 'Kind2', '');
         end
     end
 end
@@ -75,7 +75,7 @@ function [status] = display_cex(cex, path, prop, model, date_value, lustre_file)
    catch ERR
        found = false;
        msg = ['Kind2: FAILURE to parse the CEX : ' prop.prop_name '\n' getReport(ERR)];
-       display_msg(msg, Constants.INFO, 'Kind2 property checking', '');
+       display_msg(msg, Constants.INFO, 'Kind2', '');
    end
 end
 

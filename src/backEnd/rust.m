@@ -34,10 +34,10 @@ if exist(KIND2,'file')
         display_msg(rust_out, Constants.ERROR, 'Rust Generation', '');
     else
         msg = ['Rust code is generated in :  ' new_dir] ;
-        display_msg(msg, Constants.INFO, 'Rust Generation', '');
+        display_msg(msg, Constants.INFO, 'Rust', '');
     end
 else
     msg = 'Running Kind2: Impossible to find Kind2';
-    display_msg(msg, Constants.ERROR, 'Rust Generation', '');
+    display_msg(msg, Constants.ERROR, 'Rust', '');
 end
 end

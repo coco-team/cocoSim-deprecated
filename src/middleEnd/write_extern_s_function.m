@@ -40,7 +40,7 @@
 function [output_string] = write_extern_s_function(myblk, blks, function_name, parameters)
 
 output_string = '';
-	
+
 [list_out] = list_var_sortie(myblk);
 [list_in] = list_var_entree(myblk, blks);
 
@@ -64,7 +64,10 @@ parameters_string = Utils.concat_delim(list_param, '; ');
 
 output_string = write_entree_sorties_extern_s_function(myblk, list_out, list_in, parameters_string);
 output_string = app_sprintf(output_string, 'let\n');
-output_string = app_sprintf(output_string, '\t--! c_code: %s:%s:%s:%s\n', c_file_name, init_fun_name, compute_fun_name, update_fun_name);
+output_string = app_sprintf(output_string, '\t--! c_code: %s;\n', c_file_name);
+output_string = app_sprintf(output_string, '\t--! init_function: %s;\n', init_fun_name);
+output_string = app_sprintf(output_string, '\t--! compute_function: %s;\n', compute_fun_name);
+output_string = app_sprintf(output_string, '\t--! update_function: %s;\n', update_fun_name);
 output_string = app_sprintf(output_string, 'tel\n\n');
 
 end
@@ -76,41 +79,42 @@ node_name = Utils.naming(unbloc.name{1});
 
 buffer = '';
 if ~isempty(list_in)
-	cpt_input_vars = 1;
-	for idx_input=1:unbloc.num_input
-		for idx_dim_in=1:unbloc.srcport_size(idx_input)
-			in_dt = Utils.get_lustre_dt(unbloc.inports_dt{idx_input});
-			buffer{cpt_input_vars} = ['in' num2str(idx_input) '_' num2str(idx_dim_in) ': ' in_dt];
-			cpt_input_vars = cpt_input_vars + 1;
-		end
-	end
-	in_decl = Utils.concat_delim(buffer, '; ');
-	if not(strcmp(list_param, ''))
-		in_decl = [in_decl '; ' list_param];
-	end
-	output_string = app_sprintf(output_string, 'node %s (%s)', node_name, in_decl);
+    cpt_input_vars = 1;
+    for idx_input=1:unbloc.num_input
+        for idx_dim_in=1:unbloc.srcport_size(idx_input)
+            in_dt = Utils.get_lustre_dt(unbloc.inports_dt{idx_input});
+            buffer{cpt_input_vars} = ['in' num2str(idx_input) '_' num2str(idx_dim_in) ': ' in_dt];
+            cpt_input_vars = cpt_input_vars + 1;
+        end
+    end
+    in_decl = Utils.concat_delim(buffer, '; ');
+    if not(strcmp(list_param, ''))
+        in_decl = [in_decl '; ' list_param];
+    end
+    output_string = app_sprintf(output_string, 'node %s (%s)', node_name, in_decl);
     
 else
-	output_string = app_sprintf(output_string, 'node %s ()', node_name);
+    output_string = app_sprintf(output_string, 'node %s ()', node_name);
 end
 buffer = '';
 cpt_output_vars = 1;
-block_name = regexp(unbloc.name, '/', 'split');
-disp(unbloc.num_out)
+match = regexp(unbloc.name, '/', 'split');
+block_name = match{1}(end);
 for idx_output=1:unbloc.num_output
-	for idx_dim_out=1:unbloc.dstport_size(idx_output)
-		out_dt = Utils.get_lustre_dt(unbloc.outports_dt{idx_output});
-		buffer{cpt_output_vars} = [block_name '_' num2str(idx_output) '_' num2str(idx_dim_out) ': ' out_dt];
-		%buffer{cpt_output_vars} = ['out' num2str(idx_output) '_' num2str(idx_dim_out) ': ' out_dt];
-		cpt_output_vars = cpt_output_vars + 1;
-	end
+    for idx_dim_out=1:unbloc.dstport_size(idx_output)
+        out_dt = Utils.get_lustre_dt(unbloc.outports_dt{idx_output});
+        buffer{cpt_output_vars} = [strjoin(block_name) '_' num2str(idx_output) '_' num2str(idx_dim_out) ': ' out_dt];
+        %buffer{cpt_output_vars} = ['out' num2str(idx_output) '_' num2str(idx_dim_out) ': ' out_dt];
+        cpt_output_vars = cpt_output_vars + 1;
+    end
 end
 
-out_decl = Utils.concat_delim(buffer, '; ');
+out_decl = Utils.concat_delim(buffer, '; \n');
 
 try
     output_string = app_sprintf(output_string, '\nreturns (%s)\n', out_decl);
-catch
+catch ME
+    display_msg(ME.message, Constants.WARNING, 'write S-Function', '');
     output_string = app_sprintf(output_string, '\nreturns(%s)', 'NOPE');
 end
 
