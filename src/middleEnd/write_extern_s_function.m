@@ -50,9 +50,14 @@ init_fun_name = 'mdlInitializeConditions';
 compute_fun_name = 'mdlOutputs';
 update_fun_name = 'mdlUpdate';
 
-nb_param = length(find(parameters == ',')) + 1;
+disp(numel(parameters))
+% nb_param = length(find(parameters == ',')) + 1;
 
+disp(myblk)
+nb_param = numel(parameters) -1 ;
 for idx_param=1:nb_param
+    param_dt = Utils.get_lustre_dt(myblk.parameters_dt{idx_param});
+    disp(param_dt)
     try
         param_dt = Utils.get_lustre_dt(myblk.parameters_dt{idx_param});
         list_param{idx_param} = ['param' num2str(idx_param) ' : ' param_dt];
@@ -115,7 +120,7 @@ try
     output_string = app_sprintf(output_string, '\nreturns (%s)\n', out_decl);
 catch ME
     display_msg(ME.message, Constants.WARNING, 'write S-Function', '');
-    output_string = app_sprintf(output_string, '\nreturns(%s)', 'NOPE');
+    output_string = app_sprintf(output_string, '\nreturns(%s)', '');
 end
 
 end

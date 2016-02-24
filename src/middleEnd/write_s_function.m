@@ -48,6 +48,9 @@ if numel(list_out) > 1
 	list_out = ['(' list_out ')'];
 end
 
+disp(list_in)
+disp(list_out)
+parameters = '';
 
 if ~strcmp(parameters, '')
     parameters_strings = regexp(parameters, ',', 'split');
@@ -63,4 +66,5 @@ end
 
 block_name = Utils.naming(unbloc.name{1});
 output_string = app_sprintf(output_string, '\t%s = %s(%s);\n', list_out, block_name, list_in{1});
+disp(output_string)
 end

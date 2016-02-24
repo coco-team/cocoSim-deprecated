@@ -365,8 +365,21 @@ for idx_block=1:nblk
 	elseif strcmp(inter_blk{idx_block}.type, 'S-Function')
         
 		function_name = get_param(blks{idx_block}, 'FunctionName');
-		parameters = get_param(blks{idx_block}, 'Parameters');
-		% Write S-Function call
+        % get port connectivity
+        props = get_param(blks{idx_block}, 'portconnectivity');
+        n_blocks =numel(props);
+        for k=1:n_blocks
+            s=get(props(k).SrcBlock);
+            f='Source';
+            if isempty(s)
+                s=get(props(k).DstBlock);
+                f='Destination';
+            end
+            prop_conn{k,1}=f;
+            prop_conn{k,2}=s.BlockType;
+            prop_conn{k,3}=s.Name;
+            parameters{k}=s.Name;
+        end
 		block_string = write_s_function(inter_blk{idx_block}, function_name, parameters, inter_blk);
 		
 		% Write S-Function extern node

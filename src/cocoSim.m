@@ -187,6 +187,7 @@ warning off;
 code_on=sprintf('%s([], [], [], ''compile'')', models{end});
 eval(code_on);
 
+
 for idx_model=numel(models):-1:1
     
 	load_system(models{idx_model});
@@ -306,7 +307,6 @@ for idx_subsys=numel(inter_blk):-1:1
 	%%%%%%% Matlab functions and CoCoSpec code generation %%%%%%%%%%%%%%%
 	is_matlab_function = false;
     is_cocospec = false;
-    is_s_function = false;
 	if idx_subsys ~= 1 && ~strcmp(inter_blk{idx_subsys}{1}.type, 'ModelReference')
 		sf_sub = get_param(inter_blk{idx_subsys}{1}.annotation, 'SFBlockType');
         cocospec_name = get_param(inter_blk{idx_subsys}{1}.annotation, 'Name');
@@ -314,8 +314,6 @@ for idx_subsys=numel(inter_blk):-1:1
             is_cocospec = true;
         elseif strcmp(sf_sub, 'MATLAB Function')
 			is_matlab_function = true;
-        elseif strcmp(sf_sub, 'SFunction')
-            is_s_function = true;
         end
     end
 
@@ -390,16 +388,6 @@ for idx_subsys=numel(inter_blk):-1:1
 
 		nodes_string = [nodes_string node_header];
 		nodes_string = [nodes_string let_tel_code];
-% 		if idx_subsys == 1
-% 			main_node_annotation = '';
-%             if strcmp(SOLVER,'Z')
-%                 main_node_annotation='\t--!MAIN: true;\n';
-%             elseif strcmp(SOLVER, 'K')
-%                 main_node_annotation=sprintf('\t--%%%%MAIN;\n');
-%             end
-% 			nodes_string = [nodes_string main_node_annotation];
-%         end
-        %disp(nodes_string)
 		nodes_string = [nodes_string 'tel\n\n'];
 	end
 end
