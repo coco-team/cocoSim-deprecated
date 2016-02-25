@@ -50,21 +50,17 @@ init_fun_name = 'mdlInitializeConditions';
 compute_fun_name = 'mdlOutputs';
 update_fun_name = 'mdlUpdate';
 
-disp(numel(parameters))
-% nb_param = length(find(parameters == ',')) + 1;
-
-disp(myblk)
-nb_param = numel(parameters) -1 ;
-for idx_param=1:nb_param
-    param_dt = Utils.get_lustre_dt(myblk.parameters_dt{idx_param});
-    disp(param_dt)
-    try
+try
+    nb_param = length(find(parameters == ',')) + 1;
+    
+    for idx_param=1:nb_param
         param_dt = Utils.get_lustre_dt(myblk.parameters_dt{idx_param});
         list_param{idx_param} = ['param' num2str(idx_param) ' : ' param_dt];
-    catch
-        list_param = '';
     end
+catch
+    list_param = '';
 end
+
 parameters_string = Utils.concat_delim(list_param, '; ');
 
 output_string = write_entree_sorties_extern_s_function(myblk, list_out, list_in, parameters_string);

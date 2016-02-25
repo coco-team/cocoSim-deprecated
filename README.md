@@ -3,7 +3,9 @@
 CoCoSim is a modular, integrated analysis framework for Simulink(c) models. It consists of a compiler and a model checker:
 
 * **Compiler**: It modularly compiles a Simulink(c) model (+ design property) into Lustre code. An earlier version of this module was developed by Claire Pagetti, Thomas Loquen and Eric Noulard at ONERA (France). The current version has been re-designed by Arnaud Dieumegard (CMU) and Temesghen Kahsai (NASA Ames / CMU).
-* **Model Checker**: In principle CoCoSim can use any model checker that inputs Lustre code. The current version uses [Zustre](https://github.com/lememta/zustre) as the underlying model checker.
+* **Model Checker**: In principle CoCoSim can use any model checker that supprt Lustre code. The current version uses [Zustre](https://github.com/lememta/zustre) [Kind2](https://github.com/kind2-mc/kind2) as the underlying model checker.
+
+CoCoSim is currently under heavy development. We welcome any feedback and bug report.
 
 [![ScreenCast of CoCoSim](http://i.imgur.com/itLte0X.png)](http://www.youtube.com/watch?v=KA_Wdnn668M)
 
@@ -33,9 +35,11 @@ CoCoSim can be installed and use as follows.
 
 ### Launching ###
 
-+ Launch the Matlab(c) toolset 
++ Launch Matlab(c) 
 + Navigate to `src/`
 + Type ```cocoSim help```
+
+Alternatively you can add cocoSim to the current path e.g., `addpath('src')`
 
 ```
   cocoSim [OPTIONS] MODEL_PATH
@@ -55,6 +59,12 @@ CoCoSim can be installed and use as follows.
 
 
 + The output Lustre files are generated in a new folder named `src_[name of the input model]` in the folder containing the input model.
+
+### Example ###
+
+1. To test a safe property: `cocoSim test/properties/property_2_test.mdl`
+
+2. To test an unsafe property (which also provide a counterexample): `cocoSim test/properties/property_3_unsafe_test.mdl`
 
 
 ## CoCoSim Supported Simulink Blocks ##

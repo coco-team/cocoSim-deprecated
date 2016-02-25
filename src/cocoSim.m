@@ -163,123 +163,26 @@ output_dir = fullfile(model_path, strcat('src_', file_name));
 	% really wants to override the existing folder
 [status, message, message_id] = mkdir(output_dir);
 nom_lustre_file = fullfile(output_dir, strcat(file_name, '.lus'));
-%TODO remove this
-nom_prelude_file = fullfile(output_dir, strcat(file_name, '_assemblage.plu'));
-nom_lusi_file = fullfile(output_dir, strcat(file_name, '.lusi'));
+
 trace_file_name = fullfile(output_dir, strcat(file_name, '.trace.xml'));
 property_file_base_name = fullfile(output_dir, strcat(file_name, '.property'));
 
 % TODO: Ask the user for file overriding
-initialize_files(file_name, nom_lustre_file, nom_prelude_file, nom_lusi_file);
+initialize_files(nom_lustre_file);
 
 display_msg('Internal representation building', Constants.INFO, 'cocoSim', '');
 
 %%%%%%% Load all the systems including the referenced ones %%%%
 [models, subsystems] = find_mdlrefs(file_name);
 
-inter_blk = {};
-blks = {};
-uses_complex = false;
 
 %%%%%% Internal representation building %%%%%%
-% Compilation of the model
-warning off;
-code_on=sprintf('%s([], [], [], ''compile'')', models{end});
-eval(code_on);
 
-
-for idx_model=numel(models):-1:1
-    
-	load_system(models{idx_model});
- 
-	% Retrieve the subsystem block structure for the referenced model
-	referencing_sub_struct = '';
-	if idx_model ~= numel(models)
-		for idx_sub=1:numel(subsystems)
-			ref = get_param(subsystems{idx_sub}, 'ModelNameDialog');
-			[ref_path ref_name ref_ext] = fileparts(ref);
-			if strcmp(ref_name, models{idx_model})
-				origin_name = subsystems{idx_sub};
-				[found, first_dim, second_dim] = Utils.get_block_position(inter_blk, origin_name);
-				for idx_first=1:numel(first_dim)
-					for idx_second=1:numel(second_dim)
-						inter_blk{first_dim{idx_first}}{second_dim{idx_second}}.ref_name = {models{idx_model}};
-						inter_blk{first_dim{idx_first}}{second_dim{idx_second}}.isref = true;
-					end
-				end
-				if strcmp(referencing_sub_struct, '')
-					referencing_sub_struct = inter_blk{first_dim{1}}{second_dim{1}};
-					referencing_sub_struct.name = {models{idx_model}};
-					referencing_sub_struct.origin_name = {models{idx_model}};
-				end
-			end
-		end
-    end
-      
-	[tmp_inter_blk tmp_blks] = blocks_interconnection_complet(models{idx_model}, mat_files, default_Ts, [],[], 0, referencing_sub_struct);
-
-	inter_blk = cat(2, inter_blk, tmp_inter_blk);
-	blks = cat(2, blks, tmp_blks);
-end
-
-% Terminate the compilation
-code_off = sprintf('%s([], [], [], ''term'')', models{end});
-eval(code_off);
-warning on;
-
-
-% Get complex data types
-cpx_dts = {};
-for idx_sub=1:numel(inter_blk)
-	for idx_blk=1:numel(inter_blk{idx_sub})
-		indexes_in = find(inter_blk{idx_sub}{idx_blk}.in_cpx_sig);
-		[in_cpx_dts] = inter_blk{idx_sub}{idx_blk}.inports_dt(indexes_in);
-		indexes_out = find(inter_blk{idx_sub}{idx_blk}.out_cpx_sig);
-		[out_cpx_dts] = inter_blk{idx_sub}{idx_blk}.outports_dt(indexes_out);
-		cpx_dts = [cpx_dts in_cpx_dts out_cpx_dts];
-	end
-end
-
-cpx_dts = unique(cpx_dts);
-for idx_cpx=1:numel(cpx_dts)
-	cpx_dts{idx_cpx} = Utils.get_lustre_dt(cpx_dts{idx_cpx});
-end
-cpx_dts = unique(cpx_dts);
-
-complex_structs = '';
-for idx_cpx=1:numel(cpx_dts)
-	complex_structs = [complex_structs BusUtils.get_complex_struct(cpx_dts{idx_cpx})];
-end
-
-% Write df fomat version of the model
-if dfexport
-	display_msg('Printing original dataflow model', Constants.INFO, 'cocoSim', '');
-	write_dftext(model_path, model_full_path, inter_blk, '_1_none');
-end
-
-% Flatten NotAtomic SubSystems in a Top-Down way
-display_msg('Flattening of virtual SubSytems', Constants.INFO, 'cocoSim', '');
-[inter_blk blks] = flatten_subsystems(inter_blk, blks);
-
-% Write df fomat version of the model
-if dfexport
-	display_msg('Printing flattened dataflow model', Constants.INFO, 'cocoSim', '');
-	write_dftext(model_path, model_full_path, inter_blk, '_2_f');
-end
-
-% New pass on the model to find the necessary data type conversions
-display_msg('Internal representation browsing for implicit data type conversions detection', Constants.INFO, 'cocoSim', '');
-[inter_blk blks] = blocks_dt_conversions(file_name, inter_blk, blks);
+[inter_blk blks complex_structs]= mk_internalRep(file_name, dfexport, models, subsystems, mat_files, default_Ts);
 
 % Creation of the traceability XML node
 xml_trace = XML_Trace(model_full_path, trace_file_name);
 xml_trace.init();
-
-% Write df fomat version of the model
-if dfexport
-	display_msg('Printing flattened-type-converted dataflow model', Constants.INFO, 'cocoSim', '');
-	write_dftext(model_path, model_full_path, inter_blk, '_3_ftc');
-end
 
 % Print buses declarations
 bus_decl = write_buses(bus_struct);
@@ -358,7 +261,7 @@ for idx_subsys=numel(inter_blk):-1:1
 	%%%%% Classical blocks code generation %%%%%%%%%%%%%%%
 	elseif (idx_subsys == 1 || ~Constants.is_property(inter_blk{idx_subsys}{1}.mask_type)) && inter_blk{idx_subsys}{1}.num_output ~= 0
 
-		[node_header, let_tel_code, extern_s_functions_string, extern_funs, properties_nodes, property_node_name extern_matlab_funs] = blocks2lustre(file_name, nom_lustre_file, nom_prelude_file, nom_lusi_file, inter_blk, blks, mat_files, idx_subsys, trace, xml_trace);
+		[node_header, let_tel_code, extern_s_functions_string, extern_funs, properties_nodes, property_node_name extern_matlab_funs] = blocks2lustre(file_name, nom_lustre_file, inter_blk, blks, mat_files, idx_subsys, trace, xml_trace);
 
 		extern_nodes_string = [extern_nodes_string extern_s_functions_string];
 
@@ -526,11 +429,11 @@ end
 
 % Close all systems inclusing the referenced ones (only if no modification
 % have been done in the verification phase
-if numel(property_node_names) == 0
-    for idx_model=1:numel(models)
-        close_system(models{idx_model});
-    end
-end
+% if numel(property_node_names) == 0
+%     for idx_model=1:numel(models)
+%         close_system(models{idx_model});
+%     end
+% end
 
 % Temporary files cleaning
 display_msg('Cleaning temporary files', Constants.INFO, 'cocoSim', '');
@@ -545,13 +448,13 @@ display_msg(['Total computation time: ' datestr(t_compute, 'HH:MM:SS.FFF')], Con
 end
 
 function display_help_message()
-	msg = ['\n'];
-	msg = [msg '  CoCoSiM: A framework for the formal analysis of Simulink models\n'];
-	msg = [msg '\n'];
-	msg = [msg '    cocoSim(MODEL_PATH, [MAT_CONSTANTS_FILES], [TIME_STEP], [TRACE])\n'];
+	msg = [ ' -----------------------------------------------------  \n'];
+	msg = [msg '  CoCoSim: A framework for the formal analysis of Simulink models\n'];
+	msg = [msg '   \n Usage:\n'];
+	msg = [msg '    >> cocoSim(MODEL_PATH, [MAT_CONSTANTS_FILES], [TIME_STEP], [TRACE])\n'];
 	msg = [msg '\n'];
 	msg = [msg '      MODEL_PATH: a string containing the path to the model\n'];
-	msg = [msg '        e.g. ''../../mymodel.mdl\''\n'];
+	msg = [msg '        e.g. ''cocoSim test/properties/property_2_test.mdl\''\n'];
 	msg = [msg '      MAT_CONSTANT_FILES: an optional list of strings containing the\n'];
 	msg = [msg '      path to the mat files containing the simulation constants\n'];
 	msg = [msg '        e.g. {''../../constants1.mat'',''../../constants2.mat''}\n'];
@@ -563,14 +466,9 @@ function display_help_message()
 	msg = [msg '      traceability informations\n'];
 	msg = [msg '        e.g. true\n'];
 	msg = [msg '        default: false\n'];
-%     msg = [msg '      SOLVER: Choose a solver Zustre or KIND2\n'];
-% 	msg = [msg '        e.g. Z for Zustre, K for KIND2. Setup path in src/config.m\n'];
-% 	msg = [msg '        default: Zustre\n'];
-	disp(sprintf(msg));
+    msg = [msg  '  -----------------------------------------------------  \n'];
+	cprintf('blue', msg);
 end
-
-
-
 
 
 
@@ -597,19 +495,11 @@ function launch_display_msg(model_full_path)
 	display_msg(msg, Constants.INFO, 'cocoSim', '');
 end
 
-function initialize_files(file_name, nom_lustre_file, nom_prelude_file, nom_lusi_file)
-	% Cretate prelude file
-	%fid = fopen(nom_prelude_file, 'w');
-	%fprintf(fid, '-- This file has been generated by cocoSim compiler + verifier\n');
-	%fclose(fid);
+function initialize_files(lustre_file)
 	% Create lustre file
-	fid = fopen(nom_lustre_file, 'w');
+	fid = fopen(lustre_file, 'w');
 	fprintf(fid, '-- This file has been generated by cocoSim\n\n');
 	fclose(fid);
-	%Create lustre interface file
-	%fid = fopen(nom_lusi_file, 'w');
-	%fprintf(fid, '-- This file has been generated by cocoSim compiler + verifier\n\n');
-	%fclose(fid);
 end
 
 function [str] = print_int_to_real()

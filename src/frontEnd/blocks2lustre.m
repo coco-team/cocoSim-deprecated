@@ -18,7 +18,9 @@
 
 % TODO: Add summary of the function with parameters
 
-function [node_header let_tel_code_string extern_s_functions_string extern_functions properties_nodes property_node_names extern_matlab_functions] = blocks2lustre(model_name, nom_lustre_file, nom_prelude_file, nom_lusi_file, myblk, main_blks, mat_files, idx_subsys, trace, xml_trace)
+function [node_header,let_tel_code_string, extern_s_functions_string, extern_functions, properties_nodes,...
+    property_node_names, extern_matlab_functions] = blocks2lustre(model_name, nom_lustre_file, ...
+myblk, main_blks, mat_files, idx_subsys, trace, xml_trace)
 
 % Returned values
 let_tel_code_string = '';

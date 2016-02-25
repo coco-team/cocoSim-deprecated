@@ -362,6 +362,8 @@ for idx_block=1:nblk
 		end
 
 	%%%%%%%%%%%%%%%%%%% S-Function %%%%%%%%%%%%%%%%%%%%%
+    
+   %% It needs major revision %%
 	elseif strcmp(inter_blk{idx_block}.type, 'S-Function')
         
 		function_name = get_param(blks{idx_block}, 'FunctionName');
@@ -378,12 +380,11 @@ for idx_block=1:nblk
             prop_conn{k,1}=f;
             prop_conn{k,2}=s.BlockType;
             prop_conn{k,3}=s.Name;
-            parameters{k}=s.Name;
         end
-		block_string = write_s_function(inter_blk{idx_block}, function_name, parameters, inter_blk);
+		block_string = write_s_function(inter_blk{idx_block}, function_name, prop_conn, inter_blk);
 		
 		% Write S-Function extern node
-		extern_s_function = write_extern_s_function(inter_blk{idx_block}, inter_blk, function_name, parameters);
+		extern_s_function = write_extern_s_function(inter_blk{idx_block}, inter_blk, function_name, prop_conn);
 		extern_s_functions_string = [extern_s_functions_string extern_s_function];
 
 	%%%%%%%%%%%%%% Zero-Pole %%%%%%%%%%%%%%%%%%%
