@@ -1,5 +1,5 @@
 #include "mydouble.h"
-double mydouble(double u)
+int mydouble(int u, int w)
 {
-  return(u);
+  return(u*w);
 }

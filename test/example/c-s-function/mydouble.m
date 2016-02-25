@@ -5,7 +5,7 @@ def = legacy_code('initialize');
 def.SourceFiles = {'mydouble.c'};
 def.HeaderFiles = {'mydouble.h'};
 def.SFunctionName = 'legacy_mydouble';
-def.OutputFcnSpec = 'double y1 = mydouble(double u1)';
+def.OutputFcnSpec = 'int8 y1 = mydouble(int8 u1, int8 u2)';
 def.SampleTime = [-1,0];
 
 

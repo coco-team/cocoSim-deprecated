@@ -4,13 +4,13 @@
 %%   Simulink Coder TLC Code Generation file for legacy_mydouble
 %%
 %% Simulink version      : 8.5 (R2015a) 09-Feb-2015
-%% TLC file generated on : 24-Feb-2016 14:23:21
+%% TLC file generated on : 25-Feb-2016 12:34:10
 
 /%
      %%%-MATLAB_Construction_Commands_Start
      def = legacy_code('initialize');
      def.SFunctionName = 'legacy_mydouble';
-     def.OutputFcnSpec = 'double y1 = mydouble(double u1)';
+     def.OutputFcnSpec = 'int8 y1 = mydouble(int8 u1, int8 u2)';
      def.HeaderFiles = {'mydouble.h'};
      def.SourceFiles = {'mydouble.c'};
      def.SampleTime = [-1 0];
@@ -49,9 +49,10 @@
   %%
     %if !LibBlockOutputSignalIsExpr(0)
     %assign u1_val = LibBlockInputSignal(0, "", "", 0)
+    %assign u2_val = LibBlockInputSignal(1, "", "", 0)
     %assign y1_val = LibBlockOutputSignal(0, "", "", 0)
     %%
-    %<y1_val> = mydouble( (real_T)%<u1_val>);
+    %<y1_val> = mydouble( (int8_T)%<u1_val>, (int8_T)%<u2_val>);
     %endif 
   %%
 %endfunction
@@ -61,12 +62,13 @@
 %function BlockOutputSignal(block,system,portIdx,ucv,lcv,idx,retType) void
   %%
   %assign u1_val = LibBlockInputSignal(0, "", "", 0)
+  %assign u2_val = LibBlockInputSignal(1, "", "", 0)
   %assign y1_val = LibBlockOutputSignal(0, "", "", 0)
   %%
   %switch retType
     %case "Signal"
       %if portIdx == 0
-        %return "mydouble( (real_T)%<u1_val>)"
+        %return "mydouble( (int8_T)%<u1_val>, (int8_T)%<u2_val>)"
       %else
         %assign errTxt = "Block output port index not supported: %<portIdx>"
         %<LibBlockReportError(block,errTxt)>
