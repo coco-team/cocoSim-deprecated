@@ -15,7 +15,8 @@
 %
 %    You should have received a copy of the GNU General Public License
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [output_string extern_s_functions_string extern_functions properties_nodes additional_variables property_node_names extern_matlab_functions] = write_code(nblk, inter_blk, blks, main_blks, main_blk, nom_lustre_file, idx_subsys, print_node, trace, xml_trace)
+function [output_string, extern_s_functions_string, extern_functions, properties_nodes, additional_variables, property_node_names, extern_matlab_functions, c_code] = ... 
+    write_code(nblk, inter_blk, blks, main_blks, main_blk, nom_lustre_file, idx_subsys, print_node, trace, xml_trace)
 
 output_string = '';
 extern_s_functions_string = '';
@@ -384,7 +385,7 @@ for idx_block=1:nblk
 		block_string = write_s_function(inter_blk{idx_block}, function_name, prop_conn, inter_blk);
 		
 		% Write S-Function extern node
-		extern_s_function = write_extern_s_function(inter_blk{idx_block}, inter_blk, function_name, prop_conn);
+		[extern_s_function, c_code] = write_extern_s_function(inter_blk{idx_block}, inter_blk, function_name, prop_conn);
 		extern_s_functions_string = [extern_s_functions_string extern_s_function];
 
 	%%%%%%%%%%%%%% Zero-Pole %%%%%%%%%%%%%%%%%%%
@@ -537,14 +538,26 @@ for idx_block=1:nblk
 
 				annot_type = get_param(blks{idx_block}, 'AnnotationType');
 				observer_type = get_param(blks{idx_block}, 'ObserverType');
-
-				[property_node extern_funs property_name] = write_property(inter_blk{idx_block}, inter_blk, main_blk, main_blks, nom_lustre_file, print_node, trace, annot_type, observer_type, xml_trace);
-				properties_nodes = [properties_nodes property_node];
+                try
+                    [property_node extern_funs property_name] = write_property(inter_blk{idx_block}, ...
+                        inter_blk, main_blk, main_blks, nom_lustre_file, print_node, trace, annot_type, observer_type, xml_trace);
+                
+                     properties_nodes = [properties_nodes property_node];
             
-				nb = numel(property_node_names)+1;
-				property_node_names{nb}.prop_name = property_name;
-				property_node_names{nb}.origin_block_name = inter_blk{idx_block}.origin_name{1};
-				property_node_names{nb}.annotation = inter_blk{idx_block}.annotation;
+                     nb = numel(property_node_names)+1;
+                     property_node_names{nb}.prop_name = property_name;
+				     property_node_names{nb}.origin_block_name = inter_blk{idx_block}.origin_name{1};
+				     property_node_names{nb}.annotation = inter_blk{idx_block}.annotation;
+                catch ME
+                    disp(ME.message)
+                   if strcmp(ME.identifier, 'MATLAB:badsubscript')
+                       msg= 'Bad encoding of the property. Make sure to link the main input of the model into the observer';
+                       display_msg(msg, Constants.ERROR, 'cocoSim', '');
+                   
+                   else
+                     display_msg(ME.message, Constants.ERROR, 'cocoSim', '');
+                   end
+                end
             
                 %%%%%%%%%%%%%%%%%% Assumption %%%%%%%%%%%%%%%%%
 			elseif Constants.is_assume(inter_blk{idx_block}.mask_type)

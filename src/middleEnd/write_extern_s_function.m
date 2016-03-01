@@ -32,12 +32,12 @@
 %  node FunctionName (inputs: in_dt, ..., parameters: param:dt, ...)
 %  returns (output: out_dt, ...)
 %  let
-%     --! c_code: <c_file_name>:mdlInitializeConditions:mdlOutputs:mdlUpdate
+%     --! c_code: <c_file_name>
 %  tel
 %
 %% Code
 %
-function [output_string] = write_extern_s_function(myblk, blks, function_name, parameters)
+function [output_string, c_main_file] = write_extern_s_function(myblk, blks, function_name, parameters)
 
 output_string = '';
 
@@ -45,7 +45,20 @@ output_string = '';
 [list_in] = list_var_entree(myblk, blks);
 
 load 'tmp_data'
-c_file_name = fullfile(model_path, strcat(function_name, '.c'));
+legacy_file_name = fullfile(model_path, strcat(function_name, '.c'));
+% check if the legacy code is there
+tmp_name = (regexp(legacy_file_name, '_', 'split'));
+c_main_file = fullfile(model_path, tmp_name{2});
+c_dir = fullfile(model_path);
+if exist(c_main_file, 'file')
+    msg = ['Legacy C Code (main entry) in ' c_main_file];
+    display_msg(msg, Constants.RESULT, 'Linking S-Function', '');
+else
+    msg = ['Legacy code not found. Make sure to have the main C file.\n' ...
+        'If legacy_mycode.c is the S-function wrapper, you need to have mycode in the same dir'];
+    display_msg(msg, Constants.WARNING, 'Linking with S-Function', '');
+end
+
 init_fun_name = 'mdlInitializeConditions';
 compute_fun_name = 'mdlOutputs';
 update_fun_name = 'mdlUpdate';
@@ -65,10 +78,11 @@ parameters_string = Utils.concat_delim(list_param, '; ');
 
 output_string = write_entree_sorties_extern_s_function(myblk, list_out, list_in, parameters_string);
 output_string = app_sprintf(output_string, 'let\n');
-output_string = app_sprintf(output_string, '\t--! c_code: %s;\n', c_file_name);
-output_string = app_sprintf(output_string, '\t--! init_function: %s;\n', init_fun_name);
-output_string = app_sprintf(output_string, '\t--! compute_function: %s;\n', compute_fun_name);
-output_string = app_sprintf(output_string, '\t--! update_function: %s;\n', update_fun_name);
+output_string = app_sprintf(output_string, '\t--! c_code: %s;\n', c_main_file);
+output_string = app_sprintf(output_string, '\t--! c_code_dir: %s;\n', c_dir);
+% output_string = app_sprintf(output_string, '\t--! init_function: %s;\n', init_fun_name);
+% output_string = app_sprintf(output_string, '\t--! compute_function: %s;\n', compute_fun_name);
+% output_string = app_sprintf(output_string, '\t--! update_function: %s;\n', update_fun_name);
 output_string = app_sprintf(output_string, 'tel\n\n');
 
 end

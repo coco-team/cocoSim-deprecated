@@ -125,6 +125,7 @@ for idx_in=1:numel(block.pre)
 	else
 		% Keep track of the inputs that are not plugged on inputs of the observed block
 		pre_block_idx = get_block_index(parent_subsystem, block.prename{idx_in});
+        
 		pre_block_out_idx = block.srcport{idx_in} + 1;
         
 		% Get the number of the outport on which the observer input is connected on the observed block

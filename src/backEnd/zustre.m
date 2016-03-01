@@ -35,7 +35,7 @@
 %		time_steps: the number of time steps recorded for the counter example
 
 % TODO: return status, modularisation of the tool
-function launch_zustre(lustre_file_name, property_node_names, property_file_base_name, model_inter_blk, xml_trace)
+function zustre(lustre_file_name, property_node_names, property_file_base_name, model_inter_blk, xml_trace, smt_file)
 
 	% Get original environment variables
 	lustrec_env = getenv('LUSTREC');
@@ -53,8 +53,13 @@ function launch_zustre(lustre_file_name, property_node_names, property_file_base
 		% Create a date time value to be used for files post-fixing
 		date_value = datestr(now, 'ddmmyyyyHHMMSS');
 		for idx_prop=1:numel(property_node_names)
-			command = sprintf('%s "%s" --node %s --xml --cg', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name);
+            if exist(smt_file, 'file')
+                command = sprintf('%s "%s" --node %s --xml --cg --s-func %s', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name, smt_file);
+            else
+                command = sprintf('%s "%s" --node %s --xml --cg', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name);
+            end
             [status, zustre_out] = system(command);
+            disp(zustre_out)
 			if status == 0
 				[answer cex] = check_zustre_result(zustre_out, property_node_names{idx_prop}.prop_name, property_file_base_name);
 				% Change the observer block display according to answer

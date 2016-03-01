@@ -258,10 +258,13 @@ for idx_subsys=numel(inter_blk):-1:1
 		fprintf(fid, '%s', script);
 		fclose(fid);
         display_msg('Done with Embedded Matlab', Constants.INFO, 'cocoSim', '');
-	%%%%% Classical blocks code generation %%%%%%%%%%%%%%%
+        
+	%%%%% Standard Simulink blocks code generation %%%%%%%%%%%%%%%
 	elseif (idx_subsys == 1 || ~Constants.is_property(inter_blk{idx_subsys}{1}.mask_type)) && inter_blk{idx_subsys}{1}.num_output ~= 0
 
-		[node_header, let_tel_code, extern_s_functions_string, extern_funs, properties_nodes, property_node_name extern_matlab_funs] = blocks2lustre(file_name, nom_lustre_file, inter_blk, blks, mat_files, idx_subsys, trace, xml_trace);
+		[node_header, let_tel_code, extern_s_functions_string, extern_funs, properties_nodes, property_node_name, extern_matlab_funs, c_code] = ...
+            blocks2lustre(file_name, nom_lustre_file, inter_blk, blks, mat_files, idx_subsys, trace, xml_trace);
+
 
 		extern_nodes_string = [extern_nodes_string extern_s_functions_string];
 
@@ -324,8 +327,8 @@ if ~strcmp(bus_decl, '')
 end
 
 % Write extern functions
-if ~strcmp(extern_functions_string, '')
-	fprintf(fid, ['-- Extern functions\n']);
+if ~strcmp(extern_functions_string, '') 
+	fprintf(fid, '-- External functions\n');
 	fprintf(fid, extern_functions_string);
 end
 
@@ -344,13 +347,13 @@ end
 
 % Write external nodes declarations
 if ~strcmp(extern_nodes_string, '')
-	fprintf(fid, ['\n-- Extern nodes\n']);
+	fprintf(fid, '\n-- Extern nodes\n');
 	fprintf(fid, extern_nodes_string);
 end
 
 % Write property nodes content
 if ~strcmp(properties_nodes_string, '')
-	fprintf(fid, ['\n-- Properties nodes\n']);
+	fprintf(fid, '\n-- Properties nodes\n');
 	fprintf(fid, properties_nodes_string);
 end
 
@@ -363,7 +366,7 @@ for idx=1:numel(extern_matlab_functions)
 end
 
 % Write System nodes
-fprintf(fid, ['\n-- System nodes\n']);
+fprintf(fid, '\n-- System nodes\n');
 fprintf(fid, nodes_string);
 
 % Close file
@@ -400,18 +403,26 @@ end
 
 %%%%%%%%%%%%% Verification %%%%%%%%%%%%%%%
 
-% Verify the properties if they exists
+% Verify properties if they exists
 
 if numel(property_node_names) > 0
     if not (strcmp(SOLVER, 'Z') || strcmp(SOLVER,'K'))
        display_msg('Available solvers are Z for Zustre and K for Kind2', Constants.WARNING, 'cocoSim', '');
        return
     end
+    if exist(c_code, 'file')
+        display_msg('Running SEAHORN', Constants.INFO, 'SEAHORN', '');
+        try
+           smt_file = seahorn(c_code);
+        catch ME
+           display_msg(ME.message, Constants.ERROR, 'SEAHORN', '');
+        end   
+    end
     open(models{end});
     if strcmp(SOLVER, 'Z')
 	      display_msg('Running Zustre', Constants.INFO, 'Verification', '');
           try
-            zustre(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace);
+            zustre(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace, smt_file);
           catch ME
              display_msg(ME.message, Constants.ERROR, 'Verification', '');
           end    
