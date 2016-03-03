@@ -27,6 +27,7 @@ smt_out_file = fullfile(path, strcat(entry_function,'.smt2'));
 if exist(SEAHORN,'file')
     date_value = datestr(now, 'ddmmyyyyHHMMSS');
     command = sprintf('%s smt -O0 --horn-no-verif --horn-stats --entry=%s -o %s %s', SEAHORN, entry_function, smt_out_file, c_file_name);
+   
     [status, seahorn_out] = system(command);
     if isempty(strfind(seahorn_out, 'BRUNCH STATS END'))
         display_msg('Error Generating HORN Clause', Constants.ERROR, 'SEAHORN', '');

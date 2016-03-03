@@ -46,10 +46,15 @@ output_string = '';
 
 load 'tmp_data'
 legacy_file_name = fullfile(model_path, strcat(function_name, '.c'));
+
 % check if the legacy code is there
 tmp_name = (regexp(legacy_file_name, '_', 'split'));
 c_main_file = fullfile(model_path, tmp_name{2});
-c_dir = fullfile(model_path);
+% store the name without the extension for lustre
+tmp2_name = (regexp(function_name, '_', 'split'));
+lustre_annot_name = tmp2_name{2};
+
+% c_dir = fullfile(model_path);
 if exist(c_main_file, 'file')
     msg = ['Legacy C Code (main entry) in ' c_main_file];
     display_msg(msg, Constants.RESULT, 'Linking S-Function', '');
@@ -59,9 +64,9 @@ else
     display_msg(msg, Constants.WARNING, 'Linking with S-Function', '');
 end
 
-init_fun_name = 'mdlInitializeConditions';
-compute_fun_name = 'mdlOutputs';
-update_fun_name = 'mdlUpdate';
+% init_fun_name = 'mdlInitializeConditions';
+% compute_fun_name = 'mdlOutputs';
+% update_fun_name = 'mdlUpdate';
 
 try
     nb_param = length(find(parameters == ',')) + 1;
@@ -76,14 +81,14 @@ end
 
 parameters_string = Utils.concat_delim(list_param, '; ');
 
+dummy_expr = stub_lustrec(myblk, list_out, list_in, parameters_string);
+
 output_string = write_entree_sorties_extern_s_function(myblk, list_out, list_in, parameters_string);
 output_string = app_sprintf(output_string, 'let\n');
-output_string = app_sprintf(output_string, '\t--! c_code: %s;\n', c_main_file);
-output_string = app_sprintf(output_string, '\t--! c_code_dir: %s;\n', c_dir);
-% output_string = app_sprintf(output_string, '\t--! init_function: %s;\n', init_fun_name);
-% output_string = app_sprintf(output_string, '\t--! compute_function: %s;\n', compute_fun_name);
-% output_string = app_sprintf(output_string, '\t--! update_function: %s;\n', update_fun_name);
+output_string = app_sprintf(output_string, '\t--! c_code: %s;\n', lustre_annot_name);
+output_string = app_sprintf(output_string, ' %s\n', dummy_expr);
 output_string = app_sprintf(output_string, 'tel\n\n');
+
 
 end
 
@@ -93,6 +98,7 @@ output_string = '';
 node_name = Utils.naming(unbloc.name{1});
 
 buffer = '';
+
 if ~isempty(list_in)
     cpt_input_vars = 1;
     for idx_input=1:unbloc.num_input
@@ -135,3 +141,31 @@ end
 
 end
 
+%     function to make a dummy equation to pass by lustrec parser/typing
+function [output_string] = stub_lustrec(unbloc, list_out, list_in, list_param)
+
+output_string = '';
+buffer = '';
+cpt_output_vars = 1;
+match = regexp(unbloc.name, '/', 'split');
+block_name = match{1}(end);
+for idx_output=1:unbloc.num_output
+    for idx_dim_out=1:unbloc.dstport_size(idx_output)
+        out_dt = Utils.get_lustre_dt(unbloc.outports_dt{idx_output});
+        var = [strjoin(block_name) '_' num2str(idx_output) '_' num2str(idx_dim_out)];
+        if strcmp(out_dt, 'bool')
+            buffer{cpt_output_vars} = [var ' = true;'];
+        elseif strcmp(out_dt, 'int')
+            buffer{cpt_output_vars} = [var ' = 0;'];
+        elseif strcmp(out_dt, 'real')
+            buffer{cpt_output_vars} = [var ' = 0.0;'];        
+        else
+            buffer{cpy_output_vars} = [var ' = unk;'];
+        end
+        cpt_output_vars = cpt_output_vars + 1;
+    end
+end
+ out_decl = Utils.concat_delim(buffer, '\n');
+ output_string = app_sprintf(output_string, '\n%s\n', out_decl);
+
+end
