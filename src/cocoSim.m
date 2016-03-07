@@ -404,7 +404,7 @@ end
 %%%%%%%%%%%%% Verification %%%%%%%%%%%%%%%
 
 % Verify properties if they exists
-
+smt_file = '';
 if numel(property_node_names) > 0
     if not (strcmp(SOLVER, 'Z') || strcmp(SOLVER,'K'))
        display_msg('Available solvers are Z for Zustre and K for Kind2', Constants.WARNING, 'cocoSim', '');
@@ -414,6 +414,11 @@ if numel(property_node_names) > 0
         display_msg('Running SEAHORN', Constants.INFO, 'SEAHORN', '');
         try
            smt_file = seahorn(c_code);
+           if strcmp(SOLVER, 'K')
+               msg = 'Kind2 does not support S-Function. Switching to Zustre.';
+               display_msg(msg, Constants.WARNING, 'SEAHORN', '');
+               SOLVER = 'Z';
+           end
         catch ME
            display_msg(ME.message, Constants.ERROR, 'SEAHORN', '');
         end   

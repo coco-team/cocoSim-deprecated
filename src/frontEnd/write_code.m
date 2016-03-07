@@ -25,6 +25,7 @@ extern_functions = '';
 properties_nodes = '';
 cpt_extern_functions = 1;
 additional_variables = '';
+c_code = '';
 
 pre_annot = '';
 post_annot = '';
