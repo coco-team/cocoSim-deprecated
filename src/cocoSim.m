@@ -200,9 +200,7 @@ property_node_names = {};
 
 nodes_string = '';
 node_header = '';
-
-cocospec = '';
-spec_names = [];
+cocospec = [];
 print_spec = false;
 
 display_msg('Code printing', Constants.INFO, 'cocoSim', '');
@@ -221,18 +219,22 @@ for idx_subsys=numel(inter_blk):-1:1
     end
 
     if is_cocospec
-        display_msg('Getting CoCoSpec', Constants.INFO, 'cocoSim', '');
-        [fun_name, chart] = Utils.get_MATLAB_function_name(inter_blk{idx_subsys}{1});
+        display_msg('CoCoSpec Found', Constants.INFO, 'cocoSim', '');
+        [contract_name, chart] = Utils.get_MATLAB_function_name(inter_blk{idx_subsys}{1});
         spec_lines = regexp(chart.Script, sprintf('\n'), 'split');
 		blk_path_elems = regexp(inter_blk{idx_subsys}{1}.name{1}, '/', 'split');
 		node_call_name = Utils.concat_delim(blk_path_elems, '_');
-        cocospec_file = fullfile(output_dir, strcat([fun_name], '.cocospec'));   
+        disp(node_call_name)
+        cocospec_file = fullfile(output_dir, strcat([contract_name], '_cocospec.lus'));   
         raw_spec = Utils.concat_delim(spec_lines, sprintf('\n'));
         fid = fopen(cocospec_file, 'w');
 		fprintf(fid, '%s', raw_spec);
 		fclose(fid);
-        [cocospec, spec_names] = CoCoSpec.get_cocospec(cocospec_file);
-        if strcmp(cocospec,'')
+        [cocospec] = CoCoSpec.get_cocospec(cocospec_file);
+        
+        celldisp(cocospec)
+ 
+        if isempty(cocospec)
             display_msg('NO CoCoSpec found', Constants.WARNING, 'cocoSim', '');
         else
             print_spec = true;
@@ -313,7 +315,11 @@ end
 % Write in case we have cocospec
 if print_spec
     fprintf(fid, '-- CoCoSpec Start\n');
-    fprintf(fid, cocospec);
+    for idx=1:numel(cocospec)
+        if ~isempty(cocospec{idx})
+             fprintf(fid, cocospec{idx});
+        end
+    end
     fprintf(fid, '-- CoCoSpec End\n');
 end
 % Write complex struct declarations
