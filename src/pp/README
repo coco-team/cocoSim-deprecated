@@ -19,10 +19,10 @@ path (usually add 'pp' using the right click and the option
 'Add to path' then 'Selected Folders and subfolders'). 
 Then go to the folder where is located the Simulink model you want to 
 process (using cd or the Matlab browser) and type the following command :
-PreGAL('filename')
+pp('filename')
 
 If the Simulink model needs the definition of constants in order to run, 
-you have to give a .m file containing these values to PreCoCoSim  with 
+you have to give a .m file containing these values to PP  with 
 the command :
 pp('filename','constant_filename')
 

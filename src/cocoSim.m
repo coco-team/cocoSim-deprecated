@@ -97,6 +97,9 @@ display_msg(config_msg, Constants.INFO, 'cocoSim', '');
 msg = ['Loading model: ' model_full_path];
 display_msg(msg, Constants.INFO, 'cocoSim', '');
 
+% add path the directory where the model is
+addpath(model_path);
+
 % Loading of the system
 load_system(char(model_full_path));
 
@@ -156,6 +159,26 @@ if ~strcmp(new_file_name, '')
 	file_name = new_file_name;
 	model_full_path = fullfile(model_path, file_name);
 end
+
+% TODO Check if the model has CoCoSpec
+% 1. generate one SLX model without cocospec(e.g. tmp_model.slx)
+% 2. generate cocospec
+% 3. generate lustre from tmp_model.slx
+% 4. link cocospec with lustre
+
+% all_blks =  find_system(file_name,'FindAll','On','SearchDepth',1,'BlockType','SubSystem');
+% blk_names=get(all_blks,'Name');
+% cocospec_blk = 0;
+% for idx=1:numel(all_blks)
+%     name_blk = blk_names{idx};
+%     % check if a subsystem starts with CoCoSpec
+%     if regexp(name_blk, '^CoCoSpec')
+%         cocospec_blk = 1;
+%         display_msg('Found CoCoSpec Contract', Constants.INFO, 'cocoSim', '');
+%         hndl = getSimulinkBlockHandle([file_name '/' name_blk]);
+%         tmp_blk = fullfile([model_path '/' file_name '_no_cocospec.slx']);
+%     end
+% end
 
 % Definition of the output files names
 output_dir = fullfile(model_path, strcat('src_', file_name));
@@ -231,8 +254,6 @@ for idx_subsys=numel(inter_blk):-1:1
 		fprintf(fid, '%s', raw_spec);
 		fclose(fid);
         [cocospec] = CoCoSpec.get_cocospec(cocospec_file);
-        
-        celldisp(cocospec)
  
         if isempty(cocospec)
             display_msg('NO CoCoSpec found', Constants.WARNING, 'cocoSim', '');

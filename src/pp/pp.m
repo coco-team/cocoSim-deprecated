@@ -17,7 +17,8 @@ evalin('base','clear all')
 evalin('base','global verif;');
 
 [model_path, model, ext] = fileparts(file_name);
-[pp_path, function_name, ext] = fileparts(mfilename('fullpath'));
+
+[pp_path, function_name, pp_ext] = fileparts(mfilename('fullpath'));
 
 if nargin > 2
     if strcmp(varargin{1},'verif')
@@ -44,28 +45,30 @@ end
 
 
 % Clean the current folder of files from previous execution
-if (exist(strcat(model,'_p',ext))==4)
-    if bdIsLoaded(strcat(model,'_p'))
+if (exist(strcat(model,'_PP',ext))==4)
+    if bdIsLoaded(strcat(model,'_PP'))
         % If the model is loaded
-        save_system(strcat(model,'_p'),[],'OverwriteIfChangedOnDisk',true);
-        close_system(strcat(model,'_p'));
+        save_system(strcat(model,'_PP'),[],'OverwriteIfChangedOnDisk',true);
+        close_system(strcat(model,'_PP'));
     end
 end
-delete(strcat(model,'_p',ext));
+delete(strcat(model,'_PP',ext));
 
 % Add the scripts from the library to the Matlab path
 % script_path = which('pp.m');
 % script_path = strrep(script_path,'/pp.m','');
 % % Add all subfolders of Processes into Matlab path
 % addpath(genpath(strcat(script_path,'/lib')));
-addpath(fullfile(pp_path, 'lib'));
-
+addpath(fullfile(pp_path, 'lib', 'common'));
+addpath(fullfile(pp_path, 'lib', 'blocks'));
+addpath(fullfile(pp_path, 'lib', 'math'));
 % Creating a cache copy to process
 
 disp(['Copying ' model ext])
+new_model_name = [model '_p' ext];
 new_model = strcat(model,'_p');
 copyfile(file_name, strcat(new_model,ext));
-disp(['Loading ' new_model ext '...'])
+disp(['Loading ' new_model_name '...'])
 load_system(new_model);
 disp('Loading library...')
 load_system('gal_lib.slx');
@@ -75,9 +78,10 @@ if nargin > 1
     if not(strcmp(constant_file,''))
         % An existing file contains the constants declarations of the model
         % Add the constants of the model to the workspace
-        cst_file_name = strrep(constant_file,'.m','');
-        disp(['Loading constants into workspace...'])
-        evalin('base',cst_file_name);
+        [cst_path, cst_name, cst_ext] = fileparts(constant_file);
+        %cst_file_name = strrep(constant_file,'.m','');
+        disp(['Loading constants into workspace ' cst_name '...'])
+        evalin('base', cst_name);
         fprintf('Done\n\n');
     end
 end
@@ -197,13 +201,16 @@ else
 end
 fprintf('Done\n\n');
 
-% Exporting the model to the mdl GAL compatible file format
-disp('Exporting to R2008b GAL-readable mdl file...')
+% Exporting the model to the mdl CoCoSim compatible file format
 disp('Saving pre-processed model ...')
-new_file = strcat(model,'_PP.slx');
-save_system([model_path '/' new_model]);
+new_file = fullfile(model_path, strcat(model,'_PP.slx'));
+save_system(new_model, new_file);
 % save_system(new_model,new_file,'ExportToVersion','R2008b');
-close_system(new_model);
+
+% remove files
+if exist([new_model ext], 'file')
+   delete([new_model ext]);
+end
 
 % Remove Real-time Workshop (or Simulink Coder) comments
 tags = {'RTWSystemCode','MinAlgLoopOccurrences',...
