@@ -19,7 +19,7 @@
 
 % Configuration file for the backend solvers
 
-SOLVER = 'K'; % change to Z for Zustre and K for Kind2
+SOLVER = 'Z'; % change to Z for Zustre and K for Kind2
 LUSTREC = '/Users/teme/Documents/GitHub/onera_lustrec/bin/lustrec';
 ZUSTRE = '/Users/teme/Documents/GitHub/zustre/build/run/bin/zustre';
 Z3 = '/Users/teme/Documents/GitHub/zustre/build/run/bin/z3';
