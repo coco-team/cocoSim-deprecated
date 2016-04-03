@@ -48,14 +48,19 @@ if numel(list_out) > 1
 	list_out = ['(' list_out ')'];
 end
 
-parameters_strings = regexp(parameters, ',', 'split');
-for param_idx=1:numel(parameters_strings)
-	param_string_value = parameters_strings{param_idx};
-	matched_value = Utils.convert_literal_value(param_string_value);
-	list_in = strcat(list_in, ',', {' '}, matched_value);
-end
 
-block_name = nommage(unbloc.name{1});
-output_string = app_sprintf(output_string, '\t%s = %s(%s);\n', list_out, block_name, list_in{1});
+% if ~strcmp(parameters, '')
+%     parameters_strings = regexp(parameters, ',', 'split');
+%     for param_idx=1:numel(parameters_strings)
+%         param_string_value = parameters_strings{param_idx};
+%         matched_value = Utils.convert_literal_value(param_string_value);
+%         list_in = strcat(list_in, ',', {' '}, matched_value);
+%     end
+% else
+%     list_in = {''};
+% end
 
+
+block_name = Utils.naming(unbloc.name{1});
+output_string = app_sprintf(output_string, '\t%s = %s(%s);\n', list_out, block_name, list_in);
 end

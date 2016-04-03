@@ -1,129 +1,31 @@
-% Launch the Zustre tool and handle its results
-% For each property for which a counter example is found, a IO_struct is created:
-% 	IO_struct fields
-%		inputs: cell array of struct whose fields are:
-%			name: name of the input port
-%			dim_r: number of rows of the input port value
-%			dim_c: number of columns of the input port value
-%			value: the value of the variable
-%			var_name: the name of the workspace variable
-%           dt: a string representing the data type of the input
-%		outputs: cell array of struct whose fields are:
-%			name: name of the output port
-%			dim_r: number of rown of the output port value
-%			dim_c: number of columns of the output port value
-%			value: the value of the variable
-%			var_name: the name of the workspace variable
-%		time_steps: the number of time steps recorded for the counter example
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This file is part of cocoSim.
+% Copyright (C) 2014-2015  Carnegie Mellon University
+% Original contribution from ONERA
+%
+%    cocoSim  is free software: you can redistribute it 
+%    and/or modify it under the terms of the GNU General Public License as 
+%    published by the Free Software Foundation, either version 3 of the 
+%    License, or (at your option) any later version.
+%
+%    cocoSim compiler + verifier is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% TODO: return status, modularisation of the tool
-function launch_zustre(lustre_file_name, property_node_names, property_file_base_name, model_inter_blk, xml_trace)
-
-	% Get original environment variables
-	%lustrec_env = getenv('LUSTREC');
-	%pythonpath_env = getenv('PYTHONPATH');
-	%ld_lib_path_env = getenv('LD_LIBRARY_PATH');
-
-	[lustrec spacer zustre_dir] = path_config();
-	%setenv('LUSTREC', lustrec);
-	%setenv('PYTHONPATH', [pythonpath_env ':' spacer]);
-	%setenv('LD_LIBRARY_PATH', spacer);
-
-	[path file ext] = fileparts(lustre_file_name);
-
-	zustre_bin = fullfile(zustre_dir, 'zustre');
-	if exist(zustre_bin,'file')
-		% Create a date time value to be used for files post-fixing
-		date_value = datestr(now, 'ddmmyyyyHHMMSS');
-		for idx_prop=1:numel(property_node_names)
-			command = sprintf('%s "%s" --node %s --xml --cg', zustre_bin, lustre_file_name, property_node_names{idx_prop}.prop_name);
-            [status, zustre_out] = system(command);
-			if status == 0
-				[answer cex] = check_zustre_result(zustre_out, property_node_names{idx_prop}.prop_name, property_file_base_name);
-				% Change the observer block display according to answer
-				display = sprintf('color(''black'')\n');
-				display = [display sprintf('text(0.5, 0.5, [''Property: '''''' get_param(gcb,''name'') ''''''''], ''horizontalAlignment'', ''center'');\n')];
-				display = [display 'text(0.99, 0.03, ''{\bf\fontsize{12}'];
-				display = [display char(upper(answer))];
-				display = [display '}'', ''hor'', ''right'', ''ver'', ''bottom'', ''texmode'', ''on'');'];
-				obs_mask = Simulink.Mask.get(property_node_names{idx_prop}.annotation);
-				obs_mask.Display = sprintf('%s',display);
-				if strcmp(answer, 'SAFE')
-					set_param(property_node_names{idx_prop}.origin_block_name, 'BackgroundColor', 'green');
-					set_param(property_node_names{idx_prop}.origin_block_name, 'ForegroundColor', 'green');
-				elseif strcmp(answer, 'UNKNOWN')
-					set_param(property_node_names{idx_prop}.origin_block_name, 'BackgroundColor', 'gray');
-					set_param(property_node_names{idx_prop}.origin_block_name, 'ForegroundColor', 'gray');
-				else
-					set_param(property_node_names{idx_prop}.origin_block_name, 'BackgroundColor', 'red');
-					set_param(property_node_names{idx_prop}.origin_block_name, 'ForegroundColor', 'red');
-					if strcmp(answer, 'CEX') && ~strcmp(cex, '')
-						% Init mat file name
-						mat_file_name = ['config_' property_node_names{idx_prop}.prop_name '_' date_value '.mat'];
-						mat_full_file = fullfile(path, mat_file_name);
-
-						% Initialisation of the IO_struct
-						IO_struct = get_IO_struct(model_inter_blk, xml_trace, property_node_names{idx_prop});
-
-						try
-							% Definition of the values and variable names
-							[IO_struct, found] = parseCEX(cex, file, IO_struct, property_node_names{idx_prop}, date_value, xml_trace);
-						catch ERR
-							found = false;
-							msg = ['Zustre: FAILURE to parse the counter example provided by Zustre: ' property_node_names{idx_prop}.prop_name '\n' getReport(ERR)];
-							display_msg(msg, Constants.INFO, 'Zustre property checking', '');
-						end
-
-						if found
-							try
-								% Creation of the simulation configuration
-								IO_struct = create_configuration(IO_struct, file, property_node_names{idx_prop}, date_value, mat_full_file, idx_prop);
-								config_created = true;
-							catch ERR
-								msg = ['Verification: FAILURE to create the Simulink simulation configuration\n' getReport(ERR)];
-								display_msg(msg, Constants.INFO, 'Zustre property checking', '');
-								config_created = false;
-							end
-							if config_created
-								try
-									% Create the annotation with the links to setup and launch the simulation
-									createAnnotation(lustre_file_name, property_node_names{idx_prop}, IO_struct, mat_full_file, path);
-								catch ERR
-									msg = ['Verification: FAILURE to create the Simulink CEX replay annotation\n' getReport(ERR)];
-									display_msg(msg, Constants.INFO, 'Zustre property checking', '');
-									config_created = false;
-								end
-							end
-						end
-					end
-				end
-			else
-				msg = ['Zustre: FAILURE to launch for property: ' property_node_names{idx_prop}.prop_name '\n' zustre_out];
-				display_msg(msg, Constants.INFO, 'Zustre property checking', '');
-			end
-		end
-	else
-		msg = 'Running Zustre: Impossible to find Zustre';
-		display_msg(msg, Constants.INFO, 'Zustre property checking', '');
-	end
-
-	% Restore environment variables
-	%setenv('LUSTREC', lustrec_env);
-	%setenv('PYTHONPATH', pythonpath_env);
-	%setenv('LD_LIBRARY_PATH', ld_lib_path_env);
-
-end
-
-% Parse the XML output of Zustre and return the status of the result (SAFE, CEX, UNKNOWN)
-function [answer, cex] = check_zustre_result(zustre_out, property_node_name, property_file_base_name)
+% Parse the XML output of Solver and return the status of the result (SAFE, CEX, UNKNOWN)
+function [answer, cex] = solver_result(solver, xml_result, property_node_name, property_file_base_name)
 	answer = '';
 	cex = '';
 
 	prop_file_name = [property_file_base_name '_' property_node_name '.xml'];
 	fid = fopen(prop_file_name, 'w');
-	fprintf(fid, zustre_out);
+	fprintf(fid, xml_result);
 	fclose(fid);
-
+    
 	s = dir(prop_file_name);
 	if s.bytes ~= 0
 		xml_doc = xmlread(prop_file_name);
@@ -131,81 +33,34 @@ function [answer, cex] = check_zustre_result(zustre_out, property_node_name, pro
 		for idx=0:(xml_properties.getLength-1)
     		prop = xml_properties.item(idx);
     		answer = prop.getElementsByTagName('Answer').item(0).getTextContent;
-    		msg = ['Zustre result for property node [' property_node_name ']: ' char(answer)];
-    		display_msg(msg, Constants.INFO, 'Zustre property checking', '');
-			if strcmp(answer, 'CEX')
-				xml_cex = '';
+            if strcmp(solver, 'KIND2')        
+                if strcmp(answer, 'valid')  
+                    answer = 'SAFE';
+                elseif strcmp(answer, 'falsifiable')
+                        answer = 'CEX';
+                else
+                    answer = 'UNKNOWN';
+                end
+            end
+                
+    		msg = [solver ' result for property node [' property_node_name ']: ' char(answer)];
+    		display_msg(msg, Constants.RESULT, 'Zustre property checking', '');
+			if strcmp(answer, 'CEX') || strcmp(answer, 'falsifiable')
 				xml_cex = xml_doc.getElementsByTagName('Counterexample');
 				if xml_cex.getLength > 0
 					cex = xml_cex;
 				else
-					msg = 'Zustre: FAILURE to get counter example from zustre: ';
+					msg = [solver ': FAILURE to get counter example from zustre: '];
 					msg = [msg property_node_name '\n'];
-					msg = [msg 'Zustre output: \n' zustre_out];
-					display_msg(msg, Constants.WARNING, 'Zustre property checking', '');
+					msg = [msg solver ' output: \n' zustre_out];
+					display_msg(msg, Constants.WARNING, 'Property Checking', '');
 				end
 			end
 		end
 	end
 end
 
-% Builds the IO structure for the counter example:
-function IO_struct = get_IO_struct(model_inter_blk, xml_trace, prop_node_name)
-	IO_struct = '';
-	cpt_in = 1;
-	cpt_out = 1;
-    
-	parent_block_name = prop_node_name.parent_block_name;
-	if numel(regexp(parent_block_name, '/', 'split')) == 1
-		idx_sub = 1;
-		main_model_name = parent_block_name;
-	else
-		par_name_comp = regexp(parent_block_name, '/', 'split');
-		main_model_name = par_name_comp{1};
-		for idx_blk=2:numel(model_inter_blk)
-			if strcmp(parent_block_name, model_inter_blk{idx_blk}{1}.origin_name)
-				idx_sub = idx_blk;
-			end
-		end
-	end
 
-	% TODO: remove compilation here
-	warning off;
-	code_compile = sprintf('%s([], [], [], ''compile'')', main_model_name);
-	eval(code_compile);
-
-	for idx_blk=1:numel(model_inter_blk{idx_sub})
-		inter_blk = model_inter_blk{idx_sub};
-		if strcmp(inter_blk{idx_blk}.type, 'Inport')
-			block_full_name = regexp(inter_blk{idx_blk}.origin_name{1}, '/', 'split');
-			block_name = block_full_name{end};
-			block_name = strrep(block_name, ' ', '_');
-			IO_struct.inputs{cpt_in}.name = block_name;
-			IO_struct.inputs{cpt_in}.origin_name = inter_blk{idx_blk}.origin_name{1};
-			[dim_r dim_c] = Utils.get_port_dims_simple(inter_blk{idx_blk}.outports_dim, 1);
-			IO_struct.inputs{cpt_in}.dim_r = dim_r;
-			IO_struct.inputs{cpt_in}.dim_c = dim_c;
-			inpu_ports_compiled_dt = get_param(IO_struct.inputs{cpt_in}.origin_name, 'CompiledPortDataTypes');
-			IO_struct.inputs{cpt_in}.dt = inpu_ports_compiled_dt.Outport;
-			cpt_in = cpt_in + 1;
-		elseif strcmp(inter_blk{idx_blk}.type, 'Outport')
-			block_full_name = regexp(inter_blk{idx_blk}.origin_name{1}, '/', 'split');
-			block_name = block_full_name{end};
-			block_name = strrep(block_name, ' ', '_');
-			IO_struct.outputs{cpt_out}.name = block_name;
-			IO_struct.outputs{cpt_out}.origin_name = inter_blk{idx_blk}.origin_name{1};
-			[dim_r dim_c] = Utils.get_port_dims_simple(inter_blk{idx_blk}.inports_dim, 1);
-			IO_struct.outputs{cpt_out}.dim_r = dim_r;
-			IO_struct.outputs{cpt_out}.dim_c = dim_c;
-			cpt_out = cpt_out + 1;
-		end
-	end
-
-	code_term = sprintf('%s([], [], [], ''term'')', main_model_name);
-	eval(code_term);
-	warning on;
-
-end
 
 function [IO_struct, found] = parseCEX(cex, model_name, IO_struct, prop_node_name, date_value, xml_trace)
 	first_cex = cex.item(0); % Only one CounterExample for now, do we will need more ?

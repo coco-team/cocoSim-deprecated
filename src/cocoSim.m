@@ -41,6 +41,9 @@
 
 function cocoSim(model_full_path, const_files, default_Ts, trace, dfexport)
 
+% clear everything from the workspace
+%clearvars -except model_full_path const_files default_Ts trace dfexport;
+
 % Checking the number of arguments
 if ~exist('trace', 'var')
 	trace = false;
@@ -59,6 +62,7 @@ if nargin < 1
 	return
 end
 
+
 % Get start time
 t_start = now;
 
@@ -71,11 +75,32 @@ addpath(fullfile(cocoSim_path, 'backEnd'));
 addpath(fullfile(cocoSim_path, 'middleEnd'));
 addpath(fullfile(cocoSim_path, 'frontEnd'));
 addpath(fullfile(cocoSim_path, 'utils'));
+addpath(fullfile(cocoSim_path, '.'));
 
 launch_display_msg(model_full_path);
 
+addpath(cocoSim_path);
+config;
+disp(RUST_GEN);
+config_msg = ['CoCoSim Configuration, Change this configuration in src/config.m\n'];
+config_msg = [config_msg '--------------------------------------------------\n'];
+config_msg = [config_msg '|  SOLVER: ' SOLVER '\n'];
+config_msg = [config_msg '|  ZUSTRE: ' ZUSTRE '\n'];
+config_msg = [config_msg '|  KIND2: ' KIND2 '\n'];
+config_msg = [config_msg '|  LUSTREC: ' LUSTREC '\n'];
+config_msg = [config_msg '|  SEAHORN: ' SEAHORN '\n'];
+config_msg = [config_msg '|  Z3: ' Z3 '\n'];
+% config_msg = [config_msg '|  RUST_GEN: ' int2str(RUST_GEN) '\n'];
+% config_msg = [config_msg '|  C_GEN: ' int2str(C_GEN) '\n'];
+config_msg = [config_msg '--------------------------------------------------\n'];
+display_msg(config_msg, Constants.INFO, 'cocoSim', '');
+
+
 msg = ['Loading model: ' model_full_path];
 display_msg(msg, Constants.INFO, 'cocoSim', '');
+
+% add path the directory where the model is
+addpath(model_path);
 
 % Loading of the system
 load_system(char(model_full_path));
@@ -137,125 +162,52 @@ if ~strcmp(new_file_name, '')
 	model_full_path = fullfile(model_path, file_name);
 end
 
+% TODO Check if the model has CoCoSpec
+% 1. generate one SLX model without cocospec(e.g. tmp_model.slx)
+% 2. generate cocospec
+% 3. generate lustre from tmp_model.slx
+% 4. link cocospec with lustre
+
+% all_blks =  find_system(file_name,'FindAll','On','SearchDepth',1,'BlockType','SubSystem');
+% blk_names=get(all_blks,'Name');
+% cocospec_blk = 0;
+% for idx=1:numel(all_blks)
+%     name_blk = blk_names{idx};
+%     % check if a subsystem starts with CoCoSpec
+%     if regexp(name_blk, '^CoCoSpec')
+%         cocospec_blk = 1;
+%         display_msg('Found CoCoSpec Contract', Constants.INFO, 'cocoSim', '');
+%         hndl = getSimulinkBlockHandle([file_name '/' name_blk]);
+%         tmp_blk = fullfile([model_path '/' file_name '_no_cocospec.slx']);
+%     end
+% end
+
 % Definition of the output files names
 output_dir = fullfile(model_path, strcat('src_', file_name));
 	% TODO: Add message if the folder already exists to ask the user if he
 	% really wants to override the existing folder
 [status, message, message_id] = mkdir(output_dir);
 nom_lustre_file = fullfile(output_dir, strcat(file_name, '.lus'));
-%TODO remove this
-nom_prelude_file = fullfile(output_dir, strcat(file_name, '_assemblage.plu'));
-nom_lusi_file = fullfile(output_dir, strcat(file_name, '.lusi'));
+
 trace_file_name = fullfile(output_dir, strcat(file_name, '.trace.xml'));
 property_file_base_name = fullfile(output_dir, strcat(file_name, '.property'));
 
 % TODO: Ask the user for file overriding
-initialize_files(file_name, nom_lustre_file, nom_prelude_file, nom_lusi_file);
+initialize_files(nom_lustre_file);
 
 display_msg('Internal representation building', Constants.INFO, 'cocoSim', '');
 
 %%%%%%% Load all the systems including the referenced ones %%%%
-[models subsystems] = find_mdlrefs(file_name);
-inter_blk = {};
-blks = {};
-uses_complex = false;
+[models, subsystems] = find_mdlrefs(file_name);
+
 
 %%%%%% Internal representation building %%%%%%
-% Compilation of the model
-warning off;
-code_on=sprintf('%s([], [], [], ''compile'')', models{end});
-eval(code_on);
 
-for idx_model=numel(models):-1:1
-	load_system(models{idx_model});
- 
-	% Retrieve the subsystem block structure for the referenced model
-	referencing_sub_struct = '';
-	if idx_model ~= numel(models)
-		for idx_sub=1:numel(subsystems)
-			ref = get_param(subsystems{idx_sub}, 'ModelNameDialog');
-			[ref_path ref_name ref_ext] = fileparts(ref);
-			if strcmp(ref_name, models{idx_model})
-				origin_name = subsystems{idx_sub};
-				[found, first_dim, second_dim] = Utils.get_block_position(inter_blk, origin_name);
-				for idx_first=1:numel(first_dim)
-					for idx_second=1:numel(second_dim)
-						inter_blk{first_dim{idx_first}}{second_dim{idx_second}}.ref_name = {models{idx_model}};
-						inter_blk{first_dim{idx_first}}{second_dim{idx_second}}.isref = true;
-					end
-				end
-				if strcmp(referencing_sub_struct, '')
-					referencing_sub_struct = inter_blk{first_dim{1}}{second_dim{1}};
-					referencing_sub_struct.name = {models{idx_model}};
-					referencing_sub_struct.origin_name = {models{idx_model}};
-				end
-			end
-		end
-	end
-
-	[tmp_inter_blk tmp_blks] = blocks_interconnection_complet(models{idx_model}, mat_files, default_Ts, [],[], 0, referencing_sub_struct);
-	inter_blk = cat(2, inter_blk, tmp_inter_blk);
-	blks = cat(2, blks, tmp_blks);
-end
-
-% Terminate the compilation
-code_off = sprintf('%s([], [], [], ''term'')', models{end});
-eval(code_off);
-warning on;
-
-
-% Get complex data types
-cpx_dts = {};
-for idx_sub=1:numel(inter_blk)
-	for idx_blk=1:numel(inter_blk{idx_sub})
-		indexes_in = find(inter_blk{idx_sub}{idx_blk}.in_cpx_sig);
-		[in_cpx_dts] = inter_blk{idx_sub}{idx_blk}.inports_dt(indexes_in);
-		indexes_out = find(inter_blk{idx_sub}{idx_blk}.out_cpx_sig);
-		[out_cpx_dts] = inter_blk{idx_sub}{idx_blk}.outports_dt(indexes_out);
-		cpx_dts = [cpx_dts in_cpx_dts out_cpx_dts];
-	end
-end
-
-cpx_dts = unique(cpx_dts);
-for idx_cpx=1:numel(cpx_dts)
-	cpx_dts{idx_cpx} = Utils.get_lustre_dt(cpx_dts{idx_cpx});
-end
-cpx_dts = unique(cpx_dts);
-
-complex_structs = '';
-for idx_cpx=1:numel(cpx_dts)
-	complex_structs = [complex_structs BusUtils.get_complex_struct(cpx_dts{idx_cpx})];
-end
-
-% Write df fomat version of the model
-if dfexport
-	display_msg('Printing original dataflow model', Constants.INFO, 'cocoSim', '');
-	write_dftext(model_path, model_full_path, inter_blk, '_1_none');
-end
-
-% Flatten NotAtomic SubSystems in a Top-Down way
-display_msg('Flattening of virtual SubSytems', Constants.INFO, 'cocoSim', '');
-[inter_blk blks] = flatten_subsystems(inter_blk, blks);
-
-% Write df fomat version of the model
-if dfexport
-	display_msg('Printing flattened dataflow model', Constants.INFO, 'cocoSim', '');
-	write_dftext(model_path, model_full_path, inter_blk, '_2_f');
-end
-
-% New pass on the model to find the necessary data type conversions
-display_msg('Internal representation browsing for implicit data type conversions detection', Constants.INFO, 'cocoSim', '');
-[inter_blk blks] = blocks_dt_conversions(file_name, inter_blk, blks);
+[inter_blk blks complex_structs]= mk_internalRep(file_name, dfexport, models, subsystems, mat_files, default_Ts);
 
 % Creation of the traceability XML node
 xml_trace = XML_Trace(model_full_path, trace_file_name);
 xml_trace.init();
-
-% Write df fomat version of the model
-if dfexport
-	display_msg('Printing flattened-type-converted dataflow model', Constants.INFO, 'cocoSim', '');
-	write_dftext(model_path, model_full_path, inter_blk, '_3_ftc');
-end
 
 % Print buses declarations
 bus_decl = write_buses(bus_struct);
@@ -273,24 +225,53 @@ property_node_names = {};
 
 nodes_string = '';
 node_header = '';
+cocospec = [];
+print_spec = false;
 
 display_msg('Code printing', Constants.INFO, 'cocoSim', '');
 for idx_subsys=numel(inter_blk):-1:1
-	%%%%%%% Matlab functions code generation %%%%%%%%%%%%%%%
+	%%%%%%% Matlab functions and CoCoSpec code generation %%%%%%%%%%%%%%%
 	is_matlab_function = false;
+    is_cocospec = false;
 	if idx_subsys ~= 1 && ~strcmp(inter_blk{idx_subsys}{1}.type, 'ModelReference')
 		sf_sub = get_param(inter_blk{idx_subsys}{1}.annotation, 'SFBlockType');
-		if strcmp(sf_sub, 'MATLAB Function')
+        cocospec_name = get_param(inter_blk{idx_subsys}{1}.annotation, 'Name');
+        if strcmp(cocospec_name, 'CoCoSpec')
+            is_cocospec = true;
+        elseif strcmp(sf_sub, 'MATLAB Function')
 			is_matlab_function = true;
-		end
-	end
+        end
+    end
 
-	if is_matlab_function
-		
+    if is_cocospec
+        display_msg('CoCoSpec Found', Constants.INFO, 'cocoSim', '');
+        [contract_name, chart] = Utils.get_MATLAB_function_name(inter_blk{idx_subsys}{1});
+        spec_lines = regexp(chart.Script, sprintf('\n'), 'split');
+		blk_path_elems = regexp(inter_blk{idx_subsys}{1}.name{1}, '/', 'split');
+		node_call_name = Utils.concat_delim(blk_path_elems, '_');
+        disp(node_call_name)
+        cocospec_file = fullfile(output_dir, strcat([contract_name], '_cocospec.lus'));   
+        raw_spec = Utils.concat_delim(spec_lines, sprintf('\n'));
+        fid = fopen(cocospec_file, 'w');
+		fprintf(fid, '%s', raw_spec);
+		fclose(fid);
+        [cocospec] = CoCoSpec.get_cocospec(cocospec_file);
+ 
+        if isempty(cocospec)
+            display_msg('NO CoCoSpec found', Constants.WARNING, 'cocoSim', '');
+        else
+            print_spec = true;
+        end
+        
+        %fprintf('%s', cocospec);
+       
+    elseif is_matlab_function
+		display_msg('Dealing with Embedded Matlab', Constants.INFO, 'cocoSim', '');
 		[fun_name, chart] = Utils.get_MATLAB_function_name(inter_blk{idx_subsys}{1});
 		[mat_fun_node] = write_matlab_function_node(inter_blk{idx_subsys}{1}, inter_blk, inter_blk{idx_subsys}, fun_name, chart, xml_trace);
 		extern_nodes_string = [extern_nodes_string mat_fun_node];
 
+        
 		% Add Matlab function code to an m file
 		blk_path_elems = regexp(inter_blk{idx_subsys}{1}.name{1}, '/', 'split');
 		node_call_name = Utils.concat_delim(blk_path_elems, '_');
@@ -301,11 +282,14 @@ for idx_subsys=numel(inter_blk):-1:1
 		fid = fopen(fun_file, 'w');
 		fprintf(fid, '%s', script);
 		fclose(fid);
-
-	%%%%% Classical blocks code generation %%%%%%%%%%%%%%%
+        display_msg('Done with Embedded Matlab', Constants.INFO, 'cocoSim', '');
+        
+	%%%%% Standard Simulink blocks code generation %%%%%%%%%%%%%%%
 	elseif (idx_subsys == 1 || ~Constants.is_property(inter_blk{idx_subsys}{1}.mask_type)) && inter_blk{idx_subsys}{1}.num_output ~= 0
 
-		[node_header, let_tel_code, extern_s_functions_string, extern_funs, properties_nodes, property_node_name extern_matlab_funs] = blocks2lustre(file_name, nom_lustre_file, nom_prelude_file, nom_lusi_file, inter_blk, blks, mat_files, idx_subsys, trace, xml_trace);
+		[node_header, let_tel_code, extern_s_functions_string, extern_funs, properties_nodes, property_node_name, extern_matlab_funs, c_code] = ...
+            blocks2lustre(file_name, nom_lustre_file, inter_blk, blks, mat_files, idx_subsys, trace, xml_trace);
+
 
 		extern_nodes_string = [extern_nodes_string extern_s_functions_string];
 
@@ -335,14 +319,10 @@ for idx_subsys=numel(inter_blk):-1:1
 
 		nodes_string = [nodes_string node_header];
 		nodes_string = [nodes_string let_tel_code];
-		if idx_subsys == 1
-			main_node_annotation = '\t--!MAIN: true;\n';
-			nodes_string = [nodes_string main_node_annotation];
-		end
 		nodes_string = [nodes_string 'tel\n\n'];
-
 	end
 end
+
 
 %%%%%%%%%%%%%%%%% Printing %%%%%%%%%%%%%%%%%%%%%%
 
@@ -355,6 +335,16 @@ if ~strcmp(str_include, '')
    fprintf(fid, str_include);
 end
 
+% Write in case we have cocospec
+if print_spec
+    fprintf(fid, '-- CoCoSpec Start\n');
+    for idx=1:numel(cocospec)
+        if ~isempty(cocospec{idx})
+             fprintf(fid, cocospec{idx});
+        end
+    end
+    fprintf(fid, '-- CoCoSpec End\n');
+end
 % Write complex struct declarations
 if ~strcmp(complex_structs, '')
     fprintf(fid, complex_structs);
@@ -366,8 +356,8 @@ if ~strcmp(bus_decl, '')
 end
 
 % Write extern functions
-if ~strcmp(extern_functions_string, '')
-	fprintf(fid, ['-- Extern functions\n']);
+if ~strcmp(extern_functions_string, '') 
+	fprintf(fid, '-- External functions\n');
 	fprintf(fid, extern_functions_string);
 end
 
@@ -386,13 +376,13 @@ end
 
 % Write external nodes declarations
 if ~strcmp(extern_nodes_string, '')
-	fprintf(fid, ['\n-- Extern nodes\n']);
+	fprintf(fid, '\n-- Extern nodes\n');
 	fprintf(fid, extern_nodes_string);
 end
 
 % Write property nodes content
 if ~strcmp(properties_nodes_string, '')
-	fprintf(fid, ['\n-- Properties nodes\n']);
+	fprintf(fid, '\n-- Properties nodes\n');
 	fprintf(fid, properties_nodes_string);
 end
 
@@ -405,7 +395,7 @@ for idx=1:numel(extern_matlab_functions)
 end
 
 % Write System nodes
-fprintf(fid, ['\n-- System nodes\n']);
+fprintf(fid, '\n-- System nodes\n');
 fprintf(fid, nodes_string);
 
 % Close file
@@ -422,26 +412,73 @@ display_msg(msg, Constants.INFO, 'Traceability', '');
 msg = sprintf('Lustre code generated in file: %s', nom_lustre_file);
 display_msg(msg, Constants.INFO, 'Generation result', '');
 
+%%%%%%%%%%%%% Code Generation %%%%%%%%%%%%%
+
+if RUST_GEN
+    display_msg('Generating Rust Code', Constants.INFO, 'Code Generation', '');
+    try
+        rust(nom_lustre_file);
+    catch ME
+        display_msg(ME.message, Constants.ERROR, 'Verification', '');
+    end
+elseif C_GEN
+    display_msg('Generating C Code', Constants.INFO, 'Code Generation', '');
+    try
+        lustrec(nom_lustre_file);
+    catch ME
+        display_msg(ME.message, Constants.ERROR, 'Verification', '');
+    end
+end
+
 %%%%%%%%%%%%% Verification %%%%%%%%%%%%%%%
 
-% Verify the properties if they exists
-
+% Verify properties if they exists
+smt_file = '';
 if numel(property_node_names) > 0
-	display_msg('Running Zustre', Constants.INFO, 'Verification', '');
-	launch_zustre(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace);
-	% TODO: return status
-	open(models{end});
+    if not (strcmp(SOLVER, 'Z') || strcmp(SOLVER,'K'))
+       display_msg('Available solvers are Z for Zustre and K for Kind2', Constants.WARNING, 'cocoSim', '');
+       return
+    end
+    if exist(c_code, 'file')
+        display_msg('Running SEAHORN', Constants.INFO, 'SEAHORN', '');
+        try
+           smt_file = seahorn(c_code);
+           if strcmp(SOLVER, 'K')
+               msg = 'Kind2 does not support S-Function. Switching to Zustre.';
+               display_msg(msg, Constants.WARNING, 'SEAHORN', '');
+               SOLVER = 'Z';
+           end
+        catch ME
+           display_msg(ME.message, Constants.ERROR, 'SEAHORN', '');
+        end   
+    end
+    open(models{end});
+    if strcmp(SOLVER, 'Z')
+	      display_msg('Running Zustre', Constants.INFO, 'Verification', '');
+          try
+            zustre(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace, smt_file);
+          catch ME
+             display_msg(ME.message, Constants.ERROR, 'Verification', '');
+          end    
+    elseif strcmp(SOLVER, 'K')
+         display_msg('Running Kind2', Constants.INFO, 'Verification', '');
+         try
+            kind2(nom_lustre_file, property_node_names, property_file_base_name, inter_blk);
+         catch ME
+             display_msg(ME.message, Constants.ERROR, 'Verification', '');
+         end
+    end
 end
 
 %%%%%%%%%%%% Cleaning and end of operations %%%%%%%%%%
 
 % Close all systems inclusing the referenced ones (only if no modification
 % have been done in the verification phase
-if numel(property_node_names) == 0
-    for idx_model=1:numel(models)
-        close_system(models{idx_model});
-    end
-end
+% if numel(property_node_names) == 0
+%     for idx_model=1:numel(models)
+%         close_system(models{idx_model});
+%     end
+% end
 
 % Temporary files cleaning
 display_msg('Cleaning temporary files', Constants.INFO, 'cocoSim', '');
@@ -456,13 +493,13 @@ display_msg(['Total computation time: ' datestr(t_compute, 'HH:MM:SS.FFF')], Con
 end
 
 function display_help_message()
-	msg = ['\n'];
-	msg = [msg '  CoCoSiM: A framework for the formal analysis of Simulink models\n'];
-	msg = [msg '\n'];
-	msg = [msg '    cocoSim(MODEL_PATH, [MAT_CONSTANTS_FILES], [TIME_STEP], [TRACE])\n'];
+	msg = [ ' -----------------------------------------------------  \n'];
+	msg = [msg '  CoCoSim: A framework for the formal analysis of Simulink models\n'];
+	msg = [msg '   \n Usage:\n'];
+	msg = [msg '    >> cocoSim(MODEL_PATH, [MAT_CONSTANTS_FILES], [TIME_STEP], [TRACE])\n'];
 	msg = [msg '\n'];
 	msg = [msg '      MODEL_PATH: a string containing the path to the model\n'];
-	msg = [msg '        e.g. ''../../mymodel.mdl\''\n'];
+	msg = [msg '        e.g. ''cocoSim test/properties/property_2_test.mdl\''\n'];
 	msg = [msg '      MAT_CONSTANT_FILES: an optional list of strings containing the\n'];
 	msg = [msg '      path to the mat files containing the simulation constants\n'];
 	msg = [msg '        e.g. {''../../constants1.mat'',''../../constants2.mat''}\n'];
@@ -474,8 +511,11 @@ function display_help_message()
 	msg = [msg '      traceability informations\n'];
 	msg = [msg '        e.g. true\n'];
 	msg = [msg '        default: false\n'];
-	disp(sprintf(msg));
+    msg = [msg  '  -----------------------------------------------------  \n'];
+	cprintf('blue', msg);
 end
+
+
 
 function launch_display_msg(model_full_path)
 	msg = {};
@@ -500,19 +540,11 @@ function launch_display_msg(model_full_path)
 	display_msg(msg, Constants.INFO, 'cocoSim', '');
 end
 
-function initialize_files(file_name, nom_lustre_file, nom_prelude_file, nom_lusi_file)
-	% Cretate prelude file
-	%fid = fopen(nom_prelude_file, 'w');
-	%fprintf(fid, '-- This file has been generated by cocoSim compiler + verifier\n');
-	%fclose(fid);
+function initialize_files(lustre_file)
 	% Create lustre file
-	fid = fopen(nom_lustre_file, 'w');
+	fid = fopen(lustre_file, 'w');
 	fprintf(fid, '-- This file has been generated by cocoSim\n\n');
 	fclose(fid);
-	%Create lustre interface file
-	%fid = fopen(nom_lusi_file, 'w');
-	%fprintf(fid, '-- This file has been generated by cocoSim compiler + verifier\n\n');
-	%fclose(fid);
 end
 
 function [str] = print_int_to_real()

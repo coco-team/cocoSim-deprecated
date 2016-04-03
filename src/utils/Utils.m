@@ -668,7 +668,13 @@ classdef Utils
 				end
 			end
 		end
-	end
+    end
+    
+    function out = naming(nomsim)
+        [a b]=regexp (nomsim, '/', 'split');
+        out = strcat(a{numel(a)-1},'_',a{end});
+    end
+end
 
   end
-end
+

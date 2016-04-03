@@ -3,7 +3,9 @@
 CoCoSim is a modular, integrated analysis framework for Simulink(c) models. It consists of a compiler and a model checker:
 
 * **Compiler**: It modularly compiles a Simulink(c) model (+ design property) into Lustre code. An earlier version of this module was developed by Claire Pagetti, Thomas Loquen and Eric Noulard at ONERA (France). The current version has been re-designed by Arnaud Dieumegard (CMU) and Temesghen Kahsai (NASA Ames / CMU).
-* **Model Checker**: In principle CoCoSim can use any model checker that inputs Lustre code. The current version uses [Zustre](https://github.com/lememta/zustre) as the underlying model checker.
+* **Model Checker**: In principle CoCoSim can use any model checker that supprt Lustre code. The current version uses [Zustre](https://github.com/lememta/zustre) [Kind2](https://github.com/kind2-mc/kind2) as the underlying model checker.
+
+CoCoSim is currently under heavy development. We welcome any feedback and bug report.
 
 [![ScreenCast of CoCoSim](http://i.imgur.com/itLte0X.png)](http://www.youtube.com/watch?v=KA_Wdnn668M)
 
@@ -14,27 +16,33 @@ CoCoSim can be installed and use as follows.
 ### Dependencies ###
 
 * MATLAB(c) version **R2014b** or newer
-* [Zustre](https://github.com/lememta/zustre) and its dependencies: [LustreC](https://github.com/lememta/lustrec) and [SPACER](https://github.com/seahorn/z3)
+* [Zustre](https://github.com/lememta/zustre) 
 * Python2.7
 * (Optional) lus2lic (https://www-verimag.imag.fr/Lustre-V6.html) from the Verimag LustreV6 toolbox for testing purpose
 
 ### Configuration ###
 
- If you would like to verify properties of Simulink models, set the paths to the tools and libraries:
 
-   + In the `tools/gac/path_config.m` file set the values for variables:
 
-     ** LUSTREC: path to the previously installed lustrec binary file
 
-     ** SPACER: path to the `build` directory of the `SPACER` tool
-	  These paths cannot be automatically retrieved from the system paths
-     by MATLAB(c) and thus needs to be set by hand.
+ Set the configuration for the backend solvers in `src/config.m`:
+
+* `SOLVER`: `K` to use Kind2, `Z` to use Zustre.
+* `ZUSTRE`: Path to [Zustre](https://github.com/coco-team/zustre) binary.
+* `KIND2`: Path to [Kind2](https://github.com/kind2-mc/kind2) binary.
+* `LUSTREC`: Path to [LustreC](https://github.com/coco-team/lustrec) binary.
+* `Z3`: Path to Z3 binary. If you install Zustre, Z3 can be found in `ZUSTRE_PATH/build/run/bin/z3`.
+* `RUST_GEN`: `1` to generate RUST code (using Kind2). `0` do not generate. 
+* `C_GEN`: `1` to generate C code (using LustreC). `0` do not generate. 
+
 
 ### Launching ###
 
-+ Launch the Matlab(c) toolset 
++ Launch Matlab(c) 
 + Navigate to `src/`
 + Type ```cocoSim help```
+
+Alternatively you can add cocoSim to the current path e.g., `addpath('src')`
 
 ```
   cocoSim [OPTIONS] MODEL_PATH
@@ -54,6 +62,12 @@ CoCoSim can be installed and use as follows.
 
 
 + The output Lustre files are generated in a new folder named `src_[name of the input model]` in the folder containing the input model.
+
+### Example ###
+
+1. To test a safe property: `cocoSim test/properties/property_2_test.mdl`
+
+2. To test an unsafe property (which also provide a counterexample): `cocoSim test/properties/property_3_unsafe_test.mdl`
 
 
 ## CoCoSim Supported Simulink Blocks ##

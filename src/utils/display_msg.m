@@ -40,6 +40,8 @@ elseif type == 3
 	final_message = '(Error)';
 elseif type == 4
 	final_message = '(Debug)';
+elseif type == 5
+    final_messgae = '(Result)';
 end
 
 if not(strcmp(from_str, ''))
@@ -52,16 +54,29 @@ end
 
 str = regexp(str, '\\n', 'split');
 
-disp([final_message ' ' str{1}]);
+% disp([final_message ' ' str{1}]);
+
+msg = [final_message ' ' str{1} '\n'];
+
+if type == 1
+    cprintf('black', msg);
+elseif type == 3
+    cprintf('red', msg)
+elseif type == 2
+    cprintf('cyan', msg)
+elseif type == 5
+    cprintf('*blue', msg)
+end
+
 for idx_str=2:numel(str)
 	if ~strcmp(str{idx_str}, '')
 		disp(sprintf('\t %s',str{idx_str}));
 	end
 end
 
-if type == 3
-	warning off backtrace
-	error('The transformation process will now stop')
-end
+% if type == 3
+% 	warning off backtrace
+% 	error('The transformation process will now stop')
+% end
 
 end

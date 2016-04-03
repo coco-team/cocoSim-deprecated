@@ -18,7 +18,9 @@
 
 % TODO: Add summary of the function with parameters
 
-function [node_header let_tel_code_string extern_s_functions_string extern_functions properties_nodes property_node_names extern_matlab_functions] = blocks2lustre(model_name, nom_lustre_file, nom_prelude_file, nom_lusi_file, myblk, main_blks, mat_files, idx_subsys, trace, xml_trace)
+function [node_header,let_tel_code_string, extern_s_functions_string, extern_functions, properties_nodes,...
+    property_node_names, extern_matlab_functions, c_code] = blocks2lustre(model_name, nom_lustre_file, ...
+myblk, main_blks, mat_files, idx_subsys, trace, xml_trace)
 
 % Returned values
 let_tel_code_string = '';
@@ -157,7 +159,7 @@ list_output = Utils.concat_delim(list_outputs, ';\n\t');
 node_header = app_sprintf(node_header, list_output);
 
 % Close the returns statement
-node_header = app_sprintf(node_header, ') \n');
+node_header = app_sprintf(node_header, '); \n');
 
 %%%%%%%%%%%%%%%% Var section declaration
 
@@ -187,7 +189,8 @@ end
 
 %%%%%%%%%%%%%%%% Retrieve nodes code
 
-[let_tel_code_string, extern_s_functions_string, extern_functions, properties_nodes, additional_variables, property_node_names, extern_matlab_functions] = write_code(nblk, inter_blk, blks, main_blks, myblk, nom_lustre_file, idx_subsys, false, trace, xml_trace);
+[let_tel_code_string, extern_s_functions_string, extern_functions, properties_nodes, additional_variables, property_node_names, extern_matlab_functions, c_code] = ...
+    write_code(nblk, inter_blk, blks, main_blks, myblk, nom_lustre_file, idx_subsys, false, trace, xml_trace);
 
 
 % Add additional variables (ex in the MinMax block backend)

@@ -15,7 +15,8 @@
 %
 %    You should have received a copy of the GNU General Public License
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [output_string extern_s_functions_string extern_functions properties_nodes additional_variables property_node_names extern_matlab_functions] = write_code(nblk, inter_blk, blks, main_blks, main_blk, nom_lustre_file, idx_subsys, print_node, trace, xml_trace)
+function [output_string, extern_s_functions_string, extern_functions, properties_nodes, additional_variables, property_node_names, extern_matlab_functions, c_code] = ... 
+    write_code(nblk, inter_blk, blks, main_blks, main_blk, nom_lustre_file, idx_subsys, print_node, trace, xml_trace)
 
 output_string = '';
 extern_s_functions_string = '';
@@ -24,6 +25,7 @@ extern_functions = '';
 properties_nodes = '';
 cpt_extern_functions = 1;
 additional_variables = '';
+c_code = '';
 
 pre_annot = '';
 post_annot = '';
@@ -362,16 +364,29 @@ for idx_block=1:nblk
 		end
 
 	%%%%%%%%%%%%%%%%%%% S-Function %%%%%%%%%%%%%%%%%%%%%
+    
+   %% It needs major revision %%
 	elseif strcmp(inter_blk{idx_block}.type, 'S-Function')
-
+        
 		function_name = get_param(blks{idx_block}, 'FunctionName');
-		parameters = get_param(blks{idx_block}, 'Parameters');
-
-		% Write S-Function call
-		block_string = write_s_function(inter_blk{idx_block}, function_name, parameters, inter_blk);
+        % get port connectivity
+        props = get_param(blks{idx_block}, 'portconnectivity');
+        n_blocks =numel(props);
+        for k=1:n_blocks
+            s=get(props(k).SrcBlock);
+            f='Source';
+            if isempty(s)
+                s=get(props(k).DstBlock);
+                f='Destination';
+            end
+            prop_conn{k,1}=f;
+            prop_conn{k,2}=s.BlockType;
+            prop_conn{k,3}=s.Name;
+        end
+		block_string = write_s_function(inter_blk{idx_block}, function_name, prop_conn, inter_blk);
 		
 		% Write S-Function extern node
-		extern_s_function = write_extern_s_function(inter_blk{idx_block}, inter_blk, function_name, parameters);
+		[extern_s_function, c_code] = write_extern_s_function(inter_blk{idx_block}, inter_blk, function_name, prop_conn);
 		extern_s_functions_string = [extern_s_functions_string extern_s_function];
 
 	%%%%%%%%%%%%%% Zero-Pole %%%%%%%%%%%%%%%%%%%
@@ -465,7 +480,7 @@ for idx_block=1:nblk
 	%%%%%%%%%%%%%%%%% SubSystem %%%%%%%%%%%%%%%%%%%%%%%%
 	% Print SubSystem as a node call only if it is not the first of the list (aka the current SubSystem)
 	elseif (strcmp(inter_blk{idx_block}.type, 'SubSystem') || strcmp(inter_blk{idx_block}.type, 'ModelReference')) && not(idx_block == 1)
-
+       
 		mask = get_param(blks{idx_block}, 'Mask');
 		if strcmp(mask, 'on') && ~strcmp(inter_blk{idx_block}.mask_type, '')
 
@@ -524,8 +539,48 @@ for idx_block=1:nblk
 
 				annot_type = get_param(blks{idx_block}, 'AnnotationType');
 				observer_type = get_param(blks{idx_block}, 'ObserverType');
+                try
+                    [property_node extern_funs property_name] = write_property(inter_blk{idx_block}, ...
+                        inter_blk, main_blk, main_blks, nom_lustre_file, print_node, trace, annot_type, observer_type, xml_trace);
+                
+                     properties_nodes = [properties_nodes property_node];
+            
+                     nb = numel(property_node_names)+1;
+                     property_node_names{nb}.prop_name = property_name;
+				     property_node_names{nb}.origin_block_name = inter_blk{idx_block}.origin_name{1};
+				     property_node_names{nb}.annotation = inter_blk{idx_block}.annotation;
+                catch ME
+                    disp(ME.message)
+                   if strcmp(ME.identifier, 'MATLAB:badsubscript')
+                       msg= 'Bad encoding of the property. Make sure to link the main input of the model into the observer';
+                       display_msg(msg, Constants.ERROR, 'cocoSim', '');
+                   
+                   else
+                     display_msg(ME.message, Constants.ERROR, 'cocoSim', '');
+                   end
+                end
+            
+                %%%%%%%%%%%%%%%%%% Assumption %%%%%%%%%%%%%%%%%
+			elseif Constants.is_assume(inter_blk{idx_block}.mask_type)
+                
+				annot_type = get_param(blks{idx_block}, 'AnnotationType');
+				observer_type = get_param(blks{idx_block}, 'RequiresType');
 
-				[property_node extern_funs property_name] = write_property(inter_blk{idx_block}, inter_blk, main_blk, main_blks, nom_lustre_file, print_node, trace, annot_type, observer_type, xml_trace);
+				[property_node extern_funs property_name] = write_cocospec(inter_blk{idx_block}, inter_blk, main_blk, main_blks, nom_lustre_file, print_node, trace, annot_type, observer_type, xml_trace);
+				properties_nodes = [properties_nodes property_node];
+            
+				nb = numel(property_node_names)+1;
+				property_node_names{nb}.prop_name = property_name;
+				property_node_names{nb}.origin_block_name = inter_blk{idx_block}.origin_name{1};
+				property_node_names{nb}.annotation = inter_blk{idx_block}.annotation;
+                
+                %%%%%%%%%%%%%%%%%% Ensures %%%%%%%%%%%%%%%%%
+			elseif Constants.is_ensure(inter_blk{idx_block}.mask_type)
+
+				annot_type = get_param(blks{idx_block}, 'AnnotationType');
+				observer_type = get_param(blks{idx_block}, 'EnsuresType');
+
+				[property_node extern_funs property_name] = write_cocospec(inter_blk{idx_block}, inter_blk, main_blk, main_blks, nom_lustre_file, print_node, trace, annot_type, observer_type, xml_trace);
 				properties_nodes = [properties_nodes property_node];
             
 				nb = numel(property_node_names)+1;
