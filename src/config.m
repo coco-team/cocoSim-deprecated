@@ -19,12 +19,19 @@
 
 % Configuration file for the backend solvers
 
-SOLVER = 'Z'; % change to Z for Zustre and K for Kind2
+% SOLVER = 'Z'; % change to Z for Zustre and K for Kind2 and E for ELDARICA
 LUSTREC = '/Users/teme/Documents/GitHub/onera_lustrec/bin/lustrec';
 ZUSTRE = '/Users/teme/Documents/GitHub/zustre/build/run/bin/zustre';
 Z3 = '/Users/teme/Documents/GitHub/zustre/build/run/bin/z3';
 KIND2 = '/Users/teme/Documents/GitHub/kind2/bin/kind2';
 SEAHORN = '/Users/teme/Documents/GitHub/seahorn/build/run/bin/sea';
-RUST_GEN = 0; % switch to 1 to generate rust code
-C_GEN = 0; % switch to 1 to generate c code
-MCDC_TEST = 0; % switch to 1 to generate mcdc test 
+% RUST_GEN = 0; % switch to 1 to generate rust code
+% C_GEN = 0; % switch to 1 to generate c code
+% MCDC_TEST = 0; % switch to 1 to generate mcdc testRUST_GEN=1;
+
+SOLVER='Z';
+RUST_GEN=0;
+C_GEN=0
+SOLVER='Z';
+RUST_GEN=0;
+C_GEN=0

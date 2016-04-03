@@ -55,7 +55,8 @@ function zustre(lustre_file_name, property_node_names, property_file_base_name, 
 		for idx_prop=1:numel(property_node_names)
             if exist(smt_file, 'file')
                 command = sprintf('%s "%s" --node %s --xml --cg --s-func %s', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name, smt_file);
-                disp(command)
+            elseif strcmp(SOLVER, 'E')
+                command = sprintf('%s "%s" --node %s --xml --eldarica %s', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name, smt_file);
             else
                 command = sprintf('%s "%s" --node %s --xml --cg', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name);
             end

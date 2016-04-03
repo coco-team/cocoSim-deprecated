@@ -48,6 +48,7 @@ load 'tmp_data'
 legacy_file_name = fullfile(model_path, strcat(function_name, '.c'));
 
 % check if the legacy code is there
+
 tmp_name = (regexp(legacy_file_name, '_', 'split'));
 c_main_file = fullfile(model_path, tmp_name{2});
 % store the name without the extension for lustre
@@ -55,12 +56,13 @@ tmp2_name = (regexp(function_name, '_', 'split'));
 lustre_annot_name = tmp2_name{2};
 
 % c_dir = fullfile(model_path);
+disp(fullfile(c_main_file))
 if exist(c_main_file, 'file')
     msg = ['Legacy C Code (main entry) in ' c_main_file];
     display_msg(msg, Constants.RESULT, 'Linking S-Function', '');
 else
     msg = ['Legacy code not found. Make sure to have the main C file.\n' ...
-        'If legacy_mycode.c is the S-function wrapper, you need to have mycode in the same dir'];
+        'If legacy_mycode.c is the S-function wrapper, you need to have mycode.c in the same dir'];
     display_msg(msg, Constants.WARNING, 'Linking with S-Function', '');
 end
 

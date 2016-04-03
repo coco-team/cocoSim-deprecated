@@ -41,6 +41,8 @@
 
 function cocoSim(model_full_path, const_files, default_Ts, trace, dfexport)
 
+% clear everything from the workspace
+%clearvars -except model_full_path const_files default_Ts trace dfexport;
 
 % Checking the number of arguments
 if ~exist('trace', 'var')
@@ -79,7 +81,7 @@ launch_display_msg(model_full_path);
 
 addpath(cocoSim_path);
 config;
-
+disp(RUST_GEN);
 config_msg = ['CoCoSim Configuration, Change this configuration in src/config.m\n'];
 config_msg = [config_msg '--------------------------------------------------\n'];
 config_msg = [config_msg '|  SOLVER: ' SOLVER '\n'];
@@ -88,8 +90,8 @@ config_msg = [config_msg '|  KIND2: ' KIND2 '\n'];
 config_msg = [config_msg '|  LUSTREC: ' LUSTREC '\n'];
 config_msg = [config_msg '|  SEAHORN: ' SEAHORN '\n'];
 config_msg = [config_msg '|  Z3: ' Z3 '\n'];
-config_msg = [config_msg '|  RUST_GEN: ' int2str(RUST_GEN) '\n'];
-config_msg = [config_msg '|  C_GEN: ' int2str(C_GEN) '\n'];
+% config_msg = [config_msg '|  RUST_GEN: ' int2str(RUST_GEN) '\n'];
+% config_msg = [config_msg '|  C_GEN: ' int2str(C_GEN) '\n'];
 config_msg = [config_msg '--------------------------------------------------\n'];
 display_msg(config_msg, Constants.INFO, 'cocoSim', '');
 

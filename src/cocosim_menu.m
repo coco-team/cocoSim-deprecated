@@ -24,7 +24,10 @@ end
  
  function cocoSimCallback(callbackInfo)
   try
-      disp(callbackInfo)
+      [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
+      fileID = fopen([prog_path filesep 'src' filesep 'config.m'],'a');
+      fprintf(fileID, '\nSOLVER=''Z'';\nRUST_GEN=0;\nC_GEN=0;');
+      fclose(fileID);
       simulink_name = gcs;
       cocoSim(simulink_name);
   catch ME
@@ -42,18 +45,46 @@ end
  function schema = getRust(callbackInfo)
   schema = sl_action_schema;
   schema.label = 'Compile to Rust';
+  schema.callback = @rustCallback;
+ end
+ 
+  function rustCallback(callbackInfo)
+  try 
+      [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
+      fileID = fopen([prog_path filesep 'src' filesep 'config.m'],'a');
+      fprintf(fileID, '\nSOLVER=''E'';\nRUST_GEN=1;\nC_GEN=0;');
+      fclose(fileID);
+      simulink_name = gcs;
+      cocoSim(simulink_name);
+  catch ME
+      disp(ME.message)
+  end
  end
  
  function schema = getC(callbackInfo)
   schema = sl_action_schema;
   schema.label = 'Compile to C';
+  schema.callback = @cCallback;
+ end
+
+ function cCallback(callbackInfo)
+  try 
+      [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
+      fileID = fopen([prog_path filesep 'src' filesep 'config.m'],'a');
+      fprintf(fileID, '\nSOLVER=''E'';\nRUST_GEN=0;\nC_GEN=1;');
+      fclose(fileID);
+      simulink_name = gcs;
+      cocoSim(simulink_name);
+  catch ME
+      disp(ME.message)
+  end
  end
  
 function schema = getSolver(callbackInfo)     
   schema = sl_container_schema;
   schema.label = 'CoCoSim Solvers';    
   %schema.userdata = 'two';	
-  schema.childrenFcns = {@getZustre, @getKind};
+  schema.childrenFcns = {@getZustre, @getKind, @getSeaHorn, @getEldarica};
 end 
 
 function schema = getZustre(callbackInfo)     
@@ -66,3 +97,27 @@ function schema = getKind(callbackInfo)
   schema.label = 'Kind2';      
 end 
 
+ 
+ function schema = getSeaHorn(callbackInfo)
+  schema = sl_action_schema;
+  schema.label = 'SeaHorn';
+ end
+ 
+ function schema = getEldarica(callbackInfo)
+  schema = sl_action_schema;
+  schema.label = 'Eldarica';
+    schema.callback = @eldaricaCallback;
+ end
+ 
+  function eldaricaCallback(callbackInfo)
+  try 
+      [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
+      fileID = fopen([prog_path filesep 'src' filesep 'config.m'],'a');
+      fprintf(fileID, '\nSOLVER=''E'';\nRUST_GEN=0;\nC_GEN=0;');
+      fclose(fileID);
+      simulink_name = gcs;
+      cocoSim(simulink_name);
+  catch ME
+      disp(ME.message)
+  end
+ end
