@@ -1,6 +1,6 @@
 # CoCoSim #
 
-CoCoSim is a modular, integrated analysis framework for Simulink(c) models. It consists of a compiler and a model checker:
+CoCoSim is a modular, integrated analysis framework for Simulink(c) models. It consists of a compiler and an interface to backend solvers (model checkers):
 
 * **Compiler**: It modularly compiles a Simulink(c) model (+ design property) into Lustre code. An earlier version of this module was developed by Claire Pagetti, Thomas Loquen and Eric Noulard at ONERA (France). The current version has been re-designed by Arnaud Dieumegard (CMU) and Temesghen Kahsai (NASA Ames / CMU).
 * **Model Checker**: In principle CoCoSim can use any model checker that supprt Lustre code. The current version uses [Zustre](https://github.com/lememta/zustre) [Kind2](https://github.com/kind2-mc/kind2) as the underlying model checker.
@@ -17,6 +17,8 @@ CoCoSim can be installed and use as follows.
 
 * MATLAB(c) version **R2014b** or newer
 * [Zustre](https://github.com/lememta/zustre) 
+* (Optional)[Kind2](http://kind2-mc.github.io/kind2/)
+* (Optional)[SeaHorn](http://seahorn.github.io/)
 * Python2.7
 * (Optional) lus2lic (https://www-verimag.imag.fr/Lustre-V6.html) from the Verimag LustreV6 toolbox for testing purpose
 
@@ -39,35 +41,18 @@ CoCoSim can be installed and use as follows.
 ### Launching ###
 
 + Launch Matlab(c) 
-+ Navigate to `src/`
-+ Type ```cocoSim help```
-
-Alternatively you can add cocoSim to the current path e.g., `addpath('src')`
-
-```
-  cocoSim [OPTIONS] MODEL_PATH
-
-     MODEL_PATH: a string containing the path to the model (e.g. '../../Simulink.mdl')
-
-     OPTIONS:
-
-         CONSTANTS_FILES: an optional list of strings containing the path to some files (.m or .mat) containing the simulation constant	(e.g. {'../../constants1.m','../../constants2.mat},	default: {})
-
-	 TIME_STEP: an optional numeric value for the simulation time step (e.g. 0.1, default: 0.1)
-
-	 TRACE: a optional boolean value stating if we need to print the traceability informations (e.g. true, default: false)
-
-	 EXPORT_MODEL: an optional boolean value stating if the simplified data flow model should be exported (e.g. true, default: false)
-```
++ Navigate to `cocosim/`
++ Type ```sl_refresh_customizations;``` This will customize the Simulink Window and include `CoCoSim`
 
 
 + The output Lustre files are generated in a new folder named `src_[name of the input model]` in the folder containing the input model.
 
 ### Example ###
 
-1. To test a safe property: `cocoSim test/properties/property_2_test.mdl`
+1. To test a safe property: `open test/properties/property_2_test.mdl`
+2. Under the `Tools` menu choose `Verify with CoCoSi` and then `Zustre`.
 
-2. To test an unsafe property (which also provide a counterexample): `cocoSim test/properties/property_3_unsafe_test.mdl`
+2. To test an unsafe property (which also provide a counterexample): `open test/properties/property_3_unsafe_test.mdl`
 
 
 ## CoCoSim Supported Simulink Blocks ##
@@ -212,7 +197,7 @@ provided in the Observer blocks are taken into account for the generation.
 An assertion can be inserted in a Simulink model using two kind of 
 annotations:
 
-+ System annotation: double clic on the background of the `Observer` block 
++ System annotation: double click on the background of the `Observer` block 
   (while open) and write the annotation.
 + Inport block annotation: right clic on an inport block > "Properties..." 
   and "Block Annotation". You can then write the assertions in the provided
