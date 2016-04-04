@@ -21,9 +21,8 @@ end
   try 
       [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
       simulink_name = gcs;
-      h_Inports=find_system(simulink_name,'FindAll','On','SearchDepth',1,'BlockType','Inport');
-      inports=get(h_Inports,'Name');
-      disp(inports)
+      add_props(simulink_name);
+      
   catch ME
       disp(ME.message)
   end

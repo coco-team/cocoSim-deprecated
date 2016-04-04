@@ -42,10 +42,9 @@ CoCoSim can be installed and use as follows.
 
 + Launch Matlab(c) 
 + Navigate to `cocosim/`
-+ Type ```sl_refresh_customizations;``` This will customize the Simulink Window and include `CoCoSim`
++ Type ```addpath('src')``` to add `cocosim` to the program path
++ Type ```sl_refresh_customizations;``` This will customize the Simulink Window and include `cocosim`
 
-
-+ The output Lustre files are generated in a new folder named `src_[name of the input model]` in the folder containing the input model.
 
 ### Example ###
 
