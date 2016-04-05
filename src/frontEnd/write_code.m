@@ -17,6 +17,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [output_string, extern_s_functions_string, extern_functions, properties_nodes, additional_variables, property_node_names, extern_matlab_functions, c_code] = ... 
     write_code(nblk, inter_blk, blks, main_blks, main_blk, nom_lustre_file, idx_subsys, print_node, trace, xml_trace)
+   
 
 output_string = '';
 extern_s_functions_string = '';
@@ -479,9 +480,12 @@ for idx_block=1:nblk
 
 	%%%%%%%%%%%%%%%%% SubSystem %%%%%%%%%%%%%%%%%%%%%%%%
 	% Print SubSystem as a node call only if it is not the first of the list (aka the current SubSystem)
-	elseif (strcmp(inter_blk{idx_block}.type, 'SubSystem') || strcmp(inter_blk{idx_block}.type, 'ModelReference')) && not(idx_block == 1)
-       
-		mask = get_param(blks{idx_block}, 'Mask');
+
+    elseif (strcmp(inter_blk{idx_block}.type, 'SubSystem') || strcmp(inter_blk{idx_block}.type, 'ModelReference')) && not(idx_block == 1)
+           
+		   mask = get_param(blks{idx_block}, 'Mask');
+          
+         
 		if strcmp(mask, 'on') && ~strcmp(inter_blk{idx_block}.mask_type, '')
 
 			%%%%%%%%%%%% Reference masked blocks %%%%%%%%%%%%%
@@ -508,6 +512,8 @@ for idx_block=1:nblk
 
 					block_string = write_zero_pole(inter_blk{idx_block}, inter_blk, zero, poles, gain);
 					
+          
+                    
 				%%%%%%%%%%%%% CompareTo family of blocks %%%%%%%%%%%%
 				elseif Constants.isCompareToMask(inter_blk{idx_block}.mask_type)
 
@@ -536,7 +542,7 @@ for idx_block=1:nblk
 
 			%%%%%%%%%%%%%%%%%% Observer %%%%%%%%%%%%%%%%%
 			elseif Constants.is_property(inter_blk{idx_block}.mask_type)
-
+          
 				annot_type = get_param(blks{idx_block}, 'AnnotationType');
 				observer_type = get_param(blks{idx_block}, 'ObserverType');
                 try
@@ -560,37 +566,37 @@ for idx_block=1:nblk
                    end
                 end
             
-                %%%%%%%%%%%%%%%%%% Assumption %%%%%%%%%%%%%%%%%
-			elseif Constants.is_assume(inter_blk{idx_block}.mask_type)
-                
-				annot_type = get_param(blks{idx_block}, 'AnnotationType');
-				observer_type = get_param(blks{idx_block}, 'RequiresType');
-
-				[property_node extern_funs property_name] = write_cocospec(inter_blk{idx_block}, inter_blk, main_blk, main_blks, nom_lustre_file, print_node, trace, annot_type, observer_type, xml_trace);
-				properties_nodes = [properties_nodes property_node];
-            
-				nb = numel(property_node_names)+1;
-				property_node_names{nb}.prop_name = property_name;
-				property_node_names{nb}.origin_block_name = inter_blk{idx_block}.origin_name{1};
-				property_node_names{nb}.annotation = inter_blk{idx_block}.annotation;
-                
-                %%%%%%%%%%%%%%%%%% Ensures %%%%%%%%%%%%%%%%%
-			elseif Constants.is_ensure(inter_blk{idx_block}.mask_type)
-
-				annot_type = get_param(blks{idx_block}, 'AnnotationType');
-				observer_type = get_param(blks{idx_block}, 'EnsuresType');
-
-				[property_node extern_funs property_name] = write_cocospec(inter_blk{idx_block}, inter_blk, main_blk, main_blks, nom_lustre_file, print_node, trace, annot_type, observer_type, xml_trace);
-				properties_nodes = [properties_nodes property_node];
-            
-				nb = numel(property_node_names)+1;
-				property_node_names{nb}.prop_name = property_name;
-				property_node_names{nb}.origin_block_name = inter_blk{idx_block}.origin_name{1};
-				property_node_names{nb}.annotation = inter_blk{idx_block}.annotation;
+%                 %%%%%%%%%%%%%%%%%% Assumption %%%%%%%%%%%%%%%%%
+% 			elseif Constants.is_assume(inter_blk{idx_block}.mask_type)
+%                 
+% 				annot_type = get_param(blks{idx_block}, 'AnnotationType');
+% 				observer_type = get_param(blks{idx_block}, 'RequiresType');
+% 
+% 				[property_node extern_funs property_name] = write_cocospec(inter_blk{idx_block}, inter_blk, main_blk, main_blks, nom_lustre_file, print_node, trace, annot_type, observer_type, xml_trace);
+% 				properties_nodes = [properties_nodes property_node];
+%             
+% 				nb = numel(property_node_names)+1;
+% 				property_node_names{nb}.prop_name = property_name;
+% 				property_node_names{nb}.origin_block_name = inter_blk{idx_block}.origin_name{1};
+% 				property_node_names{nb}.annotation = inter_blk{idx_block}.annotation;
+%                 
+%                 %%%%%%%%%%%%%%%%%% Ensures %%%%%%%%%%%%%%%%%
+% 			elseif Constants.is_ensure(inter_blk{idx_block}.mask_type)
+% 
+% 				annot_type = get_param(blks{idx_block}, 'AnnotationType');
+% 				observer_type = get_param(blks{idx_block}, 'EnsuresType');
+% 
+% 				[property_node extern_funs property_name] = write_cocospec(inter_blk{idx_block}, inter_blk, main_blk, main_blks, nom_lustre_file, print_node, trace, annot_type, observer_type, xml_trace);
+% 				properties_nodes = [properties_nodes property_node];
+%             
+% 				nb = numel(property_node_names)+1;
+% 				property_node_names{nb}.prop_name = property_name;
+% 				property_node_names{nb}.origin_block_name = inter_blk{idx_block}.origin_name{1};
+% 				property_node_names{nb}.annotation = inter_blk{idx_block}.annotation;
 
 			%%%%%%%%%%%%%%%%% Detect %%%%%%%%%%
 			elseif Constants.isDetectMask(inter_blk{idx_block}.mask_type)
-
+     
 				vinit = evalin('base', get_param(blks{idx_block}, 'vinit'));
 
 				block_string = write_detect(inter_blk{idx_block}, inter_blk, vinit);
@@ -608,9 +614,9 @@ for idx_block=1:nblk
 
 		%%%%%%%%%%%%%%%%%% Classical SubSystem %%%%%%%%%%%%
 		elseif inter_blk{idx_block}.num_output ~= 0
-	
+            
 			[block_string var_str] = write_subsystem(inter_blk{idx_block}, inter_blk, main_blk, xml_trace);
-
+    
 		end
 
 	%%%%%%%%%%%%%%%%%% Outport %%%%%%%%%%%%%%%%%%%
@@ -701,8 +707,8 @@ for idx_block=1:nblk
 	% Add additional variables definitions to the main return string
 	if ~strcmp(var_str, '')	
 		additional_variables = [additional_variables var_str];
-	end
-
+    end
+  
 end
 
 end

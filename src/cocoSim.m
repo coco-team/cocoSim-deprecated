@@ -81,7 +81,6 @@ launch_display_msg(model_full_path);
 
 addpath(cocoSim_path);
 config;
-disp(RUST_GEN);
 config_msg = ['CoCoSim Configuration, Change this configuration in src/config.m\n'];
 config_msg = [config_msg '--------------------------------------------------\n'];
 config_msg = [config_msg '|  SOLVER: ' SOLVER '\n'];
@@ -204,6 +203,7 @@ display_msg('Internal representation building', Constants.INFO, 'cocoSim', '');
 %%%%%% Internal representation building %%%%%%
 
 [inter_blk blks complex_structs]= mk_internalRep(file_name, dfexport, models, subsystems, mat_files, default_Ts);
+
 
 % Creation of the traceability XML node
 xml_trace = XML_Trace(model_full_path, trace_file_name);

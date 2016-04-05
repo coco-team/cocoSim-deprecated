@@ -41,7 +41,7 @@ conv_blks = blks;
 end
 
 function conversion = compute_conversion(block)
-
+    
 	conversion = {};
 	%%%%%%%%% Gain %%%%%%%%%%%%%%%%%%%%%%%%
 	if strcmp(block.type, 'Gain')
@@ -58,7 +58,8 @@ function conversion = compute_conversion(block)
 	elseif strcmp(block.type, 'Logic')
 		for idx_in=1:numel(block.inports_dt)
 			conversion{idx_in} = 'boolean';
-		end
+        end
+
 
 	%%%%%%%%%%% Product %%%%%%%%%%%%%%%%%%%%
 	elseif strcmp(block.type, 'Product')
@@ -262,7 +263,7 @@ function conversion = compute_conversion(block)
 
 	%%%%%%%%%%%%%%%%% SubSystem %%%%%%%%%%%%%%%%%%%%%%%%
 	elseif strcmp(block.type, 'SubSystem') || strcmp(block.type, 'ModelReference')
-        
+      
         if strcmp(get_param(block.annotation, 'Mask'), 'on')
 				%%%%%%%%%%%%%% Saturation Dynamic %%%%%%%%%%%%%%%%%%%
             if strcmp(block.mask_type, 'Saturation Dynamic')
@@ -291,24 +292,30 @@ function conversion = compute_conversion(block)
 				elseif Constants.is_property(block.mask_type)
 					for idx_in=1:numel(block.inports_dt)
 						conversion{idx_in} = 'no';
-					end
+                    end
+                    
+                %%%%%%%%%%%%%%% Implications %%%%%%%%%%%%
+				elseif strcmp(block.mask_type, 'Design Verifier Implies')
+                        for idx_in=1:numel(block.inports_dt)
+                            conversion{idx_in} = 'no';
+                        end
 
 				%%%%%%%%%%%%%% Subsystems with a simple graphical mask %%%%%%
 				elseif strcmp(block.mask_type, '')
 					for idx_in=1:numel(block.inports_dt)
-                    conversion{idx_in} = 'no';
-                end
+                       conversion{idx_in} = 'no';
+                    end
 
 				%%%%%%%%%%%%%%%%% Cross Product %%%%%%%%%%%%%%%%%%
 				elseif strcmp(block.mask_type, 'Cross Product')
 					conversion{1} = block.outports_dt{1};
 					conversion{2} = block.outports_dt{1};
-
+             
             else
                 msg = ['Data type conversion mechanism not supported for block: ' block.mask_type];
                 display_msg(msg, Constants.ERROR, 'blocks_dt_conversion', '');
             end
-        end
+    end
 
 	%%%%%%%%%%%%%%%%% ForIterator %%%%%%%%%%%%%%%%%%%%%
 	elseif strcmp(block.type, 'ForIterator')

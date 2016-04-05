@@ -62,6 +62,7 @@ obs_inter_blk = main_blk{obs_idx_subsys};
 obs_nblk = numel(obs_inter_blk);
 obs_blks = main_blks{obs_idx_subsys};
 
+
 % Get parent subsystem
 full_observer_name = regexp(block.origin_name, '/', 'split');
 if numel(full_observer_name{1}(1:end-1)) == 1
@@ -181,6 +182,7 @@ for idx_parent_blocks=1:numel(parent_subsystem)
 	end
 end
 
+
 inputs_string = Utils.concat_delim(list_in_header, '; ');
 header = app_sprintf(header, '%s)\nreturns (', inputs_string);
 
@@ -212,7 +214,6 @@ for idx_block=1:obs_nblk
 end
 list_output = Utils.concat_delim(list_outputs, ';\n\t');
 header = app_sprintf(header, '%s);\n', list_output);
-
 % Get observer variables
 cpt_var=1;
 cptn=1;
@@ -232,6 +233,7 @@ for idx_block=2:obs_nblk
 		cpt_var = cpt_var+1;
 	end
 end
+
 
 % Get assertions
 assertions = convert_assertions(obs_inter_blk, list_in, list_in_outport, xml_trace);
@@ -273,7 +275,11 @@ extern_functions = '';
 properties_nodes = '';
 additional_variables = '';
 
-[let_tel_code_string extern_s_functions_string extern_functions properties_nodes additional_variables] = write_code(obs_nblk, obs_inter_blk, obs_blks, main_blks, main_blk, nom_lustre_file, obs_idx_subsys, false, trace);
+[let_tel_code_string extern_s_functions_string extern_functions properties_nodes additional_variables] = ...
+    write_code(obs_nblk, obs_inter_blk, obs_blks, main_blks, ...
+    main_blk, nom_lustre_file, obs_idx_subsys, false, trace);
+
+
 
 header = app_sprintf(header, additional_variables);
 

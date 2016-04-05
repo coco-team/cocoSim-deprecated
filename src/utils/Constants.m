@@ -32,6 +32,8 @@ classdef Constants
 		detect_fall_neg = sprintf('Detect Fall Negative');
 		detect_fall_nonpos = sprintf('Detect Fall Nonpositive');
 
+        detect_implications = sprintf('Design Verifier Implies');
+        
 		observer = 'Observer';
         
         assume = 'Assumptions'
