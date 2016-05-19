@@ -61,7 +61,9 @@ function zustre(lustre_file_name, property_node_names, property_file_base_name, 
             else
                 command = sprintf('%s "%s" --node %s --xml --cg', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name);
             end
+            disp(command)
             [status, zustre_out] = system(command);
+            disp(zustre_out)
 			if status == 0
 				[answer cex] = check_zustre_result(zustre_out, property_node_names{idx_prop}.prop_name, property_file_base_name);
 				% Change the observer block display according to answer

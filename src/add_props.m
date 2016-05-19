@@ -2,11 +2,11 @@ function insert_observer( model_full_path )
 %INSERT_OBSERVER Inserts an observer block in the selected subsystem 
 % plugged on all the inputs of the selected subsystem and on the selected
 % outputs
-	disp('+----------------------------------------------------------+');
-	disp('|   Welcome to the cocoSim Observer block insertion tool   |');
-	disp('+----------------------------------------------------------+');
-	disp('|       Use <Ctrl + C> to quit this tool at any time       |') 
-	disp('+----------------------------------------------------------+');
+	disp('              +----------------------------------------------------------+');
+	disp('              |   Welcome to the cocoSim Observer block insertion tool   |');
+	disp('              +----------------------------------------------------------+');
+	disp('              |       Use <Ctrl + C> to quit this tool at any time       |') 
+	disp('              +----------------------------------------------------------+');
 
 	% Load the system
 	disp(['Loading system: ' model_full_path]);
@@ -95,9 +95,9 @@ function insert_observer( model_full_path )
 
 	observer = create_observer_block(subsystem_name, outputs_names, observer_name);
 
-	disp('+----------------------------------------------------------+');
-	disp('                          Summary');
-	disp('+----------------------------------------------------------+');
+	disp('           +----------------------------------------------------------+');
+	disp('                                  Summary');
+	disp('           +----------------------------------------------------------+');
 	disp(['SubSystem: ' subsystem_name]);
 	disp(['Outputs: ' output_summary]);
 	disp('+----------------------------------------------------------+');
@@ -211,7 +211,7 @@ function [display] = get_observer_display()
 	display = sprintf('color(''red'')\n');
 	display = [display sprintf('text(0.5, 0.5, [''Property: '''''' get_param(gcb,''name'') ''''''''], ''horizontalAlignment'', ''center'');\n')];
 	display = [display 'text(0.99, 0.03, ''{\bf\fontsize{12}'];
-	display = [display char('NOT VERIFIED')];
+	display = [display char('TO BE VERIFIED')];
 	display = [display '}'', ''hor'', ''right'', ''ver'', ''bottom'', ''texmode'', ''on'');'];
 end
 

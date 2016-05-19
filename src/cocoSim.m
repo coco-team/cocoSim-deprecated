@@ -413,7 +413,6 @@ msg = sprintf('Lustre code generated in file: %s', nom_lustre_file);
 display_msg(msg, Constants.INFO, 'Generation result', '');
 
 %%%%%%%%%%%%% Code Generation %%%%%%%%%%%%%
-
 if RUST_GEN
     display_msg('Generating Rust Code', Constants.INFO, 'Code Generation', '');
     try
@@ -434,7 +433,7 @@ end
 
 % Verify properties if they exists
 smt_file = '';
-if numel(property_node_names) > 0
+if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
     if not (strcmp(SOLVER, 'Z') || strcmp(SOLVER,'K'))
        display_msg('Available solvers are Z for Zustre and K for Kind2', Constants.WARNING, 'cocoSim', '');
        return
