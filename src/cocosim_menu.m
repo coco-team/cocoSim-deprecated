@@ -6,27 +6,26 @@ end
 %% Define the custom menu function.
  function schemaFcns = getMyMenuItems
   schemaFcns = {@getcocoSim,...
-      @getPP, ...
       @getCompiler, ...
       @getSyncObs
       }; 
  end
 
- function schema = getPP(callbackInfo)     
-  schema = sl_action_schema;
-  schema.label = 'CoCoSim Pre-Processor'; 
-  schema.callback = @pp;
- end
- 
- function pp(callbackInfo)
-     try
-      [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
-      simulink_name = gcs;
-      cocosim_pp(simulink_name);
-     catch ME
-         disp(ME.message)
-     end
- end
+%  function schema = getPP(callbackInfo)     
+%   schema = sl_action_schema;
+%   schema.label = 'CoCoSim Pre-Processor'; 
+%   schema.callback = @pp;
+%  end
+%  
+%  function pp(callbackInfo)
+%      try
+%       [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
+%       simulink_name = gcs;
+%       cocosim_pp(simulink_name);
+%      catch ME
+%          disp(ME.message)
+%      end
+%  end
  
  function schema = getSyncObs(callbackInfo)     
   schema = sl_action_schema;

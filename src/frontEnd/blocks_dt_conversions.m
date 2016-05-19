@@ -408,6 +408,6 @@ function conversion = compute_conversion(block)
 
 	else
 		msg = ['Data type conversion mechanism not supported for block: ' block.type{1}];
-		display_msg(msg, Constants.ERROR, 'blocks_dt_conversion', '');
+		display_msg(msg, Constants.WARNING, 'blocks_dt_conversion', '');
 	end
 end

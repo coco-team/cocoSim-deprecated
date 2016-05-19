@@ -59,14 +59,17 @@ delete(strcat(model,'_PP',ext));
 % script_path = strrep(script_path,'/pp.m','');
 % % Add all subfolders of Processes into Matlab path
 % addpath(genpath(strcat(script_path,'/lib')));
+disp(fullfile(pp_path, 'pp', 'lib', 'common'))
 addpath(fullfile(pp_path, 'pp', 'lib', 'common'));
 addpath(fullfile(pp_path, 'pp', 'lib', 'blocks'));
 addpath(fullfile(pp_path, 'pp', 'lib', 'math'));
 % Creating a cache copy to process
 
+original_file = [model_path filesep model ext];
 disp(['Copying ' model ext])
 new_model_name = [model '_p' ext];
 new_model = strcat(model,'_p');
+disp(original_file)
 copyfile(file_name, strcat(new_model,ext));
 disp(['Loading ' new_model_name '...'])
 load_system(new_model);

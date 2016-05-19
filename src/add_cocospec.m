@@ -3,7 +3,9 @@ function insert_observer( model_full_path )
 % plugged on all the inputs of the selected subsystem and on the selected
 % outputs
 	disp('              +----------------------------------------------------------+');
-	disp('              |   Welcome to the cocoSim Observer block insertion tool   |');
+	disp('              |    Welcome to the CoCoSpec block insertion tool          |');
+	disp('              +----------------------------------------------------------+');
+    disp('              |    Currently Only Guarantees (Properties) are supported  |');
 	disp('              +----------------------------------------------------------+');
 	disp('              |       Use <Ctrl + C> to quit this tool at any time       |') 
 	disp('              +----------------------------------------------------------+');
@@ -25,7 +27,7 @@ function insert_observer( model_full_path )
 
 	% Manage user input for the selection of the SubSystem
 	disp(' ');
-	disp('Please input the number of the SubSystem on which an observer should be added (0 for the root of the model)');
+	disp('Please input the number of the SubSystem to add a CoCoSpec  (0 for the root of the model)');
 
 	input_ok = false;
 	while ~input_ok
@@ -33,10 +35,10 @@ function insert_observer( model_full_path )
 		if ~try_again
 			if subsys_nb > 0 && subsys_nb <= numel(subsys)
 				input_ok = true;
-				disp(['Observer block planned to be added on SubSystem: ' getfullname(subsys(subsys_nb))]);
+				disp(['CoCoSpec block planned to be added on SubSystem: ' getfullname(subsys(subsys_nb))]);
 			elseif subsys_nb == 0
 				input_ok = true;
-				disp('Observer block planned to be added at the root of the model');
+				disp('CoCoSpec block planned to be added at the root of the model');
 			else
 				disp('There is no such SubSystem number, please try again');
 			end
@@ -62,7 +64,7 @@ function insert_observer( model_full_path )
 	end
 
 	% Manage user input for the selection of the outports to connect on the observer input
-	disp('Please input the number of the output to be plugged-in to the new Observer block');
+	disp('Please input the number of the output to be plugged-in to the new CoCoSpec block');
 	disp('In order to select multiple blocks please input the numbers separated by a space')
 	input_ok = false;
 	while ~input_ok
@@ -90,8 +92,8 @@ function insert_observer( model_full_path )
 		end
 	end
 
-	disp('Please provide the name for the observer block');
-	observer_name = input('Observer name ? ', 's');
+	disp('Please provide the name for the CoCoSpec block');
+	observer_name = input('CoCoSpec name ? ', 's');
 
 	observer = create_observer_block(subsystem_name, outputs_names, observer_name);
 
@@ -209,7 +211,7 @@ end
 %% Returns the Display parameter value for the Observer block
 function [display] = get_observer_display()
 	display = sprintf('color(''red'')\n');
-	display = [display sprintf('text(0.5, 0.5, [''Property: '''''' get_param(gcb,''name'') ''''''''], ''horizontalAlignment'', ''center'');\n')];
+	display = [display sprintf('text(0.5, 0.5, [''CoCoSpec: '''''' get_param(gcb,''name'') ''''''''], ''horizontalAlignment'', ''center'');\n')];
 	display = [display 'text(0.99, 0.03, ''{\bf\fontsize{12}'];
 	display = [display char('TO BE VERIFIED')];
 	display = [display '}'', ''hor'', ''right'', ''ver'', ''bottom'', ''texmode'', ''on'');'];
