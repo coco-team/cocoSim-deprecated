@@ -20,26 +20,9 @@ end
  
  function pp(callbackInfo)
      try
-         [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
-         simulink_name = gcs;
-       
-             m = 4;
-    n = 3;
-    p = 100;
-    progressbar('Monte Carlo Trials','Simulation','Component') % Init 3 bars
-    for i = 1:m
-        for j = 1:n
-            for k = 1:p
-                pause(0.01) % Do something important
-                % Update all bars
-                frac3 = k/p;
-                frac2 = ((j-1) + frac3) / n;
-                frac1 = ((i-1) + frac2) / m;
-                progressbar(frac1, frac2, frac3)
-            end
-        end
-    end
-         %
+      [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
+      simulink_name = gcs;
+      cocosim_pp(simulink_name);
      catch ME
          disp(ME.message)
      end
@@ -115,7 +98,7 @@ end
   schema.statustip = 'Verify the current model with CoCoSim';
   schema.autoDisableWhen = 'Busy';
   
-  schema.childrenFcns = {@getZustre, @getKind, @getEldarica};
+  schema.childrenFcns = {@getZustre, @getKind};
  end
  
 
@@ -163,21 +146,21 @@ function kindCallback(callbackInfo)
 %   schema.label = 'SeaHorn';
 %  end
  
- function schema = getEldarica(callbackInfo)
-  schema = sl_action_schema;
-  schema.label = 'Eldarica';
-    schema.callback = @eldaricaCallback;
- end
+%  function schema = getEldarica(callbackInfo)
+%   schema = sl_action_schema;
+%   schema.label = 'Eldarica';
+%     schema.callback = @eldaricaCallback;
+%  end
  
-  function eldaricaCallback(callbackInfo)
-  try 
-      [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
-      fileID = fopen([prog_path filesep 'src' filesep 'config.m'],'a');
-      fprintf(fileID, '\nSOLVER=''E'';\nRUST_GEN=0;\nC_GEN=0;');
-      fclose(fileID);
-      simulink_name = gcs;
-      cocoSim(simulink_name);
-  catch ME
-      disp(ME.message)
-  end
- end
+%   function eldaricaCallback(callbackInfo)
+%   try 
+%       [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
+%       fileID = fopen([prog_path filesep 'src' filesep 'config.m'],'a');
+%       fprintf(fileID, '\nSOLVER=''E'';\nRUST_GEN=0;\nC_GEN=0;');
+%       fclose(fileID);
+%       simulink_name = gcs;
+%       cocoSim(simulink_name);
+%   catch ME
+%       disp(ME.message)
+%   end
+%  end
