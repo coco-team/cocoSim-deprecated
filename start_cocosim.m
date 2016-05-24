@@ -23,3 +23,4 @@ disp('... refreshing customizations')
 addpath(fullfile(cocoSim_path, '.'));
 sl_refresh_customizations;
 clear;
+disp(' ... CoCoSim is Ready');

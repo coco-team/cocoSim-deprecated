@@ -2,14 +2,21 @@ function sl_customization(cm)
 %% Register custom menu function.
   cm.addCustomMenuFcn('Simulink:ToolsMenu', @getMyMenuItems);
 end
-
 %% Define the custom menu function.
  function schemaFcns = getMyMenuItems
-  schemaFcns = {@getcocoSim,...
-      @getCompiler, ...
-      @getSyncObs
-      }; 
+  schemaFcns = {@getcocoSim}; 
  end
+ 
+%% Define the custom menu function.
+ function schema = getcocoSim(callbackInfo)
+  schema = sl_container_schema;
+  schema.label = 'CoCoSim';
+  schema.statustip = 'Modular Analysis Engine';
+  schema.autoDisableWhen = 'Busy';
+  
+  schema.childrenFcns = {@getVerify, @getProps, @getCompiler};
+ end
+ 
 
 %  function schema = getPP(callbackInfo)     
 %   schema = sl_action_schema;
@@ -27,9 +34,9 @@ end
 %      end
 %  end
  
- function schema = getSyncObs(callbackInfo)     
+ function schema = getProps(callbackInfo)     
   schema = sl_action_schema;
-  schema.label = 'Create a CoCoSpec'; 
+  schema.label = 'Create CoCoSpec'; 
   schema.callback = @synchObsCallback;
  end
  
@@ -46,14 +53,14 @@ end
 
  function schema = getCompiler(callbackInfo)     
   schema = sl_container_schema;
-  schema.label = 'CoCoSim Compiler';    
+  schema.label = 'Compile';    
   %schema.userdata = 'two';	
   schema.childrenFcns = {@getRust, @getC};
  end 
 
  function schema = getRust(callbackInfo)
   schema = sl_action_schema;
-  schema.label = 'Compile to Rust';
+  schema.label = ' to Rust';
   schema.callback = @rustCallback;
  end
  
@@ -72,7 +79,7 @@ end
  
  function schema = getC(callbackInfo)
   schema = sl_action_schema;
-  schema.label = 'Compile to C';
+  schema.label = 'to C';
   schema.callback = @cCallback;
  end
 
@@ -91,9 +98,9 @@ end
  
  %% Run cocoSim
  
- function schema = getcocoSim(callbackInfo)
+ function schema = getVerify(callbackInfo)
   schema = sl_container_schema;
-  schema.label = 'Verify with CoCoSim';
+  schema.label = 'Verify';
   schema.statustip = 'Verify the current model with CoCoSim';
   schema.autoDisableWhen = 'Busy';
   

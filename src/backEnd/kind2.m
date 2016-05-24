@@ -27,6 +27,7 @@ function kind2(lustre_file_name, property_node_names, property_file_base_name, m
             date_value = datestr(now, 'ddmmyyyyHHMMSS');
             command = sprintf('%s --z3_bin %s -xml %s', KIND2, Z3, lustre_file_name);
             [status, kind2_out] = system(command);
+            disp(kind2_out)
             [answer cex] = solver_result('KIND2', kind2_out, property_node_names{idx_prop}.prop_name, property_file_base_name);
             % Change the observer block display according to answer
             display = sprintf('color(''black'')\n');

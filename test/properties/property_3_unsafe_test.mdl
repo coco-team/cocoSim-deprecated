@@ -47,7 +47,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [186.0, 321.0, 757.0, 632.0]
+      Location		      [186.0, 321.0, 1497.0, 758.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -71,9 +71,9 @@ Model {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[723.0, 488.0]
-	ZoomFactor		[0.85820895522388063]
-	Offset			[-131.43702445652173, -22.356229422403413]
+	Extents			[1463.0, 614.0]
+	ZoomFactor		[1.4491903691395431]
+	Offset			[40.339433453237412, -34.869874100719436]
       }
     }
   }
@@ -83,7 +83,7 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "teme"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Feb 17 12:55:23 2016"
+  LastModifiedDate	  "Thu May 19 16:50:13 2016"
   RTWModifiedTimeStamp	  377614520
   ModelVersionFormat	  "1.%<AutoIncrement:47>"
   ConfigurationManager	  "none"
@@ -888,7 +888,7 @@ Model {
   }
   System {
     Name		    "property_3_unsafe_test"
-    Location		    [186, 321, 943, 953]
+    Location		    [186, 321, 1683, 1079]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -900,7 +900,7 @@ Model {
     TiledPaperMargins	    [1.270000, 1.270000, 1.270000, 1.270000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "86"
+    ZoomFactor		    "145"
     ReportName		    "simulink-default.rpt"
     SIDHighWatermark	    "30"
     Block {
@@ -1015,7 +1015,7 @@ Model {
       }
       System {
 	Name			"observer"
-	Location		[186, 321, 943, 953]
+	Location		[186, 321, 1683, 1079]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -1027,7 +1027,7 @@ Model {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"264"
+	ZoomFactor		"373"
 	Block {
 	  BlockType		  Inport
 	  Name			  "In3"
