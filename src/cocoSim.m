@@ -81,6 +81,9 @@ launch_display_msg(model_full_path);
 
 addpath(cocoSim_path);
 config;
+SOLVER = evalin('base','SOLVER');
+RUST_GEN = evalin('base', 'RUST_GEN');
+C_GEN = evalin('base', 'C_GEN');
 config_msg = ['CoCoSim Configuration, Change this configuration in src/config.m\n'];
 config_msg = [config_msg '--------------------------------------------------\n'];
 config_msg = [config_msg '|  SOLVER: ' SOLVER '\n'];
@@ -430,6 +433,7 @@ elseif C_GEN
 end
 
 %%%%%%%%%%%%% Verification %%%%%%%%%%%%%%%
+
 
 % Verify properties if they exists
 smt_file = '';

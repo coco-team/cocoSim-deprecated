@@ -21,7 +21,7 @@ function kind2(lustre_file_name, property_node_names, property_file_base_name, m
      
 	[path file ext] = fileparts(lustre_file_name);
     config;
-     
+    
     for idx_prop=1:numel(property_node_names)
         if exist(KIND2,'file') && exist(Z3,'file')
             date_value = datestr(now, 'ddmmyyyyHHMMSS');

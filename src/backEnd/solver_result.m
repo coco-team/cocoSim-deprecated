@@ -52,7 +52,7 @@ function [answer, cex] = solver_result(solver, xml_result, property_node_name, p
 				else
 					msg = [solver ': FAILURE to get counter example from zustre: '];
 					msg = [msg property_node_name '\n'];
-					msg = [msg solver ' output: \n' zustre_out];
+% 					msg = [msg solver ' output: \n' zustre_out];
 					display_msg(msg, Constants.WARNING, 'Property Checking', '');
 				end
 			end

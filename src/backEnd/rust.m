@@ -27,7 +27,7 @@ new_dir = [path file '_rust'];
   end
 if exist(KIND2,'file')
     date_value = datestr(now, 'ddmmyyyyHHMMSS');
-    command = sprintf('%s --compile true --z3_bin %s --output_dir %s --check_implem false %s', KIND2, Z3, new_dir, lustre_file_name);
+    command = sprintf('%s --compile true --z3_bin %s -xml --output_dir %s --check_implem false %s', KIND2, Z3, new_dir, lustre_file_name);
     [status, rust_out] = system(command);
     if isempty(strfind(rust_out, 'Success'))
         display_msg('Error Generating Rust code', Constants.ERROR, 'Rust Generation', '');

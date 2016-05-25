@@ -60,16 +60,19 @@ end
 
  function schema = getRust(callbackInfo)
   schema = sl_action_schema;
-  schema.label = ' to Rust';
+  schema.label = 'to Rust';
   schema.callback = @rustCallback;
  end
  
   function rustCallback(callbackInfo)
   try 
       [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
-      fileID = fopen([prog_path filesep 'src' filesep 'config.m'],'a');
-      fprintf(fileID, '\nSOLVER=''NONE'';\nRUST_GEN=1;\nC_GEN=0;');
-      fclose(fileID);
+%       fileID = fopen([prog_path filesep 'src' filesep 'config.m'],'a');
+%       fprintf(fileID, '\nSOLVER=''NONE'';\nRUST_GEN=1;\nC_GEN=0;');
+%       fclose(fileID);
+      assignin('base', 'SOLVER', 'NONE');
+      assignin('base', 'RUST_GEN', 1);
+      assignin('base', 'C_GEN', 0);
       simulink_name = gcs;
       cocoSim(simulink_name);
   catch ME
@@ -86,9 +89,12 @@ end
  function cCallback(callbackInfo)
   try 
       [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
-      fileID = fopen([prog_path filesep 'src' filesep 'config.m'],'a');
-      fprintf(fileID, '\nSOLVER=''NONE'';\nRUST_GEN=0;\nC_GEN=1;');
-      fclose(fileID);
+%       fileID = fopen([prog_path filesep 'src' filesep 'config.m'],'a');
+%       fprintf(fileID, '\nSOLVER=''NONE'';\nRUST_GEN=0;\nC_GEN=1;');
+%       fclose(fileID);
+      assignin('base', 'SOLVER', 'NONE');
+      assignin('base', 'RUST_GEN', 0);
+      assignin('base', 'C_GEN', 1);
       simulink_name = gcs;
       cocoSim(simulink_name);
   catch ME
@@ -116,10 +122,15 @@ end
 
  function zustreCallback(callbackInfo)
   try
+      clear;
       [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
-      fileID = fopen([prog_path filesep 'src' filesep 'config.m'],'a');
-      fprintf(fileID, '\nSOLVER=''Z'';\nRUST_GEN=0;\nC_GEN=0;');
-      fclose(fileID);
+%       fileID = fopen([prog_path filesep 'src' filesep 'config.m'],'a');
+%       fprintf(fileID, '\nSOLVER=''Z'';\nRUST_GEN=0;\nC_GEN=0;');
+%       fclose(fileID);
+      %SOLVER='Z';
+      assignin('base', 'SOLVER', 'Z');
+      assignin('base', 'RUST_GEN', 0);
+      assignin('base', 'C_GEN', 0);
       simulink_name = gcs;
       cocoSim(simulink_name);
   catch ME
@@ -136,10 +147,14 @@ end
 
 function kindCallback(callbackInfo)
   try
+      clear;
       [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
-      fileID = fopen([prog_path filesep 'src' filesep 'config.m'],'a');
-      fprintf(fileID, '\nSOLVER=''K'';\nRUST_GEN=0;\nC_GEN=0;');
-      fclose(fileID);
+%       fileID = fopen([prog_path filesep 'src' filesep 'config.m'],'a');
+%       fprintf(fileID, '\nSOLVER=''K'';\nRUST_GEN=0;\nC_GEN=0;');
+%       fclose(fileID);
+      assignin('base', 'SOLVER', 'K');
+      assignin('base', 'RUST_GEN', 0);
+      assignin('base', 'C_GEN', 0);
       simulink_name = gcs;
       cocoSim(simulink_name);
   catch ME

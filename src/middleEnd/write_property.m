@@ -312,13 +312,14 @@ property_node = app_sprintf(property_node, '\n\t%s = %s(%s);\n', list_parent_cal
 
 
 % Add property
-config;
 for idx_prop=1:numel(list_output_names)
-    if strcmp(SOLVER, 'Z')
-	    prop_str = sprintf('\t--!PROPERTY: %s = true; \n tel\n\n', list_output_names{idx_prop});
-    elseif strcmp(SOLVER, 'K')
-        prop_str = sprintf('\t--%%%%%%%%PROPERTY %s ;\n tel\n\n', list_output_names{idx_prop});
-    end
+    prop_str = sprintf('\t--%%%%%%%%PROPERTY %s; \n tel\n\n', list_output_names{idx_prop});
+
+%     if strcmp(SOLVER, 'Z')
+% 	    prop_str = sprintf('\t--!PROPERTY: %s = true; \n tel\n\n', list_output_names{idx_prop});
+%     elseif strcmp(SOLVER, 'K')
+%         prop_str = sprintf('\t--%%%%%%%%PROPERTY %s ;\n tel\n\n', list_output_names{idx_prop});
+%     end
 	property_node = app_sprintf(property_node, prop_str);
 end
 

@@ -44,6 +44,7 @@ function zustre(lustre_file_name, property_node_names, property_file_base_name, 
 
 
 	config;
+    SOLVER = evalin('base','SOLVER');
 % 	setenv('LUSTREC', lustrec);
 % 	setenv('PYTHONPATH', [pythonpath_env ':' spacer]);
 % 	setenv('LD_LIBRARY_PATH', spacer);

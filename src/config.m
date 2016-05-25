@@ -29,15 +29,3 @@ SEAHORN = '/Users/teme/Documents/GitHub/seahorn/build/run/bin/sea';
 % C_GEN = 0; % switch to 1 to generate c code
 % MCDC_TEST = 0; % switch to 1 to generate mcdc testRUST_GEN=1;
 
-
-
-
-SOLVER='Z';
-RUST_GEN=0;
-C_GEN=0;
-SOLVER='Z';
-RUST_GEN=0;
-C_GEN=0;
-SOLVER='K';
-RUST_GEN=0;
-C_GEN=0;
