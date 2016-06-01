@@ -7,6 +7,7 @@ CoCoSim is a modular, integrated analysis framework for Simulink(c) models. It c
 
 CoCoSim is currently under development. We welcome any feedback and bug report.
 
+[![ScreenCast of CoCoSim](http://i.imgur.com/itLte0X.png)](https://youtu.be/iqwVCiU46Y4)
 
 ## Installation ##
 
@@ -58,4 +59,4 @@ More information about CoCoSim can be found [here](https://github.com/coco-team/
 
 ##Contributors##
 
-* Arnaud Dieumegard (February - August 2015)
+* Arnaud Dieumegard (Fabruary - August 2015)
