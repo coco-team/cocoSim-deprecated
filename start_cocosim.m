@@ -19,8 +19,21 @@ warning ('off','all');
 [cocoSim_path, function_name, ext] = fileparts(mfilename('fullpath'));
 disp('... adding cocoSim path')
 addpath(fullfile(cocoSim_path, 'src'));
+config;
+if strcmp(ZUSTRE, 'PATH')
+    disp('Warning: Path to Zustre is NOT configured in src/config.m')
+end
+if strcmp(LUSTREC, 'PATH')
+    disp('Warning: Path to LUSTREC is NOT configured in src/config.m')
+end
+if strcmp(Z3, 'PATH')
+    disp('Warning: Path to Z3 is NOT configured in src/config.m')
+end
+if strcmp(KIND2, 'PATH')
+    disp('Warning: Path to KIND2 is NOT configured in src/config.m')
+end
 disp('... refreshing customizations')
 addpath(fullfile(cocoSim_path, '.'));
 sl_refresh_customizations;
 clear;
-disp(' ... CoCoSim is Ready');
+disp('... CoCoSim is Ready');
