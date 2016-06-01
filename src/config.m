@@ -20,10 +20,10 @@
 % Configuration file for the backend solvers
 
 % 
-LUSTREC = 'PATH';
-ZUSTRE = 'PATH';
-Z3 = 'PATH';
-KIND2 = 'PATH';
-SEAHORN = 'PATH';
+% LUSTREC = 'PATH';
+% ZUSTRE = 'PATH';
+% Z3 = 'PATH';
+% KIND2 = 'PATH';
+% SEAHORN = 'PATH';
 
 
