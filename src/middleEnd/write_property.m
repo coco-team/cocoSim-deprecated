@@ -96,7 +96,6 @@ assertions = '';
 % Get observer inputs
 for idx_in=1:numel(block.pre)
 	in_type = get_param(block.pre{idx_in}, 'BlockType');
-
 	inport_block = obs_inter_blk{idx_in + 1};
 	inport_block_full_name = regexp(inport_block.name, '/', 'split');
 	pre_block_level = Utils.get_pre_block_level(inport_block.origin_name, inter_blk);
@@ -123,7 +122,8 @@ for idx_in=1:numel(block.pre)
 
 			cpt_in = cpt_in + 1;
 		end
-	else
+    else
+        
 		% Keep track of the inputs that are not plugged on inputs of the observed block
 		pre_block_idx = get_block_index(parent_subsystem, block.prename{idx_in});
         
@@ -154,8 +154,7 @@ for idx_in=1:numel(block.pre)
 			xml_trace.add_Input(list_in_outport{cpt_not_in}, inport_block.origin_name, 1, idx_dim);
 
 			cpt_not_in = cpt_not_in + 1;
-		end
-
+        end
 %		obs_inputs_outputs_idxs{cpt_not_in} = idx_in;
 %		obs_inputs_outputs_dims{cpt_not_in} = block.srcport_size(idx_in);
 %		obs_inputs_outputs_dt{cpt_not_in} = Utils.get_lustre_dt(block.inports_dt{idx_in});
@@ -214,6 +213,7 @@ for idx_block=1:obs_nblk
 end
 list_output = Utils.concat_delim(list_outputs, ';\n\t');
 header = app_sprintf(header, '%s);\n', list_output);
+
 % Get observer variables
 cpt_var=1;
 cptn=1;
@@ -275,12 +275,11 @@ extern_functions = '';
 properties_nodes = '';
 additional_variables = '';
 
+
 [let_tel_code_string extern_s_functions_string extern_functions properties_nodes additional_variables] = ...
     write_code(obs_nblk, obs_inter_blk, obs_blks, main_blks, ...
-    main_blk, nom_lustre_file, obs_idx_subsys, false, trace);
-
-
-
+    main_blk, nom_lustre_file, obs_idx_subsys, false, trace, xml_trace);
+ 
 header = app_sprintf(header, additional_variables);
 
 property_node = app_sprintf(header, 'let\n%s%s', assertions, let_tel_code_string);
@@ -314,12 +313,6 @@ property_node = app_sprintf(property_node, '\n\t%s = %s(%s);\n', list_parent_cal
 % Add property
 for idx_prop=1:numel(list_output_names)
     prop_str = sprintf('\t--%%%%%%%%PROPERTY %s; \n tel\n\n', list_output_names{idx_prop});
-
-%     if strcmp(SOLVER, 'Z')
-% 	    prop_str = sprintf('\t--!PROPERTY: %s = true; \n tel\n\n', list_output_names{idx_prop});
-%     elseif strcmp(SOLVER, 'K')
-%         prop_str = sprintf('\t--%%%%%%%%PROPERTY %s ;\n tel\n\n', list_output_names{idx_prop});
-%     end
 	property_node = app_sprintf(property_node, prop_str);
 end
 

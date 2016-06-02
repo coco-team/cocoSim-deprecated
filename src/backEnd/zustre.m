@@ -45,9 +45,6 @@ function zustre(lustre_file_name, property_node_names, property_file_base_name, 
 
 	config;
     SOLVER = evalin('base','SOLVER');
-% 	setenv('LUSTREC', lustrec);
-% 	setenv('PYTHONPATH', [pythonpath_env ':' spacer]);
-% 	setenv('LD_LIBRARY_PATH', spacer);
 
 	[path file ext] = fileparts(lustre_file_name);
 
@@ -78,9 +75,12 @@ function zustre(lustre_file_name, property_node_names, property_file_base_name, 
 				if strcmp(answer, 'SAFE')
 					set_param(property_node_names{idx_prop}.origin_block_name, 'BackgroundColor', 'green');
 					set_param(property_node_names{idx_prop}.origin_block_name, 'ForegroundColor', 'green');
-				elseif strcmp(answer, 'UNKNOWN')
+                elseif strcmp(answer, 'TIMEOUT')
 					set_param(property_node_names{idx_prop}.origin_block_name, 'BackgroundColor', 'gray');
 					set_param(property_node_names{idx_prop}.origin_block_name, 'ForegroundColor', 'gray');
+				elseif strcmp(answer, 'UNKNOWN')
+					set_param(property_node_names{idx_prop}.origin_block_name, 'BackgroundColor', 'yellow');
+					set_param(property_node_names{idx_prop}.origin_block_name, 'ForegroundColor', 'yellow');
 				else
 					set_param(property_node_names{idx_prop}.origin_block_name, 'BackgroundColor', 'red');
 					set_param(property_node_names{idx_prop}.origin_block_name, 'ForegroundColor', 'red');

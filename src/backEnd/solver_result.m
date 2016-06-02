@@ -22,6 +22,7 @@ function [answer, cex] = solver_result(solver, xml_result, property_node_name, p
 	cex = '';
 
 	prop_file_name = [property_file_base_name '_' property_node_name '.xml'];
+
 	fid = fopen(prop_file_name, 'w');
 	fprintf(fid, xml_result);
 	fclose(fid);
@@ -30,9 +31,15 @@ function [answer, cex] = solver_result(solver, xml_result, property_node_name, p
 	if s.bytes ~= 0
 		xml_doc = xmlread(prop_file_name);
 		xml_properties = xml_doc.getElementsByTagName('Property');
+        logs = xml_doc.getElementsByTagName('Log');
+        for idx=0:(logs.getLength-1)
+            log = logs.item(idx);
+            disp(log)
+        end
 		for idx=0:(xml_properties.getLength-1)
     		prop = xml_properties.item(idx);
     		answer = prop.getElementsByTagName('Answer').item(0).getTextContent;
+           
             if strcmp(solver, 'KIND2')        
                 if strcmp(answer, 'valid')  
                     answer = 'SAFE';

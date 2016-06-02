@@ -21,6 +21,7 @@
 
 function cocoSim(model_full_path, const_files, default_Ts, trace, dfexport)
 
+CS_LOG = 0;
 
 % Checking the number of arguments
 if ~exist('trace', 'var')
@@ -185,6 +186,7 @@ display_msg('Internal representation building', Constants.INFO, 'cocoSim', '');
 
 [inter_blk blks complex_structs]= mk_internalRep(file_name, dfexport, models, subsystems, mat_files, default_Ts);
 
+% if CS_LOG==1 celldisp(inter_blk); end
 
 % Creation of the traceability XML node
 xml_trace = XML_Trace(model_full_path, trace_file_name);

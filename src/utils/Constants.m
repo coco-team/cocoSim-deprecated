@@ -20,6 +20,7 @@ classdef Constants
 		sat_dyn_ref = sprintf('Saturation Dynamic');
 		zero_pole_ref = sprintf('DiscretizedZeroPole');
 		zero_pole_discrete = sprintf('DiscreteZeroPole');
+  
 
 		compare_to_zero = sprintf('Compare To Zero');
 		compare_to_constant = sprintf('Compare To Constant');
@@ -31,11 +32,9 @@ classdef Constants
 		detect_rise_nonneg = sprintf('Detect Rise Nonnegative');
 		detect_fall_neg = sprintf('Detect Fall Negative');
 		detect_fall_nonpos = sprintf('Detect Fall Nonpositive');
-
-        detect_implications = sprintf('Design Verifier Implies');
         
+        % props
 		observer = 'Observer';
-        
         assume = 'Assumptions'
         ensure = 'Ensures'
         
@@ -64,12 +63,15 @@ classdef Constants
 		DT_CONV = 'DataTypeConversion';
 		DISCRETE_FILTER = 'DiscreteFilter';
 		LOOKUP_ND_DIRECT = 'LookupNDDirect';
+        IMPLIES = 'CoCoSim-Implies'
 
 		ROUNDED_BLOCKS = {Constants.SWITCH, Constants.GAIN, Constants.ABS, Constants.PRODUCT, Constants.MINMAX, Constants.DTI, Constants.SUM, Constants.SATURATION, Constants.MATH, Constants.MULTIPORTSWITCH, Constants.DT_CONV, Constants.DISCRETE_FILTER};
 
 		ZERO_ROUNDED_BLOCKS = {Constants.SWITCHCASE, Constants.ASSIGNMENT, Constants.SELECTOR, Constants.DT_CONV, Constants.LOOKUP_ND_DIRECT};
 
-		REF_MASKS = {Constants.sat_dyn_ref, Constants.zero_pole_ref, Constants.compare_to_zero, Constants.compare_to_constant};
+		REF_MASKS = {Constants.sat_dyn_ref, Constants.zero_pole_ref, ...
+            Constants.compare_to_zero, Constants.compare_to_constant, ...
+            Constants.IMPLIES};
 
 		PROPERTY_BLOCKS = {Constants.observer};
         

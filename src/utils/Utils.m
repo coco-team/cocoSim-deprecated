@@ -485,7 +485,7 @@ classdef Utils
 		[res remain] = strtok(str);
 		if strcmp(res, to_be_replaced)
 			res = replace_with;
-		end
+        end
 		if numel(remain) ~= 0
 			res = [res ' ' Utils.strtok_replace(remain, to_be_replaced, replace_with)];
 		end

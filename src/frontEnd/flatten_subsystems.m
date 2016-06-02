@@ -27,7 +27,6 @@ for idx_sub=numel(new_inter_blk):-1:2
 
 	% Unfold SubSystem if it is virtual
 	if new_inter_blk{idx_sub}{1}.isVirtual
-
 		sub_pre = new_inter_blk{idx_sub}{1}.pre;
 		sub_prename = new_inter_blk{idx_sub}{1}.prename;
 		sub_srcport = new_inter_blk{idx_sub}{1}.srcport;
@@ -49,7 +48,8 @@ for idx_sub=numel(new_inter_blk):-1:2
 				parent_sub_idx = idx_new_blks;
 				break
 			end
-		end
+        end
+        
 		if parent_sub_idx == 0
 			parent_sub_idx = 1;
 		end

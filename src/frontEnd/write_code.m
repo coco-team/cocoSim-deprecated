@@ -17,7 +17,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [output_string, extern_s_functions_string, extern_functions, properties_nodes, additional_variables, property_node_names, extern_matlab_functions, c_code] = ... 
     write_code(nblk, inter_blk, blks, main_blks, main_blk, nom_lustre_file, idx_subsys, print_node, trace, xml_trace)
-   
 
 output_string = '';
 extern_s_functions_string = '';
@@ -483,21 +482,22 @@ for idx_block=1:nblk
 
     elseif (strcmp(inter_blk{idx_block}.type, 'SubSystem') || strcmp(inter_blk{idx_block}.type, 'ModelReference')) && not(idx_block == 1)
            
-		   mask = get_param(blks{idx_block}, 'Mask');
-          
-         
-		if strcmp(mask, 'on') && ~strcmp(inter_blk{idx_block}.mask_type, '')
+		mask = get_param(blks{idx_block}, 'Mask');
 
+		if strcmp(mask, 'on') && ~strcmp(inter_blk{idx_block}.mask_type, '')
 			%%%%%%%%%%%% Reference masked blocks %%%%%%%%%%%%%
 			if Constants.is_ref_mask(inter_blk{idx_block}.mask_type)
-
+                
+                %%%%%%%%%%%%%% Implication %%%%%%%%%%%%%%%%
+                if strcmp(inter_blk{idx_block}.mask_type, 'CoCoSim-Implies')
+		            block_string = write_logic(inter_blk{idx_block}, 'IMPLIES', inter_blk);
+                
 				%%%%%%%%%%%%%% Dynamic saturation %%%%%%%%%%%%%%%%
-				if strcmp(inter_blk{idx_block}.mask_type, Constants.sat_dyn_ref)
+                elseif strcmp(inter_blk{idx_block}.mask_type, Constants.sat_dyn_ref)
 					outMin = get_param(blks{idx_block}, 'OutMin');
 					outMin = evalin('base', outMin);
 					outMax = get_param(blks{idx_block}, 'OutMax');
 					outMax = evalin('base', outMax);
-
 					block_string = write_saturation_dynamic(inter_blk{idx_block}, inter_blk, outMin, outMax);
 					
 				%%%%%%%%%%%%%% Zero Pole %%%%%%%%%%%%%%%%%%%
@@ -509,14 +509,11 @@ for idx_block=1:nblk
 					poles = evalin('base', poles);
 					gain = get_param(blks{idx_block}, 'Gain');
 					gain = evalin('base', gain);
-
 					block_string = write_zero_pole(inter_blk{idx_block}, inter_blk, zero, poles, gain);
-					
-          
-                    
+				                    
 				%%%%%%%%%%%%% CompareTo family of blocks %%%%%%%%%%%%
 				elseif Constants.isCompareToMask(inter_blk{idx_block}.mask_type)
-
+                   
 					relop = get_param(blks{idx_block}, 'relop');
 					if strcmp(inter_blk{idx_block}.mask_type, Constants.compare_to_constant)
 						const = evalin('base', get_param(blks{idx_block}, 'const'));
@@ -527,13 +524,13 @@ for idx_block=1:nblk
 						else
 							const = 0;
 						end
-					end
+                    end
+                    
 					outdtstr = get_param(blks{idx_block}, 'OutDataTypeStr');
+                    [block_string, var_str] = write_compareto(inter_blk{idx_block}, inter_blk, relop, const, outdtstr, xml_trace);
 
-					[block_string, var_str] = write_compareto(inter_blk{idx_block}, inter_blk, relop, const, outdtstr, xml_trace);
-					
-				else
-
+                else
+                    
 					error_msg = ['Unhandled masked block: ' inter_blk{idx_block}.origin_name{1}];
 					error_msg = [error_msg '\nMask type: ' inter_blk{idx_block}.mask_type];
 					display_msg(error_msg, Constants.ERROR, 'write_code', '');
@@ -555,6 +552,7 @@ for idx_block=1:nblk
                      property_node_names{nb}.prop_name = property_name;
 				     property_node_names{nb}.origin_block_name = inter_blk{idx_block}.origin_name{1};
 				     property_node_names{nb}.annotation = inter_blk{idx_block}.annotation;
+                     
                 catch ME
                     disp(ME.message)
                    if strcmp(ME.identifier, 'MATLAB:badsubscript')
@@ -565,34 +563,6 @@ for idx_block=1:nblk
                      display_msg(ME.message, Constants.ERROR, 'cocoSim', '');
                    end
                 end
-            
-%                 %%%%%%%%%%%%%%%%%% Assumption %%%%%%%%%%%%%%%%%
-% 			elseif Constants.is_assume(inter_blk{idx_block}.mask_type)
-%                 
-% 				annot_type = get_param(blks{idx_block}, 'AnnotationType');
-% 				observer_type = get_param(blks{idx_block}, 'RequiresType');
-% 
-% 				[property_node extern_funs property_name] = write_cocospec(inter_blk{idx_block}, inter_blk, main_blk, main_blks, nom_lustre_file, print_node, trace, annot_type, observer_type, xml_trace);
-% 				properties_nodes = [properties_nodes property_node];
-%             
-% 				nb = numel(property_node_names)+1;
-% 				property_node_names{nb}.prop_name = property_name;
-% 				property_node_names{nb}.origin_block_name = inter_blk{idx_block}.origin_name{1};
-% 				property_node_names{nb}.annotation = inter_blk{idx_block}.annotation;
-%                 
-%                 %%%%%%%%%%%%%%%%%% Ensures %%%%%%%%%%%%%%%%%
-% 			elseif Constants.is_ensure(inter_blk{idx_block}.mask_type)
-% 
-% 				annot_type = get_param(blks{idx_block}, 'AnnotationType');
-% 				observer_type = get_param(blks{idx_block}, 'EnsuresType');
-% 
-% 				[property_node extern_funs property_name] = write_cocospec(inter_blk{idx_block}, inter_blk, main_blk, main_blks, nom_lustre_file, print_node, trace, annot_type, observer_type, xml_trace);
-% 				properties_nodes = [properties_nodes property_node];
-%             
-% 				nb = numel(property_node_names)+1;
-% 				property_node_names{nb}.prop_name = property_name;
-% 				property_node_names{nb}.origin_block_name = inter_blk{idx_block}.origin_name{1};
-% 				property_node_names{nb}.annotation = inter_blk{idx_block}.annotation;
 
 			%%%%%%%%%%%%%%%%% Detect %%%%%%%%%%
 			elseif Constants.isDetectMask(inter_blk{idx_block}.mask_type)

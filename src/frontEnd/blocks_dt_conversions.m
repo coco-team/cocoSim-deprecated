@@ -295,7 +295,7 @@ function conversion = compute_conversion(block)
                     end
                     
                 %%%%%%%%%%%%%%% Implications %%%%%%%%%%%%
-				elseif strcmp(block.mask_type, 'Design Verifier Implies')
+				elseif strcmp(block.mask_type, 'CoCoSim-Implies')
                         for idx_in=1:numel(block.inports_dt)
                             conversion{idx_in} = 'no';
                         end

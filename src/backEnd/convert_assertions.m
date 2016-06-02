@@ -1,5 +1,5 @@
 function res_assertions = convert_assertions(obs_inter_blk, list_in, list_in_outport, xml_trace)
-
+    
 	list_inport = '';
 	cpt_in = 1;
 	for idx_block=2:numel(obs_inter_blk)
@@ -20,7 +20,9 @@ function res_assertions = convert_assertions(obs_inter_blk, list_in, list_in_out
 		strings = regexp(att_format_string, '\n', 'split');
 		for idx=1:numel(strings{1})
 			annot = strings{1}(idx);
-			if ~strcmp(annot, '') && strncmp(annot, 'assert ', 7) && strcmp(annot{1}(end), ';')
+            
+			if ~strcmp(annot, '') && strncmp(annot, 'assume ', 7) && strcmp(annot{1}(end), ';')
+                
 				assertion = annot{1}(8:(end -1));
 				assertions{numel(assertions) + 1} = assertion;
 			end
@@ -34,13 +36,14 @@ function res_assertions = convert_assertions(obs_inter_blk, list_in, list_in_out
 		strings = regexp(value, '\n', 'split');
 		for idx=1:numel(strings)
 			annot = strings{idx};
-			if ~strcmp(annot, '') && strncmp(annot, 'assert ', 7) && strcmp(annot(end), ';')
+			if ~strcmp(annot, '') && strncmp(annot, 'assume ', 7) && strcmp(annot(end), ';')
+               
 				assertion = annot(8:(end -1));
 				assertions{numel(assertions) + 1} = assertion;
 			end
 		end
-	end
-
+    end
+   
 	% Sort list_inport_assert_var_names by length (shorter first)
 	sorted = '';
 	[lengths order] = sort(cellfun(@length, list_inport_assert_var_names));
@@ -54,6 +57,7 @@ function res_assertions = convert_assertions(obs_inter_blk, list_in, list_in_out
 
 		% Remove unnecessary inputs
 		new_list_inport = '';
+ 
 		cpt = 1;
 		for idx_in=numel(list_inport):-1:1
 			if strfind(assertion, list_inport_order{idx_in})
@@ -73,7 +77,7 @@ function res_assertions = convert_assertions(obs_inter_blk, list_in, list_in_out
 		assertion = convert_operators(assertion);
 		assertion = flatten_assertion(assertion, new_list_inport, new_inport_dims, var_names);
 		assertion = convert_input_names(assertion, new_list_inport, var_names);
-
+        
 		% Set result
 		for idx_assert=1:numel(assertion)
 			res_assertions = app_sprintf(res_assertions, '\tassert %s;\n', assertion{idx_assert});
@@ -126,7 +130,6 @@ end
 % the assertion each one for a specific dimension
 function result = convert_input_names(assertion, new_list_inport, var_names)
 	result = '';
-	
 	maxi = max(cellfun(@length, var_names));
 	limit = 1;
 	for idx_in=numel(new_list_inport):-1:1
@@ -134,16 +137,17 @@ function result = convert_input_names(assertion, new_list_inport, var_names)
 			limit = maxi;
 			break;
 		end
-	end
+    end
 
 	for idx_dim=1:limit
 		result{idx_dim} = assertion;
 		for idx_in=numel(new_list_inport):-1:1
+    
 			if numel(var_names{idx_in}) ~= 1
 				result{idx_dim} = Utils.strtok_replace(result{idx_dim}, new_list_inport{idx_in}, var_names{idx_in}{idx_dim});
 			else
 				result{idx_dim} = Utils.strtok_replace(result{idx_dim}, new_list_inport{idx_in}, var_names{idx_in}{1});
 			end
 		end
-	end
+    end
 end

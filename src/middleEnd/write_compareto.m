@@ -65,7 +65,9 @@
 %
 %% Code
 %
-function [output_string add_vars] = write_compareto(unbloc, inter_blk, operator, const, outdtstr, xml_trace)
+
+function [output_string, add_vars] = write_compareto(unbloc, inter_blk, operator, const, ...
+    outdtstr, xml_trace)
 
 output_string = '';
 add_vars = '';
@@ -73,6 +75,7 @@ add_vars = '';
 [list_out] = list_var_sortie(unbloc);
 [list_in] = list_var_entree(unbloc, inter_blk);
 in_dt = Utils.get_lustre_dt(unbloc.inports_dt{1});
+
 if strcmp(in_dt, 'bool')
 	[list_const] = Utils.list_cst(const, 'real');
 else
@@ -86,6 +89,8 @@ not_op = strcmp(operator, '~=');
 if strcmp(operator, '==') || strcmp(operator, '~=')
 	operator = '=';
 end
+
+
 
 is_cpx = false;
 if ~isreal(const) || unbloc.in_cpx_sig(1)

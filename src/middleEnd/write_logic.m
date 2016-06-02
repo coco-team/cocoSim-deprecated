@@ -61,6 +61,12 @@ else
 			list_in_nth = Utils.get_elem_nth_shift(list_in, idx_dim, unbloc.dstport_size(1));
 			right_string = Utils.concat_delim(list_in_nth, [' ' lower(operator) ' ']);
 			output_string = app_sprintf(output_string, '\t%s = %s;\n', list_out{idx_dim}, right_string);
+        end
+    elseif strcmp(operator, 'IMPLIES')
+		for idx_dim=1:unbloc.dstport_size
+			list_in_nth = Utils.get_elem_nth_shift(list_in, idx_dim, unbloc.dstport_size(1));
+			right_string = Utils.concat_delim(list_in_nth, [' ' '=>' ' ']);
+			output_string = app_sprintf(output_string, '\t%s = %s;\n', list_out{idx_dim}, right_string);
 		end
 	elseif strcmp(operator, 'NXOR')
 		for idx_dim=1:unbloc.dstport_size
