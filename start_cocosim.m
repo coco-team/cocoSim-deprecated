@@ -3,9 +3,9 @@
 % Copyright (C) 2014-2015  Carnegie Mellon University
 % Original contribution from ONERA
 %
-%    cocoSim  is free software: you can redistribute it 
-%    and/or modify it under the terms of the GNU General Public License as 
-%    published by the Free Software Foundation, either version 3 of the 
+%    cocoSim  is free software: you can redistribute it
+%    and/or modify it under the terms of the GNU General Public License as
+%    published by the Free Software Foundation, either version 3 of the
 %    License, or (at your option) any later version.
 %
 %    cocoSim compiler + verifier is distributed in the hope that it will be useful,
@@ -32,6 +32,10 @@ end
 if strcmp(KIND2, 'PATH')
     disp('Warning: Path to KIND2 is NOT configured in src/config.m')
 end
+if strcmp(JKIND, 'PATH')
+    disp('Warning: Path to JKIND is Not configured in src/config/m')
+end
+
 disp('... refreshing customizations')
 addpath(fullfile(cocoSim_path, '.'));
 sl_refresh_customizations;
