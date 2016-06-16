@@ -17,21 +17,21 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-function kind2(lustre_file_name, property_node_names, property_file_base_name, model_inter_blk)
+function jkind(lustre_file_name, property_node_names, property_file_base_name, model_inter_blk)
      
 	[path file ext] = fileparts(lustre_file_name);
     config;
     
     for idx_prop=1:numel(property_node_names)
-        if exist(KIND2,'file') && exist(Z3,'file')
+        if exist(JKIND,'file')
             date_value = datestr(now, 'ddmmyyyyHHMMSS');
-            command = sprintf('%s --z3_bin %s -xml %s', KIND2, Z3, lustre_file_name);
-            disp(['KIND2_COMMAND ' command])
-            [status, kind2_out] = system(command);
-            disp('   -- KIND_OUT --')
-            disp(kind2_out)
-            disp('   -- KIND_OUT --')
-            [answer cex] = solver_result('KIND2', kind2_out, property_node_names{idx_prop}.prop_name, property_file_base_name);
+            command = sprintf('%s --xml_to_stdout -main %s %s', JKIND, property_node_names{idx_prop}.prop_name, lustre_file_name);
+            disp(['JKIND_COMMAND ' command])
+            [status, jkind_out] = system(command);
+            disp('   -- JKIND_OUT --')
+            disp(jkind_out)
+            disp('   -- JKIND_OUT --')
+            [answer cex] = solver_result('JKIND', jkind_out, property_node_names{idx_prop}.prop_name, property_file_base_name);
             % Change the observer block display according to answer
             display = sprintf('color(''black'')\n');
             display = [display sprintf('text(0.5, 0.5, [''Property: '''''' get_param(gcb,''name'') ''''''''], ''horizontalAlignment'', ''center'');\n')];
@@ -62,7 +62,7 @@ function kind2(lustre_file_name, property_node_names, property_file_base_name, m
 %                 end
             end
         else
-            msg = 'Running Kind2: Impossible to find Kind2 and/or Z3';
+            msg = 'Running JKind: Impossible to find JKind and/or Z3';
             display_msg(msg, Constants.ERROR, 'Kind2', '');
         end
     end

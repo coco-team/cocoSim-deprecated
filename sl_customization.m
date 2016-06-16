@@ -14,25 +14,77 @@ end
   schema.statustip = 'Modular Analysis Engine';
   schema.autoDisableWhen = 'Busy';
   
-  schema.childrenFcns = {@getVerify, @getProps, @getCompiler};
+  schema.childrenFcns = {@getVerify, @viewContract @getProps, ...
+                        @getPP,  @getCompiler};
  end
  
 
-%  function schema = getPP(callbackInfo)     
-%   schema = sl_action_schema;
-%   schema.label = 'CoCoSim Pre-Processor'; 
-%   schema.callback = @pp;
-%  end
-%  
-%  function pp(callbackInfo)
-%      try
-%       [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
-%       simulink_name = gcs;
-%       cocosim_pp(simulink_name);
-%      catch ME
-%          disp(ME.message)
-%      end
-%  end
+ function schema = getPP(callbackInfo)     
+  schema = sl_action_schema;
+  schema.label = 'CoCoSim Pre-Processor'; 
+  schema.callback = @ppCallBack;
+ end
+ 
+ function ppCallBack(callbackInfo)
+     try
+      [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
+      addpath(fullfile(prog_path, 'pp'));
+      simulink_name = gcs;
+      pp_model = cocosim_pp(simulink_name);
+      load_system(char(pp_model));
+     catch ME
+         disp(ME.message)
+     end
+ end
+ 
+function cocoSimDialog(message)
+msg= sprintf('CoCoSpec in: %s', message);
+d = dialog('Position',[300 300 250 150],'Name','CoCoSim');
+
+txt = uicontrol('Parent',d,...
+    'Style','text',...
+    'Position',[20 80 210 40],...
+    'String',msg);
+
+btn = uicontrol('Parent',d,...
+    'Position',[85 20 70 25],...
+    'String','Close',...
+    'Callback','delete(gcf)');
+end
+
+function schema = viewContract(callbackInfo)     
+  schema = sl_action_schema;
+  schema.label = 'View generated CoCoSpec'; 
+  schema.callback = @viewContractCallback;
+ end
+ 
+  function viewContractCallback(callbackInfo)
+  try 
+      simulink_name = gcs;
+      contract_name = [simulink_name '_COCOSPEC'];
+      try
+         CONTRACT = evalin('base', contract_name);
+         disp(['CONTRACT LOCATION ' char(CONTRACT)])
+         if isunix
+             try
+               cmd = sprintf('open -a Emacs %s', char(CONTRACT));
+               disp(cmd)
+               [status, out] = system(cmd);
+             catch ME
+                 cocoSimDialog(CONTRACT);
+             end
+         else
+             cocoSimDialog(CONTRACT);
+         end
+      catch ME
+          disp(ME.message)
+          msg = sprintf('No CoCoSpec Contract for %s \n Verify the model with Zustre', simulink_name);
+          warndlg(msg,'CoCoSim: Warning');
+      end
+  catch ME
+      disp(ME.message)
+  end
+  end
  
  function schema = getProps(callbackInfo)     
   schema = sl_action_schema;
@@ -110,7 +162,7 @@ end
   schema.statustip = 'Verify the current model with CoCoSim';
   schema.autoDisableWhen = 'Busy';
   
-  schema.childrenFcns = {@getZustre, @getKind};
+  schema.childrenFcns = {@getZustre, @getKind, @getJKind};
  end
  
 
@@ -124,10 +176,6 @@ end
   try
       clear;
       [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
-%       fileID = fopen([prog_path filesep 'src' filesep 'config.m'],'a');
-%       fprintf(fileID, '\nSOLVER=''Z'';\nRUST_GEN=0;\nC_GEN=0;');
-%       fclose(fileID);
-      %SOLVER='Z';
       assignin('base', 'SOLVER', 'Z');
       assignin('base', 'RUST_GEN', 0);
       assignin('base', 'C_GEN', 0);
@@ -149,9 +197,6 @@ function kindCallback(callbackInfo)
   try
       clear;
       [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
-%       fileID = fopen([prog_path filesep 'src' filesep 'config.m'],'a');
-%       fprintf(fileID, '\nSOLVER=''K'';\nRUST_GEN=0;\nC_GEN=0;');
-%       fclose(fileID);
       assignin('base', 'SOLVER', 'K');
       assignin('base', 'RUST_GEN', 0);
       assignin('base', 'C_GEN', 0);
@@ -160,7 +205,28 @@ function kindCallback(callbackInfo)
   catch ME
       disp(ME.message)
   end
- end
+end
+ 
+ 
+function schema = getJKind(callbackInfo)     
+  schema = sl_action_schema;
+  schema.label = 'JKind';
+  schema.callback = @jkindCallback;
+end 
+
+function jkindCallback(callbackInfo)
+  try
+      clear;
+      [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
+      assignin('base', 'SOLVER', 'J');
+      assignin('base', 'RUST_GEN', 0);
+      assignin('base', 'C_GEN', 0);
+      simulink_name = gcs;
+      cocoSim(simulink_name);
+  catch ME
+      disp(ME.message)
+  end
+end
  
 %  function schema = getSeaHorn(callbackInfo)
 %   schema = sl_action_schema;

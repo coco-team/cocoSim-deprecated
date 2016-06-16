@@ -40,7 +40,7 @@ function [answer, cex] = solver_result(solver, xml_result, property_node_name, p
     		prop = xml_properties.item(idx);
     		answer = prop.getElementsByTagName('Answer').item(0).getTextContent;
            
-            if strcmp(solver, 'KIND2')        
+            if strcmp(solver, 'KIND2') || strcmp(solver, 'JKIND')      
                 if strcmp(answer, 'valid')  
                     answer = 'SAFE';
                 elseif strcmp(answer, 'falsifiable')

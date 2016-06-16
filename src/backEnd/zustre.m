@@ -37,13 +37,7 @@
 % TODO: return status, modularisation of the tool
 function zustre(lustre_file_name, property_node_names, property_file_base_name, model_inter_blk, xml_trace, smt_file)
 
-	% Get original environment variables
-	%lustrec_env = getenv('LUSTREC');
-	%pythonpath_env = getenv('PYTHONPATH');
-	%ld_lib_path_env = getenv('LD_LIBRARY_PATH');
-
-
-	config;
+config;
     SOLVER = evalin('base','SOLVER');
 
 	[path file ext] = fileparts(lustre_file_name);
@@ -59,22 +53,27 @@ function zustre(lustre_file_name, property_node_names, property_file_base_name, 
             else
                 command = sprintf('%s "%s" --node %s --xml --cg', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name);
             end
-            disp(command)
+            disp(['ZUSTRE_COMMAND ' command])
             [status, zustre_out] = system(command);
+            disp('   -- ZUSTRE_OUT --')
             disp(zustre_out)
+            disp('   -- ZUSTRE_OUT --')
 			if status == 0
-				[answer cex] = check_zustre_result(zustre_out, property_node_names{idx_prop}.prop_name, property_file_base_name);
-				% Change the observer block display according to answer
+				[answer, cex, cocospec] = check_zustre_result(zustre_out, property_node_names{idx_prop}.prop_name, property_file_base_name);
+		
+                % Change the observer block display according to answer
 				display = sprintf('color(''black'')\n');
 				display = [display sprintf('text(0.5, 0.5, [''Property: '''''' get_param(gcb,''name'') ''''''''], ''horizontalAlignment'', ''center'');\n')];
 				display = [display 'text(0.99, 0.03, ''{\bf\fontsize{12}'];
-				display = [display char(upper(answer))];
+                display = [display char(upper(answer))];
 				display = [display '}'', ''hor'', ''right'', ''ver'', ''bottom'', ''texmode'', ''on'');'];
 				obs_mask = Simulink.Mask.get(property_node_names{idx_prop}.annotation);
 				obs_mask.Display = sprintf('%s',display);
+                disp(cocospec)
 				if strcmp(answer, 'SAFE')
 					set_param(property_node_names{idx_prop}.origin_block_name, 'BackgroundColor', 'green');
 					set_param(property_node_names{idx_prop}.origin_block_name, 'ForegroundColor', 'green');
+                    assignin('base', [file '_COCOSPEC'], cocospec); % assign a cocospec file
                 elseif strcmp(answer, 'TIMEOUT')
 					set_param(property_node_names{idx_prop}.origin_block_name, 'BackgroundColor', 'gray');
 					set_param(property_node_names{idx_prop}.origin_block_name, 'ForegroundColor', 'gray');
@@ -132,20 +131,14 @@ function zustre(lustre_file_name, property_node_names, property_file_base_name, 
 	else
 		msg = 'Running Zustre: Impossible to find Zustre';
 		display_msg(msg, Constants.INFO, 'Zustre property checking', '');
-	end
-
-	% Restore environment variables
-	%setenv('LUSTREC', lustrec_env);
-	%setenv('PYTHONPATH', pythonpath_env);
-	%setenv('LD_LIBRARY_PATH', ld_lib_path_env);
-
+    end
 end
 
 % Parse the XML output of Zustre and return the status of the result (SAFE, CEX, UNKNOWN)
-function [answer, cex] = check_zustre_result(zustre_out, property_node_name, property_file_base_name)
+function [answer, cex, cocospec] = check_zustre_result(zustre_out, property_node_name, property_file_base_name)
 	answer = '';
 	cex = '';
-
+    cocospec = '';
 	prop_file_name = [property_file_base_name '_' property_node_name '.xml'];
 	fid = fopen(prop_file_name, 'w');
 	fprintf(fid, zustre_out);
@@ -170,7 +163,9 @@ function [answer, cex] = check_zustre_result(zustre_out, property_node_name, pro
 					msg = [msg property_node_name '\n'];
 					msg = [msg 'Zustre output: \n' zustre_out];
 					display_msg(msg, Constants.WARNING, 'Zustre property checking', '');
-				end
+                end
+            elseif strcmp(answer, 'SAFE')
+                cocospec = prop.getElementsByTagName('contractFile').item(0).getTextContent;
 			end
 		end
 	end

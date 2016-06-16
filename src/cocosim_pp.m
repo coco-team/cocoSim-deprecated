@@ -1,4 +1,4 @@
-function [] = cocosim_pp(file_name, constant_file, varargin)
+function new_file = cocosim_pp(file_name, constant_file, varargin)
 % PP processes a Simulink model in order to make it CoCoSim friendly.
 %   It changes the differents blocks into their equivalent that is 
 %   supported by CoCoSim.
@@ -16,9 +16,13 @@ evalin('base','clear all')
 % Reading options
 evalin('base','global verif;');
 
-[model_path, model, ext] = fileparts(file_name);
-
+% Getting info of this file
 [pp_path, function_name, pp_ext] = fileparts(mfilename('fullpath'));
+
+% Get the model file info
+[model_path, model, ext] = fileparts(file_name);
+disp(model_path)
+disp('Teme')
 
 if nargin > 2
     if strcmp(varargin{1},'verif')
@@ -32,17 +36,6 @@ if nargin > 2
         evalin('base','verif = false;');
     end
 end
-
-% Get the name of the model
-% Support for both '.mdl' and '.slx' extensions
-% if isempty(strfind(file_name,'.mdl'))
-%     ext = '.slx';
-% else
-%     ext = '.mdl';
-% end
-% model = strrep(file_name,ext,'');
-
-
 
 % Clean the current folder of files from previous execution
 if (exist(strcat(model,'_PP',ext))==4)
@@ -59,18 +52,20 @@ delete(strcat(model,'_PP',ext));
 % script_path = strrep(script_path,'/pp.m','');
 % % Add all subfolders of Processes into Matlab path
 % addpath(genpath(strcat(script_path,'/lib')));
-disp(fullfile(pp_path, 'pp', 'lib', 'common'))
 addpath(fullfile(pp_path, 'pp', 'lib', 'common'));
 addpath(fullfile(pp_path, 'pp', 'lib', 'blocks'));
 addpath(fullfile(pp_path, 'pp', 'lib', 'math'));
 % Creating a cache copy to process
 
 original_file = [model_path filesep model ext];
-disp(['Copying ' model ext])
+disp(['Copying ' model ])
 new_model_name = [model '_p' ext];
+disp(new_model_name)
 new_model = strcat(model,'_p');
-disp(original_file)
-copyfile(file_name, strcat(new_model,ext));
+disp(new_model)
+
+disp(file_name)
+copyfile(file_name, strcat(new_model, ext));
 disp(['Loading ' new_model_name '...'])
 load_system(new_model);
 disp('Loading library...')

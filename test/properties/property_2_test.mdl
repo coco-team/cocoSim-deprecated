@@ -20,7 +20,7 @@ Model {
       BusOutputAsStruct	      "off"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.27"
+    ComputedModelVersion    "1.28"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -65,7 +65,7 @@ Model {
 	$ClassName		"Simulink.EditorInfo"
 	IsActive		[1]
 	ViewObjType		"SimulinkSubsys"
-	LoadSaveID		"19"
+	LoadSaveID		"32"
 	Extents			[723.0, 462.0]
 	ZoomFactor		[1.0]
 	Offset			[0.0, 0.0]
@@ -78,9 +78,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Teme"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon May 16 11:46:45 2016"
-  RTWModifiedTimeStamp	  385300004
-  ModelVersionFormat	  "1.%<AutoIncrement:27>"
+  LastModifiedDate	  "Tue Jun 07 14:24:43 2016"
+  RTWModifiedTimeStamp	  387210282
+  ModelVersionFormat	  "1.%<AutoIncrement:28>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -895,7 +895,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "31"
+    SIDHighWatermark	    "42"
     Block {
       BlockType		      Inport
       Name		      "In1"
@@ -915,11 +915,11 @@ Model {
     }
     Block {
       BlockType		      SubSystem
-      Name		      "Simple"
-      SID		      "19"
+      Name		      "Safety"
+      SID		      "32"
       Ports		      [3, 1]
       Position		      [375, 0, 525, 60]
-      ZOrder		      2
+      ZOrder		      4
       ForegroundColor	      "red"
       TreatAsAtomicUnit	      on
       RequestExecContextInheritance off
@@ -931,8 +931,8 @@ Model {
 	Description		"Set an observer for the system.\nThe annotation type parameter sets the type of observer:\n- requires :"
 	" pre-condition\n- ensures : post-condition\n- assert : an assertion\n- observer : the observer computes a special typ"
 	"e of properties"
-	Display			"color('red')\ntext(0.5, 0.5, ['Property: ''' get_param(gcb,'name') ''''], 'horizontalAlignment', 'center')"
-	";\ntext(0.99, 0.03, '{\\bf\\fontsize{12}NOT VERIFIED}', 'hor', 'right', 'ver', 'bottom', 'texmode', 'on');"
+	Display			"color('red')\ntext(0.5, 0.5, ['CoCoSpec: ''' get_param(gcb,'name') ''''], 'horizontalAlignment', 'center')"
+	";\ntext(0.99, 0.03, '{\\bf\\fontsize{12}TO BE VERIFIED}', 'hor', 'right', 'ver', 'bottom', 'texmode', 'on');"
 	IconUnits		"normalized"
 	Array {
 	  Type			  "Simulink.MaskParameter"
@@ -971,7 +971,7 @@ Model {
 	}
       }
       System {
-	Name			"Simple"
+	Name			"Safety"
 	Location		[236, 23, 993, 655]
 	Open			on
 	ModelBrowserVisibility	off
@@ -988,7 +988,7 @@ Model {
 	Block {
 	  BlockType		  Inport
 	  Name			  "In1"
-	  SID			  "20"
+	  SID			  "33"
 	  Position		  [90, 92, 120, 108]
 	  ZOrder		  1
 	  IconDisplay		  "Port number"
@@ -996,7 +996,7 @@ Model {
 	Block {
 	  BlockType		  Inport
 	  Name			  "In2"
-	  SID			  "22"
+	  SID			  "35"
 	  Position		  [90, 152, 120, 168]
 	  ZOrder		  3
 	  Port			  "2"
@@ -1005,7 +1005,7 @@ Model {
 	Block {
 	  BlockType		  Inport
 	  Name			  "Out1"
-	  SID			  "24"
+	  SID			  "37"
 	  Position		  [90, 212, 120, 228]
 	  ZOrder		  5
 	  Port			  "3"
@@ -1014,56 +1014,57 @@ Model {
 	Block {
 	  BlockType		  Logic
 	  Name			  "Logical\nOperator"
-	  SID			  "31"
+	  SID			  "41"
 	  Ports			  [2, 1]
-	  Position		  [345, 87, 375, 118]
-	  ZOrder		  11
+	  Position		  [410, 142, 440, 173]
+	  ZOrder		  13
 	  AllPortsSameDT	  off
 	  OutDataTypeStr	  "boolean"
 	}
 	Block {
 	  BlockType		  RelationalOperator
 	  Name			  "Relational\nOperator"
-	  SID			  "28"
+	  SID			  "42"
 	  Ports			  [2, 1]
-	  Position		  [220, 92, 250, 123]
-	  ZOrder		  8
+	  Position		  [285, 147, 315, 178]
+	  ZOrder		  12
 	  InputSameDT		  off
 	  OutDataTypeStr	  "boolean"
 	}
 	Block {
 	  BlockType		  Outport
-	  Name			  "Simple"
-	  SID			  "26"
+	  Name			  "Safety"
+	  SID			  "39"
 	  Position		  [460, 92, 490, 108]
 	  ZOrder		  7
 	  IconDisplay		  "Port number"
 	}
 	Line {
-	  ZOrder		  4
+	  ZOrder		  6
 	  SrcBlock		  "In1"
 	  SrcPort		  1
+	  Points		  [78, 0; 0, 55]
 	  DstBlock		  "Relational\nOperator"
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  5
+	  ZOrder		  7
 	  SrcBlock		  "In2"
 	  SrcPort		  1
-	  Points		  [43, 0; 0, -45]
+	  Points		  [37, 0; 0, 10]
 	  DstBlock		  "Relational\nOperator"
 	  DstPort		  2
 	}
 	Line {
-	  ZOrder		  6
+	  ZOrder		  8
 	  SrcBlock		  "Out1"
 	  SrcPort		  1
-	  Points		  [107, 0; 0, -63; 89, 0; 0, -47]
+	  Points		  [172, 0; 0, -8; 89, 0; 0, -47]
 	  DstBlock		  "Logical\nOperator"
 	  DstPort		  2
 	}
 	Line {
-	  ZOrder		  7
+	  ZOrder		  5
 	  SrcBlock		  "Relational\nOperator"
 	  SrcPort		  1
 	  Points		  [43, 0; 0, -15]
@@ -1071,21 +1072,21 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  8
+	  ZOrder		  9
 	  SrcBlock		  "Logical\nOperator"
 	  SrcPort		  1
-	  Points		  [38, 0; 0, -5]
-	  DstBlock		  "Simple"
+	  Points		  [5, 0; 0, -60]
+	  DstBlock		  "Safety"
 	  DstPort		  1
 	}
       }
     }
     Block {
       BlockType		      Terminator
-      Name		      "Simple_term"
-      SID		      "27"
+      Name		      "Safety_term"
+      SID		      "40"
       Position		      [565, 20, 585, 40]
-      ZOrder		      3
+      ZOrder		      5
       ForegroundColor	      "red"
     }
     Block {
@@ -1093,7 +1094,7 @@ Model {
       Name		      "Subsystem"
       SID		      "15"
       Ports		      [2, 1]
-      Position		      [220, 105, 260, 165]
+      Position		      [220, 105, 345, 225]
       ZOrder		      1
       RequestExecContextInheritance off
       System {
@@ -1110,7 +1111,7 @@ Model {
 	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"100"
+	ZoomFactor		"185"
 	Block {
 	  BlockType		  Inport
 	  Name			  "In1"
@@ -1217,60 +1218,61 @@ Model {
       IconDisplay	      "Port number"
     }
     Line {
-      ZOrder		      19
+      ZOrder		      30
       SrcBlock		      "In1"
       SrcPort		      1
       Points		      [0, 0]
       Branch {
-	ZOrder			16
-	Points			[65, 0; 0, 25]
+	ZOrder			19
+	Points			[65, 0; 0, 40]
 	DstBlock		"Subsystem"
 	DstPort			1
       }
       Branch {
-	ZOrder			20
-	DstBlock		"Simple"
+	ZOrder			31
+	DstBlock		"Safety"
 	DstPort			1
       }
     }
     Line {
-      ZOrder		      21
+      ZOrder		      32
       SrcBlock		      "In2"
       SrcPort		      1
       Points		      [0, 0]
       Branch {
-	ZOrder			17
-	Points			[65, 0; 0, -30]
+	ZOrder			21
+	Points			[0, 15]
 	DstBlock		"Subsystem"
 	DstPort			2
       }
       Branch {
-	ZOrder			22
-	DstBlock		"Simple"
+	ZOrder			33
+	DstBlock		"Safety"
 	DstPort			2
       }
     }
     Line {
-      ZOrder		      23
+      ZOrder		      34
       SrcBlock		      "Subsystem"
       SrcPort		      1
       Points		      [0, 0]
       Branch {
-	ZOrder			18
+	ZOrder			23
+	Points			[9, 0; 0, -30]
 	DstBlock		"Out1"
 	DstPort			1
       }
       Branch {
-	ZOrder			24
-	DstBlock		"Simple"
+	ZOrder			35
+	DstBlock		"Safety"
 	DstPort			3
       }
     }
     Line {
-      ZOrder		      25
-      SrcBlock		      "Simple"
+      ZOrder		      36
+      SrcBlock		      "Safety"
       SrcPort		      1
-      DstBlock		      "Simple_term"
+      DstBlock		      "Safety_term"
       DstPort		      1
     }
   }

@@ -11,22 +11,23 @@ CoCoSim is currently under development. We welcome any feedback and bug report.
 
 ## Installation ##
 
-CoCoSim can be installed and use as follows.
+CoCoSim can be installed and use as follows:
 
 ### Dependencies ###
 
 * MATLAB(c) version **R2014b** or newer
 * [Zustre](https://github.com/lememta/zustre) 
+* (Optional) [JKind](https://github.com/agacek/jkind) -- Best for Windows OS users
 * (Optional) [Kind2](http://kind2-mc.github.io/kind2/)
-* (Optional) [SeaHorn](http://seahorn.github.io/)
-* (Optional) [Eldarica](https://github.com/uuverifiers/eldarica)
+* (Optional) [SeaHorn](http://seahorn.github.io/) -- Experimental
+* (Optional) [Eldarica](https://github.com/uuverifiers/eldarica) -- Exerimental
 * Python2.7
 * (Optional) (lus2lic)[https://www-verimag.imag.fr/Lustre-V6.html] from the Verimag LustreV6 toolbox for testing purpose
 
 ### Configuration ###
 
 
-+ Place the different solvers (Zustre, Kind2, Eldarica) under ```cocosim/tools/verifiers/```.
++ Place the different solvers (Zustre, Kind2, JKind) under ```cocosim/tools/verifiers/```.
 + Set the configuration for the backend solvers in `src/config.m`:
 
 * `ZUSTRE`: Path to [Zustre](https://github.com/coco-team/zustre) binary.
@@ -40,6 +41,7 @@ CoCoSim can be installed and use as follows.
 + Launch Matlab(c) 
 + Navigate to `cocosim/`
 + Just run the file ```start_cocosim```
++ Make sure to have one of the backround solvers installed (e.g. Zustre, Kind2 and or JKind)
 + You can now open your Simulink model, e.g. ```open test/properties/property_3_test.mdl```
 
 
@@ -47,7 +49,7 @@ CoCoSim can be installed and use as follows.
 ### Example ###
 
 1. To test a safe property: `open test/properties/property_2_test.mdl`
-2. Under the `Tools` menu choose `Verify with CoCoSim` and then `Zustre`.
+2. Under the `Tools` menu choose `Verify with CoCoSim` and then `Zustre` (or JKind if you are under Windows OS).
 
 2. To test an unsafe property (which also provide a counterexample): `open test/properties/property_3_unsafe_test.mdl`
 

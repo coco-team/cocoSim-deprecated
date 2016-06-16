@@ -21,7 +21,6 @@
 
 function cocoSim(model_full_path, const_files, default_Ts, trace, dfexport)
 
-CS_LOG = 0;
 
 % Checking the number of arguments
 if ~exist('trace', 'var')
@@ -418,7 +417,7 @@ end
 % Verify properties if they exists
 smt_file = '';
 if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
-    if not (strcmp(SOLVER, 'Z') || strcmp(SOLVER,'K'))
+    if not (strcmp(SOLVER, 'Z') || strcmp(SOLVER,'K') || strcmp(SOLVER, 'J'))
        display_msg('Available solvers are Z for Zustre and K for Kind2', Constants.WARNING, 'cocoSim', '');
        return
     end
@@ -447,6 +446,13 @@ if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
          display_msg('Running Kind2', Constants.INFO, 'Verification', '');
          try
             kind2(nom_lustre_file, property_node_names, property_file_base_name, inter_blk);
+         catch ME
+             display_msg(ME.message, Constants.ERROR, 'Verification', '');
+         end
+    elseif strcmp(SOLVER, 'J')
+         display_msg('Running JKind', Constants.INFO, 'Verification', '');
+         try
+            jkind(nom_lustre_file, property_node_names, property_file_base_name, inter_blk);
          catch ME
              display_msg(ME.message, Constants.ERROR, 'Verification', '');
          end

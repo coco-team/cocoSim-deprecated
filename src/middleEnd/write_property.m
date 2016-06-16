@@ -312,8 +312,10 @@ property_node = app_sprintf(property_node, '\n\t%s = %s(%s);\n', list_parent_cal
 
 % Add property
 for idx_prop=1:numel(list_output_names)
-    prop_str = sprintf('\t--%%%%%%%%PROPERTY %s; \n tel\n\n', list_output_names{idx_prop});
-	property_node = app_sprintf(property_node, prop_str);
+   
+    prop_str = sprintf('\t--%%%%%%%%PROPERTY %s; \n \ntel\n\n', list_output_names{idx_prop});
+	
+    property_node = app_sprintf(property_node, prop_str);
 end
 
 end
