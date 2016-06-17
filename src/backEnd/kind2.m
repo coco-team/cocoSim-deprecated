@@ -25,7 +25,7 @@ function kind2(lustre_file_name, property_node_names, property_file_base_name, m
     for idx_prop=1:numel(property_node_names)
         if exist(KIND2,'file') && exist(Z3,'file')
             date_value = datestr(now, 'ddmmyyyyHHMMSS');
-            command = sprintf('%s --z3_bin %s -xml %s', KIND2, Z3, lustre_file_name);
+            command = sprintf('%s --z3_bin %s -xml --lus_main %s %s', KIND2, Z3, property_node_names{idx_prop}.prop_name, lustre_file_name);
             disp(['KIND2_COMMAND ' command])
             [status, kind2_out] = system(command);
             disp('   -- KIND_OUT --')
