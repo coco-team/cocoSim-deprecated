@@ -24,6 +24,7 @@ function [answer, cex] = solver_result(solver, xml_result, property_node_name, p
 	prop_file_name = [property_file_base_name '_' property_node_name '.xml'];
 
 	fid = fopen(prop_file_name, 'w');
+    disp(xml_result)
 	fprintf(fid, xml_result);
 	fclose(fid);
     

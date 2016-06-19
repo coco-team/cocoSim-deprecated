@@ -173,9 +173,14 @@ for idx_block=1:n
 		myblk{idx_block}.dstport = {tmp_o2{end-num_output+1:end}};
 
 	% Get the IfAction blocks references
-		indexes = find(arrayfun(@(x) strcmp(x.Type, 'ifaction'), port_connection{idx_block}));
-		myblk{idx_block}.action = port_connection{idx_block}(indexes).SrcBlock;
-		myblk{idx_block}.actionport = port_connection{idx_block}(indexes).SrcPort;
+		indexes = find(arrayfun(@(x) strcmp(x.Type, 'ifaction'), port_connection{idx_block}))
+        if ~isempty(indexes)
+            myblk{idx_block}.action = port_connection{idx_block}(indexes).SrcBlock;
+            myblk{idx_block}.actionport = port_connection{idx_block}(indexes).SrcPort;
+        else
+            myblk{idx_block}.action = [];
+            myblk{idx_block}.actionport = [];
+        end
 		myblk{idx_block}.action_reset = false;
 		if numel(indexes) > 0
 			activated_subsys_blocks = find_system(myblk{idx_block}.origin_name);
@@ -191,14 +196,24 @@ for idx_block=1:n
 		
 	% Get the trigger blocks references
 		indexes = find(arrayfun(@(x) strcmp(x.Type, 'trigger'), port_connection{idx_block}));
-		myblk{idx_block}.trigger = port_connection{idx_block}(indexes).SrcBlock;
-		myblk{idx_block}.triggerport = port_connection{idx_block}(indexes).SrcPort;
+        if ~isempty(indexes)
+            myblk{idx_block}.trigger = port_connection{idx_block}(indexes).SrcBlock;
+            myblk{idx_block}.triggerport = port_connection{idx_block}(indexes).SrcPort;
+        else
+            myblk{idx_block}.trigger = [];
+            myblk{idx_block}.triggerport = [];
+        end
 		myblk{idx_block}.triggerblock = find_system(num(idx_block), 'BlockType', 'TriggerPort');
 
 	% Get the enable blocks references
 		indexes = find(arrayfun(@(x) strcmp(x.Type, 'enable'), port_connection{idx_block}));
-		myblk{idx_block}.enable = port_connection{idx_block}(indexes).SrcBlock;
-		myblk{idx_block}.enableport = port_connection{idx_block}(indexes).SrcPort;
+        if ~isempty(indexes)
+            myblk{idx_block}.enable = port_connection{idx_block}(indexes).SrcBlock;
+            myblk{idx_block}.enableport = port_connection{idx_block}(indexes).SrcPort;
+        else
+            myblk{idx_block}.enable = [];
+            myblk{idx_block}.enableport = [];
+        end
 		myblk{idx_block}.enableblock = find_system(num(idx_block), 'BlockType', 'EnablePort');
 		myblk{idx_block}.enable_reset = false;
 		if numel(indexes) > 0

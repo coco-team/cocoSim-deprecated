@@ -46,7 +46,7 @@ function jkind(lustre_file_name, property_node_names, property_file_base_name, m
             elseif strcmp(answer, 'TIMEOUT')
                 set_param(property_node_names{idx_prop}.origin_block_name, 'BackgroundColor', 'gray');
                 set_param(property_node_names{idx_prop}.origin_block_name, 'ForegroundColor', 'gray');
-            elseif strcmp(answer, 'UNKNOWN')
+            elseif strcmp(answer, 'UNKNOWN') 
                 set_param(property_node_names{idx_prop}.origin_block_name, 'BackgroundColor', 'yellow');
                 set_param(property_node_names{idx_prop}.origin_block_name, 'ForegroundColor', 'yellow');
             elseif strcmp(answer, 'CEX')
