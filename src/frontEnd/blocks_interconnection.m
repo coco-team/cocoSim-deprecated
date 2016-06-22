@@ -173,7 +173,7 @@ for idx_block=1:n
 		myblk{idx_block}.dstport = {tmp_o2{end-num_output+1:end}};
 
 	% Get the IfAction blocks references
-		indexes = find(arrayfun(@(x) strcmp(x.Type, 'ifaction'), port_connection{idx_block}))
+		indexes = find(arrayfun(@(x) strcmp(x.Type, 'ifaction'), port_connection{idx_block}));
         if ~isempty(indexes)
             myblk{idx_block}.action = port_connection{idx_block}(indexes).SrcBlock;
             myblk{idx_block}.actionport = port_connection{idx_block}(indexes).SrcPort;
