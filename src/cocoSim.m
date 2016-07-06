@@ -554,7 +554,7 @@ function [nodes] = print_dt_conversion_nodes(rounding)
 		for idx_round=1:numel(elems)
 			% Print rounding node
 			str = ['\nnode ' elems{idx_round} '(In : real)\n'];
-			str = [str 'returns (Out : int)\n'];
+			str = [str 'returns (Out : int);\n'];
 			str = [str 'let\n\tOut = 0;\ntel'];
 			str = sprintf('%s\n', str);
 			nodes = [nodes str];
