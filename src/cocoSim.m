@@ -21,6 +21,8 @@
 
 function cocoSim(model_full_path, const_files, default_Ts, trace, dfexport)
 
+% Debug option
+assignin('base', 'DEBUG', '1');
 
 % Checking the number of arguments
 if ~exist('trace', 'var')
@@ -48,6 +50,12 @@ t_start = now;
 [cocoSim_path, function_name, ext] = fileparts(mfilename('fullpath'));
 % Retrieving of the path containing the model for which we generate the code
 [model_path, file_name, ext] = fileparts(model_full_path);
+
+%Setup Logging information
+% log_name = [model_path file_name '_cocosim.log'];
+% LOG = log4m.getLogger(log_name);
+% LOG.setCommandWindowLevel(LOG.DEBUG); 
+% LOG.setLogLevel(LOG.ERROR);
 
 addpath(fullfile(cocoSim_path, 'backEnd'));
 addpath(fullfile(cocoSim_path, 'middleEnd'));
@@ -185,8 +193,8 @@ display_msg('Internal representation building', Constants.INFO, 'cocoSim', '');
 %%%%%% Internal representation building %%%%%%
 
 [inter_blk blks complex_structs]= mk_internalRep(file_name, dfexport, models, subsystems, mat_files, default_Ts);
+% LOG.debug('after mk_internalRep', inter_blk);
 
-% if CS_LOG==1 celldisp(inter_blk); end
 
 % Creation of the traceability XML node
 xml_trace = XML_Trace(model_full_path, trace_file_name);

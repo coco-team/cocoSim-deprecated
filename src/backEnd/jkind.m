@@ -25,7 +25,7 @@ function jkind(lustre_file_name, property_node_names, property_file_base_name, m
     for idx_prop=1:numel(property_node_names)
         if exist(JKIND,'file')
             date_value = datestr(now, 'ddmmyyyyHHMMSS');
-            command = sprintf('%s --xml_to_stdout -main %s %s', JKIND, property_node_names{idx_prop}.prop_name, lustre_file_name);
+            command = sprintf('%s --xml_to_stdout -solver z3 -main %s %s', JKIND, property_node_names{idx_prop}.prop_name, lustre_file_name);
             disp(['JKIND_COMMAND ' command])
             [status, jkind_out] = system(command);
             disp('   -- JKIND_OUT --')
