@@ -31,11 +31,18 @@ pre_annot = '';
 post_annot = '';
 property_node_names = {};
 
+
 for idx_block=1:nblk
 	block_string = '';
 	extern_funs = {};
 	var_str = '';
-
+    is_Chart = false;
+    if strcmp(inter_blk{idx_block}.type, 'SubSystem')
+        sf_sub = get_param(inter_blk{idx_block}.annotation, 'SFBlockType');
+        if strcmp(sf_sub, 'Chart')
+            is_Chart = true;
+        end
+    end
 	%%%%%%%%%%% Gain %%%%%%%%%%%%%%%%%%%%%%
 	if strcmp(inter_blk{idx_block}.type, 'Gain')
 		K = evalin('base', get_param(blks{idx_block}, 'Gain'));
@@ -480,7 +487,7 @@ for idx_block=1:nblk
 	%%%%%%%%%%%%%%%%% SubSystem %%%%%%%%%%%%%%%%%%%%%%%%
 	% Print SubSystem as a node call only if it is not the first of the list (aka the current SubSystem)
 
-    elseif (strcmp(inter_blk{idx_block}.type, 'SubSystem') || strcmp(inter_blk{idx_block}.type, 'ModelReference')) && not(idx_block == 1)
+    elseif (strcmp(inter_blk{idx_block}.type, 'SubSystem') || strcmp(inter_blk{idx_block}.type, 'ModelReference')) && (not(idx_block == 1) || is_Chart)
            
 		mask = get_param(blks{idx_block}, 'Mask');
 
@@ -584,9 +591,7 @@ for idx_block=1:nblk
 
 		%%%%%%%%%%%%%%%%%% Classical SubSystem %%%%%%%%%%%%
 		elseif inter_blk{idx_block}.num_output ~= 0
-            
-			[block_string var_str] = write_subsystem(inter_blk{idx_block}, inter_blk, main_blk, xml_trace);
-    
+            [block_string, var_str] = write_subsystem(inter_blk{idx_block}, inter_blk, main_blk, xml_trace);
 		end
 
 	%%%%%%%%%%%%%%%%%% Outport %%%%%%%%%%%%%%%%%%%

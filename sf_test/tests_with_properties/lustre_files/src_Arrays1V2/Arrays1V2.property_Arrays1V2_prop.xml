@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+   <Results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+     <Property name="Arrays1V2_prop">
+      <Date>2016-08-02 09:12</Date>
+      <Lustre2Horn unit="sec">0.00</Lustre2Horn>
+      <Parse unit="sec">0.00</Parse>
+      <Query unit="sec">8.24</Query>
+      <Answer>SAFE</Answer>
+     </Property>
+   </Results>
+

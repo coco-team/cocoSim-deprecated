@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+   <Results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+     <Property name="GPCA_Top_Level_Mode_sys_start_implies_sys_on">
+      <Date>2016-07-25 19:57</Date>
+      <Lustre2Horn unit="sec">0.00</Lustre2Horn>
+      <Parse unit="sec">0.02</Parse>
+      <Query unit="sec">5.22</Query>
+      <Answer>SAFE</Answer>
+     </Property>
+   </Results>
+

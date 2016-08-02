@@ -179,7 +179,7 @@ end
       assignin('base', 'SOLVER', 'Z');
       assignin('base', 'RUST_GEN', 0);
       assignin('base', 'C_GEN', 0);
-      simulink_name = gcs;
+      simulink_name = get_param(gcs,'FileName');%gcs;
       cocoSim(simulink_name);
   catch ME
       disp(ME.message)

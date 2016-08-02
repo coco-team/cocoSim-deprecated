@@ -20,9 +20,12 @@
 % Configuration file for the backend solvers
 
 %
- LUSTREC = 'PATH';
- ZUSTRE = 'PATH';
+ if ~exist('solvers_path', 'var')
+    solvers_path = '/home/hamza/Documents/zustre/build/run/bin';
+ end
+ LUSTREC = fullfile(solvers_path,'lustrec');
+ ZUSTRE = fullfile(solvers_path,'zustre');
  Z3 = 'PATH';
  KIND2 = 'PATH';
  SEAHORN = 'PATH';
- JKIND = 'PATH';
+ JKIND =fullfile(solvers_path,'jkind/jkind');

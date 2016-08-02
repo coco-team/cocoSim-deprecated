@@ -383,8 +383,8 @@ function conversion = compute_conversion(block)
 
 	%%%%%%%%%%%%%%%% TriggerPort %%%%%%%%%%%%
 	elseif strcmp(block.type, 'TriggerPort')
-
-	%%%%%%%%%%%%%%%% EnablePort %%%%%%%%%%%%
+ 
+    %%%%%%%%%%%%%%%% EnablePort %%%%%%%%%%%%
 	elseif strcmp(block.type, 'EnablePort')
 
 	%%%%%%%%%%%%%%%% BusSelector %%%%%%%%%%%%%%%%%%

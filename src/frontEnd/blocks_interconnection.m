@@ -508,6 +508,7 @@ for idx_block=1:numel(blks)
 	end
 
 	% Get blocks ports data types
+
 	block_ports_dts = get_param(blks(idx_block), 'CompiledPortDataTypes');
 	myblk{idx_block}.inports_dt = block_ports_dts{1}.Inport;
 	myblk{idx_block}.outports_dt = block_ports_dts{1}.Outport;
@@ -530,7 +531,7 @@ for idx_block=1:numel(blks)
 	myblk{idx_block}.action_dim = block_ports_dim{1}.Ifaction;
 	myblk{idx_block}.trigger_dim = block_ports_dim{1}.Trigger;
 	myblk{idx_block}.enable_dim = block_ports_dim{1}.Enable;
-    
+
 	% Get S-Function parameters data types
 	if strcmp(myblk{idx_block}.type, 'S-Function')
         if strcmp(get_param(myblk{idx_block}.annotation, 'Mask'), 'on')

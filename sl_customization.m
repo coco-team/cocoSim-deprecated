@@ -125,7 +125,7 @@ function schema = viewContract(callbackInfo)
       assignin('base', 'SOLVER', 'NONE');
       assignin('base', 'RUST_GEN', 1);
       assignin('base', 'C_GEN', 0);
-      simulink_name = gcs;
+      simulink_name = get_param(gcs,'FileName');%gcs;
       cocoSim(simulink_name);
   catch ME
       disp(ME.message)
@@ -147,7 +147,7 @@ function schema = viewContract(callbackInfo)
       assignin('base', 'SOLVER', 'NONE');
       assignin('base', 'RUST_GEN', 0);
       assignin('base', 'C_GEN', 1);
-      simulink_name = gcs;
+      simulink_name = get_param(gcs,'FileName');%gcs;
       cocoSim(simulink_name);
   catch ME
       disp(ME.message)
@@ -179,7 +179,7 @@ end
       assignin('base', 'SOLVER', 'Z');
       assignin('base', 'RUST_GEN', 0);
       assignin('base', 'C_GEN', 0);
-      simulink_name = gcs;
+      simulink_name = get_param(gcs,'FileName');%gcs;
       cocoSim(simulink_name);
   catch ME
       disp(ME.message)
@@ -200,7 +200,7 @@ function kindCallback(callbackInfo)
       assignin('base', 'SOLVER', 'K');
       assignin('base', 'RUST_GEN', 0);
       assignin('base', 'C_GEN', 0);
-      simulink_name = gcs;
+      simulink_name = get_param(gcs,'FileName');%gcs;
       cocoSim(simulink_name);
   catch ME
       disp(ME.message)
@@ -221,7 +221,7 @@ function jkindCallback(callbackInfo)
       assignin('base', 'SOLVER', 'J');
       assignin('base', 'RUST_GEN', 0);
       assignin('base', 'C_GEN', 0);
-      simulink_name = gcs;
+      simulink_name = get_param(gcs,'FileName');%gcs;
       cocoSim(simulink_name);
   catch ME
       disp(ME.message)

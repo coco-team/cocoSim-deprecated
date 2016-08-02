@@ -674,6 +674,26 @@ classdef Utils
         [a b]=regexp (nomsim, '/', 'split');
         out = strcat(a{numel(a)-1},'_',a{end});
     end
+    
+    function out = naming_alone(nomsim)
+        [a,~]=regexp (nomsim, '/', 'split');
+        out = a{end};
+    end
+    function vector = construct_random_integers(nb_iterations, IMAX, dt)
+        vector = randi(IMAX, [nb_iterations,1],dt);
+        seuil = randi(IMAX);
+        vector(vector>seuil) = feval(dt,0);
+    end
+    
+    function vector = construct_random_booleans(nb_iterations, IMAX)
+        vector = boolean(Utils.construct_random_integers(nb_iterations, IMAX, 'uint8'));
+    end
+    
+    function vector = construct_random_doubles(nb_iterations)
+        vector = double(10*rand([nb_iterations,1]));
+        seuil = 10*randi(1);
+        vector(vector>seuil) = double(0);
+    end
 end
 
   end

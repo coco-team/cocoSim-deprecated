@@ -47,11 +47,11 @@ config;
 		date_value = datestr(now, 'ddmmyyyyHHMMSS');
 		for idx_prop=1:numel(property_node_names)
             if exist(smt_file, 'file')
-                command = sprintf('%s "%s" --node %s --xml --cg --s-func %s', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name, smt_file);
+                command = sprintf('%s "%s" --node %s --xml --cg --s-func %s --timeout 600', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name, smt_file);
             elseif strcmp(SOLVER, 'E')
-                command = sprintf('%s "%s" --node %s --xml --eldarica %s', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name, smt_file);
+                command = sprintf('%s "%s" --node %s --xml --eldarica %s --timeout 600', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name, smt_file);
             else
-                command = sprintf('%s "%s" --node %s --xml --cg', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name);
+                command = sprintf('%s "%s" --node %s --xml --timeout 600', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name);
             end
             disp(['ZUSTRE_COMMAND ' command])
             [status, zustre_out] = system(command);
@@ -165,7 +165,7 @@ function [answer, cex, cocospec] = check_zustre_result(zustre_out, property_node
 					display_msg(msg, Constants.WARNING, 'Zustre property checking', '');
                 end
             elseif strcmp(answer, 'SAFE')
-                cocospec = prop.getElementsByTagName('contractFile').item(0).getTextContent;
+%                 cocospec = prop.getElementsByTagName('contractFile').item(0).getTextContent;
 			end
 		end
 	end

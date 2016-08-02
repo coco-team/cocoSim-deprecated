@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+   <Results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+     <Property name="GPCA_INFUSION_MGR_prop2">
+      <Date>2016-07-25 20:38</Date>
+      <Lustre2Horn unit="sec">None</Lustre2Horn>
+      <Parse unit="sec">None</Parse>
+      <Query unit="sec">None</Query>
+      <Answer>TIMEOUT</Answer>
+     </Property>
+   </Results>
+
