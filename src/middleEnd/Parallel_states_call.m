@@ -24,6 +24,7 @@ function [action_code, variables_struct, node_struct] = Parallel_states_call(sta
                     index = find(strcmp({variables_struct.Name},o.Name));
                     if ~isempty(index)
                         variables_struct(index).index = variables_struct(index).index+1;
+                        variables_struct(index).used = 1;
                     else
                         warning('abnormal behavior %s does not exist in variables structure',char(o.Name))
                     end

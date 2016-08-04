@@ -31,7 +31,7 @@ let
 
 	-- set state as active 
 	idSetResetOut_SetResetOut_2 
-	= 217;
+	= 1399;
 	
 
 	is_set_2 
@@ -109,7 +109,7 @@ let
 
 
 	(is_reset, idSetResetOut_SetResetOut) 
-	= (is_reset_2, idSetResetOut_SetResetOut_2);
+	= (is_reset_2, idSetResetOut_SetResetOut_1);
 	
 
 tel
@@ -141,7 +141,7 @@ let
 
 	-- set state as active 
 	idSetResetOut_SetResetOut_2 
-	= 218;
+	= 1400;
 	
 
 	is_set_2 
@@ -219,7 +219,7 @@ let
 
 
 	(is_reset, idSetResetOut_SetResetOut) 
-	= (is_reset_2, idSetResetOut_SetResetOut_2);
+	= (is_reset_2, idSetResetOut_SetResetOut_1);
 	
 
 tel
@@ -251,17 +251,17 @@ let
 
 
 
-	unless (idSetResetOut_SetResetOut_1=217) and Reset restart SETRESETOUT_ON__TO__SETRESETOUT_OFF_1
+	unless (idSetResetOut_SetResetOut_1=1399) and Reset restart SETRESETOUT_ON__TO__SETRESETOUT_OFF_1
 
 
 
-	unless (idSetResetOut_SetResetOut_1=218) and Set restart SETRESETOUT_OFF__TO__SETRESETOUT_ON_1
+	unless (idSetResetOut_SetResetOut_1=1400) and Set restart SETRESETOUT_OFF__TO__SETRESETOUT_ON_1
 
 
 
-	unless (idSetResetOut_SetResetOut_1=217) restart SETRESETOUT_ON_IDL
+	unless (idSetResetOut_SetResetOut_1=1399) restart SETRESETOUT_ON_IDL
 
-	unless (idSetResetOut_SetResetOut_1=218) restart SETRESETOUT_OFF_IDL
+	unless (idSetResetOut_SetResetOut_1=1400) restart SETRESETOUT_OFF_IDL
 
 	let
 

@@ -37,7 +37,7 @@ let
 
 	-- set state as active 
 	idTemporal1_Temporal1_2 
-	= 1345;
+	= 509;
 	
 
 	x_2 
@@ -75,7 +75,7 @@ let
 
 
 	(idTemporal1_Temporal1) 
-	= (idTemporal1_Temporal1_2);
+	= (idTemporal1_Temporal1_1);
 	
 
 tel
@@ -104,7 +104,7 @@ let
 
 	-- set state as active 
 	idTemporal1_Temporal1_2 
-	= 1344;
+	= 508;
 	
 
 	x_2 
@@ -142,7 +142,7 @@ let
 
 
 	(idTemporal1_Temporal1) 
-	= (idTemporal1_Temporal1_2);
+	= (idTemporal1_Temporal1_1);
 	
 
 tel
@@ -171,17 +171,17 @@ let
 
 
 
-	unless (idTemporal1_Temporal1_1=1344) and E and ( after_E_2_output ) restart TEMPORAL1_A__TO__TEMPORAL1_B_1
+	unless (idTemporal1_Temporal1_1=508) and E and ( after_E_2_output ) restart TEMPORAL1_A__TO__TEMPORAL1_B_1
 
 
 
-	unless (idTemporal1_Temporal1_1=1345) and after_E_3_output restart TEMPORAL1_B__TO__TEMPORAL1_A_1
+	unless (idTemporal1_Temporal1_1=509) and after_E_3_output restart TEMPORAL1_B__TO__TEMPORAL1_A_1
 
 
 
-	unless (idTemporal1_Temporal1_1=1344) restart TEMPORAL1_A_IDL
+	unless (idTemporal1_Temporal1_1=508) restart TEMPORAL1_A_IDL
 
-	unless (idTemporal1_Temporal1_1=1345) restart TEMPORAL1_B_IDL
+	unless (idTemporal1_Temporal1_1=509) restart TEMPORAL1_B_IDL
 
 	let
 

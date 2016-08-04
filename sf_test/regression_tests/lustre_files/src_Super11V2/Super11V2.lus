@@ -59,7 +59,7 @@ let
 
 	-- set state as active 
 	idB_B2_2 
-	= 704;
+	= 1887;
 	
 
 	(idB_B2) 
@@ -92,7 +92,7 @@ let
 
 
 	(idB_B2) 
-	= (idB_B2_2);
+	= (idB_B2_1);
 	
 
 tel
@@ -148,7 +148,7 @@ let
 
 	-- set state as active 
 	idSuper11_B_2 
-	= 703;
+	= 1886;
 	
 
 	
@@ -171,7 +171,7 @@ let
 
 	(idB_B2_4) 
 	= 
-	if ( idB_B2_1 = 704) then
+	if ( idB_B2_1 = 1887) then
 	B2_B2a_en(idB_B2_1, false)
 	 else (idB_B2_1);
 
@@ -182,7 +182,7 @@ let
 		 if ( idB_B2_1 = 0) then 
 		(idB_B2_3, idSuper11_B_3)
 		 else
-		 if ( idB_B2_1 = 704) then 
+		 if ( idB_B2_1 = 1887) then 
 		(idB_B2_4, idSuper11_B_3)
 		 else (idB_B2_1, idSuper11_B_2);
 
@@ -217,7 +217,7 @@ let
 	
 	(idB_B2_2) 
 	= 
-	if ( idB_B2_1 = 704) then
+	if ( idB_B2_1 = 1887) then
 	B2_B2a_ex(idB_B2_1, false)
 	 else (idB_B2_1);
 
@@ -225,7 +225,7 @@ let
 
 	(idB_B2_3) 
 	= 
-		 if ( idB_B2_1 = 704) then 
+		 if ( idB_B2_1 = 1887) then 
 		(idB_B2_2)
 		 else (idB_B2_1);
 
@@ -239,7 +239,7 @@ let
 	
 
 	(idB_B2, idSuper11_B) 
-	= (idB_B2_4, idSuper11_B_2);
+	= (idB_B2_4, idSuper11_B_1);
 	
 
 tel
@@ -292,7 +292,7 @@ let
 
 	-- set state as active 
 	idSuper11_B_2 
-	= 702;
+	= 1885;
 	
 
 	(idSuper11_B) 
@@ -325,7 +325,7 @@ let
 
 
 	(idSuper11_B) 
-	= (idSuper11_B_2);
+	= (idSuper11_B_1);
 	
 
 tel
@@ -384,7 +384,7 @@ let
 
 	-- set state as active 
 	idSuper11_Super11_2 
-	= 701;
+	= 1884;
 	
 
 	
@@ -407,7 +407,7 @@ let
 
 	(idSuper11_B_4) 
 	= 
-	if ( idSuper11_B_1 = 702) then
+	if ( idSuper11_B_1 = 1885) then
 	B_B1_en(idSuper11_B_1, false)
 	 else (idSuper11_B_1);
 
@@ -415,7 +415,7 @@ let
 
 	(idB_B2_2, idSuper11_B_5) 
 	= 
-	if ( idSuper11_B_1 = 703) then
+	if ( idSuper11_B_1 = 1886) then
 	B_B2_en(idB_B2_1, idSuper11_B_1, false)
 	 else (idB_B2_1, idSuper11_B_1);
 
@@ -426,10 +426,10 @@ let
 		 if ( idSuper11_B_1 = 0) then 
 		(idSuper11_B_3, idSuper11_Super11_3, idB_B2_1)
 		 else
-		 if ( idSuper11_B_1 = 702) then 
+		 if ( idSuper11_B_1 = 1885) then 
 		(idSuper11_B_4, idSuper11_Super11_3, idB_B2_1)
 		 else
-		 if ( idSuper11_B_1 = 703) then 
+		 if ( idSuper11_B_1 = 1886) then 
 		(idSuper11_B_5, idSuper11_Super11_3, idB_B2_2)
 		 else (idSuper11_B_1, idSuper11_Super11_2, idB_B2_1);
 
@@ -467,7 +467,7 @@ let
 	
 	(idSuper11_B_2) 
 	= 
-	if ( idSuper11_B_1 = 702) then
+	if ( idSuper11_B_1 = 1885) then
 	B_B1_ex(idSuper11_B_1, false)
 	 else (idSuper11_B_1);
 
@@ -475,7 +475,7 @@ let
 
 	(idB_B2_2, idSuper11_B_3) 
 	= 
-	if ( idSuper11_B_1 = 703) then
+	if ( idSuper11_B_1 = 1886) then
 	B_B2_ex(idB_B2_1, idSuper11_B_1, false)
 	 else (idB_B2_1, idSuper11_B_1);
 
@@ -483,10 +483,10 @@ let
 
 	(idSuper11_B_4, idB_B2_3) 
 	= 
-		 if ( idSuper11_B_1 = 702) then 
+		 if ( idSuper11_B_1 = 1885) then 
 		(idSuper11_B_2, idB_B2_1)
 		 else
-		 if ( idSuper11_B_1 = 703) then 
+		 if ( idSuper11_B_1 = 1886) then 
 		(idSuper11_B_3, idB_B2_2)
 		 else (idSuper11_B_1, idB_B2_1);
 
@@ -500,7 +500,7 @@ let
 	
 
 	(idSuper11_B, idB_B2, idSuper11_Super11) 
-	= (idSuper11_B_5, idB_B2_3, idSuper11_Super11_2);
+	= (idSuper11_B_5, idB_B2_3, idSuper11_Super11_1);
 	
 
 tel
@@ -553,7 +553,7 @@ let
 
 	-- set state as active 
 	idSuper11_Super11_2 
-	= 700;
+	= 1883;
 	
 
 	(idSuper11_Super11) 
@@ -586,7 +586,7 @@ let
 
 
 	(idSuper11_Super11) 
-	= (idSuper11_Super11_2);
+	= (idSuper11_Super11_1);
 	
 
 tel
@@ -615,11 +615,11 @@ let
 
 
 
-	unless (idB_B2_1=704) restart B2_B2A__TO__SUPER11_SUPER11JUNCTION708_1
+	unless (idB_B2_1=1887) restart B2_B2A__TO__SUPER11_SUPER11JUNCTION1891_1
 
 
 
-	unless (idB_B2_1=704) restart B2_B2A_IDL
+	unless (idB_B2_1=1887) restart B2_B2A_IDL
 
 	let
 
@@ -656,7 +656,7 @@ let
 
 
 
-	state B2_B2A__TO__SUPER11_SUPER11JUNCTION708_1:
+	state B2_B2A__TO__SUPER11_SUPER11JUNCTION1891_1:
 
 	 var 	idB_B2_2, idB_B2_3:int;
 	idSuper11_B_2, idSuper11_B_3, idSuper11_B_4:int;
@@ -666,7 +666,7 @@ let
 		
 
 -- transition trace :
-	--B2_B2a__To__Junction708_1, Junction708__To__Super11_A_1
+	--B2_B2a__To__Junction1891_1, Junction1891__To__Super11_A_1
 		(idSuper11_B_2, idB_B2_2, idSuper11_Super11_2) 
 	= 
 		 if (( x=0 )) then 
@@ -683,7 +683,7 @@ let
 
 
 -- transition trace :
-	--B2_B2a__To__Junction708_1, Junction708__To__B_B1_2
+	--B2_B2a__To__Junction1891_1, Junction1891__To__B_B1_2
 		(idB_B2_3, idSuper11_B_3) 
 	= 
 		 if (( x!=0 )) then 
@@ -704,7 +704,7 @@ let
 		(idB_B2_2, idSuper11_B_2, idSuper11_Super11_3)
 		 else
 		 if (( x!=0 )) then 
-		(idB_B2_3, idSuper11_B_4, idSuper11_Super11_3)
+		(idB_B2_3, idSuper11_B_4, idSuper11_Super11_1)
 		 else (idB_B2_1, idSuper11_B_1, idSuper11_Super11_1);
 
 	--add unused variables
@@ -766,13 +766,13 @@ let
 
 
 
-	unless (idSuper11_B_1=702) restart B_B1__TO__B_B2_1
+	unless (idSuper11_B_1=1885) restart B_B1__TO__B_B2_1
 
 
 
-	unless (idSuper11_B_1=702) restart B_B1_IDL
+	unless (idSuper11_B_1=1885) restart B_B1_IDL
 
-	unless (idSuper11_B_1=703) restart B_B2_IDL
+	unless (idSuper11_B_1=1886) restart B_B2_IDL
 
 	let
 
@@ -921,13 +921,13 @@ let
 
 
 
-	unless (idSuper11_Super11_1=700) restart SUPER11_A__TO__SUPER11_SUPER11JUNCTION713_1
+	unless (idSuper11_Super11_1=1883) restart SUPER11_A__TO__SUPER11_SUPER11JUNCTION1896_1
 
 
 
-	unless (idSuper11_Super11_1=700) restart SUPER11_A_IDL
+	unless (idSuper11_Super11_1=1883) restart SUPER11_A_IDL
 
-	unless (idSuper11_Super11_1=701) restart SUPER11_B_IDL
+	unless (idSuper11_Super11_1=1884) restart SUPER11_B_IDL
 
 	let
 
@@ -964,7 +964,7 @@ let
 
 
 
-	state SUPER11_A__TO__SUPER11_SUPER11JUNCTION713_1:
+	state SUPER11_A__TO__SUPER11_SUPER11JUNCTION1896_1:
 
 	 var 	idSuper11_Super11_2, idSuper11_Super11_3, idSuper11_Super11_4, idSuper11_Super11_5:int;
 	idB_B2_2, idB_B2_3, idB_B2_4:int;
@@ -974,7 +974,7 @@ let
 		
 
 -- transition trace :
-	--Super11_A__To__Junction713_1, Junction713__To__Super11_B_1
+	--Super11_A__To__Junction1896_1, Junction1896__To__Super11_B_1
 		(idSuper11_Super11_2) 
 	= 
 		 if (( x=0 )) then 
@@ -991,7 +991,7 @@ let
 
 
 -- transition trace :
-	--Super11_A__To__Junction713_1, Junction713__To__B2_B2a_2
+	--Super11_A__To__Junction1896_1, Junction1896__To__B2_B2a_2
 		(idSuper11_Super11_4) 
 	= 
 		 if (( x!=0 )) then 
@@ -1000,10 +1000,10 @@ let
 		
 
 		idB_B2_3 
-	= 704;
+	= 1887;
 	
 		idSuper11_B_3 
-	= 703;
+	= 1886;
 	
 		(idSuper11_B_4, idSuper11_Super11_5, idB_B2_4) 
 	= 

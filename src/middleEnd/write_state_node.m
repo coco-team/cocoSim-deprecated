@@ -77,7 +77,6 @@ elseif  ~isFunction && strcmp(state.Decomposition,'PARALLEL_AND')
     state_name = [get_full_name(state), '_Parallel_Entry'];
     transitions_unless_code = [transitions_unless_code, '\tunless ', c_id, ' restart ',upper(state_name), '\n'];
     variables_struct_local = variables_struct;
-    state_name = [get_full_name(state), '_Parallel_Entry'];
     [action_code, variables_struct_local, node_struct] = Parallel_states_call(state, 'en', variables_struct_local, node_struct, global_nodes_struct);  
     [outputs_code, variables] =add_unchanged_variables(node_struct.Outputs,variables_struct_local);
     action_code = [action_code '\n\n\t' outputs_code ];
@@ -291,8 +290,9 @@ if strcmp(child.Decomposition,'PARALLEL_AND')
                         index = find(strcmp({variables_struct.Name},o.Name));
                         if ~isempty(index)
                             variables_struct(index).index = variables_struct(index).index+1;
+                            variables_struct(index).used = 1;
                         else
-                            warning('abnormal behavior %s does not exist in variables structure',char(o.Name))
+                            error('abnormal behavior %s does not exist in variables structure',char(o.Name))
                         end
                     end
                     [~, left_variables] = add_variables(output_struct,0,variables_struct);
@@ -328,8 +328,9 @@ if strcmp(child.Decomposition,'PARALLEL_AND')
                     index = find(strcmp({variables_struct.Name},o.Name));
                     if ~isempty(index)
                         variables_struct(index).index = variables_struct(index).index+1;
+                        variables_struct(index).used = 1;
                     else
-                        warning('abnormal behavior %s does not exist in variables structure',char(o.Name))
+                        error('abnormal behavior %s does not exist in variables structure',char(o.Name))
                     end
                 end
                 [~, left_variables] = add_variables(output_struct,0,variables_struct);
@@ -359,8 +360,9 @@ if strcmp(child.Decomposition,'PARALLEL_AND')
                     index = find(strcmp({variables_struct.Name},o.Name));
                     if ~isempty(index)
                         variables_struct(index).index = variables_struct(index).index+1;
+                        variables_struct(index).used = 1;
                     else
-                        warning('abnormal behavior %s does not exist in variables structure',char(o.Name))
+                        error('abnormal behavior %s does not exist in variables structure',char(o.Name))
                     end
                 end
                 [~, left_variables] = add_variables(output_struct,0,variables_struct);
@@ -395,8 +397,9 @@ else
                     index = find(strcmp({variables_struct.Name},o.Name));
                     if ~isempty(index)
                         variables_struct(index).index = variables_struct(index).index+1;
+                        variables_struct(index).used = 1;
                     else
-                        warning('abnormal behavior %s does not exist in variables structure',char(o.Name))
+                        error('abnormal behavior %s does not exist in variables structure',char(o.Name))
                     end
                 end
                 [~, left_variables] = add_variables(output_struct,0,variables_struct);
@@ -425,8 +428,9 @@ else
                 index = find(strcmp({variables_struct.Name},o.Name));
                 if ~isempty(index)
                     variables_struct(index).index = variables_struct(index).index+1;
+                    variables_struct(index).used = 1;
                 else
-                    warning('abnormal behavior %s does not exist in variables structure',char(o.Name))
+                    error('abnormal behavior %s does not exist in variables structure',char(o.Name))
                 end
             end
             [~, left_variables] = add_variables(output_struct,0,variables_struct);

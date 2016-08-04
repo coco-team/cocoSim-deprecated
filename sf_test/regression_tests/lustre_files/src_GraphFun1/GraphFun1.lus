@@ -8,7 +8,7 @@
 
 
 
-node POINT__To__Chart_fJunction1568_1_Condition_Action(x:real;
+node POINT__To__Chart_fJunction818_1_Condition_Action(x:real;
 	y:real;
 	z_1:real)
 
@@ -49,7 +49,7 @@ let
 	 automaton chart_f
 
 	state POINTChart_f:
-	unless (idChart_f_1=0) restart POINT__TO__CHART_FJUNCTION1568_1
+	unless (idChart_f_1=0) restart POINT__TO__CHART_FJUNCTION818_1
 
 
 
@@ -63,17 +63,17 @@ let
 
 
 
-	state POINT__TO__CHART_FJUNCTION1568_1:
+	state POINT__TO__CHART_FJUNCTION818_1:
 
 	 var 	z_2:real;
 	let
 
 		-- transition trace :
-	--POINT__To__Junction1568_1
+	--POINT__To__Junction818_1
 		-- condition Action : z=sqrt(x*x+y*y);
 		
 		(z_2) 
-	= POINT__To__Chart_fJunction1568_1_Condition_Action(x, y, z_1);
+	= POINT__To__Chart_fJunction818_1_Condition_Action(x, y, z_1);
 		
 
 	(idChart_f, z) 
@@ -157,6 +157,7 @@ tel
 
 
 
+
 node Chart_B__To__Chart_A_1_Condition_Action(a_1:real;
 	b_1:real;
 	c_1:real)
@@ -188,7 +189,6 @@ tel
 
 
 
-
 -- Entry action for state :Chart_B
 node Chart_B_en(idChart_Chart_1:int;
 	a_1:real;
@@ -211,7 +211,7 @@ let
 
 	-- set state as active 
 	idChart_Chart_2 
-	= 1563;
+	= 813;
 	
 
 	a_2 
@@ -254,7 +254,7 @@ let
 
 
 	(idChart_Chart) 
-	= (idChart_Chart_2);
+	= (idChart_Chart_1);
 	
 
 tel
@@ -286,7 +286,7 @@ let
 
 	-- set state as active 
 	idChart_Chart_2 
-	= 1562;
+	= 812;
 	
 
 	a_2 
@@ -329,7 +329,7 @@ let
 
 
 	(idChart_Chart) 
-	= (idChart_Chart_2);
+	= (idChart_Chart_1);
 	
 
 tel
@@ -357,17 +357,17 @@ let
 
 
 
-	unless (idChart_Chart_1=1562) restart CHART_A__TO__CHART_B_1
+	unless (idChart_Chart_1=812) restart CHART_A__TO__CHART_B_1
 
 
 
-	unless (idChart_Chart_1=1563) restart CHART_B__TO__CHART_A_1
+	unless (idChart_Chart_1=813) restart CHART_B__TO__CHART_A_1
 
 
 
-	unless (idChart_Chart_1=1562) restart CHART_A_IDL
+	unless (idChart_Chart_1=812) restart CHART_A_IDL
 
-	unless (idChart_Chart_1=1563) restart CHART_B_IDL
+	unless (idChart_Chart_1=813) restart CHART_B_IDL
 
 	let
 

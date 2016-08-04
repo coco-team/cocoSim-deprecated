@@ -6,8 +6,7 @@
 
 
 
-
-node Flowchart6_Flowchart6Junction1465__To__Flowchart6_Flowchart6Junction1466_1_Condition_Action(x_1:int)
+node Flowchart6_Flowchart6Junction715__To__Flowchart6_Flowchart6Junction716_1_Condition_Action(x_1:int)
 
 returns (x:int);
 
@@ -28,6 +27,7 @@ let
 	
 
 tel
+
 
 
 
@@ -57,18 +57,18 @@ let
 
 	-- set state as active 
 	idFlowchart6_Flowchart6_2 
-	= 1464;
+	= 714;
 	
 
 	
 
 
 -- transition trace :
-	--POINT__To__Junction1465_1, Junction1465__To__Junction1466_1
+	--POINT__To__Junction715_1, Junction715__To__Junction716_1
 		-- condition Action : x++;
 		
 		(x_2) 
-	= Flowchart6_Flowchart6Junction1465__To__Flowchart6_Flowchart6Junction1466_1_Condition_Action(x_1);
+	= Flowchart6_Flowchart6Junction715__To__Flowchart6_Flowchart6Junction716_1_Condition_Action(x_1);
 		
 
 	(idFlowchart6_A_2, idFlowchart6_Flowchart6_3, x_3) 
@@ -122,7 +122,7 @@ let
 
 
 	(idFlowchart6_Flowchart6) 
-	= (idFlowchart6_Flowchart6_2);
+	= (idFlowchart6_Flowchart6_1);
 	
 
 tel
@@ -142,11 +142,11 @@ let
 	 automaton flowchart6_a
 
 	state POINTFlowchart6_A:
-	unless (idFlowchart6_A_1=0) restart POINT__TO__FLOWCHART6_FLOWCHART6JUNCTION1465_1
+	unless (idFlowchart6_A_1=0) restart POINT__TO__FLOWCHART6_FLOWCHART6JUNCTION715_1
 
 
 
-	unless true restart FLOWCHART6_A__TO__FLOWCHART6_FLOWCHART6JUNCTION1465_1
+	unless true restart FLOWCHART6_A__TO__FLOWCHART6_FLOWCHART6JUNCTION715_1
 
 
 
@@ -160,7 +160,7 @@ let
 
 
 
-	state POINT__TO__FLOWCHART6_FLOWCHART6JUNCTION1465_1:
+	state POINT__TO__FLOWCHART6_FLOWCHART6JUNCTION715_1:
 
 	 var 	x_2:int;
 	let
@@ -168,11 +168,11 @@ let
 		
 
 -- transition trace :
-	--POINT__To__Junction1465_1, Junction1465__To__Junction1466_1
+	--POINT__To__Junction715_1, Junction715__To__Junction716_1
 		-- condition Action : x++;
 		
 		(x_2) 
-	= Flowchart6_Flowchart6Junction1465__To__Flowchart6_Flowchart6Junction1466_1_Condition_Action(x_1);
+	= Flowchart6_Flowchart6Junction715__To__Flowchart6_Flowchart6Junction716_1_Condition_Action(x_1);
 		
 
 	(idFlowchart6_A, x) 
@@ -185,7 +185,7 @@ let
 
 
 
-	state FLOWCHART6_A__TO__FLOWCHART6_FLOWCHART6JUNCTION1465_1:
+	state FLOWCHART6_A__TO__FLOWCHART6_FLOWCHART6JUNCTION715_1:
 
 	 var 	x_2:int;
 	let
@@ -193,11 +193,11 @@ let
 		
 
 -- transition trace :
-	--Flowchart6_A__To__Junction1465_1, Junction1465__To__Junction1466_1
+	--Flowchart6_A__To__Junction715_1, Junction715__To__Junction716_1
 		-- condition Action : x++;
 		
 		(x_2) 
-	= Flowchart6_Flowchart6Junction1465__To__Flowchart6_Flowchart6Junction1466_1_Condition_Action(x_1);
+	= Flowchart6_Flowchart6Junction715__To__Flowchart6_Flowchart6Junction716_1_Condition_Action(x_1);
 		
 
 	(idFlowchart6_A, x) 
@@ -233,7 +233,7 @@ let
 
 
 
-	unless (idFlowchart6_Flowchart6_1=1464) restart FLOWCHART6_A_IDL
+	unless (idFlowchart6_Flowchart6_1=714) restart FLOWCHART6_A_IDL
 
 	let
 

@@ -16,7 +16,7 @@
             (or (not (= (not A_A1_ex.isInner) false))
                (= A_A1_ex.idSuper4_A_2 A_A1_ex.idSuper4_A_1))
        )
-       (= A_A1_ex.idSuper4_A A_A1_ex.idSuper4_A_2)
+       (= A_A1_ex.idSuper4_A A_A1_ex.idSuper4_A_1)
        )
   (A_A1_ex A_A1_ex.idSuper4_A_1 A_A1_ex.isInner A_A1_ex.idSuper4_A)
 ))
@@ -27,7 +27,7 @@
 (declare-var B_B1_en.idSuper4_B Int)
 (declare-rel B_B1_en (Int Bool Int))
 (rule (=> 
-  (= B_B1_en.idSuper4_B 1047)
+  (= B_B1_en.idSuper4_B 251)
   (B_B1_en B_B1_en.idSuper4_B_1 B_B1_en.isInner B_B1_en.idSuper4_B)
 ))
 
@@ -37,7 +37,7 @@
 (declare-var A_A1_en.idSuper4_A Int)
 (declare-rel A_A1_en (Int Bool Int))
 (rule (=> 
-  (= A_A1_en.idSuper4_A 1046)
+  (= A_A1_en.idSuper4_A 250)
   (A_A1_en A_A1_en.idSuper4_A_1 A_A1_en.isInner A_A1_en.idSuper4_A)
 ))
 
@@ -53,7 +53,7 @@
             (or (not (= (not B_B1_ex.isInner) false))
                (= B_B1_ex.idSuper4_B_2 B_B1_ex.idSuper4_B_1))
        )
-       (= B_B1_ex.idSuper4_B B_B1_ex.idSuper4_B_2)
+       (= B_B1_ex.idSuper4_B B_B1_ex.idSuper4_B_1)
        )
   (B_B1_ex B_B1_ex.idSuper4_B_1 B_B1_ex.isInner B_B1_ex.idSuper4_B)
 ))
@@ -88,7 +88,7 @@
        (A_A1_ex Super4_A_ex.idSuper4_A_1
                 false
                 Super4_A_ex.__Super4_A_ex_3)
-       (= Super4_A_ex.__Super4_A_ex_2 (= Super4_A_ex.idSuper4_A_1 1046))
+       (= Super4_A_ex.__Super4_A_ex_2 (= Super4_A_ex.idSuper4_A_1 250))
        (and (or (not (= Super4_A_ex.__Super4_A_ex_2 false))
                (and (= Super4_A_ex.idSuper4_A_2 Super4_A_ex.idSuper4_A_1)
                     (= Super4_A_ex.idSuper4_A_3 Super4_A_ex.idSuper4_A_1)
@@ -98,7 +98,7 @@
                     (= Super4_A_ex.idSuper4_A_3 Super4_A_ex.idSuper4_A_2)
                     ))
        )
-       (= Super4_A_ex.idSuper4_Super4 Super4_A_ex.idSuper4_Super4_2)
+       (= Super4_A_ex.idSuper4_Super4 Super4_A_ex.idSuper4_Super4_1)
        (= Super4_A_ex.idSuper4_A 0)
        )
   (Super4_A_ex Super4_A_ex.idSuper4_A_1 Super4_A_ex.idSuper4_Super4_1 Super4_A_ex.isInner Super4_A_ex.idSuper4_A Super4_A_ex.idSuper4_Super4)
@@ -124,7 +124,7 @@
   (and (B_B1_en Super4_B_en.idSuper4_B_1
                 false
                 Super4_B_en.__Super4_B_en_3)
-       (= Super4_B_en.__Super4_B_en_2 (= Super4_B_en.idSuper4_B_1 1047))
+       (= Super4_B_en.__Super4_B_en_2 (= Super4_B_en.idSuper4_B_1 251))
        (and (or (not (= Super4_B_en.__Super4_B_en_2 true))
                (= Super4_B_en.idSuper4_B_4 Super4_B_en.__Super4_B_en_3))
             (or (not (= Super4_B_en.__Super4_B_en_2 false))
@@ -135,10 +135,10 @@
                 Super4_B_en.idSuper4_B_2)
        (= Super4_B_en.__Super4_B_en_1 (= Super4_B_en.idSuper4_B_1 0))
        (and (or (not (= Super4_B_en.__Super4_B_en_1 false))
-               (and (= Super4_B_en.idSuper4_Super4_3 1043)
+               (and (= Super4_B_en.idSuper4_Super4_3 247)
                     (= Super4_B_en.idSuper4_B_3 Super4_B_en.idSuper4_B_1)
                     (and (or (not (= Super4_B_en.__Super4_B_en_2 false))
-                            (and (= Super4_B_en.idSuper4_Super4_4 1043)
+                            (and (= Super4_B_en.idSuper4_Super4_4 247)
                                  (= Super4_B_en.idSuper4_B_5 Super4_B_en.idSuper4_B_1)
                                  ))
                          (or (not (= Super4_B_en.__Super4_B_en_2 true))
@@ -148,7 +148,7 @@
                     )
                     ))
             (or (not (= Super4_B_en.__Super4_B_en_1 true))
-               (and (= Super4_B_en.idSuper4_Super4_3 1043)
+               (and (= Super4_B_en.idSuper4_Super4_3 247)
                     (= Super4_B_en.idSuper4_B_3 Super4_B_en.idSuper4_B_2)
                     (= Super4_B_en.idSuper4_Super4_4 Super4_B_en.idSuper4_Super4_3)
                     (= Super4_B_en.idSuper4_B_5 Super4_B_en.idSuper4_B_3)
@@ -166,7 +166,7 @@
 (declare-var Super4_C_en.idSuper4_Super4 Int)
 (declare-rel Super4_C_en (Int Bool Int))
 (rule (=> 
-  (= Super4_C_en.idSuper4_Super4 1044)
+  (= Super4_C_en.idSuper4_Super4 248)
   (Super4_C_en Super4_C_en.idSuper4_Super4_1 Super4_C_en.isInner Super4_C_en.idSuper4_Super4)
 ))
 
@@ -199,7 +199,7 @@
   (and (A_A1_en Super4_A_en.idSuper4_A_1
                 false
                 Super4_A_en.__Super4_A_en_3)
-       (= Super4_A_en.__Super4_A_en_2 (= Super4_A_en.idSuper4_A_1 1046))
+       (= Super4_A_en.__Super4_A_en_2 (= Super4_A_en.idSuper4_A_1 250))
        (and (or (not (= Super4_A_en.__Super4_A_en_2 true))
                (= Super4_A_en.idSuper4_A_4 Super4_A_en.__Super4_A_en_3))
             (or (not (= Super4_A_en.__Super4_A_en_2 false))
@@ -210,10 +210,10 @@
                 Super4_A_en.idSuper4_A_2)
        (= Super4_A_en.__Super4_A_en_1 (= Super4_A_en.idSuper4_A_1 0))
        (and (or (not (= Super4_A_en.__Super4_A_en_1 false))
-               (and (= Super4_A_en.idSuper4_Super4_3 1042)
+               (and (= Super4_A_en.idSuper4_Super4_3 246)
                     (= Super4_A_en.idSuper4_A_3 Super4_A_en.idSuper4_A_1)
                     (and (or (not (= Super4_A_en.__Super4_A_en_2 false))
-                            (and (= Super4_A_en.idSuper4_Super4_4 1042)
+                            (and (= Super4_A_en.idSuper4_Super4_4 246)
                                  (= Super4_A_en.idSuper4_A_5 Super4_A_en.idSuper4_A_1)
                                  ))
                          (or (not (= Super4_A_en.__Super4_A_en_2 true))
@@ -223,7 +223,7 @@
                     )
                     ))
             (or (not (= Super4_A_en.__Super4_A_en_1 true))
-               (and (= Super4_A_en.idSuper4_Super4_3 1042)
+               (and (= Super4_A_en.idSuper4_Super4_3 246)
                     (= Super4_A_en.idSuper4_A_3 Super4_A_en.idSuper4_A_2)
                     (= Super4_A_en.idSuper4_Super4_4 Super4_A_en.idSuper4_Super4_3)
                     (= Super4_A_en.idSuper4_A_5 Super4_A_en.idSuper4_A_3)
@@ -256,7 +256,7 @@
        (B_B1_ex Super4_B_ex.idSuper4_B_1
                 false
                 Super4_B_ex.__Super4_B_ex_3)
-       (= Super4_B_ex.__Super4_B_ex_2 (= Super4_B_ex.idSuper4_B_1 1047))
+       (= Super4_B_ex.__Super4_B_ex_2 (= Super4_B_ex.idSuper4_B_1 251))
        (and (or (not (= Super4_B_ex.__Super4_B_ex_2 false))
                (and (= Super4_B_ex.idSuper4_B_2 Super4_B_ex.idSuper4_B_1)
                     (= Super4_B_ex.idSuper4_B_3 Super4_B_ex.idSuper4_B_1)
@@ -266,7 +266,7 @@
                     (= Super4_B_ex.idSuper4_B_3 Super4_B_ex.idSuper4_B_2)
                     ))
        )
-       (= Super4_B_ex.idSuper4_Super4 Super4_B_ex.idSuper4_Super4_2)
+       (= Super4_B_ex.idSuper4_Super4 Super4_B_ex.idSuper4_Super4_1)
        (= Super4_B_ex.idSuper4_B 0)
        )
   (Super4_B_ex Super4_B_ex.idSuper4_B_1 Super4_B_ex.idSuper4_Super4_1 Super4_B_ex.isInner Super4_B_ex.idSuper4_B Super4_B_ex.idSuper4_Super4)
@@ -278,7 +278,7 @@
 (declare-var Super4_D_en.idSuper4_Super4 Int)
 (declare-rel Super4_D_en (Int Bool Int))
 (rule (=> 
-  (= Super4_D_en.idSuper4_Super4 1045)
+  (= Super4_D_en.idSuper4_Super4 249)
   (Super4_D_en Super4_D_en.idSuper4_Super4_1 Super4_D_en.isInner Super4_D_en.idSuper4_Super4)
 ))
 
@@ -345,7 +345,7 @@
                     false
                     super4_a__A_A1__TO__B_B1_1_handler_until.idSuper4_A_2
                     super4_a__A_A1__TO__B_B1_1_handler_until.idSuper4_Super4_2)
-       (Super4_B_en 1047
+       (Super4_B_en 251
                     super4_a__A_A1__TO__B_B1_1_handler_until.idSuper4_Super4_2
                     false
                     super4_a__A_A1__TO__B_B1_1_handler_until.idSuper4_B_3
@@ -454,9 +454,9 @@
 (declare-var super4_a__POINTSuper4_A_unless.__super4_a__POINTSuper4_A_unless_4 Bool)
 (declare-rel super4_a__POINTSuper4_A_unless (Bool super4_a__type Int Bool Bool Bool super4_a__type))
 (rule (=> 
-  (and (= super4_a__POINTSuper4_A_unless.__super4_a__POINTSuper4_A_unless_4 (= super4_a__POINTSuper4_A_unless.idSuper4_A_1 1046))
-       (= super4_a__POINTSuper4_A_unless.__super4_a__POINTSuper4_A_unless_3 (and (= super4_a__POINTSuper4_A_unless.idSuper4_A_1 1046) super4_a__POINTSuper4_A_unless.F))
-       (= super4_a__POINTSuper4_A_unless.__super4_a__POINTSuper4_A_unless_2 (and (= super4_a__POINTSuper4_A_unless.idSuper4_A_1 1046) super4_a__POINTSuper4_A_unless.E))
+  (and (= super4_a__POINTSuper4_A_unless.__super4_a__POINTSuper4_A_unless_4 (= super4_a__POINTSuper4_A_unless.idSuper4_A_1 250))
+       (= super4_a__POINTSuper4_A_unless.__super4_a__POINTSuper4_A_unless_3 (and (= super4_a__POINTSuper4_A_unless.idSuper4_A_1 250) super4_a__POINTSuper4_A_unless.F))
+       (= super4_a__POINTSuper4_A_unless.__super4_a__POINTSuper4_A_unless_2 (and (= super4_a__POINTSuper4_A_unless.idSuper4_A_1 250) super4_a__POINTSuper4_A_unless.E))
        (= super4_a__POINTSuper4_A_unless.__super4_a__POINTSuper4_A_unless_1 (= super4_a__POINTSuper4_A_unless.idSuper4_A_1 0))
        (and (or (not (= super4_a__POINTSuper4_A_unless.__super4_a__POINTSuper4_A_unless_1 false))
                (and (or (not (= super4_a__POINTSuper4_A_unless.__super4_a__POINTSuper4_A_unless_2 false))
@@ -592,7 +592,7 @@
                     false
                     super4_b__B_B1__TO__A_A1_2_handler_until.idSuper4_B_2
                     super4_b__B_B1__TO__A_A1_2_handler_until.idSuper4_Super4_2)
-       (Super4_A_en 1046
+       (Super4_A_en 250
                     super4_b__B_B1__TO__A_A1_2_handler_until.idSuper4_Super4_2
                     false
                     super4_b__B_B1__TO__A_A1_2_handler_until.idSuper4_A_3
@@ -701,9 +701,9 @@
 (declare-var super4_b__POINTSuper4_B_unless.__super4_b__POINTSuper4_B_unless_4 Bool)
 (declare-rel super4_b__POINTSuper4_B_unless (Bool super4_b__type Int Bool Bool Bool super4_b__type))
 (rule (=> 
-  (and (= super4_b__POINTSuper4_B_unless.__super4_b__POINTSuper4_B_unless_4 (= super4_b__POINTSuper4_B_unless.idSuper4_B_1 1047))
-       (= super4_b__POINTSuper4_B_unless.__super4_b__POINTSuper4_B_unless_3 (and (= super4_b__POINTSuper4_B_unless.idSuper4_B_1 1047) super4_b__POINTSuper4_B_unless.F))
-       (= super4_b__POINTSuper4_B_unless.__super4_b__POINTSuper4_B_unless_2 (and (= super4_b__POINTSuper4_B_unless.idSuper4_B_1 1047) super4_b__POINTSuper4_B_unless.E))
+  (and (= super4_b__POINTSuper4_B_unless.__super4_b__POINTSuper4_B_unless_4 (= super4_b__POINTSuper4_B_unless.idSuper4_B_1 251))
+       (= super4_b__POINTSuper4_B_unless.__super4_b__POINTSuper4_B_unless_3 (and (= super4_b__POINTSuper4_B_unless.idSuper4_B_1 251) super4_b__POINTSuper4_B_unless.F))
+       (= super4_b__POINTSuper4_B_unless.__super4_b__POINTSuper4_B_unless_2 (and (= super4_b__POINTSuper4_B_unless.idSuper4_B_1 251) super4_b__POINTSuper4_B_unless.E))
        (= super4_b__POINTSuper4_B_unless.__super4_b__POINTSuper4_B_unless_1 (= super4_b__POINTSuper4_B_unless.idSuper4_B_1 0))
        (and (or (not (= super4_b__POINTSuper4_B_unless.__super4_b__POINTSuper4_B_unless_1 false))
                (and (or (not (= super4_b__POINTSuper4_B_unless.__super4_b__POINTSuper4_B_unless_2 false))
@@ -1319,7 +1319,7 @@
             (or (not (= (not Super4_C_ex.isInner) false))
                (= Super4_C_ex.idSuper4_Super4_2 Super4_C_ex.idSuper4_Super4_1))
        )
-       (= Super4_C_ex.idSuper4_Super4 Super4_C_ex.idSuper4_Super4_2)
+       (= Super4_C_ex.idSuper4_Super4 Super4_C_ex.idSuper4_Super4_1)
        )
   (Super4_C_ex Super4_C_ex.idSuper4_Super4_1 Super4_C_ex.isInner Super4_C_ex.idSuper4_Super4)
 ))
@@ -1345,7 +1345,7 @@
             (or (not (= (not Super4_D_ex.isInner) false))
                (= Super4_D_ex.idSuper4_Super4_2 Super4_D_ex.idSuper4_Super4_1))
        )
-       (= Super4_D_ex.idSuper4_Super4 Super4_D_ex.idSuper4_Super4_2)
+       (= Super4_D_ex.idSuper4_Super4 Super4_D_ex.idSuper4_Super4_1)
        )
   (Super4_D_ex Super4_D_ex.idSuper4_Super4_1 Super4_D_ex.isInner Super4_D_ex.idSuper4_Super4)
 ))
@@ -1395,16 +1395,16 @@
 (declare-var super4_super4__POINTSuper4_Super4_unless.__super4_super4__POINTSuper4_Super4_unless_9 Bool)
 (declare-rel super4_super4__POINTSuper4_Super4_unless (Bool super4_super4__type Int Bool Bool Bool Bool super4_super4__type))
 (rule (=> 
-  (and (= super4_super4__POINTSuper4_Super4_unless.__super4_super4__POINTSuper4_Super4_unless_9 (= super4_super4__POINTSuper4_Super4_unless.idSuper4_Super4_1 1043))
-       (= super4_super4__POINTSuper4_Super4_unless.__super4_super4__POINTSuper4_Super4_unless_8 (= super4_super4__POINTSuper4_Super4_unless.idSuper4_Super4_1 1042))
-       (= super4_super4__POINTSuper4_Super4_unless.__super4_super4__POINTSuper4_Super4_unless_7 (and (= super4_super4__POINTSuper4_Super4_unless.idSuper4_Super4_1 1045) super4_super4__POINTSuper4_Super4_unless.F))
-       (= super4_super4__POINTSuper4_Super4_unless.__super4_super4__POINTSuper4_Super4_unless_6 (and (= super4_super4__POINTSuper4_Super4_unless.idSuper4_Super4_1 1045) super4_super4__POINTSuper4_Super4_unless.E))
-       (= super4_super4__POINTSuper4_Super4_unless.__super4_super4__POINTSuper4_Super4_unless_5 (and (= super4_super4__POINTSuper4_Super4_unless.idSuper4_Super4_1 1044) super4_super4__POINTSuper4_Super4_unless.E))
-       (= super4_super4__POINTSuper4_Super4_unless.__super4_super4__POINTSuper4_Super4_unless_4 (and (= super4_super4__POINTSuper4_Super4_unless.idSuper4_Super4_1 1044) super4_super4__POINTSuper4_Super4_unless.F))
-       (= super4_super4__POINTSuper4_Super4_unless.__super4_super4__POINTSuper4_Super4_unless_3 (and (= super4_super4__POINTSuper4_Super4_unless.idSuper4_Super4_1 1043) super4_super4__POINTSuper4_Super4_unless.G))
-       (= super4_super4__POINTSuper4_Super4_unless.__super4_super4__POINTSuper4_Super4_unless_2 (and (= super4_super4__POINTSuper4_Super4_unless.idSuper4_Super4_1 1042) super4_super4__POINTSuper4_Super4_unless.G))
-       (= super4_super4__POINTSuper4_Super4_unless.__super4_super4__POINTSuper4_Super4_unless_11 (= super4_super4__POINTSuper4_Super4_unless.idSuper4_Super4_1 1045))
-       (= super4_super4__POINTSuper4_Super4_unless.__super4_super4__POINTSuper4_Super4_unless_10 (= super4_super4__POINTSuper4_Super4_unless.idSuper4_Super4_1 1044))
+  (and (= super4_super4__POINTSuper4_Super4_unless.__super4_super4__POINTSuper4_Super4_unless_9 (= super4_super4__POINTSuper4_Super4_unless.idSuper4_Super4_1 247))
+       (= super4_super4__POINTSuper4_Super4_unless.__super4_super4__POINTSuper4_Super4_unless_8 (= super4_super4__POINTSuper4_Super4_unless.idSuper4_Super4_1 246))
+       (= super4_super4__POINTSuper4_Super4_unless.__super4_super4__POINTSuper4_Super4_unless_7 (and (= super4_super4__POINTSuper4_Super4_unless.idSuper4_Super4_1 249) super4_super4__POINTSuper4_Super4_unless.F))
+       (= super4_super4__POINTSuper4_Super4_unless.__super4_super4__POINTSuper4_Super4_unless_6 (and (= super4_super4__POINTSuper4_Super4_unless.idSuper4_Super4_1 249) super4_super4__POINTSuper4_Super4_unless.E))
+       (= super4_super4__POINTSuper4_Super4_unless.__super4_super4__POINTSuper4_Super4_unless_5 (and (= super4_super4__POINTSuper4_Super4_unless.idSuper4_Super4_1 248) super4_super4__POINTSuper4_Super4_unless.E))
+       (= super4_super4__POINTSuper4_Super4_unless.__super4_super4__POINTSuper4_Super4_unless_4 (and (= super4_super4__POINTSuper4_Super4_unless.idSuper4_Super4_1 248) super4_super4__POINTSuper4_Super4_unless.F))
+       (= super4_super4__POINTSuper4_Super4_unless.__super4_super4__POINTSuper4_Super4_unless_3 (and (= super4_super4__POINTSuper4_Super4_unless.idSuper4_Super4_1 247) super4_super4__POINTSuper4_Super4_unless.G))
+       (= super4_super4__POINTSuper4_Super4_unless.__super4_super4__POINTSuper4_Super4_unless_2 (and (= super4_super4__POINTSuper4_Super4_unless.idSuper4_Super4_1 246) super4_super4__POINTSuper4_Super4_unless.G))
+       (= super4_super4__POINTSuper4_Super4_unless.__super4_super4__POINTSuper4_Super4_unless_11 (= super4_super4__POINTSuper4_Super4_unless.idSuper4_Super4_1 249))
+       (= super4_super4__POINTSuper4_Super4_unless.__super4_super4__POINTSuper4_Super4_unless_10 (= super4_super4__POINTSuper4_Super4_unless.idSuper4_Super4_1 248))
        (= super4_super4__POINTSuper4_Super4_unless.__super4_super4__POINTSuper4_Super4_unless_1 (= super4_super4__POINTSuper4_Super4_unless.idSuper4_Super4_1 0))
        (and (or (not (= super4_super4__POINTSuper4_Super4_unless.__super4_super4__POINTSuper4_Super4_unless_1 false))
                (and (or (not (= super4_super4__POINTSuper4_Super4_unless.__super4_super4__POINTSuper4_Super4_unless_2 false))
@@ -1909,7 +1909,7 @@
        (Super4_C_ex super4_super4__SUPER4_C__TO__A_A1_2_handler_until.idSuper4_Super4_1
                     false
                     super4_super4__SUPER4_C__TO__A_A1_2_handler_until.idSuper4_Super4_2)
-       (Super4_A_en 1046
+       (Super4_A_en 250
                     super4_super4__SUPER4_C__TO__A_A1_2_handler_until.idSuper4_Super4_2
                     false
                     super4_super4__SUPER4_C__TO__A_A1_2_handler_until.idSuper4_A_3
@@ -2038,7 +2038,7 @@
        (Super4_D_ex super4_super4__SUPER4_D__TO__B_B1_2_handler_until.idSuper4_Super4_1
                     false
                     super4_super4__SUPER4_D__TO__B_B1_2_handler_until.idSuper4_Super4_2)
-       (Super4_B_en 1047
+       (Super4_B_en 251
                     super4_super4__SUPER4_D__TO__B_B1_2_handler_until.idSuper4_Super4_2
                     false
                     super4_super4__SUPER4_D__TO__B_B1_2_handler_until.idSuper4_B_3

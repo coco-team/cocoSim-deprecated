@@ -34,7 +34,7 @@ let
 
 	-- set state as active 
 	idInner4_A_2 
-	= 331;
+	= 1537;
 	
 
 	enA3cnt_2 
@@ -107,7 +107,7 @@ let
 
 
 	(exA3cnt, idInner4_A) 
-	= (exA3cnt_2, idInner4_A_2);
+	= (exA3cnt_2, idInner4_A_1);
 	
 
 tel
@@ -136,7 +136,7 @@ let
 
 	-- set state as active 
 	idInner4_A_2 
-	= 330;
+	= 1536;
 	
 
 	enA2cnt_2 
@@ -209,7 +209,7 @@ let
 
 
 	(exA2cnt, idInner4_A) 
-	= (exA2cnt_2, idInner4_A_2);
+	= (exA2cnt_2, idInner4_A_1);
 	
 
 tel
@@ -238,7 +238,7 @@ let
 
 	-- set state as active 
 	idInner4_A_2 
-	= 329;
+	= 1535;
 	
 
 	enA1cnt_2 
@@ -311,7 +311,7 @@ let
 
 
 	(exA1cnt, idInner4_A) 
-	= (exA1cnt_2, idInner4_A_2);
+	= (exA1cnt_2, idInner4_A_1);
 	
 
 tel
@@ -352,7 +352,7 @@ let
 
 	-- set state as active 
 	idInner4_Inner4_2 
-	= 328;
+	= 1534;
 	
 
 	enAcnt_2 
@@ -380,7 +380,7 @@ let
 
 	(idInner4_A_4, enA2cnt_2) 
 	= 
-	if ( idInner4_A_1 = 330) then
+	if ( idInner4_A_1 = 1536) then
 	A_A2_en(idInner4_A_1, enA2cnt_1, false)
 	 else (idInner4_A_1, enA2cnt_1);
 
@@ -388,7 +388,7 @@ let
 
 	(idInner4_A_5, enA3cnt_2) 
 	= 
-	if ( idInner4_A_1 = 331) then
+	if ( idInner4_A_1 = 1537) then
 	A_A3_en(idInner4_A_1, enA3cnt_1, false)
 	 else (idInner4_A_1, enA3cnt_1);
 
@@ -396,7 +396,7 @@ let
 
 	(idInner4_A_6, enA1cnt_4) 
 	= 
-	if ( idInner4_A_1 = 329) then
+	if ( idInner4_A_1 = 1535) then
 	A_A1_en(idInner4_A_1, enA1cnt_1, false)
 	 else (idInner4_A_1, enA1cnt_1);
 
@@ -407,13 +407,13 @@ let
 		 if ( idInner4_A_1 = 0) then 
 		(idInner4_A_3, idInner4_Inner4_3, enAcnt_3, enA1cnt_3, enA2cnt_1, enA3cnt_1)
 		 else
-		 if ( idInner4_A_1 = 330) then 
+		 if ( idInner4_A_1 = 1536) then 
 		(idInner4_A_4, idInner4_Inner4_3, enAcnt_3, enA1cnt_3, enA2cnt_2, enA3cnt_1)
 		 else
-		 if ( idInner4_A_1 = 331) then 
+		 if ( idInner4_A_1 = 1537) then 
 		(idInner4_A_5, idInner4_Inner4_3, enAcnt_3, enA1cnt_3, enA2cnt_2, enA3cnt_2)
 		 else
-		 if ( idInner4_A_1 = 329) then 
+		 if ( idInner4_A_1 = 1535) then 
 		(idInner4_A_6, idInner4_Inner4_3, enAcnt_3, enA1cnt_4, enA2cnt_2, enA3cnt_2)
 		 else (idInner4_A_1, idInner4_Inner4_2, enAcnt_2, enA1cnt_1, enA2cnt_1, enA3cnt_1);
 
@@ -487,7 +487,7 @@ let
 	
 	(exA2cnt_2, idInner4_A_2) 
 	= 
-	if ( idInner4_A_1 = 330) then
+	if ( idInner4_A_1 = 1536) then
 	A_A2_ex(exA2cnt_1, idInner4_A_1, false)
 	 else (exA2cnt_1, idInner4_A_1);
 
@@ -495,7 +495,7 @@ let
 
 	(exA3cnt_2, idInner4_A_3) 
 	= 
-	if ( idInner4_A_1 = 331) then
+	if ( idInner4_A_1 = 1537) then
 	A_A3_ex(exA3cnt_1, idInner4_A_1, false)
 	 else (exA3cnt_1, idInner4_A_1);
 
@@ -503,7 +503,7 @@ let
 
 	(exA1cnt_2, idInner4_A_4) 
 	= 
-	if ( idInner4_A_1 = 329) then
+	if ( idInner4_A_1 = 1535) then
 	A_A1_ex(exA1cnt_1, idInner4_A_1, false)
 	 else (exA1cnt_1, idInner4_A_1);
 
@@ -511,13 +511,13 @@ let
 
 	(exA2cnt_3, idInner4_A_5, exA3cnt_3, exA1cnt_3) 
 	= 
-		 if ( idInner4_A_1 = 330) then 
+		 if ( idInner4_A_1 = 1536) then 
 		(exA2cnt_2, idInner4_A_2, exA3cnt_1, exA1cnt_1)
 		 else
-		 if ( idInner4_A_1 = 331) then 
+		 if ( idInner4_A_1 = 1537) then 
 		(exA2cnt_2, idInner4_A_3, exA3cnt_2, exA1cnt_1)
 		 else
-		 if ( idInner4_A_1 = 329) then 
+		 if ( idInner4_A_1 = 1535) then 
 		(exA2cnt_2, idInner4_A_4, exA3cnt_2, exA1cnt_2)
 		 else (exA2cnt_1, idInner4_A_1, exA3cnt_1, exA1cnt_1);
 
@@ -536,7 +536,7 @@ let
 	
 
 	(exA2cnt, idInner4_A, exA3cnt, exA1cnt, exAcnt, idInner4_Inner4) 
-	= (exA2cnt_3, idInner4_A_6, exA3cnt_3, exA1cnt_3, exAcnt_2, idInner4_Inner4_2);
+	= (exA2cnt_3, idInner4_A_6, exA3cnt_3, exA1cnt_3, exAcnt_2, idInner4_Inner4_1);
 	
 
 tel
@@ -582,35 +582,35 @@ let
 
 
 
-	unless (idInner4_A_1=330) and E restart A_A2__TO__INNER4_INNER4JUNCTION332_1
+	unless (idInner4_A_1=1536) and E restart A_A2__TO__INNER4_INNER4JUNCTION1538_1
 
 
 
-	unless (idInner4_A_1=330) and F restart A_A2__TO__A_A3_2
+	unless (idInner4_A_1=1536) and F restart A_A2__TO__A_A3_2
 
 
 
-	unless (idInner4_A_1=331) and E restart A_A3__TO__INNER4_INNER4JUNCTION332_1
+	unless (idInner4_A_1=1537) and E restart A_A3__TO__INNER4_INNER4JUNCTION1538_1
 
 
 
-	unless (idInner4_A_1=331) and F restart A_A3__TO__A_A1_2
+	unless (idInner4_A_1=1537) and F restart A_A3__TO__A_A1_2
 
 
 
-	unless (idInner4_A_1=329) and E restart A_A1__TO__INNER4_INNER4JUNCTION332_1
+	unless (idInner4_A_1=1535) and E restart A_A1__TO__INNER4_INNER4JUNCTION1538_1
 
 
 
-	unless (idInner4_A_1=329) and F restart A_A1__TO__A_A2_2
+	unless (idInner4_A_1=1535) and F restart A_A1__TO__A_A2_2
 
 
 
-	unless (idInner4_A_1=330) restart A_A2_IDL
+	unless (idInner4_A_1=1536) restart A_A2_IDL
 
-	unless (idInner4_A_1=331) restart A_A3_IDL
+	unless (idInner4_A_1=1537) restart A_A3_IDL
 
-	unless (idInner4_A_1=329) restart A_A1_IDL
+	unless (idInner4_A_1=1535) restart A_A1_IDL
 
 	let
 
@@ -648,7 +648,7 @@ let
 
 
 
-	state A_A2__TO__INNER4_INNER4JUNCTION332_1:
+	state A_A2__TO__INNER4_INNER4JUNCTION1538_1:
 
 	 var 	idInner4_A_2, idInner4_A_3, idInner4_A_4:int;
 	enA1cnt_2:int;
@@ -662,7 +662,7 @@ let
 		
 
 -- transition trace :
-	--A_A2__To__Junction332_1, Junction332__To__Inner4_A_1
+	--A_A2__To__Junction1538_1, Junction1538__To__Inner4_A_1
 		(exA2cnt_2, idInner4_A_2) 
 	= A_A2_ex(exA2cnt_1, idInner4_A_1, false);
 		
@@ -719,7 +719,7 @@ let
 
 
 
-	state A_A3__TO__INNER4_INNER4JUNCTION332_1:
+	state A_A3__TO__INNER4_INNER4JUNCTION1538_1:
 
 	 var 	idInner4_A_2, idInner4_A_3, idInner4_A_4:int;
 	enA1cnt_2:int;
@@ -733,7 +733,7 @@ let
 		
 
 -- transition trace :
-	--A_A3__To__Junction332_1, Junction332__To__Inner4_A_1
+	--A_A3__To__Junction1538_1, Junction1538__To__Inner4_A_1
 		(exA3cnt_2, idInner4_A_2) 
 	= A_A3_ex(exA3cnt_1, idInner4_A_1, false);
 		
@@ -790,7 +790,7 @@ let
 
 
 
-	state A_A1__TO__INNER4_INNER4JUNCTION332_1:
+	state A_A1__TO__INNER4_INNER4JUNCTION1538_1:
 
 	 var 	idInner4_A_2, idInner4_A_3, idInner4_A_4:int;
 	enA1cnt_2:int;
@@ -804,7 +804,7 @@ let
 		
 
 -- transition trace :
-	--A_A1__To__Junction332_1, Junction332__To__Inner4_A_1
+	--A_A1__To__Junction1538_1, Junction1538__To__Inner4_A_1
 		(exA1cnt_2, idInner4_A_2) 
 	= A_A1_ex(exA1cnt_1, idInner4_A_1, false);
 		
@@ -980,7 +980,7 @@ let
 
 
 
-	unless (idInner4_Inner4_1=328) restart INNER4_A_IDL
+	unless (idInner4_Inner4_1=1534) restart INNER4_A_IDL
 
 	let
 

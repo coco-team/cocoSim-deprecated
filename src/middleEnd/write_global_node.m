@@ -190,8 +190,9 @@ function [nodes_call, variables, node_struct] = nodes_call_function(chart,data, 
                         index = find(strcmp({variables_struct.Name},o.Name));
                         if ~isempty(index)
                             variables_struct(index).index = variables_struct(index).index+1;
+                            variables_struct(index).used = 1;
                         else
-                            warning('abnormal behavior %s does not exist in variables structure',char(o.Name))
+                            error('abnormal behavior %s does not exist in variables structure',char(o.Name))
                         end
                     end
                     [~, left_variables] = add_variables(output_struct,0,variables_struct);

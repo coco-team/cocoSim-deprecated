@@ -28,6 +28,7 @@ function [action_code, external_nodes, variables_struct_output, node_struct] = w
                     index = find(strcmp({variables_struct_output.Name},o.Name));
                     if ~isempty(index)
                         variables_struct_output(index).index = variables_struct_output(index).index+1;
+                        variables_struct_output(index).used = 1;
                     else
                         error('error : abnormal behavior %s does not exist in variables structure',char(o.Name))
                     end
@@ -47,7 +48,7 @@ function [action_code, external_nodes, variables_struct_output, node_struct] = w
 
         var_index = find(strcmp({variables_struct_output.Name},variable_to_be_updated));
         if ~isempty(var_index)
-            s = rmfield(variables_struct_output(var_index),'index');
+            s = rmfield(variables_struct_output(var_index),{'index','used'});
             node_struct.Parameters = [node_struct.Parameters, setdiff_struct( s, node_struct.Parameters)];
             node_struct.Outputs = [node_struct.Outputs, setdiff_struct( s, node_struct.Outputs)];
             index = variables_struct_output(var_index).index;
@@ -64,6 +65,7 @@ function [action_code, external_nodes, variables_struct_output, node_struct] = w
             if ~isOutput
                 left_variables = strcat(variable_to_be_updated,'_',num2str(index+1));
                 variables_struct_output(var_index).index = index+1;
+                variables_struct_output(var_index).used = 1;
             else
                 left_variables =  variable_to_be_updated;
             end

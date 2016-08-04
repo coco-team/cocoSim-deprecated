@@ -140,8 +140,9 @@ end
 
 
 variables_struct = [variables_struct, struct_ID];
-
-
+for i=1:numel(variables_struct)
+    variables_struct(i).used = 0;
+end
 end
 
 function names = construct_array(data_ame,vector_size)

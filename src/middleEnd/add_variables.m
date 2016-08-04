@@ -11,10 +11,14 @@ function [variables, outputs] = add_variables(extern_nodes_header_return,firstAc
     for i=1:numel(extern_nodes_header_return)
         data_index = find(strcmp({variables_struct.Name},{extern_nodes_header_return(i).Name}));
         if ~isempty(data_index)
-            index = variables_struct(data_index).index;
+            real_index = variables_struct(data_index).index;
+            if variables_struct(data_index).used
+                index = variables_struct(data_index).index;
+            else
+                index = 1;
+            end
         else
-            warning('abnormal behavior %s does not exist in variables structure',extern_nodes_header_return(i).Name)
-            index = 1;
+            error('abnormal behavior %s does not exist in variables structure',extern_nodes_header_return(i).Name)
         end
         if firstAction
             output_i{i} = strcat(extern_nodes_header_return(i).Name,'_1');
@@ -29,7 +33,7 @@ function [variables, outputs] = add_variables(extern_nodes_header_return,firstAc
         else
             start = 2;
         end
-        for j=start:index
+        for j=start:real_index
             vars{j-start+1} = strcat(extern_nodes_header_return(i).Name,'_',num2str(j));
         end
         if ~isempty(vars)

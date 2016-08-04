@@ -7,33 +7,6 @@
 
 
 
-node N1_A__To__N1_B_1_Condition_Action(x_1:int)
-
-returns (x:int);
-
-
-var 	x_2:int;
-
-
-let
-
-
-
-	x_2 
-	=  x_1 +1;
-	
-
-	(x) 
-	= (x_2);
-	
-
-tel
-
-
-
-
-
-
 node N2_C__To__N2_D_1_Condition_Action(x_1:int)
 
 returns (x:int);
@@ -48,6 +21,34 @@ let
 
 	x_2 
 	=  x_1 +100;
+	
+
+	(x) 
+	= (x_2);
+	
+
+tel
+
+
+
+
+
+
+
+node N1_A__To__N1_B_1_Condition_Action(x_1:int)
+
+returns (x:int);
+
+
+var 	x_2:int;
+
+
+let
+
+
+
+	x_2 
+	=  x_1 +1;
 	
 
 	(x) 
@@ -82,7 +83,6 @@ let
 	
 
 tel
-
 
 
 
@@ -135,7 +135,7 @@ let
 
 	-- set state as active 
 	idParallel1_N2_2 
-	= 1096;
+	= 323;
 	
 
 	x_2 
@@ -173,7 +173,7 @@ let
 
 
 	(idParallel1_N2) 
-	= (idParallel1_N2_2);
+	= (idParallel1_N2_1);
 	
 
 tel
@@ -202,7 +202,7 @@ let
 
 	-- set state as active 
 	idParallel1_N2_2 
-	= 1097;
+	= 324;
 	
 
 	x_2 
@@ -240,7 +240,7 @@ let
 
 
 	(idParallel1_N2) 
-	= (idParallel1_N2_2);
+	= (idParallel1_N2_1);
 	
 
 tel
@@ -272,7 +272,7 @@ let
 
 	-- set state as active 
 	idParallel1_Parallel1_2 
-	= 1093;
+	= 320;
 	
 
 	x_2 
@@ -300,7 +300,7 @@ let
 
 	(idParallel1_N2_4, x_5) 
 	= 
-	if ( idParallel1_N2_1 = 1096) then
+	if ( idParallel1_N2_1 = 323) then
 	N2_C_en(idParallel1_N2_1, x_2, false)
 	 else (idParallel1_N2_1, x_2);
 
@@ -308,7 +308,7 @@ let
 
 	(idParallel1_N2_5, x_6) 
 	= 
-	if ( idParallel1_N2_1 = 1097) then
+	if ( idParallel1_N2_1 = 324) then
 	N2_D_en(idParallel1_N2_1, x_2, false)
 	 else (idParallel1_N2_1, x_2);
 
@@ -319,10 +319,10 @@ let
 		 if ( idParallel1_N2_1 = 0) then 
 		(idParallel1_N2_3, idParallel1_Parallel1_3, x_4)
 		 else
-		 if ( idParallel1_N2_1 = 1096) then 
+		 if ( idParallel1_N2_1 = 323) then 
 		(idParallel1_N2_4, idParallel1_Parallel1_3, x_5)
 		 else
-		 if ( idParallel1_N2_1 = 1097) then 
+		 if ( idParallel1_N2_1 = 324) then 
 		(idParallel1_N2_5, idParallel1_Parallel1_3, x_6)
 		 else (idParallel1_N2_1, idParallel1_Parallel1_2, x_2);
 
@@ -360,7 +360,7 @@ let
 	
 	(idParallel1_N2_2) 
 	= 
-	if ( idParallel1_N2_1 = 1096) then
+	if ( idParallel1_N2_1 = 323) then
 	N2_C_ex(idParallel1_N2_1, false)
 	 else (idParallel1_N2_1);
 
@@ -368,7 +368,7 @@ let
 
 	(idParallel1_N2_3) 
 	= 
-	if ( idParallel1_N2_1 = 1097) then
+	if ( idParallel1_N2_1 = 324) then
 	N2_D_ex(idParallel1_N2_1, false)
 	 else (idParallel1_N2_1);
 
@@ -376,10 +376,10 @@ let
 
 	(idParallel1_N2_4) 
 	= 
-		 if ( idParallel1_N2_1 = 1096) then 
+		 if ( idParallel1_N2_1 = 323) then 
 		(idParallel1_N2_2)
 		 else
-		 if ( idParallel1_N2_1 = 1097) then 
+		 if ( idParallel1_N2_1 = 324) then 
 		(idParallel1_N2_3)
 		 else (idParallel1_N2_1);
 
@@ -398,7 +398,7 @@ let
 	
 
 	(idParallel1_N2, x, idParallel1_Parallel1) 
-	= (idParallel1_N2_5, x_2, idParallel1_Parallel1_2);
+	= (idParallel1_N2_5, x_2, idParallel1_Parallel1_1);
 	
 
 tel
@@ -427,7 +427,7 @@ let
 
 	-- set state as active 
 	idParallel1_N1_2 
-	= 1094;
+	= 321;
 	
 
 	x_2 
@@ -465,7 +465,7 @@ let
 
 
 	(idParallel1_N1) 
-	= (idParallel1_N1_2);
+	= (idParallel1_N1_1);
 	
 
 tel
@@ -494,7 +494,7 @@ let
 
 	-- set state as active 
 	idParallel1_N1_2 
-	= 1095;
+	= 322;
 	
 
 	x_2 
@@ -532,7 +532,7 @@ let
 
 
 	(idParallel1_N1) 
-	= (idParallel1_N1_2);
+	= (idParallel1_N1_1);
 	
 
 tel
@@ -564,7 +564,7 @@ let
 
 	-- set state as active 
 	idParallel1_Parallel1_2 
-	= 1092;
+	= 319;
 	
 
 	x_2 
@@ -592,7 +592,7 @@ let
 
 	(idParallel1_N1_4, x_5) 
 	= 
-	if ( idParallel1_N1_1 = 1094) then
+	if ( idParallel1_N1_1 = 321) then
 	N1_A_en(idParallel1_N1_1, x_2, false)
 	 else (idParallel1_N1_1, x_2);
 
@@ -600,7 +600,7 @@ let
 
 	(idParallel1_N1_5, x_6) 
 	= 
-	if ( idParallel1_N1_1 = 1095) then
+	if ( idParallel1_N1_1 = 322) then
 	N1_B_en(idParallel1_N1_1, x_2, false)
 	 else (idParallel1_N1_1, x_2);
 
@@ -611,10 +611,10 @@ let
 		 if ( idParallel1_N1_1 = 0) then 
 		(idParallel1_N1_3, idParallel1_Parallel1_3, x_4)
 		 else
-		 if ( idParallel1_N1_1 = 1094) then 
+		 if ( idParallel1_N1_1 = 321) then 
 		(idParallel1_N1_4, idParallel1_Parallel1_3, x_5)
 		 else
-		 if ( idParallel1_N1_1 = 1095) then 
+		 if ( idParallel1_N1_1 = 322) then 
 		(idParallel1_N1_5, idParallel1_Parallel1_3, x_6)
 		 else (idParallel1_N1_1, idParallel1_Parallel1_2, x_2);
 
@@ -652,7 +652,7 @@ let
 	
 	(idParallel1_N1_2) 
 	= 
-	if ( idParallel1_N1_1 = 1094) then
+	if ( idParallel1_N1_1 = 321) then
 	N1_A_ex(idParallel1_N1_1, false)
 	 else (idParallel1_N1_1);
 
@@ -660,7 +660,7 @@ let
 
 	(idParallel1_N1_3) 
 	= 
-	if ( idParallel1_N1_1 = 1095) then
+	if ( idParallel1_N1_1 = 322) then
 	N1_B_ex(idParallel1_N1_1, false)
 	 else (idParallel1_N1_1);
 
@@ -668,10 +668,10 @@ let
 
 	(idParallel1_N1_4) 
 	= 
-		 if ( idParallel1_N1_1 = 1094) then 
+		 if ( idParallel1_N1_1 = 321) then 
 		(idParallel1_N1_2)
 		 else
-		 if ( idParallel1_N1_1 = 1095) then 
+		 if ( idParallel1_N1_1 = 322) then 
 		(idParallel1_N1_3)
 		 else (idParallel1_N1_1);
 
@@ -690,7 +690,7 @@ let
 	
 
 	(idParallel1_N1, x, idParallel1_Parallel1) 
-	= (idParallel1_N1_5, x_2, idParallel1_Parallel1_2);
+	= (idParallel1_N1_5, x_2, idParallel1_Parallel1_1);
 	
 
 tel
@@ -743,17 +743,17 @@ let
 
 
 
-	unless (idParallel1_N2_1=1096) and S2 restart N2_C__TO__N2_D_1
+	unless (idParallel1_N2_1=323) and S2 restart N2_C__TO__N2_D_1
 
 
 
-	unless (idParallel1_N2_1=1097) and R2 restart N2_D__TO__N2_C_1
+	unless (idParallel1_N2_1=324) and R2 restart N2_D__TO__N2_C_1
 
 
 
-	unless (idParallel1_N2_1=1096) restart N2_C_IDL
+	unless (idParallel1_N2_1=323) restart N2_C_IDL
 
-	unless (idParallel1_N2_1=1097) restart N2_D_IDL
+	unless (idParallel1_N2_1=324) restart N2_D_IDL
 
 	let
 
@@ -906,17 +906,17 @@ let
 
 
 
-	unless (idParallel1_N1_1=1094) and S1 restart N1_A__TO__N1_B_1
+	unless (idParallel1_N1_1=321) and S1 restart N1_A__TO__N1_B_1
 
 
 
-	unless (idParallel1_N1_1=1095) and R1 restart N1_B__TO__N1_A_1
+	unless (idParallel1_N1_1=322) and R1 restart N1_B__TO__N1_A_1
 
 
 
-	unless (idParallel1_N1_1=1094) restart N1_A_IDL
+	unless (idParallel1_N1_1=321) restart N1_A_IDL
 
-	unless (idParallel1_N1_1=1095) restart N1_B_IDL
+	unless (idParallel1_N1_1=322) restart N1_B_IDL
 
 	let
 

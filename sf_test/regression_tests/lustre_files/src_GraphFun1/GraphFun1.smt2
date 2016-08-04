@@ -1,20 +1,20 @@
 (declare-datatypes () ((chart_chart__type POINTChart_Chart POINT__TO__CHART_A_1 CHART_A__TO__CHART_B_1 CHART_B__TO__CHART_A_1 CHART_A_IDL CHART_B_IDL)));
 
-(declare-datatypes () ((chart_f__type POINTChart_f POINT__TO__CHART_FJUNCTION1568_1)));
+(declare-datatypes () ((chart_f__type POINTChart_f POINT__TO__CHART_FJUNCTION818_1)));
 
-; POINT__To__Chart_fJunction1568_1_Condition_Action
-(declare-var POINT__To__Chart_fJunction1568_1_Condition_Action.x Real)
-(declare-var POINT__To__Chart_fJunction1568_1_Condition_Action.y Real)
-(declare-var POINT__To__Chart_fJunction1568_1_Condition_Action.z_1 Real)
-(declare-var POINT__To__Chart_fJunction1568_1_Condition_Action.z Real)
-(declare-var POINT__To__Chart_fJunction1568_1_Condition_Action.z_2 Real)
-(declare-rel POINT__To__Chart_fJunction1568_1_Condition_Action (Real Real Real Real))
+; POINT__To__Chart_fJunction818_1_Condition_Action
+(declare-var POINT__To__Chart_fJunction818_1_Condition_Action.x Real)
+(declare-var POINT__To__Chart_fJunction818_1_Condition_Action.y Real)
+(declare-var POINT__To__Chart_fJunction818_1_Condition_Action.z_1 Real)
+(declare-var POINT__To__Chart_fJunction818_1_Condition_Action.z Real)
+(declare-var POINT__To__Chart_fJunction818_1_Condition_Action.z_2 Real)
+(declare-rel POINT__To__Chart_fJunction818_1_Condition_Action (Real Real Real Real))
 (rule (=> 
-  (and (sqrt (+ (* POINT__To__Chart_fJunction1568_1_Condition_Action.x POINT__To__Chart_fJunction1568_1_Condition_Action.x) (* POINT__To__Chart_fJunction1568_1_Condition_Action.y POINT__To__Chart_fJunction1568_1_Condition_Action.y))
-             POINT__To__Chart_fJunction1568_1_Condition_Action.z_2)
-       (= POINT__To__Chart_fJunction1568_1_Condition_Action.z POINT__To__Chart_fJunction1568_1_Condition_Action.z_2)
+  (and (sqrt (+ (* POINT__To__Chart_fJunction818_1_Condition_Action.x POINT__To__Chart_fJunction818_1_Condition_Action.x) (* POINT__To__Chart_fJunction818_1_Condition_Action.y POINT__To__Chart_fJunction818_1_Condition_Action.y))
+             POINT__To__Chart_fJunction818_1_Condition_Action.z_2)
+       (= POINT__To__Chart_fJunction818_1_Condition_Action.z POINT__To__Chart_fJunction818_1_Condition_Action.z_2)
        )
-  (POINT__To__Chart_fJunction1568_1_Condition_Action POINT__To__Chart_fJunction1568_1_Condition_Action.x POINT__To__Chart_fJunction1568_1_Condition_Action.y POINT__To__Chart_fJunction1568_1_Condition_Action.z_1 POINT__To__Chart_fJunction1568_1_Condition_Action.z)
+  (POINT__To__Chart_fJunction818_1_Condition_Action POINT__To__Chart_fJunction818_1_Condition_Action.x POINT__To__Chart_fJunction818_1_Condition_Action.y POINT__To__Chart_fJunction818_1_Condition_Action.z_1 POINT__To__Chart_fJunction818_1_Condition_Action.z)
 ))
 
 ; chart_f__POINTChart_f_handler_until
@@ -49,7 +49,7 @@
                     (= chart_f__POINTChart_f_unless.chart_f__restart_act chart_f__POINTChart_f_unless.chart_f__restart_in)
                     ))
             (or (not (= chart_f__POINTChart_f_unless.__chart_f__POINTChart_f_unless_1 true))
-               (and (= chart_f__POINTChart_f_unless.chart_f__state_act POINT__TO__CHART_FJUNCTION1568_1)
+               (and (= chart_f__POINTChart_f_unless.chart_f__state_act POINT__TO__CHART_FJUNCTION818_1)
                     (= chart_f__POINTChart_f_unless.chart_f__restart_act true)
                     ))
        )
@@ -57,41 +57,41 @@
   (chart_f__POINTChart_f_unless chart_f__POINTChart_f_unless.chart_f__restart_in chart_f__POINTChart_f_unless.chart_f__state_in chart_f__POINTChart_f_unless.idChart_f_1 chart_f__POINTChart_f_unless.chart_f__restart_act chart_f__POINTChart_f_unless.chart_f__state_act)
 ))
 
-; chart_f__POINT__TO__CHART_FJUNCTION1568_1_handler_until
-(declare-var chart_f__POINT__TO__CHART_FJUNCTION1568_1_handler_until.idChart_f_1 Int)
-(declare-var chart_f__POINT__TO__CHART_FJUNCTION1568_1_handler_until.x Real)
-(declare-var chart_f__POINT__TO__CHART_FJUNCTION1568_1_handler_until.y Real)
-(declare-var chart_f__POINT__TO__CHART_FJUNCTION1568_1_handler_until.z_1 Real)
-(declare-var chart_f__POINT__TO__CHART_FJUNCTION1568_1_handler_until.chart_f__restart_in Bool)
-(declare-var chart_f__POINT__TO__CHART_FJUNCTION1568_1_handler_until.chart_f__state_in chart_f__type)
-(declare-var chart_f__POINT__TO__CHART_FJUNCTION1568_1_handler_until.idChart_f_out Int)
-(declare-var chart_f__POINT__TO__CHART_FJUNCTION1568_1_handler_until.z_out Real)
-(declare-var chart_f__POINT__TO__CHART_FJUNCTION1568_1_handler_until.z_2 Real)
-(declare-rel chart_f__POINT__TO__CHART_FJUNCTION1568_1_handler_until (Int Real Real Real Bool chart_f__type Int Real))
+; chart_f__POINT__TO__CHART_FJUNCTION818_1_handler_until
+(declare-var chart_f__POINT__TO__CHART_FJUNCTION818_1_handler_until.idChart_f_1 Int)
+(declare-var chart_f__POINT__TO__CHART_FJUNCTION818_1_handler_until.x Real)
+(declare-var chart_f__POINT__TO__CHART_FJUNCTION818_1_handler_until.y Real)
+(declare-var chart_f__POINT__TO__CHART_FJUNCTION818_1_handler_until.z_1 Real)
+(declare-var chart_f__POINT__TO__CHART_FJUNCTION818_1_handler_until.chart_f__restart_in Bool)
+(declare-var chart_f__POINT__TO__CHART_FJUNCTION818_1_handler_until.chart_f__state_in chart_f__type)
+(declare-var chart_f__POINT__TO__CHART_FJUNCTION818_1_handler_until.idChart_f_out Int)
+(declare-var chart_f__POINT__TO__CHART_FJUNCTION818_1_handler_until.z_out Real)
+(declare-var chart_f__POINT__TO__CHART_FJUNCTION818_1_handler_until.z_2 Real)
+(declare-rel chart_f__POINT__TO__CHART_FJUNCTION818_1_handler_until (Int Real Real Real Bool chart_f__type Int Real))
 (rule (=> 
-  (and (POINT__To__Chart_fJunction1568_1_Condition_Action chart_f__POINT__TO__CHART_FJUNCTION1568_1_handler_until.x
-                                                          chart_f__POINT__TO__CHART_FJUNCTION1568_1_handler_until.y
-                                                          chart_f__POINT__TO__CHART_FJUNCTION1568_1_handler_until.z_1
-                                                          chart_f__POINT__TO__CHART_FJUNCTION1568_1_handler_until.z_2)
-       (= chart_f__POINT__TO__CHART_FJUNCTION1568_1_handler_until.z_out chart_f__POINT__TO__CHART_FJUNCTION1568_1_handler_until.z_2)
-       (= chart_f__POINT__TO__CHART_FJUNCTION1568_1_handler_until.idChart_f_out chart_f__POINT__TO__CHART_FJUNCTION1568_1_handler_until.idChart_f_1)
-       (= chart_f__POINT__TO__CHART_FJUNCTION1568_1_handler_until.chart_f__state_in POINTChart_f)
-       (= chart_f__POINT__TO__CHART_FJUNCTION1568_1_handler_until.chart_f__restart_in true)
+  (and (POINT__To__Chart_fJunction818_1_Condition_Action chart_f__POINT__TO__CHART_FJUNCTION818_1_handler_until.x
+                                                         chart_f__POINT__TO__CHART_FJUNCTION818_1_handler_until.y
+                                                         chart_f__POINT__TO__CHART_FJUNCTION818_1_handler_until.z_1
+                                                         chart_f__POINT__TO__CHART_FJUNCTION818_1_handler_until.z_2)
+       (= chart_f__POINT__TO__CHART_FJUNCTION818_1_handler_until.z_out chart_f__POINT__TO__CHART_FJUNCTION818_1_handler_until.z_2)
+       (= chart_f__POINT__TO__CHART_FJUNCTION818_1_handler_until.idChart_f_out chart_f__POINT__TO__CHART_FJUNCTION818_1_handler_until.idChart_f_1)
+       (= chart_f__POINT__TO__CHART_FJUNCTION818_1_handler_until.chart_f__state_in POINTChart_f)
+       (= chart_f__POINT__TO__CHART_FJUNCTION818_1_handler_until.chart_f__restart_in true)
        )
-  (chart_f__POINT__TO__CHART_FJUNCTION1568_1_handler_until chart_f__POINT__TO__CHART_FJUNCTION1568_1_handler_until.idChart_f_1 chart_f__POINT__TO__CHART_FJUNCTION1568_1_handler_until.x chart_f__POINT__TO__CHART_FJUNCTION1568_1_handler_until.y chart_f__POINT__TO__CHART_FJUNCTION1568_1_handler_until.z_1 chart_f__POINT__TO__CHART_FJUNCTION1568_1_handler_until.chart_f__restart_in chart_f__POINT__TO__CHART_FJUNCTION1568_1_handler_until.chart_f__state_in chart_f__POINT__TO__CHART_FJUNCTION1568_1_handler_until.idChart_f_out chart_f__POINT__TO__CHART_FJUNCTION1568_1_handler_until.z_out)
+  (chart_f__POINT__TO__CHART_FJUNCTION818_1_handler_until chart_f__POINT__TO__CHART_FJUNCTION818_1_handler_until.idChart_f_1 chart_f__POINT__TO__CHART_FJUNCTION818_1_handler_until.x chart_f__POINT__TO__CHART_FJUNCTION818_1_handler_until.y chart_f__POINT__TO__CHART_FJUNCTION818_1_handler_until.z_1 chart_f__POINT__TO__CHART_FJUNCTION818_1_handler_until.chart_f__restart_in chart_f__POINT__TO__CHART_FJUNCTION818_1_handler_until.chart_f__state_in chart_f__POINT__TO__CHART_FJUNCTION818_1_handler_until.idChart_f_out chart_f__POINT__TO__CHART_FJUNCTION818_1_handler_until.z_out)
 ))
 
-; chart_f__POINT__TO__CHART_FJUNCTION1568_1_unless
-(declare-var chart_f__POINT__TO__CHART_FJUNCTION1568_1_unless.chart_f__restart_in Bool)
-(declare-var chart_f__POINT__TO__CHART_FJUNCTION1568_1_unless.chart_f__state_in chart_f__type)
-(declare-var chart_f__POINT__TO__CHART_FJUNCTION1568_1_unless.chart_f__restart_act Bool)
-(declare-var chart_f__POINT__TO__CHART_FJUNCTION1568_1_unless.chart_f__state_act chart_f__type)
-(declare-rel chart_f__POINT__TO__CHART_FJUNCTION1568_1_unless (Bool chart_f__type Bool chart_f__type))
+; chart_f__POINT__TO__CHART_FJUNCTION818_1_unless
+(declare-var chart_f__POINT__TO__CHART_FJUNCTION818_1_unless.chart_f__restart_in Bool)
+(declare-var chart_f__POINT__TO__CHART_FJUNCTION818_1_unless.chart_f__state_in chart_f__type)
+(declare-var chart_f__POINT__TO__CHART_FJUNCTION818_1_unless.chart_f__restart_act Bool)
+(declare-var chart_f__POINT__TO__CHART_FJUNCTION818_1_unless.chart_f__state_act chart_f__type)
+(declare-rel chart_f__POINT__TO__CHART_FJUNCTION818_1_unless (Bool chart_f__type Bool chart_f__type))
 (rule (=> 
-  (and (= chart_f__POINT__TO__CHART_FJUNCTION1568_1_unless.chart_f__state_act chart_f__POINT__TO__CHART_FJUNCTION1568_1_unless.chart_f__state_in)
-       (= chart_f__POINT__TO__CHART_FJUNCTION1568_1_unless.chart_f__restart_act chart_f__POINT__TO__CHART_FJUNCTION1568_1_unless.chart_f__restart_in)
+  (and (= chart_f__POINT__TO__CHART_FJUNCTION818_1_unless.chart_f__state_act chart_f__POINT__TO__CHART_FJUNCTION818_1_unless.chart_f__state_in)
+       (= chart_f__POINT__TO__CHART_FJUNCTION818_1_unless.chart_f__restart_act chart_f__POINT__TO__CHART_FJUNCTION818_1_unless.chart_f__restart_in)
        )
-  (chart_f__POINT__TO__CHART_FJUNCTION1568_1_unless chart_f__POINT__TO__CHART_FJUNCTION1568_1_unless.chart_f__restart_in chart_f__POINT__TO__CHART_FJUNCTION1568_1_unless.chart_f__state_in chart_f__POINT__TO__CHART_FJUNCTION1568_1_unless.chart_f__restart_act chart_f__POINT__TO__CHART_FJUNCTION1568_1_unless.chart_f__state_act)
+  (chart_f__POINT__TO__CHART_FJUNCTION818_1_unless chart_f__POINT__TO__CHART_FJUNCTION818_1_unless.chart_f__restart_in chart_f__POINT__TO__CHART_FJUNCTION818_1_unless.chart_f__state_in chart_f__POINT__TO__CHART_FJUNCTION818_1_unless.chart_f__restart_act chart_f__POINT__TO__CHART_FJUNCTION818_1_unless.chart_f__state_act)
 ))
 
 ; Chart_f_node
@@ -168,8 +168,8 @@
                     (= Chart_f_node.chart_f__state_act Chart_f_node.__Chart_f_node_4)
                     (= Chart_f_node.chart_f__restart_act Chart_f_node.__Chart_f_node_3)
                     ))
-            (or (not (= Chart_f_node.chart_f__state_in POINT__TO__CHART_FJUNCTION1568_1))
-               (and (chart_f__POINT__TO__CHART_FJUNCTION1568_1_unless 
+            (or (not (= Chart_f_node.chart_f__state_in POINT__TO__CHART_FJUNCTION818_1))
+               (and (chart_f__POINT__TO__CHART_FJUNCTION818_1_unless 
                     Chart_f_node.chart_f__restart_in
                     Chart_f_node.chart_f__state_in
                     Chart_f_node.__Chart_f_node_1
@@ -190,8 +190,8 @@
                     (= Chart_f_node.chart_f__next_state_in Chart_f_node.__Chart_f_node_10)
                     (= Chart_f_node.chart_f__next_restart_in Chart_f_node.__Chart_f_node_9)
                     ))
-            (or (not (= Chart_f_node.chart_f__state_act POINT__TO__CHART_FJUNCTION1568_1))
-               (and (chart_f__POINT__TO__CHART_FJUNCTION1568_1_handler_until 
+            (or (not (= Chart_f_node.chart_f__state_act POINT__TO__CHART_FJUNCTION818_1))
+               (and (chart_f__POINT__TO__CHART_FJUNCTION818_1_handler_until 
                     Chart_f_node.idChart_f_1
                     Chart_f_node.x
                     Chart_f_node.y
@@ -444,7 +444,7 @@
             (or (not (= (not Chart_A_ex.isInner) false))
                (= Chart_A_ex.idChart_Chart_2 Chart_A_ex.idChart_Chart_1))
        )
-       (= Chart_A_ex.idChart_Chart Chart_A_ex.idChart_Chart_2)
+       (= Chart_A_ex.idChart_Chart Chart_A_ex.idChart_Chart_1)
        )
   (Chart_A_ex Chart_A_ex.idChart_Chart_1 Chart_A_ex.isInner Chart_A_ex.idChart_Chart)
 ))
@@ -472,7 +472,7 @@
                     (= Chart_B_en.a_2 5.)
                     ))
        )
-       (= Chart_B_en.idChart_Chart 1563)
+       (= Chart_B_en.idChart_Chart 813)
        (= Chart_B_en.b Chart_B_en.b_2)
        (= Chart_B_en.a Chart_B_en.a_2)
        )
@@ -502,7 +502,7 @@
                     (= Chart_A_en.a_2 3.)
                     ))
        )
-       (= Chart_A_en.idChart_Chart 1562)
+       (= Chart_A_en.idChart_Chart 812)
        (= Chart_A_en.b Chart_A_en.b_2)
        (= Chart_A_en.a Chart_A_en.a_2)
        )
@@ -627,7 +627,7 @@
             (or (not (= (not Chart_B_ex.isInner) false))
                (= Chart_B_ex.idChart_Chart_2 Chart_B_ex.idChart_Chart_1))
        )
-       (= Chart_B_ex.idChart_Chart Chart_B_ex.idChart_Chart_2)
+       (= Chart_B_ex.idChart_Chart Chart_B_ex.idChart_Chart_1)
        )
   (Chart_B_ex Chart_B_ex.idChart_Chart_1 Chart_B_ex.isInner Chart_B_ex.idChart_Chart)
 ))
@@ -1036,8 +1036,8 @@
 (declare-var chart_chart__POINTChart_Chart_unless.__chart_chart__POINTChart_Chart_unless_3 Bool)
 (declare-rel chart_chart__POINTChart_Chart_unless (Bool chart_chart__type Int Bool chart_chart__type))
 (rule (=> 
-  (and (= chart_chart__POINTChart_Chart_unless.__chart_chart__POINTChart_Chart_unless_3 (= chart_chart__POINTChart_Chart_unless.idChart_Chart_1 1563))
-       (= chart_chart__POINTChart_Chart_unless.__chart_chart__POINTChart_Chart_unless_2 (= chart_chart__POINTChart_Chart_unless.idChart_Chart_1 1562))
+  (and (= chart_chart__POINTChart_Chart_unless.__chart_chart__POINTChart_Chart_unless_3 (= chart_chart__POINTChart_Chart_unless.idChart_Chart_1 813))
+       (= chart_chart__POINTChart_Chart_unless.__chart_chart__POINTChart_Chart_unless_2 (= chart_chart__POINTChart_Chart_unless.idChart_Chart_1 812))
        (= chart_chart__POINTChart_Chart_unless.__chart_chart__POINTChart_Chart_unless_1 (= chart_chart__POINTChart_Chart_unless.idChart_Chart_1 0))
        (and (or (not (= chart_chart__POINTChart_Chart_unless.__chart_chart__POINTChart_Chart_unless_1 false))
                (and (or (not (= chart_chart__POINTChart_Chart_unless.__chart_chart__POINTChart_Chart_unless_2 false))

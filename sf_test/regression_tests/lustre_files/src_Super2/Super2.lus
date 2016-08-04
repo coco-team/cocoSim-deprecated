@@ -32,7 +32,7 @@ let
 
 	-- set state as active 
 	idSuper2_Super2_2 
-	= 870;
+	= 74;
 	
 
 	s_2 
@@ -70,7 +70,7 @@ let
 
 
 	(idSuper2_Super2) 
-	= (idSuper2_Super2_2);
+	= (idSuper2_Super2_1);
 	
 
 tel
@@ -99,7 +99,7 @@ let
 
 	-- set state as active 
 	idSuper2_C_2 
-	= 871;
+	= 75;
 	
 
 	s_2 
@@ -137,7 +137,7 @@ let
 
 
 	(idSuper2_C) 
-	= (idSuper2_C_2);
+	= (idSuper2_C_1);
 	
 
 tel
@@ -169,7 +169,7 @@ let
 
 	-- set state as active 
 	idSuper2_Super2_2 
-	= 872;
+	= 76;
 	
 
 	
@@ -192,7 +192,7 @@ let
 
 	(idSuper2_C_4, s_4) 
 	= 
-	if ( idSuper2_C_1 = 871) then
+	if ( idSuper2_C_1 = 75) then
 	C_C1_en(idSuper2_C_1, s_1, false)
 	 else (idSuper2_C_1, s_1);
 
@@ -203,7 +203,7 @@ let
 		 if ( idSuper2_C_1 = 0) then 
 		(idSuper2_C_3, idSuper2_Super2_3, s_3)
 		 else
-		 if ( idSuper2_C_1 = 871) then 
+		 if ( idSuper2_C_1 = 75) then 
 		(idSuper2_C_4, idSuper2_Super2_3, s_4)
 		 else (idSuper2_C_1, idSuper2_Super2_2, s_1);
 
@@ -238,7 +238,7 @@ let
 	
 	(idSuper2_C_2) 
 	= 
-	if ( idSuper2_C_1 = 871) then
+	if ( idSuper2_C_1 = 75) then
 	C_C1_ex(idSuper2_C_1, false)
 	 else (idSuper2_C_1);
 
@@ -246,7 +246,7 @@ let
 
 	(idSuper2_C_3) 
 	= 
-		 if ( idSuper2_C_1 = 871) then 
+		 if ( idSuper2_C_1 = 75) then 
 		(idSuper2_C_2)
 		 else (idSuper2_C_1);
 
@@ -260,7 +260,7 @@ let
 	
 
 	(idSuper2_C, idSuper2_Super2) 
-	= (idSuper2_C_4, idSuper2_Super2_2);
+	= (idSuper2_C_4, idSuper2_Super2_1);
 	
 
 tel
@@ -289,7 +289,7 @@ let
 
 	-- set state as active 
 	idSuper2_Super2_2 
-	= 869;
+	= 73;
 	
 
 	s_2 
@@ -327,7 +327,7 @@ let
 
 
 	(idSuper2_Super2) 
-	= (idSuper2_Super2_2);
+	= (idSuper2_Super2_1);
 	
 
 tel
@@ -354,11 +354,11 @@ let
 
 
 
-	unless (idSuper2_C_1=871) and E restart C_C1__TO__SUPER2_B_1
+	unless (idSuper2_C_1=75) and E restart C_C1__TO__SUPER2_B_1
 
 
 
-	unless (idSuper2_C_1=871) restart C_C1_IDL
+	unless (idSuper2_C_1=75) restart C_C1_IDL
 
 	let
 
@@ -465,27 +465,27 @@ let
 
 
 
-	unless (idSuper2_Super2_1=869) and F restart SUPER2_A__TO__SUPER2_C_1
+	unless (idSuper2_Super2_1=73) and F restart SUPER2_A__TO__SUPER2_C_1
 
 
 
-	unless (idSuper2_Super2_1=869) and E restart SUPER2_A__TO__C_C1_2
+	unless (idSuper2_Super2_1=73) and E restart SUPER2_A__TO__C_C1_2
 
 
 
-	unless (idSuper2_Super2_1=870) and G restart SUPER2_B__TO__SUPER2_A_1
+	unless (idSuper2_Super2_1=74) and G restart SUPER2_B__TO__SUPER2_A_1
 
 
 
-	unless (idSuper2_Super2_1=872) and F restart SUPER2_C__TO__SUPER2_B_1
+	unless (idSuper2_Super2_1=76) and F restart SUPER2_C__TO__SUPER2_B_1
 
 
 
-	unless (idSuper2_Super2_1=869) restart SUPER2_A_IDL
+	unless (idSuper2_Super2_1=73) restart SUPER2_A_IDL
 
-	unless (idSuper2_Super2_1=870) restart SUPER2_B_IDL
+	unless (idSuper2_Super2_1=74) restart SUPER2_B_IDL
 
-	unless (idSuper2_Super2_1=872) restart SUPER2_C_IDL
+	unless (idSuper2_Super2_1=76) restart SUPER2_C_IDL
 
 	let
 
@@ -564,7 +564,7 @@ let
 		
 
 		idSuper2_C_2 
-	= 871;
+	= 75;
 	
 		(idSuper2_C_3, idSuper2_Super2_3, s_2) 
 	= Super2_C_en(idSuper2_C_2, idSuper2_Super2_2, s_1, false);

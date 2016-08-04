@@ -251,7 +251,7 @@ else
                     file_name, file_name,file_name,file_name,file_name,file_name,file_name,file_name,lustre_binary);
                 system(command);
                 command = sprintf('rm *.o input_values outputs_values ');
-%                 system(command);
+                system(command);
                 command = sprintf('rm -r slprj');
                 system(command);
                 cd(OldPwd);

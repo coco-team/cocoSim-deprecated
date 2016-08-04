@@ -31,7 +31,7 @@ let
 
 	-- set state as active 
 	idSetResetWait_SetResetWait_2 
-	= 270;
+	= 1452;
 	
 
 	s_2 
@@ -69,7 +69,7 @@ let
 
 
 	(idSetResetWait_SetResetWait) 
-	= (idSetResetWait_SetResetWait_2);
+	= (idSetResetWait_SetResetWait_1);
 	
 
 tel
@@ -98,7 +98,7 @@ let
 
 	-- set state as active 
 	idSetResetWait_SetResetWait_2 
-	= 269;
+	= 1451;
 	
 
 	s_2 
@@ -136,7 +136,7 @@ let
 
 
 	(idSetResetWait_SetResetWait) 
-	= (idSetResetWait_SetResetWait_2);
+	= (idSetResetWait_SetResetWait_1);
 	
 
 tel
@@ -165,7 +165,7 @@ let
 
 	-- set state as active 
 	idSetResetWait_SetResetWait_2 
-	= 268;
+	= 1450;
 	
 
 	s_2 
@@ -203,7 +203,7 @@ let
 
 
 	(idSetResetWait_SetResetWait) 
-	= (idSetResetWait_SetResetWait_2);
+	= (idSetResetWait_SetResetWait_1);
 	
 
 tel
@@ -231,31 +231,31 @@ let
 
 
 
-	unless (idSetResetWait_SetResetWait_1=268) and Suspend restart SETRESETWAIT_ON__TO__SETRESETWAIT_WAIT_1
+	unless (idSetResetWait_SetResetWait_1=1450) and Suspend restart SETRESETWAIT_ON__TO__SETRESETWAIT_WAIT_1
 
 
 
-	unless (idSetResetWait_SetResetWait_1=268) and Reset restart SETRESETWAIT_ON__TO__SETRESETWAIT_OFF_2
+	unless (idSetResetWait_SetResetWait_1=1450) and Reset restart SETRESETWAIT_ON__TO__SETRESETWAIT_OFF_2
 
 
 
-	unless (idSetResetWait_SetResetWait_1=269) and Set restart SETRESETWAIT_OFF__TO__SETRESETWAIT_ON_1
+	unless (idSetResetWait_SetResetWait_1=1451) and Set restart SETRESETWAIT_OFF__TO__SETRESETWAIT_ON_1
 
 
 
-	unless (idSetResetWait_SetResetWait_1=269) and Suspend restart SETRESETWAIT_OFF__TO__SETRESETWAIT_WAIT_2
+	unless (idSetResetWait_SetResetWait_1=1451) and Suspend restart SETRESETWAIT_OFF__TO__SETRESETWAIT_WAIT_2
 
 
 
-	unless (idSetResetWait_SetResetWait_1=270) and Clear restart SETRESETWAIT_WAIT__TO__SETRESETWAIT_OFF_1
+	unless (idSetResetWait_SetResetWait_1=1452) and Clear restart SETRESETWAIT_WAIT__TO__SETRESETWAIT_OFF_1
 
 
 
-	unless (idSetResetWait_SetResetWait_1=268) restart SETRESETWAIT_ON_IDL
+	unless (idSetResetWait_SetResetWait_1=1450) restart SETRESETWAIT_ON_IDL
 
-	unless (idSetResetWait_SetResetWait_1=269) restart SETRESETWAIT_OFF_IDL
+	unless (idSetResetWait_SetResetWait_1=1451) restart SETRESETWAIT_OFF_IDL
 
-	unless (idSetResetWait_SetResetWait_1=270) restart SETRESETWAIT_WAIT_IDL
+	unless (idSetResetWait_SetResetWait_1=1452) restart SETRESETWAIT_WAIT_IDL
 
 	let
 

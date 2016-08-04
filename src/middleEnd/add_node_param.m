@@ -6,10 +6,13 @@ function param = add_node_param(extern_nodes_header_param, variables_struct, tok
         if strcmp(extern_nodes_header_param(i).Type, 'Output') || strcmp(extern_nodes_header_param(i).Type, 'Local')  || strcmp(extern_nodes_header_param(i).Type, 'ID')
             data_index = find(strcmp({variables_struct.Name},{extern_nodes_header_param(i).Name}));
             if ~isempty(data_index)
-                index = variables_struct(data_index).index;
+                if variables_struct(data_index).used
+                    index = variables_struct(data_index).index;
+                else
+                    index = 1;
+                end
             else
-                warning('abnormal behavior %s does not exist in variables structure',extern_nodes_header_param(i).Name)
-                index = 1;
+                error('abnormal behavior %s does not exist in variables structure',extern_nodes_header_param(i).Name)
             end
             param_i{i} = strcat(extern_nodes_header_param(i).Name,'_',num2str(index));
         else

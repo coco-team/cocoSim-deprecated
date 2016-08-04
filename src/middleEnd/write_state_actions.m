@@ -229,8 +229,9 @@ function [action_code, variables_struct, node_struct] = write_children_action(ch
                         index = find(strcmp({variables_struct.Name},o.Name));
                         if ~isempty(index)
                             variables_struct(index).index = variables_struct(index).index+1;
+                             variables_struct(index).used = 1;
                         else
-                            warning('abnormal behavior %s does not exist in variables structure',char(o.Name))
+                            error('abnormal behavior %s does not exist in variables structure',char(o.Name))
                         end
                     end
                     [~, left_variables] = add_variables(node_struct.Outputs,0,variables_struct);
@@ -257,8 +258,9 @@ function [action_code, variables_struct, node_struct] = write_children_action(ch
                         index = find(strcmp({variables_struct.Name},o.Name));
                         if ~isempty(index)
                             variables_struct(index).index = variables_struct(index).index+1;
+                            variables_struct(index).used = 1;
                         else
-                            warning('abnormal behavior %s does not exist in variables structure',char(o.Name))
+                            error('abnormal behavior %s does not exist in variables structure',char(o.Name))
                         end
                     end
                     [~, left_variables] = add_variables(output_struct,0,variables_struct);
@@ -300,8 +302,9 @@ function [action_code, variables_struct, node_struct] = write_children_action(ch
                     index = find(strcmp({variables_struct.Name},o.Name));
                     if ~isempty(index)
                         variables_struct(index).index = variables_struct(index).index+1;
+                        variables_struct(index).used = 1;
                     else
-                        warning('abnormal behavior %s does not exist in variables structure',char(o.Name))
+                        error('abnormal behavior %s does not exist in variables structure',char(o.Name))
                     end
                 end
                 [~, left_variables] = add_variables(outputs,0,variables_struct);
@@ -331,7 +334,7 @@ function [result, output_updated, variables_struct, node_struct] = get_initial_s
     output_updated_struct_array = cell(n_tr,1);
     if ~isempty(default_transition)
         for i=1:n_tr
-            [result_i, output_updated_struct, variables_struct, node_struct] = transition_code(chart, data, state, default_transition(i), true, variables_struct, node_struct, global_nodes_struct, variables_struct);
+            [result_i, output_updated_struct, variables_struct, node_struct] = transition_code(chart, data, state, default_transition(i), true, variables_struct, node_struct, global_nodes_struct);
             output_updated_struct_array{i} =output_updated_struct;
             result = [result,'\n', result_i];
         end
@@ -377,7 +380,7 @@ function [action_code, variables_struct, node_struct]  = set_state_inactive(char
     variable_to_be_updated = strcat('id',get_full_name(state.getParent()));
     var_index = find(strcmp({variables_struct.Name},variable_to_be_updated),1);
     if ~isempty(var_index)
-        s = rmfield(variables_struct(var_index),'index');
+        s = rmfield(variables_struct(var_index),{'index','used'});
         node_struct.Parameters = [node_struct.Parameters, setdiff_struct( s, node_struct.Parameters)];
         node_struct.Outputs = [node_struct.Outputs, setdiff_struct( s, node_struct.Outputs)];
         index = variables_struct(var_index).index;

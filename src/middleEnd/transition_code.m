@@ -5,10 +5,12 @@ if ~exist('first_cond_should_be_printed', 'var')
 	first_cond_should_be_printed = false;
 end
 if ~exist('old_variables_struct', 'var')
+    %it means it is the first call of transition_code function
 	old_variables_struct = variables_struct;
 end
+variables_struct_new = initialize_unused_variables(variables_struct,old_variables_struct);
 code = '';
-variables_struct_new = variables_struct;
+
 % output_updated = struct('condition',[],'variables_struct',[]);
 if strcmp(transitions(end).Destination.Type,'CONNECTIVE')
     
@@ -116,6 +118,7 @@ for i=1:n
                 index = find(strcmp({variables_struct.Name},o.Name));
                 if ~isempty(index)
                     variables_struct(index).index = variables_struct(index).index+1;
+                    variables_struct(index).used = 1;
                 else
                     error('abnormal behavior %s does not exist in variables structure',char(o.Name))
                 end
@@ -141,7 +144,6 @@ for i=1:n
             end
         else
             error('%s does not exist before',char(name))
-            path_code = [path_code '\n\t\t' char(name), ' does not exist before' '\n'];
         end
     end
 end
@@ -187,6 +189,7 @@ if ~strcmp(transitions(end).Destination.Type,'CONNECTIVE')
                             index = find(strcmp({variables_struct.Name},o.Name));
                             if ~isempty(index)
                                 variables_struct(index).index = variables_struct(index).index+1;
+                                variables_struct(index).used = 1;
                             else
                                 error('abnormal behavior %s does not exist in variables structure',char(o.Name))
                             end
@@ -200,7 +203,6 @@ if ~strcmp(transitions(end).Destination.Type,'CONNECTIVE')
                         node_struct.Outputs = [node_struct.Outputs, setdiff_struct( node_struct2.Outputs, node_struct.Outputs)];
                     else
                         error('%s does not exist before',char(name))
-                        path_code = [path_code '\n\t\t' char(name), ' does not exist before' '\n'];
                     end
                 end
             else                                
@@ -231,6 +233,7 @@ if ~strcmp(transitions(end).Destination.Type,'CONNECTIVE')
                         index = find(strcmp({variables_struct.Name},o.Name));
                         if ~isempty(index)
                             variables_struct(index).index = variables_struct(index).index+1;
+                            variables_struct(index).used = 1;
                         else
                             error('abnormal behavior %s does not exist in variables structure',char(o.Name))
                         end
@@ -244,7 +247,6 @@ if ~strcmp(transitions(end).Destination.Type,'CONNECTIVE')
                     node_struct.Outputs = [node_struct.Outputs, setdiff_struct( node_outputs, node_struct.Outputs)];
                 else
                     error('%s does not exist before',char(name))
-                    path_code = [path_code '\n\t\t' char(name), ' does not exist before' '\n'];
                 end
             end
         else
@@ -277,6 +279,7 @@ if ~strcmp(transitions(end).Destination.Type,'CONNECTIVE')
                     index = find(strcmp({variables_struct.Name},o.Name));
                     if ~isempty(index)
                         variables_struct(index).index = variables_struct(index).index+1;
+                        variables_struct(index).used = 1;
                     else
                         error('abnormal behavior %s does not exist in variables structure',char(o.Name))
                     end
@@ -290,7 +293,6 @@ if ~strcmp(transitions(end).Destination.Type,'CONNECTIVE')
                 node_struct.Outputs = [node_struct.Outputs, setdiff_struct( node_struct2.Outputs, node_struct.Outputs)];
             else
                 error('%s does not exist before',char(name))
-                path_code = [path_code '\n\t\t' char(name), ' does not exist before' '\n'];
             end
         end
 
@@ -346,6 +348,7 @@ if ~strcmp(transitions(end).Destination.Type,'CONNECTIVE')
                     index = find(strcmp({variables_struct.Name},o.Name));
                     if ~isempty(index)
                         variables_struct(index).index = variables_struct(index).index+1;
+                        variables_struct(index).used = 1;
                     else
                         error('abnormal behavior %s does not exist in variables structure',char(o.Name))
                     end
@@ -359,7 +362,6 @@ if ~strcmp(transitions(end).Destination.Type,'CONNECTIVE')
                 node_struct.Outputs = [node_struct.Outputs, setdiff_struct(node_outputs, node_struct.Outputs)];
             else
                 error('%s does not exist before',char(name))
-                path_code = [path_code '\n\t\t' char(name), ' does not exist before' '\n'];
             end
 %         else
 %             path_code = [path_code '\n\t\t-- there is no transition action for this transition ' transition_name '\n\t\t'];
@@ -419,6 +421,7 @@ if ~strcmp(transitions(end).Destination.Type,'CONNECTIVE')
                         index = find(strcmp({variables_struct.Name},o.Name));
                         if ~isempty(index)
                             variables_struct(index).index = variables_struct(index).index+1;
+                            variables_struct(index).used = 1;
                         else
                             error('abnormal behavior %s does not exist in variables structure',char(o.Name))
                         end
@@ -432,7 +435,6 @@ if ~strcmp(transitions(end).Destination.Type,'CONNECTIVE')
                     node_struct.Outputs = [node_struct.Outputs, setdiff_struct( node_struct2.Outputs, node_struct.Outputs)];
                 else
                     error('%s does not exist before',char(name))
-                    path_code = [path_code '\n\t\t' char(name), ' does not exist before' '\n'];
                 end
             end
         else
@@ -467,6 +469,7 @@ if ~strcmp(transitions(end).Destination.Type,'CONNECTIVE')
                     index = find(strcmp({variables_struct.Name},o.Name));
                     if ~isempty(index)
                         variables_struct(index).index = variables_struct(index).index+1;
+                        variables_struct(index).used = 1;
                     else
                         error('abnormal behavior %s does not exist in variables structure',char(o.Name))
                     end
@@ -481,7 +484,6 @@ if ~strcmp(transitions(end).Destination.Type,'CONNECTIVE')
                 node_struct.Outputs = [node_struct.Outputs, setdiff_struct( node_outputs, node_struct.Outputs)];
             else
                 error('%s does not exist before',char(name))
-                path_code = [path_code '\n\t\t' char(name), ' does not exist before' '\n'];
             end
         end
     else
@@ -530,6 +532,7 @@ if ~strcmp(transitions(end).Destination.Type,'CONNECTIVE')
                 index = find(strcmp({variables_struct.Name},o.Name));
                 if ~isempty(index)
                     variables_struct(index).index = variables_struct(index).index+1;
+                    variables_struct(index).used = 1;
                 else
                     error('abnormal behavior %s does not exist in variables structure',char(o.Name))
                 end
@@ -543,7 +546,6 @@ if ~strcmp(transitions(end).Destination.Type,'CONNECTIVE')
             node_struct.Outputs = [node_struct.Outputs, setdiff_struct( node_struct2.Outputs, node_struct.Outputs)];
         else
             error('%s does not exist before',char(name))
-            path_code = [path_code '\n\t\t' char(name), ' does not exist before' '\n'];
         end
     end
     
@@ -602,4 +604,14 @@ for i=1:numel(transitions)
     
 end
 full_path_trace = Utils.concat_delim(transition_name,', ');
+end
+
+function variables_struct_new = initialize_unused_variables(variables_struct,old_variables_struct)
+variables_struct_new = variables_struct;
+for i=1:numel(variables_struct_new)
+    if ~old_variables_struct(i).used 
+        variables_struct_new(i).used = 0;
+    end
+end
+
 end

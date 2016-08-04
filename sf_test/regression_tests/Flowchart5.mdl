@@ -38,7 +38,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [41.0, 37.0, 644.0, 532.0]
+      Location		      [65.0, 24.0, 664.0, 580.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -60,10 +60,10 @@ Model {
 	$ObjectID		5
 	$ClassName		"Simulink.EditorInfo"
 	IsActive		[1]
-	ViewObjType		"SimulinkTopLevel"
-	LoadSaveID		"0"
-	Extents			[594.0, 364.0]
-	ZoomFactor		[1.0]
+	ViewObjType		"StateflowChart"
+	LoadSaveID		"2"
+	Extents			[610.0, 387.0]
+	ZoomFactor		[1.3333333333333333]
 	Offset			[0.0, 0.0]
       }
     }
@@ -72,9 +72,9 @@ Model {
   Creator		  "scaife"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "bourbouh"
+  LastModifiedBy	  "hamza"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Jul 21 19:54:12 2016"
+  LastModifiedDate	  "Thu Aug 04 12:31:37 2016"
   RTWModifiedTimeStamp	  391031650
   ModelVersionFormat	  "1.%<AutoIncrement:9>"
   ConfigurationManager	  "none"
@@ -840,8 +840,8 @@ Model {
   }
   System {
     Name		    "Flowchart5"
-    Location		    [41, 37, 685, 569]
-    Open		    on
+    Location		    [65, 24, 729, 604]
+    Open		    off
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
     ScreenColor		    "white"
@@ -870,8 +870,8 @@ Model {
       Variant		      off
       System {
 	Name			"Flowchart5"
-	Location		[41, 37, 685, 569]
-	Open			off
+	Location		[65, 24, 729, 604]
+	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -1001,12 +1001,14 @@ Stateflow {
     id			    2
     name		    "Flowchart5"
     windowPosition	    [49 18 516 643]
-    viewLimits		    [0 445.5 0 314.25]
+    viewLimits		    [0 457.5 0 290.25]
     screen		    [1 1 1600 900 1.319444444444444]
     treeNode		    [0 3 0 0]
     viewObj		    2
     visible		    1
     machine		    1
+    subviewS {
+    }
     ssIdHighWaterMark	    8
     decomposition	    SET_CHART
     firstData		    9

@@ -6,35 +6,7 @@
 
 
 
-
-node Junctions2_Junctions2Junction592__To__Junctions2_C_2_Condition_Action(y_1:int)
-
-returns (y:int);
-
-
-var 	y_2:int;
-
-
-let
-
-
-
-	y_2 
-	=  y_1 +1000;
-	
-
-	(y) 
-	= (y_2);
-	
-
-tel
-
-
-
-
-
-
-node Junctions2_Junctions2Junction592__To__Junctions2_D_1_Condition_Action(y_1:int)
+node Junctions2_Junctions2Junction1798__To__Junctions2_D_1_Condition_Action(y_1:int)
 
 returns (y:int);
 
@@ -62,7 +34,63 @@ tel
 
 
 
-node Junctions2_Junctions2Junction591__To__Junctions2_B_2_Condition_Action(y_1:int)
+node Junctions2_Junctions2Junction1798__To__Junctions2_C_2_Condition_Action(y_1:int)
+
+returns (y:int);
+
+
+var 	y_2:int;
+
+
+let
+
+
+
+	y_2 
+	=  y_1 +1000;
+	
+
+	(y) 
+	= (y_2);
+	
+
+tel
+
+
+
+
+
+
+
+
+node Junctions2_A__To__Junctions2_Junctions2Junction1797_1_Condition_Action(y_1:int)
+
+returns (y:int);
+
+
+var 	y_2:int;
+
+
+let
+
+
+
+	y_2 
+	=  y_1  + 1;
+	
+
+	(y) 
+	= (y_2);
+	
+
+tel
+
+
+
+
+
+
+node Junctions2_Junctions2Junction1797__To__Junctions2_B_2_Condition_Action(y_1:int)
 
 returns (y:int);
 
@@ -89,8 +117,7 @@ tel
 
 
 
-
-node Junctions2_Junctions2Junction591__To__Junctions2_Junctions2Junction592_1_Condition_Action(y_1:int)
+node Junctions2_Junctions2Junction1797__To__Junctions2_Junctions2Junction1798_1_Condition_Action(y_1:int)
 
 returns (y:int);
 
@@ -104,33 +131,6 @@ let
 
 	y_2 
 	=  y_1 +100;
-	
-
-	(y) 
-	= (y_2);
-	
-
-tel
-
-
-
-
-
-
-node Junctions2_A__To__Junctions2_Junctions2Junction591_1_Condition_Action(y_1:int)
-
-returns (y:int);
-
-
-var 	y_2:int;
-
-
-let
-
-
-
-	y_2 
-	=  y_1  + 1;
 	
 
 	(y) 
@@ -161,7 +161,7 @@ let
 
 	-- set state as active 
 	idJunctions2_Junctions2_2 
-	= 588;
+	= 1794;
 	
 
 	(idJunctions2_Junctions2) 
@@ -194,7 +194,7 @@ let
 
 
 	(idJunctions2_Junctions2) 
-	= (idJunctions2_Junctions2_2);
+	= (idJunctions2_Junctions2_1);
 	
 
 tel
@@ -220,7 +220,7 @@ let
 
 	-- set state as active 
 	idJunctions2_Junctions2_2 
-	= 587;
+	= 1793;
 	
 
 	(idJunctions2_Junctions2) 
@@ -253,7 +253,7 @@ let
 
 
 	(idJunctions2_Junctions2) 
-	= (idJunctions2_Junctions2_2);
+	= (idJunctions2_Junctions2_1);
 	
 
 tel
@@ -279,7 +279,7 @@ let
 
 	-- set state as active 
 	idJunctions2_Junctions2_2 
-	= 585;
+	= 1791;
 	
 
 	(idJunctions2_Junctions2) 
@@ -312,7 +312,7 @@ let
 
 
 	(idJunctions2_Junctions2) 
-	= (idJunctions2_Junctions2_2);
+	= (idJunctions2_Junctions2_1);
 	
 
 tel
@@ -338,7 +338,7 @@ let
 
 	-- set state as active 
 	idJunctions2_Junctions2_2 
-	= 586;
+	= 1792;
 	
 
 	(idJunctions2_Junctions2) 
@@ -371,7 +371,7 @@ let
 
 
 	(idJunctions2_Junctions2) 
-	= (idJunctions2_Junctions2_2);
+	= (idJunctions2_Junctions2_1);
 	
 
 tel
@@ -396,29 +396,29 @@ let
 
 
 
-	unless (idJunctions2_Junctions2_1=585) and ( x>0 ) restart JUNCTIONS2_A__TO__JUNCTIONS2_JUNCTIONS2JUNCTION591_1
+	unless (idJunctions2_Junctions2_1=1791) and ( x>0 ) restart JUNCTIONS2_A__TO__JUNCTIONS2_JUNCTIONS2JUNCTION1797_1
 
 
 
-	unless (idJunctions2_Junctions2_1=586) and ( x=0 ) restart JUNCTIONS2_B__TO__JUNCTIONS2_C_1
+	unless (idJunctions2_Junctions2_1=1792) and ( x=0 ) restart JUNCTIONS2_B__TO__JUNCTIONS2_C_1
 
 
 
-	unless (idJunctions2_Junctions2_1=587) and ( x=0 ) restart JUNCTIONS2_C__TO__JUNCTIONS2_D_1
+	unless (idJunctions2_Junctions2_1=1793) and ( x=0 ) restart JUNCTIONS2_C__TO__JUNCTIONS2_D_1
 
 
 
-	unless (idJunctions2_Junctions2_1=588) and ( x=0 ) restart JUNCTIONS2_D__TO__JUNCTIONS2_A_1
+	unless (idJunctions2_Junctions2_1=1794) and ( x=0 ) restart JUNCTIONS2_D__TO__JUNCTIONS2_A_1
 
 
 
-	unless (idJunctions2_Junctions2_1=585) restart JUNCTIONS2_A_IDL
+	unless (idJunctions2_Junctions2_1=1791) restart JUNCTIONS2_A_IDL
 
-	unless (idJunctions2_Junctions2_1=586) restart JUNCTIONS2_B_IDL
+	unless (idJunctions2_Junctions2_1=1792) restart JUNCTIONS2_B_IDL
 
-	unless (idJunctions2_Junctions2_1=587) restart JUNCTIONS2_C_IDL
+	unless (idJunctions2_Junctions2_1=1793) restart JUNCTIONS2_C_IDL
 
-	unless (idJunctions2_Junctions2_1=588) restart JUNCTIONS2_D_IDL
+	unless (idJunctions2_Junctions2_1=1794) restart JUNCTIONS2_D_IDL
 
 	let
 
@@ -455,7 +455,7 @@ let
 
 
 
-	state JUNCTIONS2_A__TO__JUNCTIONS2_JUNCTIONS2JUNCTION591_1:
+	state JUNCTIONS2_A__TO__JUNCTIONS2_JUNCTIONS2JUNCTION1797_1:
 
 	 var 	idJunctions2_Junctions2_2, idJunctions2_Junctions2_3, idJunctions2_Junctions2_4, idJunctions2_Junctions2_5, idJunctions2_Junctions2_6, idJunctions2_Junctions2_7:int;
 	y_2, y_3, y_4, y_5, y_6, y_7, y_8, y_9:int;
@@ -466,11 +466,11 @@ let
 
 
 -- transition trace :
-	--Junctions2_A__To__Junction591_1, Junction591__To__Junction592_1, Junction592__To__Junctions2_D_1
+	--Junctions2_A__To__Junction1797_1, Junction1797__To__Junction1798_1, Junction1798__To__Junctions2_D_1
 		-- condition Action : y++
 		
 		(y_2) 
-	= Junctions2_A__To__Junctions2_Junctions2Junction591_1_Condition_Action(y_1);
+	= Junctions2_A__To__Junctions2_Junctions2Junction1797_1_Condition_Action(y_1);
 		
 
 		-- condition Action : y+=100
@@ -478,7 +478,7 @@ let
 		(y_3) 
 	= 
 		 if (( x>=2 )) then 
-		Junctions2_Junctions2Junction591__To__Junctions2_Junctions2Junction592_1_Condition_Action(y_2)
+		Junctions2_Junctions2Junction1797__To__Junctions2_Junctions2Junction1798_1_Condition_Action(y_2)
 		 else (y_2);
 		
 
@@ -487,7 +487,7 @@ let
 		(y_4) 
 	= 
 		 if (( x>=2 ) and ( x>=4 )) then 
-		Junctions2_Junctions2Junction592__To__Junctions2_D_1_Condition_Action(y_3)
+		Junctions2_Junctions2Junction1798__To__Junctions2_D_1_Condition_Action(y_3)
 		 else (y_3);
 		
 
@@ -507,11 +507,11 @@ let
 
 
 -- transition trace :
-	--Junctions2_A__To__Junction591_1, Junction591__To__Junction592_1, Junction592__To__Junctions2_C_2
+	--Junctions2_A__To__Junction1797_1, Junction1797__To__Junction1798_1, Junction1798__To__Junctions2_C_2
 		-- condition Action : y++
 		
 		(y_5) 
-	= Junctions2_A__To__Junctions2_Junctions2Junction591_1_Condition_Action(y_1);
+	= Junctions2_A__To__Junctions2_Junctions2Junction1797_1_Condition_Action(y_1);
 		
 
 		-- condition Action : y+=100
@@ -519,7 +519,7 @@ let
 		(y_6) 
 	= 
 		 if (( x>=2 )) then 
-		Junctions2_Junctions2Junction591__To__Junctions2_Junctions2Junction592_1_Condition_Action(y_5)
+		Junctions2_Junctions2Junction1797__To__Junctions2_Junctions2Junction1798_1_Condition_Action(y_5)
 		 else (y_5);
 		
 
@@ -528,15 +528,15 @@ let
 		(y_7) 
 	= 
 		 if (( x>=2 ) and ( x<4 )) then 
-		Junctions2_Junctions2Junction592__To__Junctions2_C_2_Condition_Action(y_6)
+		Junctions2_Junctions2Junction1798__To__Junctions2_C_2_Condition_Action(y_6)
 		 else (y_6);
 		
 
 		(idJunctions2_Junctions2_4) 
 	= 
 		 if (( x>=2 ) and ( x<4 )) then 
-		Junctions2_A_ex(idJunctions2_Junctions2_3, false)
-		 else (idJunctions2_Junctions2_3);
+		Junctions2_A_ex(idJunctions2_Junctions2_1, false)
+		 else (idJunctions2_Junctions2_1);
 		
 
 		(idJunctions2_Junctions2_5) 
@@ -548,11 +548,11 @@ let
 
 
 -- transition trace :
-	--Junctions2_A__To__Junction591_1, Junction591__To__Junctions2_B_2
+	--Junctions2_A__To__Junction1797_1, Junction1797__To__Junctions2_B_2
 		-- condition Action : y++
 		
 		(y_8) 
-	= Junctions2_A__To__Junctions2_Junctions2Junction591_1_Condition_Action(y_1);
+	= Junctions2_A__To__Junctions2_Junctions2Junction1797_1_Condition_Action(y_1);
 		
 
 		-- condition Action : y+=10
@@ -560,15 +560,15 @@ let
 		(y_9) 
 	= 
 		 if (( x<2 )) then 
-		Junctions2_Junctions2Junction591__To__Junctions2_B_2_Condition_Action(y_8)
+		Junctions2_Junctions2Junction1797__To__Junctions2_B_2_Condition_Action(y_8)
 		 else (y_8);
 		
 
 		(idJunctions2_Junctions2_6) 
 	= 
 		 if (( x<2 )) then 
-		Junctions2_A_ex(idJunctions2_Junctions2_5, false)
-		 else (idJunctions2_Junctions2_5);
+		Junctions2_A_ex(idJunctions2_Junctions2_1, false)
+		 else (idJunctions2_Junctions2_1);
 		
 
 		(idJunctions2_Junctions2_7) 
@@ -587,11 +587,11 @@ let
 		(idJunctions2_Junctions2_5, y_7)
 		 else
 		 if (( x>=2 )) then 
-		(idJunctions2_Junctions2_3, y_6)
+		(idJunctions2_Junctions2_1, y_6)
 		 else
 		 if (( x<2 )) then 
 		(idJunctions2_Junctions2_7, y_9)
-		 else (idJunctions2_Junctions2_5, y_8);
+		 else (idJunctions2_Junctions2_1, y_8);
 
 
 	tel

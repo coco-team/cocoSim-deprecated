@@ -6,7 +6,7 @@
 (declare-var Single1_A_en.idSingle1_Single1 Int)
 (declare-rel Single1_A_en (Int Bool Int))
 (rule (=> 
-  (= Single1_A_en.idSingle1_Single1 361)
+  (= Single1_A_en.idSingle1_Single1 1544)
   (Single1_A_en Single1_A_en.idSingle1_Single1_1 Single1_A_en.isInner Single1_A_en.idSingle1_Single1)
 ))
 
@@ -46,7 +46,7 @@
 (declare-var single1_single1__POINTSingle1_Single1_unless.__single1_single1__POINTSingle1_Single1_unless_2 Bool)
 (declare-rel single1_single1__POINTSingle1_Single1_unless (Bool single1_single1__type Int Bool single1_single1__type))
 (rule (=> 
-  (and (= single1_single1__POINTSingle1_Single1_unless.__single1_single1__POINTSingle1_Single1_unless_2 (= single1_single1__POINTSingle1_Single1_unless.idSingle1_Single1_1 361))
+  (and (= single1_single1__POINTSingle1_Single1_unless.__single1_single1__POINTSingle1_Single1_unless_2 (= single1_single1__POINTSingle1_Single1_unless.idSingle1_Single1_1 1544))
        (= single1_single1__POINTSingle1_Single1_unless.__single1_single1__POINTSingle1_Single1_unless_1 (= single1_single1__POINTSingle1_Single1_unless.idSingle1_Single1_1 0))
        (and (or (not (= single1_single1__POINTSingle1_Single1_unless.__single1_single1__POINTSingle1_Single1_unless_1 false))
                (and (or (not (= single1_single1__POINTSingle1_Single1_unless.__single1_single1__POINTSingle1_Single1_unless_2 false))
@@ -395,7 +395,7 @@
             (or (not (= (not Single1_A_ex.isInner) false))
                (= Single1_A_ex.idSingle1_Single1_2 Single1_A_ex.idSingle1_Single1_1))
        )
-       (= Single1_A_ex.idSingle1_Single1 Single1_A_ex.idSingle1_Single1_2)
+       (= Single1_A_ex.idSingle1_Single1 Single1_A_ex.idSingle1_Single1_1)
        )
   (Single1_A_ex Single1_A_ex.idSingle1_Single1_1 Single1_A_ex.isInner Single1_A_ex.idSingle1_Single1)
 ))

@@ -84,24 +84,25 @@ if ~isempty(operands)
                     error('I can not parse this expression "%s" ',char(tokens{1}))
                 end
             end
-        elseif ~isempty(strfind(transition_label,'change(')) || ~isempty(strfind(transition_label,'chg(')) 
-            ident = '([a-zA-Z][a-zA-Z_0-9]*)';
-            expression = strcat(operands{1},'\(',ident,'\)') ;
-            tokens = regexp(transition_label,expression,'tokens','once');
-            data_index = find(strcmp({variables_struct.Name},tokens{1}),1);
-            if ~isempty(data_index)
-                index = variables_struct(data_index).index;
-                data_name = variables_struct(data_index).Name;
-                s = struct('Name',data_name,'DataType',variables_struct(data_index).DataType,'Type',variables_struct(data_index).Type);
-                node_struct.Parameters = [node_struct.Parameters, setdiff_struct( s, node_struct.Parameters)];
-%                 change_code = ['((',data_name, '_', num2str(index) ,' -> pre ', data_name, '_', num2str(index), ') != ',  data_name, '_', num2str(index), ')'];
-                change_code = ['(( pre ', data_name, '_', num2str(index), ') != ',  data_name, '_', num2str(index), ')'];
-                event = strcat('change_',data_name,'_output');
-                additional_outputs{numel(additional_outputs)+1} = strcat('\t', event, ' = ', change_code, ';\n');
-                add_vars{numel(add_vars)+1} = sprintf('\t%s: bool;\n',event);
-            else
-                error('%s does not exist',char(tokens{1}));
-            end
+            
+%         elseif ~isempty(strfind(transition_label,'change(')) || ~isempty(strfind(transition_label,'chg(')) 
+%             ident = '([a-zA-Z][a-zA-Z_0-9]*)';
+%             expression = strcat(operands{1},'\(',ident,'\)') ;
+%             tokens = regexp(transition_label,expression,'tokens','once');
+%             data_index = find(strcmp({variables_struct.Name},tokens{1}),1);
+%             if ~isempty(data_index)
+%                 index = variables_struct(data_index).index;
+%                 data_name = variables_struct(data_index).Name;
+%                 s = struct('Name',data_name,'DataType',variables_struct(data_index).DataType,'Type',variables_struct(data_index).Type);
+%                 node_struct.Parameters = [node_struct.Parameters, setdiff_struct( s, node_struct.Parameters)];
+% %                 change_code = ['((',data_name, '_', num2str(index) ,' -> pre ', data_name, '_', num2str(index), ') != ',  data_name, '_', num2str(index), ')'];
+%                 change_code = ['(( pre ', data_name, '_', num2str(index), ') != ',  data_name, '_', num2str(index), ')'];
+%                 event = strcat('change_',data_name,'_output');
+%                 additional_outputs{numel(additional_outputs)+1} = strcat('\t', event, ' = ', change_code, ';\n');
+%                 add_vars{numel(add_vars)+1} = sprintf('\t%s: bool;\n',event);
+%             else
+%                 error('%s does not exist',char(tokens{1}));
+%             end
             
         elseif ~isempty(strfind(transition_label,'after('))
             % we support after(number,event) syntax where number is a const

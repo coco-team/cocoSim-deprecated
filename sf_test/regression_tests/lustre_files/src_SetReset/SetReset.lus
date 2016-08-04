@@ -28,7 +28,7 @@ let
 
 	-- set state as active 
 	idSetReset_SetReset_2 
-	= 176;
+	= 1358;
 	
 
 	x_2 
@@ -66,7 +66,7 @@ let
 
 
 	(idSetReset_SetReset) 
-	= (idSetReset_SetReset_2);
+	= (idSetReset_SetReset_1);
 	
 
 tel
@@ -95,7 +95,7 @@ let
 
 	-- set state as active 
 	idSetReset_SetReset_2 
-	= 175;
+	= 1357;
 	
 
 	x_2 
@@ -133,7 +133,7 @@ let
 
 
 	(idSetReset_SetReset) 
-	= (idSetReset_SetReset_2);
+	= (idSetReset_SetReset_1);
 	
 
 tel
@@ -159,17 +159,17 @@ let
 
 
 
-	unless (idSetReset_SetReset_1=175) and Set restart SETRESET_OFF__TO__SETRESET_ON_1
+	unless (idSetReset_SetReset_1=1357) and Set restart SETRESET_OFF__TO__SETRESET_ON_1
 
 
 
-	unless (idSetReset_SetReset_1=176) and Reset restart SETRESET_ON__TO__SETRESET_OFF_1
+	unless (idSetReset_SetReset_1=1358) and Reset restart SETRESET_ON__TO__SETRESET_OFF_1
 
 
 
-	unless (idSetReset_SetReset_1=175) restart SETRESET_OFF_IDL
+	unless (idSetReset_SetReset_1=1357) restart SETRESET_OFF_IDL
 
-	unless (idSetReset_SetReset_1=176) restart SETRESET_ON_IDL
+	unless (idSetReset_SetReset_1=1358) restart SETRESET_ON_IDL
 
 	let
 

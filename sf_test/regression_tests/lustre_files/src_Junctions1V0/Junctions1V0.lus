@@ -6,7 +6,118 @@
 
 
 
-node Chart_ChartJunction532__To__Chart_B_1_Condition_Action(y_1:int)
+node Chart_ChartJunction1738__To__Chart_C_2_Condition_Action(y_1:int)
+
+returns (y:int);
+
+
+var 	y_2:int;
+
+
+let
+
+
+
+	y_2 
+	=  y_1  + 1;
+	
+
+	(y) 
+	= (y_2);
+	
+
+tel
+
+
+
+
+
+node Chart_ChartJunction1738__To__Chart_C_2_Transition_Action(y_1:int;
+	z_1:int)
+
+returns (y:int;
+	z:int);
+
+
+var 	z_2:int;
+
+
+let
+
+
+
+	z_2 
+	=  z_1  + 1;
+	
+
+	(y, z) 
+	= (y_1, z_2);
+	
+
+tel
+
+
+
+
+
+
+node Chart_A__To__Chart_ChartJunction1738_1_Condition_Action(y_1:int)
+
+returns (y:int);
+
+
+var 	y_2:int;
+
+
+let
+
+
+
+	y_2 
+	=  y_1  + 1;
+	
+
+	(y) 
+	= (y_2);
+	
+
+tel
+
+
+
+
+
+node Chart_A__To__Chart_ChartJunction1738_1_Transition_Action(y_1:int;
+	z_1:int)
+
+returns (y:int;
+	z:int);
+
+
+var 	z_2:int;
+
+
+let
+
+
+
+	z_2 
+	=  z_1 +2;
+	
+
+	(y, z) 
+	= (y_1, z_2);
+	
+
+tel
+
+
+
+
+
+
+
+node Chart_ChartJunction1738__To__Chart_B_1_Condition_Action(y_1:int)
 
 returns (y:int);
 
@@ -32,7 +143,7 @@ tel
 
 
 
-node Chart_ChartJunction532__To__Chart_B_1_Transition_Action(y_1:int;
+node Chart_ChartJunction1738__To__Chart_B_1_Transition_Action(y_1:int;
 	z_1:int)
 
 returns (y:int;
@@ -67,117 +178,6 @@ tel
 
 
 
-node Chart_A__To__Chart_ChartJunction532_1_Condition_Action(y_1:int)
-
-returns (y:int);
-
-
-var 	y_2:int;
-
-
-let
-
-
-
-	y_2 
-	=  y_1  + 1;
-	
-
-	(y) 
-	= (y_2);
-	
-
-tel
-
-
-
-
-
-node Chart_A__To__Chart_ChartJunction532_1_Transition_Action(y_1:int;
-	z_1:int)
-
-returns (y:int;
-	z:int);
-
-
-var 	z_2:int;
-
-
-let
-
-
-
-	z_2 
-	=  z_1 +2;
-	
-
-	(y, z) 
-	= (y_1, z_2);
-	
-
-tel
-
-
-
-
-
-
-
-node Chart_ChartJunction532__To__Chart_C_2_Condition_Action(y_1:int)
-
-returns (y:int);
-
-
-var 	y_2:int;
-
-
-let
-
-
-
-	y_2 
-	=  y_1  + 1;
-	
-
-	(y) 
-	= (y_2);
-	
-
-tel
-
-
-
-
-
-node Chart_ChartJunction532__To__Chart_C_2_Transition_Action(y_1:int;
-	z_1:int)
-
-returns (y:int;
-	z:int);
-
-
-var 	z_2:int;
-
-
-let
-
-
-
-	z_2 
-	=  z_1  + 1;
-	
-
-	(y, z) 
-	= (y_1, z_2);
-	
-
-tel
-
-
-
-
-
-
 -- Entry action for state :Chart_B
 node Chart_B_en(idChart_Chart_1:int;
 	isInner:bool)
@@ -194,7 +194,7 @@ let
 
 	-- set state as active 
 	idChart_Chart_2 
-	= 526;
+	= 1732;
 	
 
 	(idChart_Chart) 
@@ -227,7 +227,7 @@ let
 
 
 	(idChart_Chart) 
-	= (idChart_Chart_2);
+	= (idChart_Chart_1);
 	
 
 tel
@@ -253,7 +253,7 @@ let
 
 	-- set state as active 
 	idChart_Chart_2 
-	= 525;
+	= 1731;
 	
 
 	(idChart_Chart) 
@@ -286,7 +286,7 @@ let
 
 
 	(idChart_Chart) 
-	= (idChart_Chart_2);
+	= (idChart_Chart_1);
 	
 
 tel
@@ -312,7 +312,7 @@ let
 
 	-- set state as active 
 	idChart_Chart_2 
-	= 527;
+	= 1733;
 	
 
 	(idChart_Chart) 
@@ -345,7 +345,7 @@ let
 
 
 	(idChart_Chart) 
-	= (idChart_Chart_2);
+	= (idChart_Chart_1);
 	
 
 tel
@@ -373,23 +373,23 @@ let
 
 
 
-	unless (idChart_Chart_1=525) and E1 and ( x>0 ) restart CHART_A__TO__CHART_CHARTJUNCTION532_1
+	unless (idChart_Chart_1=1731) and E1 and ( x>0 ) restart CHART_A__TO__CHART_CHARTJUNCTION1738_1
 
 
 
-	unless (idChart_Chart_1=526) and ( x>3 ) restart CHART_B__TO__CHART_A_1
+	unless (idChart_Chart_1=1732) and ( x>3 ) restart CHART_B__TO__CHART_A_1
 
 
 
-	unless (idChart_Chart_1=527) and ( x>3 ) restart CHART_C__TO__CHART_A_1
+	unless (idChart_Chart_1=1733) and ( x>3 ) restart CHART_C__TO__CHART_A_1
 
 
 
-	unless (idChart_Chart_1=525) restart CHART_A_IDL
+	unless (idChart_Chart_1=1731) restart CHART_A_IDL
 
-	unless (idChart_Chart_1=526) restart CHART_B_IDL
+	unless (idChart_Chart_1=1732) restart CHART_B_IDL
 
-	unless (idChart_Chart_1=527) restart CHART_C_IDL
+	unless (idChart_Chart_1=1733) restart CHART_C_IDL
 
 	let
 
@@ -426,7 +426,7 @@ let
 
 
 
-	state CHART_A__TO__CHART_CHARTJUNCTION532_1:
+	state CHART_A__TO__CHART_CHARTJUNCTION1738_1:
 
 	 var 	idChart_Chart_2, idChart_Chart_3, idChart_Chart_4, idChart_Chart_5:int;
 	y_2, y_3, y_4, y_5, y_6, y_7, y_8, y_9:int;
@@ -436,11 +436,11 @@ let
 		
 
 -- transition trace :
-	--Chart_A__To__Junction532_1, Junction532__To__Chart_B_1
+	--Chart_A__To__Junction1738_1, Junction1738__To__Chart_B_1
 		-- condition Action : y++
 		
 		(y_2) 
-	= Chart_A__To__Chart_ChartJunction532_1_Condition_Action(y_1);
+	= Chart_A__To__Chart_ChartJunction1738_1_Condition_Action(y_1);
 		
 
 		-- condition Action : y+=2
@@ -448,7 +448,7 @@ let
 		(y_3) 
 	= 
 		 if (( x>2 )) then 
-		Chart_ChartJunction532__To__Chart_B_1_Condition_Action(y_2)
+		Chart_ChartJunction1738__To__Chart_B_1_Condition_Action(y_2)
 		 else (y_2);
 		
 
@@ -462,14 +462,14 @@ let
 		(y_4, z_2) 
 	= 
 		 if (( x>2 )) then 
-		Chart_A__To__Chart_ChartJunction532_1_Transition_Action(y_3, z_1)
+		Chart_A__To__Chart_ChartJunction1738_1_Transition_Action(y_3, z_1)
 		 else (y_3, z_1);
 		
 
 		(y_5, z_3) 
 	= 
 		 if (( x>2 )) then 
-		Chart_ChartJunction532__To__Chart_B_1_Transition_Action(y_4, z_2)
+		Chart_ChartJunction1738__To__Chart_B_1_Transition_Action(y_4, z_2)
 		 else (y_4, z_2);
 		
 
@@ -482,11 +482,11 @@ let
 
 
 -- transition trace :
-	--Chart_A__To__Junction532_1, Junction532__To__Chart_C_2
+	--Chart_A__To__Junction1738_1, Junction1738__To__Chart_C_2
 		-- condition Action : y++
 		
 		(y_6) 
-	= Chart_A__To__Chart_ChartJunction532_1_Condition_Action(y_1);
+	= Chart_A__To__Chart_ChartJunction1738_1_Condition_Action(y_1);
 		
 
 		-- condition Action : y++
@@ -494,28 +494,28 @@ let
 		(y_7) 
 	= 
 		 if (( x<=2 )) then 
-		Chart_ChartJunction532__To__Chart_C_2_Condition_Action(y_6)
+		Chart_ChartJunction1738__To__Chart_C_2_Condition_Action(y_6)
 		 else (y_6);
 		
 
 		(idChart_Chart_4) 
 	= 
 		 if (( x<=2 )) then 
-		Chart_A_ex(idChart_Chart_3, false)
-		 else (idChart_Chart_3);
+		Chart_A_ex(idChart_Chart_1, false)
+		 else (idChart_Chart_1);
 		
 
 		(y_8, z_4) 
 	= 
 		 if (( x<=2 )) then 
-		Chart_A__To__Chart_ChartJunction532_1_Transition_Action(y_7, z_3)
-		 else (y_7, z_3);
+		Chart_A__To__Chart_ChartJunction1738_1_Transition_Action(y_7, z_1)
+		 else (y_7, z_1);
 		
 
 		(y_9, z_5) 
 	= 
 		 if (( x<=2 )) then 
-		Chart_ChartJunction532__To__Chart_C_2_Transition_Action(y_8, z_4)
+		Chart_ChartJunction1738__To__Chart_C_2_Transition_Action(y_8, z_4)
 		 else (y_8, z_4);
 		
 
@@ -533,7 +533,7 @@ let
 		 else
 		 if (( x<=2 )) then 
 		(idChart_Chart_5, y_9, z_5)
-		 else (idChart_Chart_3, y_6, z_3);
+		 else (idChart_Chart_1, y_6, z_1);
 
 
 	tel

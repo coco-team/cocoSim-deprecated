@@ -10,7 +10,7 @@ if ~exist('cocoSim_path', 'var')
     cocoSim_path = pwd;
 end
 if ~exist('tool_path', 'var')
-    tool_path = '/home/hamza/Documents/automata/sf2lus_cocoSim/sf_test/regression_tests/';
+    tool_path = '/home/hamza/Documents/cocoSim/sf_test/regression_tests/';%not_valid_models/';
 %     tool_path =    fullfile(cocoSim_path,'sf_test/regression_tests/');
 end
 addpath(tool_path);

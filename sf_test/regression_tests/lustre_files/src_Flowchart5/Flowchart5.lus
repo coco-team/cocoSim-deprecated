@@ -7,7 +7,7 @@
 
 
 
-node Flowchart5_Flowchart5Junction1432__To__Flowchart5_Flowchart5Junction1433_1_Condition_Action(x_1:int)
+node Flowchart5_Flowchart5Junction682__To__Flowchart5_Flowchart5Junction683_1_Condition_Action(x_1:int)
 
 returns (x:int);
 
@@ -57,18 +57,18 @@ let
 
 	-- set state as active 
 	idFlowchart5_Flowchart5_2 
-	= 1431;
+	= 681;
 	
 
 	
 
 
 -- transition trace :
-	--POINT__To__Junction1432_1, Junction1432__To__Junction1433_1
+	--POINT__To__Junction682_1, Junction682__To__Junction683_1
 		-- condition Action : x++;
 		
 		(x_2) 
-	= Flowchart5_Flowchart5Junction1432__To__Flowchart5_Flowchart5Junction1433_1_Condition_Action(x_1);
+	= Flowchart5_Flowchart5Junction682__To__Flowchart5_Flowchart5Junction683_1_Condition_Action(x_1);
 		
 
 	(idFlowchart5_A_2, idFlowchart5_Flowchart5_3, x_3) 
@@ -122,7 +122,7 @@ let
 
 
 	(idFlowchart5_Flowchart5) 
-	= (idFlowchart5_Flowchart5_2);
+	= (idFlowchart5_Flowchart5_1);
 	
 
 tel
@@ -142,11 +142,11 @@ let
 	 automaton flowchart5_a
 
 	state POINTFlowchart5_A:
-	unless (idFlowchart5_A_1=0) restart POINT__TO__FLOWCHART5_FLOWCHART5JUNCTION1432_1
+	unless (idFlowchart5_A_1=0) restart POINT__TO__FLOWCHART5_FLOWCHART5JUNCTION682_1
 
 
 
-	unless true restart FLOWCHART5_A__TO__FLOWCHART5_FLOWCHART5JUNCTION1432_1
+	unless true restart FLOWCHART5_A__TO__FLOWCHART5_FLOWCHART5JUNCTION682_1
 
 
 
@@ -160,7 +160,7 @@ let
 
 
 
-	state POINT__TO__FLOWCHART5_FLOWCHART5JUNCTION1432_1:
+	state POINT__TO__FLOWCHART5_FLOWCHART5JUNCTION682_1:
 
 	 var 	x_2:int;
 	let
@@ -168,11 +168,11 @@ let
 		
 
 -- transition trace :
-	--POINT__To__Junction1432_1, Junction1432__To__Junction1433_1
+	--POINT__To__Junction682_1, Junction682__To__Junction683_1
 		-- condition Action : x++;
 		
 		(x_2) 
-	= Flowchart5_Flowchart5Junction1432__To__Flowchart5_Flowchart5Junction1433_1_Condition_Action(x_1);
+	= Flowchart5_Flowchart5Junction682__To__Flowchart5_Flowchart5Junction683_1_Condition_Action(x_1);
 		
 
 	(idFlowchart5_A, x) 
@@ -185,7 +185,7 @@ let
 
 
 
-	state FLOWCHART5_A__TO__FLOWCHART5_FLOWCHART5JUNCTION1432_1:
+	state FLOWCHART5_A__TO__FLOWCHART5_FLOWCHART5JUNCTION682_1:
 
 	 var 	x_2:int;
 	let
@@ -193,11 +193,11 @@ let
 		
 
 -- transition trace :
-	--Flowchart5_A__To__Junction1432_1, Junction1432__To__Junction1433_1
+	--Flowchart5_A__To__Junction682_1, Junction682__To__Junction683_1
 		-- condition Action : x++;
 		
 		(x_2) 
-	= Flowchart5_Flowchart5Junction1432__To__Flowchart5_Flowchart5Junction1433_1_Condition_Action(x_1);
+	= Flowchart5_Flowchart5Junction682__To__Flowchart5_Flowchart5Junction683_1_Condition_Action(x_1);
 		
 
 	(idFlowchart5_A, x) 

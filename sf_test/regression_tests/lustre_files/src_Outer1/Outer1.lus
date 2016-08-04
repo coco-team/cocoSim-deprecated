@@ -81,7 +81,7 @@ let
 
 	-- set state as active 
 	idOuter1_Outer1_2 
-	= 1038;
+	= 265;
 	
 
 	z_2 
@@ -127,7 +127,7 @@ let
 
 
 	(w, idOuter1_Outer1) 
-	= (w_2, idOuter1_Outer1_2);
+	= (w_2, idOuter1_Outer1_1);
 	
 
 tel
@@ -158,11 +158,11 @@ let
 
 
 
-	unless (idOuter1_Outer1_1=1038) and E restart OUTER1_A__TO__OUTER1_A_1
+	unless (idOuter1_Outer1_1=265) and E restart OUTER1_A__TO__OUTER1_A_1
 
 
 
-	unless (idOuter1_Outer1_1=1038) restart OUTER1_A_IDL
+	unless (idOuter1_Outer1_1=265) restart OUTER1_A_IDL
 
 	let
 
