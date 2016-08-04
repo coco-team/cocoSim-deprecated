@@ -1,4 +1,8 @@
-function [event, condition, condition_action, transition_action, node_struct] = split_transition(chart, data, transition_label, variables_struct, node_struct)
+function [event, condition, condition_action, transition_action, node_struct, external_nodes, additional_outputs, add_vars] = split_transition(chart, data, transition, variables_struct, node_struct)
+transition_label = transition.LabelString;
+external_nodes = [];
+additional_outputs = {};
+add_vars = {};
 expression = '(\n|\s*|\.{3}|/\*(\s*\w*\W*\s*)*\*/)';
 replace = '';
 label_mod = regexprep(transition_label,expression,replace);
@@ -87,14 +91,34 @@ if ~isempty(operands)
             data_index = find(strcmp({variables_struct.Name},tokens{1}),1);
             if ~isempty(data_index)
                 index = variables_struct(data_index).index;
-                name = variables_struct(data_index).Name;
-                s = struct('Name',name,'DataType',variables_struct(data_index).DataType,'Type',variables_struct(data_index).Type);
+                data_name = variables_struct(data_index).Name;
+                s = struct('Name',data_name,'DataType',variables_struct(data_index).DataType,'Type',variables_struct(data_index).Type);
                 node_struct.Parameters = [node_struct.Parameters, setdiff_struct( s, node_struct.Parameters)];
-                event = ['((',name, '_', num2str(index) ,' -> pre ', name, '_', num2str(index), ') != ',  name, '_', num2str(index), ')'];
+%                 change_code = ['((',data_name, '_', num2str(index) ,' -> pre ', data_name, '_', num2str(index), ') != ',  data_name, '_', num2str(index), ')'];
+                change_code = ['(( pre ', data_name, '_', num2str(index), ') != ',  data_name, '_', num2str(index), ')'];
+                event = strcat('change_',data_name,'_output');
+                additional_outputs{numel(additional_outputs)+1} = strcat('\t', event, ' = ', change_code, ';\n');
+                add_vars{numel(add_vars)+1} = sprintf('\t%s: bool;\n',event);
             else
                 error('%s does not exist',char(tokens{1}));
             end
             
+        elseif ~isempty(strfind(transition_label,'after('))
+            % we support after(number,event) syntax where number is a const
+            % like 1, 2, 3 .. 
+            ident = '([a-zA-Z][a-zA-Z_0-9]*)';
+            expression = strcat('after\(\s*(\d+)\s*,\s*(',ident,')\)') ;
+            tokens = regexp(transition_label,expression,'tokens','once');
+            event_name = tokens{2};
+            event = strcat('after_',event_name,'_',char(tokens{1}),'_output');
+            parent_state = transition.getParent();
+            id_name = strcat('id', get_full_name(parent_state),'_1');
+            after_code = strcat('after(',char(tokens{1}),',',char(tokens{2}),', ', id_name,')');
+            additional_outputs{numel(additional_outputs)+1} = strcat('\t', event, ' = ', after_code, ';\n');
+            add_vars{numel(add_vars)+1} = sprintf('\t%s: bool;\n',event);
+            external_nodes = [external_nodes, struct('Name','after','Type','temporal_operator')];
+        else
+            error('"%s" is not supported',char(operands{1}));
         end
 %         fprintf('before:%s\nafter:%s\n',transition_label,event);
         condition ='';
@@ -109,7 +133,23 @@ if ~isempty(operands)
         end
         condition =operands{2};
         if ~isempty(condition)
-            [c, node_struct] = modify_condition(chart, data, condition(2:end-1),variables_struct, node_struct);
+            if ~isempty(strfind(operands{2},'after('))
+                % we support after(number,event) syntax where number is a const
+                % like 1, 2, 3 .. 
+                ident = '([a-zA-Z][a-zA-Z_0-9]*)';
+                expression = strcat('after\(\s*(\d+)\s*,\s*(',ident,')\)') ;
+                tokens = regexp(transition_label,expression,'tokens','once');
+                event_name = tokens{2};
+                c = strcat('after_',event_name,'_',char(tokens{1}),'_output');
+                parent_state = transition.getParent();
+                id_name = strcat('id', get_full_name(parent_state),'_1');
+                after_code = strcat('after(',char(tokens{1}),',',char(tokens{2}),', ', id_name,')');
+                additional_outputs{numel(additional_outputs)+1} = strcat('\t', c, ' = ', after_code, ';\n');
+                add_vars{numel(add_vars)+1} = sprintf('\t%s: bool;\n',c);
+                external_nodes = [external_nodes, struct('Name','after','Type','temporal_operator')];
+            else
+                [c, node_struct] = modify_condition(chart, data, condition(2:end-1),variables_struct, node_struct);
+            end
             condition = ['( ', c, ' )' ];
         end
         condition_action =operands{3};

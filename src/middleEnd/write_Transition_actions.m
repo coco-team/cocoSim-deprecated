@@ -8,9 +8,8 @@ function [transition_actions, nb_transition_actions, external_nodes, global_node
     node_struct.Outputs = struct('Name',[],'DataType',[],'Type',[]);
     node_struct.Outputs= node_struct.Outputs(~cellfun(@isempty,{node_struct.Outputs.Name}));
     
-    label = transition.get('LabelString');
 %     fprintf('split transition :\n%s\n',label);
-    [~, ~, condition_action, transition_action, ~] = split_transition(chart, data, label, variables_struct, node_struct);
+    [~, ~, condition_action, transition_action, ~,~, ~, ~] = split_transition(chart, data, transition, variables_struct, node_struct);
     nb_transition_actions =0;
     if ~isempty(condition_action)
 %         fprintf('before:%s\nafter:%s\n',label,condition_action);

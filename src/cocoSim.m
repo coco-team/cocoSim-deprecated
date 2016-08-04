@@ -393,8 +393,13 @@ for i=1:n
         j=j+1;
         if strcmp(fun.Name,'lustre_math_fun')
             extern_Stateflow_nodes_fun_string = ['#open <math>\n', extern_Stateflow_nodes_fun_string];
+            
         elseif strcmp(fun.Name,'lustre_conv_fun')
             extern_Stateflow_nodes_fun_string = ['#open <conv>\n', extern_Stateflow_nodes_fun_string];
+            
+        elseif strcmp(fun.Name,'after')
+            extern_Stateflow_nodes_fun_string = [extern_Stateflow_nodes_fun_string temporal_operators(fun)];    
+            
         else
             extern_Stateflow_nodes_fun_string = [extern_Stateflow_nodes_fun_string math_functions(fun)];
         end

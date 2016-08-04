@@ -94,7 +94,7 @@ tel
 
 
 
-node POINT__To__Top_Level_Mode_Sub_System_Step_Scaling_FactorJunction79_1_Condition_Action(inputVal:real;
+node POINT__To__Top_Level_Mode_Sub_System_Step_Scaling_FactorJunction190_1_Condition_Action(inputVal:real;
 	step_size:real;
 	returnVal_1:real)
 
@@ -135,7 +135,7 @@ let
 	 automaton top_level_mode_sub_system_step_scaling_factor
 
 	state POINTTop_Level_Mode_Sub_System_Step_Scaling_Factor:
-	unless (idTop_Level_Mode_Sub_System_Step_Scaling_Factor_1=0) restart POINT__TO__TOP_LEVEL_MODE_SUB_SYSTEM_STEP_SCALING_FACTORJUNCTION79_1
+	unless (idTop_Level_Mode_Sub_System_Step_Scaling_Factor_1=0) restart POINT__TO__TOP_LEVEL_MODE_SUB_SYSTEM_STEP_SCALING_FACTORJUNCTION190_1
 
 
 
@@ -149,16 +149,17 @@ let
 
 
 
-	state POINT__TO__TOP_LEVEL_MODE_SUB_SYSTEM_STEP_SCALING_FACTORJUNCTION79_1:
+	state POINT__TO__TOP_LEVEL_MODE_SUB_SYSTEM_STEP_SCALING_FACTORJUNCTION190_1:
 
 	 var 	returnVal_2:real;
 	let
 
-		
+		-- transition trace :
+	--POINT__To__Junction190_1
 		-- condition Action : returnVal=inputVal/step_size;
 		
 		(returnVal_2) 
-	= POINT__To__Top_Level_Mode_Sub_System_Step_Scaling_FactorJunction79_1_Condition_Action(inputVal, step_size, returnVal_1);
+	= POINT__To__Top_Level_Mode_Sub_System_Step_Scaling_FactorJunction190_1_Condition_Action(inputVal, step_size, returnVal_1);
 		
 
 	(idTop_Level_Mode_Sub_System_Step_Scaling_Factor, returnVal) 
@@ -211,7 +212,7 @@ tel
 
 
 
-node POINT__To__Top_Level_Mode_Sub_System_writeLogJunction82_1_Condition_Action(logEvent:int;
+node POINT__To__Top_Level_Mode_Sub_System_writeLogJunction193_1_Condition_Action(logEvent:int;
 	tLM_MODE_OUT_Log_Message_ID_1:int)
 
 returns (tLM_MODE_OUT_Log_Message_ID:int);
@@ -250,7 +251,7 @@ let
 	 automaton top_level_mode_sub_system_writelog
 
 	state POINTTop_Level_Mode_Sub_System_writeLog:
-	unless (idTop_Level_Mode_Sub_System_writeLog_1=0) restart POINT__TO__TOP_LEVEL_MODE_SUB_SYSTEM_WRITELOGJUNCTION82_1
+	unless (idTop_Level_Mode_Sub_System_writeLog_1=0) restart POINT__TO__TOP_LEVEL_MODE_SUB_SYSTEM_WRITELOGJUNCTION193_1
 
 
 
@@ -264,16 +265,17 @@ let
 
 
 
-	state POINT__TO__TOP_LEVEL_MODE_SUB_SYSTEM_WRITELOGJUNCTION82_1:
+	state POINT__TO__TOP_LEVEL_MODE_SUB_SYSTEM_WRITELOGJUNCTION193_1:
 
 	 var 	tLM_MODE_OUT_Log_Message_ID_2:int;
 	let
 
-		
+		-- transition trace :
+	--POINT__To__Junction193_1
 		-- condition Action : tLM_MODE_OUT_Log_Message_ID=logEvent;
 		
 		(tLM_MODE_OUT_Log_Message_ID_2) 
-	= POINT__To__Top_Level_Mode_Sub_System_writeLogJunction82_1_Condition_Action(logEvent, tLM_MODE_OUT_Log_Message_ID_1);
+	= POINT__To__Top_Level_Mode_Sub_System_writeLogJunction193_1_Condition_Action(logEvent, tLM_MODE_OUT_Log_Message_ID_1);
 		
 
 	(idTop_Level_Mode_Sub_System_writeLog, tLM_MODE_OUT_Log_Message_ID) 
@@ -322,9 +324,6 @@ tel
 
 
 
-
-
-
 node Top_Level_Mode_Sub_System_NOT_ON__To__Top_Level_Mode_Sub_System_TOP_Level_Mode_1_Condition_Action(tLM_MODE_OUT_Log_Message_ID_1:int)
 
 returns (tLM_MODE_OUT_Log_Message_ID:int);
@@ -346,6 +345,8 @@ let
 	
 
 tel
+
+
 
 
 
@@ -381,6 +382,82 @@ tel
 
 
 
+
+-- Entry action for state :Confirm_Stop_OFF
+node Confirm_Stop_OFF_en(idTOP_Level_Mode_Confirm_Stop_1:int;
+	tLM_MODE_OUT_Request_Confirm_Stop_1:bool;
+	confirmStopTimer_1:real;
+	isInner:bool)
+
+returns (idTOP_Level_Mode_Confirm_Stop:int;
+	tLM_MODE_OUT_Request_Confirm_Stop:bool;
+	confirmStopTimer:real);
+
+
+var 	idTOP_Level_Mode_Confirm_Stop_2:int;
+	tLM_MODE_OUT_Request_Confirm_Stop_2:bool;
+	confirmStopTimer_2:real;
+
+
+let
+
+
+
+	-- set state as active 
+	idTOP_Level_Mode_Confirm_Stop_2 
+	= 175;
+	
+
+	tLM_MODE_OUT_Request_Confirm_Stop_2 
+	= if (not isInner) then false
+	 else tLM_MODE_OUT_Request_Confirm_Stop_1;
+	
+
+	confirmStopTimer_2 
+	= if (not isInner) then 0.
+	 else confirmStopTimer_1;
+	
+
+	(idTOP_Level_Mode_Confirm_Stop, tLM_MODE_OUT_Request_Confirm_Stop, confirmStopTimer) 
+	= (idTOP_Level_Mode_Confirm_Stop_2, tLM_MODE_OUT_Request_Confirm_Stop_2, confirmStopTimer_2);
+	
+
+tel
+
+
+
+
+
+-- Exit action for state :Confirm_Stop_OFF
+node Confirm_Stop_OFF_ex(idTOP_Level_Mode_Confirm_Stop_1:int;
+	isInner:bool)
+
+returns (idTOP_Level_Mode_Confirm_Stop:int);
+
+
+var 	idTOP_Level_Mode_Confirm_Stop_2:int;
+
+
+let
+
+
+
+	-- set state as inactive 
+	idTOP_Level_Mode_Confirm_Stop_2
+	 = if (not isInner) then 0 else idTOP_Level_Mode_Confirm_Stop_1;
+
+
+	(idTOP_Level_Mode_Confirm_Stop) 
+	= (idTOP_Level_Mode_Confirm_Stop_2);
+	
+
+tel
+
+
+
+
+
+
 -- Entry action for state :Confirm_Stop_ON
 node Confirm_Stop_ON_en(idTOP_Level_Mode_Confirm_Stop_1:int;
 	tLM_MODE_OUT_Request_Confirm_Stop_1:bool;
@@ -403,7 +480,7 @@ let
 
 	-- set state as active 
 	idTOP_Level_Mode_Confirm_Stop_2 
-	= 65;
+	= 176;
 	
 
 	tLM_MODE_OUT_Request_Confirm_Stop_2 
@@ -483,81 +560,6 @@ tel
 
 
 
--- Entry action for state :Confirm_Stop_OFF
-node Confirm_Stop_OFF_en(idTOP_Level_Mode_Confirm_Stop_1:int;
-	tLM_MODE_OUT_Request_Confirm_Stop_1:bool;
-	confirmStopTimer_1:real;
-	isInner:bool)
-
-returns (idTOP_Level_Mode_Confirm_Stop:int;
-	tLM_MODE_OUT_Request_Confirm_Stop:bool;
-	confirmStopTimer:real);
-
-
-var 	idTOP_Level_Mode_Confirm_Stop_2:int;
-	tLM_MODE_OUT_Request_Confirm_Stop_2:bool;
-	confirmStopTimer_2:real;
-
-
-let
-
-
-
-	-- set state as active 
-	idTOP_Level_Mode_Confirm_Stop_2 
-	= 64;
-	
-
-	tLM_MODE_OUT_Request_Confirm_Stop_2 
-	= if (not isInner) then false
-	 else tLM_MODE_OUT_Request_Confirm_Stop_1;
-	
-
-	confirmStopTimer_2 
-	= if (not isInner) then 0.
-	 else confirmStopTimer_1;
-	
-
-	(idTOP_Level_Mode_Confirm_Stop, tLM_MODE_OUT_Request_Confirm_Stop, confirmStopTimer) 
-	= (idTOP_Level_Mode_Confirm_Stop_2, tLM_MODE_OUT_Request_Confirm_Stop_2, confirmStopTimer_2);
-	
-
-tel
-
-
-
-
-
--- Exit action for state :Confirm_Stop_OFF
-node Confirm_Stop_OFF_ex(idTOP_Level_Mode_Confirm_Stop_1:int;
-	isInner:bool)
-
-returns (idTOP_Level_Mode_Confirm_Stop:int);
-
-
-var 	idTOP_Level_Mode_Confirm_Stop_2:int;
-
-
-let
-
-
-
-	-- set state as inactive 
-	idTOP_Level_Mode_Confirm_Stop_2
-	 = if (not isInner) then 0 else idTOP_Level_Mode_Confirm_Stop_1;
-
-
-	(idTOP_Level_Mode_Confirm_Stop) 
-	= (idTOP_Level_Mode_Confirm_Stop_2);
-	
-
-tel
-
-
-
-
-
-
 -- Entry action for state :TOP_Level_Mode_Confirm_Stop
 node TOP_Level_Mode_Confirm_Stop_en(idTOP_Level_Mode_Confirm_Stop_1:int;
 	idTop_Level_Mode_Sub_System_TOP_Level_Mode_1:int;
@@ -584,11 +586,12 @@ let
 
 	-- set state as active 
 	idTop_Level_Mode_Sub_System_TOP_Level_Mode_2 
-	= 63;
+	= 174;
 	
 
 	
-
+-- transition trace :
+	--POINT__To__Confirm_Stop_ON_1
 		(idTOP_Level_Mode_Confirm_Stop_2, tLM_MODE_OUT_Request_Confirm_Stop_2, confirmStopTimer_2) 
 	= 
 		 if (( OP_CMD_IN_System_Stop )) then 
@@ -596,7 +599,8 @@ let
 		 else (idTOP_Level_Mode_Confirm_Stop_1, tLM_MODE_OUT_Request_Confirm_Stop_1, confirmStopTimer_1);
 		
 
-
+-- transition trace :
+	--POINT__To__Confirm_Stop_OFF_2
 		(idTOP_Level_Mode_Confirm_Stop_3, tLM_MODE_OUT_Request_Confirm_Stop_3, confirmStopTimer_3) 
 	= Confirm_Stop_OFF_en(idTOP_Level_Mode_Confirm_Stop_2, tLM_MODE_OUT_Request_Confirm_Stop_2, confirmStopTimer_2, false);
 		
@@ -617,7 +621,7 @@ let
 
 	(idTOP_Level_Mode_Confirm_Stop_5, tLM_MODE_OUT_Request_Confirm_Stop_5, confirmStopTimer_5) 
 	= 
-	if ( idTOP_Level_Mode_Confirm_Stop_1 = 64) then
+	if ( idTOP_Level_Mode_Confirm_Stop_1 = 175) then
 	Confirm_Stop_OFF_en(idTOP_Level_Mode_Confirm_Stop_1, tLM_MODE_OUT_Request_Confirm_Stop_1, confirmStopTimer_1, false)
 	 else (idTOP_Level_Mode_Confirm_Stop_1, tLM_MODE_OUT_Request_Confirm_Stop_1, confirmStopTimer_1);
 
@@ -625,7 +629,7 @@ let
 
 	(idTOP_Level_Mode_Confirm_Stop_6, tLM_MODE_OUT_Request_Confirm_Stop_6, confirmStopTimer_6) 
 	= 
-	if ( idTOP_Level_Mode_Confirm_Stop_1 = 65) then
+	if ( idTOP_Level_Mode_Confirm_Stop_1 = 176) then
 	Confirm_Stop_ON_en(idTOP_Level_Mode_Confirm_Stop_1, tLM_MODE_OUT_Request_Confirm_Stop_1, confirmStopTimer_1, false)
 	 else (idTOP_Level_Mode_Confirm_Stop_1, tLM_MODE_OUT_Request_Confirm_Stop_1, confirmStopTimer_1);
 
@@ -636,10 +640,10 @@ let
 		 if ( idTOP_Level_Mode_Confirm_Stop_1 = 0) then 
 		(idTOP_Level_Mode_Confirm_Stop_4, idTop_Level_Mode_Sub_System_TOP_Level_Mode_3, confirmStopTimer_4, tLM_MODE_OUT_Request_Confirm_Stop_4)
 		 else
-		 if ( idTOP_Level_Mode_Confirm_Stop_1 = 64) then 
+		 if ( idTOP_Level_Mode_Confirm_Stop_1 = 175) then 
 		(idTOP_Level_Mode_Confirm_Stop_5, idTop_Level_Mode_Sub_System_TOP_Level_Mode_3, confirmStopTimer_5, tLM_MODE_OUT_Request_Confirm_Stop_5)
 		 else
-		 if ( idTOP_Level_Mode_Confirm_Stop_1 = 65) then 
+		 if ( idTOP_Level_Mode_Confirm_Stop_1 = 176) then 
 		(idTOP_Level_Mode_Confirm_Stop_6, idTop_Level_Mode_Sub_System_TOP_Level_Mode_3, confirmStopTimer_6, tLM_MODE_OUT_Request_Confirm_Stop_6)
 		 else (idTOP_Level_Mode_Confirm_Stop_1, idTop_Level_Mode_Sub_System_TOP_Level_Mode_2, confirmStopTimer_1, tLM_MODE_OUT_Request_Confirm_Stop_1);
 
@@ -674,7 +678,7 @@ let
 	
 	(idTOP_Level_Mode_Confirm_Stop_2) 
 	= 
-	if ( idTOP_Level_Mode_Confirm_Stop_1 = 64) then
+	if ( idTOP_Level_Mode_Confirm_Stop_1 = 175) then
 	Confirm_Stop_OFF_ex(idTOP_Level_Mode_Confirm_Stop_1, false)
 	 else (idTOP_Level_Mode_Confirm_Stop_1);
 
@@ -682,7 +686,7 @@ let
 
 	(idTOP_Level_Mode_Confirm_Stop_3) 
 	= 
-	if ( idTOP_Level_Mode_Confirm_Stop_1 = 65) then
+	if ( idTOP_Level_Mode_Confirm_Stop_1 = 176) then
 	Confirm_Stop_ON_ex(idTOP_Level_Mode_Confirm_Stop_1, false)
 	 else (idTOP_Level_Mode_Confirm_Stop_1);
 
@@ -690,10 +694,10 @@ let
 
 	(idTOP_Level_Mode_Confirm_Stop_4) 
 	= 
-		 if ( idTOP_Level_Mode_Confirm_Stop_1 = 64) then 
+		 if ( idTOP_Level_Mode_Confirm_Stop_1 = 175) then 
 		(idTOP_Level_Mode_Confirm_Stop_2)
 		 else
-		 if ( idTOP_Level_Mode_Confirm_Stop_1 = 65) then 
+		 if ( idTOP_Level_Mode_Confirm_Stop_1 = 176) then 
 		(idTOP_Level_Mode_Confirm_Stop_3)
 		 else (idTOP_Level_Mode_Confirm_Stop_1);
 
@@ -708,6 +712,182 @@ let
 
 	(idTOP_Level_Mode_Confirm_Stop, idTop_Level_Mode_Sub_System_TOP_Level_Mode) 
 	= (idTOP_Level_Mode_Confirm_Stop_5, idTop_Level_Mode_Sub_System_TOP_Level_Mode_2);
+	
+
+tel
+
+
+
+
+
+
+-- Entry action for state :Top_Level_Mode_Sub_System_TOP_Level_Mode
+node Top_Level_Mode_Sub_System_TOP_Level_Mode_en(idTop_Level_Mode_Sub_System_TOP_Level_Mode_1:int;
+	idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_1:int;
+	tLM_MODE_OUT_System_On_1:bool;
+	OP_CMD_IN_System_Stop:bool;
+	confirmStopTimer_1:real;
+	idTOP_Level_Mode_Confirm_Stop_1:int;
+	tLM_MODE_OUT_Request_Confirm_Stop_1:bool;
+	isInner:bool)
+
+returns (idTop_Level_Mode_Sub_System_TOP_Level_Mode:int;
+	idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System:int;
+	tLM_MODE_OUT_System_On:bool;
+	confirmStopTimer:real;
+	idTOP_Level_Mode_Confirm_Stop:int;
+	tLM_MODE_OUT_Request_Confirm_Stop:bool);
+
+
+var 	idTop_Level_Mode_Sub_System_TOP_Level_Mode_2, idTop_Level_Mode_Sub_System_TOP_Level_Mode_3, idTop_Level_Mode_Sub_System_TOP_Level_Mode_4, idTop_Level_Mode_Sub_System_TOP_Level_Mode_5:int;
+	idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_2, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_3, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_4:int;
+	tLM_MODE_OUT_System_On_2, tLM_MODE_OUT_System_On_3, tLM_MODE_OUT_System_On_4:bool;
+	confirmStopTimer_2, confirmStopTimer_3, confirmStopTimer_4, confirmStopTimer_5:real;
+	idTOP_Level_Mode_Confirm_Stop_2, idTOP_Level_Mode_Confirm_Stop_3, idTOP_Level_Mode_Confirm_Stop_4, idTOP_Level_Mode_Confirm_Stop_5:int;
+	tLM_MODE_OUT_Request_Confirm_Stop_2, tLM_MODE_OUT_Request_Confirm_Stop_3, tLM_MODE_OUT_Request_Confirm_Stop_4, tLM_MODE_OUT_Request_Confirm_Stop_5:bool;
+
+
+let
+
+
+
+	-- set state as active 
+	idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_2 
+	= 173;
+	
+
+	tLM_MODE_OUT_System_On_2 
+	= if (not isInner) then true
+	 else tLM_MODE_OUT_System_On_1;
+	
+
+	
+-- transition trace :
+	--POINT__To__TOP_Level_Mode_Confirm_Stop_1
+		(idTOP_Level_Mode_Confirm_Stop_2, idTop_Level_Mode_Sub_System_TOP_Level_Mode_2, confirmStopTimer_2, tLM_MODE_OUT_Request_Confirm_Stop_2) 
+	= TOP_Level_Mode_Confirm_Stop_en(idTOP_Level_Mode_Confirm_Stop_1, idTop_Level_Mode_Sub_System_TOP_Level_Mode_1, OP_CMD_IN_System_Stop, confirmStopTimer_1, tLM_MODE_OUT_Request_Confirm_Stop_1, false);
+		
+
+	(idTop_Level_Mode_Sub_System_TOP_Level_Mode_3, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_3, tLM_MODE_OUT_System_On_3, confirmStopTimer_3, idTOP_Level_Mode_Confirm_Stop_3, tLM_MODE_OUT_Request_Confirm_Stop_3) 
+	= 
+
+	if ( idTop_Level_Mode_Sub_System_TOP_Level_Mode_1 = 0) then
+
+	 (idTop_Level_Mode_Sub_System_TOP_Level_Mode_2, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_2, tLM_MODE_OUT_System_On_2, confirmStopTimer_2, idTOP_Level_Mode_Confirm_Stop_2, tLM_MODE_OUT_Request_Confirm_Stop_2)
+
+	 else(idTop_Level_Mode_Sub_System_TOP_Level_Mode_1, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_2, tLM_MODE_OUT_System_On_2, confirmStopTimer_1, idTOP_Level_Mode_Confirm_Stop_1, tLM_MODE_OUT_Request_Confirm_Stop_1);
+
+	
+
+	(idTOP_Level_Mode_Confirm_Stop_4, idTop_Level_Mode_Sub_System_TOP_Level_Mode_4, confirmStopTimer_4, tLM_MODE_OUT_Request_Confirm_Stop_4) 
+	= 
+	if ( idTop_Level_Mode_Sub_System_TOP_Level_Mode_1 = 174) then
+	TOP_Level_Mode_Confirm_Stop_en(idTOP_Level_Mode_Confirm_Stop_1, idTop_Level_Mode_Sub_System_TOP_Level_Mode_1, OP_CMD_IN_System_Stop, confirmStopTimer_1, tLM_MODE_OUT_Request_Confirm_Stop_1, false)
+	 else (idTOP_Level_Mode_Confirm_Stop_1, idTop_Level_Mode_Sub_System_TOP_Level_Mode_1, confirmStopTimer_1, tLM_MODE_OUT_Request_Confirm_Stop_1);
+
+	
+
+	(idTop_Level_Mode_Sub_System_TOP_Level_Mode_5, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_4, tLM_MODE_OUT_System_On_4, confirmStopTimer_5, idTOP_Level_Mode_Confirm_Stop_5, tLM_MODE_OUT_Request_Confirm_Stop_5) 
+	= 
+		 if ( idTop_Level_Mode_Sub_System_TOP_Level_Mode_1 = 0) then 
+		(idTop_Level_Mode_Sub_System_TOP_Level_Mode_3, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_3, tLM_MODE_OUT_System_On_3, confirmStopTimer_3, idTOP_Level_Mode_Confirm_Stop_3, tLM_MODE_OUT_Request_Confirm_Stop_3)
+		 else
+		 if ( idTop_Level_Mode_Sub_System_TOP_Level_Mode_1 = 174) then 
+		(idTop_Level_Mode_Sub_System_TOP_Level_Mode_4, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_3, tLM_MODE_OUT_System_On_3, confirmStopTimer_4, idTOP_Level_Mode_Confirm_Stop_4, tLM_MODE_OUT_Request_Confirm_Stop_4)
+		 else (idTop_Level_Mode_Sub_System_TOP_Level_Mode_1, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_2, tLM_MODE_OUT_System_On_2, confirmStopTimer_1, idTOP_Level_Mode_Confirm_Stop_1, tLM_MODE_OUT_Request_Confirm_Stop_1);
+
+
+	(idTop_Level_Mode_Sub_System_TOP_Level_Mode, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System, tLM_MODE_OUT_System_On, confirmStopTimer, idTOP_Level_Mode_Confirm_Stop, tLM_MODE_OUT_Request_Confirm_Stop) 
+	= (idTop_Level_Mode_Sub_System_TOP_Level_Mode_5, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_4, tLM_MODE_OUT_System_On_4, confirmStopTimer_5, idTOP_Level_Mode_Confirm_Stop_5, tLM_MODE_OUT_Request_Confirm_Stop_5);
+	
+
+tel
+
+
+
+
+
+--During action for state :Top_Level_Mode_Sub_System_TOP_Level_Mode
+node Top_Level_Mode_Sub_System_TOP_Level_Mode_du(tLM_MODE_OUT_System_On_1:bool)
+
+returns (tLM_MODE_OUT_System_On:bool);
+
+
+var 	tLM_MODE_OUT_System_On_2:bool;
+
+
+let
+
+
+
+	tLM_MODE_OUT_System_On_2 
+	= true;
+	
+
+	(tLM_MODE_OUT_System_On) 
+	= (tLM_MODE_OUT_System_On_2);
+	
+
+tel
+
+
+
+
+
+-- Exit action for state :Top_Level_Mode_Sub_System_TOP_Level_Mode
+node Top_Level_Mode_Sub_System_TOP_Level_Mode_ex(idTOP_Level_Mode_Confirm_Stop_1:int;
+	idTop_Level_Mode_Sub_System_TOP_Level_Mode_1:int;
+	tLM_MODE_OUT_System_On_1:bool;
+	idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_1:int;
+	isInner:bool)
+
+returns (idTOP_Level_Mode_Confirm_Stop:int;
+	idTop_Level_Mode_Sub_System_TOP_Level_Mode:int;
+	tLM_MODE_OUT_System_On:bool;
+	idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System:int);
+
+
+var 	idTOP_Level_Mode_Confirm_Stop_2, idTOP_Level_Mode_Confirm_Stop_3:int;
+	idTop_Level_Mode_Sub_System_TOP_Level_Mode_2, idTop_Level_Mode_Sub_System_TOP_Level_Mode_3, idTop_Level_Mode_Sub_System_TOP_Level_Mode_4:int;
+	tLM_MODE_OUT_System_On_2:bool;
+	idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_2:int;
+
+
+let
+
+
+
+	
+	(idTOP_Level_Mode_Confirm_Stop_2, idTop_Level_Mode_Sub_System_TOP_Level_Mode_2) 
+	= 
+	if ( idTop_Level_Mode_Sub_System_TOP_Level_Mode_1 = 174) then
+	TOP_Level_Mode_Confirm_Stop_ex(idTOP_Level_Mode_Confirm_Stop_1, idTop_Level_Mode_Sub_System_TOP_Level_Mode_1, false)
+	 else (idTOP_Level_Mode_Confirm_Stop_1, idTop_Level_Mode_Sub_System_TOP_Level_Mode_1);
+
+	
+
+	(idTOP_Level_Mode_Confirm_Stop_3, idTop_Level_Mode_Sub_System_TOP_Level_Mode_3) 
+	= 
+		 if ( idTop_Level_Mode_Sub_System_TOP_Level_Mode_1 = 174) then 
+		(idTOP_Level_Mode_Confirm_Stop_2, idTop_Level_Mode_Sub_System_TOP_Level_Mode_2)
+		 else (idTOP_Level_Mode_Confirm_Stop_1, idTop_Level_Mode_Sub_System_TOP_Level_Mode_1);
+
+
+	tLM_MODE_OUT_System_On_2 
+	= if (not isInner) then true
+	 else tLM_MODE_OUT_System_On_1;
+	
+
+	-- set state as inactive 
+	idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_2
+	 = if (not isInner) then 0 else idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_1;
+
+	idTop_Level_Mode_Sub_System_TOP_Level_Mode_4 
+	= 0;
+	
+
+	(idTOP_Level_Mode_Confirm_Stop, idTop_Level_Mode_Sub_System_TOP_Level_Mode, tLM_MODE_OUT_System_On, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System) 
+	= (idTOP_Level_Mode_Confirm_Stop_3, idTop_Level_Mode_Sub_System_TOP_Level_Mode_4, tLM_MODE_OUT_System_On_2, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_2);
 	
 
 tel
@@ -736,7 +916,7 @@ let
 
 	-- set state as active 
 	idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_2 
-	= 66;
+	= 177;
 	
 
 	tLM_MODE_OUT_System_On_2 
@@ -815,181 +995,6 @@ let
 tel
 
 
-
-
-
-
--- Entry action for state :Top_Level_Mode_Sub_System_TOP_Level_Mode
-node Top_Level_Mode_Sub_System_TOP_Level_Mode_en(idTop_Level_Mode_Sub_System_TOP_Level_Mode_1:int;
-	idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_1:int;
-	tLM_MODE_OUT_System_On_1:bool;
-	OP_CMD_IN_System_Stop:bool;
-	confirmStopTimer_1:real;
-	idTOP_Level_Mode_Confirm_Stop_1:int;
-	tLM_MODE_OUT_Request_Confirm_Stop_1:bool;
-	isInner:bool)
-
-returns (idTop_Level_Mode_Sub_System_TOP_Level_Mode:int;
-	idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System:int;
-	tLM_MODE_OUT_System_On:bool;
-	confirmStopTimer:real;
-	idTOP_Level_Mode_Confirm_Stop:int;
-	tLM_MODE_OUT_Request_Confirm_Stop:bool);
-
-
-var 	idTop_Level_Mode_Sub_System_TOP_Level_Mode_2, idTop_Level_Mode_Sub_System_TOP_Level_Mode_3, idTop_Level_Mode_Sub_System_TOP_Level_Mode_4, idTop_Level_Mode_Sub_System_TOP_Level_Mode_5:int;
-	idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_2, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_3, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_4:int;
-	tLM_MODE_OUT_System_On_2, tLM_MODE_OUT_System_On_3, tLM_MODE_OUT_System_On_4:bool;
-	confirmStopTimer_2, confirmStopTimer_3, confirmStopTimer_4, confirmStopTimer_5:real;
-	idTOP_Level_Mode_Confirm_Stop_2, idTOP_Level_Mode_Confirm_Stop_3, idTOP_Level_Mode_Confirm_Stop_4, idTOP_Level_Mode_Confirm_Stop_5:int;
-	tLM_MODE_OUT_Request_Confirm_Stop_2, tLM_MODE_OUT_Request_Confirm_Stop_3, tLM_MODE_OUT_Request_Confirm_Stop_4, tLM_MODE_OUT_Request_Confirm_Stop_5:bool;
-
-
-let
-
-
-
-	-- set state as active 
-	idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_2 
-	= 62;
-	
-
-	tLM_MODE_OUT_System_On_2 
-	= if (not isInner) then true
-	 else tLM_MODE_OUT_System_On_1;
-	
-
-	
-
-		(idTOP_Level_Mode_Confirm_Stop_2, idTop_Level_Mode_Sub_System_TOP_Level_Mode_2, confirmStopTimer_2, tLM_MODE_OUT_Request_Confirm_Stop_2) 
-	= TOP_Level_Mode_Confirm_Stop_en(idTOP_Level_Mode_Confirm_Stop_1, idTop_Level_Mode_Sub_System_TOP_Level_Mode_1, OP_CMD_IN_System_Stop, confirmStopTimer_1, tLM_MODE_OUT_Request_Confirm_Stop_1, false);
-		
-
-	(idTop_Level_Mode_Sub_System_TOP_Level_Mode_3, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_3, tLM_MODE_OUT_System_On_3, confirmStopTimer_3, idTOP_Level_Mode_Confirm_Stop_3, tLM_MODE_OUT_Request_Confirm_Stop_3) 
-	= 
-
-	if ( idTop_Level_Mode_Sub_System_TOP_Level_Mode_1 = 0) then
-
-	 (idTop_Level_Mode_Sub_System_TOP_Level_Mode_2, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_2, tLM_MODE_OUT_System_On_2, confirmStopTimer_2, idTOP_Level_Mode_Confirm_Stop_2, tLM_MODE_OUT_Request_Confirm_Stop_2)
-
-	 else(idTop_Level_Mode_Sub_System_TOP_Level_Mode_1, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_2, tLM_MODE_OUT_System_On_2, confirmStopTimer_1, idTOP_Level_Mode_Confirm_Stop_1, tLM_MODE_OUT_Request_Confirm_Stop_1);
-
-	
-
-	(idTOP_Level_Mode_Confirm_Stop_4, idTop_Level_Mode_Sub_System_TOP_Level_Mode_4, confirmStopTimer_4, tLM_MODE_OUT_Request_Confirm_Stop_4) 
-	= 
-	if ( idTop_Level_Mode_Sub_System_TOP_Level_Mode_1 = 63) then
-	TOP_Level_Mode_Confirm_Stop_en(idTOP_Level_Mode_Confirm_Stop_1, idTop_Level_Mode_Sub_System_TOP_Level_Mode_1, OP_CMD_IN_System_Stop, confirmStopTimer_1, tLM_MODE_OUT_Request_Confirm_Stop_1, false)
-	 else (idTOP_Level_Mode_Confirm_Stop_1, idTop_Level_Mode_Sub_System_TOP_Level_Mode_1, confirmStopTimer_1, tLM_MODE_OUT_Request_Confirm_Stop_1);
-
-	
-
-	(idTop_Level_Mode_Sub_System_TOP_Level_Mode_5, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_4, tLM_MODE_OUT_System_On_4, confirmStopTimer_5, idTOP_Level_Mode_Confirm_Stop_5, tLM_MODE_OUT_Request_Confirm_Stop_5) 
-	= 
-		 if ( idTop_Level_Mode_Sub_System_TOP_Level_Mode_1 = 0) then 
-		(idTop_Level_Mode_Sub_System_TOP_Level_Mode_3, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_3, tLM_MODE_OUT_System_On_3, confirmStopTimer_3, idTOP_Level_Mode_Confirm_Stop_3, tLM_MODE_OUT_Request_Confirm_Stop_3)
-		 else
-		 if ( idTop_Level_Mode_Sub_System_TOP_Level_Mode_1 = 63) then 
-		(idTop_Level_Mode_Sub_System_TOP_Level_Mode_4, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_3, tLM_MODE_OUT_System_On_3, confirmStopTimer_4, idTOP_Level_Mode_Confirm_Stop_4, tLM_MODE_OUT_Request_Confirm_Stop_4)
-		 else (idTop_Level_Mode_Sub_System_TOP_Level_Mode_1, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_2, tLM_MODE_OUT_System_On_2, confirmStopTimer_1, idTOP_Level_Mode_Confirm_Stop_1, tLM_MODE_OUT_Request_Confirm_Stop_1);
-
-
-	(idTop_Level_Mode_Sub_System_TOP_Level_Mode, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System, tLM_MODE_OUT_System_On, confirmStopTimer, idTOP_Level_Mode_Confirm_Stop, tLM_MODE_OUT_Request_Confirm_Stop) 
-	= (idTop_Level_Mode_Sub_System_TOP_Level_Mode_5, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_4, tLM_MODE_OUT_System_On_4, confirmStopTimer_5, idTOP_Level_Mode_Confirm_Stop_5, tLM_MODE_OUT_Request_Confirm_Stop_5);
-	
-
-tel
-
-
-
-
-
---During action for state :Top_Level_Mode_Sub_System_TOP_Level_Mode
-node Top_Level_Mode_Sub_System_TOP_Level_Mode_du(tLM_MODE_OUT_System_On_1:bool)
-
-returns (tLM_MODE_OUT_System_On:bool);
-
-
-var 	tLM_MODE_OUT_System_On_2:bool;
-
-
-let
-
-
-
-	tLM_MODE_OUT_System_On_2 
-	= true;
-	
-
-	(tLM_MODE_OUT_System_On) 
-	= (tLM_MODE_OUT_System_On_2);
-	
-
-tel
-
-
-
-
-
--- Exit action for state :Top_Level_Mode_Sub_System_TOP_Level_Mode
-node Top_Level_Mode_Sub_System_TOP_Level_Mode_ex(idTOP_Level_Mode_Confirm_Stop_1:int;
-	idTop_Level_Mode_Sub_System_TOP_Level_Mode_1:int;
-	tLM_MODE_OUT_System_On_1:bool;
-	idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_1:int;
-	isInner:bool)
-
-returns (idTOP_Level_Mode_Confirm_Stop:int;
-	idTop_Level_Mode_Sub_System_TOP_Level_Mode:int;
-	tLM_MODE_OUT_System_On:bool;
-	idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System:int);
-
-
-var 	idTOP_Level_Mode_Confirm_Stop_2, idTOP_Level_Mode_Confirm_Stop_3:int;
-	idTop_Level_Mode_Sub_System_TOP_Level_Mode_2, idTop_Level_Mode_Sub_System_TOP_Level_Mode_3, idTop_Level_Mode_Sub_System_TOP_Level_Mode_4:int;
-	tLM_MODE_OUT_System_On_2:bool;
-	idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_2:int;
-
-
-let
-
-
-
-	
-	(idTOP_Level_Mode_Confirm_Stop_2, idTop_Level_Mode_Sub_System_TOP_Level_Mode_2) 
-	= 
-	if ( idTop_Level_Mode_Sub_System_TOP_Level_Mode_1 = 63) then
-	TOP_Level_Mode_Confirm_Stop_ex(idTOP_Level_Mode_Confirm_Stop_1, idTop_Level_Mode_Sub_System_TOP_Level_Mode_1, false)
-	 else (idTOP_Level_Mode_Confirm_Stop_1, idTop_Level_Mode_Sub_System_TOP_Level_Mode_1);
-
-	
-
-	(idTOP_Level_Mode_Confirm_Stop_3, idTop_Level_Mode_Sub_System_TOP_Level_Mode_3) 
-	= 
-		 if ( idTop_Level_Mode_Sub_System_TOP_Level_Mode_1 = 63) then 
-		(idTOP_Level_Mode_Confirm_Stop_2, idTop_Level_Mode_Sub_System_TOP_Level_Mode_2)
-		 else (idTOP_Level_Mode_Confirm_Stop_1, idTop_Level_Mode_Sub_System_TOP_Level_Mode_1);
-
-
-	tLM_MODE_OUT_System_On_2 
-	= if (not isInner) then true
-	 else tLM_MODE_OUT_System_On_1;
-	
-
-	-- set state as inactive 
-	idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_2
-	 = if (not isInner) then 0 else idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_1;
-
-	idTop_Level_Mode_Sub_System_TOP_Level_Mode_4 
-	= 0;
-	
-
-	(idTOP_Level_Mode_Confirm_Stop, idTop_Level_Mode_Sub_System_TOP_Level_Mode, tLM_MODE_OUT_System_On, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System) 
-	= (idTOP_Level_Mode_Confirm_Stop_3, idTop_Level_Mode_Sub_System_TOP_Level_Mode_4, tLM_MODE_OUT_System_On_2, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_2);
-	
-
-tel
-
-
 --***************************************************State :TOP_Level_Mode_Confirm_Stop Automaton***************************************************
 
 node TOP_Level_Mode_Confirm_Stop_node(idTOP_Level_Mode_Confirm_Stop_1:int;
@@ -1027,21 +1032,21 @@ let
 
 
 
-	unless (idTOP_Level_Mode_Confirm_Stop_1=64) and ( OP_CMD_IN_System_Stop ) restart CONFIRM_STOP_OFF__TO__CONFIRM_STOP_ON_1
+	unless (idTOP_Level_Mode_Confirm_Stop_1=175) and ( OP_CMD_IN_System_Stop ) restart CONFIRM_STOP_OFF__TO__CONFIRM_STOP_ON_1
 
 
 
-	unless (idTOP_Level_Mode_Confirm_Stop_1=65) and ( not OP_CMD_IN_System_Start ) restart CONFIRM_STOP_ON__TO__TOP_LEVEL_MODE_SUB_SYSTEM_NOT_ON_1
+	unless (idTOP_Level_Mode_Confirm_Stop_1=176) and ( not OP_CMD_IN_System_Start ) restart CONFIRM_STOP_ON__TO__TOP_LEVEL_MODE_SUB_SYSTEM_NOT_ON_1
 
 
 
-	unless (idTOP_Level_Mode_Confirm_Stop_1=65) and ( OP_CMD_IN_Cancel or  confirmStopTimer_1 >Step_Scaling_Factor(CONST_IN_Max_Confirm_Stop_Duration,step_size) ) restart CONFIRM_STOP_ON__TO__CONFIRM_STOP_OFF_2
+	unless (idTOP_Level_Mode_Confirm_Stop_1=176) and ( OP_CMD_IN_Cancel or  confirmStopTimer_1 >Step_Scaling_Factor(CONST_IN_Max_Confirm_Stop_Duration,step_size) ) restart CONFIRM_STOP_ON__TO__CONFIRM_STOP_OFF_2
 
 
 
-	unless (idTOP_Level_Mode_Confirm_Stop_1=64) restart CONFIRM_STOP_OFF_IDL
+	unless (idTOP_Level_Mode_Confirm_Stop_1=175) restart CONFIRM_STOP_OFF_IDL
 
-	unless (idTOP_Level_Mode_Confirm_Stop_1=65) restart CONFIRM_STOP_ON_IDL
+	unless (idTOP_Level_Mode_Confirm_Stop_1=176) restart CONFIRM_STOP_ON_IDL
 
 	let
 
@@ -1060,7 +1065,8 @@ let
 	tLM_MODE_OUT_Request_Confirm_Stop_2:bool;
 	let
 
-		
+		-- transition trace :
+	--POINT__To__Confirm_Stop_ON_1
 		(idTOP_Level_Mode_Confirm_Stop_2, tLM_MODE_OUT_Request_Confirm_Stop_2, confirmStopTimer_2) 
 	= Confirm_Stop_ON_en(idTOP_Level_Mode_Confirm_Stop_1, tLM_MODE_OUT_Request_Confirm_Stop_1, confirmStopTimer_1, false);
 		
@@ -1086,7 +1092,8 @@ let
 	tLM_MODE_OUT_Request_Confirm_Stop_2:bool;
 	let
 
-		
+		-- transition trace :
+	--POINT__To__Confirm_Stop_OFF_2
 		(idTOP_Level_Mode_Confirm_Stop_2, tLM_MODE_OUT_Request_Confirm_Stop_2, confirmStopTimer_2) 
 	= Confirm_Stop_OFF_en(idTOP_Level_Mode_Confirm_Stop_1, tLM_MODE_OUT_Request_Confirm_Stop_1, confirmStopTimer_1, false);
 		
@@ -1112,7 +1119,8 @@ let
 	tLM_MODE_OUT_Request_Confirm_Stop_2:bool;
 	let
 
-		
+		-- transition trace :
+	--Confirm_Stop_OFF__To__Confirm_Stop_ON_1
 		(idTOP_Level_Mode_Confirm_Stop_2) 
 	= Confirm_Stop_OFF_ex(idTOP_Level_Mode_Confirm_Stop_1, false);
 		
@@ -1144,7 +1152,8 @@ let
 	tLM_MODE_OUT_System_On_2, tLM_MODE_OUT_System_On_3:bool;
 	let
 
-		
+		-- transition trace :
+	--Confirm_Stop_ON__To__Top_Level_Mode_Sub_System_NOT_ON_1
 		-- condition Action : writeLog(2);
 		
 		(tLM_MODE_OUT_Log_Message_ID_2) 
@@ -1176,7 +1185,8 @@ let
 	tLM_MODE_OUT_Request_Confirm_Stop_2:bool;
 	let
 
-		
+		-- transition trace :
+	--Confirm_Stop_ON__To__Confirm_Stop_OFF_2
 		(idTOP_Level_Mode_Confirm_Stop_2) 
 	= Confirm_Stop_ON_ex(idTOP_Level_Mode_Confirm_Stop_1, false);
 		
@@ -1269,7 +1279,7 @@ let
 
 
 
-	unless (idTop_Level_Mode_Sub_System_TOP_Level_Mode_1=63) restart TOP_LEVEL_MODE_CONFIRM_STOP_IDL
+	unless (idTop_Level_Mode_Sub_System_TOP_Level_Mode_1=174) restart TOP_LEVEL_MODE_CONFIRM_STOP_IDL
 
 	let
 
@@ -1289,7 +1299,8 @@ let
 	tLM_MODE_OUT_Request_Confirm_Stop_2:bool;
 	let
 
-		
+		-- transition trace :
+	--POINT__To__TOP_Level_Mode_Confirm_Stop_1
 		(idTOP_Level_Mode_Confirm_Stop_2, idTop_Level_Mode_Sub_System_TOP_Level_Mode_2, confirmStopTimer_2, tLM_MODE_OUT_Request_Confirm_Stop_2) 
 	= TOP_Level_Mode_Confirm_Stop_en(idTOP_Level_Mode_Confirm_Stop_1, idTop_Level_Mode_Sub_System_TOP_Level_Mode_1, OP_CMD_IN_System_Stop, confirmStopTimer_1, tLM_MODE_OUT_Request_Confirm_Stop_1, false);
 		
@@ -1376,13 +1387,13 @@ let
 
 
 
-	unless (idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_1=66) and ( OP_CMD_IN_System_Start ) restart TOP_LEVEL_MODE_SUB_SYSTEM_NOT_ON__TO__TOP_LEVEL_MODE_SUB_SYSTEM_TOP_LEVEL_MODE_1
+	unless (idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_1=177) and ( OP_CMD_IN_System_Start ) restart TOP_LEVEL_MODE_SUB_SYSTEM_NOT_ON__TO__TOP_LEVEL_MODE_SUB_SYSTEM_TOP_LEVEL_MODE_1
 
 
 
-	unless (idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_1=62) restart TOP_LEVEL_MODE_SUB_SYSTEM_TOP_LEVEL_MODE_IDL
+	unless (idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_1=173) restart TOP_LEVEL_MODE_SUB_SYSTEM_TOP_LEVEL_MODE_IDL
 
-	unless (idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_1=66) restart TOP_LEVEL_MODE_SUB_SYSTEM_NOT_ON_IDL
+	unless (idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_1=177) restart TOP_LEVEL_MODE_SUB_SYSTEM_NOT_ON_IDL
 
 	let
 
@@ -1404,7 +1415,8 @@ let
 	tLM_MODE_OUT_System_On_2:bool;
 	let
 
-		
+		-- transition trace :
+	--POINT__To__Top_Level_Mode_Sub_System_TOP_Level_Mode_1
 		(idTop_Level_Mode_Sub_System_TOP_Level_Mode_2, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_2, tLM_MODE_OUT_System_On_2, confirmStopTimer_2, idTOP_Level_Mode_Confirm_Stop_2, tLM_MODE_OUT_Request_Confirm_Stop_2) 
 	= Top_Level_Mode_Sub_System_TOP_Level_Mode_en(idTop_Level_Mode_Sub_System_TOP_Level_Mode_1, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_1, tLM_MODE_OUT_System_On_1, OP_CMD_IN_System_Stop, confirmStopTimer_1, idTOP_Level_Mode_Confirm_Stop_1, tLM_MODE_OUT_Request_Confirm_Stop_1, false);
 		
@@ -1429,7 +1441,8 @@ let
 	tLM_MODE_OUT_System_On_2:bool;
 	let
 
-		
+		-- transition trace :
+	--POINT__To__Top_Level_Mode_Sub_System_NOT_ON_2
 		(idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_2, tLM_MODE_OUT_System_On_2) 
 	= Top_Level_Mode_Sub_System_NOT_ON_en(idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_1, tLM_MODE_OUT_System_On_1, false);
 		
@@ -1459,7 +1472,8 @@ let
 	tLM_MODE_OUT_Log_Message_ID_2:int;
 	let
 
-		
+		-- transition trace :
+	--Top_Level_Mode_Sub_System_NOT_ON__To__Top_Level_Mode_Sub_System_TOP_Level_Mode_1
 		-- condition Action : writeLog(1);
 		
 		(tLM_MODE_OUT_Log_Message_ID_2) 
@@ -1564,9 +1578,9 @@ var tLM_MODE_OUT_System_On_1: bool;
 
 	idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_1: int;
 
-	idTop_Level_Mode_Sub_System_TOP_Level_Mode, idTop_Level_Mode_Sub_System_TOP_Level_Mode_1: int;
-
 	idTOP_Level_Mode_Confirm_Stop, idTOP_Level_Mode_Confirm_Stop_1: int;
+
+	idTop_Level_Mode_Sub_System_TOP_Level_Mode, idTop_Level_Mode_Sub_System_TOP_Level_Mode_1: int;
 
 		step_size: real;
 
@@ -1582,9 +1596,9 @@ var tLM_MODE_OUT_System_On_1: bool;
 
 	idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_1 = 0 -> pre idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System;
 
-	idTop_Level_Mode_Sub_System_TOP_Level_Mode_1 = 0 -> pre idTop_Level_Mode_Sub_System_TOP_Level_Mode;
-
 	idTOP_Level_Mode_Confirm_Stop_1 = 0 -> pre idTOP_Level_Mode_Confirm_Stop;
+
+	idTop_Level_Mode_Sub_System_TOP_Level_Mode_1 = 0 -> pre idTop_Level_Mode_Sub_System_TOP_Level_Mode;
 
 	step_size = 1.000000;
 

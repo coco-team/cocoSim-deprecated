@@ -1,57 +1,25 @@
 Model {
-  Name			  "Iek2"
+  Name			  "Temporal1"
   Version		  8.7
   MdlSubVersion		  1
   SavedCharacterEncoding  "UTF-8"
   GraphicalInterface {
-    NumRootInports	    2
+    NumRootInports	    1
     Inport {
       Name		      "E"
       BusObject		      ""
-      SignalName	      "E"
       OutputFunctionCall      "off"
       UnitExpr		      "inherit"
     }
-    Inport {
-      Name		      "F"
-      BusObject		      ""
-      SignalName	      "F"
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
-    }
-    NumRootOutports	    5
-    Outport {
-      Name		      "sT1"
-      BusObject		      ""
-      BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
-    }
-    Outport {
-      Name		      "sT2"
-      BusObject		      ""
-      BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
-    }
-    Outport {
-      Name		      "sT3"
-      BusObject		      ""
-      BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
-    }
+    NumRootOutports	    1
     Outport {
       Name		      "x"
       BusObject		      ""
       BusOutputAsStruct	      "off"
       UnitExpr		      "inherit"
     }
-    Outport {
-      Name		      "y"
-      BusObject		      ""
-      BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
-    }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.9"
+    ComputedModelVersion    "1.7"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -76,7 +44,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [65.0, 24.0, 948.0, 1076.0]
+      Location		      [65.0, 58.0, 560.0, 744.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -99,22 +67,22 @@ Model {
 	$ClassName		"Simulink.EditorInfo"
 	IsActive		[1]
 	ViewObjType		"StateflowChart"
-	LoadSaveID		"3"
-	Extents			[894.0, 883.0]
-	ZoomFactor		[1.2496094970321774]
-	Offset			[-68.031, -57.143]
+	LoadSaveID		"1"
+	Extents			[506.0, 551.0]
+	ZoomFactor		[1.3333333333333333]
+	Offset			[0.0, 0.0]
       }
     }
   }
-  Created		  "Thu Jun 17 11:35:27 2004"
+  Created		  "Thu Feb 26 16:40:53 2004"
   Creator		  "scaife"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "hamza"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Aug 03 19:02:27 2016"
-  RTWModifiedTimeStamp	  391642639
-  ModelVersionFormat	  "1.%<AutoIncrement:9>"
+  LastModifiedDate	  "Wed Aug 03 21:05:59 2016"
+  RTWModifiedTimeStamp	  392158815
+  ModelVersionFormat	  "1.%<AutoIncrement:7>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -164,11 +132,11 @@ Model {
     $PropName		    "DataLoggingOverride"
     $ObjectID		    6
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
-    model_		    "Iek2"
+    model_		    "Temporal1"
     Array {
       Type		      "Cell"
       Dimension		      1
-      Cell		      "Iek2"
+      Cell		      "Temporal1"
       PropName		      "logAsSpecifiedByModels_"
     }
     Array {
@@ -214,7 +182,7 @@ Model {
 	  $ObjectID		  8
 	  Version		  "1.16.2"
 	  StartTime		  "0.0"
-	  StopTime		  "10000000.0"
+	  StopTime		  "20"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
@@ -232,8 +200,8 @@ Model {
 	  SolverMode		  "Auto"
 	  EnableConcurrentExecution off
 	  ConcurrentTasks	  off
-	  Solver		  "FixedStepDiscrete"
-	  SolverName		  "FixedStepDiscrete"
+	  Solver		  "ode45"
+	  SolverName		  "ode45"
 	  SolverJacobianMethodControl "auto"
 	  ShapePreserveControl	  "DisableAll"
 	  ZeroCrossControl	  "UseLocalSettings"
@@ -865,14 +833,6 @@ Model {
       Interpolate	      on
     }
     Block {
-      BlockType		      Mux
-      Inputs		      "4"
-      DisplayOption	      "none"
-      UseBusObject	      off
-      BusObject		      "BusObject"
-      NonVirtualBus	      off
-    }
-    Block {
       BlockType		      Outport
       Port		      "1"
       OutMin		      "[]"
@@ -954,8 +914,8 @@ Model {
     }
   }
   System {
-    Name		    "Iek2"
-    Location		    [65, 24, 1013, 1100]
+    Name		    "Temporal1"
+    Location		    [65, 58, 625, 802]
     Open		    off
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -969,43 +929,22 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "13"
+    SIDHighWatermark	    "5"
     Block {
       BlockType		      Inport
       Name		      "E"
-      SID		      "7"
-      Position		      [70, 83, 100, 97]
-      ZOrder		      7
+      SID		      "2"
+      Position		      [150, 13, 180, 27]
+      ZOrder		      1
       IconDisplay	      "Port number"
-      Port {
-	PortNumber		1
-	Name			"E"
-	RTWStorageClass		"Auto"
-	DataLoggingNameMode	"SignalName"
-      }
-    }
-    Block {
-      BlockType		      Inport
-      Name		      "F"
-      SID		      "8"
-      Position		      [70, 153, 100, 167]
-      ZOrder		      8
-      Port		      "2"
-      IconDisplay	      "Port number"
-      Port {
-	PortNumber		1
-	Name			"F"
-	RTWStorageClass		"Auto"
-	DataLoggingNameMode	"SignalName"
-      }
     }
     Block {
       BlockType		      SubSystem
-      Name		      "Iek2"
-      SID		      "3"
-      Ports		      [0, 5, 0, 1]
-      Position		      [290, 162, 350, 218]
-      ZOrder		      -3
+      Name		      "Temporal1"
+      SID		      "1"
+      Ports		      [0, 1, 0, 1]
+      Position		      [230, 69, 290, 121]
+      ZOrder		      -1
       ErrorFcn		      "Stateflow.Translate.translate"
       PermitHierarchicalResolution "ExplicitOnly"
       TreatAsAtomicUnit	      on
@@ -1013,8 +952,8 @@ Model {
       SFBlockType	      "Chart"
       Variant		      off
       System {
-	Name			"Iek2"
-	Location		[65, 24, 1013, 1100]
+	Name			"Temporal1"
+	Location		[65, 58, 625, 802]
 	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -1027,66 +966,41 @@ Model {
 	TiledPageScale		1
 	ShowPageBoundaries	off
 	ZoomFactor		"100"
-	SIDHighWatermark	"12"
+	SIDHighWatermark	"8"
 	Block {
 	  BlockType		  TriggerPort
-	  Name			  " input events "
-	  SID			  "3::1"
+	  Name			  "E"
+	  SID			  "1::1"
 	  Ports			  [0, 1]
 	  Position		  [20, 101, 40, 119]
 	  ZOrder		  -1
-	  TriggerType		  "either"
 	  VariantControl	  "Variant"
 	  ShowOutputPort	  on
 	}
 	Block {
 	  BlockType		  Demux
 	  Name			  " Demux "
-	  SID			  "3::6"
+	  SID			  "1::7"
 	  Ports			  [1, 1]
-	  Position		  [270, 315, 320, 355]
+	  Position		  [270, 230, 320, 270]
 	  ZOrder		  2
 	  Outputs		  "1"
 	}
 	Block {
 	  BlockType		  S-Function
 	  Name			  " SFunction "
-	  SID			  "3::5"
-	  Tag			  "Stateflow S-Function Iek2 1"
-	  Ports			  [1, 6]
-	  Position		  [180, 107, 230, 248]
+	  SID			  "1::6"
+	  Tag			  "Stateflow S-Function Temporal1 1"
+	  Ports			  [1, 2]
+	  Position		  [180, 100, 230, 160]
 	  ZOrder		  1
 	  FunctionName		  "sf_sfun"
-	  PortCounts		  "[1 6]"
+	  PortCounts		  "[1 2]"
 	  SFunctionDeploymentMode off
 	  EnableBusSupport	  on
 	  Port {
 	    PortNumber		    2
-	    Name		    "sT1"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	  Port {
-	    PortNumber		    3
-	    Name		    "sT2"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	  Port {
-	    PortNumber		    4
-	    Name		    "sT3"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	  Port {
-	    PortNumber		    5
 	    Name		    "x"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	  Port {
-	    PortNumber		    6
-	    Name		    "y"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -1094,115 +1008,43 @@ Model {
 	Block {
 	  BlockType		  Terminator
 	  Name			  " Terminator "
-	  SID			  "3::7"
-	  Position		  [460, 326, 480, 344]
+	  SID			  "1::8"
+	  Position		  [460, 241, 480, 259]
 	  ZOrder		  3
 	}
 	Block {
 	  BlockType		  Outport
-	  Name			  "sT1"
-	  SID			  "3::8"
-	  Position		  [460, 101, 480, 119]
-	  ZOrder		  4
-	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  Outport
-	  Name			  "sT2"
-	  SID			  "3::9"
-	  Position		  [460, 136, 480, 154]
-	  ZOrder		  5
-	  Port			  "2"
-	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  Outport
-	  Name			  "sT3"
-	  SID			  "3::10"
-	  Position		  [460, 171, 480, 189]
-	  ZOrder		  6
-	  Port			  "3"
-	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  Outport
 	  Name			  "x"
-	  SID			  "3::11"
-	  Position		  [460, 206, 480, 224]
-	  ZOrder		  7
-	  Port			  "4"
-	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  Outport
-	  Name			  "y"
-	  SID			  "3::12"
-	  Position		  [460, 246, 480, 264]
-	  ZOrder		  8
-	  Port			  "5"
+	  SID			  "1::5"
+	  Position		  [460, 101, 480, 119]
+	  ZOrder		  -5
 	  IconDisplay		  "Port number"
 	}
 	Line {
-	  Name			  "sT1"
-	  ZOrder		  29
+	  Name			  "x"
+	  ZOrder		  5
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  2
-	  DstBlock		  "sT1"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "sT2"
-	  ZOrder		  30
-	  Labels		  [0, 0]
-	  SrcBlock		  " SFunction "
-	  SrcPort		  3
-	  DstBlock		  "sT2"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "sT3"
-	  ZOrder		  31
-	  Labels		  [0, 0]
-	  SrcBlock		  " SFunction "
-	  SrcPort		  4
-	  DstBlock		  "sT3"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "x"
-	  ZOrder		  32
-	  Labels		  [0, 0]
-	  SrcBlock		  " SFunction "
-	  SrcPort		  5
 	  DstBlock		  "x"
 	  DstPort		  1
 	}
 	Line {
-	  Name			  "y"
-	  ZOrder		  33
-	  Labels		  [0, 0]
-	  SrcBlock		  " SFunction "
-	  SrcPort		  6
-	  DstBlock		  "y"
-	  DstPort		  1
-	}
-	Line {
-	  ZOrder		  34
+	  ZOrder		  6
 	  SrcBlock		  " Demux "
 	  SrcPort		  1
 	  DstBlock		  " Terminator "
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  35
-	  SrcBlock		  " input events "
+	  ZOrder		  7
+	  SrcBlock		  "E"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  36
+	  ZOrder		  8
 	  SrcBlock		  " SFunction "
 	  SrcPort		  1
 	  DstBlock		  " Demux "
@@ -1211,124 +1053,26 @@ Model {
       }
     }
     Block {
-      BlockType		      Mux
-      Name		      "Mux"
-      SID		      "6"
-      Ports		      [2, 1]
-      Position		      [220, 91, 225, 129]
-      ZOrder		      -6
-      ShowName		      off
-      Inputs		      "2"
-      DisplayOption	      "bar"
-    }
-    Block {
-      BlockType		      Outport
-      Name		      "sT1"
-      SID		      "9"
-      Position		      [420, 103, 450, 117]
-      ZOrder		      9
-      IconDisplay	      "Port number"
-    }
-    Block {
-      BlockType		      Outport
-      Name		      "sT2"
-      SID		      "10"
-      Position		      [475, 113, 505, 127]
-      ZOrder		      10
-      Port		      "2"
-      IconDisplay	      "Port number"
-    }
-    Block {
-      BlockType		      Outport
-      Name		      "sT3"
-      SID		      "11"
-      Position		      [535, 168, 565, 182]
-      ZOrder		      11
-      Port		      "3"
-      IconDisplay	      "Port number"
-    }
-    Block {
       BlockType		      Outport
       Name		      "x"
-      SID		      "12"
-      Position		      [445, 193, 475, 207]
-      ZOrder		      12
-      Port		      "4"
-      IconDisplay	      "Port number"
-    }
-    Block {
-      BlockType		      Outport
-      Name		      "y"
-      SID		      "13"
-      Position		      [380, 203, 410, 217]
-      ZOrder		      13
-      Port		      "5"
+      SID		      "3"
+      Position		      [340, 88, 370, 102]
+      ZOrder		      2
       IconDisplay	      "Port number"
     }
     Line {
-      ZOrder		      9
-      SrcBlock		      "Mux"
+      ZOrder		      8
+      SrcBlock		      "E"
       SrcPort		      1
-      Points		      [90, 0]
-      DstBlock		      "Iek2"
+      Points		      [20, 0; 0, 34]
+      DstBlock		      "Temporal1"
       DstPort		      trigger
     }
     Line {
-      Name		      "F"
-      ZOrder		      13
-      Labels		      [0, 0; 2, 1]
-      SrcBlock		      "F"
+      ZOrder		      2
+      SrcBlock		      "Temporal1"
       SrcPort		      1
-      Points		      [80, 0; 0, -40]
-      DstBlock		      "Mux"
-      DstPort		      2
-    }
-    Line {
-      Name		      "E"
-      ZOrder		      12
-      Labels		      [0, 0; 2, 0]
-      SrcBlock		      "E"
-      SrcPort		      1
-      Points		      [80, 0; 0, 10]
-      DstBlock		      "Mux"
-      DstPort		      1
-    }
-    Line {
-      ZOrder		      17
-      SrcBlock		      "Iek2"
-      SrcPort		      1
-      Points		      [30, 0; 0, -60]
-      DstBlock		      "sT1"
-      DstPort		      1
-    }
-    Line {
-      ZOrder		      18
-      SrcBlock		      "Iek2"
-      SrcPort		      2
-      Points		      [23, 0; 0, -12; 71, 0; 0, -37; 11, 0]
-      DstBlock		      "sT2"
-      DstPort		      1
-    }
-    Line {
-      ZOrder		      19
-      SrcBlock		      "Iek2"
-      SrcPort		      3
-      Points		      [165, 0]
-      DstBlock		      "sT3"
-      DstPort		      1
-    }
-    Line {
-      ZOrder		      20
-      SrcBlock		      "Iek2"
-      SrcPort		      4
       DstBlock		      "x"
-      DstPort		      1
-    }
-    Line {
-      ZOrder		      21
-      SrcBlock		      "Iek2"
-      SrcPort		      5
-      DstBlock		      "y"
       DstPort		      1
     }
   }
@@ -1341,569 +1085,67 @@ Model {
 Stateflow {
   machine {
     id			    1
-    name		    "Iek2"
-    created		    "17-Jun-2004 11:35:27"
+    name		    "Temporal1"
+    created		    "26-Feb-2004 16:40:53"
     isLibrary		    0
-    firstTarget		    35
+    firstTarget		    11
     sfVersion		    80000009
   }
   chart {
     id			    2
-    name		    "Iek2"
-    windowPosition	    [24 53.75 698 700]
-    viewLimits		    [-68.031 647.392 -57.143 649.478]
-    zoomFactor		    1.067
+    name		    "Temporal1"
+    windowPosition	    [668 100 628 495]
+    viewLimits		    [0 379.5 0 413.25]
     screen		    [1 1 1920 1080 1.333333333333333]
     treeNode		    [0 3 0 0]
+    firstTransition	    7
     viewObj		    2
     visible		    1
     machine		    1
     subviewS {
     }
-    ssIdHighWaterMark	    32
-    decomposition	    SET_CHART
-    firstEvent		    32
-    firstData		    27
+    ssIdHighWaterMark	    8
+    decomposition	    CLUSTER_CHART
+    firstEvent		    6
+    firstData		    5
     chartFileNumber	    1
     disableImplicitCasting  1
     supportVariableSizing   0
   }
   state {
     id			    3
-    labelString		    "T1"
-    position		    [22.9529 17.8235 173.8381 153.0317]
+    labelString		    "A/\nen : x++;"
+    position		    [30.8 52.85 90 60]
     fontSize		    12
     chart		    2
-    treeNode		    [2 5 0 6]
-    firstTransition	    14
+    treeNode		    [2 0 0 4]
     subviewer		    2
     ssIdNumber		    1
-    type		    AND_STATE
+    type		    OR_STATE
     decomposition	    CLUSTER_STATE
-    executionOrder	    1
   }
   state {
     id			    4
-    labelString		    "B\nen: sT1=2"
-    position		    [62.7908 112.1339 79.7565 40.3457]
+    labelString		    "B/\nen : x++;"
+    position		    [188.3 168.05 90 60]
     fontSize		    12
     chart		    2
-    treeNode		    [3 0 5 0]
+    treeNode		    [2 0 3 0]
     subviewer		    2
     ssIdNumber		    2
     type		    OR_STATE
     decomposition	    CLUSTER_STATE
   }
-  state {
+  data {
     id			    5
-    labelString		    "A\nen: sT1=1"
-    position		    [63.6118 35.6118 79.7565 40.3457]
-    fontSize		    12
-    chart		    2
-    treeNode		    [3 0 0 4]
-    subviewer		    2
-    ssIdNumber		    3
-    type		    OR_STATE
-    decomposition	    CLUSTER_STATE
-  }
-  state {
-    id			    6
-    labelString		    "T2"
-    position		    [247.5337 19.4985 173.8381 153.0317]
-    fontSize		    12
-    chart		    2
-    treeNode		    [2 7 3 9]
-    firstTransition	    17
-    subviewer		    2
-    ssIdNumber		    4
-    type		    AND_STATE
-    decomposition	    CLUSTER_STATE
-    executionOrder	    2
-  }
-  state {
-    id			    7
-    labelString		    "C/\nen: y++; \nsT2=1"
-    position		    [288.1925 37.2867 79.7565 40.3457]
-    fontSize		    12
-    chart		    2
-    treeNode		    [6 0 0 8]
-    subviewer		    2
-    ssIdNumber		    5
-    type		    OR_STATE
-    decomposition	    CLUSTER_STATE
-  }
-  state {
-    id			    8
-    labelString		    "D/\nen: y++;\nsT2=2"
-    position		    [287.3716 113.8088 79.7565 40.3457]
-    fontSize		    12
-    chart		    2
-    treeNode		    [6 0 7 0]
-    subviewer		    2
     ssIdNumber		    6
-    type		    OR_STATE
-    decomposition	    CLUSTER_STATE
-  }
-  state {
-    id			    9
-    labelString		    "T3"
-    position		    [20.4118 181.3059 405.9372 157.0271]
-    fontSize		    12
-    chart		    2
-    treeNode		    [2 10 6 0]
-    firstTransition	    20
-    subviewer		    2
-    ssIdNumber		    7
-    type		    AND_STATE
-    decomposition	    CLUSTER_STATE
-    executionOrder	    3
-  }
-  state {
-    id			    10
-    labelString		    "a\nen: sT3=1"
-    position		    [62.7647 194.0118 64.5082 34.1887]
-    fontSize		    12
-    chart		    2
-    treeNode		    [9 0 0 11]
-    subviewer		    2
-    ssIdNumber		    8
-    type		    OR_STATE
-    decomposition	    CLUSTER_STATE
-  }
-  state {
-    id			    11
-    labelString		    "c\nen: sT3=3"
-    position		    [283.04 197.5998 64.5082 34.1887]
-    fontSize		    12
-    chart		    2
-    treeNode		    [9 0 10 13]
-    subviewer		    2
-    ssIdNumber		    9
-    type		    OR_STATE
-    decomposition	    CLUSTER_STATE
-  }
-  state {
-    id			    12
-    labelString		    "b\nen: sT3=2"
-    position		    [61.1233 278.4684 64.5082 34.1887]
-    fontSize		    12
-    chart		    2
-    treeNode		    [9 0 13 0]
-    subviewer		    2
-    ssIdNumber		    10
-    type		    OR_STATE
-    decomposition	    CLUSTER_STATE
-  }
-  state {
-    id			    13
-    labelString		    "d\nen: sT3=4"
-    position		    [284.4228 277.6015 64.5082 34.1887]
-    fontSize		    12
-    chart		    2
-    treeNode		    [9 0 11 12]
-    subviewer		    2
-    ssIdNumber		    11
-    type		    OR_STATE
-    decomposition	    CLUSTER_STATE
-  }
-  transition {
-    id			    14
-    labelPosition	    [50.327 55.447 8.471 16.078]
-    fontSize		    12
-    src {
-      intersection	      [0 1 0 0 44.2353 55.4471 0 0]
-    }
-    dst {
-      id		      5
-      intersection	      [4 -1 0 0.5084 63.6118 55.4471 0 0]
-    }
-    midPoint		    [50.0841 55.4471]
-    chart		    2
-    linkNode		    [3 0 15]
-    dataLimits		    [44.235 63.612 53.047 57.847]
-    subviewer		    2
-    drawStyle		    SMART
-    slide {
-      sticky		      BOTH_STICK
-    }
-    executionOrder	    1
-    ssIdNumber		    12
-  }
-  transition {
-    id			    15
-    labelString		    "E{x++}"
-    labelPosition	    [48.489 89.7 38.965 16.078]
-    fontSize		    12
-    src {
-      id		      4
-      intersection	      [1 0 -1 0.3409 89.9765 112.1339 0 -12.6926]
-    }
-    dst {
-      id		      5
-      intersection	      [3 0 1 0.6694 89.9765 75.9574 0 12.6926]
-    }
-    midPoint		    [89.9765 97.5199]
-    chart		    2
-    linkNode		    [3 14 16]
-    dataLimits		    [87.576 92.377 75.957 112.134]
-    stampAngle		    NaN
-    subviewer		    2
-    drawStyle		    SMART
-    slide {
-      sticky		      BOTH_STICK
-    }
-    executionOrder	    1
-    ssIdNumber		    14
-  }
-  transition {
-    id			    16
-    labelString		    "E{x++}"
-    labelPosition	    [123.826 89.026 38.965 16.078]
-    fontSize		    12
-    src {
-      id		      5
-      intersection	      [3 0 1 0.3721 113.6941 75.9574 0 -10.2041]
-    }
-    dst {
-      id		      4
-      intersection	      [1 0 -1 0.6382 113.6941 112.1339 0 10.2041]
-    }
-    midPoint		    [113.6941 90.5714]
-    chart		    2
-    linkNode		    [3 15 0]
-    dataLimits		    [111.294 116.094 75.957 112.134]
-    stampAngle		    NaN
-    subviewer		    2
-    drawStyle		    SMART
-    slide {
-      sticky		      BOTH_STICK
-    }
-    executionOrder	    1
-    ssIdNumber		    13
-  }
-  transition {
-    id			    17
-    labelPosition	    [274.908 57.122 8.471 16.078]
-    fontSize		    12
-    src {
-      intersection	      [0 1 0 0 268.816 57.122 0 0]
-    }
-    dst {
-      id		      7
-      intersection	      [4 -1 0 0.5084 288.1925 57.122 0 0]
-    }
-    midPoint		    [274.6648 57.122]
-    chart		    2
-    linkNode		    [6 0 18]
-    dataLimits		    [268.816 288.192 54.722 59.522]
-    subviewer		    2
-    slide {
-      sticky		      BOTH_STICK
-    }
-    executionOrder	    1
-    ssIdNumber		    15
-  }
-  transition {
-    id			    18
-    labelString		    "F"
-    labelPosition	    [297.878 91.205 8.471 16.078]
-    fontSize		    12
-    src {
-      id		      8
-      intersection	      [1 -0 -1 0.3409 314.56 113.8088 0 -12.6926]
-    }
-    dst {
-      id		      7
-      intersection	      [3 0 1 0.6694 314.56 77.6324 0 12.6926]
-    }
-    midPoint		    [314.5572 99.1949]
-    chart		    2
-    linkNode		    [6 17 19]
-    dataLimits		    [312.16 316.96 77.632 113.809]
-    stampAngle		    NaN
-    subviewer		    2
-    drawStyle		    SMART
-    slide {
-      sticky		      BOTH_STICK
-    }
-    executionOrder	    1
-    ssIdNumber		    16
-  }
-  transition {
-    id			    19
-    labelString		    "F"
-    labelPosition	    [348.406 90.701 8.471 16.078]
-    fontSize		    12
-    src {
-      id		      7
-      intersection	      [3 0 1 0.3721 338.2716 77.6324 0 -10.2041]
-    }
-    dst {
-      id		      8
-      intersection	      [1 -0 -1 0.6382 338.2716 113.8088 0 10.2041]
-    }
-    midPoint		    [338.2749 92.2463]
-    chart		    2
-    linkNode		    [6 18 0]
-    dataLimits		    [335.872 340.672 77.632 113.809]
-    stampAngle		    NaN
-    subviewer		    2
-    drawStyle		    SMART
-    slide {
-      sticky		      BOTH_STICK
-    }
-    executionOrder	    1
-    ssIdNumber		    17
-  }
-  transition {
-    id			    20
-    labelPosition	    [49.48 213 8.471 16.078]
-    fontSize		    12
-    src {
-      intersection	      [0 1 0 0 43.3882 213 0 0]
-    }
-    dst {
-      id		      10
-      intersection	      [4 -1 0 0.4446 62.7647 213 0 0]
-    }
-    midPoint		    [49.237 213]
-    chart		    2
-    linkNode		    [9 0 21]
-    dataLimits		    [43.388 62.765 210.6 215.4]
-    subviewer		    2
-    drawStyle		    SMART
-    slide {
-      sticky		      BOTH_STICK
-    }
-    executionOrder	    1
-    ssIdNumber		    18
-  }
-  transition {
-    id			    21
-    labelString		    "change(x)"
-    labelPosition	    [183.394 197.265 55.906 16.078]
-    fontSize		    12
-    src {
-      id		      10
-      intersection	      [2 1 0 0.6049 127.2729 214.6941 0 3.588]
-    }
-    dst {
-      id		      11
-      intersection	      [4 -1 0 0.5 283.04 214.6941 0 -3.588]
-    }
-    midPoint		    [204.282 214.6941]
-    chart		    2
-    linkNode		    [9 20 22]
-    dataLimits		    [127.273 283.04 212.294 217.094]
-    stampAngle		    NaN
-    subviewer		    2
-    drawStyle		    SMART
-    slide {
-      sticky		      BOTH_STICK
-    }
-    executionOrder	    1
-    ssIdNumber		    19
-  }
-  transition {
-    id			    22
-    labelString		    "change(x)"
-    labelPosition	    [165.212 230.285 55.906 16.078]
-    fontSize		    12
-    src {
-      id		      12
-      intersection	      [1 0 -1 0.8412 115.3882 278.4684 0 -10.2433]
-    }
-    dst {
-      id		      11
-      intersection	      [4 -1 0 0.2884 283.04 221.9272 0 9.8613]
-    }
-    midPoint		    [177.3828 227.2406]
-    chart		    2
-    linkNode		    [9 21 23]
-    dataLimits		    [115.388 283.04 219.527 278.468]
-    stampAngle		    NaN
-    subviewer		    2
-    drawStyle		    SMART
-    slide {
-      sticky		      BOTH_STICK
-    }
-    executionOrder	    2
-    ssIdNumber		    24
-  }
-  transition {
-    id			    23
-    labelString		    "change(y)"
-    labelPosition	    [29.004 247.631 55.906 16.078]
-    fontSize		    12
-    src {
-      id		      12
-      intersection	      [1 0 -1 0.4473 89.9765 278.4684 0 -3.4009]
-    }
-    dst {
-      id		      10
-      intersection	      [3 0 1 0.5782 89.9765 228.2004 0 3.4009]
-    }
-    midPoint		    [89.9765 256.5023]
-    chart		    2
-    linkNode		    [9 22 24]
-    dataLimits		    [87.576 92.377 228.2 278.468]
-    stampAngle		    NaN
-    subviewer		    2
-    drawStyle		    SMART
-    slide {
-      sticky		      BOTH_STICK
-    }
-    executionOrder	    1
-    ssIdNumber		    22
-  }
-  transition {
-    id			    24
-    labelString		    "change(y)"
-    labelPosition	    [199.644 259.44 55.906 16.078]
-    fontSize		    12
-    src {
-      id		      11
-      intersection	      [3 0 1 0.802 295.8118 231.7885 0 -12.7717]
-    }
-    dst {
-      id		      12
-      intersection	      [2 1 0 0.2406 125.6315 286.6941 0 8.2257]
-    }
-    midPoint		    [232.7165 282.3706]
-    chart		    2
-    linkNode		    [9 23 25]
-    dataLimits		    [125.632 295.812 231.788 289.094]
-    stampAngle		    NaN
-    subviewer		    2
-    drawStyle		    SMART
-    slide {
-      sticky		      BOTH_STICK
-    }
-    executionOrder	    2
-    ssIdNumber		    23
-  }
-  transition {
-    id			    25
-    labelString		    "change(x)"
-    labelPosition	    [325.956 247.182 55.906 16.078]
-    fontSize		    12
-    src {
-      id		      11
-      intersection	      [3 0 1 0.5131 314.4471 231.7885 0 0.8471]
-    }
-    dst {
-      id		      13
-      intersection	      [1 0 -1 0.4654 314.4471 277.6015 0 -0.8471]
-    }
-    midPoint		    [314.4471 251.4302]
-    chart		    2
-    linkNode		    [9 24 26]
-    dataLimits		    [312.047 316.847 231.788 277.601]
-    stampAngle		    NaN
-    subviewer		    2
-    drawStyle		    SMART
-    slide {
-      sticky		      BOTH_STICK
-    }
-    executionOrder	    1
-    ssIdNumber		    20
-  }
-  transition {
-    id			    26
-    labelString		    "change(y)"
-    labelPosition	    [185.523 301.34 55.906 16.078]
-    fontSize		    12
-    src {
-      id		      13
-      intersection	      [4 -1 0 0.3872 284.4228 298.5529 0 -3.8571]
-    }
-    dst {
-      id		      12
-      intersection	      [2 1 0 0.5875 125.6315 298.5529 0 3.8571]
-    }
-    midPoint		    [205.8359 298.5529]
-    chart		    2
-    linkNode		    [9 25 0]
-    dataLimits		    [125.632 284.423 296.153 300.953]
-    stampAngle		    NaN
-    subviewer		    2
-    drawStyle		    SMART
-    slide {
-      sticky		      BOTH_STICK
-    }
-    executionOrder	    1
-    ssIdNumber		    21
-  }
-  data {
-    id			    27
-    ssIdNumber		    30
-    name		    "sT1"
-    linkNode		    [2 0 28]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      type {
-	primitive		SF_INT8_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
-    }
-    dataType		    "int8"
-  }
-  data {
-    id			    28
-    ssIdNumber		    31
-    name		    "sT2"
-    linkNode		    [2 27 29]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      type {
-	primitive		SF_INT8_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
-    }
-    dataType		    "int8"
-  }
-  data {
-    id			    29
-    ssIdNumber		    32
-    name		    "sT3"
-    linkNode		    [2 28 30]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      type {
-	primitive		SF_INT8_TYPE
-	isSigned		1
-	wordLength		"16"
-      }
-      frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
-    }
-    dataType		    "int8"
-  }
-  data {
-    id			    30
-    ssIdNumber		    25
     name		    "x"
-    linkNode		    [2 29 31]
+    linkNode		    [2 0 0]
     scope		    OUTPUT_DATA
     machine		    1
     props {
       type {
-	primitive		SF_INT8_TYPE
+	primitive		SF_INT32_TYPE
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
@@ -1913,55 +1155,100 @@ Stateflow {
 	name			"inherit"
       }
     }
-    dataType		    "int8"
-  }
-  data {
-    id			    31
-    ssIdNumber		    26
-    name		    "y"
-    linkNode		    [2 30 0]
-    scope		    OUTPUT_DATA
-    machine		    1
-    props {
-      type {
-	primitive		SF_INT8_TYPE
-	fixpt {
-	  scalingMode		  SF_FIXPT_BINARY_POINT
-	}
-      }
-      frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
-    }
-    dataType		    "int8"
+    dataType		    "int32"
   }
   event {
-    id			    32
-    ssIdNumber		    27
+    id			    6
+    ssIdNumber		    7
     name		    "E"
-    linkNode		    [2 0 33]
+    linkNode		    [2 0 0]
     scope		    INPUT_EVENT
-    trigger		    EITHER_EDGE_EVENT
+    trigger		    RISING_EDGE_EVENT
     machine		    1
   }
-  event {
-    id			    33
-    ssIdNumber		    28
-    name		    "F"
-    linkNode		    [2 32 0]
-    scope		    INPUT_EVENT
-    trigger		    EITHER_EDGE_EVENT
-    machine		    1
+  transition {
+    id			    7
+    labelPosition	    [72.2 32.502 7.998 15.185]
+    fontSize		    12
+    src {
+      intersection	      [0 0 1 0 72.2 16.85 0 0]
+    }
+    dst {
+      id		      3
+      intersection	      [1 0 -1 0.46 72.2 52.85 0 0]
+    }
+    midPoint		    [72.2 31.3719]
+    chart		    2
+    linkNode		    [2 0 8]
+    dataLimits		    [69.8 74.6 16.85 52.85]
+    subviewer		    2
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    3
+  }
+  transition {
+    id			    8
+    labelString		    "E[after(2,E)]"
+    labelPosition	    [202.267 83.268 62.383 15.185]
+    fontSize		    12
+    src {
+      id		      3
+      intersection	      [2 1 0 0.53 120.8 84.65 0 -28.2]
+    }
+    dst {
+      id		      4
+      intersection	      [1 0 -1 0.56 238.7 168.05 0 50.4]
+    }
+    midPoint		    [200.8266 106.0059]
+    chart		    2
+    linkNode		    [2 7 9]
+    dataLimits		    [120.8 241.1 84.65 168.05]
+    stampAngle		    NaN
+    subviewer		    2
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    4
+  }
+  transition {
+    id			    9
+    labelString		    "after(3,E)"
+    labelPosition	    [58.321 181.299 48.787 15.185]
+    fontSize		    12
+    src {
+      id		      4
+      intersection	      [4 -1 0 0.425 188.3 202.55 0 -34.5]
+    }
+    dst {
+      id		      3
+      intersection	      [3 0 1 0.57 69.5 112.85 0 51.3]
+    }
+    midPoint		    [107.2636 178.4175]
+    chart		    2
+    linkNode		    [2 8 0]
+    dataLimits		    [67.1 188.3 112.85 202.55]
+    stampAngle		    NaN
+    subviewer		    2
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    5
   }
   instance {
-    id			    34
-    name		    "Iek2"
+    id			    10
+    name		    "Temporal1"
     machine		    1
     chart		    2
   }
   target {
-    id			    35
+    id			    11
     name		    "sfun"
     codeFlags		    ""
     machine		    1

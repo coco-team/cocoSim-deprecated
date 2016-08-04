@@ -68,11 +68,10 @@ for i=1:n
         source_name = 'POINT';
     end
     transition_name = strcat(source_name, '__To__', dest_name, '_', num2str(transition.ExecutionOrder));
-    transition_label = transition.LabelString;
     if first_action
-        [~, condition, condition_action, ~, node_struct] = split_transition(chart, data, transition_label,old_variables_struct, node_struct);
+        [~, condition, condition_action, ~, node_struct,~, ~, ~] = split_transition(chart, data, transition,old_variables_struct, node_struct);
     else
-        [~, condition, condition_action, ~, node_struct] = split_transition(chart, data, transition_label,variables_struct, node_struct);
+        [~, condition, condition_action, ~, node_struct,~, ~, ~] = split_transition(chart, data, transition,variables_struct, node_struct);
     end
     print_condition = (i>1 || first_cond_should_be_printed);
     if print_condition && ~isempty(condition)
@@ -316,8 +315,7 @@ if ~strcmp(transitions(end).Destination.Type,'CONNECTIVE')
         end
         transition_name = strcat(source_name, '__To__', dest_name, '_', num2str(transition.ExecutionOrder));
         
-        transition_label = transition.LabelString;
-        [~, ~, ~, transition_action, node_struct] = split_transition(chart, data, transition_label, variables_struct, node_struct);
+        [~, ~, ~, transition_action, node_struct,~, ~, ~] = split_transition(chart, data, transition, variables_struct, node_struct);
         if ~isempty(transition_action)
 
             name = [transition_name '_Transition_Action'];

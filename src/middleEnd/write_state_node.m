@@ -1,7 +1,7 @@
-function [state_node, global_nodes_struct] = write_state_node(chart,data, state, isFunction, variables_struct, global_nodes_struct,xml_trace)
+function [state_node, global_nodes_struct, external_nodes] = write_state_node(chart,data, state, isFunction, variables_struct, global_nodes_struct,xml_trace)
     % construct automaton node of every state with sub-states.
     isChart = strcmp(get_full_name(chart),get_full_name(state));
-    [transitions_code, states_code, node_struct] = automaton_states(chart,data, state, isChart, isFunction, variables_struct, global_nodes_struct);
+    [transitions_code, states_code, node_struct, external_nodes, additional_outputs, add_vars] = automaton_states(chart,data, state, isChart, isFunction, variables_struct, global_nodes_struct);
     [Point_action_code, ~] =add_unchanged_variables(node_struct.Outputs,variables_struct);
     initial_point = ['state POINT',get_full_name(state), ':\n' transitions_code '\tlet\n\n' '\t\t' Point_action_code '\n\n\ttel'];
     automaton = [initial_point, '\n\n', states_code];
@@ -17,16 +17,28 @@ function [state_node, global_nodes_struct] = write_state_node(chart,data, state,
         [extern_nodes_header_param, extern_nodes_header_return] = construct_node_header(inputs,outputs, 'node');
     end
     header = ['node ' char(node_struct.Name) '(' char(extern_nodes_header_param) ')\n\n' 'returns (' char(extern_nodes_header_return) ');\n'];
-    state_node = [comment header '\n\n' 'let\n\n' action_code '\n\ntel\n\n'];
+    variables = '';
+    if ~isempty(add_vars)
+        add_vars_str = Utils.concat_delim(unique(add_vars),' ');
+        variables = ['var ' add_vars_str];
+    end
+    additional_outputs_str = '';
+    if ~isempty(additional_outputs)
+        additional_outputs_str = Utils.concat_delim(unique(additional_outputs),' ');
+    end
+    state_node = [comment header variables '\n\n' 'let\n\n' additional_outputs_str action_code '\n\ntel\n\n'];
     global_nodes_struct = [global_nodes_struct, node_struct];
     
 end
 
-function [transitions_unless_code, states_code, node_struct] = automaton_states(chart, data,  state, isChart, isFunction, variables_struct, global_nodes_struct)
+function [transitions_unless_code, states_code, node_struct, external_nodes, additional_outputs, add_vars] = automaton_states(chart, data,  state, isChart, isFunction, variables_struct, global_nodes_struct)
 states_code = '';
 states_code_array = [];
-
+external_nodes = [];
 transitions_unless_code = '' ;
+additional_outputs = [];
+add_vars = [];
+
 node_struct.Name = [get_full_name(state)  '_node'];
 id_state = strcat('id', get_full_name(state), '_1');
 s = struct('Name',strcat('id', get_full_name(state)),'DataType','int','Type','ID');
@@ -41,18 +53,24 @@ if ~isempty(default_transition) || number_children==1
     id_source = '0';
     c_id = ['(',id_state, '=', id_source, ')'];
     for i=1:numel(default_transition)
-        [transitions_code, state_code, node_struct] = transition_state(chart, data, state,default_transition(i),c_id, variables_struct, node_struct, global_nodes_struct);
+        [transitions_code, state_code, node_struct, ext_nodes, additional_outputs_i, add_vars_i] = transition_state(chart, data, state,default_transition(i),c_id, variables_struct, node_struct, global_nodes_struct);
         transitions_unless_code = [transitions_unless_code, transitions_code '\n\n']  ;
         states_code_array = [states_code_array, state_code];
+        external_nodes = [external_nodes, ext_nodes];
+        additional_outputs = [additional_outputs, additional_outputs_i];
+        add_vars = [add_vars, add_vars_i];
     end
     if number_children==1 && isempty(default_transition) 
         transition.Source = '';
         transition.Destination = children(1);
         transition.ExecutionOrder = 1;
         transition.LabelString = '';
-        [transitions_code, state_code, node_struct] = transition_state(chart, data, state,transition,c_id, variables_struct, node_struct, global_nodes_struct);
+        [transitions_code, state_code, node_struct, ext_nodes, additional_outputs_i, add_vars_i] = transition_state(chart, data, state,transition,c_id, variables_struct, node_struct, global_nodes_struct);
         transitions_unless_code = [transitions_unless_code, transitions_code '\n\n']  ;
         states_code_array = [states_code_array, state_code];
+        external_nodes = [external_nodes, ext_nodes];
+        additional_outputs = [additional_outputs, additional_outputs_i];
+        add_vars = [add_vars, add_vars_i];
     end
 elseif  ~isFunction && strcmp(state.Decomposition,'PARALLEL_AND')
     c_id = ['(',id_state, '=', '0', ')'];
@@ -80,9 +98,12 @@ if ~isFunction && ~isChart
     m = numel(state_innerTransitions);
     for j=1:m
         c_id = 'true';
-        [transitions_code, state_code, node_struct] = transition_state(chart,data, state,state_innerTransitions(j),c_id, variables_struct, node_struct, global_nodes_struct);
+        [transitions_code, state_code, node_struct, ext_nodes, additional_outputs_i, add_vars_i] = transition_state(chart,data, state,state_innerTransitions(j),c_id, variables_struct, node_struct, global_nodes_struct);
         transitions_unless_code = [transitions_unless_code, transitions_code '\n\n']  ;
         states_code_array = [states_code_array, state_code];
+        external_nodes = [external_nodes, ext_nodes];
+        additional_outputs = [additional_outputs, additional_outputs_i];
+        add_vars = [add_vars, add_vars_i];
     end
 end
 
@@ -97,9 +118,12 @@ for i=1:number_children
     for j=1:m
         id_source = num2str(source.get('Id'));
         c_id = ['(',id_state, '=', id_source, ')'];
-        [transitions_code, state_code, node_struct] = transition_state(chart,data, state,transitions(j),c_id, variables_struct, node_struct, global_nodes_struct);
+        [transitions_code, state_code, node_struct, ext_nodes, additional_outputs_i, add_vars_i] = transition_state(chart,data, state,transitions(j),c_id, variables_struct, node_struct, global_nodes_struct);
         transitions_unless_code = [transitions_unless_code, transitions_code '\n\n']  ;
         states_code_array = [states_code_array, state_code];
+        external_nodes = [external_nodes, ext_nodes];
+        additional_outputs = [additional_outputs, additional_outputs_i];
+        add_vars = [add_vars, add_vars_i];
     end
 end
 
@@ -146,7 +170,7 @@ end
 end
 
 
-function [transition_condition, state_code, node_struct] = transition_state(chart, data, state,transition,condition_id, variables_struct, node_struct, global_nodes_struct)
+function [transition_condition, state_code, node_struct, external_nodes, additional_outputs, add_vars] = transition_state(chart, data, state,transition,condition_id, variables_struct, node_struct, global_nodes_struct)
 source = transition.Source;
 dest_state = transition.Destination;
 if strcmp(dest_state.Type,'CONNECTIVE')
@@ -164,8 +188,7 @@ else
     source_name = 'POINT';
 end
 transition_name = strcat(source_name,'__To__', dest_name,'_', num2str(transition.ExecutionOrder));
-transition_label = transition.LabelString;
-[event, condition, ~, ~, node_struct] = split_transition(chart, data, transition_label, variables_struct, node_struct);
+[event, condition, ~, ~, node_struct, external_nodes, additional_outputs, add_vars] = split_transition(chart, data, transition, variables_struct, node_struct);
 c_trans = '';
 if ~strcmp(event,'')
     if ~strcmp(condition,'')

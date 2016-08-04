@@ -10,10 +10,6 @@
 
 
 
-
-
-
-
 node T1_B__To__T1_A_1_Condition_Action(x_1:int)
 
 returns (x:int);
@@ -35,6 +31,11 @@ let
 	
 
 tel
+
+
+
+
+
 
 
 
@@ -70,18 +71,20 @@ tel
 
 
 
-
--- Entry action for state :T3_b
-node T3_b_en(idIek2_T3_1:int;
-	sT3_1:int;
+-- Entry action for state :T2_C
+node T2_C_en(idIek2_T2_1:int;
+	y_1:int;
+	sT2_1:int;
 	isInner:bool)
 
-returns (idIek2_T3:int;
-	sT3:int);
+returns (idIek2_T2:int;
+	y:int;
+	sT2:int);
 
 
-var 	idIek2_T3_2:int;
-	sT3_2:int;
+var 	idIek2_T2_2:int;
+	y_2:int;
+	sT2_2:int;
 
 
 let
@@ -89,17 +92,22 @@ let
 
 
 	-- set state as active 
-	idIek2_T3_2 
-	= 1045;
+	idIek2_T2_2 
+	= 987;
 	
 
-	sT3_2 
-	= if (not isInner) then 2
-	 else sT3_1;
+	y_2 
+	= if (not isInner) then  y_1  + 1
+	 else y_1;
 	
 
-	(idIek2_T3, sT3) 
-	= (idIek2_T3_2, sT3_2);
+	sT2_2 
+	= if (not isInner) then 1
+	 else sT2_1;
+	
+
+	(idIek2_T2, y, sT2) 
+	= (idIek2_T2_2, y_2, sT2_2);
 	
 
 tel
@@ -108,14 +116,14 @@ tel
 
 
 
--- Exit action for state :T3_b
-node T3_b_ex(idIek2_T3_1:int;
+-- Exit action for state :T2_C
+node T2_C_ex(idIek2_T2_1:int;
 	isInner:bool)
 
-returns (idIek2_T3:int);
+returns (idIek2_T2:int);
 
 
-var 	idIek2_T3_2:int;
+var 	idIek2_T2_2:int;
 
 
 let
@@ -123,12 +131,514 @@ let
 
 
 	-- set state as inactive 
-	idIek2_T3_2
-	 = if (not isInner) then 0 else idIek2_T3_1;
+	idIek2_T2_2
+	 = if (not isInner) then 0 else idIek2_T2_1;
 
 
-	(idIek2_T3) 
-	= (idIek2_T3_2);
+	(idIek2_T2) 
+	= (idIek2_T2_2);
+	
+
+tel
+
+
+
+
+
+
+-- Entry action for state :T2_D
+node T2_D_en(idIek2_T2_1:int;
+	y_1:int;
+	sT2_1:int;
+	isInner:bool)
+
+returns (idIek2_T2:int;
+	y:int;
+	sT2:int);
+
+
+var 	idIek2_T2_2:int;
+	y_2:int;
+	sT2_2:int;
+
+
+let
+
+
+
+	-- set state as active 
+	idIek2_T2_2 
+	= 988;
+	
+
+	y_2 
+	= if (not isInner) then  y_1  + 1
+	 else y_1;
+	
+
+	sT2_2 
+	= if (not isInner) then 2
+	 else sT2_1;
+	
+
+	(idIek2_T2, y, sT2) 
+	= (idIek2_T2_2, y_2, sT2_2);
+	
+
+tel
+
+
+
+
+
+-- Exit action for state :T2_D
+node T2_D_ex(idIek2_T2_1:int;
+	isInner:bool)
+
+returns (idIek2_T2:int);
+
+
+var 	idIek2_T2_2:int;
+
+
+let
+
+
+
+	-- set state as inactive 
+	idIek2_T2_2
+	 = if (not isInner) then 0 else idIek2_T2_1;
+
+
+	(idIek2_T2) 
+	= (idIek2_T2_2);
+	
+
+tel
+
+
+
+
+
+
+-- Entry action for state :Iek2_T2
+node Iek2_T2_en(idIek2_T2_1:int;
+	idIek2_Iek2_1:int;
+	sT2_1:int;
+	y_1:int;
+	isInner:bool)
+
+returns (idIek2_T2:int;
+	idIek2_Iek2:int;
+	sT2:int;
+	y:int);
+
+
+var 	idIek2_T2_2, idIek2_T2_3, idIek2_T2_4, idIek2_T2_5, idIek2_T2_6:int;
+	idIek2_Iek2_2, idIek2_Iek2_3, idIek2_Iek2_4:int;
+	sT2_2, sT2_3, sT2_4, sT2_5, sT2_6:int;
+	y_2, y_3, y_4, y_5, y_6:int;
+
+
+let
+
+
+
+	-- set state as active 
+	idIek2_Iek2_2 
+	= 986;
+	
+
+	
+-- transition trace :
+	--POINT__To__T2_C_1
+		(idIek2_T2_2, y_2, sT2_2) 
+	= T2_C_en(idIek2_T2_1, y_1, sT2_1, false);
+		
+
+	(idIek2_T2_3, idIek2_Iek2_3, sT2_3, y_3) 
+	= 
+
+	if ( idIek2_T2_1 = 0) then
+
+	 (idIek2_T2_2, idIek2_Iek2_2, sT2_2, y_2)
+
+	 else(idIek2_T2_1, idIek2_Iek2_2, sT2_1, y_1);
+
+	
+
+	(idIek2_T2_4, y_4, sT2_4) 
+	= 
+	if ( idIek2_T2_1 = 987) then
+	T2_C_en(idIek2_T2_1, y_1, sT2_1, false)
+	 else (idIek2_T2_1, y_1, sT2_1);
+
+	
+
+	(idIek2_T2_5, y_5, sT2_5) 
+	= 
+	if ( idIek2_T2_1 = 988) then
+	T2_D_en(idIek2_T2_1, y_1, sT2_1, false)
+	 else (idIek2_T2_1, y_1, sT2_1);
+
+	
+
+	(idIek2_T2_6, idIek2_Iek2_4, sT2_6, y_6) 
+	= 
+		 if ( idIek2_T2_1 = 0) then 
+		(idIek2_T2_3, idIek2_Iek2_3, sT2_3, y_3)
+		 else
+		 if ( idIek2_T2_1 = 987) then 
+		(idIek2_T2_4, idIek2_Iek2_3, sT2_4, y_4)
+		 else
+		 if ( idIek2_T2_1 = 988) then 
+		(idIek2_T2_5, idIek2_Iek2_3, sT2_5, y_5)
+		 else (idIek2_T2_1, idIek2_Iek2_2, sT2_1, y_1);
+
+
+	(idIek2_T2, idIek2_Iek2, sT2, y) 
+	= (idIek2_T2_6, idIek2_Iek2_4, sT2_6, y_6);
+	
+
+tel
+
+
+
+
+
+-- Exit action for state :Iek2_T2
+node Iek2_T2_ex(idIek2_T2_1:int;
+	idIek2_Iek2_1:int;
+	isInner:bool)
+
+returns (idIek2_T2:int;
+	idIek2_Iek2:int);
+
+
+var 	idIek2_T2_2, idIek2_T2_3, idIek2_T2_4, idIek2_T2_5:int;
+	idIek2_Iek2_2:int;
+
+
+let
+
+
+
+	
+	(idIek2_T2_2) 
+	= 
+	if ( idIek2_T2_1 = 987) then
+	T2_C_ex(idIek2_T2_1, false)
+	 else (idIek2_T2_1);
+
+	
+
+	(idIek2_T2_3) 
+	= 
+	if ( idIek2_T2_1 = 988) then
+	T2_D_ex(idIek2_T2_1, false)
+	 else (idIek2_T2_1);
+
+	
+
+	(idIek2_T2_4) 
+	= 
+		 if ( idIek2_T2_1 = 987) then 
+		(idIek2_T2_2)
+		 else
+		 if ( idIek2_T2_1 = 988) then 
+		(idIek2_T2_3)
+		 else (idIek2_T2_1);
+
+
+	-- set state as inactive 
+	idIek2_Iek2_2
+	 = if (not isInner) then 0 else idIek2_Iek2_1;
+
+	idIek2_T2_5 
+	= 0;
+	
+
+	(idIek2_T2, idIek2_Iek2) 
+	= (idIek2_T2_5, idIek2_Iek2_2);
+	
+
+tel
+
+
+
+
+
+
+-- Entry action for state :T1_A
+node T1_A_en(idIek2_T1_1:int;
+	sT1_1:int;
+	isInner:bool)
+
+returns (idIek2_T1:int;
+	sT1:int);
+
+
+var 	idIek2_T1_2:int;
+	sT1_2:int;
+
+
+let
+
+
+
+	-- set state as active 
+	idIek2_T1_2 
+	= 985;
+	
+
+	sT1_2 
+	= if (not isInner) then 1
+	 else sT1_1;
+	
+
+	(idIek2_T1, sT1) 
+	= (idIek2_T1_2, sT1_2);
+	
+
+tel
+
+
+
+
+
+-- Exit action for state :T1_A
+node T1_A_ex(idIek2_T1_1:int;
+	isInner:bool)
+
+returns (idIek2_T1:int);
+
+
+var 	idIek2_T1_2:int;
+
+
+let
+
+
+
+	-- set state as inactive 
+	idIek2_T1_2
+	 = if (not isInner) then 0 else idIek2_T1_1;
+
+
+	(idIek2_T1) 
+	= (idIek2_T1_2);
+	
+
+tel
+
+
+
+
+
+
+-- Entry action for state :T1_B
+node T1_B_en(idIek2_T1_1:int;
+	sT1_1:int;
+	isInner:bool)
+
+returns (idIek2_T1:int;
+	sT1:int);
+
+
+var 	idIek2_T1_2:int;
+	sT1_2:int;
+
+
+let
+
+
+
+	-- set state as active 
+	idIek2_T1_2 
+	= 984;
+	
+
+	sT1_2 
+	= if (not isInner) then 2
+	 else sT1_1;
+	
+
+	(idIek2_T1, sT1) 
+	= (idIek2_T1_2, sT1_2);
+	
+
+tel
+
+
+
+
+
+-- Exit action for state :T1_B
+node T1_B_ex(idIek2_T1_1:int;
+	isInner:bool)
+
+returns (idIek2_T1:int);
+
+
+var 	idIek2_T1_2:int;
+
+
+let
+
+
+
+	-- set state as inactive 
+	idIek2_T1_2
+	 = if (not isInner) then 0 else idIek2_T1_1;
+
+
+	(idIek2_T1) 
+	= (idIek2_T1_2);
+	
+
+tel
+
+
+
+
+
+
+-- Entry action for state :Iek2_T1
+node Iek2_T1_en(idIek2_T1_1:int;
+	idIek2_Iek2_1:int;
+	sT1_1:int;
+	isInner:bool)
+
+returns (idIek2_T1:int;
+	idIek2_Iek2:int;
+	sT1:int);
+
+
+var 	idIek2_T1_2, idIek2_T1_3, idIek2_T1_4, idIek2_T1_5, idIek2_T1_6:int;
+	idIek2_Iek2_2, idIek2_Iek2_3, idIek2_Iek2_4:int;
+	sT1_2, sT1_3, sT1_4, sT1_5, sT1_6:int;
+
+
+let
+
+
+
+	-- set state as active 
+	idIek2_Iek2_2 
+	= 983;
+	
+
+	
+-- transition trace :
+	--POINT__To__T1_A_1
+		(idIek2_T1_2, sT1_2) 
+	= T1_A_en(idIek2_T1_1, sT1_1, false);
+		
+
+	(idIek2_T1_3, idIek2_Iek2_3, sT1_3) 
+	= 
+
+	if ( idIek2_T1_1 = 0) then
+
+	 (idIek2_T1_2, idIek2_Iek2_2, sT1_2)
+
+	 else(idIek2_T1_1, idIek2_Iek2_2, sT1_1);
+
+	
+
+	(idIek2_T1_4, sT1_4) 
+	= 
+	if ( idIek2_T1_1 = 985) then
+	T1_A_en(idIek2_T1_1, sT1_1, false)
+	 else (idIek2_T1_1, sT1_1);
+
+	
+
+	(idIek2_T1_5, sT1_5) 
+	= 
+	if ( idIek2_T1_1 = 984) then
+	T1_B_en(idIek2_T1_1, sT1_1, false)
+	 else (idIek2_T1_1, sT1_1);
+
+	
+
+	(idIek2_T1_6, idIek2_Iek2_4, sT1_6) 
+	= 
+		 if ( idIek2_T1_1 = 0) then 
+		(idIek2_T1_3, idIek2_Iek2_3, sT1_3)
+		 else
+		 if ( idIek2_T1_1 = 985) then 
+		(idIek2_T1_4, idIek2_Iek2_3, sT1_4)
+		 else
+		 if ( idIek2_T1_1 = 984) then 
+		(idIek2_T1_5, idIek2_Iek2_3, sT1_5)
+		 else (idIek2_T1_1, idIek2_Iek2_2, sT1_1);
+
+
+	(idIek2_T1, idIek2_Iek2, sT1) 
+	= (idIek2_T1_6, idIek2_Iek2_4, sT1_6);
+	
+
+tel
+
+
+
+
+
+-- Exit action for state :Iek2_T1
+node Iek2_T1_ex(idIek2_T1_1:int;
+	idIek2_Iek2_1:int;
+	isInner:bool)
+
+returns (idIek2_T1:int;
+	idIek2_Iek2:int);
+
+
+var 	idIek2_T1_2, idIek2_T1_3, idIek2_T1_4, idIek2_T1_5:int;
+	idIek2_Iek2_2:int;
+
+
+let
+
+
+
+	
+	(idIek2_T1_2) 
+	= 
+	if ( idIek2_T1_1 = 985) then
+	T1_A_ex(idIek2_T1_1, false)
+	 else (idIek2_T1_1);
+
+	
+
+	(idIek2_T1_3) 
+	= 
+	if ( idIek2_T1_1 = 984) then
+	T1_B_ex(idIek2_T1_1, false)
+	 else (idIek2_T1_1);
+
+	
+
+	(idIek2_T1_4) 
+	= 
+		 if ( idIek2_T1_1 = 985) then 
+		(idIek2_T1_2)
+		 else
+		 if ( idIek2_T1_1 = 984) then 
+		(idIek2_T1_3)
+		 else (idIek2_T1_1);
+
+
+	-- set state as inactive 
+	idIek2_Iek2_2
+	 = if (not isInner) then 0 else idIek2_Iek2_1;
+
+	idIek2_T1_5 
+	= 0;
+	
+
+	(idIek2_T1, idIek2_Iek2) 
+	= (idIek2_T1_5, idIek2_Iek2_2);
 	
 
 tel
@@ -157,7 +667,7 @@ let
 
 	-- set state as active 
 	idIek2_T3_2 
-	= 1046;
+	= 993;
 	
 
 	sT3_2 
@@ -224,7 +734,7 @@ let
 
 	-- set state as active 
 	idIek2_T3_2 
-	= 1044;
+	= 991;
 	
 
 	sT3_2 
@@ -291,7 +801,7 @@ let
 
 	-- set state as active 
 	idIek2_T3_2 
-	= 1043;
+	= 990;
 	
 
 	sT3_2 
@@ -339,20 +849,17 @@ tel
 
 
 
--- Entry action for state :T2_D
-node T2_D_en(idIek2_T2_1:int;
-	y_1:int;
-	sT2_1:int;
+-- Entry action for state :T3_b
+node T3_b_en(idIek2_T3_1:int;
+	sT3_1:int;
 	isInner:bool)
 
-returns (idIek2_T2:int;
-	y:int;
-	sT2:int);
+returns (idIek2_T3:int;
+	sT3:int);
 
 
-var 	idIek2_T2_2:int;
-	y_2:int;
-	sT2_2:int;
+var 	idIek2_T3_2:int;
+	sT3_2:int;
 
 
 let
@@ -360,22 +867,17 @@ let
 
 
 	-- set state as active 
-	idIek2_T2_2 
-	= 1041;
+	idIek2_T3_2 
+	= 992;
 	
 
-	y_2 
-	= if (not isInner) then  y_1  + 1
-	 else y_1;
-	
-
-	sT2_2 
+	sT3_2 
 	= if (not isInner) then 2
-	 else sT2_1;
+	 else sT3_1;
 	
 
-	(idIek2_T2, y, sT2) 
-	= (idIek2_T2_2, y_2, sT2_2);
+	(idIek2_T3, sT3) 
+	= (idIek2_T3_2, sT3_2);
 	
 
 tel
@@ -384,14 +886,14 @@ tel
 
 
 
--- Exit action for state :T2_D
-node T2_D_ex(idIek2_T2_1:int;
+-- Exit action for state :T3_b
+node T3_b_ex(idIek2_T3_1:int;
 	isInner:bool)
 
-returns (idIek2_T2:int);
+returns (idIek2_T3:int);
 
 
-var 	idIek2_T2_2:int;
+var 	idIek2_T3_2:int;
 
 
 let
@@ -399,221 +901,12 @@ let
 
 
 	-- set state as inactive 
-	idIek2_T2_2
-	 = if (not isInner) then 0 else idIek2_T2_1;
+	idIek2_T3_2
+	 = if (not isInner) then 0 else idIek2_T3_1;
 
 
-	(idIek2_T2) 
-	= (idIek2_T2_2);
-	
-
-tel
-
-
-
-
-
-
--- Entry action for state :T2_C
-node T2_C_en(idIek2_T2_1:int;
-	y_1:int;
-	sT2_1:int;
-	isInner:bool)
-
-returns (idIek2_T2:int;
-	y:int;
-	sT2:int);
-
-
-var 	idIek2_T2_2:int;
-	y_2:int;
-	sT2_2:int;
-
-
-let
-
-
-
-	-- set state as active 
-	idIek2_T2_2 
-	= 1040;
-	
-
-	y_2 
-	= if (not isInner) then  y_1  + 1
-	 else y_1;
-	
-
-	sT2_2 
-	= if (not isInner) then 1
-	 else sT2_1;
-	
-
-	(idIek2_T2, y, sT2) 
-	= (idIek2_T2_2, y_2, sT2_2);
-	
-
-tel
-
-
-
-
-
--- Exit action for state :T2_C
-node T2_C_ex(idIek2_T2_1:int;
-	isInner:bool)
-
-returns (idIek2_T2:int);
-
-
-var 	idIek2_T2_2:int;
-
-
-let
-
-
-
-	-- set state as inactive 
-	idIek2_T2_2
-	 = if (not isInner) then 0 else idIek2_T2_1;
-
-
-	(idIek2_T2) 
-	= (idIek2_T2_2);
-	
-
-tel
-
-
-
-
-
-
--- Entry action for state :T1_B
-node T1_B_en(idIek2_T1_1:int;
-	sT1_1:int;
-	isInner:bool)
-
-returns (idIek2_T1:int;
-	sT1:int);
-
-
-var 	idIek2_T1_2:int;
-	sT1_2:int;
-
-
-let
-
-
-
-	-- set state as active 
-	idIek2_T1_2 
-	= 1037;
-	
-
-	sT1_2 
-	= if (not isInner) then 2
-	 else sT1_1;
-	
-
-	(idIek2_T1, sT1) 
-	= (idIek2_T1_2, sT1_2);
-	
-
-tel
-
-
-
-
-
--- Exit action for state :T1_B
-node T1_B_ex(idIek2_T1_1:int;
-	isInner:bool)
-
-returns (idIek2_T1:int);
-
-
-var 	idIek2_T1_2:int;
-
-
-let
-
-
-
-	-- set state as inactive 
-	idIek2_T1_2
-	 = if (not isInner) then 0 else idIek2_T1_1;
-
-
-	(idIek2_T1) 
-	= (idIek2_T1_2);
-	
-
-tel
-
-
-
-
-
-
--- Entry action for state :T1_A
-node T1_A_en(idIek2_T1_1:int;
-	sT1_1:int;
-	isInner:bool)
-
-returns (idIek2_T1:int;
-	sT1:int);
-
-
-var 	idIek2_T1_2:int;
-	sT1_2:int;
-
-
-let
-
-
-
-	-- set state as active 
-	idIek2_T1_2 
-	= 1038;
-	
-
-	sT1_2 
-	= if (not isInner) then 1
-	 else sT1_1;
-	
-
-	(idIek2_T1, sT1) 
-	= (idIek2_T1_2, sT1_2);
-	
-
-tel
-
-
-
-
-
--- Exit action for state :T1_A
-node T1_A_ex(idIek2_T1_1:int;
-	isInner:bool)
-
-returns (idIek2_T1:int);
-
-
-var 	idIek2_T1_2:int;
-
-
-let
-
-
-
-	-- set state as inactive 
-	idIek2_T1_2
-	 = if (not isInner) then 0 else idIek2_T1_1;
-
-
-	(idIek2_T1) 
-	= (idIek2_T1_2);
+	(idIek2_T3) 
+	= (idIek2_T3_2);
 	
 
 tel
@@ -645,7 +938,7 @@ let
 
 	-- set state as active 
 	idIek2_Iek2_2 
-	= 1042;
+	= 989;
 	
 
 	
@@ -668,7 +961,7 @@ let
 
 	(idIek2_T3_4, sT3_4) 
 	= 
-	if ( idIek2_T3_1 = 1043) then
+	if ( idIek2_T3_1 = 990) then
 	T3_a_en(idIek2_T3_1, sT3_1, false)
 	 else (idIek2_T3_1, sT3_1);
 
@@ -676,7 +969,7 @@ let
 
 	(idIek2_T3_5, sT3_5) 
 	= 
-	if ( idIek2_T3_1 = 1044) then
+	if ( idIek2_T3_1 = 991) then
 	T3_c_en(idIek2_T3_1, sT3_1, false)
 	 else (idIek2_T3_1, sT3_1);
 
@@ -684,7 +977,7 @@ let
 
 	(idIek2_T3_6, sT3_6) 
 	= 
-	if ( idIek2_T3_1 = 1046) then
+	if ( idIek2_T3_1 = 993) then
 	T3_d_en(idIek2_T3_1, sT3_1, false)
 	 else (idIek2_T3_1, sT3_1);
 
@@ -692,7 +985,7 @@ let
 
 	(idIek2_T3_7, sT3_7) 
 	= 
-	if ( idIek2_T3_1 = 1045) then
+	if ( idIek2_T3_1 = 992) then
 	T3_b_en(idIek2_T3_1, sT3_1, false)
 	 else (idIek2_T3_1, sT3_1);
 
@@ -703,16 +996,16 @@ let
 		 if ( idIek2_T3_1 = 0) then 
 		(idIek2_T3_3, idIek2_Iek2_3, sT3_3)
 		 else
-		 if ( idIek2_T3_1 = 1043) then 
+		 if ( idIek2_T3_1 = 990) then 
 		(idIek2_T3_4, idIek2_Iek2_3, sT3_4)
 		 else
-		 if ( idIek2_T3_1 = 1044) then 
+		 if ( idIek2_T3_1 = 991) then 
 		(idIek2_T3_5, idIek2_Iek2_3, sT3_5)
 		 else
-		 if ( idIek2_T3_1 = 1046) then 
+		 if ( idIek2_T3_1 = 993) then 
 		(idIek2_T3_6, idIek2_Iek2_3, sT3_6)
 		 else
-		 if ( idIek2_T3_1 = 1045) then 
+		 if ( idIek2_T3_1 = 992) then 
 		(idIek2_T3_7, idIek2_Iek2_3, sT3_7)
 		 else (idIek2_T3_1, idIek2_Iek2_2, sT3_1);
 
@@ -747,7 +1040,7 @@ let
 	
 	(idIek2_T3_2) 
 	= 
-	if ( idIek2_T3_1 = 1043) then
+	if ( idIek2_T3_1 = 990) then
 	T3_a_ex(idIek2_T3_1, false)
 	 else (idIek2_T3_1);
 
@@ -755,7 +1048,7 @@ let
 
 	(idIek2_T3_3) 
 	= 
-	if ( idIek2_T3_1 = 1044) then
+	if ( idIek2_T3_1 = 991) then
 	T3_c_ex(idIek2_T3_1, false)
 	 else (idIek2_T3_1);
 
@@ -763,7 +1056,7 @@ let
 
 	(idIek2_T3_4) 
 	= 
-	if ( idIek2_T3_1 = 1046) then
+	if ( idIek2_T3_1 = 993) then
 	T3_d_ex(idIek2_T3_1, false)
 	 else (idIek2_T3_1);
 
@@ -771,7 +1064,7 @@ let
 
 	(idIek2_T3_5) 
 	= 
-	if ( idIek2_T3_1 = 1045) then
+	if ( idIek2_T3_1 = 992) then
 	T3_b_ex(idIek2_T3_1, false)
 	 else (idIek2_T3_1);
 
@@ -779,16 +1072,16 @@ let
 
 	(idIek2_T3_6) 
 	= 
-		 if ( idIek2_T3_1 = 1043) then 
+		 if ( idIek2_T3_1 = 990) then 
 		(idIek2_T3_2)
 		 else
-		 if ( idIek2_T3_1 = 1044) then 
+		 if ( idIek2_T3_1 = 991) then 
 		(idIek2_T3_3)
 		 else
-		 if ( idIek2_T3_1 = 1046) then 
+		 if ( idIek2_T3_1 = 993) then 
 		(idIek2_T3_4)
 		 else
-		 if ( idIek2_T3_1 = 1045) then 
+		 if ( idIek2_T3_1 = 992) then 
 		(idIek2_T3_5)
 		 else (idIek2_T3_1);
 
@@ -808,295 +1101,327 @@ let
 tel
 
 
+--***************************************************State :Iek2_T2 Automaton***************************************************
 
-
-
-
--- Entry action for state :Iek2_T2
-node Iek2_T2_en(idIek2_T2_1:int;
-	idIek2_Iek2_1:int;
+node Iek2_T2_node(idIek2_T2_1:int;
 	sT2_1:int;
 	y_1:int;
-	isInner:bool)
+	F:bool)
 
 returns (idIek2_T2:int;
-	idIek2_Iek2:int;
 	sT2:int;
 	y:int);
 
 
-var 	idIek2_T2_2, idIek2_T2_3, idIek2_T2_4, idIek2_T2_5, idIek2_T2_6:int;
-	idIek2_Iek2_2, idIek2_Iek2_3, idIek2_Iek2_4:int;
-	sT2_2, sT2_3, sT2_4, sT2_5, sT2_6:int;
-	y_2, y_3, y_4, y_5, y_6:int;
-
-
 let
 
+	 automaton iek2_t2
+
+	state POINTIek2_T2:
+	unless (idIek2_T2_1=0) restart POINT__TO__T2_C_1
 
 
-	-- set state as active 
-	idIek2_Iek2_2 
-	= 1039;
+
+	unless (idIek2_T2_1=987) and F restart T2_C__TO__T2_D_1
+
+
+
+	unless (idIek2_T2_1=988) and F restart T2_D__TO__T2_C_1
+
+
+
+	unless (idIek2_T2_1=987) restart T2_C_IDL
+
+	unless (idIek2_T2_1=988) restart T2_D_IDL
+
+	let
+
+		(idIek2_T2, sT2, y) 
+	= (idIek2_T2_1, sT2_1, y_1);
 	
 
-	
--- transition trace :
+	tel
+
+
+
+	state POINT__TO__T2_C_1:
+
+	 var 	idIek2_T2_2:int;
+	sT2_2:int;
+	y_2:int;
+	let
+
+		-- transition trace :
 	--POINT__To__T2_C_1
 		(idIek2_T2_2, y_2, sT2_2) 
 	= T2_C_en(idIek2_T2_1, y_1, sT2_1, false);
 		
 
-	(idIek2_T2_3, idIek2_Iek2_3, sT2_3, y_3) 
-	= 
+	(idIek2_T2, sT2, y) 
+	=  (idIek2_T2_2, sT2_2, y_2);
 
-	if ( idIek2_T2_1 = 0) then
 
-	 (idIek2_T2_2, idIek2_Iek2_2, sT2_2, y_2)
+	tel
 
-	 else(idIek2_T2_1, idIek2_Iek2_2, sT2_1, y_1);
+	until true restart POINTIek2_T2
 
+
+
+	state T2_C__TO__T2_D_1:
+
+	 var 	idIek2_T2_2, idIek2_T2_3:int;
+	sT2_2:int;
+	y_2:int;
+	let
+
+		-- transition trace :
+	--T2_C__To__T2_D_1
+		(idIek2_T2_2) 
+	= T2_C_ex(idIek2_T2_1, false);
+		
+
+		(idIek2_T2_3, y_2, sT2_2) 
+	= T2_D_en(idIek2_T2_2, y_1, sT2_1, false);
+		
+
+	(idIek2_T2, sT2, y) 
+	=  (idIek2_T2_3, sT2_2, y_2);
+
+
+	tel
+
+	until true restart POINTIek2_T2
+
+
+
+	state T2_D__TO__T2_C_1:
+
+	 var 	idIek2_T2_2, idIek2_T2_3:int;
+	sT2_2:int;
+	y_2:int;
+	let
+
+		-- transition trace :
+	--T2_D__To__T2_C_1
+		(idIek2_T2_2) 
+	= T2_D_ex(idIek2_T2_1, false);
+		
+
+		(idIek2_T2_3, y_2, sT2_2) 
+	= T2_C_en(idIek2_T2_2, y_1, sT2_1, false);
+		
+
+	(idIek2_T2, sT2, y) 
+	=  (idIek2_T2_3, sT2_2, y_2);
+
+
+	tel
+
+	until true restart POINTIek2_T2
+
+
+
+	state T2_C_IDL:
+
+	 	let
+
+		
+
+	(idIek2_T2, sT2, y) 
+	= (idIek2_T2_1, sT2_1, y_1);
 	
 
-	(idIek2_T2_4, y_4, sT2_4) 
-	= 
-	if ( idIek2_T2_1 = 1040) then
-	T2_C_en(idIek2_T2_1, y_1, sT2_1, false)
-	 else (idIek2_T2_1, y_1, sT2_1);
+	tel
 
+	until true restart POINTIek2_T2
+
+
+
+	state T2_D_IDL:
+
+	 	let
+
+		
+
+	(idIek2_T2, sT2, y) 
+	= (idIek2_T2_1, sT2_1, y_1);
 	
 
-	(idIek2_T2_5, y_5, sT2_5) 
-	= 
-	if ( idIek2_T2_1 = 1041) then
-	T2_D_en(idIek2_T2_1, y_1, sT2_1, false)
-	 else (idIek2_T2_1, y_1, sT2_1);
+	tel
 
-	
-
-	(idIek2_T2_6, idIek2_Iek2_4, sT2_6, y_6) 
-	= 
-		 if ( idIek2_T2_1 = 0) then 
-		(idIek2_T2_3, idIek2_Iek2_3, sT2_3, y_3)
-		 else
-		 if ( idIek2_T2_1 = 1040) then 
-		(idIek2_T2_4, idIek2_Iek2_3, sT2_4, y_4)
-		 else
-		 if ( idIek2_T2_1 = 1041) then 
-		(idIek2_T2_5, idIek2_Iek2_3, sT2_5, y_5)
-		 else (idIek2_T2_1, idIek2_Iek2_2, sT2_1, y_1);
+	until true restart POINTIek2_T2
 
 
-	(idIek2_T2, idIek2_Iek2, sT2, y) 
-	= (idIek2_T2_6, idIek2_Iek2_4, sT2_6, y_6);
-	
 
 tel
 
 
+--***************************************************State :Iek2_T1 Automaton***************************************************
 
-
-
--- Exit action for state :Iek2_T2
-node Iek2_T2_ex(idIek2_T2_1:int;
-	idIek2_Iek2_1:int;
-	isInner:bool)
-
-returns (idIek2_T2:int;
-	idIek2_Iek2:int);
-
-
-var 	idIek2_T2_2, idIek2_T2_3, idIek2_T2_4, idIek2_T2_5:int;
-	idIek2_Iek2_2:int;
-
-
-let
-
-
-
-	
-	(idIek2_T2_2) 
-	= 
-	if ( idIek2_T2_1 = 1040) then
-	T2_C_ex(idIek2_T2_1, false)
-	 else (idIek2_T2_1);
-
-	
-
-	(idIek2_T2_3) 
-	= 
-	if ( idIek2_T2_1 = 1041) then
-	T2_D_ex(idIek2_T2_1, false)
-	 else (idIek2_T2_1);
-
-	
-
-	(idIek2_T2_4) 
-	= 
-		 if ( idIek2_T2_1 = 1040) then 
-		(idIek2_T2_2)
-		 else
-		 if ( idIek2_T2_1 = 1041) then 
-		(idIek2_T2_3)
-		 else (idIek2_T2_1);
-
-
-	-- set state as inactive 
-	idIek2_Iek2_2
-	 = if (not isInner) then 0 else idIek2_Iek2_1;
-
-	idIek2_T2_5 
-	= 0;
-	
-
-	(idIek2_T2, idIek2_Iek2) 
-	= (idIek2_T2_5, idIek2_Iek2_2);
-	
-
-tel
-
-
-
-
-
-
--- Entry action for state :Iek2_T1
-node Iek2_T1_en(idIek2_T1_1:int;
-	idIek2_Iek2_1:int;
+node Iek2_T1_node(idIek2_T1_1:int;
 	sT1_1:int;
-	isInner:bool)
+	E:bool;
+	x_1:int)
 
 returns (idIek2_T1:int;
-	idIek2_Iek2:int;
-	sT1:int);
-
-
-var 	idIek2_T1_2, idIek2_T1_3, idIek2_T1_4, idIek2_T1_5, idIek2_T1_6:int;
-	idIek2_Iek2_2, idIek2_Iek2_3, idIek2_Iek2_4:int;
-	sT1_2, sT1_3, sT1_4, sT1_5, sT1_6:int;
+	sT1:int;
+	x:int);
 
 
 let
 
+	 automaton iek2_t1
+
+	state POINTIek2_T1:
+	unless (idIek2_T1_1=0) restart POINT__TO__T1_A_1
 
 
-	-- set state as active 
-	idIek2_Iek2_2 
-	= 1036;
+
+	unless (idIek2_T1_1=985) and E restart T1_A__TO__T1_B_1
+
+
+
+	unless (idIek2_T1_1=984) and E restart T1_B__TO__T1_A_1
+
+
+
+	unless (idIek2_T1_1=985) restart T1_A_IDL
+
+	unless (idIek2_T1_1=984) restart T1_B_IDL
+
+	let
+
+		(idIek2_T1, sT1, x) 
+	= (idIek2_T1_1, sT1_1, x_1);
 	
 
-	
--- transition trace :
+	tel
+
+
+
+	state POINT__TO__T1_A_1:
+
+	 var 	idIek2_T1_2:int;
+	sT1_2:int;
+	let
+
+		-- transition trace :
 	--POINT__To__T1_A_1
 		(idIek2_T1_2, sT1_2) 
 	= T1_A_en(idIek2_T1_1, sT1_1, false);
 		
 
-	(idIek2_T1_3, idIek2_Iek2_3, sT1_3) 
-	= 
+	(idIek2_T1, sT1) 
+	=  (idIek2_T1_2, sT1_2);
 
-	if ( idIek2_T1_1 = 0) then
-
-	 (idIek2_T1_2, idIek2_Iek2_2, sT1_2)
-
-	 else(idIek2_T1_1, idIek2_Iek2_2, sT1_1);
-
+	--add unused variables
+	(x) 
+	= (x_1);
 	
 
-	(idIek2_T1_4, sT1_4) 
-	= 
-	if ( idIek2_T1_1 = 1038) then
-	T1_A_en(idIek2_T1_1, sT1_1, false)
-	 else (idIek2_T1_1, sT1_1);
+	tel
 
+	until true restart POINTIek2_T1
+
+
+
+	state T1_A__TO__T1_B_1:
+
+	 var 	idIek2_T1_2, idIek2_T1_3:int;
+	sT1_2:int;
+	x_2:int;
+	let
+
+		-- transition trace :
+	--T1_A__To__T1_B_1
+		-- condition Action : x++
+		
+		(x_2) 
+	= T1_A__To__T1_B_1_Condition_Action(x_1);
+		
+
+		(idIek2_T1_2) 
+	= T1_A_ex(idIek2_T1_1, false);
+		
+
+		(idIek2_T1_3, sT1_2) 
+	= T1_B_en(idIek2_T1_2, sT1_1, false);
+		
+
+	(idIek2_T1, sT1, x) 
+	=  (idIek2_T1_3, sT1_2, x_2);
+
+
+	tel
+
+	until true restart POINTIek2_T1
+
+
+
+	state T1_B__TO__T1_A_1:
+
+	 var 	idIek2_T1_2, idIek2_T1_3:int;
+	sT1_2:int;
+	x_2:int;
+	let
+
+		-- transition trace :
+	--T1_B__To__T1_A_1
+		-- condition Action : x++
+		
+		(x_2) 
+	= T1_B__To__T1_A_1_Condition_Action(x_1);
+		
+
+		(idIek2_T1_2) 
+	= T1_B_ex(idIek2_T1_1, false);
+		
+
+		(idIek2_T1_3, sT1_2) 
+	= T1_A_en(idIek2_T1_2, sT1_1, false);
+		
+
+	(idIek2_T1, sT1, x) 
+	=  (idIek2_T1_3, sT1_2, x_2);
+
+
+	tel
+
+	until true restart POINTIek2_T1
+
+
+
+	state T1_A_IDL:
+
+	 	let
+
+		
+
+	(idIek2_T1, sT1, x) 
+	= (idIek2_T1_1, sT1_1, x_1);
 	
 
-	(idIek2_T1_5, sT1_5) 
-	= 
-	if ( idIek2_T1_1 = 1037) then
-	T1_B_en(idIek2_T1_1, sT1_1, false)
-	 else (idIek2_T1_1, sT1_1);
+	tel
 
+	until true restart POINTIek2_T1
+
+
+
+	state T1_B_IDL:
+
+	 	let
+
+		
+
+	(idIek2_T1, sT1, x) 
+	= (idIek2_T1_1, sT1_1, x_1);
 	
 
-	(idIek2_T1_6, idIek2_Iek2_4, sT1_6) 
-	= 
-		 if ( idIek2_T1_1 = 0) then 
-		(idIek2_T1_3, idIek2_Iek2_3, sT1_3)
-		 else
-		 if ( idIek2_T1_1 = 1038) then 
-		(idIek2_T1_4, idIek2_Iek2_3, sT1_4)
-		 else
-		 if ( idIek2_T1_1 = 1037) then 
-		(idIek2_T1_5, idIek2_Iek2_3, sT1_5)
-		 else (idIek2_T1_1, idIek2_Iek2_2, sT1_1);
+	tel
+
+	until true restart POINTIek2_T1
 
 
-	(idIek2_T1, idIek2_Iek2, sT1) 
-	= (idIek2_T1_6, idIek2_Iek2_4, sT1_6);
-	
-
-tel
-
-
-
-
-
--- Exit action for state :Iek2_T1
-node Iek2_T1_ex(idIek2_T1_1:int;
-	idIek2_Iek2_1:int;
-	isInner:bool)
-
-returns (idIek2_T1:int;
-	idIek2_Iek2:int);
-
-
-var 	idIek2_T1_2, idIek2_T1_3, idIek2_T1_4, idIek2_T1_5:int;
-	idIek2_Iek2_2:int;
-
-
-let
-
-
-
-	
-	(idIek2_T1_2) 
-	= 
-	if ( idIek2_T1_1 = 1038) then
-	T1_A_ex(idIek2_T1_1, false)
-	 else (idIek2_T1_1);
-
-	
-
-	(idIek2_T1_3) 
-	= 
-	if ( idIek2_T1_1 = 1037) then
-	T1_B_ex(idIek2_T1_1, false)
-	 else (idIek2_T1_1);
-
-	
-
-	(idIek2_T1_4) 
-	= 
-		 if ( idIek2_T1_1 = 1038) then 
-		(idIek2_T1_2)
-		 else
-		 if ( idIek2_T1_1 = 1037) then 
-		(idIek2_T1_3)
-		 else (idIek2_T1_1);
-
-
-	-- set state as inactive 
-	idIek2_Iek2_2
-	 = if (not isInner) then 0 else idIek2_Iek2_1;
-
-	idIek2_T1_5 
-	= 0;
-	
-
-	(idIek2_T1, idIek2_Iek2) 
-	= (idIek2_T1_5, idIek2_Iek2_2);
-	
 
 tel
 
@@ -1110,10 +1435,14 @@ node Iek2_T3_node(idIek2_T3_1:int;
 
 returns (idIek2_T3:int;
 	sT3:int);
+var 	change_x_output: bool;
+ 	change_y_output: bool;
 
 
 let
 
+	change_x_output =(( pre x_1) != x_1);
+ 	change_y_output =(( pre y_1) != y_1);
 	 automaton iek2_t3
 
 	state POINTIek2_T3:
@@ -1121,37 +1450,37 @@ let
 
 
 
-	unless (idIek2_T3_1=1043) and ((x_1 -> pre x_1) != x_1) restart T3_A__TO__T3_C_1
+	unless (idIek2_T3_1=990) and change_x_output restart T3_A__TO__T3_C_1
 
 
 
-	unless (idIek2_T3_1=1044) and ((x_1 -> pre x_1) != x_1) restart T3_C__TO__T3_D_1
+	unless (idIek2_T3_1=991) and change_x_output restart T3_C__TO__T3_D_1
 
 
 
-	unless (idIek2_T3_1=1044) and ((y_1 -> pre y_1) != y_1) restart T3_C__TO__T3_B_2
+	unless (idIek2_T3_1=991) and change_y_output restart T3_C__TO__T3_B_2
 
 
 
-	unless (idIek2_T3_1=1046) and ((y_1 -> pre y_1) != y_1) restart T3_D__TO__T3_B_1
+	unless (idIek2_T3_1=993) and change_y_output restart T3_D__TO__T3_B_1
 
 
 
-	unless (idIek2_T3_1=1045) and ((y_1 -> pre y_1) != y_1) restart T3_B__TO__T3_A_1
+	unless (idIek2_T3_1=992) and change_y_output restart T3_B__TO__T3_A_1
 
 
 
-	unless (idIek2_T3_1=1045) and ((x_1 -> pre x_1) != x_1) restart T3_B__TO__T3_C_2
+	unless (idIek2_T3_1=992) and change_x_output restart T3_B__TO__T3_C_2
 
 
 
-	unless (idIek2_T3_1=1043) restart T3_A_IDL
+	unless (idIek2_T3_1=990) restart T3_A_IDL
 
-	unless (idIek2_T3_1=1044) restart T3_C_IDL
+	unless (idIek2_T3_1=991) restart T3_C_IDL
 
-	unless (idIek2_T3_1=1046) restart T3_D_IDL
+	unless (idIek2_T3_1=993) restart T3_D_IDL
 
-	unless (idIek2_T3_1=1045) restart T3_B_IDL
+	unless (idIek2_T3_1=992) restart T3_B_IDL
 
 	let
 
@@ -1408,331 +1737,6 @@ let
 tel
 
 
---***************************************************State :Iek2_T2 Automaton***************************************************
-
-node Iek2_T2_node(idIek2_T2_1:int;
-	sT2_1:int;
-	y_1:int;
-	F:bool)
-
-returns (idIek2_T2:int;
-	sT2:int;
-	y:int);
-
-
-let
-
-	 automaton iek2_t2
-
-	state POINTIek2_T2:
-	unless (idIek2_T2_1=0) restart POINT__TO__T2_C_1
-
-
-
-	unless (idIek2_T2_1=1040) and F restart T2_C__TO__T2_D_1
-
-
-
-	unless (idIek2_T2_1=1041) and F restart T2_D__TO__T2_C_1
-
-
-
-	unless (idIek2_T2_1=1040) restart T2_C_IDL
-
-	unless (idIek2_T2_1=1041) restart T2_D_IDL
-
-	let
-
-		(idIek2_T2, sT2, y) 
-	= (idIek2_T2_1, sT2_1, y_1);
-	
-
-	tel
-
-
-
-	state POINT__TO__T2_C_1:
-
-	 var 	idIek2_T2_2:int;
-	sT2_2:int;
-	y_2:int;
-	let
-
-		-- transition trace :
-	--POINT__To__T2_C_1
-		(idIek2_T2_2, y_2, sT2_2) 
-	= T2_C_en(idIek2_T2_1, y_1, sT2_1, false);
-		
-
-	(idIek2_T2, sT2, y) 
-	=  (idIek2_T2_2, sT2_2, y_2);
-
-
-	tel
-
-	until true restart POINTIek2_T2
-
-
-
-	state T2_C__TO__T2_D_1:
-
-	 var 	idIek2_T2_2, idIek2_T2_3:int;
-	sT2_2:int;
-	y_2:int;
-	let
-
-		-- transition trace :
-	--T2_C__To__T2_D_1
-		(idIek2_T2_2) 
-	= T2_C_ex(idIek2_T2_1, false);
-		
-
-		(idIek2_T2_3, y_2, sT2_2) 
-	= T2_D_en(idIek2_T2_2, y_1, sT2_1, false);
-		
-
-	(idIek2_T2, sT2, y) 
-	=  (idIek2_T2_3, sT2_2, y_2);
-
-
-	tel
-
-	until true restart POINTIek2_T2
-
-
-
-	state T2_D__TO__T2_C_1:
-
-	 var 	idIek2_T2_2, idIek2_T2_3:int;
-	sT2_2:int;
-	y_2:int;
-	let
-
-		-- transition trace :
-	--T2_D__To__T2_C_1
-		(idIek2_T2_2) 
-	= T2_D_ex(idIek2_T2_1, false);
-		
-
-		(idIek2_T2_3, y_2, sT2_2) 
-	= T2_C_en(idIek2_T2_2, y_1, sT2_1, false);
-		
-
-	(idIek2_T2, sT2, y) 
-	=  (idIek2_T2_3, sT2_2, y_2);
-
-
-	tel
-
-	until true restart POINTIek2_T2
-
-
-
-	state T2_C_IDL:
-
-	 	let
-
-		
-
-	(idIek2_T2, sT2, y) 
-	= (idIek2_T2_1, sT2_1, y_1);
-	
-
-	tel
-
-	until true restart POINTIek2_T2
-
-
-
-	state T2_D_IDL:
-
-	 	let
-
-		
-
-	(idIek2_T2, sT2, y) 
-	= (idIek2_T2_1, sT2_1, y_1);
-	
-
-	tel
-
-	until true restart POINTIek2_T2
-
-
-
-tel
-
-
---***************************************************State :Iek2_T1 Automaton***************************************************
-
-node Iek2_T1_node(idIek2_T1_1:int;
-	sT1_1:int;
-	E:bool;
-	x_1:int)
-
-returns (idIek2_T1:int;
-	sT1:int;
-	x:int);
-
-
-let
-
-	 automaton iek2_t1
-
-	state POINTIek2_T1:
-	unless (idIek2_T1_1=0) restart POINT__TO__T1_A_1
-
-
-
-	unless (idIek2_T1_1=1038) and E restart T1_A__TO__T1_B_1
-
-
-
-	unless (idIek2_T1_1=1037) and E restart T1_B__TO__T1_A_1
-
-
-
-	unless (idIek2_T1_1=1038) restart T1_A_IDL
-
-	unless (idIek2_T1_1=1037) restart T1_B_IDL
-
-	let
-
-		(idIek2_T1, sT1, x) 
-	= (idIek2_T1_1, sT1_1, x_1);
-	
-
-	tel
-
-
-
-	state POINT__TO__T1_A_1:
-
-	 var 	idIek2_T1_2:int;
-	sT1_2:int;
-	let
-
-		-- transition trace :
-	--POINT__To__T1_A_1
-		(idIek2_T1_2, sT1_2) 
-	= T1_A_en(idIek2_T1_1, sT1_1, false);
-		
-
-	(idIek2_T1, sT1) 
-	=  (idIek2_T1_2, sT1_2);
-
-	--add unused variables
-	(x) 
-	= (x_1);
-	
-
-	tel
-
-	until true restart POINTIek2_T1
-
-
-
-	state T1_A__TO__T1_B_1:
-
-	 var 	idIek2_T1_2, idIek2_T1_3:int;
-	sT1_2:int;
-	x_2:int;
-	let
-
-		-- transition trace :
-	--T1_A__To__T1_B_1
-		-- condition Action : x++
-		
-		(x_2) 
-	= T1_A__To__T1_B_1_Condition_Action(x_1);
-		
-
-		(idIek2_T1_2) 
-	= T1_A_ex(idIek2_T1_1, false);
-		
-
-		(idIek2_T1_3, sT1_2) 
-	= T1_B_en(idIek2_T1_2, sT1_1, false);
-		
-
-	(idIek2_T1, sT1, x) 
-	=  (idIek2_T1_3, sT1_2, x_2);
-
-
-	tel
-
-	until true restart POINTIek2_T1
-
-
-
-	state T1_B__TO__T1_A_1:
-
-	 var 	idIek2_T1_2, idIek2_T1_3:int;
-	sT1_2:int;
-	x_2:int;
-	let
-
-		-- transition trace :
-	--T1_B__To__T1_A_1
-		-- condition Action : x++
-		
-		(x_2) 
-	= T1_B__To__T1_A_1_Condition_Action(x_1);
-		
-
-		(idIek2_T1_2) 
-	= T1_B_ex(idIek2_T1_1, false);
-		
-
-		(idIek2_T1_3, sT1_2) 
-	= T1_A_en(idIek2_T1_2, sT1_1, false);
-		
-
-	(idIek2_T1, sT1, x) 
-	=  (idIek2_T1_3, sT1_2, x_2);
-
-
-	tel
-
-	until true restart POINTIek2_T1
-
-
-
-	state T1_A_IDL:
-
-	 	let
-
-		
-
-	(idIek2_T1, sT1, x) 
-	= (idIek2_T1_1, sT1_1, x_1);
-	
-
-	tel
-
-	until true restart POINTIek2_T1
-
-
-
-	state T1_B_IDL:
-
-	 	let
-
-		
-
-	(idIek2_T1, sT1, x) 
-	= (idIek2_T1_1, sT1_1, x_1);
-	
-
-	tel
-
-	until true restart POINTIek2_T1
-
-
-
-tel
-
-
 --***************************************************State :Iek2_Iek2 Automaton***************************************************
 
 node Iek2_Iek2_node(idIek2_Iek2_1:int;
@@ -1891,9 +1895,9 @@ var sT1_1: int;
 
 	idIek2_Iek2, idIek2_Iek2_1: int;
 
-	idIek2_T1, idIek2_T1_1: int;
-
 	idIek2_T2, idIek2_T2_1: int;
+
+	idIek2_T1, idIek2_T1_1: int;
 
 	idIek2_T3, idIek2_T3_1: int;
 
@@ -1920,9 +1924,9 @@ let
 
 	idIek2_Iek2_1 = 0 -> pre idIek2_Iek2;
 
-	idIek2_T1_1 = 0 -> pre idIek2_T1;
-
 	idIek2_T2_1 = 0 -> pre idIek2_T2;
+
+	idIek2_T1_1 = 0 -> pre idIek2_T1;
 
 	idIek2_T3_1 = 0 -> pre idIek2_T3;
 

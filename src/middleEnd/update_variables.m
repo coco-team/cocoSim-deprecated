@@ -8,8 +8,6 @@ end
 if ~exist('global_nodes_struct','var')
     global_nodes_struct = [];
 end
-external_nodes = '';
-function_call = '';
 
 [result, external_nodes,function_call, node_struct] = get_right_expression(chart, data,action_updated,variables_struct, node_struct, global_nodes_struct);
 if ~isAction && ~strcmp(variable_to_be_updated,'')
