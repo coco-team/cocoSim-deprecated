@@ -651,6 +651,8 @@ classdef Utils
 		str_out = strrep(str_out, ']', '_rsbrak_');
 		str_out = strrep(str_out, '{', '_lbrak_');
 		str_out = strrep(str_out, '}', '_rbrak_');	
+        %hamza modification
+        str_out = strrep(str_out, ',', '_comma_');
 	end
 
 	function [found, idx_sub_res, idx_block_res] = get_block_position(inter_blk, origin_name)
@@ -671,7 +673,7 @@ classdef Utils
     end
     
     function out = naming(nomsim)
-        [a b]=regexp (nomsim, '/', 'split');
+        [a, b]=regexp (nomsim, '/', 'split');
         out = strcat(a{numel(a)-1},'_',a{end});
     end
     

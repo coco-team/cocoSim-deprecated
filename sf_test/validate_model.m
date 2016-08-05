@@ -62,7 +62,7 @@ IMAX = 10; %IMAX for randi the max born for random number
 try
     fprintf('start translating model "%s" to lustre automaton\n',file_name);
     lus_file_path=cocoSim(model_full_path);
-%     lus_file_path= '/home/hamza/Documents/cocoSim/sf_test/not_supported_yet/unsupported_operators/After/lustre_files/src_Temporal1/Temporal1.lus';
+%     lus_file_path= '/home/hamza/Documents/cocoSim/LM/2_tustin/lustre_files/src_integrator_12B/integrator_12B.lus';
     chart_name = file_name;
     configSet = copy(getActiveConfigSet(file_name));
     [lus_file_dir, lus_file_name, ~] = fileparts(lus_file_path);
@@ -187,6 +187,7 @@ else
                 outputs_array = importdata('outputs_values','\n');
                 valid = true;
                 error_index = 1;
+                eps = 0.01;
                 for i=0:nb_steps-1
                     for k=1:numberOfOutputs
                         yout_values = yout_signals(k).values;
@@ -194,7 +195,7 @@ else
                         if ~isempty(output_value)
                             output_val = output_value{2};
                             output_val = str2num(output_val(2:end-1));%str2double transform some numbers to NaN
-                            valid = valid && (yout_values(i+1)==output_val);
+                            valid = valid && (abs(yout_values(i+1)-output_val)<eps);
                             if  ~valid
                                 error_index = i+1;
                                 break
@@ -250,7 +251,7 @@ else
                 command = sprintf('rm %s.makefile %s.c %s.h %s.o %s.lusic  %s_main.* %s_alloc.h %s_sfun.mexa64 %s',...
                     file_name, file_name,file_name,file_name,file_name,file_name,file_name,file_name,lustre_binary);
                 system(command);
-                command = sprintf('rm *.o input_values outputs_values ');
+%                 command = sprintf('rm *.o input_values outputs_values ');
                 system(command);
                 command = sprintf('rm -r slprj');
                 system(command);

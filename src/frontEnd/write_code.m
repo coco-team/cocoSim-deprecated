@@ -187,11 +187,14 @@ for idx_block=1:nblk
 	elseif strcmp(inter_blk{idx_block}.type, 'Fcn')
         
 		fun_expr = get_param(blks{idx_block},'Expr');
+        
+        %old version
+%         [block_string, ext_node, ext_matlab_function, var_str] = write_function_blockV2(inter_blk{idx_block}, inter_blk, fun_expr, xml_trace);
+%         extern_matlab_functions{numel(extern_matlab_functions)+1} = ext_matlab_function;
+% 		extern_s_functions_string = [extern_s_functions_string ext_node];
 
-		[block_string ext_node ext_matlab_function var_str] = write_function_block(inter_blk{idx_block}, inter_blk, fun_expr, xml_trace);
-
-		extern_matlab_functions{numel(extern_matlab_functions)+1} = ext_matlab_function;
-		extern_s_functions_string = [extern_s_functions_string ext_node];
+		[block_string, ext_node, var_str] = write_function_blockV2(inter_blk{idx_block}, inter_blk, fun_expr, xml_trace);
+		extern_s_functions_string = [extern_s_functions_string, ext_node];
 		
 	%%%%%%%%%%%%% Saturation %%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'Saturate')
@@ -550,11 +553,11 @@ for idx_block=1:nblk
 				annot_type = get_param(blks{idx_block}, 'AnnotationType');
 				observer_type = get_param(blks{idx_block}, 'ObserverType');
                 try
-                    [property_node extern_funs property_name] = write_property(inter_blk{idx_block}, ...
+                    [property_node, ext_node, extern_funs, property_name] = write_property(inter_blk{idx_block}, ...
                         inter_blk, main_blk, main_blks, nom_lustre_file, print_node, trace, annot_type, observer_type, xml_trace);
                 
                      properties_nodes = [properties_nodes property_node];
-            
+                     extern_s_functions_string = [extern_s_functions_string, ext_node];
                      nb = numel(property_node_names)+1;
                      property_node_names{nb}.prop_name = property_name;
 				     property_node_names{nb}.origin_block_name = inter_blk{idx_block}.origin_name{1};

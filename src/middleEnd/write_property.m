@@ -46,7 +46,7 @@
 %
 %% Code
 %
-function [property_node extern_functions node_call_name] = write_property(block, inter_blk, main_blk, main_blks, nom_lustre_file, print_node, trace, annot_type, observer_type, xml_trace)
+function [property_node,extern_s_functions_string, extern_functions, node_call_name] = write_property(block, inter_blk, main_blk, main_blks, nom_lustre_file, print_node, trace, annot_type, observer_type, xml_trace)
 
 
 property_node = '';
