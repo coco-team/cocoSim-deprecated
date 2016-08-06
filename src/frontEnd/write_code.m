@@ -15,7 +15,7 @@
 %
 %    You should have received a copy of the GNU General Public License
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [output_string, extern_s_functions_string, extern_functions, properties_nodes, additional_variables, property_node_names, extern_matlab_functions, c_code] = ... 
+function [output_string, extern_s_functions_string, extern_functions, properties_nodes, additional_variables, property_node_names, extern_matlab_functions, c_code,external_math_functions] = ... 
     write_code(nblk, inter_blk, blks, main_blks, main_blk, nom_lustre_file, idx_subsys, print_node, trace, xml_trace)
 
 output_string = '';
@@ -30,7 +30,7 @@ c_code = '';
 pre_annot = '';
 post_annot = '';
 property_node_names = {};
-
+external_math_functions = [];
 
 for idx_block=1:nblk
 	block_string = '';
@@ -189,13 +189,13 @@ for idx_block=1:nblk
 		fun_expr = get_param(blks{idx_block},'Expr');
         
         %old version
-%         [block_string, ext_node, ext_matlab_function, var_str] = write_function_blockV2(inter_blk{idx_block}, inter_blk, fun_expr, xml_trace);
+%         [block_string, ext_node, ext_matlab_function, var_str] = write_function_block(inter_blk{idx_block}, inter_blk, fun_expr, xml_trace);
 %         extern_matlab_functions{numel(extern_matlab_functions)+1} = ext_matlab_function;
 % 		extern_s_functions_string = [extern_s_functions_string ext_node];
 
-		[block_string, ext_node, var_str] = write_function_blockV2(inter_blk{idx_block}, inter_blk, fun_expr, xml_trace);
+		[block_string, ext_node, var_str, external_math_functions_i] = write_function_blockV2(inter_blk{idx_block}, inter_blk, fun_expr, xml_trace);
 		extern_s_functions_string = [extern_s_functions_string, ext_node];
-		
+		 external_math_functions = [external_math_functions, external_math_functions_i];
 	%%%%%%%%%%%%% Saturation %%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'Saturate')
         
@@ -553,7 +553,7 @@ for idx_block=1:nblk
 				annot_type = get_param(blks{idx_block}, 'AnnotationType');
 				observer_type = get_param(blks{idx_block}, 'ObserverType');
                 try
-                    [property_node, ext_node, extern_funs, property_name] = write_property(inter_blk{idx_block}, ...
+                    [property_node, ext_node, extern_funs, property_name,external_math_functions_i] = write_property(inter_blk{idx_block}, ...
                         inter_blk, main_blk, main_blks, nom_lustre_file, print_node, trace, annot_type, observer_type, xml_trace);
                 
                      properties_nodes = [properties_nodes property_node];
@@ -562,7 +562,7 @@ for idx_block=1:nblk
                      property_node_names{nb}.prop_name = property_name;
 				     property_node_names{nb}.origin_block_name = inter_blk{idx_block}.origin_name{1};
 				     property_node_names{nb}.annotation = inter_blk{idx_block}.annotation;
-                     
+                     external_math_functions = [external_math_functions, external_math_functions_i];
                 catch ME
                     disp(ME.message)
                    if strcmp(ME.identifier, 'MATLAB:badsubscript')

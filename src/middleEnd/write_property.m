@@ -46,7 +46,7 @@
 %
 %% Code
 %
-function [property_node,extern_s_functions_string, extern_functions, node_call_name] = write_property(block, inter_blk, main_blk, main_blks, nom_lustre_file, print_node, trace, annot_type, observer_type, xml_trace)
+function [property_node,extern_s_functions_string, extern_functions, node_call_name, external_math_functions] = write_property(block, inter_blk, main_blk, main_blks, nom_lustre_file, print_node, trace, annot_type, observer_type, xml_trace)
 
 
 property_node = '';
@@ -276,7 +276,7 @@ properties_nodes = '';
 additional_variables = '';
 
 
-[let_tel_code_string extern_s_functions_string extern_functions properties_nodes additional_variables] = ...
+[let_tel_code_string extern_s_functions_string extern_functions properties_nodes additional_variables external_math_functions] = ...
     write_code(obs_nblk, obs_inter_blk, obs_blks, main_blks, ...
     main_blk, nom_lustre_file, obs_idx_subsys, false, trace, xml_trace);
  

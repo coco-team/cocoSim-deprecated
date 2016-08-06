@@ -41,8 +41,8 @@
 %
 %% Code
 %
-function [output_string, ext_node, add_vars] = write_function_blockV2(unbloc, inter_blk, fun_expr, xml_trace)
-
+function [output_string, ext_node, add_vars,external_math_functions] = write_function_blockV2(unbloc, inter_blk, fun_expr, xml_trace)
+external_math_functions = [];
 output_string = '';
 ext_node = '';
 add_vars = '';
@@ -124,25 +124,32 @@ ext_node = sprintf('node %s (', node_call_name);
 ext_node = app_sprintf(ext_node, 'u: %s)\n', in_var_print_dt);
 ext_node = app_sprintf(ext_node, 'returns (out: %s)\n', out_var_print_dt);
 
-expression = '(\n|\s*|\.{3}|/\*(\s*\w*\W*\s*)*\*/)';
+expression = '(\n|\.{3}|/\*(\s*\w*\W*\s*)*\*/)';
 replace = '';
 label_mod = regexprep(fun_expr,expression,replace);
 expression = '={2}';
 replace = '=';
 label_mod = regexprep(label_mod,expression,replace);
 
-expression = '(!|~)([^=]\w*)';
-replace = 'not $2';
-label_mod = regexprep(label_mod,expression,replace);
-expression = '<>';
-replace = '!=';
-label_mod = regexprep(label_mod,expression,replace);
-expression = '%%';
-replace = ' mod ';
+expression = '(!)([^=]\w*)';
+replace = ' not $2';
 label_mod = regexprep(label_mod,expression,replace);
 expression = 'u\((\d*)\)';
 replace = 'u\[$1\]';
 label_mod = regexprep(label_mod,expression,replace);
+expression = '([^a-zA-Z_\[\.])(\d+)([^\.\]])';
+replace = '$1$2.$3';
+label_mod = regexprep(label_mod,expression,replace);
+expression = 'power\(';
+replace = 'pow\(';
+label_mod = regexprep(label_mod,expression,replace);
+if ~isempty(strfind(fun_expr,'acos')) || ~isempty(strfind(fun_expr,'acosh')) || ~isempty(strfind(fun_expr,'asin')) || ~isempty(strfind(fun_expr,'asinh')) ...
+                    || ~isempty(strfind(fun_expr,'atan')) || ~isempty(strfind(fun_expr,'atan2')) || ~isempty(strfind(fun_expr,'atanh')) || ~isempty(strfind(fun_expr,'cos'))...
+                    || ~isempty(strfind(fun_expr,'cosh')) || ~isempty(strfind(fun_expr,'ceil')) || ~isempty(strfind(fun_expr,'erf')) || ~isempty(strfind(fun_expr,'cbrt'))...
+                    || ~isempty(strfind(fun_expr,'fabs')) || ~isempty(strfind(fun_expr,'pow')) || ~isempty(strfind(fun_expr,'sin')) || ~isempty(strfind(fun_expr,'sinh'))...
+                    || ~isempty(strfind(fun_expr,'sqrt'))
+                external_math_functions = [external_math_functions, struct('Name','lustre_math_fun','Type','function')];
+end
 if ~isempty(strfind(fun_expr,'&&')) || ~isempty(strfind(fun_expr,'||')) || ~isempty(strfind(fun_expr,'!'))...
         || ~isempty(strfind(fun_expr,'==')) || ~isempty(strfind(fun_expr,'!=')) || ~isempty(strfind(fun_expr,'>')) || ~isempty(strfind(fun_expr,'<'))
     

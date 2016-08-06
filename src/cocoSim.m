@@ -329,10 +329,10 @@ for idx_subsys=numel(inter_blk):-1:1
                 extern_Stateflow_nodes_fun = [extern_Stateflow_nodes_fun, external_nodes_i];
             end
         end
-        [node_header, let_tel_code, extern_s_functions_string, extern_funs, properties_nodes, property_node_name, extern_matlab_funs, c_code] = ...
+        [node_header, let_tel_code, extern_s_functions_string, extern_funs, properties_nodes, property_node_name, extern_matlab_funs, c_code, external_nodes_i] = ...
             blocks2lustre(file_name, nom_lustre_file, inter_blk, blks, mat_files, idx_subsys, trace, xml_trace);
         
-        
+        extern_Stateflow_nodes_fun = [extern_Stateflow_nodes_fun, external_nodes_i];
         extern_nodes_string = [extern_nodes_string extern_s_functions_string];
         
         for idx_extern=1:numel(extern_funs)

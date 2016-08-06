@@ -19,7 +19,7 @@
 % TODO: Add summary of the function with parameters
 
 function [node_header,let_tel_code_string, extern_s_functions_string, extern_functions, properties_nodes,...
-    property_node_names, extern_matlab_functions, c_code] = blocks2lustre(model_name, nom_lustre_file, ...
+    property_node_names, extern_matlab_functions, c_code, external_math_functions] = blocks2lustre(model_name, nom_lustre_file, ...
 myblk, main_blks, mat_files, idx_subsys, trace, xml_trace)
 
 % Returned values
@@ -190,7 +190,7 @@ end
 
 %%%%%%%%%%%%%%%% Retrieve nodes code
 
-[let_tel_code_string, extern_s_functions_string, extern_functions, properties_nodes, additional_variables, property_node_names, extern_matlab_functions, c_code] = ...
+[let_tel_code_string, extern_s_functions_string, extern_functions, properties_nodes, additional_variables, property_node_names, extern_matlab_functions, c_code, external_math_functions] = ...
     write_code(nblk, inter_blk, blks, main_blks, myblk, nom_lustre_file, idx_subsys, false, trace, xml_trace);
 
 
