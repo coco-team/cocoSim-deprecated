@@ -179,6 +179,7 @@ if activated
 
 	% Get the default output
 	list_def_out = {};
+    
 	for idx_out=1:unbloc.num_output
 		[out_dim_r out_dim_c] = Utils.get_port_dims_simple(unbloc.outports_dim, idx_out);
 		dim_out = out_dim_r * out_dim_c;
@@ -198,9 +199,21 @@ if activated
 			end
 			[out_dim_r out_dim_c] = Utils.get_port_dims_simple(unbloc.outports_dim, idx_out);
 			nb_var_to_add = out_dim_r * out_dim_c;
-			for idx_new_outs=1:nb_var_to_add
-				list_def_out = [list_def_out list_in{cpt_dim}];
-			end
+            for idx_new_outs=1:nb_var_to_add
+                input_dt = unbloc.inports_dt{cpt_dim};
+                if strfind(input_dt,'int')
+                    initial_value = '0';
+                elseif strfind(input_dt,'bool')
+                    initial_value = 'false';
+                else
+                    initial_value = '0.0';
+                end
+				list_def_out = [list_def_out {initial_value}];
+            end
+            
+% 			for idx_new_outs=1:nb_var_to_add
+% 				list_def_out = [list_def_out list_in{cpt_dim}];
+% 			end
 		else
 			if strcmp(out_dt, 'real')
 				new_out = '1.0';

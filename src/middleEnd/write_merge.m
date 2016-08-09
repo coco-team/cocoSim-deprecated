@@ -19,8 +19,7 @@
 %% Merge block
 %
 % Merge the inputs values to the output. Merging is done according ot the
-% last refreshed input value. In our case we do not handle it and the
-% output is equal to the first input.
+% last refreshed input value. 
 %
 %% Generation scheme
 % Example taken for a 3 elements vector for all inputs.
@@ -37,9 +36,22 @@ output_string = '';
 
 [list_out] = list_var_sortie(unbloc);
 [list_in] = list_var_entree(unbloc,inter_blk);
-
-for k1=1:numel(list_out)
-    output_string = app_sprintf(output_string,'\t%s = %s;\n', list_out{k1},list_in{k1});
+n = numel(list_out);
+n2 = numel(list_in);
+outport_dt = unbloc.outports_dt{1};
+if strfind(outport_dt,'int')
+    initial_value = '0';
+elseif strfind(outport_dt,'bool')
+    initial_value = 'false';
+else
+    initial_value = '0.0';
+end
+for k1=1:n
+    str = '';
+    for i=k1:n:n2
+        str = app_sprintf(str,'\tif  %s != %s then %s else\n', list_in{i},initial_value,list_in{i});
+    end
+    output_string = app_sprintf(output_string,'\t%s = %s \t%s;\n', list_out{k1},str,initial_value);
 end
 
 end

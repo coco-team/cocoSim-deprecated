@@ -8,7 +8,7 @@ node Fcn2_Fcn1 (u: real)
 returns (out: real)
 var expr:bool;
 let
-	expr = (u=1.0) || (u !=5.) || (u>1. && u<=5.) ||  not (u>=6. && u<10.);
+	expr = (u=1.0) or (u !=5.) or (u>1. and u<=5.) or  not (u>=6. and u<10.);
 	out = if expr then 1. else 0.;
 tel
 node Fcn2_Fcn2 (u: real)

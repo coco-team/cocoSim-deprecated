@@ -61,8 +61,8 @@ IMAX = 10; %IMAX for randi the max born for random number
 
 try
     fprintf('start translating model "%s" to lustre automaton\n',file_name);
+%     lus_file_path= '/home/hamza/Documents/cocoSim/test/Fcn/lustre_files/src_Fcn2/Fcn2.lus';
     lus_file_path=cocoSim(model_full_path);
-%     lus_file_path= '/home/hamza/Documents/cocoSim/LM/2_tustin/lustre_files/src_integrator_12B/integrator_12B.lus';
     chart_name = file_name;
     configSet = copy(getActiveConfigSet(file_name));
     [lus_file_dir, lus_file_name, ~] = fileparts(lus_file_path);
@@ -194,7 +194,7 @@ else
                         output_value = regexp(outputs_array{numberOfOutputs*i+k},'\s*:\s*','split');
                         if ~isempty(output_value)
                             output_val = output_value{2};
-                            output_val = str2num(output_val(2:end-1));%str2double transform some numbers to NaN
+                            output_val = str2num(output_val(2:end-1));
                             valid = valid && (abs(yout_values(i+1)-output_val)<eps);
                             if  ~valid
                                 error_index = i+1;
@@ -251,7 +251,7 @@ else
                 command = sprintf('rm %s.makefile %s.c %s.h %s.o %s.lusic  %s_main.* %s_alloc.h %s_sfun.mexa64 %s',...
                     file_name, file_name,file_name,file_name,file_name,file_name,file_name,file_name,lustre_binary);
                 system(command);
-%                 command = sprintf('rm *.o input_values outputs_values ');
+                command = sprintf('rm *.o input_values outputs_values ');
                 system(command);
                 command = sprintf('rm -r slprj');
                 system(command);

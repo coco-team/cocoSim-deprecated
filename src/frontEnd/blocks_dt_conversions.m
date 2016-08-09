@@ -401,8 +401,13 @@ function conversion = compute_conversion(block)
 	elseif strcmp(block.type, 'BusAssignment')
 		for idx=1:block.num_input
 			conversion{idx} = 'no';
+        end
+        
+    %%%%%%%%%%%%% SignalConversion %%%%%%%%%%%%%
+	elseif strcmp(block.type,'SignalConversion') 
+		for idx_in=1:numel(block.inports_dt)
+			conversion{idx_in} = block.outports_dt{1};
 		end
-
 	%%%%%%%%%%%%%%%%%% Blocks with nothing specific to do %%%%%%%%%%%%%%%%%%%
 	elseif strcmp(block.type, 'Inport') || strcmp(block.type, 'ToWorkspace') || strcmp(block.type, 'Terminator') || strcmp(block.type, 'Scope') || strcmp(block.type, 'From') || strcmp(block.type, 'FromWorkspace')
 

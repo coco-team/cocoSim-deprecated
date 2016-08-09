@@ -236,6 +236,13 @@ for idx_block=1:nblk
 
 		block_string = write_unitdelay(inter_blk{idx_block}, init, Ts, inter_blk);
 		
+    %%%%%%%%%%%%% Delay %%%%%%%%%%%%%
+	elseif strcmp(inter_blk{idx_block}.type, 'Delay')
+        
+		init = get_param(blks{idx_block}, 'X0');
+        init = evalin('base', init);
+        delay_length = get_param(blks{idx_block}, 'DelayLength');
+		block_string = write_delay(inter_blk{idx_block}, init, delay_length, inter_blk);
 	%%%%%%%%%%%%% Memory %%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type,'Memory')
         
@@ -623,7 +630,13 @@ for idx_block=1:nblk
 		data = evalin('base', get_param(blks{idx_block}, 'VariableName'));
 
 		block_string = write_fromworkspace(inter_blk{idx_block}, inter_blk, data);
-		
+        
+	%%%%%%%%%%%%%%%%%% SignalConversion %%%%%%%%%%%%%%%%%
+	elseif strcmp(inter_blk{idx_block}.type, 'SignalConversion')
+        block_string = write_SignalConversion(inter_blk{idx_block}, inter_blk);
+		error_msg = [' SignalConversion block could be not well translated.\n'];
+        display_msg(error_msg, Constants.WARNING, 'write_code', '');
+
 	%%%%%%%%%%%%%%%%%% Lookup %%%%%%%%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'Lookup')
 

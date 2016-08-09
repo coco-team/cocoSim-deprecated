@@ -93,7 +93,7 @@ display_msg(msg, Constants.INFO, 'cocoSim', '');
 addpath(model_path);
 
 % Loading of the system
-bdclose('all');
+% bdclose('all');
 % if you want to keep the current model open try this solution. it doesn't
 % work if there is parameters in the mode that should be loaded to the
 % workspace
