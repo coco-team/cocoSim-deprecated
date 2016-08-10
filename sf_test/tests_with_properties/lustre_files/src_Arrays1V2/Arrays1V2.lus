@@ -75,7 +75,11 @@ let
 
 	-- set state as active 
 	idArrays1_Arrays1_2 
+<<<<<<< HEAD
 	= 1613;
+=======
+	= 525;
+>>>>>>> 3922117... clean sf_test
 	
 
 	x2_2 
@@ -142,7 +146,11 @@ let
 
 	-- set state as active 
 	idArrays1_Arrays1_2 
+<<<<<<< HEAD
 	= 1612;
+=======
+	= 524;
+>>>>>>> 3922117... clean sf_test
 	
 
 	x1_2 
@@ -209,7 +217,11 @@ let
 
 	-- set state as active 
 	idArrays1_Arrays1_2 
+<<<<<<< HEAD
 	= 1614;
+=======
+	= 526;
+>>>>>>> 3922117... clean sf_test
 	
 
 	x3_2 
@@ -277,6 +289,7 @@ let
 
 
 
+<<<<<<< HEAD
 	unless (idArrays1_Arrays1_1=1612) and E restart ARRAYS1_A__TO__ARRAYS1_B_1
 
 
@@ -294,6 +307,25 @@ let
 	unless (idArrays1_Arrays1_1=1613) restart ARRAYS1_B_IDL
 
 	unless (idArrays1_Arrays1_1=1614) restart ARRAYS1_C_IDL
+=======
+	unless (idArrays1_Arrays1_1=524) and E restart ARRAYS1_A__TO__ARRAYS1_B_1
+
+
+
+	unless (idArrays1_Arrays1_1=525) and F restart ARRAYS1_B__TO__ARRAYS1_C_1
+
+
+
+	unless (idArrays1_Arrays1_1=526) and E restart ARRAYS1_C__TO__ARRAYS1_A_1
+
+
+
+	unless (idArrays1_Arrays1_1=524) restart ARRAYS1_A_IDL
+
+	unless (idArrays1_Arrays1_1=525) restart ARRAYS1_B_IDL
+
+	unless (idArrays1_Arrays1_1=526) restart ARRAYS1_C_IDL
+>>>>>>> 3922117... clean sf_test
 
 	let
 

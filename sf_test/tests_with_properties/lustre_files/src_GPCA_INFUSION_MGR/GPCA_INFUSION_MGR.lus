@@ -80,7 +80,11 @@ tel
 
 
 
+<<<<<<< HEAD
 node POINT__To__InfusionMGR_writeLogJunction1220_1_Condition_Action(logEvent:int;
+=======
+node POINT__To__InfusionMGR_writeLogJunction1384_1_Condition_Action(logEvent:int;
+>>>>>>> 3922117... clean sf_test
 	IM_OUT_Log_Message_ID_1:int)
 
 returns (IM_OUT_Log_Message_ID:int);
@@ -119,7 +123,11 @@ let
 	 automaton infusionmgr_writelog
 
 	state POINTInfusionMGR_writeLog:
+<<<<<<< HEAD
 	unless (idInfusionMGR_writeLog_1=0) restart POINT__TO__INFUSIONMGR_WRITELOGJUNCTION1220_1
+=======
+	unless (idInfusionMGR_writeLog_1=0) restart POINT__TO__INFUSIONMGR_WRITELOGJUNCTION1384_1
+>>>>>>> 3922117... clean sf_test
 
 
 
@@ -133,16 +141,29 @@ let
 
 
 
+<<<<<<< HEAD
 	state POINT__TO__INFUSIONMGR_WRITELOGJUNCTION1220_1:
+=======
+	state POINT__TO__INFUSIONMGR_WRITELOGJUNCTION1384_1:
+>>>>>>> 3922117... clean sf_test
 
 	 var 	IM_OUT_Log_Message_ID_2:int;
 	let
 
+<<<<<<< HEAD
 		
 		-- condition Action : IM_OUT_Log_Message_ID=logEvent;
 		
 		(IM_OUT_Log_Message_ID_2) 
 	= POINT__To__InfusionMGR_writeLogJunction1220_1_Condition_Action(logEvent, IM_OUT_Log_Message_ID_1);
+=======
+		-- transition trace :
+	--POINT__To__Junction1384_1
+		-- condition Action : IM_OUT_Log_Message_ID=logEvent;
+		
+		(IM_OUT_Log_Message_ID_2) 
+	= POINT__To__InfusionMGR_writeLogJunction1384_1_Condition_Action(logEvent, IM_OUT_Log_Message_ID_1);
+>>>>>>> 3922117... clean sf_test
 		
 
 	(idInfusionMGR_writeLog, IM_OUT_Log_Message_ID) 
@@ -189,7 +210,11 @@ tel
 
 
 
+<<<<<<< HEAD
 node POINT__To__InfusionMGR_Step_Scaling_FactorJunction1225_1_Condition_Action(inputVal:real;
+=======
+node POINT__To__InfusionMGR_Step_Scaling_FactorJunction1389_1_Condition_Action(inputVal:real;
+>>>>>>> 3922117... clean sf_test
 	step_size:real;
 	returnVal_1:real)
 
@@ -230,7 +255,11 @@ let
 	 automaton infusionmgr_step_scaling_factor
 
 	state POINTInfusionMGR_Step_Scaling_Factor:
+<<<<<<< HEAD
 	unless (idInfusionMGR_Step_Scaling_Factor_1=0) restart POINT__TO__INFUSIONMGR_STEP_SCALING_FACTORJUNCTION1225_1
+=======
+	unless (idInfusionMGR_Step_Scaling_Factor_1=0) restart POINT__TO__INFUSIONMGR_STEP_SCALING_FACTORJUNCTION1389_1
+>>>>>>> 3922117... clean sf_test
 
 
 
@@ -244,16 +273,29 @@ let
 
 
 
+<<<<<<< HEAD
 	state POINT__TO__INFUSIONMGR_STEP_SCALING_FACTORJUNCTION1225_1:
+=======
+	state POINT__TO__INFUSIONMGR_STEP_SCALING_FACTORJUNCTION1389_1:
+>>>>>>> 3922117... clean sf_test
 
 	 var 	returnVal_2:real;
 	let
 
+<<<<<<< HEAD
 		
 		-- condition Action : returnVal=inputVal/step_size;
 		
 		(returnVal_2) 
 	= POINT__To__InfusionMGR_Step_Scaling_FactorJunction1225_1_Condition_Action(inputVal, step_size, returnVal_1);
+=======
+		-- transition trace :
+	--POINT__To__Junction1389_1
+		-- condition Action : returnVal=inputVal/step_size;
+		
+		(returnVal_2) 
+	= POINT__To__InfusionMGR_Step_Scaling_FactorJunction1389_1_Condition_Action(inputVal, step_size, returnVal_1);
+>>>>>>> 3922117... clean sf_test
 		
 
 	(idInfusionMGR_Step_Scaling_Factor, returnVal) 
@@ -306,7 +348,11 @@ tel
 
 
 
+<<<<<<< HEAD
 node POINT__To__Infusion_Manager_resetAllInfusionDetailsJunction1215_1_Condition_Action(IM_OUT_Lock_Timer_1:real;
+=======
+node POINT__To__Infusion_Manager_resetAllInfusionDetailsJunction1379_1_Condition_Action(IM_OUT_Lock_Timer_1:real;
+>>>>>>> 3922117... clean sf_test
 	inPatientBolus_1:bool;
 	number_pbolus_1:int;
 	IM_OUT_Is_Locked_Out_1:bool)
@@ -370,7 +416,11 @@ let
 	 automaton infusion_manager_resetallinfusiondetails
 
 	state POINTInfusion_Manager_resetAllInfusionDetails:
+<<<<<<< HEAD
 	unless (idInfusion_Manager_resetAllInfusionDetails_1=0) restart POINT__TO__INFUSION_MANAGER_RESETALLINFUSIONDETAILSJUNCTION1215_1
+=======
+	unless (idInfusion_Manager_resetAllInfusionDetails_1=0) restart POINT__TO__INFUSION_MANAGER_RESETALLINFUSIONDETAILSJUNCTION1379_1
+>>>>>>> 3922117... clean sf_test
 
 
 
@@ -384,7 +434,11 @@ let
 
 
 
+<<<<<<< HEAD
 	state POINT__TO__INFUSION_MANAGER_RESETALLINFUSIONDETAILSJUNCTION1215_1:
+=======
+	state POINT__TO__INFUSION_MANAGER_RESETALLINFUSIONDETAILSJUNCTION1379_1:
+>>>>>>> 3922117... clean sf_test
 
 	 var 	IM_OUT_Is_Locked_Out_2:bool;
 	IM_OUT_Lock_Timer_2:real;
@@ -392,11 +446,20 @@ let
 	number_pbolus_2:int;
 	let
 
+<<<<<<< HEAD
 		
 		-- condition Action : IM_OUT_Lock_Timer=0;inPatientBolus=0;number_pbolus=0;IM_OUT_Is_Locked_Out=false;
 		
 		(IM_OUT_Lock_Timer_2, inPatientBolus_2, number_pbolus_2, IM_OUT_Is_Locked_Out_2) 
 	= POINT__To__Infusion_Manager_resetAllInfusionDetailsJunction1215_1_Condition_Action(IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1, IM_OUT_Is_Locked_Out_1);
+=======
+		-- transition trace :
+	--POINT__To__Junction1379_1
+		-- condition Action : IM_OUT_Lock_Timer=0;inPatientBolus=0;number_pbolus=0;IM_OUT_Is_Locked_Out=false;
+		
+		(IM_OUT_Lock_Timer_2, inPatientBolus_2, number_pbolus_2, IM_OUT_Is_Locked_Out_2) 
+	= POINT__To__Infusion_Manager_resetAllInfusionDetailsJunction1379_1_Condition_Action(IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1, IM_OUT_Is_Locked_Out_1);
+>>>>>>> 3922117... clean sf_test
 		
 
 	(idInfusion_Manager_resetAllInfusionDetails, IM_OUT_Is_Locked_Out, IM_OUT_Lock_Timer, inPatientBolus, number_pbolus) 
@@ -448,7 +511,11 @@ tel
 
 
 
+<<<<<<< HEAD
 node POINT__To__Infusion_Manager_sbolus_dur_timer_funJunction1217_1_Condition_Action(sbolus_dur_timer_1:int;
+=======
+node POINT__To__Infusion_Manager_sbolus_dur_timer_funJunction1381_1_Condition_Action(sbolus_dur_timer_1:int;
+>>>>>>> 3922117... clean sf_test
 	sbolus_timer_1:real;
 	pbolus_timer_1:real;
 	number_pbolus_1:int;
@@ -575,7 +642,11 @@ let
 	 automaton infusion_manager_sbolus_dur_timer_fun
 
 	state POINTInfusion_Manager_sbolus_dur_timer_fun:
+<<<<<<< HEAD
 	unless (idInfusion_Manager_sbolus_dur_timer_fun_1=0) restart POINT__TO__INFUSION_MANAGER_SBOLUS_DUR_TIMER_FUNJUNCTION1217_1
+=======
+	unless (idInfusion_Manager_sbolus_dur_timer_fun_1=0) restart POINT__TO__INFUSION_MANAGER_SBOLUS_DUR_TIMER_FUNJUNCTION1381_1
+>>>>>>> 3922117... clean sf_test
 
 
 
@@ -589,7 +660,11 @@ let
 
 
 
+<<<<<<< HEAD
 	state POINT__TO__INFUSION_MANAGER_SBOLUS_DUR_TIMER_FUNJUNCTION1217_1:
+=======
+	state POINT__TO__INFUSION_MANAGER_SBOLUS_DUR_TIMER_FUNJUNCTION1381_1:
+>>>>>>> 3922117... clean sf_test
 
 	 var 	IM_OUT_Actual_Infusion_Duration_2:real;
 	IM_OUT_Flow_Rate_Commanded_2:int;
@@ -604,11 +679,20 @@ let
 	sbolus_timer_2:real;
 	let
 
+<<<<<<< HEAD
 		
 		-- condition Action : sbolus_dur_timer=0;sbolus_timer=0;pbolus_timer =0;number_pbolus=0;pbolus_dur_timer=0;sbolusInter_timer=0;paused_KVO_timer=0;IM_OUT_Flow_Rate_Commanded=0;IM_OUT_Actual_Infusion_Duration=0;IM_OUT_Is_Locked_Out=false;writeLog(1);
 		
 		(sbolus_dur_timer_2, sbolus_timer_2, pbolus_timer_2, number_pbolus_2, pbolus_dur_timer_2, sbolusInter_timer_2, paused_KVO_timer_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Actual_Infusion_Duration_2, IM_OUT_Is_Locked_Out_2, IM_OUT_Log_Message_ID_2) 
 	= POINT__To__Infusion_Manager_sbolus_dur_timer_funJunction1217_1_Condition_Action(sbolus_dur_timer_1, sbolus_timer_1, pbolus_timer_1, number_pbolus_1, pbolus_dur_timer_1, sbolusInter_timer_1, paused_KVO_timer_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Actual_Infusion_Duration_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Log_Message_ID_1);
+=======
+		-- transition trace :
+	--POINT__To__Junction1381_1
+		-- condition Action : sbolus_dur_timer=0;sbolus_timer=0;pbolus_timer=0;number_pbolus=0;pbolus_dur_timer=0;sbolusInter_timer=0;paused_KVO_timer=0;IM_OUT_Flow_Rate_Commanded=0;IM_OUT_Actual_Infusion_Duration=0;IM_OUT_Is_Locked_Out=false;writeLog(1);
+		
+		(sbolus_dur_timer_2, sbolus_timer_2, pbolus_timer_2, number_pbolus_2, pbolus_dur_timer_2, sbolusInter_timer_2, paused_KVO_timer_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Actual_Infusion_Duration_2, IM_OUT_Is_Locked_Out_2, IM_OUT_Log_Message_ID_2) 
+	= POINT__To__Infusion_Manager_sbolus_dur_timer_funJunction1381_1_Condition_Action(sbolus_dur_timer_1, sbolus_timer_1, pbolus_timer_1, number_pbolus_1, pbolus_dur_timer_1, sbolusInter_timer_1, paused_KVO_timer_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Actual_Infusion_Duration_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Log_Message_ID_1);
+>>>>>>> 3922117... clean sf_test
 		
 
 	(idInfusion_Manager_sbolus_dur_timer_fun, IM_OUT_Actual_Infusion_Duration, IM_OUT_Flow_Rate_Commanded, IM_OUT_Is_Locked_Out, IM_OUT_Log_Message_ID, number_pbolus, paused_KVO_timer, pbolus_dur_timer, pbolus_timer, sbolusInter_timer, sbolus_dur_timer, sbolus_timer) 
@@ -674,7 +758,11 @@ tel
 
 
 
+<<<<<<< HEAD
 node POINT__To__THERAPY_TherapyExitOperationsJunction1213_1_Condition_Action(IM_OUT_Flow_Rate_Commanded_1:int;
+=======
+node POINT__To__THERAPY_TherapyExitOperationsJunction1377_1_Condition_Action(IM_OUT_Flow_Rate_Commanded_1:int;
+>>>>>>> 3922117... clean sf_test
 	IM_OUT_New_Infusion_1:bool;
 	IM_OUT_Is_Locked_Out_1:bool)
 
@@ -729,7 +817,11 @@ let
 	 automaton therapy_therapyexitoperations
 
 	state POINTTHERAPY_TherapyExitOperations:
+<<<<<<< HEAD
 	unless (idTHERAPY_TherapyExitOperations_1=0) restart POINT__TO__THERAPY_THERAPYEXITOPERATIONSJUNCTION1213_1
+=======
+	unless (idTHERAPY_TherapyExitOperations_1=0) restart POINT__TO__THERAPY_THERAPYEXITOPERATIONSJUNCTION1377_1
+>>>>>>> 3922117... clean sf_test
 
 
 
@@ -743,18 +835,31 @@ let
 
 
 
+<<<<<<< HEAD
 	state POINT__TO__THERAPY_THERAPYEXITOPERATIONSJUNCTION1213_1:
+=======
+	state POINT__TO__THERAPY_THERAPYEXITOPERATIONSJUNCTION1377_1:
+>>>>>>> 3922117... clean sf_test
 
 	 var 	IM_OUT_Flow_Rate_Commanded_2:int;
 	IM_OUT_Is_Locked_Out_2:bool;
 	IM_OUT_New_Infusion_2:bool;
 	let
 
+<<<<<<< HEAD
 		
 		-- condition Action : IM_OUT_Flow_Rate_Commanded=0;IM_OUT_New_Infusion=0;IM_OUT_Is_Locked_Out=false;
 		
 		(IM_OUT_Flow_Rate_Commanded_2, IM_OUT_New_Infusion_2, IM_OUT_Is_Locked_Out_2) 
 	= POINT__To__THERAPY_TherapyExitOperationsJunction1213_1_Condition_Action(IM_OUT_Flow_Rate_Commanded_1, IM_OUT_New_Infusion_1, IM_OUT_Is_Locked_Out_1);
+=======
+		-- transition trace :
+	--POINT__To__Junction1377_1
+		-- condition Action : IM_OUT_Flow_Rate_Commanded=0;IM_OUT_New_Infusion=0;IM_OUT_Is_Locked_Out=false;
+		
+		(IM_OUT_Flow_Rate_Commanded_2, IM_OUT_New_Infusion_2, IM_OUT_Is_Locked_Out_2) 
+	= POINT__To__THERAPY_TherapyExitOperationsJunction1377_1_Condition_Action(IM_OUT_Flow_Rate_Commanded_1, IM_OUT_New_Infusion_1, IM_OUT_Is_Locked_Out_1);
+>>>>>>> 3922117... clean sf_test
 		
 
 	(idTHERAPY_TherapyExitOperations, IM_OUT_Flow_Rate_Commanded, IM_OUT_Is_Locked_Out, IM_OUT_New_Infusion) 
@@ -804,7 +909,11 @@ tel
 
 
 
+<<<<<<< HEAD
 node ACTIVE_sbolus_triggerJunction1187__To__ACTIVE_sbolus_triggerJunction1189_2_Condition_Action(sb_1:bool)
+=======
+node ACTIVE_sbolus_triggerJunction1351__To__ACTIVE_sbolus_triggerJunction1353_2_Condition_Action(sb_1:bool)
+>>>>>>> 3922117... clean sf_test
 
 returns (sb:bool);
 
@@ -831,7 +940,11 @@ tel
 
 
 
+<<<<<<< HEAD
 node POINT__To__ACTIVE_sbolus_triggerJunction1187_1_Condition_Action(sb_1:bool)
+=======
+node POINT__To__ACTIVE_sbolus_triggerJunction1351_1_Condition_Action(sb_1:bool)
+>>>>>>> 3922117... clean sf_test
 
 returns (sb:bool);
 
@@ -858,7 +971,11 @@ tel
 
 
 
+<<<<<<< HEAD
 node ACTIVE_sbolus_triggerJunction1187__To__ACTIVE_sbolus_triggerJunction1188_1_Condition_Action(sb_1:bool)
+=======
+node ACTIVE_sbolus_triggerJunction1351__To__ACTIVE_sbolus_triggerJunction1352_1_Condition_Action(sb_1:bool)
+>>>>>>> 3922117... clean sf_test
 
 returns (sb:bool);
 
@@ -898,7 +1015,11 @@ let
 	 automaton active_sbolus_trigger
 
 	state POINTACTIVE_sbolus_trigger:
+<<<<<<< HEAD
 	unless (idACTIVE_sbolus_trigger_1=0) restart POINT__TO__ACTIVE_SBOLUS_TRIGGERJUNCTION1187_1
+=======
+	unless (idACTIVE_sbolus_trigger_1=0) restart POINT__TO__ACTIVE_SBOLUS_TRIGGERJUNCTION1351_1
+>>>>>>> 3922117... clean sf_test
 
 
 
@@ -912,43 +1033,75 @@ let
 
 
 
+<<<<<<< HEAD
 	state POINT__TO__ACTIVE_SBOLUS_TRIGGERJUNCTION1187_1:
+=======
+	state POINT__TO__ACTIVE_SBOLUS_TRIGGERJUNCTION1351_1:
+>>>>>>> 3922117... clean sf_test
 
 	 var 	sb_2, sb_3, sb_4, sb_5:bool;
 	let
 
 		
 
+<<<<<<< HEAD
 
 		-- condition Action : sb = 0;
 		
 		(sb_2) 
 	= POINT__To__ACTIVE_sbolus_triggerJunction1187_1_Condition_Action(sb_1);
+=======
+-- transition trace :
+	--POINT__To__Junction1351_1, Junction1351__To__Junction1352_1
+		-- condition Action : sb=0;
+		
+		(sb_2) 
+	= POINT__To__ACTIVE_sbolus_triggerJunction1351_1_Condition_Action(sb_1);
+>>>>>>> 3922117... clean sf_test
 		
 
 		-- condition Action : sb = 0;
 		
 		(sb_3) 
 	= 
+<<<<<<< HEAD
 		 if (( sbolusInter_timer > Step_Scaling_Factor(CONFIG_IN_Interval_Intermittent_Bolus, step_size) || sbolusInter_timer < Step_Scaling_Factor(CONFIG_IN_Interval_Intermittent_Bolus, step_size)  )) then 
 		ACTIVE_sbolus_triggerJunction1187__To__ACTIVE_sbolus_triggerJunction1188_1_Condition_Action(sb_2)
+=======
+		 if (( sbolusInter_timer>Step_Scaling_Factor(CONFIG_IN_Interval_Intermittent_Bolus,step_size) or sbolusInter_timer<Step_Scaling_Factor(CONFIG_IN_Interval_Intermittent_Bolus,step_size) )) then 
+		ACTIVE_sbolus_triggerJunction1351__To__ACTIVE_sbolus_triggerJunction1352_1_Condition_Action(sb_2)
+>>>>>>> 3922117... clean sf_test
 		 else (sb_2);
 		
 
 
+<<<<<<< HEAD
 
 		-- condition Action : sb = 0;
 		
 		(sb_4) 
 	= POINT__To__ACTIVE_sbolus_triggerJunction1187_1_Condition_Action(sb_1);
+=======
+-- transition trace :
+	--POINT__To__Junction1351_1, Junction1351__To__Junction1353_2
+		-- condition Action : sb=0;
+		
+		(sb_4) 
+	= POINT__To__ACTIVE_sbolus_triggerJunction1351_1_Condition_Action(sb_1);
+>>>>>>> 3922117... clean sf_test
 		
 
 		-- condition Action : sb = 1;
 		
 		(sb_5) 
 	= 
+<<<<<<< HEAD
 		 if (( sbolusInter_timer = Step_Scaling_Factor(CONFIG_IN_Interval_Intermittent_Bolus, step_size) )) then 
 		ACTIVE_sbolus_triggerJunction1187__To__ACTIVE_sbolus_triggerJunction1189_2_Condition_Action(sb_4)
+=======
+		 if (( sbolusInter_timer=Step_Scaling_Factor(CONFIG_IN_Interval_Intermittent_Bolus,step_size) )) then 
+		ACTIVE_sbolus_triggerJunction1351__To__ACTIVE_sbolus_triggerJunction1353_2_Condition_Action(sb_4)
+>>>>>>> 3922117... clean sf_test
 		 else (sb_4);
 		
 
@@ -1009,7 +1162,11 @@ tel
 
 
 
+<<<<<<< HEAD
 node POINT__To__OFF_sbolus_trigger2Junction1181_1_Condition_Action(sbolusInter_timer_1:real)
+=======
+node POINT__To__OFF_sbolus_trigger2Junction1345_1_Condition_Action(sbolusInter_timer_1:real)
+>>>>>>> 3922117... clean sf_test
 
 returns (sbolusInter_timer:real);
 
@@ -1047,7 +1204,11 @@ let
 	 automaton off_sbolus_trigger2
 
 	state POINTOFF_sbolus_trigger2:
+<<<<<<< HEAD
 	unless (idOFF_sbolus_trigger2_1=0) and ( sb ) restart POINT__TO__OFF_SBOLUS_TRIGGER2JUNCTION1181_1
+=======
+	unless (idOFF_sbolus_trigger2_1=0) and ( sb ) restart POINT__TO__OFF_SBOLUS_TRIGGER2JUNCTION1345_1
+>>>>>>> 3922117... clean sf_test
 
 
 
@@ -1061,16 +1222,29 @@ let
 
 
 
+<<<<<<< HEAD
 	state POINT__TO__OFF_SBOLUS_TRIGGER2JUNCTION1181_1:
+=======
+	state POINT__TO__OFF_SBOLUS_TRIGGER2JUNCTION1345_1:
+>>>>>>> 3922117... clean sf_test
 
 	 var 	sbolusInter_timer_2:real;
 	let
 
+<<<<<<< HEAD
 		
 		-- condition Action : sbolusInter_timer=0;
 		
 		(sbolusInter_timer_2) 
 	= POINT__To__OFF_sbolus_trigger2Junction1181_1_Condition_Action(sbolusInter_timer_1);
+=======
+		-- transition trace :
+	--POINT__To__Junction1345_1
+		-- condition Action : sbolusInter_timer=0;
+		
+		(sbolusInter_timer_2) 
+	= POINT__To__OFF_sbolus_trigger2Junction1345_1_Condition_Action(sbolusInter_timer_1);
+>>>>>>> 3922117... clean sf_test
 		
 
 	(idOFF_sbolus_trigger2, sbolusInter_timer) 
@@ -1117,20 +1291,7 @@ tel
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-node InfusionMGR_InfusionMGRJunction1146__To__Infusion_Manager_THERAPY_1_Condition_Action(IM_OUT_New_Infusion_1:bool)
+node InfusionMGR_InfusionMGRJunction1310__To__Infusion_Manager_THERAPY_1_Condition_Action(IM_OUT_New_Infusion_1:bool)
 
 returns (IM_OUT_New_Infusion:bool);
 
@@ -1154,6 +1315,50 @@ tel
 
 
 
+node InfusionMGR_InfusionMGRJunction1146__To__Infusion_Manager_THERAPY_1_Condition_Action(IM_OUT_New_Infusion_1:bool)
+
+returns (IM_OUT_New_Infusion:bool);
+
+
+<<<<<<< HEAD
+var 	IM_OUT_New_Infusion_2:bool;
+=======
+
+
+
+
+
+node PATIENT_ON__To__PATIENT_LOCKOUT_1_Condition_Action(IM_OUT_Lock_Timer_1:real)
+
+returns (IM_OUT_Lock_Timer:real);
+
+
+var 	IM_OUT_Lock_Timer_2:real;
+>>>>>>> 3922117... clean sf_test
+
+
+let
+
+
+
+<<<<<<< HEAD
+	IM_OUT_New_Infusion_2 
+	= true;
+	
+
+	(IM_OUT_New_Infusion) 
+	= (IM_OUT_New_Infusion_2);
+=======
+	IM_OUT_Lock_Timer_2 
+	= 0.;
+	
+
+	(IM_OUT_Lock_Timer) 
+	= (IM_OUT_Lock_Timer_2);
+>>>>>>> 3922117... clean sf_test
+	
+
+tel
 
 
 
@@ -1162,7 +1367,19 @@ tel
 
 
 
+
+
+
+<<<<<<< HEAD
 node Infusion_Manager_IDLE__To__InfusionMGR_InfusionMGRJunction1146_2_Condition_Action(IM_OUT_Is_Locked_Out_1:bool;
+=======
+
+
+
+
+
+node Infusion_Manager_IDLE__To__InfusionMGR_InfusionMGRJunction1310_2_Condition_Action(IM_OUT_Is_Locked_Out_1:bool;
+>>>>>>> 3922117... clean sf_test
 	IM_OUT_Lock_Timer_1:real;
 	inPatientBolus_1:bool;
 	number_pbolus_1:int)
@@ -1216,6 +1433,31 @@ tel
 
 node InfusionMGR_InfusionMGRJunction1159__To__InfusionMGR_InfusionMGRJunction1158_1_Condition_Action(IM_OUT_Actual_Infusion_Duration_1:real)
 
+<<<<<<< HEAD
+returns (IM_OUT_Actual_Infusion_Duration:real);
+
+
+var 	IM_OUT_Actual_Infusion_Duration_2:real;
+=======
+>>>>>>> 3922117... clean sf_test
+
+
+
+
+
+<<<<<<< HEAD
+	IM_OUT_Actual_Infusion_Duration_2 
+	=  IM_OUT_Actual_Infusion_Duration_1  + 1.;
+	
+
+	(IM_OUT_Actual_Infusion_Duration) 
+	= (IM_OUT_Actual_Infusion_Duration_2);
+	
+=======
+
+node InfusionMGR_InfusionMGRJunction1323__To__InfusionMGR_InfusionMGRJunction1322_1_Condition_Action(IM_OUT_Actual_Infusion_Duration_1:real)
+>>>>>>> 3922117... clean sf_test
+
 returns (IM_OUT_Actual_Infusion_Duration:real);
 
 
@@ -1225,6 +1467,13 @@ var 	IM_OUT_Actual_Infusion_Duration_2:real;
 let
 
 
+<<<<<<< HEAD
+
+
+
+node PATIENT_ON__To__PATIENT_LOCKOUT_1_Condition_Action(IM_OUT_Lock_Timer_1:real)
+=======
+>>>>>>> 3922117... clean sf_test
 
 	IM_OUT_Actual_Infusion_Duration_2 
 	=  IM_OUT_Actual_Infusion_Duration_1  + 1.;
@@ -1242,29 +1491,6 @@ tel
 
 
 
-
-
-node PATIENT_ON__To__PATIENT_LOCKOUT_1_Condition_Action(IM_OUT_Lock_Timer_1:real)
-
-returns (IM_OUT_Lock_Timer:real);
-
-
-var 	IM_OUT_Lock_Timer_2:real;
-
-
-let
-
-
-
-	IM_OUT_Lock_Timer_2 
-	= 0.;
-	
-
-	(IM_OUT_Lock_Timer) 
-	= (IM_OUT_Lock_Timer_2);
-	
-
-tel
 
 
 
@@ -1296,8 +1522,23 @@ let
 
 
 	-- set state as active 
+<<<<<<< HEAD
 	idPAUSED_Manual_Paused_2 
 	= 1136;
+=======
+	idPAUSED_Arbiter_2 
+	= 1294;
+	
+
+	IM_OUT_Flow_Rate_Commanded_2 
+	= if (not isInner) then CONFIG_IN_Flow_Rate_KVO
+	 else IM_OUT_Flow_Rate_Commanded_1;
+	
+
+	IM_OUT_Current_System_Mode_2 
+	= if (not isInner) then 8
+	 else IM_OUT_Current_System_Mode_1;
+>>>>>>> 3922117... clean sf_test
 	
 
 	(idPAUSED_Manual_Paused) 
@@ -1383,9 +1624,21 @@ let
 
 
 
+<<<<<<< HEAD
 	-- set state as inactive 
 	idPAUSED_Manual_Paused_2
 	 = if (not isInner) then 0 else idPAUSED_Manual_Paused_1;
+=======
+	-- set state as active 
+	idPAUSED_Arbiter_2 
+	= 1293;
+	
+
+	IM_OUT_Flow_Rate_Commanded_2 
+	= if (not isInner) then CONFIG_IN_Flow_Rate_KVO
+	 else IM_OUT_Flow_Rate_Commanded_1;
+	
+>>>>>>> 3922117... clean sf_test
 
 
 	(idPAUSED_Manual_Paused) 
@@ -1540,7 +1793,11 @@ let
 
 	-- set state as active 
 	idPAUSED_Arbiter_2 
+<<<<<<< HEAD
 	= 1130;
+=======
+	= 1292;
+>>>>>>> 3922117... clean sf_test
 	
 
 	IM_OUT_Flow_Rate_Commanded_2 
@@ -1667,8 +1924,13 @@ let
 
 
 	-- set state as active 
+<<<<<<< HEAD
 	idPAUSED_Arbiter_2 
 	= 1129;
+=======
+	idTHERAPY_PAUSED_2 
+	= 1291;
+>>>>>>> 3922117... clean sf_test
 	
 
 	IM_OUT_Flow_Rate_Commanded_2 
@@ -1681,6 +1943,7 @@ let
 	 else IM_OUT_Current_System_Mode_1;
 	
 
+<<<<<<< HEAD
 	(idPAUSED_Arbiter, IM_OUT_Flow_Rate_Commanded, IM_OUT_Current_System_Mode) 
 	= (idPAUSED_Arbiter_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2);
 	
@@ -1688,33 +1951,112 @@ let
 tel
 
 
+=======
+-- transition trace :
+	--POINT__To__Junction1357_1, Junction1357__To__Arbiter_Paused_NoKVO_1
+		(idPAUSED_Arbiter_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2) 
+	= 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=4 )) then 
+		Arbiter_Paused_NoKVO_en(idPAUSED_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
+		 else (idPAUSED_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
+		
+
+
+-- transition trace :
+	--POINT__To__Junction1357_1, Junction1357__To__Arbiter_Paused_KVO_2
+		(idPAUSED_Arbiter_3, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Current_System_Mode_3) 
+	= 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=3 )) then 
+		Arbiter_Paused_KVO_en(idPAUSED_Arbiter_1, CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
+		 else (idPAUSED_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
+		
+
+
+-- transition trace :
+	--POINT__To__Junction1357_1, Junction1357__To__Arbiter_Manual_Paused_KVO_3
+		(idPAUSED_Arbiter_4, IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4) 
+	= Arbiter_Manual_Paused_KVO_en(idPAUSED_Arbiter_1, CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false);
+		
+>>>>>>> 3922117... clean sf_test
 
 
 
+<<<<<<< HEAD
 --During action for state :Arbiter_Paused_KVO
 node Arbiter_Paused_KVO_du(CONFIG_IN_Flow_Rate_KVO:int;
 	IM_OUT_Flow_Rate_Commanded_1:int;
 	IM_OUT_Current_System_Mode_1:int)
+=======
+	
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=4 )) then 
+		(idPAUSED_Arbiter_2, idTHERAPY_PAUSED_2, IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2)
+		 else
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=3 )) then 
+		(idPAUSED_Arbiter_3, idTHERAPY_PAUSED_2, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3)
+		 else (idPAUSED_Arbiter_4, idTHERAPY_PAUSED_2, IM_OUT_Current_System_Mode_4, IM_OUT_Flow_Rate_Commanded_4)
+>>>>>>> 3922117... clean sf_test
 
 returns (IM_OUT_Flow_Rate_Commanded:int;
 	IM_OUT_Current_System_Mode:int);
 
 
+<<<<<<< HEAD
 var 	IM_OUT_Flow_Rate_Commanded_2:int;
 	IM_OUT_Current_System_Mode_2:int;
+=======
+	(idPAUSED_Arbiter_6, IM_OUT_Flow_Rate_Commanded_6, IM_OUT_Current_System_Mode_6) 
+	= 
+	if ( idPAUSED_Arbiter_1 = 1292) then
+	Arbiter_Paused_NoKVO_en(idPAUSED_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
+	 else (idPAUSED_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
+>>>>>>> 3922117... clean sf_test
 
 
+<<<<<<< HEAD
 let
+=======
+	(idPAUSED_Arbiter_7, IM_OUT_Flow_Rate_Commanded_7, IM_OUT_Current_System_Mode_7) 
+	= 
+	if ( idPAUSED_Arbiter_1 = 1293) then
+	Arbiter_Paused_KVO_en(idPAUSED_Arbiter_1, CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
+	 else (idPAUSED_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
+>>>>>>> 3922117... clean sf_test
 
 
+<<<<<<< HEAD
+=======
+	(idPAUSED_Arbiter_8, IM_OUT_Flow_Rate_Commanded_8, IM_OUT_Current_System_Mode_8) 
+	= 
+	if ( idPAUSED_Arbiter_1 = 1294) then
+	Arbiter_Manual_Paused_KVO_en(idPAUSED_Arbiter_1, CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
+	 else (idPAUSED_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
+>>>>>>> 3922117... clean sf_test
 
 	IM_OUT_Flow_Rate_Commanded_2 
 	= CONFIG_IN_Flow_Rate_KVO;
 	
 
+<<<<<<< HEAD
 	IM_OUT_Current_System_Mode_2 
 	= 7;
 	
+=======
+	(idPAUSED_Arbiter_9, idTHERAPY_PAUSED_4, IM_OUT_Current_System_Mode_9, IM_OUT_Flow_Rate_Commanded_9) 
+	= 
+		 if ( idPAUSED_Arbiter_1 = 0) then 
+		(idPAUSED_Arbiter_5, idTHERAPY_PAUSED_3, IM_OUT_Current_System_Mode_5, IM_OUT_Flow_Rate_Commanded_5)
+		 else
+		 if ( idPAUSED_Arbiter_1 = 1292) then 
+		(idPAUSED_Arbiter_6, idTHERAPY_PAUSED_3, IM_OUT_Current_System_Mode_6, IM_OUT_Flow_Rate_Commanded_6)
+		 else
+		 if ( idPAUSED_Arbiter_1 = 1293) then 
+		(idPAUSED_Arbiter_7, idTHERAPY_PAUSED_3, IM_OUT_Current_System_Mode_7, IM_OUT_Flow_Rate_Commanded_7)
+		 else
+		 if ( idPAUSED_Arbiter_1 = 1294) then 
+		(idPAUSED_Arbiter_8, idTHERAPY_PAUSED_3, IM_OUT_Current_System_Mode_8, IM_OUT_Flow_Rate_Commanded_8)
+		 else (idPAUSED_Arbiter_1, idTHERAPY_PAUSED_2, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1);
+
+>>>>>>> 3922117... clean sf_test
 
 	(IM_OUT_Flow_Rate_Commanded, IM_OUT_Current_System_Mode) 
 	= (IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2);
@@ -1751,12 +2093,52 @@ let
 	= if (not isInner) then CONFIG_IN_Flow_Rate_KVO
 	 else IM_OUT_Flow_Rate_Commanded_1;
 	
+<<<<<<< HEAD
+=======
+	(IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2, idPAUSED_Arbiter_2) 
+	= 
+	if ( idPAUSED_Arbiter_1 = 1292) then
+	Arbiter_Paused_NoKVO_ex(IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1, false)
+	 else (IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1);
+
+	
+
+	(IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Current_System_Mode_3, idPAUSED_Arbiter_3) 
+	= 
+	if ( idPAUSED_Arbiter_1 = 1293) then
+	Arbiter_Paused_KVO_ex(CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1, false)
+	 else (IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1);
+
+	
+
+	(IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4, idPAUSED_Arbiter_4) 
+	= 
+	if ( idPAUSED_Arbiter_1 = 1294) then
+	Arbiter_Manual_Paused_KVO_ex(CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1, false)
+	 else (IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1);
+>>>>>>> 3922117... clean sf_test
 
 	IM_OUT_Current_System_Mode_2 
 	= if (not isInner) then 7
 	 else IM_OUT_Current_System_Mode_1;
 	
 
+<<<<<<< HEAD
+=======
+	(IM_OUT_Flow_Rate_Commanded_5, IM_OUT_Current_System_Mode_5, idPAUSED_Arbiter_5) 
+	= 
+		 if ( idPAUSED_Arbiter_1 = 1292) then 
+		(IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2, idPAUSED_Arbiter_2)
+		 else
+		 if ( idPAUSED_Arbiter_1 = 1293) then 
+		(IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Current_System_Mode_3, idPAUSED_Arbiter_3)
+		 else
+		 if ( idPAUSED_Arbiter_1 = 1294) then 
+		(IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4, idPAUSED_Arbiter_4)
+		 else (IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1);
+
+
+>>>>>>> 3922117... clean sf_test
 	-- set state as inactive 
 	idPAUSED_Arbiter_2
 	 = if (not isInner) then 0 else idPAUSED_Arbiter_1;
@@ -1794,8 +2176,13 @@ let
 
 
 	-- set state as active 
+<<<<<<< HEAD
 	idPAUSED_Arbiter_2 
 	= 1128;
+=======
+	idPAUSED_Manual_Paused_2 
+	= 1299;
+>>>>>>> 3922117... clean sf_test
 	
 
 	IM_OUT_Flow_Rate_Commanded_2 
@@ -1872,9 +2259,15 @@ let
 
 
 
+<<<<<<< HEAD
 	IM_OUT_Flow_Rate_Commanded_2 
 	= if (not isInner) then 0
 	 else IM_OUT_Flow_Rate_Commanded_1;
+=======
+	-- set state as active 
+	idPAUSED_Manual_Paused_2 
+	= 1300;
+>>>>>>> 3922117... clean sf_test
 	
 
 	IM_OUT_Current_System_Mode_2 
@@ -1924,8 +2317,13 @@ let
 
 
 	-- set state as active 
+<<<<<<< HEAD
 	idACTIVE_INTERMITTENT_2 
 	= 1123;
+=======
+	idTHERAPY_PAUSED_2 
+	= 1298;
+>>>>>>> 3922117... clean sf_test
 	
 
 	sbolus_timer_2 
@@ -1950,8 +2348,24 @@ let
 tel
 
 
+<<<<<<< HEAD
+=======
+	(idPAUSED_Manual_Paused_5) 
+	= 
+	if ( idPAUSED_Manual_Paused_1 = 1299) then
+	Manual_Paused_OFF_en(idPAUSED_Manual_Paused_1, false)
+	 else (idPAUSED_Manual_Paused_1);
+>>>>>>> 3922117... clean sf_test
 
 
+<<<<<<< HEAD
+=======
+	(idPAUSED_Manual_Paused_6) 
+	= 
+	if ( idPAUSED_Manual_Paused_1 = 1300) then
+	Manual_Paused_ON_en(idPAUSED_Manual_Paused_1, false)
+	 else (idPAUSED_Manual_Paused_1);
+>>>>>>> 3922117... clean sf_test
 
 --During action for state :INTERMITTENT_OFF
 node INTERMITTENT_OFF_du(sbolusInter_timer_1:real;
@@ -1959,8 +2373,22 @@ node INTERMITTENT_OFF_du(sbolusInter_timer_1:real;
 	step_size:real;
 	sbolus_req_1:bool)
 
+<<<<<<< HEAD
 returns (sbolusInter_timer:real;
 	sbolus_req:bool);
+=======
+	(idPAUSED_Manual_Paused_7, idTHERAPY_PAUSED_4) 
+	= 
+		 if ( idPAUSED_Manual_Paused_1 = 0) then 
+		(idPAUSED_Manual_Paused_4, idTHERAPY_PAUSED_3)
+		 else
+		 if ( idPAUSED_Manual_Paused_1 = 1299) then 
+		(idPAUSED_Manual_Paused_5, idTHERAPY_PAUSED_3)
+		 else
+		 if ( idPAUSED_Manual_Paused_1 = 1300) then 
+		(idPAUSED_Manual_Paused_6, idTHERAPY_PAUSED_3)
+		 else (idPAUSED_Manual_Paused_1, idTHERAPY_PAUSED_2);
+>>>>>>> 3922117... clean sf_test
 
 
 var 	sbolusInter_timer_2:real;
@@ -1993,14 +2421,42 @@ tel
 node INTERMITTENT_OFF_ex(idACTIVE_INTERMITTENT_1:int;
 	isInner:bool)
 
+<<<<<<< HEAD
 returns (idACTIVE_INTERMITTENT:int);
+=======
+	
+	(idPAUSED_Manual_Paused_2) 
+	= 
+	if ( idPAUSED_Manual_Paused_1 = 1299) then
+	Manual_Paused_OFF_ex(idPAUSED_Manual_Paused_1, false)
+	 else (idPAUSED_Manual_Paused_1);
+>>>>>>> 3922117... clean sf_test
 
 
+<<<<<<< HEAD
 var 	idACTIVE_INTERMITTENT_2:int;
+=======
+	(idPAUSED_Manual_Paused_3) 
+	= 
+	if ( idPAUSED_Manual_Paused_1 = 1300) then
+	Manual_Paused_ON_ex(idPAUSED_Manual_Paused_1, false)
+	 else (idPAUSED_Manual_Paused_1);
+>>>>>>> 3922117... clean sf_test
 
 
+<<<<<<< HEAD
 let
 
+=======
+	(idPAUSED_Manual_Paused_4) 
+	= 
+		 if ( idPAUSED_Manual_Paused_1 = 1299) then 
+		(idPAUSED_Manual_Paused_2)
+		 else
+		 if ( idPAUSED_Manual_Paused_1 = 1300) then 
+		(idPAUSED_Manual_Paused_3)
+		 else (idPAUSED_Manual_Paused_1);
+>>>>>>> 3922117... clean sf_test
 
 
 	-- set state as inactive 
@@ -2035,8 +2491,14 @@ let
 
 
 
+<<<<<<< HEAD
 	sbolus_timer_2 
 	=  sbolus_timer_1  + 1.;
+=======
+	-- set state as active 
+	idPAUSED_Alarm_Paused_2 
+	= 1296;
+>>>>>>> 3922117... clean sf_test
 	
 
 	sbolus_req_2 
@@ -2113,8 +2575,13 @@ let
 
 
 	-- set state as active 
+<<<<<<< HEAD
 	idACTIVE_INTERMITTENT_2 
 	= 1122;
+=======
+	idPAUSED_Alarm_Paused_2 
+	= 1297;
+>>>>>>> 3922117... clean sf_test
 	
 
 	(idACTIVE_INTERMITTENT) 
@@ -2189,8 +2656,14 @@ let
 
 
 
+<<<<<<< HEAD
 	IM_OUT_Is_Locked_Out_2 
 	= true;
+=======
+	-- set state as active 
+	idTHERAPY_PAUSED_2 
+	= 1295;
+>>>>>>> 3922117... clean sf_test
 	
 
 	IM_OUT_Lock_Timer_2 
@@ -2207,17 +2680,47 @@ tel
 
 
 
+<<<<<<< HEAD
 -- Exit action for state :PATIENT_LOCKOUT
 node PATIENT_LOCKOUT_ex(idACTIVE_PATIENT_1:int;
 	isInner:bool)
+=======
+	(idPAUSED_Alarm_Paused_5) 
+	= 
+	if ( idPAUSED_Alarm_Paused_1 = 1296) then
+	Alarm_Paused_OFF_en(idPAUSED_Alarm_Paused_1, false)
+	 else (idPAUSED_Alarm_Paused_1);
+>>>>>>> 3922117... clean sf_test
 
 returns (idACTIVE_PATIENT:int);
 
+<<<<<<< HEAD
+=======
+	(idPAUSED_Alarm_Paused_6) 
+	= 
+	if ( idPAUSED_Alarm_Paused_1 = 1297) then
+	Alarm_Paused_ON_en(idPAUSED_Alarm_Paused_1, false)
+	 else (idPAUSED_Alarm_Paused_1);
+>>>>>>> 3922117... clean sf_test
 
 var 	idACTIVE_PATIENT_2:int;
 
+<<<<<<< HEAD
 
 let
+=======
+	(idPAUSED_Alarm_Paused_7, idTHERAPY_PAUSED_4) 
+	= 
+		 if ( idPAUSED_Alarm_Paused_1 = 0) then 
+		(idPAUSED_Alarm_Paused_4, idTHERAPY_PAUSED_3)
+		 else
+		 if ( idPAUSED_Alarm_Paused_1 = 1296) then 
+		(idPAUSED_Alarm_Paused_5, idTHERAPY_PAUSED_3)
+		 else
+		 if ( idPAUSED_Alarm_Paused_1 = 1297) then 
+		(idPAUSED_Alarm_Paused_6, idTHERAPY_PAUSED_3)
+		 else (idPAUSED_Alarm_Paused_1, idTHERAPY_PAUSED_2);
+>>>>>>> 3922117... clean sf_test
 
 
 
@@ -2264,12 +2767,21 @@ let
 	idACTIVE_PATIENT_2 
 	= 1119;
 	
+<<<<<<< HEAD
+=======
+	(idPAUSED_Alarm_Paused_2) 
+	= 
+	if ( idPAUSED_Alarm_Paused_1 = 1296) then
+	Alarm_Paused_OFF_ex(idPAUSED_Alarm_Paused_1, false)
+	 else (idPAUSED_Alarm_Paused_1);
+>>>>>>> 3922117... clean sf_test
 
 	pbolus_timer_2 
 	= if (not isInner) then 0.
 	 else pbolus_timer_1;
 	
 
+<<<<<<< HEAD
 	inPatientBolus_2 
 	= if (not isInner) then false
 	 else inPatientBolus_1;
@@ -2278,6 +2790,32 @@ let
 	IM_OUT_Is_Locked_Out_2 
 	= if (not isInner) then false
 	 else IM_OUT_Is_Locked_Out_1;
+=======
+	(idPAUSED_Alarm_Paused_3) 
+	= 
+	if ( idPAUSED_Alarm_Paused_1 = 1297) then
+	Alarm_Paused_ON_ex(idPAUSED_Alarm_Paused_1, false)
+	 else (idPAUSED_Alarm_Paused_1);
+
+	
+
+	(idPAUSED_Alarm_Paused_4) 
+	= 
+		 if ( idPAUSED_Alarm_Paused_1 = 1296) then 
+		(idPAUSED_Alarm_Paused_2)
+		 else
+		 if ( idPAUSED_Alarm_Paused_1 = 1297) then 
+		(idPAUSED_Alarm_Paused_3)
+		 else (idPAUSED_Alarm_Paused_1);
+
+
+	-- set state as inactive 
+	idTHERAPY_PAUSED_2
+	 = if (not isInner) then 0 else idTHERAPY_PAUSED_1;
+
+	idPAUSED_Alarm_Paused_5 
+	= 0;
+>>>>>>> 3922117... clean sf_test
 	
 
 	(idACTIVE_PATIENT, pbolus_timer, inPatientBolus, IM_OUT_Is_Locked_Out) 
@@ -2304,9 +2842,16 @@ let
 
 
 
+<<<<<<< HEAD
 	-- set state as inactive 
 	idACTIVE_PATIENT_2
 	 = if (not isInner) then 0 else idACTIVE_PATIENT_1;
+=======
+	-- set state as active 
+	idInfusion_Manager_THERAPY_2 
+	= 1290;
+	
+>>>>>>> 3922117... clean sf_test
 
 
 	(idACTIVE_PATIENT) 
@@ -2394,8 +2939,24 @@ let
 
 
 
+<<<<<<< HEAD
 	pbolus_timer_2 
 	=  pbolus_timer_1  + 1.;
+=======
+	-- set state as active 
+	idACTIVE_Arbiter_2 
+	= 1276;
+	
+
+	IM_OUT_Flow_Rate_Commanded_2 
+	= if (not isInner) then CONFIG_IN_Flow_Rate_Intermittent_Bolus
+	 else IM_OUT_Flow_Rate_Commanded_1;
+	
+
+	IM_OUT_Current_System_Mode_2 
+	= if (not isInner) then 3
+	 else IM_OUT_Current_System_Mode_1;
+>>>>>>> 3922117... clean sf_test
 	
 
 	(pbolus_timer) 
@@ -2489,9 +3050,21 @@ let
 
 
 
+<<<<<<< HEAD
 	-- set state as inactive 
 	idACTIVE_BASAL_2
 	 = if (not isInner) then 0 else idACTIVE_BASAL_1;
+=======
+	-- set state as active 
+	idACTIVE_Arbiter_2 
+	= 1275;
+	
+
+	IM_OUT_Flow_Rate_Commanded_2 
+	= if (not isInner) then CONFIG_IN_Flow_Rate_Patient_Bolus
+	 else IM_OUT_Flow_Rate_Commanded_1;
+	
+>>>>>>> 3922117... clean sf_test
 
 
 	(idACTIVE_BASAL) 
@@ -2587,7 +3160,11 @@ let
 
 	-- set state as active 
 	idACTIVE_Arbiter_2 
+<<<<<<< HEAD
 	= 1113;
+=======
+	= 1277;
+>>>>>>> 3922117... clean sf_test
 	
 
 	IM_OUT_Flow_Rate_Commanded_2 
@@ -2697,8 +3274,13 @@ let
 
 
 	-- set state as active 
+<<<<<<< HEAD
 	idACTIVE_Arbiter_2 
 	= 1112;
+=======
+	idTHERAPY_ACTIVE_2 
+	= 1274;
+>>>>>>> 3922117... clean sf_test
 	
 
 	IM_OUT_Flow_Rate_Commanded_2 
@@ -2711,6 +3293,7 @@ let
 	 else IM_OUT_Current_System_Mode_1;
 	
 
+<<<<<<< HEAD
 	(idACTIVE_Arbiter, IM_OUT_Flow_Rate_Commanded, IM_OUT_Current_System_Mode) 
 	= (idACTIVE_Arbiter_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2);
 	
@@ -2718,33 +3301,112 @@ let
 tel
 
 
+=======
+-- transition trace :
+	--POINT__To__Junction1321_1, Junction1321__To__Arbiter_Patient_Bolus_1
+		(idACTIVE_Arbiter_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2) 
+	= 
+		 if (( (idACTIVE_PATIENT_1 = 1282) )) then 
+		Arbiter_Patient_Bolus_en(idACTIVE_Arbiter_1, CONFIG_IN_Flow_Rate_Patient_Bolus, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
+		 else (idACTIVE_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
+		
+
+
+-- transition trace :
+	--POINT__To__Junction1321_1, Junction1321__To__Arbiter_Intermittent_Bolus_2
+		(idACTIVE_Arbiter_3, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Current_System_Mode_3) 
+	= 
+		 if (( (idACTIVE_INTERMITTENT_1 = 1286) )) then 
+		Arbiter_Intermittent_Bolus_en(idACTIVE_Arbiter_1, CONFIG_IN_Flow_Rate_Intermittent_Bolus, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
+		 else (idACTIVE_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
+		
+
+
+-- transition trace :
+	--POINT__To__Junction1321_1, Junction1321__To__Arbiter_Basal_3
+		(idACTIVE_Arbiter_4, IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4) 
+	= Arbiter_Basal_en(idACTIVE_Arbiter_1, CONFIG_IN_Flow_Rate_Basal, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false);
+		
+>>>>>>> 3922117... clean sf_test
 
 
 
+<<<<<<< HEAD
 --During action for state :Arbiter_Intermittent_Bolus
 node Arbiter_Intermittent_Bolus_du(CONFIG_IN_Flow_Rate_Intermittent_Bolus:int;
 	IM_OUT_Flow_Rate_Commanded_1:int;
 	IM_OUT_Current_System_Mode_1:int)
+=======
+	
+		 if (( (idACTIVE_PATIENT_1 = 1282) )) then 
+		(idACTIVE_Arbiter_2, idTHERAPY_ACTIVE_2, IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2)
+		 else
+		 if (( (idACTIVE_INTERMITTENT_1 = 1286) )) then 
+		(idACTIVE_Arbiter_3, idTHERAPY_ACTIVE_2, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3)
+		 else (idACTIVE_Arbiter_4, idTHERAPY_ACTIVE_2, IM_OUT_Current_System_Mode_4, IM_OUT_Flow_Rate_Commanded_4)
+>>>>>>> 3922117... clean sf_test
 
 returns (IM_OUT_Flow_Rate_Commanded:int;
 	IM_OUT_Current_System_Mode:int);
 
 
+<<<<<<< HEAD
 var 	IM_OUT_Flow_Rate_Commanded_2:int;
 	IM_OUT_Current_System_Mode_2:int;
+=======
+	(idACTIVE_Arbiter_6, IM_OUT_Flow_Rate_Commanded_6, IM_OUT_Current_System_Mode_6) 
+	= 
+	if ( idACTIVE_Arbiter_1 = 1275) then
+	Arbiter_Patient_Bolus_en(idACTIVE_Arbiter_1, CONFIG_IN_Flow_Rate_Patient_Bolus, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
+	 else (idACTIVE_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
+>>>>>>> 3922117... clean sf_test
 
 
+<<<<<<< HEAD
 let
+=======
+	(idACTIVE_Arbiter_7, IM_OUT_Flow_Rate_Commanded_7, IM_OUT_Current_System_Mode_7) 
+	= 
+	if ( idACTIVE_Arbiter_1 = 1276) then
+	Arbiter_Intermittent_Bolus_en(idACTIVE_Arbiter_1, CONFIG_IN_Flow_Rate_Intermittent_Bolus, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
+	 else (idACTIVE_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
+>>>>>>> 3922117... clean sf_test
 
 
+<<<<<<< HEAD
+=======
+	(idACTIVE_Arbiter_8, IM_OUT_Flow_Rate_Commanded_8, IM_OUT_Current_System_Mode_8) 
+	= 
+	if ( idACTIVE_Arbiter_1 = 1277) then
+	Arbiter_Basal_en(idACTIVE_Arbiter_1, CONFIG_IN_Flow_Rate_Basal, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
+	 else (idACTIVE_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
+>>>>>>> 3922117... clean sf_test
 
 	IM_OUT_Flow_Rate_Commanded_2 
 	= CONFIG_IN_Flow_Rate_Intermittent_Bolus;
 	
 
+<<<<<<< HEAD
 	IM_OUT_Current_System_Mode_2 
 	= 3;
 	
+=======
+	(idACTIVE_Arbiter_9, idTHERAPY_ACTIVE_4, IM_OUT_Current_System_Mode_9, IM_OUT_Flow_Rate_Commanded_9) 
+	= 
+		 if ( idACTIVE_Arbiter_1 = 0) then 
+		(idACTIVE_Arbiter_5, idTHERAPY_ACTIVE_3, IM_OUT_Current_System_Mode_5, IM_OUT_Flow_Rate_Commanded_5)
+		 else
+		 if ( idACTIVE_Arbiter_1 = 1275) then 
+		(idACTIVE_Arbiter_6, idTHERAPY_ACTIVE_3, IM_OUT_Current_System_Mode_6, IM_OUT_Flow_Rate_Commanded_6)
+		 else
+		 if ( idACTIVE_Arbiter_1 = 1276) then 
+		(idACTIVE_Arbiter_7, idTHERAPY_ACTIVE_3, IM_OUT_Current_System_Mode_7, IM_OUT_Flow_Rate_Commanded_7)
+		 else
+		 if ( idACTIVE_Arbiter_1 = 1277) then 
+		(idACTIVE_Arbiter_8, idTHERAPY_ACTIVE_3, IM_OUT_Current_System_Mode_8, IM_OUT_Flow_Rate_Commanded_8)
+		 else (idACTIVE_Arbiter_1, idTHERAPY_ACTIVE_2, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1);
+
+>>>>>>> 3922117... clean sf_test
 
 	(IM_OUT_Flow_Rate_Commanded, IM_OUT_Current_System_Mode) 
 	= (IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2);
@@ -2770,6 +3432,47 @@ let
 
 
 
+<<<<<<< HEAD
+=======
+	
+	(idACTIVE_Arbiter_2) 
+	= 
+	if ( idACTIVE_Arbiter_1 = 1275) then
+	Arbiter_Patient_Bolus_ex(idACTIVE_Arbiter_1, false)
+	 else (idACTIVE_Arbiter_1);
+
+	
+
+	(idACTIVE_Arbiter_3) 
+	= 
+	if ( idACTIVE_Arbiter_1 = 1276) then
+	Arbiter_Intermittent_Bolus_ex(idACTIVE_Arbiter_1, false)
+	 else (idACTIVE_Arbiter_1);
+
+	
+
+	(idACTIVE_Arbiter_4) 
+	= 
+	if ( idACTIVE_Arbiter_1 = 1277) then
+	Arbiter_Basal_ex(idACTIVE_Arbiter_1, false)
+	 else (idACTIVE_Arbiter_1);
+
+	
+
+	(idACTIVE_Arbiter_5) 
+	= 
+		 if ( idACTIVE_Arbiter_1 = 1275) then 
+		(idACTIVE_Arbiter_2)
+		 else
+		 if ( idACTIVE_Arbiter_1 = 1276) then 
+		(idACTIVE_Arbiter_3)
+		 else
+		 if ( idACTIVE_Arbiter_1 = 1277) then 
+		(idACTIVE_Arbiter_4)
+		 else (idACTIVE_Arbiter_1);
+
+
+>>>>>>> 3922117... clean sf_test
 	-- set state as inactive 
 	idACTIVE_Arbiter_2
 	 = if (not isInner) then 0 else idACTIVE_Arbiter_1;
@@ -2808,8 +3511,18 @@ let
 
 
 	-- set state as active 
+<<<<<<< HEAD
 	idACTIVE_Arbiter_2 
 	= 1111;
+=======
+	idACTIVE_INTERMITTENT_2 
+	= 1287;
+	
+
+	sbolus_timer_2 
+	= if (not isInner) then 0.
+	 else sbolus_timer_1;
+>>>>>>> 3922117... clean sf_test
 	
 
 	IM_OUT_Flow_Rate_Commanded_2 
@@ -3004,6 +3717,7 @@ let
 
 
 
+<<<<<<< HEAD
 	
 	(idPAUSED_Manual_Paused_2) 
 	= 
@@ -3011,6 +3725,11 @@ let
 	Manual_Paused_OFF_ex(idPAUSED_Manual_Paused_1, false)
 	 else (idPAUSED_Manual_Paused_1);
 
+=======
+	-- set state as active 
+	idACTIVE_INTERMITTENT_2 
+	= 1286;
+>>>>>>> 3922117... clean sf_test
 	
 
 	(idPAUSED_Manual_Paused_3) 
@@ -3069,8 +3788,13 @@ let
 
 
 	-- set state as active 
+<<<<<<< HEAD
 	idTHERAPY_PAUSED_2 
 	= 1131;
+=======
+	idTHERAPY_ACTIVE_2 
+	= 1285;
+>>>>>>> 3922117... clean sf_test
 	
 
 	
@@ -3103,17 +3827,29 @@ let
 
 	(idPAUSED_Alarm_Paused_5) 
 	= 
+<<<<<<< HEAD
 	if ( idPAUSED_Alarm_Paused_1 = 1132) then
 	Alarm_Paused_OFF_en(idPAUSED_Alarm_Paused_1, false)
 	 else (idPAUSED_Alarm_Paused_1);
+=======
+	if ( idACTIVE_INTERMITTENT_1 = 1286) then
+	INTERMITTENT_ON_en(idACTIVE_INTERMITTENT_1, false)
+	 else (idACTIVE_INTERMITTENT_1);
+>>>>>>> 3922117... clean sf_test
 
 	
 
 	(idPAUSED_Alarm_Paused_6) 
 	= 
+<<<<<<< HEAD
 	if ( idPAUSED_Alarm_Paused_1 = 1133) then
 	Alarm_Paused_ON_en(idPAUSED_Alarm_Paused_1, false)
 	 else (idPAUSED_Alarm_Paused_1);
+=======
+	if ( idACTIVE_INTERMITTENT_1 = 1287) then
+	INTERMITTENT_OFF_en(idACTIVE_INTERMITTENT_1, sbolus_timer_1, sbolusInter_timer_2, CONFIG_IN_Interval_Intermittent_Bolus, step_size, sbolus_req_1, false)
+	 else (idACTIVE_INTERMITTENT_1, sbolus_timer_1, sbolusInter_timer_2, sbolus_req_1);
+>>>>>>> 3922117... clean sf_test
 
 	
 
@@ -3122,12 +3858,21 @@ let
 		 if ( idPAUSED_Alarm_Paused_1 = 0) then 
 		(idPAUSED_Alarm_Paused_4, idTHERAPY_PAUSED_3)
 		 else
+<<<<<<< HEAD
 		 if ( idPAUSED_Alarm_Paused_1 = 1132) then 
 		(idPAUSED_Alarm_Paused_5, idTHERAPY_PAUSED_3)
 		 else
 		 if ( idPAUSED_Alarm_Paused_1 = 1133) then 
 		(idPAUSED_Alarm_Paused_6, idTHERAPY_PAUSED_3)
 		 else (idPAUSED_Alarm_Paused_1, idTHERAPY_PAUSED_2);
+=======
+		 if ( idACTIVE_INTERMITTENT_1 = 1286) then 
+		(idACTIVE_INTERMITTENT_4, idTHERAPY_ACTIVE_3, sbolusInter_timer_4, sbolus_req_3, sbolus_timer_3)
+		 else
+		 if ( idACTIVE_INTERMITTENT_1 = 1287) then 
+		(idACTIVE_INTERMITTENT_5, idTHERAPY_ACTIVE_3, sbolusInter_timer_5, sbolus_req_4, sbolus_timer_4)
+		 else (idACTIVE_INTERMITTENT_1, idTHERAPY_ACTIVE_2, sbolusInter_timer_2, sbolus_req_1, sbolus_timer_1);
+>>>>>>> 3922117... clean sf_test
 
 
 	(idPAUSED_Alarm_Paused, idTHERAPY_PAUSED) 
@@ -3202,6 +3947,15 @@ tel
 
 
 
+<<<<<<< HEAD
+=======
+	
+	(sbolus_timer_2, sbolus_req_2, idACTIVE_INTERMITTENT_2) 
+	= 
+	if ( idACTIVE_INTERMITTENT_1 = 1286) then
+	INTERMITTENT_ON_ex(sbolus_timer_1, sbolus_req_1, idACTIVE_INTERMITTENT_1, false)
+	 else (sbolus_timer_1, sbolus_req_1, idACTIVE_INTERMITTENT_1);
+>>>>>>> 3922117... clean sf_test
 
 -- Entry action for state :PAUSED_Arbiter
 node PAUSED_Arbiter_en(idPAUSED_Arbiter_1:int;
@@ -3213,18 +3967,37 @@ node PAUSED_Arbiter_en(idPAUSED_Arbiter_1:int;
 	CONFIG_IN_Flow_Rate_KVO:int;
 	isInner:bool)
 
+<<<<<<< HEAD
 returns (idPAUSED_Arbiter:int;
 	idTHERAPY_PAUSED:int;
 	idPAUSED_Alarm_Paused:int;
 	IM_OUT_Current_System_Mode:int;
 	IM_OUT_Flow_Rate_Commanded:int);
+=======
+	(idACTIVE_INTERMITTENT_3) 
+	= 
+	if ( idACTIVE_INTERMITTENT_1 = 1287) then
+	INTERMITTENT_OFF_ex(idACTIVE_INTERMITTENT_1, false)
+	 else (idACTIVE_INTERMITTENT_1);
+>>>>>>> 3922117... clean sf_test
 
 
+<<<<<<< HEAD
 var 	idPAUSED_Arbiter_2, idPAUSED_Arbiter_3, idPAUSED_Arbiter_4, idPAUSED_Arbiter_5, idPAUSED_Arbiter_6, idPAUSED_Arbiter_7, idPAUSED_Arbiter_8, idPAUSED_Arbiter_9:int;
 	idTHERAPY_PAUSED_2, idTHERAPY_PAUSED_3, idTHERAPY_PAUSED_4:int;
 	idPAUSED_Alarm_Paused_2, idPAUSED_Alarm_Paused_3:int;
 	IM_OUT_Current_System_Mode_2, IM_OUT_Current_System_Mode_3, IM_OUT_Current_System_Mode_4, IM_OUT_Current_System_Mode_5, IM_OUT_Current_System_Mode_6, IM_OUT_Current_System_Mode_7, IM_OUT_Current_System_Mode_8, IM_OUT_Current_System_Mode_9:int;
 	IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Flow_Rate_Commanded_5, IM_OUT_Flow_Rate_Commanded_6, IM_OUT_Flow_Rate_Commanded_7, IM_OUT_Flow_Rate_Commanded_8, IM_OUT_Flow_Rate_Commanded_9:int;
+=======
+	(sbolus_timer_3, sbolus_req_3, idACTIVE_INTERMITTENT_4) 
+	= 
+		 if ( idACTIVE_INTERMITTENT_1 = 1286) then 
+		(sbolus_timer_2, sbolus_req_2, idACTIVE_INTERMITTENT_2)
+		 else
+		 if ( idACTIVE_INTERMITTENT_1 = 1287) then 
+		(sbolus_timer_2, sbolus_req_2, idACTIVE_INTERMITTENT_3)
+		 else (sbolus_timer_1, sbolus_req_1, idACTIVE_INTERMITTENT_1);
+>>>>>>> 3922117... clean sf_test
 
 
 let
@@ -3277,6 +4050,12 @@ let
 
 	 else(idPAUSED_Arbiter_1, idTHERAPY_PAUSED_2, idPAUSED_Alarm_Paused_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1);
 
+<<<<<<< HEAD
+=======
+	-- set state as active 
+	idACTIVE_PATIENT_2 
+	= 1283;
+>>>>>>> 3922117... clean sf_test
 	
 
 	(idPAUSED_Arbiter_6, IM_OUT_Flow_Rate_Commanded_6, IM_OUT_Current_System_Mode_6) 
@@ -3439,8 +4218,18 @@ let
 
 
 	-- set state as active 
+<<<<<<< HEAD
 	idTHERAPY_ACTIVE_2 
 	= 1121;
+=======
+	idACTIVE_PATIENT_2 
+	= 1284;
+	
+
+	IM_OUT_Lock_Timer_2 
+	= if (not isInner) then  IM_OUT_Lock_Timer_1  + 1.
+	 else IM_OUT_Lock_Timer_1;
+>>>>>>> 3922117... clean sf_test
 	
 
 	sbolusInter_timer_2 
@@ -3554,6 +4343,32 @@ let
 
 
 
+<<<<<<< HEAD
+=======
+	-- set state as active 
+	idACTIVE_PATIENT_2 
+	= 1282;
+	
+
+	number_pbolus_2 
+	= if (not isInner) then  number_pbolus_1  + 1
+	 else number_pbolus_1;
+	
+
+	inPatientBolus_2 
+	= if (not isInner) then true
+	 else inPatientBolus_1;
+	
+
+	pbolus_timer_2 
+	= if (not isInner) then  pbolus_timer_1  + 1.
+	 else pbolus_timer_1;
+	
+
+	IM_OUT_Is_Locked_Out_2 
+	= if (not isInner) then false
+	 else IM_OUT_Is_Locked_Out_1;
+>>>>>>> 3922117... clean sf_test
 	
 	(sbolus_timer_2, sbolus_req_2, idACTIVE_INTERMITTENT_2) 
 	= 
@@ -3634,7 +4449,11 @@ let
 
 	-- set state as active 
 	idTHERAPY_ACTIVE_2 
+<<<<<<< HEAD
 	= 1117;
+=======
+	= 1281;
+>>>>>>> 3922117... clean sf_test
 	
 
 	
@@ -3667,7 +4486,11 @@ let
 
 	(idACTIVE_PATIENT_5, number_pbolus_2, inPatientBolus_4, pbolus_timer_4, IM_OUT_Is_Locked_Out_5) 
 	= 
+<<<<<<< HEAD
 	if ( idACTIVE_PATIENT_1 = 1118) then
+=======
+	if ( idACTIVE_PATIENT_1 = 1282) then
+>>>>>>> 3922117... clean sf_test
 	PATIENT_ON_en(idACTIVE_PATIENT_1, number_pbolus_1, inPatientBolus_1, pbolus_timer_1, IM_OUT_Is_Locked_Out_1, false)
 	 else (idACTIVE_PATIENT_1, number_pbolus_1, inPatientBolus_1, pbolus_timer_1, IM_OUT_Is_Locked_Out_1);
 
@@ -3675,7 +4498,11 @@ let
 
 	(idACTIVE_PATIENT_6, pbolus_timer_5, inPatientBolus_5, IM_OUT_Is_Locked_Out_6) 
 	= 
+<<<<<<< HEAD
 	if ( idACTIVE_PATIENT_1 = 1119) then
+=======
+	if ( idACTIVE_PATIENT_1 = 1283) then
+>>>>>>> 3922117... clean sf_test
 	PATIENT_OFF_en(idACTIVE_PATIENT_1, pbolus_timer_1, inPatientBolus_1, IM_OUT_Is_Locked_Out_1, false)
 	 else (idACTIVE_PATIENT_1, pbolus_timer_1, inPatientBolus_1, IM_OUT_Is_Locked_Out_1);
 
@@ -3683,7 +4510,11 @@ let
 
 	(idACTIVE_PATIENT_7, IM_OUT_Lock_Timer_4, IM_OUT_Is_Locked_Out_7) 
 	= 
+<<<<<<< HEAD
 	if ( idACTIVE_PATIENT_1 = 1120) then
+=======
+	if ( idACTIVE_PATIENT_1 = 1284) then
+>>>>>>> 3922117... clean sf_test
 	PATIENT_LOCKOUT_en(idACTIVE_PATIENT_1, IM_OUT_Lock_Timer_1, IM_OUT_Is_Locked_Out_1, false)
 	 else (idACTIVE_PATIENT_1, IM_OUT_Lock_Timer_1, IM_OUT_Is_Locked_Out_1);
 
@@ -3694,6 +4525,7 @@ let
 		 if ( idACTIVE_PATIENT_1 = 0) then 
 		(idACTIVE_PATIENT_4, idTHERAPY_ACTIVE_3, inPatientBolus_3, IM_OUT_Is_Locked_Out_4, IM_OUT_Lock_Timer_3, pbolus_timer_3, number_pbolus_1)
 		 else
+<<<<<<< HEAD
 		 if ( idACTIVE_PATIENT_1 = 1118) then 
 		(idACTIVE_PATIENT_5, idTHERAPY_ACTIVE_3, inPatientBolus_4, IM_OUT_Is_Locked_Out_5, IM_OUT_Lock_Timer_3, pbolus_timer_4, number_pbolus_2)
 		 else
@@ -3703,6 +4535,17 @@ let
 		 if ( idACTIVE_PATIENT_1 = 1120) then 
 		(idACTIVE_PATIENT_7, idTHERAPY_ACTIVE_3, inPatientBolus_5, IM_OUT_Is_Locked_Out_7, IM_OUT_Lock_Timer_4, pbolus_timer_5, number_pbolus_2)
 		 else (idACTIVE_PATIENT_1, idTHERAPY_ACTIVE_2, inPatientBolus_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, pbolus_timer_1, number_pbolus_1);
+=======
+		 if ( idACTIVE_PATIENT_1 = 1282) then 
+		(idACTIVE_PATIENT_5, idTHERAPY_ACTIVE_3, IM_OUT_Is_Locked_Out_5, IM_OUT_Lock_Timer_3, inPatientBolus_4, pbolus_timer_4, number_pbolus_2)
+		 else
+		 if ( idACTIVE_PATIENT_1 = 1283) then 
+		(idACTIVE_PATIENT_6, idTHERAPY_ACTIVE_3, IM_OUT_Is_Locked_Out_6, IM_OUT_Lock_Timer_3, inPatientBolus_5, pbolus_timer_5, number_pbolus_2)
+		 else
+		 if ( idACTIVE_PATIENT_1 = 1284) then 
+		(idACTIVE_PATIENT_7, idTHERAPY_ACTIVE_3, IM_OUT_Is_Locked_Out_7, IM_OUT_Lock_Timer_4, inPatientBolus_5, pbolus_timer_5, number_pbolus_2)
+		 else (idACTIVE_PATIENT_1, idTHERAPY_ACTIVE_2, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, inPatientBolus_1, pbolus_timer_1, number_pbolus_1);
+>>>>>>> 3922117... clean sf_test
 
 
 	(idACTIVE_PATIENT, idTHERAPY_ACTIVE, inPatientBolus, IM_OUT_Is_Locked_Out, IM_OUT_Lock_Timer, pbolus_timer, number_pbolus) 
@@ -3738,7 +4581,11 @@ let
 	
 	(pbolus_timer_2, idACTIVE_PATIENT_2) 
 	= 
+<<<<<<< HEAD
 	if ( idACTIVE_PATIENT_1 = 1118) then
+=======
+	if ( idACTIVE_PATIENT_1 = 1282) then
+>>>>>>> 3922117... clean sf_test
 	PATIENT_ON_ex(pbolus_timer_1, idACTIVE_PATIENT_1, false)
 	 else (pbolus_timer_1, idACTIVE_PATIENT_1);
 
@@ -3746,7 +4593,11 @@ let
 
 	(idACTIVE_PATIENT_3) 
 	= 
+<<<<<<< HEAD
 	if ( idACTIVE_PATIENT_1 = 1119) then
+=======
+	if ( idACTIVE_PATIENT_1 = 1283) then
+>>>>>>> 3922117... clean sf_test
 	PATIENT_OFF_ex(idACTIVE_PATIENT_1, false)
 	 else (idACTIVE_PATIENT_1);
 
@@ -3754,7 +4605,11 @@ let
 
 	(idACTIVE_PATIENT_4) 
 	= 
+<<<<<<< HEAD
 	if ( idACTIVE_PATIENT_1 = 1120) then
+=======
+	if ( idACTIVE_PATIENT_1 = 1284) then
+>>>>>>> 3922117... clean sf_test
 	PATIENT_LOCKOUT_ex(idACTIVE_PATIENT_1, false)
 	 else (idACTIVE_PATIENT_1);
 
@@ -3762,6 +4617,7 @@ let
 
 	(pbolus_timer_3, idACTIVE_PATIENT_5) 
 	= 
+<<<<<<< HEAD
 		 if ( idACTIVE_PATIENT_1 = 1118) then 
 		(pbolus_timer_2, idACTIVE_PATIENT_2)
 		 else
@@ -3769,6 +4625,15 @@ let
 		(pbolus_timer_2, idACTIVE_PATIENT_3)
 		 else
 		 if ( idACTIVE_PATIENT_1 = 1120) then 
+=======
+		 if ( idACTIVE_PATIENT_1 = 1282) then 
+		(pbolus_timer_2, idACTIVE_PATIENT_2)
+		 else
+		 if ( idACTIVE_PATIENT_1 = 1283) then 
+		(pbolus_timer_2, idACTIVE_PATIENT_3)
+		 else
+		 if ( idACTIVE_PATIENT_1 = 1284) then 
+>>>>>>> 3922117... clean sf_test
 		(pbolus_timer_2, idACTIVE_PATIENT_4)
 		 else (pbolus_timer_1, idACTIVE_PATIENT_1);
 
@@ -3810,8 +4675,13 @@ let
 
 
 	-- set state as active 
+<<<<<<< HEAD
 	idTHERAPY_ACTIVE_2 
 	= 1114;
+=======
+	idACTIVE_BASAL_2 
+	= 1280;
+>>>>>>> 3922117... clean sf_test
 	
 
 	
@@ -3887,6 +4757,12 @@ let
 
 
 
+<<<<<<< HEAD
+=======
+	-- set state as active 
+	idACTIVE_BASAL_2 
+	= 1279;
+>>>>>>> 3922117... clean sf_test
 	
 	(idACTIVE_BASAL_2) 
 	= 
@@ -3991,6 +4867,13 @@ let
 		
 
 
+<<<<<<< HEAD
+=======
+	-- set state as active 
+	idTHERAPY_ACTIVE_2 
+	= 1278;
+	
+>>>>>>> 3922117... clean sf_test
 
 		(idACTIVE_Arbiter_4, IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4) 
 	= Arbiter_Basal_en(idACTIVE_Arbiter_1, CONFIG_IN_Flow_Rate_Basal, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false);
@@ -4015,17 +4898,29 @@ let
 
 	(idACTIVE_Arbiter_6, IM_OUT_Flow_Rate_Commanded_6, IM_OUT_Current_System_Mode_6) 
 	= 
+<<<<<<< HEAD
 	if ( idACTIVE_Arbiter_1 = 1111) then
 	Arbiter_Patient_Bolus_en(idACTIVE_Arbiter_1, CONFIG_IN_Flow_Rate_Patient_Bolus, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
 	 else (idACTIVE_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
+=======
+	if ( idACTIVE_BASAL_1 = 1279) then
+	BASAL_ON_en(idACTIVE_BASAL_1, false)
+	 else (idACTIVE_BASAL_1);
+>>>>>>> 3922117... clean sf_test
 
 	
 
 	(idACTIVE_Arbiter_7, IM_OUT_Flow_Rate_Commanded_7, IM_OUT_Current_System_Mode_7) 
 	= 
+<<<<<<< HEAD
 	if ( idACTIVE_Arbiter_1 = 1112) then
 	Arbiter_Intermittent_Bolus_en(idACTIVE_Arbiter_1, CONFIG_IN_Flow_Rate_Intermittent_Bolus, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
 	 else (idACTIVE_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
+=======
+	if ( idACTIVE_BASAL_1 = 1280) then
+	BASAL_OFF_en(idACTIVE_BASAL_1, false)
+	 else (idACTIVE_BASAL_1);
+>>>>>>> 3922117... clean sf_test
 
 	
 
@@ -4042,6 +4937,7 @@ let
 		 if ( idACTIVE_Arbiter_1 = 0) then 
 		(idACTIVE_Arbiter_5, idTHERAPY_ACTIVE_3, idACTIVE_PATIENT_2, IM_OUT_Current_System_Mode_5, IM_OUT_Flow_Rate_Commanded_5, idACTIVE_INTERMITTENT_2)
 		 else
+<<<<<<< HEAD
 		 if ( idACTIVE_Arbiter_1 = 1111) then 
 		(idACTIVE_Arbiter_6, idTHERAPY_ACTIVE_3, idACTIVE_PATIENT_2, IM_OUT_Current_System_Mode_6, IM_OUT_Flow_Rate_Commanded_6, idACTIVE_INTERMITTENT_2)
 		 else
@@ -4051,6 +4947,14 @@ let
 		 if ( idACTIVE_Arbiter_1 = 1113) then 
 		(idACTIVE_Arbiter_8, idTHERAPY_ACTIVE_3, idACTIVE_PATIENT_2, IM_OUT_Current_System_Mode_8, IM_OUT_Flow_Rate_Commanded_8, idACTIVE_INTERMITTENT_2)
 		 else (idACTIVE_Arbiter_1, idTHERAPY_ACTIVE_2, idACTIVE_PATIENT_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idACTIVE_INTERMITTENT_1);
+=======
+		 if ( idACTIVE_BASAL_1 = 1279) then 
+		(idACTIVE_BASAL_4, idTHERAPY_ACTIVE_3)
+		 else
+		 if ( idACTIVE_BASAL_1 = 1280) then 
+		(idACTIVE_BASAL_5, idTHERAPY_ACTIVE_3)
+		 else (idACTIVE_BASAL_1, idTHERAPY_ACTIVE_2);
+>>>>>>> 3922117... clean sf_test
 
 
 	(idACTIVE_Arbiter, idTHERAPY_ACTIVE, idACTIVE_PATIENT, IM_OUT_Current_System_Mode, IM_OUT_Flow_Rate_Commanded, idACTIVE_INTERMITTENT) 
@@ -4083,22 +4987,35 @@ let
 	
 	(idACTIVE_Arbiter_2) 
 	= 
+<<<<<<< HEAD
 	if ( idACTIVE_Arbiter_1 = 1111) then
 	Arbiter_Patient_Bolus_ex(idACTIVE_Arbiter_1, false)
 	 else (idACTIVE_Arbiter_1);
+=======
+	if ( idACTIVE_BASAL_1 = 1279) then
+	BASAL_ON_ex(idACTIVE_BASAL_1, false)
+	 else (idACTIVE_BASAL_1);
+>>>>>>> 3922117... clean sf_test
 
 	
 
 	(idACTIVE_Arbiter_3) 
 	= 
+<<<<<<< HEAD
 	if ( idACTIVE_Arbiter_1 = 1112) then
 	Arbiter_Intermittent_Bolus_ex(idACTIVE_Arbiter_1, false)
 	 else (idACTIVE_Arbiter_1);
+=======
+	if ( idACTIVE_BASAL_1 = 1280) then
+	BASAL_OFF_ex(idACTIVE_BASAL_1, false)
+	 else (idACTIVE_BASAL_1);
+>>>>>>> 3922117... clean sf_test
 
 	
 
 	(idACTIVE_Arbiter_4) 
 	= 
+<<<<<<< HEAD
 	if ( idACTIVE_Arbiter_1 = 1113) then
 	Arbiter_Basal_ex(idACTIVE_Arbiter_1, false)
 	 else (idACTIVE_Arbiter_1);
@@ -4116,6 +5033,14 @@ let
 		 if ( idACTIVE_Arbiter_1 = 1113) then 
 		(idACTIVE_Arbiter_4)
 		 else (idACTIVE_Arbiter_1);
+=======
+		 if ( idACTIVE_BASAL_1 = 1279) then 
+		(idACTIVE_BASAL_2)
+		 else
+		 if ( idACTIVE_BASAL_1 = 1280) then 
+		(idACTIVE_BASAL_3)
+		 else (idACTIVE_BASAL_1);
+>>>>>>> 3922117... clean sf_test
 
 
 	-- set state as inactive 
@@ -4174,7 +5099,11 @@ let
 
 	-- set state as active 
 	idInfusion_Manager_THERAPY_2 
+<<<<<<< HEAD
 	= 1126;
+=======
+	= 1273;
+>>>>>>> 3922117... clean sf_test
 	
 
 	
@@ -4393,14 +5322,41 @@ let
 
 
 	
+<<<<<<< HEAD
 	(idACTIVE_Arbiter_2, idTHERAPY_ACTIVE_2) 
 	= ACTIVE_Arbiter_ex(idACTIVE_Arbiter_1, idTHERAPY_ACTIVE_1, false);
+=======
+	(idACTIVE_Arbiter_2, idTHERAPY_ACTIVE_2, idACTIVE_INTERMITTENT_2, sbolus_req_2, sbolus_timer_2, idACTIVE_PATIENT_2, pbolus_timer_2, idACTIVE_BASAL_2, idInfusion_Manager_THERAPY_2) 
+	= 
+	if ( idInfusion_Manager_THERAPY_1 = 1273) then
+	THERAPY_ACTIVE_ex(idACTIVE_Arbiter_1, idTHERAPY_ACTIVE_1, idACTIVE_INTERMITTENT_1, sbolus_req_1, sbolus_timer_1, idACTIVE_PATIENT_1, pbolus_timer_1, idACTIVE_BASAL_1, idInfusion_Manager_THERAPY_1, false)
+	 else (idACTIVE_Arbiter_1, idTHERAPY_ACTIVE_1, idACTIVE_INTERMITTENT_1, sbolus_req_1, sbolus_timer_1, idACTIVE_PATIENT_1, pbolus_timer_1, idACTIVE_BASAL_1, idInfusion_Manager_THERAPY_1);
+
+	
+
+	(IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2, idPAUSED_Arbiter_2, idTHERAPY_PAUSED_2, idPAUSED_Manual_Paused_2, idPAUSED_Alarm_Paused_2, idInfusion_Manager_THERAPY_3) 
+	= 
+	if ( idInfusion_Manager_THERAPY_1 = 1290) then
+	THERAPY_PAUSED_ex(IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1, CONFIG_IN_Flow_Rate_KVO, idTHERAPY_PAUSED_1, idPAUSED_Manual_Paused_1, idPAUSED_Alarm_Paused_1, idInfusion_Manager_THERAPY_1, false)
+	 else (IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1, idTHERAPY_PAUSED_1, idPAUSED_Manual_Paused_1, idPAUSED_Alarm_Paused_1, idInfusion_Manager_THERAPY_1);
+>>>>>>> 3922117... clean sf_test
 
 	(sbolus_timer_2, sbolus_req_2, idACTIVE_INTERMITTENT_2, idTHERAPY_ACTIVE_3) 
 	= ACTIVE_INTERMITTENT_ex(sbolus_timer_1, sbolus_req_1, idACTIVE_INTERMITTENT_1, idTHERAPY_ACTIVE_2, false);
 
+<<<<<<< HEAD
 	(pbolus_timer_2, idACTIVE_PATIENT_2, idTHERAPY_ACTIVE_4) 
 	= ACTIVE_PATIENT_ex(pbolus_timer_1, idACTIVE_PATIENT_1, idTHERAPY_ACTIVE_3, false);
+=======
+	(idACTIVE_Arbiter_3, idTHERAPY_ACTIVE_3, idACTIVE_INTERMITTENT_3, sbolus_req_3, sbolus_timer_3, idACTIVE_PATIENT_3, pbolus_timer_3, idACTIVE_BASAL_3, idInfusion_Manager_THERAPY_4, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3, idPAUSED_Alarm_Paused_3, idPAUSED_Arbiter_3, idPAUSED_Manual_Paused_3, idTHERAPY_PAUSED_3) 
+	= 
+		 if ( idInfusion_Manager_THERAPY_1 = 1273) then 
+		(idACTIVE_Arbiter_2, idTHERAPY_ACTIVE_2, idACTIVE_INTERMITTENT_2, sbolus_req_2, sbolus_timer_2, idACTIVE_PATIENT_2, pbolus_timer_2, idACTIVE_BASAL_2, idInfusion_Manager_THERAPY_2, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idPAUSED_Alarm_Paused_1, idPAUSED_Arbiter_1, idPAUSED_Manual_Paused_1, idTHERAPY_PAUSED_1)
+		 else
+		 if ( idInfusion_Manager_THERAPY_1 = 1290) then 
+		(idACTIVE_Arbiter_2, idTHERAPY_ACTIVE_2, idACTIVE_INTERMITTENT_2, sbolus_req_2, sbolus_timer_2, idACTIVE_PATIENT_2, pbolus_timer_2, idACTIVE_BASAL_2, idInfusion_Manager_THERAPY_3, IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2, idPAUSED_Alarm_Paused_2, idPAUSED_Arbiter_2, idPAUSED_Manual_Paused_2, idTHERAPY_PAUSED_2)
+		 else (idACTIVE_Arbiter_1, idTHERAPY_ACTIVE_1, idACTIVE_INTERMITTENT_1, sbolus_req_1, sbolus_timer_1, idACTIVE_PATIENT_1, pbolus_timer_1, idACTIVE_BASAL_1, idInfusion_Manager_THERAPY_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idPAUSED_Alarm_Paused_1, idPAUSED_Arbiter_1, idPAUSED_Manual_Paused_1, idTHERAPY_PAUSED_1);
+>>>>>>> 3922117... clean sf_test
 
 	(idACTIVE_BASAL_2, idTHERAPY_ACTIVE_5) 
 	= ACTIVE_BASAL_ex(idACTIVE_BASAL_1, idTHERAPY_ACTIVE_4, false);
@@ -4441,6 +5397,134 @@ returns (idInfusionMGR_Infusion_Manager:int;
 	IM_OUT_Is_Locked_Out:bool;
 	IM_OUT_Lock_Timer:real;
 	inPatientBolus:bool;
+<<<<<<< HEAD
+=======
+	number_pbolus:int;
+	pbolus_timer:real;
+	sbolusInter_timer:real;
+	sbolus_req:bool;
+	sbolus_timer:real);
+
+
+var 	idInfusion_Manager_THERAPY_2, idInfusion_Manager_THERAPY_3, idInfusion_Manager_THERAPY_4, idInfusion_Manager_THERAPY_5, idInfusion_Manager_THERAPY_6, idInfusion_Manager_THERAPY_7:int;
+	idInfusionMGR_Infusion_Manager_2, idInfusionMGR_Infusion_Manager_3, idInfusionMGR_Infusion_Manager_4:int;
+	IM_OUT_Current_System_Mode_2, IM_OUT_Current_System_Mode_3, IM_OUT_Current_System_Mode_4, IM_OUT_Current_System_Mode_5, IM_OUT_Current_System_Mode_6, IM_OUT_Current_System_Mode_7:int;
+	IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Flow_Rate_Commanded_5, IM_OUT_Flow_Rate_Commanded_6, IM_OUT_Flow_Rate_Commanded_7:int;
+	idPAUSED_Alarm_Paused_2, idPAUSED_Alarm_Paused_3, idPAUSED_Alarm_Paused_4, idPAUSED_Alarm_Paused_5:int;
+	idPAUSED_Arbiter_2, idPAUSED_Arbiter_3, idPAUSED_Arbiter_4, idPAUSED_Arbiter_5:int;
+	idPAUSED_Manual_Paused_2, idPAUSED_Manual_Paused_3, idPAUSED_Manual_Paused_4, idPAUSED_Manual_Paused_5:int;
+	idTHERAPY_PAUSED_2, idTHERAPY_PAUSED_3, idTHERAPY_PAUSED_4, idTHERAPY_PAUSED_5:int;
+	IM_OUT_Is_Locked_Out_2, IM_OUT_Is_Locked_Out_3, IM_OUT_Is_Locked_Out_4, IM_OUT_Is_Locked_Out_5:bool;
+	IM_OUT_Lock_Timer_2, IM_OUT_Lock_Timer_3, IM_OUT_Lock_Timer_4, IM_OUT_Lock_Timer_5:real;
+	idACTIVE_Arbiter_2, idACTIVE_Arbiter_3, idACTIVE_Arbiter_4, idACTIVE_Arbiter_5:int;
+	idACTIVE_BASAL_2, idACTIVE_BASAL_3, idACTIVE_BASAL_4, idACTIVE_BASAL_5:int;
+	idACTIVE_INTERMITTENT_2, idACTIVE_INTERMITTENT_3, idACTIVE_INTERMITTENT_4, idACTIVE_INTERMITTENT_5:int;
+	idACTIVE_PATIENT_2, idACTIVE_PATIENT_3, idACTIVE_PATIENT_4, idACTIVE_PATIENT_5:int;
+	idTHERAPY_ACTIVE_2, idTHERAPY_ACTIVE_3, idTHERAPY_ACTIVE_4, idTHERAPY_ACTIVE_5:int;
+	inPatientBolus_2, inPatientBolus_3, inPatientBolus_4, inPatientBolus_5:bool;
+	number_pbolus_2, number_pbolus_3, number_pbolus_4, number_pbolus_5:int;
+	pbolus_timer_2, pbolus_timer_3, pbolus_timer_4, pbolus_timer_5:real;
+	sbolusInter_timer_2, sbolusInter_timer_3, sbolusInter_timer_4, sbolusInter_timer_5:real;
+	sbolus_req_2, sbolus_req_3, sbolus_req_4, sbolus_req_5:bool;
+	sbolus_timer_2, sbolus_timer_3, sbolus_timer_4, sbolus_timer_5:real;
+
+
+let
+
+
+
+	-- set state as active 
+	idInfusionMGR_Infusion_Manager_2 
+	= 1272;
+	
+
+	
+-- transition trace :
+	--POINT__To__THERAPY_PAUSED_1
+		(idTHERAPY_PAUSED_2, idInfusion_Manager_THERAPY_2, idPAUSED_Alarm_Paused_2, idPAUSED_Manual_Paused_2, IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2, idPAUSED_Arbiter_2) 
+	= 
+		 if (( OP_CMD_IN_Infusion_Inhibit or ALARM_IN_Highest_Level_Alarm>=3 )) then 
+		THERAPY_PAUSED_en(idTHERAPY_PAUSED_1, idInfusion_Manager_THERAPY_1, ALARM_IN_Highest_Level_Alarm, idPAUSED_Alarm_Paused_1, OP_CMD_IN_Infusion_Inhibit, idPAUSED_Manual_Paused_1, CONFIG_IN_Flow_Rate_KVO, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idPAUSED_Arbiter_1, false)
+		 else (idTHERAPY_PAUSED_1, idInfusion_Manager_THERAPY_1, idPAUSED_Alarm_Paused_1, idPAUSED_Manual_Paused_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idPAUSED_Arbiter_1);
+		
+
+-- transition trace :
+	--POINT__To__THERAPY_ACTIVE_2
+		(idTHERAPY_ACTIVE_2, idInfusion_Manager_THERAPY_3, idACTIVE_BASAL_2, IM_OUT_Is_Locked_Out_2, IM_OUT_Lock_Timer_2, idACTIVE_PATIENT_2, inPatientBolus_2, number_pbolus_2, pbolus_timer_2, idACTIVE_INTERMITTENT_2, sbolusInter_timer_2, sbolus_req_2, sbolus_timer_2, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3, idACTIVE_Arbiter_2) 
+	= THERAPY_ACTIVE_en(idTHERAPY_ACTIVE_1, idInfusion_Manager_THERAPY_2, idACTIVE_BASAL_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, idACTIVE_PATIENT_1, inPatientBolus_1, number_pbolus_1, pbolus_timer_1, CONFIG_IN_Interval_Intermittent_Bolus, idACTIVE_INTERMITTENT_1, sbolusInter_timer_1, sbolus_req_1, sbolus_timer_1, step_size, CONFIG_IN_Flow_Rate_Basal, CONFIG_IN_Flow_Rate_Intermittent_Bolus, CONFIG_IN_Flow_Rate_Patient_Bolus, IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2, idACTIVE_Arbiter_1, false);
+		
+
+	(idInfusion_Manager_THERAPY_4, idInfusionMGR_Infusion_Manager_3, IM_OUT_Current_System_Mode_4, IM_OUT_Flow_Rate_Commanded_4, idPAUSED_Alarm_Paused_3, idPAUSED_Arbiter_3, idPAUSED_Manual_Paused_3, idTHERAPY_PAUSED_3, IM_OUT_Is_Locked_Out_3, IM_OUT_Lock_Timer_3, idACTIVE_Arbiter_3, idACTIVE_BASAL_3, idACTIVE_INTERMITTENT_3, idACTIVE_PATIENT_3, idTHERAPY_ACTIVE_3, inPatientBolus_3, number_pbolus_3, pbolus_timer_3, sbolusInter_timer_3, sbolus_req_3, sbolus_timer_3) 
+	= 
+
+	if ( idInfusion_Manager_THERAPY_1 = 0) then
+
+	
+		 if (( OP_CMD_IN_Infusion_Inhibit or ALARM_IN_Highest_Level_Alarm>=3 )) then 
+		(idInfusion_Manager_THERAPY_2, idInfusionMGR_Infusion_Manager_2, IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2, idPAUSED_Alarm_Paused_2, idPAUSED_Arbiter_2, idPAUSED_Manual_Paused_2, idTHERAPY_PAUSED_2, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, idACTIVE_Arbiter_1, idACTIVE_BASAL_1, idACTIVE_INTERMITTENT_1, idACTIVE_PATIENT_1, idTHERAPY_ACTIVE_1, inPatientBolus_1, number_pbolus_1, pbolus_timer_1, sbolusInter_timer_1, sbolus_req_1, sbolus_timer_1)
+		 else (idInfusion_Manager_THERAPY_3, idInfusionMGR_Infusion_Manager_2, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3, idPAUSED_Alarm_Paused_2, idPAUSED_Arbiter_2, idPAUSED_Manual_Paused_2, idTHERAPY_PAUSED_2, IM_OUT_Is_Locked_Out_2, IM_OUT_Lock_Timer_2, idACTIVE_Arbiter_2, idACTIVE_BASAL_2, idACTIVE_INTERMITTENT_2, idACTIVE_PATIENT_2, idTHERAPY_ACTIVE_2, inPatientBolus_2, number_pbolus_2, pbolus_timer_2, sbolusInter_timer_2, sbolus_req_2, sbolus_timer_2)
+
+	 else(idInfusion_Manager_THERAPY_1, idInfusionMGR_Infusion_Manager_2, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idPAUSED_Alarm_Paused_1, idPAUSED_Arbiter_1, idPAUSED_Manual_Paused_1, idTHERAPY_PAUSED_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, idACTIVE_Arbiter_1, idACTIVE_BASAL_1, idACTIVE_INTERMITTENT_1, idACTIVE_PATIENT_1, idTHERAPY_ACTIVE_1, inPatientBolus_1, number_pbolus_1, pbolus_timer_1, sbolusInter_timer_1, sbolus_req_1, sbolus_timer_1);
+
+	
+
+	(idTHERAPY_ACTIVE_4, idInfusion_Manager_THERAPY_5, idACTIVE_BASAL_4, IM_OUT_Is_Locked_Out_4, IM_OUT_Lock_Timer_4, idACTIVE_PATIENT_4, inPatientBolus_4, number_pbolus_4, pbolus_timer_4, idACTIVE_INTERMITTENT_4, sbolusInter_timer_4, sbolus_req_4, sbolus_timer_4, IM_OUT_Current_System_Mode_5, IM_OUT_Flow_Rate_Commanded_5, idACTIVE_Arbiter_4) 
+	= 
+	if ( idInfusion_Manager_THERAPY_1 = 1273) then
+	THERAPY_ACTIVE_en(idTHERAPY_ACTIVE_1, idInfusion_Manager_THERAPY_1, idACTIVE_BASAL_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, idACTIVE_PATIENT_1, inPatientBolus_1, number_pbolus_1, pbolus_timer_1, CONFIG_IN_Interval_Intermittent_Bolus, idACTIVE_INTERMITTENT_1, sbolusInter_timer_1, sbolus_req_1, sbolus_timer_1, step_size, CONFIG_IN_Flow_Rate_Basal, CONFIG_IN_Flow_Rate_Intermittent_Bolus, CONFIG_IN_Flow_Rate_Patient_Bolus, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idACTIVE_Arbiter_1, false)
+	 else (idTHERAPY_ACTIVE_1, idInfusion_Manager_THERAPY_1, idACTIVE_BASAL_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, idACTIVE_PATIENT_1, inPatientBolus_1, number_pbolus_1, pbolus_timer_1, idACTIVE_INTERMITTENT_1, sbolusInter_timer_1, sbolus_req_1, sbolus_timer_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idACTIVE_Arbiter_1);
+
+	
+
+	(idTHERAPY_PAUSED_4, idInfusion_Manager_THERAPY_6, idPAUSED_Alarm_Paused_4, idPAUSED_Manual_Paused_4, IM_OUT_Current_System_Mode_6, IM_OUT_Flow_Rate_Commanded_6, idPAUSED_Arbiter_4) 
+	= 
+	if ( idInfusion_Manager_THERAPY_1 = 1290) then
+	THERAPY_PAUSED_en(idTHERAPY_PAUSED_1, idInfusion_Manager_THERAPY_1, ALARM_IN_Highest_Level_Alarm, idPAUSED_Alarm_Paused_1, OP_CMD_IN_Infusion_Inhibit, idPAUSED_Manual_Paused_1, CONFIG_IN_Flow_Rate_KVO, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idPAUSED_Arbiter_1, false)
+	 else (idTHERAPY_PAUSED_1, idInfusion_Manager_THERAPY_1, idPAUSED_Alarm_Paused_1, idPAUSED_Manual_Paused_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idPAUSED_Arbiter_1);
+
+	
+
+	(idInfusion_Manager_THERAPY_7, idInfusionMGR_Infusion_Manager_4, IM_OUT_Current_System_Mode_7, IM_OUT_Flow_Rate_Commanded_7, idPAUSED_Alarm_Paused_5, idPAUSED_Arbiter_5, idPAUSED_Manual_Paused_5, idTHERAPY_PAUSED_5, IM_OUT_Is_Locked_Out_5, IM_OUT_Lock_Timer_5, idACTIVE_Arbiter_5, idACTIVE_BASAL_5, idACTIVE_INTERMITTENT_5, idACTIVE_PATIENT_5, idTHERAPY_ACTIVE_5, inPatientBolus_5, number_pbolus_5, pbolus_timer_5, sbolusInter_timer_5, sbolus_req_5, sbolus_timer_5) 
+	= 
+		 if ( idInfusion_Manager_THERAPY_1 = 0) then 
+		(idInfusion_Manager_THERAPY_4, idInfusionMGR_Infusion_Manager_3, IM_OUT_Current_System_Mode_4, IM_OUT_Flow_Rate_Commanded_4, idPAUSED_Alarm_Paused_3, idPAUSED_Arbiter_3, idPAUSED_Manual_Paused_3, idTHERAPY_PAUSED_3, IM_OUT_Is_Locked_Out_3, IM_OUT_Lock_Timer_3, idACTIVE_Arbiter_3, idACTIVE_BASAL_3, idACTIVE_INTERMITTENT_3, idACTIVE_PATIENT_3, idTHERAPY_ACTIVE_3, inPatientBolus_3, number_pbolus_3, pbolus_timer_3, sbolusInter_timer_3, sbolus_req_3, sbolus_timer_3)
+		 else
+		 if ( idInfusion_Manager_THERAPY_1 = 1273) then 
+		(idInfusion_Manager_THERAPY_5, idInfusionMGR_Infusion_Manager_3, IM_OUT_Current_System_Mode_5, IM_OUT_Flow_Rate_Commanded_5, idPAUSED_Alarm_Paused_3, idPAUSED_Arbiter_3, idPAUSED_Manual_Paused_3, idTHERAPY_PAUSED_3, IM_OUT_Is_Locked_Out_4, IM_OUT_Lock_Timer_4, idACTIVE_Arbiter_4, idACTIVE_BASAL_4, idACTIVE_INTERMITTENT_4, idACTIVE_PATIENT_4, idTHERAPY_ACTIVE_4, inPatientBolus_4, number_pbolus_4, pbolus_timer_4, sbolusInter_timer_4, sbolus_req_4, sbolus_timer_4)
+		 else
+		 if ( idInfusion_Manager_THERAPY_1 = 1290) then 
+		(idInfusion_Manager_THERAPY_6, idInfusionMGR_Infusion_Manager_3, IM_OUT_Current_System_Mode_6, IM_OUT_Flow_Rate_Commanded_6, idPAUSED_Alarm_Paused_4, idPAUSED_Arbiter_4, idPAUSED_Manual_Paused_4, idTHERAPY_PAUSED_4, IM_OUT_Is_Locked_Out_4, IM_OUT_Lock_Timer_4, idACTIVE_Arbiter_4, idACTIVE_BASAL_4, idACTIVE_INTERMITTENT_4, idACTIVE_PATIENT_4, idTHERAPY_ACTIVE_4, inPatientBolus_4, number_pbolus_4, pbolus_timer_4, sbolusInter_timer_4, sbolus_req_4, sbolus_timer_4)
+		 else (idInfusion_Manager_THERAPY_1, idInfusionMGR_Infusion_Manager_2, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idPAUSED_Alarm_Paused_1, idPAUSED_Arbiter_1, idPAUSED_Manual_Paused_1, idTHERAPY_PAUSED_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, idACTIVE_Arbiter_1, idACTIVE_BASAL_1, idACTIVE_INTERMITTENT_1, idACTIVE_PATIENT_1, idTHERAPY_ACTIVE_1, inPatientBolus_1, number_pbolus_1, pbolus_timer_1, sbolusInter_timer_1, sbolus_req_1, sbolus_timer_1);
+
+
+	(idInfusion_Manager_THERAPY, idInfusionMGR_Infusion_Manager, IM_OUT_Current_System_Mode, IM_OUT_Flow_Rate_Commanded, idPAUSED_Alarm_Paused, idPAUSED_Arbiter, idPAUSED_Manual_Paused, idTHERAPY_PAUSED, IM_OUT_Is_Locked_Out, IM_OUT_Lock_Timer, idACTIVE_Arbiter, idACTIVE_BASAL, idACTIVE_INTERMITTENT, idACTIVE_PATIENT, idTHERAPY_ACTIVE, inPatientBolus, number_pbolus, pbolus_timer, sbolusInter_timer, sbolus_req, sbolus_timer) 
+	= (idInfusion_Manager_THERAPY_7, idInfusionMGR_Infusion_Manager_4, IM_OUT_Current_System_Mode_7, IM_OUT_Flow_Rate_Commanded_7, idPAUSED_Alarm_Paused_5, idPAUSED_Arbiter_5, idPAUSED_Manual_Paused_5, idTHERAPY_PAUSED_5, IM_OUT_Is_Locked_Out_5, IM_OUT_Lock_Timer_5, idACTIVE_Arbiter_5, idACTIVE_BASAL_5, idACTIVE_INTERMITTENT_5, idACTIVE_PATIENT_5, idTHERAPY_ACTIVE_5, inPatientBolus_5, number_pbolus_5, pbolus_timer_5, sbolusInter_timer_5, sbolus_req_5, sbolus_timer_5);
+	
+
+tel
+
+
+
+
+
+
+-- Entry action for state :Infusion_Manager_IDLE
+node Infusion_Manager_IDLE_en(idInfusionMGR_Infusion_Manager_1:int;
+	IM_OUT_Current_System_Mode_1:int;
+	IM_OUT_Flow_Rate_Commanded_1:int;
+	IM_OUT_Is_Locked_Out_1:bool;
+	IM_OUT_Lock_Timer_1:real;
+	inPatientBolus_1:bool;
+	number_pbolus_1:int;
+	isInner:bool)
+
+returns (idInfusionMGR_Infusion_Manager:int;
+	IM_OUT_Current_System_Mode:int;
+	IM_OUT_Flow_Rate_Commanded:int;
+	IM_OUT_Is_Locked_Out:bool;
+	IM_OUT_Lock_Timer:real;
+	inPatientBolus:bool;
+>>>>>>> 3922117... clean sf_test
 	number_pbolus:int);
 
 
@@ -4459,7 +5543,11 @@ let
 
 	-- set state as active 
 	idInfusionMGR_Infusion_Manager_2 
+<<<<<<< HEAD
 	= 1138;
+=======
+	= 1302;
+>>>>>>> 3922117... clean sf_test
 	
 
 	IM_OUT_Current_System_Mode_2 
@@ -4597,12 +5685,69 @@ let
 
 
 
+<<<<<<< HEAD
 	IM_OUT_New_Infusion_2 
 	= false;
 	
 
 	(IM_OUT_New_Infusion) 
 	= (IM_OUT_New_Infusion_2);
+=======
+	-- set state as active 
+	idInfusionMGR_InfusionMGR_2 
+	= 1271;
+	
+
+	
+-- transition trace :
+	--POINT__To__Infusion_Manager_IDLE_1
+		(idInfusionMGR_Infusion_Manager_2, IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Is_Locked_Out_2, IM_OUT_Lock_Timer_2, inPatientBolus_2, number_pbolus_2) 
+	= Infusion_Manager_IDLE_en(idInfusionMGR_Infusion_Manager_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1, false);
+		
+
+	(idInfusionMGR_Infusion_Manager_3, idInfusionMGR_InfusionMGR_3, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Is_Locked_Out_3, IM_OUT_Lock_Timer_3, inPatientBolus_3, number_pbolus_3) 
+	= 
+
+	if ( idInfusionMGR_Infusion_Manager_1 = 0) then
+
+	 (idInfusionMGR_Infusion_Manager_2, idInfusionMGR_InfusionMGR_2, IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Is_Locked_Out_2, IM_OUT_Lock_Timer_2, inPatientBolus_2, number_pbolus_2)
+
+	 else(idInfusionMGR_Infusion_Manager_1, idInfusionMGR_InfusionMGR_2, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1);
+
+	
+
+	(idInfusion_Manager_THERAPY_2, idInfusionMGR_Infusion_Manager_4, IM_OUT_Current_System_Mode_4, IM_OUT_Flow_Rate_Commanded_4, idPAUSED_Alarm_Paused_2, idPAUSED_Arbiter_2, idPAUSED_Manual_Paused_2, idTHERAPY_PAUSED_2, IM_OUT_Is_Locked_Out_4, IM_OUT_Lock_Timer_4, idACTIVE_Arbiter_2, idACTIVE_BASAL_2, idACTIVE_INTERMITTENT_2, idACTIVE_PATIENT_2, idTHERAPY_ACTIVE_2, inPatientBolus_4, number_pbolus_4, pbolus_timer_2, sbolusInter_timer_2, sbolus_req_2, sbolus_timer_2) 
+	= 
+	if ( idInfusionMGR_Infusion_Manager_1 = 1272) then
+	Infusion_Manager_THERAPY_en(idInfusion_Manager_THERAPY_1, idInfusionMGR_Infusion_Manager_1, OP_CMD_IN_Infusion_Inhibit, ALARM_IN_Highest_Level_Alarm, CONFIG_IN_Flow_Rate_KVO, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idPAUSED_Alarm_Paused_1, idPAUSED_Arbiter_1, idPAUSED_Manual_Paused_1, idTHERAPY_PAUSED_1, CONFIG_IN_Flow_Rate_Basal, CONFIG_IN_Flow_Rate_Intermittent_Bolus, CONFIG_IN_Flow_Rate_Patient_Bolus, CONFIG_IN_Interval_Intermittent_Bolus, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, idACTIVE_Arbiter_1, idACTIVE_BASAL_1, idACTIVE_INTERMITTENT_1, idACTIVE_PATIENT_1, idTHERAPY_ACTIVE_1, inPatientBolus_1, number_pbolus_1, pbolus_timer_1, sbolusInter_timer_1, sbolus_req_1, sbolus_timer_1, step_size, false)
+	 else (idInfusion_Manager_THERAPY_1, idInfusionMGR_Infusion_Manager_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idPAUSED_Alarm_Paused_1, idPAUSED_Arbiter_1, idPAUSED_Manual_Paused_1, idTHERAPY_PAUSED_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, idACTIVE_Arbiter_1, idACTIVE_BASAL_1, idACTIVE_INTERMITTENT_1, idACTIVE_PATIENT_1, idTHERAPY_ACTIVE_1, inPatientBolus_1, number_pbolus_1, pbolus_timer_1, sbolusInter_timer_1, sbolus_req_1, sbolus_timer_1);
+
+	
+
+	(idInfusionMGR_Infusion_Manager_5, IM_OUT_Current_System_Mode_5, IM_OUT_Flow_Rate_Commanded_5, IM_OUT_Is_Locked_Out_5, IM_OUT_Lock_Timer_5, inPatientBolus_5, number_pbolus_5) 
+	= 
+	if ( idInfusionMGR_Infusion_Manager_1 = 1302) then
+	Infusion_Manager_IDLE_en(idInfusionMGR_Infusion_Manager_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1, false)
+	 else (idInfusionMGR_Infusion_Manager_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1);
+
+	
+
+	(idInfusionMGR_Infusion_Manager_6, idInfusionMGR_InfusionMGR_4, IM_OUT_Current_System_Mode_6, IM_OUT_Flow_Rate_Commanded_6, IM_OUT_Is_Locked_Out_6, IM_OUT_Lock_Timer_6, inPatientBolus_6, number_pbolus_6, idACTIVE_Arbiter_3, idACTIVE_BASAL_3, idACTIVE_INTERMITTENT_3, idACTIVE_PATIENT_3, idInfusion_Manager_THERAPY_3, idPAUSED_Alarm_Paused_3, idPAUSED_Arbiter_3, idPAUSED_Manual_Paused_3, idTHERAPY_ACTIVE_3, idTHERAPY_PAUSED_3, pbolus_timer_3, sbolusInter_timer_3, sbolus_req_3, sbolus_timer_3) 
+	= 
+		 if ( idInfusionMGR_Infusion_Manager_1 = 0) then 
+		(idInfusionMGR_Infusion_Manager_3, idInfusionMGR_InfusionMGR_3, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Is_Locked_Out_3, IM_OUT_Lock_Timer_3, inPatientBolus_3, number_pbolus_3, idACTIVE_Arbiter_1, idACTIVE_BASAL_1, idACTIVE_INTERMITTENT_1, idACTIVE_PATIENT_1, idInfusion_Manager_THERAPY_1, idPAUSED_Alarm_Paused_1, idPAUSED_Arbiter_1, idPAUSED_Manual_Paused_1, idTHERAPY_ACTIVE_1, idTHERAPY_PAUSED_1, pbolus_timer_1, sbolusInter_timer_1, sbolus_req_1, sbolus_timer_1)
+		 else
+		 if ( idInfusionMGR_Infusion_Manager_1 = 1272) then 
+		(idInfusionMGR_Infusion_Manager_4, idInfusionMGR_InfusionMGR_3, IM_OUT_Current_System_Mode_4, IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Is_Locked_Out_4, IM_OUT_Lock_Timer_4, inPatientBolus_4, number_pbolus_4, idACTIVE_Arbiter_2, idACTIVE_BASAL_2, idACTIVE_INTERMITTENT_2, idACTIVE_PATIENT_2, idInfusion_Manager_THERAPY_2, idPAUSED_Alarm_Paused_2, idPAUSED_Arbiter_2, idPAUSED_Manual_Paused_2, idTHERAPY_ACTIVE_2, idTHERAPY_PAUSED_2, pbolus_timer_2, sbolusInter_timer_2, sbolus_req_2, sbolus_timer_2)
+		 else
+		 if ( idInfusionMGR_Infusion_Manager_1 = 1302) then 
+		(idInfusionMGR_Infusion_Manager_5, idInfusionMGR_InfusionMGR_3, IM_OUT_Current_System_Mode_5, IM_OUT_Flow_Rate_Commanded_5, IM_OUT_Is_Locked_Out_5, IM_OUT_Lock_Timer_5, inPatientBolus_5, number_pbolus_5, idACTIVE_Arbiter_2, idACTIVE_BASAL_2, idACTIVE_INTERMITTENT_2, idACTIVE_PATIENT_2, idInfusion_Manager_THERAPY_2, idPAUSED_Alarm_Paused_2, idPAUSED_Arbiter_2, idPAUSED_Manual_Paused_2, idTHERAPY_ACTIVE_2, idTHERAPY_PAUSED_2, pbolus_timer_2, sbolusInter_timer_2, sbolus_req_2, sbolus_timer_2)
+		 else (idInfusionMGR_Infusion_Manager_1, idInfusionMGR_InfusionMGR_2, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1, idACTIVE_Arbiter_1, idACTIVE_BASAL_1, idACTIVE_INTERMITTENT_1, idACTIVE_PATIENT_1, idInfusion_Manager_THERAPY_1, idPAUSED_Alarm_Paused_1, idPAUSED_Arbiter_1, idPAUSED_Manual_Paused_1, idTHERAPY_ACTIVE_1, idTHERAPY_PAUSED_1, pbolus_timer_1, sbolusInter_timer_1, sbolus_req_1, sbolus_timer_1);
+
+
+	(idInfusionMGR_Infusion_Manager, idInfusionMGR_InfusionMGR, IM_OUT_Current_System_Mode, IM_OUT_Flow_Rate_Commanded, IM_OUT_Is_Locked_Out, IM_OUT_Lock_Timer, inPatientBolus, number_pbolus, idACTIVE_Arbiter, idACTIVE_BASAL, idACTIVE_INTERMITTENT, idACTIVE_PATIENT, idInfusion_Manager_THERAPY, idPAUSED_Alarm_Paused, idPAUSED_Arbiter, idPAUSED_Manual_Paused, idTHERAPY_ACTIVE, idTHERAPY_PAUSED, pbolus_timer, sbolusInter_timer, sbolus_req, sbolus_timer) 
+	= (idInfusionMGR_Infusion_Manager_6, idInfusionMGR_InfusionMGR_4, IM_OUT_Current_System_Mode_6, IM_OUT_Flow_Rate_Commanded_6, IM_OUT_Is_Locked_Out_6, IM_OUT_Lock_Timer_6, inPatientBolus_6, number_pbolus_6, idACTIVE_Arbiter_3, idACTIVE_BASAL_3, idACTIVE_INTERMITTENT_3, idACTIVE_PATIENT_3, idInfusion_Manager_THERAPY_3, idPAUSED_Alarm_Paused_3, idPAUSED_Arbiter_3, idPAUSED_Manual_Paused_3, idTHERAPY_ACTIVE_3, idTHERAPY_PAUSED_3, pbolus_timer_3, sbolusInter_timer_3, sbolus_req_3, sbolus_timer_3);
+>>>>>>> 3922117... clean sf_test
 	
 
 tel
@@ -4680,28 +5825,49 @@ let
 	
 	(idACTIVE_Arbiter_2, idTHERAPY_ACTIVE_2, idACTIVE_INTERMITTENT_2, sbolus_req_2, sbolus_timer_2, idACTIVE_PATIENT_2, pbolus_timer_2, idACTIVE_BASAL_2, idInfusion_Manager_THERAPY_2) 
 	= 
+<<<<<<< HEAD
 	if ( idInfusion_Manager_THERAPY_1 = 1109) then
 	THERAPY_ACTIVE_ex(idACTIVE_Arbiter_1, idTHERAPY_ACTIVE_1, idACTIVE_INTERMITTENT_1, sbolus_req_1, sbolus_timer_1, idACTIVE_PATIENT_1, pbolus_timer_1, idACTIVE_BASAL_1, idInfusion_Manager_THERAPY_1, false)
 	 else (idACTIVE_Arbiter_1, idTHERAPY_ACTIVE_1, idACTIVE_INTERMITTENT_1, sbolus_req_1, sbolus_timer_1, idACTIVE_PATIENT_1, pbolus_timer_1, idACTIVE_BASAL_1, idInfusion_Manager_THERAPY_1);
+=======
+	if ( idInfusionMGR_Infusion_Manager_1 = 1272) then
+	Infusion_Manager_THERAPY_ex(idACTIVE_Arbiter_1, idTHERAPY_ACTIVE_1, idACTIVE_INTERMITTENT_1, sbolus_req_1, sbolus_timer_1, idACTIVE_PATIENT_1, pbolus_timer_1, idACTIVE_BASAL_1, idInfusion_Manager_THERAPY_1, CONFIG_IN_Flow_Rate_KVO, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idPAUSED_Alarm_Paused_1, idPAUSED_Arbiter_1, idPAUSED_Manual_Paused_1, idTHERAPY_PAUSED_1, IM_OUT_Is_Locked_Out_1, IM_OUT_New_Infusion_1, idInfusionMGR_Infusion_Manager_1, false)
+	 else (idACTIVE_Arbiter_1, idTHERAPY_ACTIVE_1, idACTIVE_INTERMITTENT_1, sbolus_req_1, sbolus_timer_1, idACTIVE_PATIENT_1, pbolus_timer_1, idACTIVE_BASAL_1, idInfusion_Manager_THERAPY_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idPAUSED_Alarm_Paused_1, idPAUSED_Arbiter_1, idPAUSED_Manual_Paused_1, idTHERAPY_PAUSED_1, IM_OUT_Is_Locked_Out_1, IM_OUT_New_Infusion_1, idInfusionMGR_Infusion_Manager_1);
+>>>>>>> 3922117... clean sf_test
 
 	
 
 	(IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2, idPAUSED_Arbiter_2, idTHERAPY_PAUSED_2, idPAUSED_Manual_Paused_2, idPAUSED_Alarm_Paused_2, idInfusion_Manager_THERAPY_3) 
 	= 
+<<<<<<< HEAD
 	if ( idInfusion_Manager_THERAPY_1 = 1126) then
 	THERAPY_PAUSED_ex(IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1, CONFIG_IN_Flow_Rate_KVO, idTHERAPY_PAUSED_1, idPAUSED_Manual_Paused_1, idPAUSED_Alarm_Paused_1, idInfusion_Manager_THERAPY_1, false)
 	 else (IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1, idTHERAPY_PAUSED_1, idPAUSED_Manual_Paused_1, idPAUSED_Alarm_Paused_1, idInfusion_Manager_THERAPY_1);
+=======
+	if ( idInfusionMGR_Infusion_Manager_1 = 1302) then
+	Infusion_Manager_IDLE_ex(IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1, idInfusionMGR_Infusion_Manager_1, false)
+	 else (IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1, idInfusionMGR_Infusion_Manager_1);
+>>>>>>> 3922117... clean sf_test
 
 	
 
 	(idACTIVE_Arbiter_3, idTHERAPY_ACTIVE_3, idACTIVE_INTERMITTENT_3, sbolus_req_3, sbolus_timer_3, idACTIVE_PATIENT_3, pbolus_timer_3, idACTIVE_BASAL_3, idInfusion_Manager_THERAPY_4, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3, idPAUSED_Alarm_Paused_3, idPAUSED_Arbiter_3, idPAUSED_Manual_Paused_3, idTHERAPY_PAUSED_3) 
 	= 
+<<<<<<< HEAD
 		 if ( idInfusion_Manager_THERAPY_1 = 1109) then 
 		(idACTIVE_Arbiter_2, idTHERAPY_ACTIVE_2, idACTIVE_INTERMITTENT_2, sbolus_req_2, sbolus_timer_2, idACTIVE_PATIENT_2, pbolus_timer_2, idACTIVE_BASAL_2, idInfusion_Manager_THERAPY_2, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idPAUSED_Alarm_Paused_1, idPAUSED_Arbiter_1, idPAUSED_Manual_Paused_1, idTHERAPY_PAUSED_1)
 		 else
 		 if ( idInfusion_Manager_THERAPY_1 = 1126) then 
 		(idACTIVE_Arbiter_2, idTHERAPY_ACTIVE_2, idACTIVE_INTERMITTENT_2, sbolus_req_2, sbolus_timer_2, idACTIVE_PATIENT_2, pbolus_timer_2, idACTIVE_BASAL_2, idInfusion_Manager_THERAPY_3, IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2, idPAUSED_Alarm_Paused_2, idPAUSED_Arbiter_2, idPAUSED_Manual_Paused_2, idTHERAPY_PAUSED_2)
 		 else (idACTIVE_Arbiter_1, idTHERAPY_ACTIVE_1, idACTIVE_INTERMITTENT_1, sbolus_req_1, sbolus_timer_1, idACTIVE_PATIENT_1, pbolus_timer_1, idACTIVE_BASAL_1, idInfusion_Manager_THERAPY_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idPAUSED_Alarm_Paused_1, idPAUSED_Arbiter_1, idPAUSED_Manual_Paused_1, idTHERAPY_PAUSED_1);
+=======
+		 if ( idInfusionMGR_Infusion_Manager_1 = 1272) then 
+		(idACTIVE_Arbiter_2, idTHERAPY_ACTIVE_2, idACTIVE_INTERMITTENT_2, sbolus_req_2, sbolus_timer_2, idACTIVE_PATIENT_2, pbolus_timer_2, idACTIVE_BASAL_2, idInfusion_Manager_THERAPY_2, IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2, idPAUSED_Alarm_Paused_2, idPAUSED_Arbiter_2, idPAUSED_Manual_Paused_2, idTHERAPY_PAUSED_2, IM_OUT_Is_Locked_Out_2, IM_OUT_New_Infusion_2, idInfusionMGR_Infusion_Manager_2, IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1)
+		 else
+		 if ( idInfusionMGR_Infusion_Manager_1 = 1302) then 
+		(idACTIVE_Arbiter_2, idTHERAPY_ACTIVE_2, idACTIVE_INTERMITTENT_2, sbolus_req_2, sbolus_timer_2, idACTIVE_PATIENT_2, pbolus_timer_2, idACTIVE_BASAL_2, idInfusion_Manager_THERAPY_2, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3, idPAUSED_Alarm_Paused_2, idPAUSED_Arbiter_2, idPAUSED_Manual_Paused_2, idTHERAPY_PAUSED_2, IM_OUT_Is_Locked_Out_3, IM_OUT_New_Infusion_2, idInfusionMGR_Infusion_Manager_3, IM_OUT_Lock_Timer_2, inPatientBolus_2, number_pbolus_2)
+		 else (idACTIVE_Arbiter_1, idTHERAPY_ACTIVE_1, idACTIVE_INTERMITTENT_1, sbolus_req_1, sbolus_timer_1, idACTIVE_PATIENT_1, pbolus_timer_1, idACTIVE_BASAL_1, idInfusion_Manager_THERAPY_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idPAUSED_Alarm_Paused_1, idPAUSED_Arbiter_1, idPAUSED_Manual_Paused_1, idTHERAPY_PAUSED_1, IM_OUT_Is_Locked_Out_1, IM_OUT_New_Infusion_1, idInfusionMGR_Infusion_Manager_1, IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1);
+>>>>>>> 3922117... clean sf_test
 
 
 	(IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Is_Locked_Out_2, IM_OUT_New_Infusion_2) 
@@ -4810,8 +5976,23 @@ let
 
 
 	-- set state as active 
+<<<<<<< HEAD
 	idInfusionMGR_Infusion_Manager_2 
 	= 1108;
+=======
+	idInfusionMGR_InfusionMGR_2 
+	= 1270;
+	
+
+	IM_OUT_Current_System_Mode_2 
+	= if (not isInner) then 0
+	 else IM_OUT_Current_System_Mode_1;
+	
+
+	IM_OUT_Flow_Rate_Commanded_2 
+	= if (not isInner) then 0
+	 else IM_OUT_Flow_Rate_Commanded_1;
+>>>>>>> 3922117... clean sf_test
 	
 
 	
@@ -4918,6 +6099,7 @@ node InfusionMGR_Infusion_Manager_en(idInfusionMGR_Infusion_Manager_1:int;
 returns (idInfusionMGR_Infusion_Manager:int;
 	idInfusionMGR_InfusionMGR:int;
 	IM_OUT_Current_System_Mode:int;
+<<<<<<< HEAD
 	IM_OUT_Flow_Rate_Commanded:int;
 	IM_OUT_Is_Locked_Out:bool;
 	IM_OUT_Lock_Timer:real;
@@ -4938,6 +6120,29 @@ returns (idInfusionMGR_Infusion_Manager:int;
 	sbolus_req:bool;
 	sbolus_timer:real);
 
+=======
+	IM_OUT_Flow_Rate_Commanded:int);
+
+
+let
+
+	 automaton paused_arbiter
+
+	state POINTPAUSED_Arbiter:
+	unless (idPAUSED_Arbiter_1=0) restart POINT__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1357_1
+
+
+
+	unless (idPAUSED_Arbiter_1=1292) restart ARBITER_PAUSED_NOKVO__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1359_1
+
+
+
+	unless (idPAUSED_Arbiter_1=1293) restart ARBITER_PAUSED_KVO__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1359_1
+
+
+
+	unless (idPAUSED_Arbiter_1=1294) restart ARBITER_MANUAL_PAUSED_KVO__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1359_1
+>>>>>>> 3922117... clean sf_test
 
 var 	idInfusionMGR_Infusion_Manager_2, idInfusionMGR_Infusion_Manager_3, idInfusionMGR_Infusion_Manager_4, idInfusionMGR_Infusion_Manager_5, idInfusionMGR_Infusion_Manager_6:int;
 	idInfusionMGR_InfusionMGR_2, idInfusionMGR_InfusionMGR_3, idInfusionMGR_InfusionMGR_4:int;
@@ -4963,23 +6168,97 @@ var 	idInfusionMGR_Infusion_Manager_2, idInfusionMGR_Infusion_Manager_3, idInfus
 	sbolus_timer_2, sbolus_timer_3:real;
 
 
+<<<<<<< HEAD
 let
 
 
+=======
+	unless (idPAUSED_Arbiter_1=1292) restart ARBITER_PAUSED_NOKVO_IDL
+
+	unless (idPAUSED_Arbiter_1=1293) restart ARBITER_PAUSED_KVO_IDL
+
+	unless (idPAUSED_Arbiter_1=1294) restart ARBITER_MANUAL_PAUSED_KVO_IDL
+>>>>>>> 3922117... clean sf_test
 
 	-- set state as active 
 	idInfusionMGR_InfusionMGR_2 
 	= 1107;
 	
 
+<<<<<<< HEAD
 	
 
 		(idInfusionMGR_Infusion_Manager_2, IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Is_Locked_Out_2, IM_OUT_Lock_Timer_2, inPatientBolus_2, number_pbolus_2) 
 	= Infusion_Manager_IDLE_en(idInfusionMGR_Infusion_Manager_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1, false);
+=======
+	tel
+
+
+
+	state POINT__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1357_1:
+
+	 var 	idPAUSED_Arbiter_2, idPAUSED_Arbiter_3, idPAUSED_Arbiter_4:int;
+	IM_OUT_Current_System_Mode_2, IM_OUT_Current_System_Mode_3, IM_OUT_Current_System_Mode_4:int;
+	IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Flow_Rate_Commanded_4:int;
+	let
+
+		
+
+-- transition trace :
+	--POINT__To__Junction1357_1, Junction1357__To__Arbiter_Paused_NoKVO_1
+		(idPAUSED_Arbiter_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2) 
+	= 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=4 )) then 
+		Arbiter_Paused_NoKVO_en(idPAUSED_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
+		 else (idPAUSED_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
+		
+
+
+-- transition trace :
+	--POINT__To__Junction1357_1, Junction1357__To__Arbiter_Paused_KVO_2
+		(idPAUSED_Arbiter_3, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Current_System_Mode_3) 
+	= 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=3 )) then 
+		Arbiter_Paused_KVO_en(idPAUSED_Arbiter_1, CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
+		 else (idPAUSED_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
+		
+
+
+-- transition trace :
+	--POINT__To__Junction1357_1, Junction1357__To__Arbiter_Manual_Paused_KVO_3
+		(idPAUSED_Arbiter_4, IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4) 
+	= Arbiter_Manual_Paused_KVO_en(idPAUSED_Arbiter_1, CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false);
+>>>>>>> 3922117... clean sf_test
 		
 
 	(idInfusionMGR_Infusion_Manager_3, idInfusionMGR_InfusionMGR_3, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Is_Locked_Out_3, IM_OUT_Lock_Timer_3, inPatientBolus_3, number_pbolus_3) 
 	= 
+<<<<<<< HEAD
+=======
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=4 )) then 
+		(idPAUSED_Arbiter_2, IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2)
+		 else
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=3 )) then 
+		(idPAUSED_Arbiter_3, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3)
+		 else (idPAUSED_Arbiter_4, IM_OUT_Current_System_Mode_4, IM_OUT_Flow_Rate_Commanded_4);
+
+
+	tel
+
+	until true restart POINTPAUSED_Arbiter
+
+
+
+	state ARBITER_PAUSED_NOKVO__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1359_1:
+
+	 var 	idPAUSED_Arbiter_2, idPAUSED_Arbiter_3, idPAUSED_Arbiter_4, idPAUSED_Arbiter_5, idPAUSED_Arbiter_6, idPAUSED_Arbiter_7:int;
+	IM_OUT_Current_System_Mode_2, IM_OUT_Current_System_Mode_3, IM_OUT_Current_System_Mode_4, IM_OUT_Current_System_Mode_5, IM_OUT_Current_System_Mode_6, IM_OUT_Current_System_Mode_7:int;
+	IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Flow_Rate_Commanded_5, IM_OUT_Flow_Rate_Commanded_6, IM_OUT_Flow_Rate_Commanded_7:int;
+	let
+
+		
+
+>>>>>>> 3922117... clean sf_test
 
 	if ( idInfusionMGR_Infusion_Manager_1 = 0) then
 
@@ -4987,26 +6266,69 @@ let
 
 	 else(idInfusionMGR_Infusion_Manager_1, idInfusionMGR_InfusionMGR_2, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1);
 
+<<<<<<< HEAD
 	
+=======
+-- transition trace :
+	--Arbiter_Paused_NoKVO__To__Junction1359_1, Junction1359__To__Junction1358_1, Junction1358__To__Junction1357_1, Junction1357__To__Arbiter_Paused_NoKVO_1
+		(IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2, idPAUSED_Arbiter_2) 
+	= 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=4 )) then 
+		Arbiter_Paused_NoKVO_ex(IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1, false)
+		 else (IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1);
+		
+>>>>>>> 3922117... clean sf_test
 
 	(idInfusion_Manager_THERAPY_2, idInfusionMGR_Infusion_Manager_4, IM_OUT_Current_System_Mode_4, IM_OUT_Flow_Rate_Commanded_4, idPAUSED_Alarm_Paused_2, idPAUSED_Arbiter_2, idPAUSED_Manual_Paused_2, idTHERAPY_PAUSED_2, IM_OUT_Is_Locked_Out_4, IM_OUT_Lock_Timer_4, idACTIVE_Arbiter_2, idACTIVE_BASAL_2, idACTIVE_INTERMITTENT_2, idACTIVE_PATIENT_2, idTHERAPY_ACTIVE_2, inPatientBolus_4, number_pbolus_4, pbolus_timer_2, sbolusInter_timer_2, sbolus_req_2, sbolus_timer_2) 
 	= 
+<<<<<<< HEAD
 	if ( idInfusionMGR_Infusion_Manager_1 = 1108) then
 	Infusion_Manager_THERAPY_en(idInfusion_Manager_THERAPY_1, idInfusionMGR_Infusion_Manager_1, OP_CMD_IN_Infusion_Inhibit, ALARM_IN_Highest_Level_Alarm, CONFIG_IN_Flow_Rate_KVO, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idPAUSED_Alarm_Paused_1, idPAUSED_Arbiter_1, idPAUSED_Manual_Paused_1, idTHERAPY_PAUSED_1, CONFIG_IN_Flow_Rate_Basal, CONFIG_IN_Flow_Rate_Intermittent_Bolus, CONFIG_IN_Flow_Rate_Patient_Bolus, CONFIG_IN_Interval_Intermittent_Bolus, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, idACTIVE_Arbiter_1, idACTIVE_BASAL_1, idACTIVE_INTERMITTENT_1, idACTIVE_PATIENT_1, idTHERAPY_ACTIVE_1, inPatientBolus_1, number_pbolus_1, pbolus_timer_1, sbolusInter_timer_1, sbolus_req_1, sbolus_timer_1, step_size, false)
 	 else (idInfusion_Manager_THERAPY_1, idInfusionMGR_Infusion_Manager_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idPAUSED_Alarm_Paused_1, idPAUSED_Arbiter_1, idPAUSED_Manual_Paused_1, idTHERAPY_PAUSED_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, idACTIVE_Arbiter_1, idACTIVE_BASAL_1, idACTIVE_INTERMITTENT_1, idACTIVE_PATIENT_1, idTHERAPY_ACTIVE_1, inPatientBolus_1, number_pbolus_1, pbolus_timer_1, sbolusInter_timer_1, sbolus_req_1, sbolus_timer_1);
 
 	
+=======
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=4 )) then 
+		Arbiter_Paused_NoKVO_en(idPAUSED_Arbiter_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2, false)
+		 else (idPAUSED_Arbiter_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2);
+		
+
+
+-- transition trace :
+	--Arbiter_Paused_NoKVO__To__Junction1359_1, Junction1359__To__Junction1358_1, Junction1358__To__Junction1357_1, Junction1357__To__Arbiter_Paused_KVO_2
+		(IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4, idPAUSED_Arbiter_4) 
+	= 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=3 )) then 
+		Arbiter_Paused_NoKVO_ex(IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1, false)
+		 else (IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1);
+		
+>>>>>>> 3922117... clean sf_test
 
 	(idInfusionMGR_Infusion_Manager_5, IM_OUT_Current_System_Mode_5, IM_OUT_Flow_Rate_Commanded_5, IM_OUT_Is_Locked_Out_5, IM_OUT_Lock_Timer_5, inPatientBolus_5, number_pbolus_5) 
 	= 
+<<<<<<< HEAD
 	if ( idInfusionMGR_Infusion_Manager_1 = 1138) then
 	Infusion_Manager_IDLE_en(idInfusionMGR_Infusion_Manager_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1, false)
 	 else (idInfusionMGR_Infusion_Manager_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1);
+=======
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=3 )) then 
+		Arbiter_Paused_KVO_en(idPAUSED_Arbiter_4, CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4, false)
+		 else (idPAUSED_Arbiter_4, IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4);
+		
+
+
+-- transition trace :
+	--Arbiter_Paused_NoKVO__To__Junction1359_1, Junction1359__To__Junction1358_1, Junction1358__To__Junction1357_1, Junction1357__To__Arbiter_Manual_Paused_KVO_3
+		(IM_OUT_Flow_Rate_Commanded_6, IM_OUT_Current_System_Mode_6, idPAUSED_Arbiter_6) 
+	= Arbiter_Paused_NoKVO_ex(IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1, false);
+		
+>>>>>>> 3922117... clean sf_test
 
 	
 
 	(idInfusionMGR_Infusion_Manager_6, idInfusionMGR_InfusionMGR_4, IM_OUT_Current_System_Mode_6, IM_OUT_Flow_Rate_Commanded_6, IM_OUT_Is_Locked_Out_6, IM_OUT_Lock_Timer_6, inPatientBolus_6, number_pbolus_6, idACTIVE_Arbiter_3, idACTIVE_BASAL_3, idACTIVE_INTERMITTENT_3, idACTIVE_PATIENT_3, idInfusion_Manager_THERAPY_3, idPAUSED_Alarm_Paused_3, idPAUSED_Arbiter_3, idPAUSED_Manual_Paused_3, idTHERAPY_ACTIVE_3, idTHERAPY_PAUSED_3, pbolus_timer_3, sbolusInter_timer_3, sbolus_req_3, sbolus_timer_3) 
 	= 
+<<<<<<< HEAD
 		 if ( idInfusionMGR_Infusion_Manager_1 = 0) then 
 		(idInfusionMGR_Infusion_Manager_3, idInfusionMGR_InfusionMGR_3, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Is_Locked_Out_3, IM_OUT_Lock_Timer_3, inPatientBolus_3, number_pbolus_3, idACTIVE_Arbiter_1, idACTIVE_BASAL_1, idACTIVE_INTERMITTENT_1, idACTIVE_PATIENT_1, idInfusion_Manager_THERAPY_1, idPAUSED_Alarm_Paused_1, idPAUSED_Arbiter_1, idPAUSED_Manual_Paused_1, idTHERAPY_ACTIVE_1, idTHERAPY_PAUSED_1, pbolus_timer_1, sbolusInter_timer_1, sbolus_req_1, sbolus_timer_1)
 		 else
@@ -5016,6 +6338,15 @@ let
 		 if ( idInfusionMGR_Infusion_Manager_1 = 1138) then 
 		(idInfusionMGR_Infusion_Manager_5, idInfusionMGR_InfusionMGR_3, IM_OUT_Current_System_Mode_5, IM_OUT_Flow_Rate_Commanded_5, IM_OUT_Is_Locked_Out_5, IM_OUT_Lock_Timer_5, inPatientBolus_5, number_pbolus_5, idACTIVE_Arbiter_2, idACTIVE_BASAL_2, idACTIVE_INTERMITTENT_2, idACTIVE_PATIENT_2, idInfusion_Manager_THERAPY_2, idPAUSED_Alarm_Paused_2, idPAUSED_Arbiter_2, idPAUSED_Manual_Paused_2, idTHERAPY_ACTIVE_2, idTHERAPY_PAUSED_2, pbolus_timer_2, sbolusInter_timer_2, sbolus_req_2, sbolus_timer_2)
 		 else (idInfusionMGR_Infusion_Manager_1, idInfusionMGR_InfusionMGR_2, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1, idACTIVE_Arbiter_1, idACTIVE_BASAL_1, idACTIVE_INTERMITTENT_1, idACTIVE_PATIENT_1, idInfusion_Manager_THERAPY_1, idPAUSED_Alarm_Paused_1, idPAUSED_Arbiter_1, idPAUSED_Manual_Paused_1, idTHERAPY_ACTIVE_1, idTHERAPY_PAUSED_1, pbolus_timer_1, sbolusInter_timer_1, sbolus_req_1, sbolus_timer_1);
+=======
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=4 )) then 
+		(idPAUSED_Arbiter_3, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3)
+		 else
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=3 )) then 
+		(idPAUSED_Arbiter_5, IM_OUT_Current_System_Mode_5, IM_OUT_Flow_Rate_Commanded_5)
+		 else (idPAUSED_Arbiter_7, IM_OUT_Current_System_Mode_7, IM_OUT_Flow_Rate_Commanded_7);
+
+>>>>>>> 3922117... clean sf_test
 
 
 	(idInfusionMGR_Infusion_Manager, idInfusionMGR_InfusionMGR, IM_OUT_Current_System_Mode, IM_OUT_Flow_Rate_Commanded, IM_OUT_Is_Locked_Out, IM_OUT_Lock_Timer, inPatientBolus, number_pbolus, idACTIVE_Arbiter, idACTIVE_BASAL, idACTIVE_INTERMITTENT, idACTIVE_PATIENT, idInfusion_Manager_THERAPY, idPAUSED_Alarm_Paused, idPAUSED_Arbiter, idPAUSED_Manual_Paused, idTHERAPY_ACTIVE, idTHERAPY_PAUSED, pbolus_timer, sbolusInter_timer, sbolus_req, sbolus_timer) 
@@ -5025,6 +6356,10 @@ let
 tel
 
 
+<<<<<<< HEAD
+=======
+	state ARBITER_PAUSED_KVO__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1359_1:
+>>>>>>> 3922117... clean sf_test
 
 
 
@@ -5101,36 +6436,89 @@ var 	idACTIVE_Arbiter_2, idACTIVE_Arbiter_3:int;
 	number_pbolus_2, number_pbolus_3:int;
 	idInfusionMGR_InfusionMGR_2:int;
 
+<<<<<<< HEAD
 
 let
 
 
+=======
+-- transition trace :
+	--Arbiter_Paused_KVO__To__Junction1359_1, Junction1359__To__Junction1358_1, Junction1358__To__Junction1357_1, Junction1357__To__Arbiter_Paused_NoKVO_1
+		(IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2, idPAUSED_Arbiter_2) 
+	= 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=4 )) then 
+		Arbiter_Paused_KVO_ex(CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1, false)
+		 else (IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1);
+		
+
+		(idPAUSED_Arbiter_3, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Current_System_Mode_3) 
+	= 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=4 )) then 
+		Arbiter_Paused_NoKVO_en(idPAUSED_Arbiter_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2, false)
+		 else (idPAUSED_Arbiter_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2);
+		
+
+
+-- transition trace :
+	--Arbiter_Paused_KVO__To__Junction1359_1, Junction1359__To__Junction1358_1, Junction1358__To__Junction1357_1, Junction1357__To__Arbiter_Paused_KVO_2
+		(IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4, idPAUSED_Arbiter_4) 
+	= 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=3 )) then 
+		Arbiter_Paused_KVO_ex(CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1, false)
+		 else (IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1);
+		
+>>>>>>> 3922117... clean sf_test
 
 	
 	(idACTIVE_Arbiter_2, idTHERAPY_ACTIVE_2, idACTIVE_INTERMITTENT_2, sbolus_req_2, sbolus_timer_2, idACTIVE_PATIENT_2, pbolus_timer_2, idACTIVE_BASAL_2, idInfusion_Manager_THERAPY_2, IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2, idPAUSED_Alarm_Paused_2, idPAUSED_Arbiter_2, idPAUSED_Manual_Paused_2, idTHERAPY_PAUSED_2, IM_OUT_Is_Locked_Out_2, IM_OUT_New_Infusion_2, idInfusionMGR_Infusion_Manager_2) 
 	= 
+<<<<<<< HEAD
 	if ( idInfusionMGR_Infusion_Manager_1 = 1108) then
 	Infusion_Manager_THERAPY_ex(idACTIVE_Arbiter_1, idTHERAPY_ACTIVE_1, idACTIVE_INTERMITTENT_1, sbolus_req_1, sbolus_timer_1, idACTIVE_PATIENT_1, pbolus_timer_1, idACTIVE_BASAL_1, idInfusion_Manager_THERAPY_1, CONFIG_IN_Flow_Rate_KVO, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idPAUSED_Alarm_Paused_1, idPAUSED_Arbiter_1, idPAUSED_Manual_Paused_1, idTHERAPY_PAUSED_1, IM_OUT_Is_Locked_Out_1, IM_OUT_New_Infusion_1, idInfusionMGR_Infusion_Manager_1, false)
 	 else (idACTIVE_Arbiter_1, idTHERAPY_ACTIVE_1, idACTIVE_INTERMITTENT_1, sbolus_req_1, sbolus_timer_1, idACTIVE_PATIENT_1, pbolus_timer_1, idACTIVE_BASAL_1, idInfusion_Manager_THERAPY_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idPAUSED_Alarm_Paused_1, idPAUSED_Arbiter_1, idPAUSED_Manual_Paused_1, idTHERAPY_PAUSED_1, IM_OUT_Is_Locked_Out_1, IM_OUT_New_Infusion_1, idInfusionMGR_Infusion_Manager_1);
+=======
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=3 )) then 
+		Arbiter_Paused_KVO_en(idPAUSED_Arbiter_4, CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4, false)
+		 else (idPAUSED_Arbiter_4, IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4);
+		
+>>>>>>> 3922117... clean sf_test
 
 	
 
+<<<<<<< HEAD
 	(IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Is_Locked_Out_3, IM_OUT_Lock_Timer_2, inPatientBolus_2, number_pbolus_2, idInfusionMGR_Infusion_Manager_3) 
 	= 
 	if ( idInfusionMGR_Infusion_Manager_1 = 1138) then
 	Infusion_Manager_IDLE_ex(IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1, idInfusionMGR_Infusion_Manager_1, false)
 	 else (IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1, idInfusionMGR_Infusion_Manager_1);
+=======
+-- transition trace :
+	--Arbiter_Paused_KVO__To__Junction1359_1, Junction1359__To__Junction1358_1, Junction1358__To__Junction1357_1, Junction1357__To__Arbiter_Manual_Paused_KVO_3
+		(IM_OUT_Flow_Rate_Commanded_6, IM_OUT_Current_System_Mode_6, idPAUSED_Arbiter_6) 
+	= Arbiter_Paused_KVO_ex(CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1, false);
+		
+>>>>>>> 3922117... clean sf_test
 
 	
 
 	(idACTIVE_Arbiter_3, idTHERAPY_ACTIVE_3, idACTIVE_INTERMITTENT_3, sbolus_req_3, sbolus_timer_3, idACTIVE_PATIENT_3, pbolus_timer_3, idACTIVE_BASAL_3, idInfusion_Manager_THERAPY_3, IM_OUT_Current_System_Mode_4, IM_OUT_Flow_Rate_Commanded_4, idPAUSED_Alarm_Paused_3, idPAUSED_Arbiter_3, idPAUSED_Manual_Paused_3, idTHERAPY_PAUSED_3, IM_OUT_Is_Locked_Out_4, IM_OUT_New_Infusion_3, idInfusionMGR_Infusion_Manager_4, IM_OUT_Lock_Timer_3, inPatientBolus_3, number_pbolus_3) 
 	= 
+<<<<<<< HEAD
 		 if ( idInfusionMGR_Infusion_Manager_1 = 1108) then 
 		(idACTIVE_Arbiter_2, idTHERAPY_ACTIVE_2, idACTIVE_INTERMITTENT_2, sbolus_req_2, sbolus_timer_2, idACTIVE_PATIENT_2, pbolus_timer_2, idACTIVE_BASAL_2, idInfusion_Manager_THERAPY_2, IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2, idPAUSED_Alarm_Paused_2, idPAUSED_Arbiter_2, idPAUSED_Manual_Paused_2, idTHERAPY_PAUSED_2, IM_OUT_Is_Locked_Out_2, IM_OUT_New_Infusion_2, idInfusionMGR_Infusion_Manager_2, IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1)
 		 else
 		 if ( idInfusionMGR_Infusion_Manager_1 = 1138) then 
 		(idACTIVE_Arbiter_2, idTHERAPY_ACTIVE_2, idACTIVE_INTERMITTENT_2, sbolus_req_2, sbolus_timer_2, idACTIVE_PATIENT_2, pbolus_timer_2, idACTIVE_BASAL_2, idInfusion_Manager_THERAPY_2, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3, idPAUSED_Alarm_Paused_2, idPAUSED_Arbiter_2, idPAUSED_Manual_Paused_2, idTHERAPY_PAUSED_2, IM_OUT_Is_Locked_Out_3, IM_OUT_New_Infusion_2, idInfusionMGR_Infusion_Manager_3, IM_OUT_Lock_Timer_2, inPatientBolus_2, number_pbolus_2)
 		 else (idACTIVE_Arbiter_1, idTHERAPY_ACTIVE_1, idACTIVE_INTERMITTENT_1, sbolus_req_1, sbolus_timer_1, idACTIVE_PATIENT_1, pbolus_timer_1, idACTIVE_BASAL_1, idInfusion_Manager_THERAPY_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idPAUSED_Alarm_Paused_1, idPAUSED_Arbiter_1, idPAUSED_Manual_Paused_1, idTHERAPY_PAUSED_1, IM_OUT_Is_Locked_Out_1, IM_OUT_New_Infusion_1, idInfusionMGR_Infusion_Manager_1, IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1);
+=======
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=4 )) then 
+		(idPAUSED_Arbiter_3, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3)
+		 else
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=3 )) then 
+		(idPAUSED_Arbiter_5, IM_OUT_Current_System_Mode_5, IM_OUT_Flow_Rate_Commanded_5)
+		 else (idPAUSED_Arbiter_7, IM_OUT_Current_System_Mode_7, IM_OUT_Flow_Rate_Commanded_7);
+
+>>>>>>> 3922117... clean sf_test
 
 
 	-- set state as inactive 
@@ -5145,7 +6533,11 @@ let
 	= (idACTIVE_Arbiter_3, idTHERAPY_ACTIVE_3, idACTIVE_INTERMITTENT_3, sbolus_req_3, sbolus_timer_3, idACTIVE_PATIENT_3, pbolus_timer_3, idACTIVE_BASAL_3, idInfusion_Manager_THERAPY_3, IM_OUT_Current_System_Mode_4, IM_OUT_Flow_Rate_Commanded_4, idPAUSED_Alarm_Paused_3, idPAUSED_Arbiter_3, idPAUSED_Manual_Paused_3, idTHERAPY_PAUSED_3, IM_OUT_Is_Locked_Out_4, IM_OUT_New_Infusion_3, idInfusionMGR_Infusion_Manager_5, IM_OUT_Lock_Timer_3, inPatientBolus_3, number_pbolus_3, idInfusionMGR_InfusionMGR_2);
 	
 
+<<<<<<< HEAD
 tel
+=======
+	state ARBITER_MANUAL_PAUSED_KVO__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1359_1:
+>>>>>>> 3922117... clean sf_test
 
 
 
@@ -5158,29 +6550,83 @@ node InfusionMGR_NOT_ON_en(idInfusionMGR_InfusionMGR_1:int;
 	IM_OUT_Flow_Rate_Commanded_1:int;
 	isInner:bool)
 
+<<<<<<< HEAD
 returns (idInfusionMGR_InfusionMGR:int;
 	IM_OUT_Current_System_Mode:int;
 	IM_OUT_Flow_Rate_Commanded:int);
 
+=======
+-- transition trace :
+	--Arbiter_Manual_Paused_KVO__To__Junction1359_1, Junction1359__To__Junction1358_1, Junction1358__To__Junction1357_1, Junction1357__To__Arbiter_Paused_NoKVO_1
+		(IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2, idPAUSED_Arbiter_2) 
+	= 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=4 )) then 
+		Arbiter_Manual_Paused_KVO_ex(CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1, false)
+		 else (IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1);
+		
+
+		(idPAUSED_Arbiter_3, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Current_System_Mode_3) 
+	= 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=4 )) then 
+		Arbiter_Paused_NoKVO_en(idPAUSED_Arbiter_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2, false)
+		 else (idPAUSED_Arbiter_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2);
+		
+>>>>>>> 3922117... clean sf_test
 
 var 	idInfusionMGR_InfusionMGR_2:int;
 	IM_OUT_Current_System_Mode_2:int;
 	IM_OUT_Flow_Rate_Commanded_2:int;
 
+<<<<<<< HEAD
 
 let
 
 
+=======
+-- transition trace :
+	--Arbiter_Manual_Paused_KVO__To__Junction1359_1, Junction1359__To__Junction1358_1, Junction1358__To__Junction1357_1, Junction1357__To__Arbiter_Paused_KVO_2
+		(IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4, idPAUSED_Arbiter_4) 
+	= 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=3 )) then 
+		Arbiter_Manual_Paused_KVO_ex(CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1, false)
+		 else (IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1);
+		
+
+		(idPAUSED_Arbiter_5, IM_OUT_Flow_Rate_Commanded_5, IM_OUT_Current_System_Mode_5) 
+	= 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=3 )) then 
+		Arbiter_Paused_KVO_en(idPAUSED_Arbiter_4, CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4, false)
+		 else (idPAUSED_Arbiter_4, IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4);
+		
+
+
+-- transition trace :
+	--Arbiter_Manual_Paused_KVO__To__Junction1359_1, Junction1359__To__Junction1358_1, Junction1358__To__Junction1357_1, Junction1357__To__Arbiter_Manual_Paused_KVO_3
+		(IM_OUT_Flow_Rate_Commanded_6, IM_OUT_Current_System_Mode_6, idPAUSED_Arbiter_6) 
+	= Arbiter_Manual_Paused_KVO_ex(CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1, false);
+		
+>>>>>>> 3922117... clean sf_test
 
 	-- set state as active 
 	idInfusionMGR_InfusionMGR_2 
 	= 1106;
 	
 
+<<<<<<< HEAD
 	IM_OUT_Current_System_Mode_2 
 	= if (not isInner) then 0
 	 else IM_OUT_Current_System_Mode_1;
 	
+=======
+	(idPAUSED_Arbiter, IM_OUT_Current_System_Mode, IM_OUT_Flow_Rate_Commanded) 
+	= 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=4 )) then 
+		(idPAUSED_Arbiter_3, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3)
+		 else
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=3 )) then 
+		(idPAUSED_Arbiter_5, IM_OUT_Current_System_Mode_5, IM_OUT_Flow_Rate_Commanded_5)
+		 else (idPAUSED_Arbiter_7, IM_OUT_Current_System_Mode_7, IM_OUT_Flow_Rate_Commanded_7);
+>>>>>>> 3922117... clean sf_test
 
 	IM_OUT_Flow_Rate_Commanded_2 
 	= if (not isInner) then 0
@@ -5295,6 +6741,7 @@ let
 
 
 
+<<<<<<< HEAD
 	unless (idPAUSED_Manual_Paused_1=1135) and ( OP_CMD_IN_Infusion_Inhibit ) restart MANUAL_PAUSED_OFF__TO__MANUAL_PAUSED_ON_1
 
 
@@ -5306,6 +6753,19 @@ let
 	unless (idPAUSED_Manual_Paused_1=1135) restart MANUAL_PAUSED_OFF_IDL
 
 	unless (idPAUSED_Manual_Paused_1=1136) restart MANUAL_PAUSED_ON_IDL
+=======
+	unless (idPAUSED_Manual_Paused_1=1299) and ( OP_CMD_IN_Infusion_Inhibit ) restart MANUAL_PAUSED_OFF__TO__MANUAL_PAUSED_ON_1
+
+
+
+	unless (idPAUSED_Manual_Paused_1=1300) and ( OP_CMD_IN_Infusion_Initiate and not OP_CMD_IN_Infusion_Inhibit ) restart MANUAL_PAUSED_ON__TO__MANUAL_PAUSED_OFF_1
+
+
+
+	unless (idPAUSED_Manual_Paused_1=1299) restart MANUAL_PAUSED_OFF_IDL
+
+	unless (idPAUSED_Manual_Paused_1=1300) restart MANUAL_PAUSED_ON_IDL
+>>>>>>> 3922117... clean sf_test
 
 	let
 
@@ -5462,6 +6922,7 @@ let
 
 
 
+<<<<<<< HEAD
 	unless (idPAUSED_Alarm_Paused_1=1132) and ( ALARM_IN_Highest_Level_Alarm >= 3 ) restart ALARM_PAUSED_OFF__TO__ALARM_PAUSED_ON_1
 
 
@@ -5473,6 +6934,19 @@ let
 	unless (idPAUSED_Alarm_Paused_1=1132) restart ALARM_PAUSED_OFF_IDL
 
 	unless (idPAUSED_Alarm_Paused_1=1133) restart ALARM_PAUSED_ON_IDL
+=======
+	unless (idPAUSED_Alarm_Paused_1=1296) and ( ALARM_IN_Highest_Level_Alarm>=3 ) restart ALARM_PAUSED_OFF__TO__ALARM_PAUSED_ON_1
+
+
+
+	unless (idPAUSED_Alarm_Paused_1=1297) and ( OP_CMD_IN_Infusion_Initiate and ALARM_IN_Highest_Level_Alarm<3 ) restart ALARM_PAUSED_ON__TO__ALARM_PAUSED_OFF_1
+
+
+
+	unless (idPAUSED_Alarm_Paused_1=1296) restart ALARM_PAUSED_OFF_IDL
+
+	unless (idPAUSED_Alarm_Paused_1=1297) restart ALARM_PAUSED_ON_IDL
+>>>>>>> 3922117... clean sf_test
 
 	let
 
@@ -6054,11 +7528,20 @@ let
 	=  (idACTIVE_INTERMITTENT_2, sbolusInter_timer_2, sbolus_req_2, sbolus_timer_2);
 
 
+<<<<<<< HEAD
 	tel
+=======
+	state POINTACTIVE_Arbiter:
+	unless (idACTIVE_Arbiter_1=0) restart POINT__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1321_1
+>>>>>>> 3922117... clean sf_test
 
 	until true restart POINTACTIVE_INTERMITTENT
 
 
+<<<<<<< HEAD
+=======
+	unless (idACTIVE_Arbiter_1=1275) restart ARBITER_PATIENT_BOLUS__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1323_1
+>>>>>>> 3922117... clean sf_test
 
 	state INTERMITTENT_ON__TO__INTERMITTENT_OFF_1:
 
@@ -6068,10 +7551,14 @@ let
 	sbolus_timer_2, sbolus_timer_3:real;
 	let
 
+<<<<<<< HEAD
 		
 		(sbolus_timer_2, sbolus_req_2, idACTIVE_INTERMITTENT_2) 
 	= INTERMITTENT_ON_ex(sbolus_timer_1, sbolus_req_1, idACTIVE_INTERMITTENT_1, false);
 		
+=======
+	unless (idACTIVE_Arbiter_1=1276) restart ARBITER_INTERMITTENT_BOLUS__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1323_1
+>>>>>>> 3922117... clean sf_test
 
 		(idACTIVE_INTERMITTENT_3, sbolus_timer_3, sbolusInter_timer_2, sbolus_req_3) 
 	= INTERMITTENT_OFF_en(idACTIVE_INTERMITTENT_2, sbolus_timer_2, sbolusInter_timer_1, CONFIG_IN_Interval_Intermittent_Bolus, step_size, sbolus_req_2, false);
@@ -6080,14 +7567,26 @@ let
 	(idACTIVE_INTERMITTENT, sbolusInter_timer, sbolus_req, sbolus_timer) 
 	=  (idACTIVE_INTERMITTENT_3, sbolusInter_timer_2, sbolus_req_3, sbolus_timer_3);
 
+<<<<<<< HEAD
+=======
+	unless (idACTIVE_Arbiter_1=1277) restart ARBITER_BASAL__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1323_1
+>>>>>>> 3922117... clean sf_test
 
 	tel
 
 	until true restart POINTACTIVE_INTERMITTENT
 
+<<<<<<< HEAD
 
 
 	state INTERMITTENT_OFF__TO__INTERMITTENT_ON_1:
+=======
+	unless (idACTIVE_Arbiter_1=1275) restart ARBITER_PATIENT_BOLUS_IDL
+
+	unless (idACTIVE_Arbiter_1=1276) restart ARBITER_INTERMITTENT_BOLUS_IDL
+
+	unless (idACTIVE_Arbiter_1=1277) restart ARBITER_BASAL_IDL
+>>>>>>> 3922117... clean sf_test
 
 	 var 	idACTIVE_INTERMITTENT_2, idACTIVE_INTERMITTENT_3:int;
 	let
@@ -6110,6 +7609,10 @@ let
 	until true restart POINTACTIVE_INTERMITTENT
 
 
+<<<<<<< HEAD
+=======
+	state POINT__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1321_1:
+>>>>>>> 3922117... clean sf_test
 
 	state INTERMITTENT_ON_IDL:
 
@@ -6121,12 +7624,33 @@ let
 	(sbolus_timer_2, sbolus_req_2) 
 	= INTERMITTENT_ON_du(sbolus_timer_1, sbolus_req_1);
 
+<<<<<<< HEAD
 		
 
 
 	(idACTIVE_INTERMITTENT, sbolusInter_timer, sbolus_req, sbolus_timer) 
 	= (idACTIVE_INTERMITTENT_1, sbolusInter_timer_1, sbolus_req_2, sbolus_timer_2);
 	
+=======
+-- transition trace :
+	--POINT__To__Junction1321_1, Junction1321__To__Arbiter_Patient_Bolus_1
+		(idACTIVE_Arbiter_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2) 
+	= 
+		 if (( (idACTIVE_PATIENT_1 = 1282) )) then 
+		Arbiter_Patient_Bolus_en(idACTIVE_Arbiter_1, CONFIG_IN_Flow_Rate_Patient_Bolus, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
+		 else (idACTIVE_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
+		
+
+
+-- transition trace :
+	--POINT__To__Junction1321_1, Junction1321__To__Arbiter_Intermittent_Bolus_2
+		(idACTIVE_Arbiter_3, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Current_System_Mode_3) 
+	= 
+		 if (( (idACTIVE_INTERMITTENT_1 = 1286) )) then 
+		Arbiter_Intermittent_Bolus_en(idACTIVE_Arbiter_1, CONFIG_IN_Flow_Rate_Intermittent_Bolus, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
+		 else (idACTIVE_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
+		
+>>>>>>> 3922117... clean sf_test
 
 	tel
 
@@ -6144,8 +7668,25 @@ let
 	(sbolusInter_timer_2, sbolus_req_2) 
 	= INTERMITTENT_OFF_du(sbolusInter_timer_1, CONFIG_IN_Interval_Intermittent_Bolus, step_size, sbolus_req_1);
 
+<<<<<<< HEAD
 		
 
+=======
+-- transition trace :
+	--POINT__To__Junction1321_1, Junction1321__To__Arbiter_Basal_3
+		(idACTIVE_Arbiter_4, IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4) 
+	= Arbiter_Basal_en(idACTIVE_Arbiter_1, CONFIG_IN_Flow_Rate_Basal, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false);
+		
+
+	(idACTIVE_Arbiter, IM_OUT_Current_System_Mode, IM_OUT_Flow_Rate_Commanded) 
+	= 
+		 if (( (idACTIVE_PATIENT_1 = 1282) )) then 
+		(idACTIVE_Arbiter_2, IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2)
+		 else
+		 if (( (idACTIVE_INTERMITTENT_1 = 1286) )) then 
+		(idACTIVE_Arbiter_3, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3)
+		 else (idACTIVE_Arbiter_4, IM_OUT_Current_System_Mode_4, IM_OUT_Flow_Rate_Commanded_4);
+>>>>>>> 3922117... clean sf_test
 
 	(idACTIVE_INTERMITTENT, sbolusInter_timer, sbolus_req, sbolus_timer) 
 	= (idACTIVE_INTERMITTENT_1, sbolusInter_timer_2, sbolus_req_2, sbolus_timer_1);
@@ -6157,7 +7698,11 @@ let
 
 
 
+<<<<<<< HEAD
 tel
+=======
+	state ARBITER_PATIENT_BOLUS__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1323_1:
+>>>>>>> 3922117... clean sf_test
 
 
 --***************************************************State :ACTIVE_PATIENT Automaton***************************************************
@@ -6185,6 +7730,7 @@ returns (idACTIVE_PATIENT:int;
 
 let
 
+<<<<<<< HEAD
 	 automaton active_patient
 
 	state POINTACTIVE_PATIENT:
@@ -6195,13 +7741,80 @@ let
 	unless (idACTIVE_PATIENT_1=0) restart POINT__TO__PATIENT_OFF_2
 
 
+=======
+-- transition trace :
+	--Arbiter_Patient_Bolus__To__Junction1323_1, Junction1323__To__Junction1322_1, Junction1322__To__Junction1321_1, Junction1321__To__Arbiter_Patient_Bolus_1
+		-- condition Action : IM_OUT_Actual_Infusion_Duration++
+		
+		(IM_OUT_Actual_Infusion_Duration_2) 
+	= InfusionMGR_InfusionMGRJunction1323__To__InfusionMGR_InfusionMGRJunction1322_1_Condition_Action(IM_OUT_Actual_Infusion_Duration_1);
+		
+
+		(idACTIVE_Arbiter_2) 
+	= 
+		 if (( (idACTIVE_PATIENT_1 = 1282) )) then 
+		Arbiter_Patient_Bolus_ex(idACTIVE_Arbiter_1, false)
+		 else (idACTIVE_Arbiter_1);
+		
+
+		(idACTIVE_Arbiter_3, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2) 
+	= 
+		 if (( (idACTIVE_PATIENT_1 = 1282) )) then 
+		Arbiter_Patient_Bolus_en(idACTIVE_Arbiter_2, CONFIG_IN_Flow_Rate_Patient_Bolus, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
+		 else (idACTIVE_Arbiter_2, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
+		
+
+
+-- transition trace :
+	--Arbiter_Patient_Bolus__To__Junction1323_1, Junction1323__To__Junction1322_1, Junction1322__To__Junction1321_1, Junction1321__To__Arbiter_Intermittent_Bolus_2
+		-- condition Action : IM_OUT_Actual_Infusion_Duration++
+		
+		(IM_OUT_Actual_Infusion_Duration_3) 
+	= InfusionMGR_InfusionMGRJunction1323__To__InfusionMGR_InfusionMGRJunction1322_1_Condition_Action(IM_OUT_Actual_Infusion_Duration_1);
+		
+
+		(idACTIVE_Arbiter_4) 
+	= 
+		 if (( (idACTIVE_INTERMITTENT_1 = 1286) )) then 
+		Arbiter_Patient_Bolus_ex(idACTIVE_Arbiter_1, false)
+		 else (idACTIVE_Arbiter_1);
+		
+
+		(idACTIVE_Arbiter_5, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Current_System_Mode_3) 
+	= 
+		 if (( (idACTIVE_INTERMITTENT_1 = 1286) )) then 
+		Arbiter_Intermittent_Bolus_en(idACTIVE_Arbiter_4, CONFIG_IN_Flow_Rate_Intermittent_Bolus, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
+		 else (idACTIVE_Arbiter_4, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
+		
+>>>>>>> 3922117... clean sf_test
 
 	unless (idACTIVE_PATIENT_1=1118) and (  pbolus_timer_1  >= Step_Scaling_Factor(CONFIG_IN_Duration_Patient_Bolus - 1., step_size) || ALARM_IN_Highest_Level_Alarm = 2 ) restart PATIENT_ON__TO__PATIENT_LOCKOUT_1
 
+<<<<<<< HEAD
+=======
+-- transition trace :
+	--Arbiter_Patient_Bolus__To__Junction1323_1, Junction1323__To__Junction1322_1, Junction1322__To__Junction1321_1, Junction1321__To__Arbiter_Basal_3
+		-- condition Action : IM_OUT_Actual_Infusion_Duration++
+		
+		(IM_OUT_Actual_Infusion_Duration_4) 
+	= InfusionMGR_InfusionMGRJunction1323__To__InfusionMGR_InfusionMGRJunction1322_1_Condition_Action(IM_OUT_Actual_Infusion_Duration_1);
+		
+>>>>>>> 3922117... clean sf_test
 
 
 	unless (idACTIVE_PATIENT_1=1119) and ( PATIENT_IN_Patient_Bolus_Request  && ALARM_IN_Highest_Level_Alarm < 2 &&  number_pbolus_1 <CONFIG_IN_Max_Number_of_Patient_Bolus  ) restart PATIENT_OFF__TO__PATIENT_ON_1
 
+<<<<<<< HEAD
+=======
+	(idACTIVE_Arbiter, IM_OUT_Current_System_Mode, IM_OUT_Flow_Rate_Commanded, IM_OUT_Actual_Infusion_Duration) 
+	= 
+		 if (( (idACTIVE_PATIENT_1 = 1282) )) then 
+		(idACTIVE_Arbiter_3, IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Actual_Infusion_Duration_2)
+		 else
+		 if (( (idACTIVE_INTERMITTENT_1 = 1286) )) then 
+		(idACTIVE_Arbiter_5, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Actual_Infusion_Duration_3)
+		 else (idACTIVE_Arbiter_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Actual_Infusion_Duration_4);
+>>>>>>> 3922117... clean sf_test
 
 
 	unless (idACTIVE_PATIENT_1=1120) and (  IM_OUT_Lock_Timer_1  >= Step_Scaling_Factor(CONFIG_IN_Lockout_Period_Patient_Bolus - 1.,step_size) ) restart PATIENT_LOCKOUT__TO__PATIENT_OFF_1
@@ -6210,9 +7823,13 @@ let
 
 	unless (idACTIVE_PATIENT_1=1118) restart PATIENT_ON_IDL
 
+<<<<<<< HEAD
 	unless (idACTIVE_PATIENT_1=1119) restart PATIENT_OFF_IDL
 
 	unless (idACTIVE_PATIENT_1=1120) restart PATIENT_LOCKOUT_IDL
+=======
+	state ARBITER_INTERMITTENT_BOLUS__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1323_1:
+>>>>>>> 3922117... clean sf_test
 
 	let
 
@@ -6231,6 +7848,7 @@ let
 	IM_OUT_Lock_Timer_2:real;
 	let
 
+<<<<<<< HEAD
 		
 		(idACTIVE_PATIENT_2, IM_OUT_Lock_Timer_2, IM_OUT_Is_Locked_Out_2) 
 	= PATIENT_LOCKOUT_en(idACTIVE_PATIENT_1, IM_OUT_Lock_Timer_1, IM_OUT_Is_Locked_Out_1, false);
@@ -6243,28 +7861,96 @@ let
 	(number_pbolus, pbolus_timer) 
 	= (number_pbolus_1, pbolus_timer_1);
 	
+=======
+-- transition trace :
+	--Arbiter_Intermittent_Bolus__To__Junction1323_1, Junction1323__To__Junction1322_1, Junction1322__To__Junction1321_1, Junction1321__To__Arbiter_Patient_Bolus_1
+		-- condition Action : IM_OUT_Actual_Infusion_Duration++
+		
+		(IM_OUT_Actual_Infusion_Duration_2) 
+	= InfusionMGR_InfusionMGRJunction1323__To__InfusionMGR_InfusionMGRJunction1322_1_Condition_Action(IM_OUT_Actual_Infusion_Duration_1);
+		
+
+		(idACTIVE_Arbiter_2) 
+	= 
+		 if (( (idACTIVE_PATIENT_1 = 1282) )) then 
+		Arbiter_Intermittent_Bolus_ex(idACTIVE_Arbiter_1, false)
+		 else (idACTIVE_Arbiter_1);
+		
+
+		(idACTIVE_Arbiter_3, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2) 
+	= 
+		 if (( (idACTIVE_PATIENT_1 = 1282) )) then 
+		Arbiter_Patient_Bolus_en(idACTIVE_Arbiter_2, CONFIG_IN_Flow_Rate_Patient_Bolus, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
+		 else (idACTIVE_Arbiter_2, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
+		
+>>>>>>> 3922117... clean sf_test
 
 	tel
 
+<<<<<<< HEAD
 	until true restart POINTACTIVE_PATIENT
 
 
+=======
+-- transition trace :
+	--Arbiter_Intermittent_Bolus__To__Junction1323_1, Junction1323__To__Junction1322_1, Junction1322__To__Junction1321_1, Junction1321__To__Arbiter_Intermittent_Bolus_2
+		-- condition Action : IM_OUT_Actual_Infusion_Duration++
+		
+		(IM_OUT_Actual_Infusion_Duration_3) 
+	= InfusionMGR_InfusionMGRJunction1323__To__InfusionMGR_InfusionMGRJunction1322_1_Condition_Action(IM_OUT_Actual_Infusion_Duration_1);
+		
+
+		(idACTIVE_Arbiter_4) 
+	= 
+		 if (( (idACTIVE_INTERMITTENT_1 = 1286) )) then 
+		Arbiter_Intermittent_Bolus_ex(idACTIVE_Arbiter_1, false)
+		 else (idACTIVE_Arbiter_1);
+		
+
+		(idACTIVE_Arbiter_5, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Current_System_Mode_3) 
+	= 
+		 if (( (idACTIVE_INTERMITTENT_1 = 1286) )) then 
+		Arbiter_Intermittent_Bolus_en(idACTIVE_Arbiter_4, CONFIG_IN_Flow_Rate_Intermittent_Bolus, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
+		 else (idACTIVE_Arbiter_4, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
+		
+>>>>>>> 3922117... clean sf_test
 
 	state POINT__TO__PATIENT_OFF_2:
 
+<<<<<<< HEAD
 	 var 	idACTIVE_PATIENT_2:int;
 	inPatientBolus_2:bool;
 	IM_OUT_Is_Locked_Out_2:bool;
 	pbolus_timer_2:real;
 	let
+=======
+-- transition trace :
+	--Arbiter_Intermittent_Bolus__To__Junction1323_1, Junction1323__To__Junction1322_1, Junction1322__To__Junction1321_1, Junction1321__To__Arbiter_Basal_3
+		-- condition Action : IM_OUT_Actual_Infusion_Duration++
+		
+		(IM_OUT_Actual_Infusion_Duration_4) 
+	= InfusionMGR_InfusionMGRJunction1323__To__InfusionMGR_InfusionMGRJunction1322_1_Condition_Action(IM_OUT_Actual_Infusion_Duration_1);
+		
+>>>>>>> 3922117... clean sf_test
 
 		
 		(idACTIVE_PATIENT_2, pbolus_timer_2, inPatientBolus_2, IM_OUT_Is_Locked_Out_2) 
 	= PATIENT_OFF_en(idACTIVE_PATIENT_1, pbolus_timer_1, inPatientBolus_1, IM_OUT_Is_Locked_Out_1, false);
 		
 
+<<<<<<< HEAD
 	(idACTIVE_PATIENT, inPatientBolus, IM_OUT_Is_Locked_Out, IM_OUT_Lock_Timer, pbolus_timer) 
 	=  (idACTIVE_PATIENT_2, inPatientBolus_2, IM_OUT_Is_Locked_Out_2, IM_OUT_Lock_Timer_1, pbolus_timer_2);
+=======
+	(idACTIVE_Arbiter, IM_OUT_Current_System_Mode, IM_OUT_Flow_Rate_Commanded, IM_OUT_Actual_Infusion_Duration) 
+	= 
+		 if (( (idACTIVE_PATIENT_1 = 1282) )) then 
+		(idACTIVE_Arbiter_3, IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Actual_Infusion_Duration_2)
+		 else
+		 if (( (idACTIVE_INTERMITTENT_1 = 1286) )) then 
+		(idACTIVE_Arbiter_5, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Actual_Infusion_Duration_3)
+		 else (idACTIVE_Arbiter_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Actual_Infusion_Duration_4);
+>>>>>>> 3922117... clean sf_test
 
 	--add unused variables
 	(number_pbolus) 
@@ -6277,7 +7963,11 @@ let
 
 
 
+<<<<<<< HEAD
 	state PATIENT_ON__TO__PATIENT_LOCKOUT_1:
+=======
+	state ARBITER_BASAL__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1323_1:
+>>>>>>> 3922117... clean sf_test
 
 	 var 	idACTIVE_PATIENT_2, idACTIVE_PATIENT_3:int;
 	IM_OUT_Is_Locked_Out_2:bool;
@@ -6323,6 +8013,7 @@ let
 	number_pbolus_2:int;
 	let
 
+<<<<<<< HEAD
 		
 		(idACTIVE_PATIENT_2) 
 	= PATIENT_OFF_ex(idACTIVE_PATIENT_1, false);
@@ -6343,6 +8034,61 @@ let
 
 
 	state PATIENT_LOCKOUT__TO__PATIENT_OFF_1:
+=======
+-- transition trace :
+	--Arbiter_Basal__To__Junction1323_1, Junction1323__To__Junction1322_1, Junction1322__To__Junction1321_1, Junction1321__To__Arbiter_Patient_Bolus_1
+		-- condition Action : IM_OUT_Actual_Infusion_Duration++
+		
+		(IM_OUT_Actual_Infusion_Duration_2) 
+	= InfusionMGR_InfusionMGRJunction1323__To__InfusionMGR_InfusionMGRJunction1322_1_Condition_Action(IM_OUT_Actual_Infusion_Duration_1);
+		
+
+		(idACTIVE_Arbiter_2) 
+	= 
+		 if (( (idACTIVE_PATIENT_1 = 1282) )) then 
+		Arbiter_Basal_ex(idACTIVE_Arbiter_1, false)
+		 else (idACTIVE_Arbiter_1);
+		
+
+		(idACTIVE_Arbiter_3, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2) 
+	= 
+		 if (( (idACTIVE_PATIENT_1 = 1282) )) then 
+		Arbiter_Patient_Bolus_en(idACTIVE_Arbiter_2, CONFIG_IN_Flow_Rate_Patient_Bolus, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
+		 else (idACTIVE_Arbiter_2, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
+		
+
+
+-- transition trace :
+	--Arbiter_Basal__To__Junction1323_1, Junction1323__To__Junction1322_1, Junction1322__To__Junction1321_1, Junction1321__To__Arbiter_Intermittent_Bolus_2
+		-- condition Action : IM_OUT_Actual_Infusion_Duration++
+		
+		(IM_OUT_Actual_Infusion_Duration_3) 
+	= InfusionMGR_InfusionMGRJunction1323__To__InfusionMGR_InfusionMGRJunction1322_1_Condition_Action(IM_OUT_Actual_Infusion_Duration_1);
+		
+
+		(idACTIVE_Arbiter_4) 
+	= 
+		 if (( (idACTIVE_INTERMITTENT_1 = 1286) )) then 
+		Arbiter_Basal_ex(idACTIVE_Arbiter_1, false)
+		 else (idACTIVE_Arbiter_1);
+		
+
+		(idACTIVE_Arbiter_5, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Current_System_Mode_3) 
+	= 
+		 if (( (idACTIVE_INTERMITTENT_1 = 1286) )) then 
+		Arbiter_Intermittent_Bolus_en(idACTIVE_Arbiter_4, CONFIG_IN_Flow_Rate_Intermittent_Bolus, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
+		 else (idACTIVE_Arbiter_4, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
+		
+
+
+-- transition trace :
+	--Arbiter_Basal__To__Junction1323_1, Junction1323__To__Junction1322_1, Junction1322__To__Junction1321_1, Junction1321__To__Arbiter_Basal_3
+		-- condition Action : IM_OUT_Actual_Infusion_Duration++
+		
+		(IM_OUT_Actual_Infusion_Duration_4) 
+	= InfusionMGR_InfusionMGRJunction1323__To__InfusionMGR_InfusionMGRJunction1322_1_Condition_Action(IM_OUT_Actual_Infusion_Duration_1);
+		
+>>>>>>> 3922117... clean sf_test
 
 	 var 	idACTIVE_PATIENT_2, idACTIVE_PATIENT_3:int;
 	inPatientBolus_2:bool;
@@ -6359,8 +8105,19 @@ let
 	= PATIENT_OFF_en(idACTIVE_PATIENT_2, pbolus_timer_1, inPatientBolus_1, IM_OUT_Is_Locked_Out_1, false);
 		
 
+<<<<<<< HEAD
 	(idACTIVE_PATIENT, inPatientBolus, IM_OUT_Is_Locked_Out, IM_OUT_Lock_Timer, pbolus_timer, number_pbolus) 
 	=  (idACTIVE_PATIENT_3, inPatientBolus_2, IM_OUT_Is_Locked_Out_2, IM_OUT_Lock_Timer_1, pbolus_timer_2, number_pbolus_1);
+=======
+	(idACTIVE_Arbiter, IM_OUT_Current_System_Mode, IM_OUT_Flow_Rate_Commanded, IM_OUT_Actual_Infusion_Duration) 
+	= 
+		 if (( (idACTIVE_PATIENT_1 = 1282) )) then 
+		(idACTIVE_Arbiter_3, IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Actual_Infusion_Duration_2)
+		 else
+		 if (( (idACTIVE_INTERMITTENT_1 = 1286) )) then 
+		(idACTIVE_Arbiter_5, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Actual_Infusion_Duration_3)
+		 else (idACTIVE_Arbiter_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Actual_Infusion_Duration_4);
+>>>>>>> 3922117... clean sf_test
 
 
 	tel
@@ -6454,6 +8211,7 @@ let
 
 
 
+<<<<<<< HEAD
 	unless (idACTIVE_BASAL_1=1115) and (  IM_OUT_Actual_Infusion_Duration_1  >= Step_Scaling_Factor(CONFIG_IN_Infusion_Total_Duration - 1.,step_size) ) restart BASAL_ON__TO__BASAL_OFF_1
 
 
@@ -6465,6 +8223,19 @@ let
 	unless (idACTIVE_BASAL_1=1115) restart BASAL_ON_IDL
 
 	unless (idACTIVE_BASAL_1=1116) restart BASAL_OFF_IDL
+=======
+	unless (idACTIVE_INTERMITTENT_1=1286) and (  sbolus_timer_1 >=Step_Scaling_Factor(CONFIG_IN_Duration_Intermittent_Bolus - 1.,step_size) or ALARM_IN_Highest_Level_Alarm=2 ) restart INTERMITTENT_ON__TO__INTERMITTENT_OFF_1
+
+
+
+	unless (idACTIVE_INTERMITTENT_1=1287) and (  sbolus_req_1  and ALARM_IN_Highest_Level_Alarm<2 ) restart INTERMITTENT_OFF__TO__INTERMITTENT_ON_1
+
+
+
+	unless (idACTIVE_INTERMITTENT_1=1286) restart INTERMITTENT_ON_IDL
+
+	unless (idACTIVE_INTERMITTENT_1=1287) restart INTERMITTENT_OFF_IDL
+>>>>>>> 3922117... clean sf_test
 
 	let
 
@@ -6707,6 +8478,7 @@ let
 
 
 
+<<<<<<< HEAD
 		-- condition Action : IM_OUT_Actual_Infusion_Duration++
 		
 		(IM_OUT_Actual_Infusion_Duration_2) 
@@ -6719,6 +8491,9 @@ let
 		Arbiter_Patient_Bolus_ex(idACTIVE_Arbiter_1, false)
 		 else (idACTIVE_Arbiter_1);
 		
+=======
+	unless (idACTIVE_PATIENT_1=1282) and (  pbolus_timer_1 >=Step_Scaling_Factor(CONFIG_IN_Duration_Patient_Bolus - 1.,step_size) or ALARM_IN_Highest_Level_Alarm=2 ) restart PATIENT_ON__TO__PATIENT_LOCKOUT_1
+>>>>>>> 3922117... clean sf_test
 
 		(idACTIVE_Arbiter_3, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2) 
 	= 
@@ -6728,6 +8503,10 @@ let
 		
 
 
+<<<<<<< HEAD
+=======
+	unless (idACTIVE_PATIENT_1=1283) and ( PATIENT_IN_Patient_Bolus_Request and ALARM_IN_Highest_Level_Alarm<2 and  number_pbolus_1 <CONFIG_IN_Max_Number_of_Patient_Bolus ) restart PATIENT_OFF__TO__PATIENT_ON_1
+>>>>>>> 3922117... clean sf_test
 
 		-- condition Action : IM_OUT_Actual_Infusion_Duration++
 		
@@ -6742,6 +8521,7 @@ let
 		 else (idACTIVE_Arbiter_3);
 		
 
+<<<<<<< HEAD
 		(idACTIVE_Arbiter_5, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Current_System_Mode_3) 
 	= 
 		 if (( (idACTIVE_INTERMITTENT_1 = 1122) )) then 
@@ -6764,6 +8544,17 @@ let
 		(idACTIVE_Arbiter_7, IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4) 
 	= Arbiter_Basal_en(idACTIVE_Arbiter_6, CONFIG_IN_Flow_Rate_Basal, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Current_System_Mode_3, false);
 		
+=======
+	unless (idACTIVE_PATIENT_1=1284) and (  IM_OUT_Lock_Timer_1 >=Step_Scaling_Factor(CONFIG_IN_Lockout_Period_Patient_Bolus - 1.,step_size) ) restart PATIENT_LOCKOUT__TO__PATIENT_OFF_1
+
+
+
+	unless (idACTIVE_PATIENT_1=1282) restart PATIENT_ON_IDL
+
+	unless (idACTIVE_PATIENT_1=1283) restart PATIENT_OFF_IDL
+
+	unless (idACTIVE_PATIENT_1=1284) restart PATIENT_LOCKOUT_IDL
+>>>>>>> 3922117... clean sf_test
 
 	(idACTIVE_Arbiter, idACTIVE_PATIENT, IM_OUT_Current_System_Mode, IM_OUT_Flow_Rate_Commanded, idACTIVE_INTERMITTENT, IM_OUT_Actual_Infusion_Duration) 
 	= 
@@ -7054,11 +8845,32 @@ returns (idTHERAPY_PAUSED:int;
 
 let
 
+<<<<<<< HEAD
 	 automaton therapy_paused
 
 	state POINTTHERAPY_PAUSED:
 	unless (idTHERAPY_PAUSED_1=0) restart THERAPY_PAUSED_PARALLEL_ENTRY
 	unless true  restart THERAPY_PAUSED_PARALLEL_IDL
+=======
+	 automaton active_basal
+
+	state POINTACTIVE_BASAL:
+	unless (idACTIVE_BASAL_1=0) restart POINT__TO__BASAL_ON_1
+
+
+
+	unless (idACTIVE_BASAL_1=1279) and (  IM_OUT_Actual_Infusion_Duration_1 >=Step_Scaling_Factor(CONFIG_IN_Infusion_Total_Duration - 1.,step_size) ) restart BASAL_ON__TO__BASAL_OFF_1
+
+
+
+	unless (idACTIVE_BASAL_1=1280) and ( OP_CMD_IN_Infusion_Initiate ) restart BASAL_OFF__TO__BASAL_ON_1
+
+
+
+	unless (idACTIVE_BASAL_1=1279) restart BASAL_ON_IDL
+
+	unless (idACTIVE_BASAL_1=1280) restart BASAL_OFF_IDL
+>>>>>>> 3922117... clean sf_test
 
 	let
 
@@ -7419,6 +9231,7 @@ let
 
 
 
+<<<<<<< HEAD
 	unless (idInfusion_Manager_THERAPY_1=1109) and ( OP_CMD_IN_Infusion_Inhibit || ALARM_IN_Highest_Level_Alarm >= 3 ) restart THERAPY_ACTIVE__TO__THERAPY_PAUSED_1
 
 
@@ -7430,6 +9243,19 @@ let
 	unless (idInfusion_Manager_THERAPY_1=1109) restart THERAPY_ACTIVE_IDL
 
 	unless (idInfusion_Manager_THERAPY_1=1126) restart THERAPY_PAUSED_IDL
+=======
+	unless (idInfusion_Manager_THERAPY_1=1273) and ( OP_CMD_IN_Infusion_Inhibit or ALARM_IN_Highest_Level_Alarm>=3 ) restart THERAPY_ACTIVE__TO__THERAPY_PAUSED_1
+
+
+
+	unless (idInfusion_Manager_THERAPY_1=1290) and ( OP_CMD_IN_Infusion_Initiate and ALARM_IN_Highest_Level_Alarm<3 and not OP_CMD_IN_Infusion_Inhibit ) restart THERAPY_PAUSED__TO__THERAPY_ACTIVE_1
+
+
+
+	unless (idInfusion_Manager_THERAPY_1=1273) restart THERAPY_ACTIVE_IDL
+
+	unless (idInfusion_Manager_THERAPY_1=1290) restart THERAPY_PAUSED_IDL
+>>>>>>> 3922117... clean sf_test
 
 	let
 
@@ -7804,6 +9630,7 @@ let
 
 
 
+<<<<<<< HEAD
 	unless (idInfusionMGR_Infusion_Manager_1=1108) and ( OP_CMD_IN_Infusion_Initiate && CONFIG_IN_Configured =1 && not SYS_STAT_IN_Reservoir_Empty  ) restart INFUSION_MANAGER_THERAPY__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1146_1
 
 
@@ -7823,6 +9650,27 @@ let
 	unless (idInfusionMGR_Infusion_Manager_1=1108) restart INFUSION_MANAGER_THERAPY_IDL
 
 	unless (idInfusionMGR_Infusion_Manager_1=1138) restart INFUSION_MANAGER_IDLE_IDL
+=======
+	unless (idInfusionMGR_Infusion_Manager_1=1272) and ( OP_CMD_IN_Infusion_Initiate and CONFIG_IN_Configured=1 and not SYS_STAT_IN_Reservoir_Empty ) restart INFUSION_MANAGER_THERAPY__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1310_1
+
+
+
+	unless (idInfusionMGR_Infusion_Manager_1=1272) and (  IM_OUT_Actual_Infusion_Duration_1 >=Step_Scaling_Factor(CONFIG_IN_Infusion_Total_Duration - 1.,step_size) or SYS_STAT_Volume_Infused>=CONFIG_IN_VTBI_Total or (CONFIG_IN_Configured<1) or (OP_CMD_IN_Infusion_Cancel) ) restart INFUSION_MANAGER_THERAPY__TO__INFUSION_MANAGER_IDLE_2
+
+
+
+	unless (idInfusionMGR_Infusion_Manager_1=1302) and ( OP_CMD_IN_Infusion_Cancel ) restart INFUSION_MANAGER_IDLE__TO__INFUSION_MANAGER_IDLE_1
+
+
+
+	unless (idInfusionMGR_Infusion_Manager_1=1302) and ( OP_CMD_IN_Infusion_Initiate and CONFIG_IN_Configured>0 and not SYS_STAT_IN_Reservoir_Empty ) restart INFUSION_MANAGER_IDLE__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1310_2
+
+
+
+	unless (idInfusionMGR_Infusion_Manager_1=1272) restart INFUSION_MANAGER_THERAPY_IDL
+
+	unless (idInfusionMGR_Infusion_Manager_1=1302) restart INFUSION_MANAGER_IDLE_IDL
+>>>>>>> 3922117... clean sf_test
 
 	let
 
@@ -7864,7 +9712,11 @@ let
 
 
 
+<<<<<<< HEAD
 	state INFUSION_MANAGER_THERAPY__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1146_1:
+=======
+	state INFUSION_MANAGER_THERAPY__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1310_1:
+>>>>>>> 3922117... clean sf_test
 
 	 var 	idInfusionMGR_Infusion_Manager_2, idInfusionMGR_Infusion_Manager_3:int;
 	IM_OUT_Current_System_Mode_2, IM_OUT_Current_System_Mode_3:int;
@@ -7892,11 +9744,20 @@ let
 
 		
 
+<<<<<<< HEAD
 
 		-- condition Action : IM_OUT_New_Infusion=1;
 		
 		(IM_OUT_New_Infusion_2) 
 	= InfusionMGR_InfusionMGRJunction1146__To__Infusion_Manager_THERAPY_1_Condition_Action(IM_OUT_New_Infusion_1);
+=======
+-- transition trace :
+	--Infusion_Manager_THERAPY__To__Junction1310_1, Junction1310__To__Infusion_Manager_THERAPY_1
+		-- condition Action : IM_OUT_New_Infusion=1;
+		
+		(IM_OUT_New_Infusion_2) 
+	= InfusionMGR_InfusionMGRJunction1310__To__Infusion_Manager_THERAPY_1_Condition_Action(IM_OUT_New_Infusion_1);
+>>>>>>> 3922117... clean sf_test
 		
 
 		(idACTIVE_Arbiter_2, idTHERAPY_ACTIVE_2, idACTIVE_INTERMITTENT_2, sbolus_req_2, sbolus_timer_2, idACTIVE_PATIENT_2, pbolus_timer_2, idACTIVE_BASAL_2, idInfusion_Manager_THERAPY_2, IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2, idPAUSED_Alarm_Paused_2, idPAUSED_Arbiter_2, idPAUSED_Manual_Paused_2, idTHERAPY_PAUSED_2, IM_OUT_Is_Locked_Out_2, IM_OUT_New_Infusion_3, idInfusionMGR_Infusion_Manager_2) 
@@ -7995,7 +9856,11 @@ let
 
 
 
+<<<<<<< HEAD
 	state INFUSION_MANAGER_IDLE__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1146_2:
+=======
+	state INFUSION_MANAGER_IDLE__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1310_2:
+>>>>>>> 3922117... clean sf_test
 
 	 var 	idInfusionMGR_Infusion_Manager_2, idInfusionMGR_Infusion_Manager_3:int;
 	IM_OUT_Current_System_Mode_2, IM_OUT_Current_System_Mode_3:int;
@@ -8023,17 +9888,30 @@ let
 
 		
 
+<<<<<<< HEAD
 
 		-- condition Action : resetAllInfusionDetails();
 		
 		(IM_OUT_Is_Locked_Out_2, IM_OUT_Lock_Timer_2, inPatientBolus_2, number_pbolus_2) 
 	= Infusion_Manager_IDLE__To__InfusionMGR_InfusionMGRJunction1146_2_Condition_Action(IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1);
+=======
+-- transition trace :
+	--Infusion_Manager_IDLE__To__Junction1310_2, Junction1310__To__Infusion_Manager_THERAPY_1
+		-- condition Action : resetAllInfusionDetails();
+		
+		(IM_OUT_Is_Locked_Out_2, IM_OUT_Lock_Timer_2, inPatientBolus_2, number_pbolus_2) 
+	= Infusion_Manager_IDLE__To__InfusionMGR_InfusionMGRJunction1310_2_Condition_Action(IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1);
+>>>>>>> 3922117... clean sf_test
 		
 
 		-- condition Action : IM_OUT_New_Infusion=1;
 		
 		(IM_OUT_New_Infusion_2) 
+<<<<<<< HEAD
 	= InfusionMGR_InfusionMGRJunction1146__To__Infusion_Manager_THERAPY_1_Condition_Action(IM_OUT_New_Infusion_1);
+=======
+	= InfusionMGR_InfusionMGRJunction1310__To__Infusion_Manager_THERAPY_1_Condition_Action(IM_OUT_New_Infusion_1);
+>>>>>>> 3922117... clean sf_test
 		
 
 		(IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Is_Locked_Out_3, IM_OUT_Lock_Timer_3, inPatientBolus_3, number_pbolus_3, idInfusionMGR_Infusion_Manager_2) 
@@ -8215,6 +10093,7 @@ let
 
 
 
+<<<<<<< HEAD
 	unless (idInfusionMGR_InfusionMGR_1=1106) and ( TLM_MODE_IN_System_On ) restart INFUSIONMGR_NOT_ON__TO__INFUSIONMGR_INFUSION_MANAGER_1
 
 
@@ -8226,6 +10105,19 @@ let
 	unless (idInfusionMGR_InfusionMGR_1=1106) restart INFUSIONMGR_NOT_ON_IDL
 
 	unless (idInfusionMGR_InfusionMGR_1=1107) restart INFUSIONMGR_INFUSION_MANAGER_IDL
+=======
+	unless (idInfusionMGR_InfusionMGR_1=1270) and ( TLM_MODE_IN_System_On ) restart INFUSIONMGR_NOT_ON__TO__INFUSIONMGR_INFUSION_MANAGER_1
+
+
+
+	unless (idInfusionMGR_InfusionMGR_1=1271) and ( not TLM_MODE_IN_System_On ) restart INFUSIONMGR_INFUSION_MANAGER__TO__INFUSIONMGR_NOT_ON_1
+
+
+
+	unless (idInfusionMGR_InfusionMGR_1=1270) restart INFUSIONMGR_NOT_ON_IDL
+
+	unless (idInfusionMGR_InfusionMGR_1=1271) restart INFUSIONMGR_INFUSION_MANAGER_IDL
+>>>>>>> 3922117... clean sf_test
 
 	let
 

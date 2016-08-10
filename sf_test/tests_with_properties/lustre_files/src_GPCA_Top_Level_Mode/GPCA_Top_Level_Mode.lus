@@ -94,7 +94,11 @@ tel
 
 
 
+<<<<<<< HEAD
 node POINT__To__Top_Level_Mode_Sub_System_Step_Scaling_FactorJunction1232_1_Condition_Action(inputVal:real;
+=======
+node POINT__To__Top_Level_Mode_Sub_System_Step_Scaling_FactorJunction1492_1_Condition_Action(inputVal:real;
+>>>>>>> 3922117... clean sf_test
 	step_size:real;
 	returnVal_1:real)
 
@@ -135,7 +139,11 @@ let
 	 automaton top_level_mode_sub_system_step_scaling_factor
 
 	state POINTTop_Level_Mode_Sub_System_Step_Scaling_Factor:
+<<<<<<< HEAD
 	unless (idTop_Level_Mode_Sub_System_Step_Scaling_Factor_1=0) restart POINT__TO__TOP_LEVEL_MODE_SUB_SYSTEM_STEP_SCALING_FACTORJUNCTION1232_1
+=======
+	unless (idTop_Level_Mode_Sub_System_Step_Scaling_Factor_1=0) restart POINT__TO__TOP_LEVEL_MODE_SUB_SYSTEM_STEP_SCALING_FACTORJUNCTION1492_1
+>>>>>>> 3922117... clean sf_test
 
 
 
@@ -149,17 +157,29 @@ let
 
 
 
+<<<<<<< HEAD
 	state POINT__TO__TOP_LEVEL_MODE_SUB_SYSTEM_STEP_SCALING_FACTORJUNCTION1232_1:
+=======
+	state POINT__TO__TOP_LEVEL_MODE_SUB_SYSTEM_STEP_SCALING_FACTORJUNCTION1492_1:
+>>>>>>> 3922117... clean sf_test
 
 	 var 	returnVal_2:real;
 	let
 
 		-- transition trace :
+<<<<<<< HEAD
 	--POINT__To__Junction1232_1
 		-- condition Action : returnVal=inputVal/step_size;
 		
 		(returnVal_2) 
 	= POINT__To__Top_Level_Mode_Sub_System_Step_Scaling_FactorJunction1232_1_Condition_Action(inputVal, step_size, returnVal_1);
+=======
+	--POINT__To__Junction1492_1
+		-- condition Action : returnVal=inputVal/step_size;
+		
+		(returnVal_2) 
+	= POINT__To__Top_Level_Mode_Sub_System_Step_Scaling_FactorJunction1492_1_Condition_Action(inputVal, step_size, returnVal_1);
+>>>>>>> 3922117... clean sf_test
 		
 
 	(idTop_Level_Mode_Sub_System_Step_Scaling_Factor, returnVal) 
@@ -212,7 +232,11 @@ tel
 
 
 
+<<<<<<< HEAD
 node POINT__To__Top_Level_Mode_Sub_System_writeLogJunction1235_1_Condition_Action(logEvent:int;
+=======
+node POINT__To__Top_Level_Mode_Sub_System_writeLogJunction1495_1_Condition_Action(logEvent:int;
+>>>>>>> 3922117... clean sf_test
 	tLM_MODE_OUT_Log_Message_ID_1:int)
 
 returns (tLM_MODE_OUT_Log_Message_ID:int);
@@ -251,7 +275,11 @@ let
 	 automaton top_level_mode_sub_system_writelog
 
 	state POINTTop_Level_Mode_Sub_System_writeLog:
+<<<<<<< HEAD
 	unless (idTop_Level_Mode_Sub_System_writeLog_1=0) restart POINT__TO__TOP_LEVEL_MODE_SUB_SYSTEM_WRITELOGJUNCTION1235_1
+=======
+	unless (idTop_Level_Mode_Sub_System_writeLog_1=0) restart POINT__TO__TOP_LEVEL_MODE_SUB_SYSTEM_WRITELOGJUNCTION1495_1
+>>>>>>> 3922117... clean sf_test
 
 
 
@@ -265,17 +293,29 @@ let
 
 
 
+<<<<<<< HEAD
 	state POINT__TO__TOP_LEVEL_MODE_SUB_SYSTEM_WRITELOGJUNCTION1235_1:
+=======
+	state POINT__TO__TOP_LEVEL_MODE_SUB_SYSTEM_WRITELOGJUNCTION1495_1:
+>>>>>>> 3922117... clean sf_test
 
 	 var 	tLM_MODE_OUT_Log_Message_ID_2:int;
 	let
 
 		-- transition trace :
+<<<<<<< HEAD
 	--POINT__To__Junction1235_1
 		-- condition Action : tLM_MODE_OUT_Log_Message_ID=logEvent;
 		
 		(tLM_MODE_OUT_Log_Message_ID_2) 
 	= POINT__To__Top_Level_Mode_Sub_System_writeLogJunction1235_1_Condition_Action(logEvent, tLM_MODE_OUT_Log_Message_ID_1);
+=======
+	--POINT__To__Junction1495_1
+		-- condition Action : tLM_MODE_OUT_Log_Message_ID=logEvent;
+		
+		(tLM_MODE_OUT_Log_Message_ID_2) 
+	= POINT__To__Top_Level_Mode_Sub_System_writeLogJunction1495_1_Condition_Action(logEvent, tLM_MODE_OUT_Log_Message_ID_1);
+>>>>>>> 3922117... clean sf_test
 		
 
 	(idTop_Level_Mode_Sub_System_writeLog, tLM_MODE_OUT_Log_Message_ID) 
@@ -322,7 +362,6 @@ tel
 
 
 
-
 node Top_Level_Mode_Sub_System_NOT_ON__To__Top_Level_Mode_Sub_System_TOP_Level_Mode_1_Condition_Action(tLM_MODE_OUT_Log_Message_ID_1:int)
 
 returns (tLM_MODE_OUT_Log_Message_ID:int);
@@ -354,6 +393,11 @@ tel
 
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 3922117... clean sf_test
 node Confirm_Stop_ON__To__Top_Level_Mode_Sub_System_NOT_ON_1_Condition_Action(tLM_MODE_OUT_Log_Message_ID_1:int)
 
 returns (tLM_MODE_OUT_Log_Message_ID:int);
@@ -382,7 +426,10 @@ tel
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3922117... clean sf_test
 -- Entry action for state :Confirm_Stop_OFF
 node Confirm_Stop_OFF_en(idTOP_Level_Mode_Confirm_Stop_1:int;
 	tLM_MODE_OUT_Request_Confirm_Stop_1:bool;
@@ -405,7 +452,11 @@ let
 
 	-- set state as active 
 	idTOP_Level_Mode_Confirm_Stop_2 
+<<<<<<< HEAD
 	= 1217;
+=======
+	= 1477;
+>>>>>>> 3922117... clean sf_test
 	
 
 	tLM_MODE_OUT_Request_Confirm_Stop_2 
@@ -480,7 +531,11 @@ let
 
 	-- set state as active 
 	idTOP_Level_Mode_Confirm_Stop_2 
+<<<<<<< HEAD
 	= 1218;
+=======
+	= 1478;
+>>>>>>> 3922117... clean sf_test
 	
 
 	tLM_MODE_OUT_Request_Confirm_Stop_2 
@@ -586,7 +641,11 @@ let
 
 	-- set state as active 
 	idTop_Level_Mode_Sub_System_TOP_Level_Mode_2 
+<<<<<<< HEAD
 	= 1216;
+=======
+	= 1476;
+>>>>>>> 3922117... clean sf_test
 	
 
 	
@@ -621,7 +680,11 @@ let
 
 	(idTOP_Level_Mode_Confirm_Stop_5, tLM_MODE_OUT_Request_Confirm_Stop_5, confirmStopTimer_5) 
 	= 
+<<<<<<< HEAD
 	if ( idTOP_Level_Mode_Confirm_Stop_1 = 1217) then
+=======
+	if ( idTOP_Level_Mode_Confirm_Stop_1 = 1477) then
+>>>>>>> 3922117... clean sf_test
 	Confirm_Stop_OFF_en(idTOP_Level_Mode_Confirm_Stop_1, tLM_MODE_OUT_Request_Confirm_Stop_1, confirmStopTimer_1, false)
 	 else (idTOP_Level_Mode_Confirm_Stop_1, tLM_MODE_OUT_Request_Confirm_Stop_1, confirmStopTimer_1);
 
@@ -629,7 +692,11 @@ let
 
 	(idTOP_Level_Mode_Confirm_Stop_6, tLM_MODE_OUT_Request_Confirm_Stop_6, confirmStopTimer_6) 
 	= 
+<<<<<<< HEAD
 	if ( idTOP_Level_Mode_Confirm_Stop_1 = 1218) then
+=======
+	if ( idTOP_Level_Mode_Confirm_Stop_1 = 1478) then
+>>>>>>> 3922117... clean sf_test
 	Confirm_Stop_ON_en(idTOP_Level_Mode_Confirm_Stop_1, tLM_MODE_OUT_Request_Confirm_Stop_1, confirmStopTimer_1, false)
 	 else (idTOP_Level_Mode_Confirm_Stop_1, tLM_MODE_OUT_Request_Confirm_Stop_1, confirmStopTimer_1);
 
@@ -640,10 +707,17 @@ let
 		 if ( idTOP_Level_Mode_Confirm_Stop_1 = 0) then 
 		(idTOP_Level_Mode_Confirm_Stop_4, idTop_Level_Mode_Sub_System_TOP_Level_Mode_3, confirmStopTimer_4, tLM_MODE_OUT_Request_Confirm_Stop_4)
 		 else
+<<<<<<< HEAD
 		 if ( idTOP_Level_Mode_Confirm_Stop_1 = 1217) then 
 		(idTOP_Level_Mode_Confirm_Stop_5, idTop_Level_Mode_Sub_System_TOP_Level_Mode_3, confirmStopTimer_5, tLM_MODE_OUT_Request_Confirm_Stop_5)
 		 else
 		 if ( idTOP_Level_Mode_Confirm_Stop_1 = 1218) then 
+=======
+		 if ( idTOP_Level_Mode_Confirm_Stop_1 = 1477) then 
+		(idTOP_Level_Mode_Confirm_Stop_5, idTop_Level_Mode_Sub_System_TOP_Level_Mode_3, confirmStopTimer_5, tLM_MODE_OUT_Request_Confirm_Stop_5)
+		 else
+		 if ( idTOP_Level_Mode_Confirm_Stop_1 = 1478) then 
+>>>>>>> 3922117... clean sf_test
 		(idTOP_Level_Mode_Confirm_Stop_6, idTop_Level_Mode_Sub_System_TOP_Level_Mode_3, confirmStopTimer_6, tLM_MODE_OUT_Request_Confirm_Stop_6)
 		 else (idTOP_Level_Mode_Confirm_Stop_1, idTop_Level_Mode_Sub_System_TOP_Level_Mode_2, confirmStopTimer_1, tLM_MODE_OUT_Request_Confirm_Stop_1);
 
@@ -678,7 +752,11 @@ let
 	
 	(idTOP_Level_Mode_Confirm_Stop_2) 
 	= 
+<<<<<<< HEAD
 	if ( idTOP_Level_Mode_Confirm_Stop_1 = 1217) then
+=======
+	if ( idTOP_Level_Mode_Confirm_Stop_1 = 1477) then
+>>>>>>> 3922117... clean sf_test
 	Confirm_Stop_OFF_ex(idTOP_Level_Mode_Confirm_Stop_1, false)
 	 else (idTOP_Level_Mode_Confirm_Stop_1);
 
@@ -686,7 +764,11 @@ let
 
 	(idTOP_Level_Mode_Confirm_Stop_3) 
 	= 
+<<<<<<< HEAD
 	if ( idTOP_Level_Mode_Confirm_Stop_1 = 1218) then
+=======
+	if ( idTOP_Level_Mode_Confirm_Stop_1 = 1478) then
+>>>>>>> 3922117... clean sf_test
 	Confirm_Stop_ON_ex(idTOP_Level_Mode_Confirm_Stop_1, false)
 	 else (idTOP_Level_Mode_Confirm_Stop_1);
 
@@ -694,10 +776,17 @@ let
 
 	(idTOP_Level_Mode_Confirm_Stop_4) 
 	= 
+<<<<<<< HEAD
 		 if ( idTOP_Level_Mode_Confirm_Stop_1 = 1217) then 
 		(idTOP_Level_Mode_Confirm_Stop_2)
 		 else
 		 if ( idTOP_Level_Mode_Confirm_Stop_1 = 1218) then 
+=======
+		 if ( idTOP_Level_Mode_Confirm_Stop_1 = 1477) then 
+		(idTOP_Level_Mode_Confirm_Stop_2)
+		 else
+		 if ( idTOP_Level_Mode_Confirm_Stop_1 = 1478) then 
+>>>>>>> 3922117... clean sf_test
 		(idTOP_Level_Mode_Confirm_Stop_3)
 		 else (idTOP_Level_Mode_Confirm_Stop_1);
 
@@ -753,7 +842,11 @@ let
 
 	-- set state as active 
 	idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_2 
+<<<<<<< HEAD
 	= 1215;
+=======
+	= 1475;
+>>>>>>> 3922117... clean sf_test
 	
 
 	tLM_MODE_OUT_System_On_2 
@@ -781,7 +874,11 @@ let
 
 	(idTOP_Level_Mode_Confirm_Stop_4, idTop_Level_Mode_Sub_System_TOP_Level_Mode_4, confirmStopTimer_4, tLM_MODE_OUT_Request_Confirm_Stop_4) 
 	= 
+<<<<<<< HEAD
 	if ( idTop_Level_Mode_Sub_System_TOP_Level_Mode_1 = 1216) then
+=======
+	if ( idTop_Level_Mode_Sub_System_TOP_Level_Mode_1 = 1476) then
+>>>>>>> 3922117... clean sf_test
 	TOP_Level_Mode_Confirm_Stop_en(idTOP_Level_Mode_Confirm_Stop_1, idTop_Level_Mode_Sub_System_TOP_Level_Mode_1, OP_CMD_IN_System_Stop, confirmStopTimer_1, tLM_MODE_OUT_Request_Confirm_Stop_1, false)
 	 else (idTOP_Level_Mode_Confirm_Stop_1, idTop_Level_Mode_Sub_System_TOP_Level_Mode_1, confirmStopTimer_1, tLM_MODE_OUT_Request_Confirm_Stop_1);
 
@@ -792,7 +889,11 @@ let
 		 if ( idTop_Level_Mode_Sub_System_TOP_Level_Mode_1 = 0) then 
 		(idTop_Level_Mode_Sub_System_TOP_Level_Mode_3, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_3, tLM_MODE_OUT_System_On_3, confirmStopTimer_3, idTOP_Level_Mode_Confirm_Stop_3, tLM_MODE_OUT_Request_Confirm_Stop_3)
 		 else
+<<<<<<< HEAD
 		 if ( idTop_Level_Mode_Sub_System_TOP_Level_Mode_1 = 1216) then 
+=======
+		 if ( idTop_Level_Mode_Sub_System_TOP_Level_Mode_1 = 1476) then 
+>>>>>>> 3922117... clean sf_test
 		(idTop_Level_Mode_Sub_System_TOP_Level_Mode_4, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_3, tLM_MODE_OUT_System_On_3, confirmStopTimer_4, idTOP_Level_Mode_Confirm_Stop_4, tLM_MODE_OUT_Request_Confirm_Stop_4)
 		 else (idTop_Level_Mode_Sub_System_TOP_Level_Mode_1, idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_2, tLM_MODE_OUT_System_On_2, confirmStopTimer_1, idTOP_Level_Mode_Confirm_Stop_1, tLM_MODE_OUT_Request_Confirm_Stop_1);
 
@@ -860,7 +961,11 @@ let
 	
 	(idTOP_Level_Mode_Confirm_Stop_2, idTop_Level_Mode_Sub_System_TOP_Level_Mode_2) 
 	= 
+<<<<<<< HEAD
 	if ( idTop_Level_Mode_Sub_System_TOP_Level_Mode_1 = 1216) then
+=======
+	if ( idTop_Level_Mode_Sub_System_TOP_Level_Mode_1 = 1476) then
+>>>>>>> 3922117... clean sf_test
 	TOP_Level_Mode_Confirm_Stop_ex(idTOP_Level_Mode_Confirm_Stop_1, idTop_Level_Mode_Sub_System_TOP_Level_Mode_1, false)
 	 else (idTOP_Level_Mode_Confirm_Stop_1, idTop_Level_Mode_Sub_System_TOP_Level_Mode_1);
 
@@ -868,7 +973,11 @@ let
 
 	(idTOP_Level_Mode_Confirm_Stop_3, idTop_Level_Mode_Sub_System_TOP_Level_Mode_3) 
 	= 
+<<<<<<< HEAD
 		 if ( idTop_Level_Mode_Sub_System_TOP_Level_Mode_1 = 1216) then 
+=======
+		 if ( idTop_Level_Mode_Sub_System_TOP_Level_Mode_1 = 1476) then 
+>>>>>>> 3922117... clean sf_test
 		(idTOP_Level_Mode_Confirm_Stop_2, idTop_Level_Mode_Sub_System_TOP_Level_Mode_2)
 		 else (idTOP_Level_Mode_Confirm_Stop_1, idTop_Level_Mode_Sub_System_TOP_Level_Mode_1);
 
@@ -916,7 +1025,11 @@ let
 
 	-- set state as active 
 	idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_2 
+<<<<<<< HEAD
 	= 1219;
+=======
+	= 1479;
+>>>>>>> 3922117... clean sf_test
 	
 
 	tLM_MODE_OUT_System_On_2 
@@ -1032,6 +1145,7 @@ let
 
 
 
+<<<<<<< HEAD
 	unless (idTOP_Level_Mode_Confirm_Stop_1=1217) and ( OP_CMD_IN_System_Stop ) restart CONFIRM_STOP_OFF__TO__CONFIRM_STOP_ON_1
 
 
@@ -1047,6 +1161,23 @@ let
 	unless (idTOP_Level_Mode_Confirm_Stop_1=1217) restart CONFIRM_STOP_OFF_IDL
 
 	unless (idTOP_Level_Mode_Confirm_Stop_1=1218) restart CONFIRM_STOP_ON_IDL
+=======
+	unless (idTOP_Level_Mode_Confirm_Stop_1=1477) and ( OP_CMD_IN_System_Stop ) restart CONFIRM_STOP_OFF__TO__CONFIRM_STOP_ON_1
+
+
+
+	unless (idTOP_Level_Mode_Confirm_Stop_1=1478) and ( not OP_CMD_IN_System_Start ) restart CONFIRM_STOP_ON__TO__TOP_LEVEL_MODE_SUB_SYSTEM_NOT_ON_1
+
+
+
+	unless (idTOP_Level_Mode_Confirm_Stop_1=1478) and ( OP_CMD_IN_Cancel or  confirmStopTimer_1 >Step_Scaling_Factor(CONST_IN_Max_Confirm_Stop_Duration,step_size) ) restart CONFIRM_STOP_ON__TO__CONFIRM_STOP_OFF_2
+
+
+
+	unless (idTOP_Level_Mode_Confirm_Stop_1=1477) restart CONFIRM_STOP_OFF_IDL
+
+	unless (idTOP_Level_Mode_Confirm_Stop_1=1478) restart CONFIRM_STOP_ON_IDL
+>>>>>>> 3922117... clean sf_test
 
 	let
 
@@ -1279,7 +1410,11 @@ let
 
 
 
+<<<<<<< HEAD
 	unless (idTop_Level_Mode_Sub_System_TOP_Level_Mode_1=1216) restart TOP_LEVEL_MODE_CONFIRM_STOP_IDL
+=======
+	unless (idTop_Level_Mode_Sub_System_TOP_Level_Mode_1=1476) restart TOP_LEVEL_MODE_CONFIRM_STOP_IDL
+>>>>>>> 3922117... clean sf_test
 
 	let
 
@@ -1387,6 +1522,7 @@ let
 
 
 
+<<<<<<< HEAD
 	unless (idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_1=1219) and ( OP_CMD_IN_System_Start ) restart TOP_LEVEL_MODE_SUB_SYSTEM_NOT_ON__TO__TOP_LEVEL_MODE_SUB_SYSTEM_TOP_LEVEL_MODE_1
 
 
@@ -1394,6 +1530,15 @@ let
 	unless (idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_1=1215) restart TOP_LEVEL_MODE_SUB_SYSTEM_TOP_LEVEL_MODE_IDL
 
 	unless (idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_1=1219) restart TOP_LEVEL_MODE_SUB_SYSTEM_NOT_ON_IDL
+=======
+	unless (idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_1=1479) and ( OP_CMD_IN_System_Start ) restart TOP_LEVEL_MODE_SUB_SYSTEM_NOT_ON__TO__TOP_LEVEL_MODE_SUB_SYSTEM_TOP_LEVEL_MODE_1
+
+
+
+	unless (idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_1=1475) restart TOP_LEVEL_MODE_SUB_SYSTEM_TOP_LEVEL_MODE_IDL
+
+	unless (idTop_Level_Mode_Sub_System_Top_Level_Mode_Sub_System_1=1479) restart TOP_LEVEL_MODE_SUB_SYSTEM_NOT_ON_IDL
+>>>>>>> 3922117... clean sf_test
 
 	let
 
