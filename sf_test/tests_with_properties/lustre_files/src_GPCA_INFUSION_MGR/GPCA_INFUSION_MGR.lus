@@ -80,7 +80,7 @@ tel
 
 
 
-node POINT__To__InfusionMGR_writeLogJunction308_1_Condition_Action(logEvent:int;
+node POINT__To__InfusionMGR_writeLogJunction1384_1_Condition_Action(logEvent:int;
 	IM_OUT_Log_Message_ID_1:int)
 
 returns (IM_OUT_Log_Message_ID:int);
@@ -119,7 +119,7 @@ let
 	 automaton infusionmgr_writelog
 
 	state POINTInfusionMGR_writeLog:
-	unless (idInfusionMGR_writeLog_1=0) restart POINT__TO__INFUSIONMGR_WRITELOGJUNCTION308_1
+	unless (idInfusionMGR_writeLog_1=0) restart POINT__TO__INFUSIONMGR_WRITELOGJUNCTION1384_1
 
 
 
@@ -133,17 +133,17 @@ let
 
 
 
-	state POINT__TO__INFUSIONMGR_WRITELOGJUNCTION308_1:
+	state POINT__TO__INFUSIONMGR_WRITELOGJUNCTION1384_1:
 
 	 var 	IM_OUT_Log_Message_ID_2:int;
 	let
 
 		-- transition trace :
-	--POINT__To__Junction308_1
+	--POINT__To__Junction1384_1
 		-- condition Action : IM_OUT_Log_Message_ID=logEvent;
 		
 		(IM_OUT_Log_Message_ID_2) 
-	= POINT__To__InfusionMGR_writeLogJunction308_1_Condition_Action(logEvent, IM_OUT_Log_Message_ID_1);
+	= POINT__To__InfusionMGR_writeLogJunction1384_1_Condition_Action(logEvent, IM_OUT_Log_Message_ID_1);
 		
 
 	(idInfusionMGR_writeLog, IM_OUT_Log_Message_ID) 
@@ -190,7 +190,7 @@ tel
 
 
 
-node POINT__To__InfusionMGR_Step_Scaling_FactorJunction313_1_Condition_Action(inputVal:real;
+node POINT__To__InfusionMGR_Step_Scaling_FactorJunction1389_1_Condition_Action(inputVal:real;
 	step_size:real;
 	returnVal_1:real)
 
@@ -231,7 +231,7 @@ let
 	 automaton infusionmgr_step_scaling_factor
 
 	state POINTInfusionMGR_Step_Scaling_Factor:
-	unless (idInfusionMGR_Step_Scaling_Factor_1=0) restart POINT__TO__INFUSIONMGR_STEP_SCALING_FACTORJUNCTION313_1
+	unless (idInfusionMGR_Step_Scaling_Factor_1=0) restart POINT__TO__INFUSIONMGR_STEP_SCALING_FACTORJUNCTION1389_1
 
 
 
@@ -245,17 +245,17 @@ let
 
 
 
-	state POINT__TO__INFUSIONMGR_STEP_SCALING_FACTORJUNCTION313_1:
+	state POINT__TO__INFUSIONMGR_STEP_SCALING_FACTORJUNCTION1389_1:
 
 	 var 	returnVal_2:real;
 	let
 
 		-- transition trace :
-	--POINT__To__Junction313_1
+	--POINT__To__Junction1389_1
 		-- condition Action : returnVal=inputVal/step_size;
 		
 		(returnVal_2) 
-	= POINT__To__InfusionMGR_Step_Scaling_FactorJunction313_1_Condition_Action(inputVal, step_size, returnVal_1);
+	= POINT__To__InfusionMGR_Step_Scaling_FactorJunction1389_1_Condition_Action(inputVal, step_size, returnVal_1);
 		
 
 	(idInfusionMGR_Step_Scaling_Factor, returnVal) 
@@ -308,7 +308,7 @@ tel
 
 
 
-node POINT__To__Infusion_Manager_resetAllInfusionDetailsJunction303_1_Condition_Action(IM_OUT_Lock_Timer_1:real;
+node POINT__To__Infusion_Manager_resetAllInfusionDetailsJunction1379_1_Condition_Action(IM_OUT_Lock_Timer_1:real;
 	inPatientBolus_1:bool;
 	number_pbolus_1:int;
 	IM_OUT_Is_Locked_Out_1:bool)
@@ -372,7 +372,7 @@ let
 	 automaton infusion_manager_resetallinfusiondetails
 
 	state POINTInfusion_Manager_resetAllInfusionDetails:
-	unless (idInfusion_Manager_resetAllInfusionDetails_1=0) restart POINT__TO__INFUSION_MANAGER_RESETALLINFUSIONDETAILSJUNCTION303_1
+	unless (idInfusion_Manager_resetAllInfusionDetails_1=0) restart POINT__TO__INFUSION_MANAGER_RESETALLINFUSIONDETAILSJUNCTION1379_1
 
 
 
@@ -386,7 +386,7 @@ let
 
 
 
-	state POINT__TO__INFUSION_MANAGER_RESETALLINFUSIONDETAILSJUNCTION303_1:
+	state POINT__TO__INFUSION_MANAGER_RESETALLINFUSIONDETAILSJUNCTION1379_1:
 
 	 var 	IM_OUT_Is_Locked_Out_2:bool;
 	IM_OUT_Lock_Timer_2:real;
@@ -395,11 +395,11 @@ let
 	let
 
 		-- transition trace :
-	--POINT__To__Junction303_1
+	--POINT__To__Junction1379_1
 		-- condition Action : IM_OUT_Lock_Timer=0;inPatientBolus=0;number_pbolus=0;IM_OUT_Is_Locked_Out=false;
 		
 		(IM_OUT_Lock_Timer_2, inPatientBolus_2, number_pbolus_2, IM_OUT_Is_Locked_Out_2) 
-	= POINT__To__Infusion_Manager_resetAllInfusionDetailsJunction303_1_Condition_Action(IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1, IM_OUT_Is_Locked_Out_1);
+	= POINT__To__Infusion_Manager_resetAllInfusionDetailsJunction1379_1_Condition_Action(IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1, IM_OUT_Is_Locked_Out_1);
 		
 
 	(idInfusion_Manager_resetAllInfusionDetails, IM_OUT_Is_Locked_Out, IM_OUT_Lock_Timer, inPatientBolus, number_pbolus) 
@@ -451,7 +451,7 @@ tel
 
 
 
-node POINT__To__Infusion_Manager_sbolus_dur_timer_funJunction305_1_Condition_Action(sbolus_dur_timer_1:int;
+node POINT__To__Infusion_Manager_sbolus_dur_timer_funJunction1381_1_Condition_Action(sbolus_dur_timer_1:int;
 	sbolus_timer_1:real;
 	pbolus_timer_1:real;
 	number_pbolus_1:int;
@@ -578,7 +578,7 @@ let
 	 automaton infusion_manager_sbolus_dur_timer_fun
 
 	state POINTInfusion_Manager_sbolus_dur_timer_fun:
-	unless (idInfusion_Manager_sbolus_dur_timer_fun_1=0) restart POINT__TO__INFUSION_MANAGER_SBOLUS_DUR_TIMER_FUNJUNCTION305_1
+	unless (idInfusion_Manager_sbolus_dur_timer_fun_1=0) restart POINT__TO__INFUSION_MANAGER_SBOLUS_DUR_TIMER_FUNJUNCTION1381_1
 
 
 
@@ -592,7 +592,7 @@ let
 
 
 
-	state POINT__TO__INFUSION_MANAGER_SBOLUS_DUR_TIMER_FUNJUNCTION305_1:
+	state POINT__TO__INFUSION_MANAGER_SBOLUS_DUR_TIMER_FUNJUNCTION1381_1:
 
 	 var 	IM_OUT_Actual_Infusion_Duration_2:real;
 	IM_OUT_Flow_Rate_Commanded_2:int;
@@ -608,11 +608,11 @@ let
 	let
 
 		-- transition trace :
-	--POINT__To__Junction305_1
+	--POINT__To__Junction1381_1
 		-- condition Action : sbolus_dur_timer=0;sbolus_timer=0;pbolus_timer=0;number_pbolus=0;pbolus_dur_timer=0;sbolusInter_timer=0;paused_KVO_timer=0;IM_OUT_Flow_Rate_Commanded=0;IM_OUT_Actual_Infusion_Duration=0;IM_OUT_Is_Locked_Out=false;writeLog(1);
 		
 		(sbolus_dur_timer_2, sbolus_timer_2, pbolus_timer_2, number_pbolus_2, pbolus_dur_timer_2, sbolusInter_timer_2, paused_KVO_timer_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Actual_Infusion_Duration_2, IM_OUT_Is_Locked_Out_2, IM_OUT_Log_Message_ID_2) 
-	= POINT__To__Infusion_Manager_sbolus_dur_timer_funJunction305_1_Condition_Action(sbolus_dur_timer_1, sbolus_timer_1, pbolus_timer_1, number_pbolus_1, pbolus_dur_timer_1, sbolusInter_timer_1, paused_KVO_timer_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Actual_Infusion_Duration_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Log_Message_ID_1);
+	= POINT__To__Infusion_Manager_sbolus_dur_timer_funJunction1381_1_Condition_Action(sbolus_dur_timer_1, sbolus_timer_1, pbolus_timer_1, number_pbolus_1, pbolus_dur_timer_1, sbolusInter_timer_1, paused_KVO_timer_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Actual_Infusion_Duration_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Log_Message_ID_1);
 		
 
 	(idInfusion_Manager_sbolus_dur_timer_fun, IM_OUT_Actual_Infusion_Duration, IM_OUT_Flow_Rate_Commanded, IM_OUT_Is_Locked_Out, IM_OUT_Log_Message_ID, number_pbolus, paused_KVO_timer, pbolus_dur_timer, pbolus_timer, sbolusInter_timer, sbolus_dur_timer, sbolus_timer) 
@@ -678,7 +678,7 @@ tel
 
 
 
-node POINT__To__THERAPY_TherapyExitOperationsJunction301_1_Condition_Action(IM_OUT_Flow_Rate_Commanded_1:int;
+node POINT__To__THERAPY_TherapyExitOperationsJunction1377_1_Condition_Action(IM_OUT_Flow_Rate_Commanded_1:int;
 	IM_OUT_New_Infusion_1:bool;
 	IM_OUT_Is_Locked_Out_1:bool)
 
@@ -733,7 +733,7 @@ let
 	 automaton therapy_therapyexitoperations
 
 	state POINTTHERAPY_TherapyExitOperations:
-	unless (idTHERAPY_TherapyExitOperations_1=0) restart POINT__TO__THERAPY_THERAPYEXITOPERATIONSJUNCTION301_1
+	unless (idTHERAPY_TherapyExitOperations_1=0) restart POINT__TO__THERAPY_THERAPYEXITOPERATIONSJUNCTION1377_1
 
 
 
@@ -747,7 +747,7 @@ let
 
 
 
-	state POINT__TO__THERAPY_THERAPYEXITOPERATIONSJUNCTION301_1:
+	state POINT__TO__THERAPY_THERAPYEXITOPERATIONSJUNCTION1377_1:
 
 	 var 	IM_OUT_Flow_Rate_Commanded_2:int;
 	IM_OUT_Is_Locked_Out_2:bool;
@@ -755,11 +755,11 @@ let
 	let
 
 		-- transition trace :
-	--POINT__To__Junction301_1
+	--POINT__To__Junction1377_1
 		-- condition Action : IM_OUT_Flow_Rate_Commanded=0;IM_OUT_New_Infusion=0;IM_OUT_Is_Locked_Out=false;
 		
 		(IM_OUT_Flow_Rate_Commanded_2, IM_OUT_New_Infusion_2, IM_OUT_Is_Locked_Out_2) 
-	= POINT__To__THERAPY_TherapyExitOperationsJunction301_1_Condition_Action(IM_OUT_Flow_Rate_Commanded_1, IM_OUT_New_Infusion_1, IM_OUT_Is_Locked_Out_1);
+	= POINT__To__THERAPY_TherapyExitOperationsJunction1377_1_Condition_Action(IM_OUT_Flow_Rate_Commanded_1, IM_OUT_New_Infusion_1, IM_OUT_Is_Locked_Out_1);
 		
 
 	(idTHERAPY_TherapyExitOperations, IM_OUT_Flow_Rate_Commanded, IM_OUT_Is_Locked_Out, IM_OUT_New_Infusion) 
@@ -809,7 +809,7 @@ tel
 
 
 
-node ACTIVE_sbolus_triggerJunction275__To__ACTIVE_sbolus_triggerJunction277_2_Condition_Action(sb_1:bool)
+node ACTIVE_sbolus_triggerJunction1351__To__ACTIVE_sbolus_triggerJunction1353_2_Condition_Action(sb_1:bool)
 
 returns (sb:bool);
 
@@ -836,7 +836,7 @@ tel
 
 
 
-node POINT__To__ACTIVE_sbolus_triggerJunction275_1_Condition_Action(sb_1:bool)
+node POINT__To__ACTIVE_sbolus_triggerJunction1351_1_Condition_Action(sb_1:bool)
 
 returns (sb:bool);
 
@@ -863,7 +863,7 @@ tel
 
 
 
-node ACTIVE_sbolus_triggerJunction275__To__ACTIVE_sbolus_triggerJunction276_1_Condition_Action(sb_1:bool)
+node ACTIVE_sbolus_triggerJunction1351__To__ACTIVE_sbolus_triggerJunction1352_1_Condition_Action(sb_1:bool)
 
 returns (sb:bool);
 
@@ -903,7 +903,7 @@ let
 	 automaton active_sbolus_trigger
 
 	state POINTACTIVE_sbolus_trigger:
-	unless (idACTIVE_sbolus_trigger_1=0) restart POINT__TO__ACTIVE_SBOLUS_TRIGGERJUNCTION275_1
+	unless (idACTIVE_sbolus_trigger_1=0) restart POINT__TO__ACTIVE_SBOLUS_TRIGGERJUNCTION1351_1
 
 
 
@@ -917,7 +917,7 @@ let
 
 
 
-	state POINT__TO__ACTIVE_SBOLUS_TRIGGERJUNCTION275_1:
+	state POINT__TO__ACTIVE_SBOLUS_TRIGGERJUNCTION1351_1:
 
 	 var 	sb_2, sb_3, sb_4, sb_5:bool;
 	let
@@ -925,11 +925,11 @@ let
 		
 
 -- transition trace :
-	--POINT__To__Junction275_1, Junction275__To__Junction276_1
+	--POINT__To__Junction1351_1, Junction1351__To__Junction1352_1
 		-- condition Action : sb=0;
 		
 		(sb_2) 
-	= POINT__To__ACTIVE_sbolus_triggerJunction275_1_Condition_Action(sb_1);
+	= POINT__To__ACTIVE_sbolus_triggerJunction1351_1_Condition_Action(sb_1);
 		
 
 		-- condition Action : sb=0;
@@ -937,17 +937,17 @@ let
 		(sb_3) 
 	= 
 		 if (( sbolusInter_timer>Step_Scaling_Factor(CONFIG_IN_Interval_Intermittent_Bolus,step_size) or sbolusInter_timer<Step_Scaling_Factor(CONFIG_IN_Interval_Intermittent_Bolus,step_size) )) then 
-		ACTIVE_sbolus_triggerJunction275__To__ACTIVE_sbolus_triggerJunction276_1_Condition_Action(sb_2)
+		ACTIVE_sbolus_triggerJunction1351__To__ACTIVE_sbolus_triggerJunction1352_1_Condition_Action(sb_2)
 		 else (sb_2);
 		
 
 
 -- transition trace :
-	--POINT__To__Junction275_1, Junction275__To__Junction277_2
+	--POINT__To__Junction1351_1, Junction1351__To__Junction1353_2
 		-- condition Action : sb=0;
 		
 		(sb_4) 
-	= POINT__To__ACTIVE_sbolus_triggerJunction275_1_Condition_Action(sb_1);
+	= POINT__To__ACTIVE_sbolus_triggerJunction1351_1_Condition_Action(sb_1);
 		
 
 		-- condition Action : sb=1;
@@ -955,7 +955,7 @@ let
 		(sb_5) 
 	= 
 		 if (( sbolusInter_timer=Step_Scaling_Factor(CONFIG_IN_Interval_Intermittent_Bolus,step_size) )) then 
-		ACTIVE_sbolus_triggerJunction275__To__ACTIVE_sbolus_triggerJunction277_2_Condition_Action(sb_4)
+		ACTIVE_sbolus_triggerJunction1351__To__ACTIVE_sbolus_triggerJunction1353_2_Condition_Action(sb_4)
 		 else (sb_4);
 		
 
@@ -1016,7 +1016,7 @@ tel
 
 
 
-node POINT__To__OFF_sbolus_trigger2Junction269_1_Condition_Action(sbolusInter_timer_1:real)
+node POINT__To__OFF_sbolus_trigger2Junction1345_1_Condition_Action(sbolusInter_timer_1:real)
 
 returns (sbolusInter_timer:real);
 
@@ -1054,7 +1054,7 @@ let
 	 automaton off_sbolus_trigger2
 
 	state POINTOFF_sbolus_trigger2:
-	unless (idOFF_sbolus_trigger2_1=0) and ( sb ) restart POINT__TO__OFF_SBOLUS_TRIGGER2JUNCTION269_1
+	unless (idOFF_sbolus_trigger2_1=0) and ( sb ) restart POINT__TO__OFF_SBOLUS_TRIGGER2JUNCTION1345_1
 
 
 
@@ -1068,17 +1068,17 @@ let
 
 
 
-	state POINT__TO__OFF_SBOLUS_TRIGGER2JUNCTION269_1:
+	state POINT__TO__OFF_SBOLUS_TRIGGER2JUNCTION1345_1:
 
 	 var 	sbolusInter_timer_2:real;
 	let
 
 		-- transition trace :
-	--POINT__To__Junction269_1
+	--POINT__To__Junction1345_1
 		-- condition Action : sbolusInter_timer=0;
 		
 		(sbolusInter_timer_2) 
-	= POINT__To__OFF_sbolus_trigger2Junction269_1_Condition_Action(sbolusInter_timer_1);
+	= POINT__To__OFF_sbolus_trigger2Junction1345_1_Condition_Action(sbolusInter_timer_1);
 		
 
 	(idOFF_sbolus_trigger2, sbolusInter_timer) 
@@ -1125,47 +1125,56 @@ tel
 
 
 
+node InfusionMGR_InfusionMGRJunction1310__To__Infusion_Manager_THERAPY_1_Condition_Action(IM_OUT_New_Infusion_1:bool)
+
+returns (IM_OUT_New_Infusion:bool);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-node InfusionMGR_InfusionMGRJunction247__To__InfusionMGR_InfusionMGRJunction246_1_Condition_Action(IM_OUT_Actual_Infusion_Duration_1:real)
-
-returns (IM_OUT_Actual_Infusion_Duration:real);
-
-
-var 	IM_OUT_Actual_Infusion_Duration_2:real;
+var 	IM_OUT_New_Infusion_2:bool;
 
 
 let
 
 
 
-	IM_OUT_Actual_Infusion_Duration_2 
-	=  IM_OUT_Actual_Infusion_Duration_1  + 1.;
+	IM_OUT_New_Infusion_2 
+	= true;
 	
 
-	(IM_OUT_Actual_Infusion_Duration) 
-	= (IM_OUT_Actual_Infusion_Duration_2);
+	(IM_OUT_New_Infusion) 
+	= (IM_OUT_New_Infusion_2);
+	
+
+tel
+
+
+
+
+
+
+
+
+
+
+
+node PATIENT_ON__To__PATIENT_LOCKOUT_1_Condition_Action(IM_OUT_Lock_Timer_1:real)
+
+returns (IM_OUT_Lock_Timer:real);
+
+
+var 	IM_OUT_Lock_Timer_2:real;
+
+
+let
+
+
+
+	IM_OUT_Lock_Timer_2 
+	= 0.;
+	
+
+	(IM_OUT_Lock_Timer) 
+	= (IM_OUT_Lock_Timer_2);
 	
 
 tel
@@ -1183,7 +1192,9 @@ tel
 
 
 
-node Infusion_Manager_IDLE__To__InfusionMGR_InfusionMGRJunction234_2_Condition_Action(IM_OUT_Is_Locked_Out_1:bool;
+
+
+node Infusion_Manager_IDLE__To__InfusionMGR_InfusionMGRJunction1310_2_Condition_Action(IM_OUT_Is_Locked_Out_1:bool;
 	IM_OUT_Lock_Timer_1:real;
 	inPatientBolus_1:bool;
 	number_pbolus_1:int)
@@ -1233,24 +1244,33 @@ tel
 
 
 
-node InfusionMGR_InfusionMGRJunction234__To__Infusion_Manager_THERAPY_1_Condition_Action(IM_OUT_New_Infusion_1:bool)
-
-returns (IM_OUT_New_Infusion:bool);
 
 
-var 	IM_OUT_New_Infusion_2:bool;
+
+
+
+
+
+
+
+node InfusionMGR_InfusionMGRJunction1323__To__InfusionMGR_InfusionMGRJunction1322_1_Condition_Action(IM_OUT_Actual_Infusion_Duration_1:real)
+
+returns (IM_OUT_Actual_Infusion_Duration:real);
+
+
+var 	IM_OUT_Actual_Infusion_Duration_2:real;
 
 
 let
 
 
 
-	IM_OUT_New_Infusion_2 
-	= true;
+	IM_OUT_Actual_Infusion_Duration_2 
+	=  IM_OUT_Actual_Infusion_Duration_1  + 1.;
 	
 
-	(IM_OUT_New_Infusion) 
-	= (IM_OUT_New_Infusion_2);
+	(IM_OUT_Actual_Infusion_Duration) 
+	= (IM_OUT_Actual_Infusion_Duration_2);
 	
 
 tel
@@ -1260,27 +1280,7 @@ tel
 
 
 
-node PATIENT_ON__To__PATIENT_LOCKOUT_1_Condition_Action(IM_OUT_Lock_Timer_1:real)
 
-returns (IM_OUT_Lock_Timer:real);
-
-
-var 	IM_OUT_Lock_Timer_2:real;
-
-
-let
-
-
-
-	IM_OUT_Lock_Timer_2 
-	= 0.;
-	
-
-	(IM_OUT_Lock_Timer) 
-	= (IM_OUT_Lock_Timer_2);
-	
-
-tel
 
 
 
@@ -1312,7 +1312,7 @@ let
 
 	-- set state as active 
 	idPAUSED_Arbiter_2 
-	= 218;
+	= 1294;
 	
 
 	IM_OUT_Flow_Rate_Commanded_2 
@@ -1440,7 +1440,7 @@ let
 
 	-- set state as active 
 	idPAUSED_Arbiter_2 
-	= 217;
+	= 1293;
 	
 
 	IM_OUT_Flow_Rate_Commanded_2 
@@ -1567,7 +1567,7 @@ let
 
 	-- set state as active 
 	idPAUSED_Arbiter_2 
-	= 216;
+	= 1292;
 	
 
 	IM_OUT_Flow_Rate_Commanded_2 
@@ -1698,34 +1698,34 @@ let
 
 	-- set state as active 
 	idTHERAPY_PAUSED_2 
-	= 215;
+	= 1291;
 	
 
 	
 
 
 -- transition trace :
-	--POINT__To__Junction281_1, Junction281__To__Arbiter_Paused_NoKVO_1
+	--POINT__To__Junction1357_1, Junction1357__To__Arbiter_Paused_NoKVO_1
 		(idPAUSED_Arbiter_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2) 
 	= 
-		 if (( (idPAUSED_Alarm_Paused_1 = 221) and ALARM_IN_Highest_Level_Alarm=4 )) then 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=4 )) then 
 		Arbiter_Paused_NoKVO_en(idPAUSED_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
 		 else (idPAUSED_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
 		
 
 
 -- transition trace :
-	--POINT__To__Junction281_1, Junction281__To__Arbiter_Paused_KVO_2
+	--POINT__To__Junction1357_1, Junction1357__To__Arbiter_Paused_KVO_2
 		(idPAUSED_Arbiter_3, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Current_System_Mode_3) 
 	= 
-		 if (( (idPAUSED_Alarm_Paused_1 = 221) and ALARM_IN_Highest_Level_Alarm=3 )) then 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=3 )) then 
 		Arbiter_Paused_KVO_en(idPAUSED_Arbiter_1, CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
 		 else (idPAUSED_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
 		
 
 
 -- transition trace :
-	--POINT__To__Junction281_1, Junction281__To__Arbiter_Manual_Paused_KVO_3
+	--POINT__To__Junction1357_1, Junction1357__To__Arbiter_Manual_Paused_KVO_3
 		(idPAUSED_Arbiter_4, IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4) 
 	= Arbiter_Manual_Paused_KVO_en(idPAUSED_Arbiter_1, CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false);
 		
@@ -1736,10 +1736,10 @@ let
 	if ( idPAUSED_Arbiter_1 = 0) then
 
 	
-		 if (( (idPAUSED_Alarm_Paused_1 = 221) and ALARM_IN_Highest_Level_Alarm=4 )) then 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=4 )) then 
 		(idPAUSED_Arbiter_2, idTHERAPY_PAUSED_2, IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2)
 		 else
-		 if (( (idPAUSED_Alarm_Paused_1 = 221) and ALARM_IN_Highest_Level_Alarm=3 )) then 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=3 )) then 
 		(idPAUSED_Arbiter_3, idTHERAPY_PAUSED_2, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3)
 		 else (idPAUSED_Arbiter_4, idTHERAPY_PAUSED_2, IM_OUT_Current_System_Mode_4, IM_OUT_Flow_Rate_Commanded_4)
 
@@ -1749,7 +1749,7 @@ let
 
 	(idPAUSED_Arbiter_6, IM_OUT_Flow_Rate_Commanded_6, IM_OUT_Current_System_Mode_6) 
 	= 
-	if ( idPAUSED_Arbiter_1 = 216) then
+	if ( idPAUSED_Arbiter_1 = 1292) then
 	Arbiter_Paused_NoKVO_en(idPAUSED_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
 	 else (idPAUSED_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
 
@@ -1757,7 +1757,7 @@ let
 
 	(idPAUSED_Arbiter_7, IM_OUT_Flow_Rate_Commanded_7, IM_OUT_Current_System_Mode_7) 
 	= 
-	if ( idPAUSED_Arbiter_1 = 217) then
+	if ( idPAUSED_Arbiter_1 = 1293) then
 	Arbiter_Paused_KVO_en(idPAUSED_Arbiter_1, CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
 	 else (idPAUSED_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
 
@@ -1765,7 +1765,7 @@ let
 
 	(idPAUSED_Arbiter_8, IM_OUT_Flow_Rate_Commanded_8, IM_OUT_Current_System_Mode_8) 
 	= 
-	if ( idPAUSED_Arbiter_1 = 218) then
+	if ( idPAUSED_Arbiter_1 = 1294) then
 	Arbiter_Manual_Paused_KVO_en(idPAUSED_Arbiter_1, CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
 	 else (idPAUSED_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
 
@@ -1776,13 +1776,13 @@ let
 		 if ( idPAUSED_Arbiter_1 = 0) then 
 		(idPAUSED_Arbiter_5, idTHERAPY_PAUSED_3, IM_OUT_Current_System_Mode_5, IM_OUT_Flow_Rate_Commanded_5)
 		 else
-		 if ( idPAUSED_Arbiter_1 = 216) then 
+		 if ( idPAUSED_Arbiter_1 = 1292) then 
 		(idPAUSED_Arbiter_6, idTHERAPY_PAUSED_3, IM_OUT_Current_System_Mode_6, IM_OUT_Flow_Rate_Commanded_6)
 		 else
-		 if ( idPAUSED_Arbiter_1 = 217) then 
+		 if ( idPAUSED_Arbiter_1 = 1293) then 
 		(idPAUSED_Arbiter_7, idTHERAPY_PAUSED_3, IM_OUT_Current_System_Mode_7, IM_OUT_Flow_Rate_Commanded_7)
 		 else
-		 if ( idPAUSED_Arbiter_1 = 218) then 
+		 if ( idPAUSED_Arbiter_1 = 1294) then 
 		(idPAUSED_Arbiter_8, idTHERAPY_PAUSED_3, IM_OUT_Current_System_Mode_8, IM_OUT_Flow_Rate_Commanded_8)
 		 else (idPAUSED_Arbiter_1, idTHERAPY_PAUSED_2, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1);
 
@@ -1824,7 +1824,7 @@ let
 	
 	(IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2, idPAUSED_Arbiter_2) 
 	= 
-	if ( idPAUSED_Arbiter_1 = 216) then
+	if ( idPAUSED_Arbiter_1 = 1292) then
 	Arbiter_Paused_NoKVO_ex(IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1, false)
 	 else (IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1);
 
@@ -1832,7 +1832,7 @@ let
 
 	(IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Current_System_Mode_3, idPAUSED_Arbiter_3) 
 	= 
-	if ( idPAUSED_Arbiter_1 = 217) then
+	if ( idPAUSED_Arbiter_1 = 1293) then
 	Arbiter_Paused_KVO_ex(CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1, false)
 	 else (IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1);
 
@@ -1840,7 +1840,7 @@ let
 
 	(IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4, idPAUSED_Arbiter_4) 
 	= 
-	if ( idPAUSED_Arbiter_1 = 218) then
+	if ( idPAUSED_Arbiter_1 = 1294) then
 	Arbiter_Manual_Paused_KVO_ex(CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1, false)
 	 else (IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1);
 
@@ -1848,13 +1848,13 @@ let
 
 	(IM_OUT_Flow_Rate_Commanded_5, IM_OUT_Current_System_Mode_5, idPAUSED_Arbiter_5) 
 	= 
-		 if ( idPAUSED_Arbiter_1 = 216) then 
+		 if ( idPAUSED_Arbiter_1 = 1292) then 
 		(IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2, idPAUSED_Arbiter_2)
 		 else
-		 if ( idPAUSED_Arbiter_1 = 217) then 
+		 if ( idPAUSED_Arbiter_1 = 1293) then 
 		(IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Current_System_Mode_3, idPAUSED_Arbiter_3)
 		 else
-		 if ( idPAUSED_Arbiter_1 = 218) then 
+		 if ( idPAUSED_Arbiter_1 = 1294) then 
 		(IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4, idPAUSED_Arbiter_4)
 		 else (IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1);
 
@@ -1894,7 +1894,7 @@ let
 
 	-- set state as active 
 	idPAUSED_Manual_Paused_2 
-	= 223;
+	= 1299;
 	
 
 	(idPAUSED_Manual_Paused) 
@@ -1953,7 +1953,7 @@ let
 
 	-- set state as active 
 	idPAUSED_Manual_Paused_2 
-	= 224;
+	= 1300;
 	
 
 	(idPAUSED_Manual_Paused) 
@@ -2016,7 +2016,7 @@ let
 
 	-- set state as active 
 	idTHERAPY_PAUSED_2 
-	= 222;
+	= 1298;
 	
 
 	
@@ -2051,7 +2051,7 @@ let
 
 	(idPAUSED_Manual_Paused_5) 
 	= 
-	if ( idPAUSED_Manual_Paused_1 = 223) then
+	if ( idPAUSED_Manual_Paused_1 = 1299) then
 	Manual_Paused_OFF_en(idPAUSED_Manual_Paused_1, false)
 	 else (idPAUSED_Manual_Paused_1);
 
@@ -2059,7 +2059,7 @@ let
 
 	(idPAUSED_Manual_Paused_6) 
 	= 
-	if ( idPAUSED_Manual_Paused_1 = 224) then
+	if ( idPAUSED_Manual_Paused_1 = 1300) then
 	Manual_Paused_ON_en(idPAUSED_Manual_Paused_1, false)
 	 else (idPAUSED_Manual_Paused_1);
 
@@ -2070,10 +2070,10 @@ let
 		 if ( idPAUSED_Manual_Paused_1 = 0) then 
 		(idPAUSED_Manual_Paused_4, idTHERAPY_PAUSED_3)
 		 else
-		 if ( idPAUSED_Manual_Paused_1 = 223) then 
+		 if ( idPAUSED_Manual_Paused_1 = 1299) then 
 		(idPAUSED_Manual_Paused_5, idTHERAPY_PAUSED_3)
 		 else
-		 if ( idPAUSED_Manual_Paused_1 = 224) then 
+		 if ( idPAUSED_Manual_Paused_1 = 1300) then 
 		(idPAUSED_Manual_Paused_6, idTHERAPY_PAUSED_3)
 		 else (idPAUSED_Manual_Paused_1, idTHERAPY_PAUSED_2);
 
@@ -2108,7 +2108,7 @@ let
 	
 	(idPAUSED_Manual_Paused_2) 
 	= 
-	if ( idPAUSED_Manual_Paused_1 = 223) then
+	if ( idPAUSED_Manual_Paused_1 = 1299) then
 	Manual_Paused_OFF_ex(idPAUSED_Manual_Paused_1, false)
 	 else (idPAUSED_Manual_Paused_1);
 
@@ -2116,7 +2116,7 @@ let
 
 	(idPAUSED_Manual_Paused_3) 
 	= 
-	if ( idPAUSED_Manual_Paused_1 = 224) then
+	if ( idPAUSED_Manual_Paused_1 = 1300) then
 	Manual_Paused_ON_ex(idPAUSED_Manual_Paused_1, false)
 	 else (idPAUSED_Manual_Paused_1);
 
@@ -2124,10 +2124,10 @@ let
 
 	(idPAUSED_Manual_Paused_4) 
 	= 
-		 if ( idPAUSED_Manual_Paused_1 = 223) then 
+		 if ( idPAUSED_Manual_Paused_1 = 1299) then 
 		(idPAUSED_Manual_Paused_2)
 		 else
-		 if ( idPAUSED_Manual_Paused_1 = 224) then 
+		 if ( idPAUSED_Manual_Paused_1 = 1300) then 
 		(idPAUSED_Manual_Paused_3)
 		 else (idPAUSED_Manual_Paused_1);
 
@@ -2167,7 +2167,7 @@ let
 
 	-- set state as active 
 	idPAUSED_Alarm_Paused_2 
-	= 220;
+	= 1296;
 	
 
 	(idPAUSED_Alarm_Paused) 
@@ -2226,7 +2226,7 @@ let
 
 	-- set state as active 
 	idPAUSED_Alarm_Paused_2 
-	= 221;
+	= 1297;
 	
 
 	(idPAUSED_Alarm_Paused) 
@@ -2289,7 +2289,7 @@ let
 
 	-- set state as active 
 	idTHERAPY_PAUSED_2 
-	= 219;
+	= 1295;
 	
 
 	
@@ -2324,7 +2324,7 @@ let
 
 	(idPAUSED_Alarm_Paused_5) 
 	= 
-	if ( idPAUSED_Alarm_Paused_1 = 220) then
+	if ( idPAUSED_Alarm_Paused_1 = 1296) then
 	Alarm_Paused_OFF_en(idPAUSED_Alarm_Paused_1, false)
 	 else (idPAUSED_Alarm_Paused_1);
 
@@ -2332,7 +2332,7 @@ let
 
 	(idPAUSED_Alarm_Paused_6) 
 	= 
-	if ( idPAUSED_Alarm_Paused_1 = 221) then
+	if ( idPAUSED_Alarm_Paused_1 = 1297) then
 	Alarm_Paused_ON_en(idPAUSED_Alarm_Paused_1, false)
 	 else (idPAUSED_Alarm_Paused_1);
 
@@ -2343,10 +2343,10 @@ let
 		 if ( idPAUSED_Alarm_Paused_1 = 0) then 
 		(idPAUSED_Alarm_Paused_4, idTHERAPY_PAUSED_3)
 		 else
-		 if ( idPAUSED_Alarm_Paused_1 = 220) then 
+		 if ( idPAUSED_Alarm_Paused_1 = 1296) then 
 		(idPAUSED_Alarm_Paused_5, idTHERAPY_PAUSED_3)
 		 else
-		 if ( idPAUSED_Alarm_Paused_1 = 221) then 
+		 if ( idPAUSED_Alarm_Paused_1 = 1297) then 
 		(idPAUSED_Alarm_Paused_6, idTHERAPY_PAUSED_3)
 		 else (idPAUSED_Alarm_Paused_1, idTHERAPY_PAUSED_2);
 
@@ -2381,7 +2381,7 @@ let
 	
 	(idPAUSED_Alarm_Paused_2) 
 	= 
-	if ( idPAUSED_Alarm_Paused_1 = 220) then
+	if ( idPAUSED_Alarm_Paused_1 = 1296) then
 	Alarm_Paused_OFF_ex(idPAUSED_Alarm_Paused_1, false)
 	 else (idPAUSED_Alarm_Paused_1);
 
@@ -2389,7 +2389,7 @@ let
 
 	(idPAUSED_Alarm_Paused_3) 
 	= 
-	if ( idPAUSED_Alarm_Paused_1 = 221) then
+	if ( idPAUSED_Alarm_Paused_1 = 1297) then
 	Alarm_Paused_ON_ex(idPAUSED_Alarm_Paused_1, false)
 	 else (idPAUSED_Alarm_Paused_1);
 
@@ -2397,10 +2397,10 @@ let
 
 	(idPAUSED_Alarm_Paused_4) 
 	= 
-		 if ( idPAUSED_Alarm_Paused_1 = 220) then 
+		 if ( idPAUSED_Alarm_Paused_1 = 1296) then 
 		(idPAUSED_Alarm_Paused_2)
 		 else
-		 if ( idPAUSED_Alarm_Paused_1 = 221) then 
+		 if ( idPAUSED_Alarm_Paused_1 = 1297) then 
 		(idPAUSED_Alarm_Paused_3)
 		 else (idPAUSED_Alarm_Paused_1);
 
@@ -2461,7 +2461,7 @@ let
 
 	-- set state as active 
 	idInfusion_Manager_THERAPY_2 
-	= 214;
+	= 1290;
 	
 
 	
@@ -2571,7 +2571,7 @@ let
 
 	-- set state as active 
 	idACTIVE_Arbiter_2 
-	= 200;
+	= 1276;
 	
 
 	IM_OUT_Flow_Rate_Commanded_2 
@@ -2682,7 +2682,7 @@ let
 
 	-- set state as active 
 	idACTIVE_Arbiter_2 
-	= 199;
+	= 1275;
 	
 
 	IM_OUT_Flow_Rate_Commanded_2 
@@ -2793,7 +2793,7 @@ let
 
 	-- set state as active 
 	idACTIVE_Arbiter_2 
-	= 201;
+	= 1277;
 	
 
 	IM_OUT_Flow_Rate_Commanded_2 
@@ -2911,34 +2911,34 @@ let
 
 	-- set state as active 
 	idTHERAPY_ACTIVE_2 
-	= 198;
+	= 1274;
 	
 
 	
 
 
 -- transition trace :
-	--POINT__To__Junction245_1, Junction245__To__Arbiter_Patient_Bolus_1
+	--POINT__To__Junction1321_1, Junction1321__To__Arbiter_Patient_Bolus_1
 		(idACTIVE_Arbiter_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2) 
 	= 
-		 if (( (idACTIVE_PATIENT_1 = 206) )) then 
+		 if (( (idACTIVE_PATIENT_1 = 1282) )) then 
 		Arbiter_Patient_Bolus_en(idACTIVE_Arbiter_1, CONFIG_IN_Flow_Rate_Patient_Bolus, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
 		 else (idACTIVE_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
 		
 
 
 -- transition trace :
-	--POINT__To__Junction245_1, Junction245__To__Arbiter_Intermittent_Bolus_2
+	--POINT__To__Junction1321_1, Junction1321__To__Arbiter_Intermittent_Bolus_2
 		(idACTIVE_Arbiter_3, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Current_System_Mode_3) 
 	= 
-		 if (( (idACTIVE_INTERMITTENT_1 = 210) )) then 
+		 if (( (idACTIVE_INTERMITTENT_1 = 1286) )) then 
 		Arbiter_Intermittent_Bolus_en(idACTIVE_Arbiter_1, CONFIG_IN_Flow_Rate_Intermittent_Bolus, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
 		 else (idACTIVE_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
 		
 
 
 -- transition trace :
-	--POINT__To__Junction245_1, Junction245__To__Arbiter_Basal_3
+	--POINT__To__Junction1321_1, Junction1321__To__Arbiter_Basal_3
 		(idACTIVE_Arbiter_4, IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4) 
 	= Arbiter_Basal_en(idACTIVE_Arbiter_1, CONFIG_IN_Flow_Rate_Basal, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false);
 		
@@ -2949,10 +2949,10 @@ let
 	if ( idACTIVE_Arbiter_1 = 0) then
 
 	
-		 if (( (idACTIVE_PATIENT_1 = 206) )) then 
+		 if (( (idACTIVE_PATIENT_1 = 1282) )) then 
 		(idACTIVE_Arbiter_2, idTHERAPY_ACTIVE_2, IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2)
 		 else
-		 if (( (idACTIVE_INTERMITTENT_1 = 210) )) then 
+		 if (( (idACTIVE_INTERMITTENT_1 = 1286) )) then 
 		(idACTIVE_Arbiter_3, idTHERAPY_ACTIVE_2, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3)
 		 else (idACTIVE_Arbiter_4, idTHERAPY_ACTIVE_2, IM_OUT_Current_System_Mode_4, IM_OUT_Flow_Rate_Commanded_4)
 
@@ -2962,7 +2962,7 @@ let
 
 	(idACTIVE_Arbiter_6, IM_OUT_Flow_Rate_Commanded_6, IM_OUT_Current_System_Mode_6) 
 	= 
-	if ( idACTIVE_Arbiter_1 = 199) then
+	if ( idACTIVE_Arbiter_1 = 1275) then
 	Arbiter_Patient_Bolus_en(idACTIVE_Arbiter_1, CONFIG_IN_Flow_Rate_Patient_Bolus, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
 	 else (idACTIVE_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
 
@@ -2970,7 +2970,7 @@ let
 
 	(idACTIVE_Arbiter_7, IM_OUT_Flow_Rate_Commanded_7, IM_OUT_Current_System_Mode_7) 
 	= 
-	if ( idACTIVE_Arbiter_1 = 200) then
+	if ( idACTIVE_Arbiter_1 = 1276) then
 	Arbiter_Intermittent_Bolus_en(idACTIVE_Arbiter_1, CONFIG_IN_Flow_Rate_Intermittent_Bolus, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
 	 else (idACTIVE_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
 
@@ -2978,7 +2978,7 @@ let
 
 	(idACTIVE_Arbiter_8, IM_OUT_Flow_Rate_Commanded_8, IM_OUT_Current_System_Mode_8) 
 	= 
-	if ( idACTIVE_Arbiter_1 = 201) then
+	if ( idACTIVE_Arbiter_1 = 1277) then
 	Arbiter_Basal_en(idACTIVE_Arbiter_1, CONFIG_IN_Flow_Rate_Basal, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
 	 else (idACTIVE_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
 
@@ -2989,13 +2989,13 @@ let
 		 if ( idACTIVE_Arbiter_1 = 0) then 
 		(idACTIVE_Arbiter_5, idTHERAPY_ACTIVE_3, IM_OUT_Current_System_Mode_5, IM_OUT_Flow_Rate_Commanded_5)
 		 else
-		 if ( idACTIVE_Arbiter_1 = 199) then 
+		 if ( idACTIVE_Arbiter_1 = 1275) then 
 		(idACTIVE_Arbiter_6, idTHERAPY_ACTIVE_3, IM_OUT_Current_System_Mode_6, IM_OUT_Flow_Rate_Commanded_6)
 		 else
-		 if ( idACTIVE_Arbiter_1 = 200) then 
+		 if ( idACTIVE_Arbiter_1 = 1276) then 
 		(idACTIVE_Arbiter_7, idTHERAPY_ACTIVE_3, IM_OUT_Current_System_Mode_7, IM_OUT_Flow_Rate_Commanded_7)
 		 else
-		 if ( idACTIVE_Arbiter_1 = 201) then 
+		 if ( idACTIVE_Arbiter_1 = 1277) then 
 		(idACTIVE_Arbiter_8, idTHERAPY_ACTIVE_3, IM_OUT_Current_System_Mode_8, IM_OUT_Flow_Rate_Commanded_8)
 		 else (idACTIVE_Arbiter_1, idTHERAPY_ACTIVE_2, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1);
 
@@ -3030,7 +3030,7 @@ let
 	
 	(idACTIVE_Arbiter_2) 
 	= 
-	if ( idACTIVE_Arbiter_1 = 199) then
+	if ( idACTIVE_Arbiter_1 = 1275) then
 	Arbiter_Patient_Bolus_ex(idACTIVE_Arbiter_1, false)
 	 else (idACTIVE_Arbiter_1);
 
@@ -3038,7 +3038,7 @@ let
 
 	(idACTIVE_Arbiter_3) 
 	= 
-	if ( idACTIVE_Arbiter_1 = 200) then
+	if ( idACTIVE_Arbiter_1 = 1276) then
 	Arbiter_Intermittent_Bolus_ex(idACTIVE_Arbiter_1, false)
 	 else (idACTIVE_Arbiter_1);
 
@@ -3046,7 +3046,7 @@ let
 
 	(idACTIVE_Arbiter_4) 
 	= 
-	if ( idACTIVE_Arbiter_1 = 201) then
+	if ( idACTIVE_Arbiter_1 = 1277) then
 	Arbiter_Basal_ex(idACTIVE_Arbiter_1, false)
 	 else (idACTIVE_Arbiter_1);
 
@@ -3054,13 +3054,13 @@ let
 
 	(idACTIVE_Arbiter_5) 
 	= 
-		 if ( idACTIVE_Arbiter_1 = 199) then 
+		 if ( idACTIVE_Arbiter_1 = 1275) then 
 		(idACTIVE_Arbiter_2)
 		 else
-		 if ( idACTIVE_Arbiter_1 = 200) then 
+		 if ( idACTIVE_Arbiter_1 = 1276) then 
 		(idACTIVE_Arbiter_3)
 		 else
-		 if ( idACTIVE_Arbiter_1 = 201) then 
+		 if ( idACTIVE_Arbiter_1 = 1277) then 
 		(idACTIVE_Arbiter_4)
 		 else (idACTIVE_Arbiter_1);
 
@@ -3111,7 +3111,7 @@ let
 
 	-- set state as active 
 	idACTIVE_INTERMITTENT_2 
-	= 211;
+	= 1287;
 	
 
 	sbolus_timer_2 
@@ -3300,7 +3300,7 @@ let
 
 	-- set state as active 
 	idACTIVE_INTERMITTENT_2 
-	= 210;
+	= 1286;
 	
 
 	(idACTIVE_INTERMITTENT) 
@@ -3344,7 +3344,7 @@ let
 
 	-- set state as active 
 	idTHERAPY_ACTIVE_2 
-	= 209;
+	= 1285;
 	
 
 	sbolusInter_timer_2 
@@ -3372,7 +3372,7 @@ let
 
 	(idACTIVE_INTERMITTENT_4) 
 	= 
-	if ( idACTIVE_INTERMITTENT_1 = 210) then
+	if ( idACTIVE_INTERMITTENT_1 = 1286) then
 	INTERMITTENT_ON_en(idACTIVE_INTERMITTENT_1, false)
 	 else (idACTIVE_INTERMITTENT_1);
 
@@ -3380,7 +3380,7 @@ let
 
 	(idACTIVE_INTERMITTENT_5, sbolus_timer_4, sbolusInter_timer_5, sbolus_req_4) 
 	= 
-	if ( idACTIVE_INTERMITTENT_1 = 211) then
+	if ( idACTIVE_INTERMITTENT_1 = 1287) then
 	INTERMITTENT_OFF_en(idACTIVE_INTERMITTENT_1, sbolus_timer_1, sbolusInter_timer_2, CONFIG_IN_Interval_Intermittent_Bolus, step_size, sbolus_req_1, false)
 	 else (idACTIVE_INTERMITTENT_1, sbolus_timer_1, sbolusInter_timer_2, sbolus_req_1);
 
@@ -3391,10 +3391,10 @@ let
 		 if ( idACTIVE_INTERMITTENT_1 = 0) then 
 		(idACTIVE_INTERMITTENT_3, idTHERAPY_ACTIVE_3, sbolusInter_timer_4, sbolus_req_3, sbolus_timer_3)
 		 else
-		 if ( idACTIVE_INTERMITTENT_1 = 210) then 
+		 if ( idACTIVE_INTERMITTENT_1 = 1286) then 
 		(idACTIVE_INTERMITTENT_4, idTHERAPY_ACTIVE_3, sbolusInter_timer_4, sbolus_req_3, sbolus_timer_3)
 		 else
-		 if ( idACTIVE_INTERMITTENT_1 = 211) then 
+		 if ( idACTIVE_INTERMITTENT_1 = 1287) then 
 		(idACTIVE_INTERMITTENT_5, idTHERAPY_ACTIVE_3, sbolusInter_timer_5, sbolus_req_4, sbolus_timer_4)
 		 else (idACTIVE_INTERMITTENT_1, idTHERAPY_ACTIVE_2, sbolusInter_timer_2, sbolus_req_1, sbolus_timer_1);
 
@@ -3462,7 +3462,7 @@ let
 	
 	(sbolus_timer_2, sbolus_req_2, idACTIVE_INTERMITTENT_2) 
 	= 
-	if ( idACTIVE_INTERMITTENT_1 = 210) then
+	if ( idACTIVE_INTERMITTENT_1 = 1286) then
 	INTERMITTENT_ON_ex(sbolus_timer_1, sbolus_req_1, idACTIVE_INTERMITTENT_1, false)
 	 else (sbolus_timer_1, sbolus_req_1, idACTIVE_INTERMITTENT_1);
 
@@ -3470,7 +3470,7 @@ let
 
 	(idACTIVE_INTERMITTENT_3) 
 	= 
-	if ( idACTIVE_INTERMITTENT_1 = 211) then
+	if ( idACTIVE_INTERMITTENT_1 = 1287) then
 	INTERMITTENT_OFF_ex(idACTIVE_INTERMITTENT_1, false)
 	 else (idACTIVE_INTERMITTENT_1);
 
@@ -3478,10 +3478,10 @@ let
 
 	(sbolus_timer_3, sbolus_req_3, idACTIVE_INTERMITTENT_4) 
 	= 
-		 if ( idACTIVE_INTERMITTENT_1 = 210) then 
+		 if ( idACTIVE_INTERMITTENT_1 = 1286) then 
 		(sbolus_timer_2, sbolus_req_2, idACTIVE_INTERMITTENT_2)
 		 else
-		 if ( idACTIVE_INTERMITTENT_1 = 211) then 
+		 if ( idACTIVE_INTERMITTENT_1 = 1287) then 
 		(sbolus_timer_2, sbolus_req_2, idACTIVE_INTERMITTENT_3)
 		 else (sbolus_timer_1, sbolus_req_1, idACTIVE_INTERMITTENT_1);
 
@@ -3530,7 +3530,7 @@ let
 
 	-- set state as active 
 	idACTIVE_PATIENT_2 
-	= 207;
+	= 1283;
 	
 
 	pbolus_timer_2 
@@ -3610,7 +3610,7 @@ let
 
 	-- set state as active 
 	idACTIVE_PATIENT_2 
-	= 208;
+	= 1284;
 	
 
 	IM_OUT_Lock_Timer_2 
@@ -3725,7 +3725,7 @@ let
 
 	-- set state as active 
 	idACTIVE_PATIENT_2 
-	= 206;
+	= 1282;
 	
 
 	number_pbolus_2 
@@ -3857,7 +3857,7 @@ let
 
 	-- set state as active 
 	idTHERAPY_ACTIVE_2 
-	= 205;
+	= 1281;
 	
 
 	
@@ -3892,7 +3892,7 @@ let
 
 	(idACTIVE_PATIENT_5, number_pbolus_2, inPatientBolus_4, pbolus_timer_4, IM_OUT_Is_Locked_Out_5) 
 	= 
-	if ( idACTIVE_PATIENT_1 = 206) then
+	if ( idACTIVE_PATIENT_1 = 1282) then
 	PATIENT_ON_en(idACTIVE_PATIENT_1, number_pbolus_1, inPatientBolus_1, pbolus_timer_1, IM_OUT_Is_Locked_Out_1, false)
 	 else (idACTIVE_PATIENT_1, number_pbolus_1, inPatientBolus_1, pbolus_timer_1, IM_OUT_Is_Locked_Out_1);
 
@@ -3900,7 +3900,7 @@ let
 
 	(idACTIVE_PATIENT_6, pbolus_timer_5, inPatientBolus_5, IM_OUT_Is_Locked_Out_6) 
 	= 
-	if ( idACTIVE_PATIENT_1 = 207) then
+	if ( idACTIVE_PATIENT_1 = 1283) then
 	PATIENT_OFF_en(idACTIVE_PATIENT_1, pbolus_timer_1, inPatientBolus_1, IM_OUT_Is_Locked_Out_1, false)
 	 else (idACTIVE_PATIENT_1, pbolus_timer_1, inPatientBolus_1, IM_OUT_Is_Locked_Out_1);
 
@@ -3908,7 +3908,7 @@ let
 
 	(idACTIVE_PATIENT_7, IM_OUT_Lock_Timer_4, IM_OUT_Is_Locked_Out_7) 
 	= 
-	if ( idACTIVE_PATIENT_1 = 208) then
+	if ( idACTIVE_PATIENT_1 = 1284) then
 	PATIENT_LOCKOUT_en(idACTIVE_PATIENT_1, IM_OUT_Lock_Timer_1, IM_OUT_Is_Locked_Out_1, false)
 	 else (idACTIVE_PATIENT_1, IM_OUT_Lock_Timer_1, IM_OUT_Is_Locked_Out_1);
 
@@ -3919,13 +3919,13 @@ let
 		 if ( idACTIVE_PATIENT_1 = 0) then 
 		(idACTIVE_PATIENT_4, idTHERAPY_ACTIVE_3, IM_OUT_Is_Locked_Out_4, IM_OUT_Lock_Timer_3, inPatientBolus_3, pbolus_timer_3, number_pbolus_1)
 		 else
-		 if ( idACTIVE_PATIENT_1 = 206) then 
+		 if ( idACTIVE_PATIENT_1 = 1282) then 
 		(idACTIVE_PATIENT_5, idTHERAPY_ACTIVE_3, IM_OUT_Is_Locked_Out_5, IM_OUT_Lock_Timer_3, inPatientBolus_4, pbolus_timer_4, number_pbolus_2)
 		 else
-		 if ( idACTIVE_PATIENT_1 = 207) then 
+		 if ( idACTIVE_PATIENT_1 = 1283) then 
 		(idACTIVE_PATIENT_6, idTHERAPY_ACTIVE_3, IM_OUT_Is_Locked_Out_6, IM_OUT_Lock_Timer_3, inPatientBolus_5, pbolus_timer_5, number_pbolus_2)
 		 else
-		 if ( idACTIVE_PATIENT_1 = 208) then 
+		 if ( idACTIVE_PATIENT_1 = 1284) then 
 		(idACTIVE_PATIENT_7, idTHERAPY_ACTIVE_3, IM_OUT_Is_Locked_Out_7, IM_OUT_Lock_Timer_4, inPatientBolus_5, pbolus_timer_5, number_pbolus_2)
 		 else (idACTIVE_PATIENT_1, idTHERAPY_ACTIVE_2, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, inPatientBolus_1, pbolus_timer_1, number_pbolus_1);
 
@@ -3963,7 +3963,7 @@ let
 	
 	(pbolus_timer_2, idACTIVE_PATIENT_2) 
 	= 
-	if ( idACTIVE_PATIENT_1 = 206) then
+	if ( idACTIVE_PATIENT_1 = 1282) then
 	PATIENT_ON_ex(pbolus_timer_1, idACTIVE_PATIENT_1, false)
 	 else (pbolus_timer_1, idACTIVE_PATIENT_1);
 
@@ -3971,7 +3971,7 @@ let
 
 	(idACTIVE_PATIENT_3) 
 	= 
-	if ( idACTIVE_PATIENT_1 = 207) then
+	if ( idACTIVE_PATIENT_1 = 1283) then
 	PATIENT_OFF_ex(idACTIVE_PATIENT_1, false)
 	 else (idACTIVE_PATIENT_1);
 
@@ -3979,7 +3979,7 @@ let
 
 	(idACTIVE_PATIENT_4) 
 	= 
-	if ( idACTIVE_PATIENT_1 = 208) then
+	if ( idACTIVE_PATIENT_1 = 1284) then
 	PATIENT_LOCKOUT_ex(idACTIVE_PATIENT_1, false)
 	 else (idACTIVE_PATIENT_1);
 
@@ -3987,13 +3987,13 @@ let
 
 	(pbolus_timer_3, idACTIVE_PATIENT_5) 
 	= 
-		 if ( idACTIVE_PATIENT_1 = 206) then 
+		 if ( idACTIVE_PATIENT_1 = 1282) then 
 		(pbolus_timer_2, idACTIVE_PATIENT_2)
 		 else
-		 if ( idACTIVE_PATIENT_1 = 207) then 
+		 if ( idACTIVE_PATIENT_1 = 1283) then 
 		(pbolus_timer_2, idACTIVE_PATIENT_3)
 		 else
-		 if ( idACTIVE_PATIENT_1 = 208) then 
+		 if ( idACTIVE_PATIENT_1 = 1284) then 
 		(pbolus_timer_2, idACTIVE_PATIENT_4)
 		 else (pbolus_timer_1, idACTIVE_PATIENT_1);
 
@@ -4033,7 +4033,7 @@ let
 
 	-- set state as active 
 	idACTIVE_BASAL_2 
-	= 204;
+	= 1280;
 	
 
 	(idACTIVE_BASAL) 
@@ -4092,7 +4092,7 @@ let
 
 	-- set state as active 
 	idACTIVE_BASAL_2 
-	= 203;
+	= 1279;
 	
 
 	(idACTIVE_BASAL) 
@@ -4154,7 +4154,7 @@ let
 
 	-- set state as active 
 	idTHERAPY_ACTIVE_2 
-	= 202;
+	= 1278;
 	
 
 	
@@ -4177,7 +4177,7 @@ let
 
 	(idACTIVE_BASAL_4) 
 	= 
-	if ( idACTIVE_BASAL_1 = 203) then
+	if ( idACTIVE_BASAL_1 = 1279) then
 	BASAL_ON_en(idACTIVE_BASAL_1, false)
 	 else (idACTIVE_BASAL_1);
 
@@ -4185,7 +4185,7 @@ let
 
 	(idACTIVE_BASAL_5) 
 	= 
-	if ( idACTIVE_BASAL_1 = 204) then
+	if ( idACTIVE_BASAL_1 = 1280) then
 	BASAL_OFF_en(idACTIVE_BASAL_1, false)
 	 else (idACTIVE_BASAL_1);
 
@@ -4196,10 +4196,10 @@ let
 		 if ( idACTIVE_BASAL_1 = 0) then 
 		(idACTIVE_BASAL_3, idTHERAPY_ACTIVE_3)
 		 else
-		 if ( idACTIVE_BASAL_1 = 203) then 
+		 if ( idACTIVE_BASAL_1 = 1279) then 
 		(idACTIVE_BASAL_4, idTHERAPY_ACTIVE_3)
 		 else
-		 if ( idACTIVE_BASAL_1 = 204) then 
+		 if ( idACTIVE_BASAL_1 = 1280) then 
 		(idACTIVE_BASAL_5, idTHERAPY_ACTIVE_3)
 		 else (idACTIVE_BASAL_1, idTHERAPY_ACTIVE_2);
 
@@ -4234,7 +4234,7 @@ let
 	
 	(idACTIVE_BASAL_2) 
 	= 
-	if ( idACTIVE_BASAL_1 = 203) then
+	if ( idACTIVE_BASAL_1 = 1279) then
 	BASAL_ON_ex(idACTIVE_BASAL_1, false)
 	 else (idACTIVE_BASAL_1);
 
@@ -4242,7 +4242,7 @@ let
 
 	(idACTIVE_BASAL_3) 
 	= 
-	if ( idACTIVE_BASAL_1 = 204) then
+	if ( idACTIVE_BASAL_1 = 1280) then
 	BASAL_OFF_ex(idACTIVE_BASAL_1, false)
 	 else (idACTIVE_BASAL_1);
 
@@ -4250,10 +4250,10 @@ let
 
 	(idACTIVE_BASAL_4) 
 	= 
-		 if ( idACTIVE_BASAL_1 = 203) then 
+		 if ( idACTIVE_BASAL_1 = 1279) then 
 		(idACTIVE_BASAL_2)
 		 else
-		 if ( idACTIVE_BASAL_1 = 204) then 
+		 if ( idACTIVE_BASAL_1 = 1280) then 
 		(idACTIVE_BASAL_3)
 		 else (idACTIVE_BASAL_1);
 
@@ -4343,7 +4343,7 @@ let
 
 	-- set state as active 
 	idInfusion_Manager_THERAPY_2 
-	= 197;
+	= 1273;
 	
 
 	
@@ -4537,7 +4537,7 @@ let
 	
 	(idACTIVE_Arbiter_2, idTHERAPY_ACTIVE_2, idACTIVE_INTERMITTENT_2, sbolus_req_2, sbolus_timer_2, idACTIVE_PATIENT_2, pbolus_timer_2, idACTIVE_BASAL_2, idInfusion_Manager_THERAPY_2) 
 	= 
-	if ( idInfusion_Manager_THERAPY_1 = 197) then
+	if ( idInfusion_Manager_THERAPY_1 = 1273) then
 	THERAPY_ACTIVE_ex(idACTIVE_Arbiter_1, idTHERAPY_ACTIVE_1, idACTIVE_INTERMITTENT_1, sbolus_req_1, sbolus_timer_1, idACTIVE_PATIENT_1, pbolus_timer_1, idACTIVE_BASAL_1, idInfusion_Manager_THERAPY_1, false)
 	 else (idACTIVE_Arbiter_1, idTHERAPY_ACTIVE_1, idACTIVE_INTERMITTENT_1, sbolus_req_1, sbolus_timer_1, idACTIVE_PATIENT_1, pbolus_timer_1, idACTIVE_BASAL_1, idInfusion_Manager_THERAPY_1);
 
@@ -4545,7 +4545,7 @@ let
 
 	(IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2, idPAUSED_Arbiter_2, idTHERAPY_PAUSED_2, idPAUSED_Manual_Paused_2, idPAUSED_Alarm_Paused_2, idInfusion_Manager_THERAPY_3) 
 	= 
-	if ( idInfusion_Manager_THERAPY_1 = 214) then
+	if ( idInfusion_Manager_THERAPY_1 = 1290) then
 	THERAPY_PAUSED_ex(IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1, CONFIG_IN_Flow_Rate_KVO, idTHERAPY_PAUSED_1, idPAUSED_Manual_Paused_1, idPAUSED_Alarm_Paused_1, idInfusion_Manager_THERAPY_1, false)
 	 else (IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1, idTHERAPY_PAUSED_1, idPAUSED_Manual_Paused_1, idPAUSED_Alarm_Paused_1, idInfusion_Manager_THERAPY_1);
 
@@ -4553,10 +4553,10 @@ let
 
 	(idACTIVE_Arbiter_3, idTHERAPY_ACTIVE_3, idACTIVE_INTERMITTENT_3, sbolus_req_3, sbolus_timer_3, idACTIVE_PATIENT_3, pbolus_timer_3, idACTIVE_BASAL_3, idInfusion_Manager_THERAPY_4, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3, idPAUSED_Alarm_Paused_3, idPAUSED_Arbiter_3, idPAUSED_Manual_Paused_3, idTHERAPY_PAUSED_3) 
 	= 
-		 if ( idInfusion_Manager_THERAPY_1 = 197) then 
+		 if ( idInfusion_Manager_THERAPY_1 = 1273) then 
 		(idACTIVE_Arbiter_2, idTHERAPY_ACTIVE_2, idACTIVE_INTERMITTENT_2, sbolus_req_2, sbolus_timer_2, idACTIVE_PATIENT_2, pbolus_timer_2, idACTIVE_BASAL_2, idInfusion_Manager_THERAPY_2, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idPAUSED_Alarm_Paused_1, idPAUSED_Arbiter_1, idPAUSED_Manual_Paused_1, idTHERAPY_PAUSED_1)
 		 else
-		 if ( idInfusion_Manager_THERAPY_1 = 214) then 
+		 if ( idInfusion_Manager_THERAPY_1 = 1290) then 
 		(idACTIVE_Arbiter_2, idTHERAPY_ACTIVE_2, idACTIVE_INTERMITTENT_2, sbolus_req_2, sbolus_timer_2, idACTIVE_PATIENT_2, pbolus_timer_2, idACTIVE_BASAL_2, idInfusion_Manager_THERAPY_3, IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2, idPAUSED_Alarm_Paused_2, idPAUSED_Arbiter_2, idPAUSED_Manual_Paused_2, idTHERAPY_PAUSED_2)
 		 else (idACTIVE_Arbiter_1, idTHERAPY_ACTIVE_1, idACTIVE_INTERMITTENT_1, sbolus_req_1, sbolus_timer_1, idACTIVE_PATIENT_1, pbolus_timer_1, idACTIVE_BASAL_1, idInfusion_Manager_THERAPY_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idPAUSED_Alarm_Paused_1, idPAUSED_Arbiter_1, idPAUSED_Manual_Paused_1, idTHERAPY_PAUSED_1);
 
@@ -4668,7 +4668,7 @@ let
 
 	-- set state as active 
 	idInfusionMGR_Infusion_Manager_2 
-	= 196;
+	= 1272;
 	
 
 	
@@ -4703,7 +4703,7 @@ let
 
 	(idTHERAPY_ACTIVE_4, idInfusion_Manager_THERAPY_5, idACTIVE_BASAL_4, IM_OUT_Is_Locked_Out_4, IM_OUT_Lock_Timer_4, idACTIVE_PATIENT_4, inPatientBolus_4, number_pbolus_4, pbolus_timer_4, idACTIVE_INTERMITTENT_4, sbolusInter_timer_4, sbolus_req_4, sbolus_timer_4, IM_OUT_Current_System_Mode_5, IM_OUT_Flow_Rate_Commanded_5, idACTIVE_Arbiter_4) 
 	= 
-	if ( idInfusion_Manager_THERAPY_1 = 197) then
+	if ( idInfusion_Manager_THERAPY_1 = 1273) then
 	THERAPY_ACTIVE_en(idTHERAPY_ACTIVE_1, idInfusion_Manager_THERAPY_1, idACTIVE_BASAL_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, idACTIVE_PATIENT_1, inPatientBolus_1, number_pbolus_1, pbolus_timer_1, CONFIG_IN_Interval_Intermittent_Bolus, idACTIVE_INTERMITTENT_1, sbolusInter_timer_1, sbolus_req_1, sbolus_timer_1, step_size, CONFIG_IN_Flow_Rate_Basal, CONFIG_IN_Flow_Rate_Intermittent_Bolus, CONFIG_IN_Flow_Rate_Patient_Bolus, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idACTIVE_Arbiter_1, false)
 	 else (idTHERAPY_ACTIVE_1, idInfusion_Manager_THERAPY_1, idACTIVE_BASAL_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, idACTIVE_PATIENT_1, inPatientBolus_1, number_pbolus_1, pbolus_timer_1, idACTIVE_INTERMITTENT_1, sbolusInter_timer_1, sbolus_req_1, sbolus_timer_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idACTIVE_Arbiter_1);
 
@@ -4711,7 +4711,7 @@ let
 
 	(idTHERAPY_PAUSED_4, idInfusion_Manager_THERAPY_6, idPAUSED_Alarm_Paused_4, idPAUSED_Manual_Paused_4, IM_OUT_Current_System_Mode_6, IM_OUT_Flow_Rate_Commanded_6, idPAUSED_Arbiter_4) 
 	= 
-	if ( idInfusion_Manager_THERAPY_1 = 214) then
+	if ( idInfusion_Manager_THERAPY_1 = 1290) then
 	THERAPY_PAUSED_en(idTHERAPY_PAUSED_1, idInfusion_Manager_THERAPY_1, ALARM_IN_Highest_Level_Alarm, idPAUSED_Alarm_Paused_1, OP_CMD_IN_Infusion_Inhibit, idPAUSED_Manual_Paused_1, CONFIG_IN_Flow_Rate_KVO, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idPAUSED_Arbiter_1, false)
 	 else (idTHERAPY_PAUSED_1, idInfusion_Manager_THERAPY_1, idPAUSED_Alarm_Paused_1, idPAUSED_Manual_Paused_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idPAUSED_Arbiter_1);
 
@@ -4722,10 +4722,10 @@ let
 		 if ( idInfusion_Manager_THERAPY_1 = 0) then 
 		(idInfusion_Manager_THERAPY_4, idInfusionMGR_Infusion_Manager_3, IM_OUT_Current_System_Mode_4, IM_OUT_Flow_Rate_Commanded_4, idPAUSED_Alarm_Paused_3, idPAUSED_Arbiter_3, idPAUSED_Manual_Paused_3, idTHERAPY_PAUSED_3, IM_OUT_Is_Locked_Out_3, IM_OUT_Lock_Timer_3, idACTIVE_Arbiter_3, idACTIVE_BASAL_3, idACTIVE_INTERMITTENT_3, idACTIVE_PATIENT_3, idTHERAPY_ACTIVE_3, inPatientBolus_3, number_pbolus_3, pbolus_timer_3, sbolusInter_timer_3, sbolus_req_3, sbolus_timer_3)
 		 else
-		 if ( idInfusion_Manager_THERAPY_1 = 197) then 
+		 if ( idInfusion_Manager_THERAPY_1 = 1273) then 
 		(idInfusion_Manager_THERAPY_5, idInfusionMGR_Infusion_Manager_3, IM_OUT_Current_System_Mode_5, IM_OUT_Flow_Rate_Commanded_5, idPAUSED_Alarm_Paused_3, idPAUSED_Arbiter_3, idPAUSED_Manual_Paused_3, idTHERAPY_PAUSED_3, IM_OUT_Is_Locked_Out_4, IM_OUT_Lock_Timer_4, idACTIVE_Arbiter_4, idACTIVE_BASAL_4, idACTIVE_INTERMITTENT_4, idACTIVE_PATIENT_4, idTHERAPY_ACTIVE_4, inPatientBolus_4, number_pbolus_4, pbolus_timer_4, sbolusInter_timer_4, sbolus_req_4, sbolus_timer_4)
 		 else
-		 if ( idInfusion_Manager_THERAPY_1 = 214) then 
+		 if ( idInfusion_Manager_THERAPY_1 = 1290) then 
 		(idInfusion_Manager_THERAPY_6, idInfusionMGR_Infusion_Manager_3, IM_OUT_Current_System_Mode_6, IM_OUT_Flow_Rate_Commanded_6, idPAUSED_Alarm_Paused_4, idPAUSED_Arbiter_4, idPAUSED_Manual_Paused_4, idTHERAPY_PAUSED_4, IM_OUT_Is_Locked_Out_4, IM_OUT_Lock_Timer_4, idACTIVE_Arbiter_4, idACTIVE_BASAL_4, idACTIVE_INTERMITTENT_4, idACTIVE_PATIENT_4, idTHERAPY_ACTIVE_4, inPatientBolus_4, number_pbolus_4, pbolus_timer_4, sbolusInter_timer_4, sbolus_req_4, sbolus_timer_4)
 		 else (idInfusion_Manager_THERAPY_1, idInfusionMGR_Infusion_Manager_2, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idPAUSED_Alarm_Paused_1, idPAUSED_Arbiter_1, idPAUSED_Manual_Paused_1, idTHERAPY_PAUSED_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, idACTIVE_Arbiter_1, idACTIVE_BASAL_1, idACTIVE_INTERMITTENT_1, idACTIVE_PATIENT_1, idTHERAPY_ACTIVE_1, inPatientBolus_1, number_pbolus_1, pbolus_timer_1, sbolusInter_timer_1, sbolus_req_1, sbolus_timer_1);
 
@@ -4775,7 +4775,7 @@ let
 
 	-- set state as active 
 	idInfusionMGR_Infusion_Manager_2 
-	= 226;
+	= 1302;
 	
 
 	IM_OUT_Current_System_Mode_2 
@@ -4987,7 +4987,7 @@ let
 
 	-- set state as active 
 	idInfusionMGR_InfusionMGR_2 
-	= 195;
+	= 1271;
 	
 
 	
@@ -5010,7 +5010,7 @@ let
 
 	(idInfusion_Manager_THERAPY_2, idInfusionMGR_Infusion_Manager_4, IM_OUT_Current_System_Mode_4, IM_OUT_Flow_Rate_Commanded_4, idPAUSED_Alarm_Paused_2, idPAUSED_Arbiter_2, idPAUSED_Manual_Paused_2, idTHERAPY_PAUSED_2, IM_OUT_Is_Locked_Out_4, IM_OUT_Lock_Timer_4, idACTIVE_Arbiter_2, idACTIVE_BASAL_2, idACTIVE_INTERMITTENT_2, idACTIVE_PATIENT_2, idTHERAPY_ACTIVE_2, inPatientBolus_4, number_pbolus_4, pbolus_timer_2, sbolusInter_timer_2, sbolus_req_2, sbolus_timer_2) 
 	= 
-	if ( idInfusionMGR_Infusion_Manager_1 = 196) then
+	if ( idInfusionMGR_Infusion_Manager_1 = 1272) then
 	Infusion_Manager_THERAPY_en(idInfusion_Manager_THERAPY_1, idInfusionMGR_Infusion_Manager_1, OP_CMD_IN_Infusion_Inhibit, ALARM_IN_Highest_Level_Alarm, CONFIG_IN_Flow_Rate_KVO, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idPAUSED_Alarm_Paused_1, idPAUSED_Arbiter_1, idPAUSED_Manual_Paused_1, idTHERAPY_PAUSED_1, CONFIG_IN_Flow_Rate_Basal, CONFIG_IN_Flow_Rate_Intermittent_Bolus, CONFIG_IN_Flow_Rate_Patient_Bolus, CONFIG_IN_Interval_Intermittent_Bolus, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, idACTIVE_Arbiter_1, idACTIVE_BASAL_1, idACTIVE_INTERMITTENT_1, idACTIVE_PATIENT_1, idTHERAPY_ACTIVE_1, inPatientBolus_1, number_pbolus_1, pbolus_timer_1, sbolusInter_timer_1, sbolus_req_1, sbolus_timer_1, step_size, false)
 	 else (idInfusion_Manager_THERAPY_1, idInfusionMGR_Infusion_Manager_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idPAUSED_Alarm_Paused_1, idPAUSED_Arbiter_1, idPAUSED_Manual_Paused_1, idTHERAPY_PAUSED_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, idACTIVE_Arbiter_1, idACTIVE_BASAL_1, idACTIVE_INTERMITTENT_1, idACTIVE_PATIENT_1, idTHERAPY_ACTIVE_1, inPatientBolus_1, number_pbolus_1, pbolus_timer_1, sbolusInter_timer_1, sbolus_req_1, sbolus_timer_1);
 
@@ -5018,7 +5018,7 @@ let
 
 	(idInfusionMGR_Infusion_Manager_5, IM_OUT_Current_System_Mode_5, IM_OUT_Flow_Rate_Commanded_5, IM_OUT_Is_Locked_Out_5, IM_OUT_Lock_Timer_5, inPatientBolus_5, number_pbolus_5) 
 	= 
-	if ( idInfusionMGR_Infusion_Manager_1 = 226) then
+	if ( idInfusionMGR_Infusion_Manager_1 = 1302) then
 	Infusion_Manager_IDLE_en(idInfusionMGR_Infusion_Manager_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1, false)
 	 else (idInfusionMGR_Infusion_Manager_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1);
 
@@ -5029,10 +5029,10 @@ let
 		 if ( idInfusionMGR_Infusion_Manager_1 = 0) then 
 		(idInfusionMGR_Infusion_Manager_3, idInfusionMGR_InfusionMGR_3, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Is_Locked_Out_3, IM_OUT_Lock_Timer_3, inPatientBolus_3, number_pbolus_3, idACTIVE_Arbiter_1, idACTIVE_BASAL_1, idACTIVE_INTERMITTENT_1, idACTIVE_PATIENT_1, idInfusion_Manager_THERAPY_1, idPAUSED_Alarm_Paused_1, idPAUSED_Arbiter_1, idPAUSED_Manual_Paused_1, idTHERAPY_ACTIVE_1, idTHERAPY_PAUSED_1, pbolus_timer_1, sbolusInter_timer_1, sbolus_req_1, sbolus_timer_1)
 		 else
-		 if ( idInfusionMGR_Infusion_Manager_1 = 196) then 
+		 if ( idInfusionMGR_Infusion_Manager_1 = 1272) then 
 		(idInfusionMGR_Infusion_Manager_4, idInfusionMGR_InfusionMGR_3, IM_OUT_Current_System_Mode_4, IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Is_Locked_Out_4, IM_OUT_Lock_Timer_4, inPatientBolus_4, number_pbolus_4, idACTIVE_Arbiter_2, idACTIVE_BASAL_2, idACTIVE_INTERMITTENT_2, idACTIVE_PATIENT_2, idInfusion_Manager_THERAPY_2, idPAUSED_Alarm_Paused_2, idPAUSED_Arbiter_2, idPAUSED_Manual_Paused_2, idTHERAPY_ACTIVE_2, idTHERAPY_PAUSED_2, pbolus_timer_2, sbolusInter_timer_2, sbolus_req_2, sbolus_timer_2)
 		 else
-		 if ( idInfusionMGR_Infusion_Manager_1 = 226) then 
+		 if ( idInfusionMGR_Infusion_Manager_1 = 1302) then 
 		(idInfusionMGR_Infusion_Manager_5, idInfusionMGR_InfusionMGR_3, IM_OUT_Current_System_Mode_5, IM_OUT_Flow_Rate_Commanded_5, IM_OUT_Is_Locked_Out_5, IM_OUT_Lock_Timer_5, inPatientBolus_5, number_pbolus_5, idACTIVE_Arbiter_2, idACTIVE_BASAL_2, idACTIVE_INTERMITTENT_2, idACTIVE_PATIENT_2, idInfusion_Manager_THERAPY_2, idPAUSED_Alarm_Paused_2, idPAUSED_Arbiter_2, idPAUSED_Manual_Paused_2, idTHERAPY_ACTIVE_2, idTHERAPY_PAUSED_2, pbolus_timer_2, sbolusInter_timer_2, sbolus_req_2, sbolus_timer_2)
 		 else (idInfusionMGR_Infusion_Manager_1, idInfusionMGR_InfusionMGR_2, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1, idACTIVE_Arbiter_1, idACTIVE_BASAL_1, idACTIVE_INTERMITTENT_1, idACTIVE_PATIENT_1, idInfusion_Manager_THERAPY_1, idPAUSED_Alarm_Paused_1, idPAUSED_Arbiter_1, idPAUSED_Manual_Paused_1, idTHERAPY_ACTIVE_1, idTHERAPY_PAUSED_1, pbolus_timer_1, sbolusInter_timer_1, sbolus_req_1, sbolus_timer_1);
 
@@ -5128,7 +5128,7 @@ let
 	
 	(idACTIVE_Arbiter_2, idTHERAPY_ACTIVE_2, idACTIVE_INTERMITTENT_2, sbolus_req_2, sbolus_timer_2, idACTIVE_PATIENT_2, pbolus_timer_2, idACTIVE_BASAL_2, idInfusion_Manager_THERAPY_2, IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2, idPAUSED_Alarm_Paused_2, idPAUSED_Arbiter_2, idPAUSED_Manual_Paused_2, idTHERAPY_PAUSED_2, IM_OUT_Is_Locked_Out_2, IM_OUT_New_Infusion_2, idInfusionMGR_Infusion_Manager_2) 
 	= 
-	if ( idInfusionMGR_Infusion_Manager_1 = 196) then
+	if ( idInfusionMGR_Infusion_Manager_1 = 1272) then
 	Infusion_Manager_THERAPY_ex(idACTIVE_Arbiter_1, idTHERAPY_ACTIVE_1, idACTIVE_INTERMITTENT_1, sbolus_req_1, sbolus_timer_1, idACTIVE_PATIENT_1, pbolus_timer_1, idACTIVE_BASAL_1, idInfusion_Manager_THERAPY_1, CONFIG_IN_Flow_Rate_KVO, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idPAUSED_Alarm_Paused_1, idPAUSED_Arbiter_1, idPAUSED_Manual_Paused_1, idTHERAPY_PAUSED_1, IM_OUT_Is_Locked_Out_1, IM_OUT_New_Infusion_1, idInfusionMGR_Infusion_Manager_1, false)
 	 else (idACTIVE_Arbiter_1, idTHERAPY_ACTIVE_1, idACTIVE_INTERMITTENT_1, sbolus_req_1, sbolus_timer_1, idACTIVE_PATIENT_1, pbolus_timer_1, idACTIVE_BASAL_1, idInfusion_Manager_THERAPY_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idPAUSED_Alarm_Paused_1, idPAUSED_Arbiter_1, idPAUSED_Manual_Paused_1, idTHERAPY_PAUSED_1, IM_OUT_Is_Locked_Out_1, IM_OUT_New_Infusion_1, idInfusionMGR_Infusion_Manager_1);
 
@@ -5136,7 +5136,7 @@ let
 
 	(IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Is_Locked_Out_3, IM_OUT_Lock_Timer_2, inPatientBolus_2, number_pbolus_2, idInfusionMGR_Infusion_Manager_3) 
 	= 
-	if ( idInfusionMGR_Infusion_Manager_1 = 226) then
+	if ( idInfusionMGR_Infusion_Manager_1 = 1302) then
 	Infusion_Manager_IDLE_ex(IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1, idInfusionMGR_Infusion_Manager_1, false)
 	 else (IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1, idInfusionMGR_Infusion_Manager_1);
 
@@ -5144,10 +5144,10 @@ let
 
 	(idACTIVE_Arbiter_3, idTHERAPY_ACTIVE_3, idACTIVE_INTERMITTENT_3, sbolus_req_3, sbolus_timer_3, idACTIVE_PATIENT_3, pbolus_timer_3, idACTIVE_BASAL_3, idInfusion_Manager_THERAPY_3, IM_OUT_Current_System_Mode_4, IM_OUT_Flow_Rate_Commanded_4, idPAUSED_Alarm_Paused_3, idPAUSED_Arbiter_3, idPAUSED_Manual_Paused_3, idTHERAPY_PAUSED_3, IM_OUT_Is_Locked_Out_4, IM_OUT_New_Infusion_3, idInfusionMGR_Infusion_Manager_4, IM_OUT_Lock_Timer_3, inPatientBolus_3, number_pbolus_3) 
 	= 
-		 if ( idInfusionMGR_Infusion_Manager_1 = 196) then 
+		 if ( idInfusionMGR_Infusion_Manager_1 = 1272) then 
 		(idACTIVE_Arbiter_2, idTHERAPY_ACTIVE_2, idACTIVE_INTERMITTENT_2, sbolus_req_2, sbolus_timer_2, idACTIVE_PATIENT_2, pbolus_timer_2, idACTIVE_BASAL_2, idInfusion_Manager_THERAPY_2, IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2, idPAUSED_Alarm_Paused_2, idPAUSED_Arbiter_2, idPAUSED_Manual_Paused_2, idTHERAPY_PAUSED_2, IM_OUT_Is_Locked_Out_2, IM_OUT_New_Infusion_2, idInfusionMGR_Infusion_Manager_2, IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1)
 		 else
-		 if ( idInfusionMGR_Infusion_Manager_1 = 226) then 
+		 if ( idInfusionMGR_Infusion_Manager_1 = 1302) then 
 		(idACTIVE_Arbiter_2, idTHERAPY_ACTIVE_2, idACTIVE_INTERMITTENT_2, sbolus_req_2, sbolus_timer_2, idACTIVE_PATIENT_2, pbolus_timer_2, idACTIVE_BASAL_2, idInfusion_Manager_THERAPY_2, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3, idPAUSED_Alarm_Paused_2, idPAUSED_Arbiter_2, idPAUSED_Manual_Paused_2, idTHERAPY_PAUSED_2, IM_OUT_Is_Locked_Out_3, IM_OUT_New_Infusion_2, idInfusionMGR_Infusion_Manager_3, IM_OUT_Lock_Timer_2, inPatientBolus_2, number_pbolus_2)
 		 else (idACTIVE_Arbiter_1, idTHERAPY_ACTIVE_1, idACTIVE_INTERMITTENT_1, sbolus_req_1, sbolus_timer_1, idACTIVE_PATIENT_1, pbolus_timer_1, idACTIVE_BASAL_1, idInfusion_Manager_THERAPY_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, idPAUSED_Alarm_Paused_1, idPAUSED_Arbiter_1, idPAUSED_Manual_Paused_1, idTHERAPY_PAUSED_1, IM_OUT_Is_Locked_Out_1, IM_OUT_New_Infusion_1, idInfusionMGR_Infusion_Manager_1, IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1);
 
@@ -5193,7 +5193,7 @@ let
 
 	-- set state as active 
 	idInfusionMGR_InfusionMGR_2 
-	= 194;
+	= 1270;
 	
 
 	IM_OUT_Current_System_Mode_2 
@@ -5311,27 +5311,27 @@ let
 	 automaton paused_arbiter
 
 	state POINTPAUSED_Arbiter:
-	unless (idPAUSED_Arbiter_1=0) restart POINT__TO__INFUSIONMGR_INFUSIONMGRJUNCTION281_1
+	unless (idPAUSED_Arbiter_1=0) restart POINT__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1357_1
 
 
 
-	unless (idPAUSED_Arbiter_1=216) restart ARBITER_PAUSED_NOKVO__TO__INFUSIONMGR_INFUSIONMGRJUNCTION283_1
+	unless (idPAUSED_Arbiter_1=1292) restart ARBITER_PAUSED_NOKVO__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1359_1
 
 
 
-	unless (idPAUSED_Arbiter_1=217) restart ARBITER_PAUSED_KVO__TO__INFUSIONMGR_INFUSIONMGRJUNCTION283_1
+	unless (idPAUSED_Arbiter_1=1293) restart ARBITER_PAUSED_KVO__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1359_1
 
 
 
-	unless (idPAUSED_Arbiter_1=218) restart ARBITER_MANUAL_PAUSED_KVO__TO__INFUSIONMGR_INFUSIONMGRJUNCTION283_1
+	unless (idPAUSED_Arbiter_1=1294) restart ARBITER_MANUAL_PAUSED_KVO__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1359_1
 
 
 
-	unless (idPAUSED_Arbiter_1=216) restart ARBITER_PAUSED_NOKVO_IDL
+	unless (idPAUSED_Arbiter_1=1292) restart ARBITER_PAUSED_NOKVO_IDL
 
-	unless (idPAUSED_Arbiter_1=217) restart ARBITER_PAUSED_KVO_IDL
+	unless (idPAUSED_Arbiter_1=1293) restart ARBITER_PAUSED_KVO_IDL
 
-	unless (idPAUSED_Arbiter_1=218) restart ARBITER_MANUAL_PAUSED_KVO_IDL
+	unless (idPAUSED_Arbiter_1=1294) restart ARBITER_MANUAL_PAUSED_KVO_IDL
 
 	let
 
@@ -5343,7 +5343,7 @@ let
 
 
 
-	state POINT__TO__INFUSIONMGR_INFUSIONMGRJUNCTION281_1:
+	state POINT__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1357_1:
 
 	 var 	idPAUSED_Arbiter_2, idPAUSED_Arbiter_3, idPAUSED_Arbiter_4:int;
 	IM_OUT_Current_System_Mode_2, IM_OUT_Current_System_Mode_3, IM_OUT_Current_System_Mode_4:int;
@@ -5353,37 +5353,37 @@ let
 		
 
 -- transition trace :
-	--POINT__To__Junction281_1, Junction281__To__Arbiter_Paused_NoKVO_1
+	--POINT__To__Junction1357_1, Junction1357__To__Arbiter_Paused_NoKVO_1
 		(idPAUSED_Arbiter_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2) 
 	= 
-		 if (( (idPAUSED_Alarm_Paused_1 = 221) and ALARM_IN_Highest_Level_Alarm=4 )) then 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=4 )) then 
 		Arbiter_Paused_NoKVO_en(idPAUSED_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
 		 else (idPAUSED_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
 		
 
 
 -- transition trace :
-	--POINT__To__Junction281_1, Junction281__To__Arbiter_Paused_KVO_2
+	--POINT__To__Junction1357_1, Junction1357__To__Arbiter_Paused_KVO_2
 		(idPAUSED_Arbiter_3, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Current_System_Mode_3) 
 	= 
-		 if (( (idPAUSED_Alarm_Paused_1 = 221) and ALARM_IN_Highest_Level_Alarm=3 )) then 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=3 )) then 
 		Arbiter_Paused_KVO_en(idPAUSED_Arbiter_1, CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
 		 else (idPAUSED_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
 		
 
 
 -- transition trace :
-	--POINT__To__Junction281_1, Junction281__To__Arbiter_Manual_Paused_KVO_3
+	--POINT__To__Junction1357_1, Junction1357__To__Arbiter_Manual_Paused_KVO_3
 		(idPAUSED_Arbiter_4, IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4) 
 	= Arbiter_Manual_Paused_KVO_en(idPAUSED_Arbiter_1, CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false);
 		
 
 	(idPAUSED_Arbiter, IM_OUT_Current_System_Mode, IM_OUT_Flow_Rate_Commanded) 
 	= 
-		 if (( (idPAUSED_Alarm_Paused_1 = 221) and ALARM_IN_Highest_Level_Alarm=4 )) then 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=4 )) then 
 		(idPAUSED_Arbiter_2, IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2)
 		 else
-		 if (( (idPAUSED_Alarm_Paused_1 = 221) and ALARM_IN_Highest_Level_Alarm=3 )) then 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=3 )) then 
 		(idPAUSED_Arbiter_3, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3)
 		 else (idPAUSED_Arbiter_4, IM_OUT_Current_System_Mode_4, IM_OUT_Flow_Rate_Commanded_4);
 
@@ -5394,7 +5394,7 @@ let
 
 
 
-	state ARBITER_PAUSED_NOKVO__TO__INFUSIONMGR_INFUSIONMGRJUNCTION283_1:
+	state ARBITER_PAUSED_NOKVO__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1359_1:
 
 	 var 	idPAUSED_Arbiter_2, idPAUSED_Arbiter_3, idPAUSED_Arbiter_4, idPAUSED_Arbiter_5, idPAUSED_Arbiter_6, idPAUSED_Arbiter_7:int;
 	IM_OUT_Current_System_Mode_2, IM_OUT_Current_System_Mode_3, IM_OUT_Current_System_Mode_4, IM_OUT_Current_System_Mode_5, IM_OUT_Current_System_Mode_6, IM_OUT_Current_System_Mode_7:int;
@@ -5408,41 +5408,41 @@ let
 
 
 -- transition trace :
-	--Arbiter_Paused_NoKVO__To__Junction283_1, Junction283__To__Junction282_1, Junction282__To__Junction281_1, Junction281__To__Arbiter_Paused_NoKVO_1
+	--Arbiter_Paused_NoKVO__To__Junction1359_1, Junction1359__To__Junction1358_1, Junction1358__To__Junction1357_1, Junction1357__To__Arbiter_Paused_NoKVO_1
 		(IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2, idPAUSED_Arbiter_2) 
 	= 
-		 if (( (idPAUSED_Alarm_Paused_1 = 221) and ALARM_IN_Highest_Level_Alarm=4 )) then 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=4 )) then 
 		Arbiter_Paused_NoKVO_ex(IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1, false)
 		 else (IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1);
 		
 
 		(idPAUSED_Arbiter_3, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Current_System_Mode_3) 
 	= 
-		 if (( (idPAUSED_Alarm_Paused_1 = 221) and ALARM_IN_Highest_Level_Alarm=4 )) then 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=4 )) then 
 		Arbiter_Paused_NoKVO_en(idPAUSED_Arbiter_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2, false)
 		 else (idPAUSED_Arbiter_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2);
 		
 
 
 -- transition trace :
-	--Arbiter_Paused_NoKVO__To__Junction283_1, Junction283__To__Junction282_1, Junction282__To__Junction281_1, Junction281__To__Arbiter_Paused_KVO_2
+	--Arbiter_Paused_NoKVO__To__Junction1359_1, Junction1359__To__Junction1358_1, Junction1358__To__Junction1357_1, Junction1357__To__Arbiter_Paused_KVO_2
 		(IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4, idPAUSED_Arbiter_4) 
 	= 
-		 if (( (idPAUSED_Alarm_Paused_1 = 221) and ALARM_IN_Highest_Level_Alarm=3 )) then 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=3 )) then 
 		Arbiter_Paused_NoKVO_ex(IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1, false)
 		 else (IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1);
 		
 
 		(idPAUSED_Arbiter_5, IM_OUT_Flow_Rate_Commanded_5, IM_OUT_Current_System_Mode_5) 
 	= 
-		 if (( (idPAUSED_Alarm_Paused_1 = 221) and ALARM_IN_Highest_Level_Alarm=3 )) then 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=3 )) then 
 		Arbiter_Paused_KVO_en(idPAUSED_Arbiter_4, CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4, false)
 		 else (idPAUSED_Arbiter_4, IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4);
 		
 
 
 -- transition trace :
-	--Arbiter_Paused_NoKVO__To__Junction283_1, Junction283__To__Junction282_1, Junction282__To__Junction281_1, Junction281__To__Arbiter_Manual_Paused_KVO_3
+	--Arbiter_Paused_NoKVO__To__Junction1359_1, Junction1359__To__Junction1358_1, Junction1358__To__Junction1357_1, Junction1357__To__Arbiter_Manual_Paused_KVO_3
 		(IM_OUT_Flow_Rate_Commanded_6, IM_OUT_Current_System_Mode_6, idPAUSED_Arbiter_6) 
 	= Arbiter_Paused_NoKVO_ex(IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1, false);
 		
@@ -5453,10 +5453,10 @@ let
 
 	(idPAUSED_Arbiter, IM_OUT_Current_System_Mode, IM_OUT_Flow_Rate_Commanded) 
 	= 
-		 if (( (idPAUSED_Alarm_Paused_1 = 221) and ALARM_IN_Highest_Level_Alarm=4 )) then 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=4 )) then 
 		(idPAUSED_Arbiter_3, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3)
 		 else
-		 if (( (idPAUSED_Alarm_Paused_1 = 221) and ALARM_IN_Highest_Level_Alarm=3 )) then 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=3 )) then 
 		(idPAUSED_Arbiter_5, IM_OUT_Current_System_Mode_5, IM_OUT_Flow_Rate_Commanded_5)
 		 else (idPAUSED_Arbiter_7, IM_OUT_Current_System_Mode_7, IM_OUT_Flow_Rate_Commanded_7);
 
@@ -5467,7 +5467,7 @@ let
 
 
 
-	state ARBITER_PAUSED_KVO__TO__INFUSIONMGR_INFUSIONMGRJUNCTION283_1:
+	state ARBITER_PAUSED_KVO__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1359_1:
 
 	 var 	idPAUSED_Arbiter_2, idPAUSED_Arbiter_3, idPAUSED_Arbiter_4, idPAUSED_Arbiter_5, idPAUSED_Arbiter_6, idPAUSED_Arbiter_7:int;
 	IM_OUT_Current_System_Mode_2, IM_OUT_Current_System_Mode_3, IM_OUT_Current_System_Mode_4, IM_OUT_Current_System_Mode_5, IM_OUT_Current_System_Mode_6, IM_OUT_Current_System_Mode_7:int;
@@ -5481,41 +5481,41 @@ let
 
 
 -- transition trace :
-	--Arbiter_Paused_KVO__To__Junction283_1, Junction283__To__Junction282_1, Junction282__To__Junction281_1, Junction281__To__Arbiter_Paused_NoKVO_1
+	--Arbiter_Paused_KVO__To__Junction1359_1, Junction1359__To__Junction1358_1, Junction1358__To__Junction1357_1, Junction1357__To__Arbiter_Paused_NoKVO_1
 		(IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2, idPAUSED_Arbiter_2) 
 	= 
-		 if (( (idPAUSED_Alarm_Paused_1 = 221) and ALARM_IN_Highest_Level_Alarm=4 )) then 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=4 )) then 
 		Arbiter_Paused_KVO_ex(CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1, false)
 		 else (IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1);
 		
 
 		(idPAUSED_Arbiter_3, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Current_System_Mode_3) 
 	= 
-		 if (( (idPAUSED_Alarm_Paused_1 = 221) and ALARM_IN_Highest_Level_Alarm=4 )) then 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=4 )) then 
 		Arbiter_Paused_NoKVO_en(idPAUSED_Arbiter_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2, false)
 		 else (idPAUSED_Arbiter_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2);
 		
 
 
 -- transition trace :
-	--Arbiter_Paused_KVO__To__Junction283_1, Junction283__To__Junction282_1, Junction282__To__Junction281_1, Junction281__To__Arbiter_Paused_KVO_2
+	--Arbiter_Paused_KVO__To__Junction1359_1, Junction1359__To__Junction1358_1, Junction1358__To__Junction1357_1, Junction1357__To__Arbiter_Paused_KVO_2
 		(IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4, idPAUSED_Arbiter_4) 
 	= 
-		 if (( (idPAUSED_Alarm_Paused_1 = 221) and ALARM_IN_Highest_Level_Alarm=3 )) then 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=3 )) then 
 		Arbiter_Paused_KVO_ex(CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1, false)
 		 else (IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1);
 		
 
 		(idPAUSED_Arbiter_5, IM_OUT_Flow_Rate_Commanded_5, IM_OUT_Current_System_Mode_5) 
 	= 
-		 if (( (idPAUSED_Alarm_Paused_1 = 221) and ALARM_IN_Highest_Level_Alarm=3 )) then 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=3 )) then 
 		Arbiter_Paused_KVO_en(idPAUSED_Arbiter_4, CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4, false)
 		 else (idPAUSED_Arbiter_4, IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4);
 		
 
 
 -- transition trace :
-	--Arbiter_Paused_KVO__To__Junction283_1, Junction283__To__Junction282_1, Junction282__To__Junction281_1, Junction281__To__Arbiter_Manual_Paused_KVO_3
+	--Arbiter_Paused_KVO__To__Junction1359_1, Junction1359__To__Junction1358_1, Junction1358__To__Junction1357_1, Junction1357__To__Arbiter_Manual_Paused_KVO_3
 		(IM_OUT_Flow_Rate_Commanded_6, IM_OUT_Current_System_Mode_6, idPAUSED_Arbiter_6) 
 	= Arbiter_Paused_KVO_ex(CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1, false);
 		
@@ -5526,10 +5526,10 @@ let
 
 	(idPAUSED_Arbiter, IM_OUT_Current_System_Mode, IM_OUT_Flow_Rate_Commanded) 
 	= 
-		 if (( (idPAUSED_Alarm_Paused_1 = 221) and ALARM_IN_Highest_Level_Alarm=4 )) then 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=4 )) then 
 		(idPAUSED_Arbiter_3, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3)
 		 else
-		 if (( (idPAUSED_Alarm_Paused_1 = 221) and ALARM_IN_Highest_Level_Alarm=3 )) then 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=3 )) then 
 		(idPAUSED_Arbiter_5, IM_OUT_Current_System_Mode_5, IM_OUT_Flow_Rate_Commanded_5)
 		 else (idPAUSED_Arbiter_7, IM_OUT_Current_System_Mode_7, IM_OUT_Flow_Rate_Commanded_7);
 
@@ -5540,7 +5540,7 @@ let
 
 
 
-	state ARBITER_MANUAL_PAUSED_KVO__TO__INFUSIONMGR_INFUSIONMGRJUNCTION283_1:
+	state ARBITER_MANUAL_PAUSED_KVO__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1359_1:
 
 	 var 	idPAUSED_Arbiter_2, idPAUSED_Arbiter_3, idPAUSED_Arbiter_4, idPAUSED_Arbiter_5, idPAUSED_Arbiter_6, idPAUSED_Arbiter_7:int;
 	IM_OUT_Current_System_Mode_2, IM_OUT_Current_System_Mode_3, IM_OUT_Current_System_Mode_4, IM_OUT_Current_System_Mode_5, IM_OUT_Current_System_Mode_6, IM_OUT_Current_System_Mode_7:int;
@@ -5554,41 +5554,41 @@ let
 
 
 -- transition trace :
-	--Arbiter_Manual_Paused_KVO__To__Junction283_1, Junction283__To__Junction282_1, Junction282__To__Junction281_1, Junction281__To__Arbiter_Paused_NoKVO_1
+	--Arbiter_Manual_Paused_KVO__To__Junction1359_1, Junction1359__To__Junction1358_1, Junction1358__To__Junction1357_1, Junction1357__To__Arbiter_Paused_NoKVO_1
 		(IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2, idPAUSED_Arbiter_2) 
 	= 
-		 if (( (idPAUSED_Alarm_Paused_1 = 221) and ALARM_IN_Highest_Level_Alarm=4 )) then 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=4 )) then 
 		Arbiter_Manual_Paused_KVO_ex(CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1, false)
 		 else (IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1);
 		
 
 		(idPAUSED_Arbiter_3, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Current_System_Mode_3) 
 	= 
-		 if (( (idPAUSED_Alarm_Paused_1 = 221) and ALARM_IN_Highest_Level_Alarm=4 )) then 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=4 )) then 
 		Arbiter_Paused_NoKVO_en(idPAUSED_Arbiter_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2, false)
 		 else (idPAUSED_Arbiter_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2);
 		
 
 
 -- transition trace :
-	--Arbiter_Manual_Paused_KVO__To__Junction283_1, Junction283__To__Junction282_1, Junction282__To__Junction281_1, Junction281__To__Arbiter_Paused_KVO_2
+	--Arbiter_Manual_Paused_KVO__To__Junction1359_1, Junction1359__To__Junction1358_1, Junction1358__To__Junction1357_1, Junction1357__To__Arbiter_Paused_KVO_2
 		(IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4, idPAUSED_Arbiter_4) 
 	= 
-		 if (( (idPAUSED_Alarm_Paused_1 = 221) and ALARM_IN_Highest_Level_Alarm=3 )) then 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=3 )) then 
 		Arbiter_Manual_Paused_KVO_ex(CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1, false)
 		 else (IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1);
 		
 
 		(idPAUSED_Arbiter_5, IM_OUT_Flow_Rate_Commanded_5, IM_OUT_Current_System_Mode_5) 
 	= 
-		 if (( (idPAUSED_Alarm_Paused_1 = 221) and ALARM_IN_Highest_Level_Alarm=3 )) then 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=3 )) then 
 		Arbiter_Paused_KVO_en(idPAUSED_Arbiter_4, CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4, false)
 		 else (idPAUSED_Arbiter_4, IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4);
 		
 
 
 -- transition trace :
-	--Arbiter_Manual_Paused_KVO__To__Junction283_1, Junction283__To__Junction282_1, Junction282__To__Junction281_1, Junction281__To__Arbiter_Manual_Paused_KVO_3
+	--Arbiter_Manual_Paused_KVO__To__Junction1359_1, Junction1359__To__Junction1358_1, Junction1358__To__Junction1357_1, Junction1357__To__Arbiter_Manual_Paused_KVO_3
 		(IM_OUT_Flow_Rate_Commanded_6, IM_OUT_Current_System_Mode_6, idPAUSED_Arbiter_6) 
 	= Arbiter_Manual_Paused_KVO_ex(CONFIG_IN_Flow_Rate_KVO, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, idPAUSED_Arbiter_1, false);
 		
@@ -5599,10 +5599,10 @@ let
 
 	(idPAUSED_Arbiter, IM_OUT_Current_System_Mode, IM_OUT_Flow_Rate_Commanded) 
 	= 
-		 if (( (idPAUSED_Alarm_Paused_1 = 221) and ALARM_IN_Highest_Level_Alarm=4 )) then 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=4 )) then 
 		(idPAUSED_Arbiter_3, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3)
 		 else
-		 if (( (idPAUSED_Alarm_Paused_1 = 221) and ALARM_IN_Highest_Level_Alarm=3 )) then 
+		 if (( (idPAUSED_Alarm_Paused_1 = 1297) and ALARM_IN_Highest_Level_Alarm=3 )) then 
 		(idPAUSED_Arbiter_5, IM_OUT_Current_System_Mode_5, IM_OUT_Flow_Rate_Commanded_5)
 		 else (idPAUSED_Arbiter_7, IM_OUT_Current_System_Mode_7, IM_OUT_Flow_Rate_Commanded_7);
 
@@ -5707,17 +5707,17 @@ let
 
 
 
-	unless (idPAUSED_Manual_Paused_1=223) and ( OP_CMD_IN_Infusion_Inhibit ) restart MANUAL_PAUSED_OFF__TO__MANUAL_PAUSED_ON_1
+	unless (idPAUSED_Manual_Paused_1=1299) and ( OP_CMD_IN_Infusion_Inhibit ) restart MANUAL_PAUSED_OFF__TO__MANUAL_PAUSED_ON_1
 
 
 
-	unless (idPAUSED_Manual_Paused_1=224) and ( OP_CMD_IN_Infusion_Initiate and not OP_CMD_IN_Infusion_Inhibit ) restart MANUAL_PAUSED_ON__TO__MANUAL_PAUSED_OFF_1
+	unless (idPAUSED_Manual_Paused_1=1300) and ( OP_CMD_IN_Infusion_Initiate and not OP_CMD_IN_Infusion_Inhibit ) restart MANUAL_PAUSED_ON__TO__MANUAL_PAUSED_OFF_1
 
 
 
-	unless (idPAUSED_Manual_Paused_1=223) restart MANUAL_PAUSED_OFF_IDL
+	unless (idPAUSED_Manual_Paused_1=1299) restart MANUAL_PAUSED_OFF_IDL
 
-	unless (idPAUSED_Manual_Paused_1=224) restart MANUAL_PAUSED_ON_IDL
+	unless (idPAUSED_Manual_Paused_1=1300) restart MANUAL_PAUSED_ON_IDL
 
 	let
 
@@ -5878,17 +5878,17 @@ let
 
 
 
-	unless (idPAUSED_Alarm_Paused_1=220) and ( ALARM_IN_Highest_Level_Alarm>=3 ) restart ALARM_PAUSED_OFF__TO__ALARM_PAUSED_ON_1
+	unless (idPAUSED_Alarm_Paused_1=1296) and ( ALARM_IN_Highest_Level_Alarm>=3 ) restart ALARM_PAUSED_OFF__TO__ALARM_PAUSED_ON_1
 
 
 
-	unless (idPAUSED_Alarm_Paused_1=221) and ( OP_CMD_IN_Infusion_Initiate and ALARM_IN_Highest_Level_Alarm<3 ) restart ALARM_PAUSED_ON__TO__ALARM_PAUSED_OFF_1
+	unless (idPAUSED_Alarm_Paused_1=1297) and ( OP_CMD_IN_Infusion_Initiate and ALARM_IN_Highest_Level_Alarm<3 ) restart ALARM_PAUSED_ON__TO__ALARM_PAUSED_OFF_1
 
 
 
-	unless (idPAUSED_Alarm_Paused_1=220) restart ALARM_PAUSED_OFF_IDL
+	unless (idPAUSED_Alarm_Paused_1=1296) restart ALARM_PAUSED_OFF_IDL
 
-	unless (idPAUSED_Alarm_Paused_1=221) restart ALARM_PAUSED_ON_IDL
+	unless (idPAUSED_Alarm_Paused_1=1297) restart ALARM_PAUSED_ON_IDL
 
 	let
 
@@ -6171,27 +6171,27 @@ let
 	 automaton active_arbiter
 
 	state POINTACTIVE_Arbiter:
-	unless (idACTIVE_Arbiter_1=0) restart POINT__TO__INFUSIONMGR_INFUSIONMGRJUNCTION245_1
+	unless (idACTIVE_Arbiter_1=0) restart POINT__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1321_1
 
 
 
-	unless (idACTIVE_Arbiter_1=199) restart ARBITER_PATIENT_BOLUS__TO__INFUSIONMGR_INFUSIONMGRJUNCTION247_1
+	unless (idACTIVE_Arbiter_1=1275) restart ARBITER_PATIENT_BOLUS__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1323_1
 
 
 
-	unless (idACTIVE_Arbiter_1=200) restart ARBITER_INTERMITTENT_BOLUS__TO__INFUSIONMGR_INFUSIONMGRJUNCTION247_1
+	unless (idACTIVE_Arbiter_1=1276) restart ARBITER_INTERMITTENT_BOLUS__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1323_1
 
 
 
-	unless (idACTIVE_Arbiter_1=201) restart ARBITER_BASAL__TO__INFUSIONMGR_INFUSIONMGRJUNCTION247_1
+	unless (idACTIVE_Arbiter_1=1277) restart ARBITER_BASAL__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1323_1
 
 
 
-	unless (idACTIVE_Arbiter_1=199) restart ARBITER_PATIENT_BOLUS_IDL
+	unless (idACTIVE_Arbiter_1=1275) restart ARBITER_PATIENT_BOLUS_IDL
 
-	unless (idACTIVE_Arbiter_1=200) restart ARBITER_INTERMITTENT_BOLUS_IDL
+	unless (idACTIVE_Arbiter_1=1276) restart ARBITER_INTERMITTENT_BOLUS_IDL
 
-	unless (idACTIVE_Arbiter_1=201) restart ARBITER_BASAL_IDL
+	unless (idACTIVE_Arbiter_1=1277) restart ARBITER_BASAL_IDL
 
 	let
 
@@ -6203,7 +6203,7 @@ let
 
 
 
-	state POINT__TO__INFUSIONMGR_INFUSIONMGRJUNCTION245_1:
+	state POINT__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1321_1:
 
 	 var 	idACTIVE_Arbiter_2, idACTIVE_Arbiter_3, idACTIVE_Arbiter_4:int;
 	IM_OUT_Current_System_Mode_2, IM_OUT_Current_System_Mode_3, IM_OUT_Current_System_Mode_4:int;
@@ -6213,37 +6213,37 @@ let
 		
 
 -- transition trace :
-	--POINT__To__Junction245_1, Junction245__To__Arbiter_Patient_Bolus_1
+	--POINT__To__Junction1321_1, Junction1321__To__Arbiter_Patient_Bolus_1
 		(idACTIVE_Arbiter_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2) 
 	= 
-		 if (( (idACTIVE_PATIENT_1 = 206) )) then 
+		 if (( (idACTIVE_PATIENT_1 = 1282) )) then 
 		Arbiter_Patient_Bolus_en(idACTIVE_Arbiter_1, CONFIG_IN_Flow_Rate_Patient_Bolus, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
 		 else (idACTIVE_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
 		
 
 
 -- transition trace :
-	--POINT__To__Junction245_1, Junction245__To__Arbiter_Intermittent_Bolus_2
+	--POINT__To__Junction1321_1, Junction1321__To__Arbiter_Intermittent_Bolus_2
 		(idACTIVE_Arbiter_3, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Current_System_Mode_3) 
 	= 
-		 if (( (idACTIVE_INTERMITTENT_1 = 210) )) then 
+		 if (( (idACTIVE_INTERMITTENT_1 = 1286) )) then 
 		Arbiter_Intermittent_Bolus_en(idACTIVE_Arbiter_1, CONFIG_IN_Flow_Rate_Intermittent_Bolus, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
 		 else (idACTIVE_Arbiter_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
 		
 
 
 -- transition trace :
-	--POINT__To__Junction245_1, Junction245__To__Arbiter_Basal_3
+	--POINT__To__Junction1321_1, Junction1321__To__Arbiter_Basal_3
 		(idACTIVE_Arbiter_4, IM_OUT_Flow_Rate_Commanded_4, IM_OUT_Current_System_Mode_4) 
 	= Arbiter_Basal_en(idACTIVE_Arbiter_1, CONFIG_IN_Flow_Rate_Basal, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false);
 		
 
 	(idACTIVE_Arbiter, IM_OUT_Current_System_Mode, IM_OUT_Flow_Rate_Commanded) 
 	= 
-		 if (( (idACTIVE_PATIENT_1 = 206) )) then 
+		 if (( (idACTIVE_PATIENT_1 = 1282) )) then 
 		(idACTIVE_Arbiter_2, IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2)
 		 else
-		 if (( (idACTIVE_INTERMITTENT_1 = 210) )) then 
+		 if (( (idACTIVE_INTERMITTENT_1 = 1286) )) then 
 		(idACTIVE_Arbiter_3, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3)
 		 else (idACTIVE_Arbiter_4, IM_OUT_Current_System_Mode_4, IM_OUT_Flow_Rate_Commanded_4);
 
@@ -6258,7 +6258,7 @@ let
 
 
 
-	state ARBITER_PATIENT_BOLUS__TO__INFUSIONMGR_INFUSIONMGRJUNCTION247_1:
+	state ARBITER_PATIENT_BOLUS__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1323_1:
 
 	 var 	idACTIVE_Arbiter_2, idACTIVE_Arbiter_3, idACTIVE_Arbiter_4, idACTIVE_Arbiter_5, idACTIVE_Arbiter_6, idACTIVE_Arbiter_7:int;
 	IM_OUT_Current_System_Mode_2, IM_OUT_Current_System_Mode_3, IM_OUT_Current_System_Mode_4:int;
@@ -6273,57 +6273,57 @@ let
 
 
 -- transition trace :
-	--Arbiter_Patient_Bolus__To__Junction247_1, Junction247__To__Junction246_1, Junction246__To__Junction245_1, Junction245__To__Arbiter_Patient_Bolus_1
+	--Arbiter_Patient_Bolus__To__Junction1323_1, Junction1323__To__Junction1322_1, Junction1322__To__Junction1321_1, Junction1321__To__Arbiter_Patient_Bolus_1
 		-- condition Action : IM_OUT_Actual_Infusion_Duration++
 		
 		(IM_OUT_Actual_Infusion_Duration_2) 
-	= InfusionMGR_InfusionMGRJunction247__To__InfusionMGR_InfusionMGRJunction246_1_Condition_Action(IM_OUT_Actual_Infusion_Duration_1);
+	= InfusionMGR_InfusionMGRJunction1323__To__InfusionMGR_InfusionMGRJunction1322_1_Condition_Action(IM_OUT_Actual_Infusion_Duration_1);
 		
 
 		(idACTIVE_Arbiter_2) 
 	= 
-		 if (( (idACTIVE_PATIENT_1 = 206) )) then 
+		 if (( (idACTIVE_PATIENT_1 = 1282) )) then 
 		Arbiter_Patient_Bolus_ex(idACTIVE_Arbiter_1, false)
 		 else (idACTIVE_Arbiter_1);
 		
 
 		(idACTIVE_Arbiter_3, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2) 
 	= 
-		 if (( (idACTIVE_PATIENT_1 = 206) )) then 
+		 if (( (idACTIVE_PATIENT_1 = 1282) )) then 
 		Arbiter_Patient_Bolus_en(idACTIVE_Arbiter_2, CONFIG_IN_Flow_Rate_Patient_Bolus, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
 		 else (idACTIVE_Arbiter_2, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
 		
 
 
 -- transition trace :
-	--Arbiter_Patient_Bolus__To__Junction247_1, Junction247__To__Junction246_1, Junction246__To__Junction245_1, Junction245__To__Arbiter_Intermittent_Bolus_2
+	--Arbiter_Patient_Bolus__To__Junction1323_1, Junction1323__To__Junction1322_1, Junction1322__To__Junction1321_1, Junction1321__To__Arbiter_Intermittent_Bolus_2
 		-- condition Action : IM_OUT_Actual_Infusion_Duration++
 		
 		(IM_OUT_Actual_Infusion_Duration_3) 
-	= InfusionMGR_InfusionMGRJunction247__To__InfusionMGR_InfusionMGRJunction246_1_Condition_Action(IM_OUT_Actual_Infusion_Duration_1);
+	= InfusionMGR_InfusionMGRJunction1323__To__InfusionMGR_InfusionMGRJunction1322_1_Condition_Action(IM_OUT_Actual_Infusion_Duration_1);
 		
 
 		(idACTIVE_Arbiter_4) 
 	= 
-		 if (( (idACTIVE_INTERMITTENT_1 = 210) )) then 
+		 if (( (idACTIVE_INTERMITTENT_1 = 1286) )) then 
 		Arbiter_Patient_Bolus_ex(idACTIVE_Arbiter_1, false)
 		 else (idACTIVE_Arbiter_1);
 		
 
 		(idACTIVE_Arbiter_5, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Current_System_Mode_3) 
 	= 
-		 if (( (idACTIVE_INTERMITTENT_1 = 210) )) then 
+		 if (( (idACTIVE_INTERMITTENT_1 = 1286) )) then 
 		Arbiter_Intermittent_Bolus_en(idACTIVE_Arbiter_4, CONFIG_IN_Flow_Rate_Intermittent_Bolus, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
 		 else (idACTIVE_Arbiter_4, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
 		
 
 
 -- transition trace :
-	--Arbiter_Patient_Bolus__To__Junction247_1, Junction247__To__Junction246_1, Junction246__To__Junction245_1, Junction245__To__Arbiter_Basal_3
+	--Arbiter_Patient_Bolus__To__Junction1323_1, Junction1323__To__Junction1322_1, Junction1322__To__Junction1321_1, Junction1321__To__Arbiter_Basal_3
 		-- condition Action : IM_OUT_Actual_Infusion_Duration++
 		
 		(IM_OUT_Actual_Infusion_Duration_4) 
-	= InfusionMGR_InfusionMGRJunction247__To__InfusionMGR_InfusionMGRJunction246_1_Condition_Action(IM_OUT_Actual_Infusion_Duration_1);
+	= InfusionMGR_InfusionMGRJunction1323__To__InfusionMGR_InfusionMGRJunction1322_1_Condition_Action(IM_OUT_Actual_Infusion_Duration_1);
 		
 
 		(idACTIVE_Arbiter_6) 
@@ -6336,10 +6336,10 @@ let
 
 	(idACTIVE_Arbiter, IM_OUT_Current_System_Mode, IM_OUT_Flow_Rate_Commanded, IM_OUT_Actual_Infusion_Duration) 
 	= 
-		 if (( (idACTIVE_PATIENT_1 = 206) )) then 
+		 if (( (idACTIVE_PATIENT_1 = 1282) )) then 
 		(idACTIVE_Arbiter_3, IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Actual_Infusion_Duration_2)
 		 else
-		 if (( (idACTIVE_INTERMITTENT_1 = 210) )) then 
+		 if (( (idACTIVE_INTERMITTENT_1 = 1286) )) then 
 		(idACTIVE_Arbiter_5, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Actual_Infusion_Duration_3)
 		 else (idACTIVE_Arbiter_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Actual_Infusion_Duration_4);
 
@@ -6350,7 +6350,7 @@ let
 
 
 
-	state ARBITER_INTERMITTENT_BOLUS__TO__INFUSIONMGR_INFUSIONMGRJUNCTION247_1:
+	state ARBITER_INTERMITTENT_BOLUS__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1323_1:
 
 	 var 	idACTIVE_Arbiter_2, idACTIVE_Arbiter_3, idACTIVE_Arbiter_4, idACTIVE_Arbiter_5, idACTIVE_Arbiter_6, idACTIVE_Arbiter_7:int;
 	IM_OUT_Current_System_Mode_2, IM_OUT_Current_System_Mode_3, IM_OUT_Current_System_Mode_4:int;
@@ -6365,57 +6365,57 @@ let
 
 
 -- transition trace :
-	--Arbiter_Intermittent_Bolus__To__Junction247_1, Junction247__To__Junction246_1, Junction246__To__Junction245_1, Junction245__To__Arbiter_Patient_Bolus_1
+	--Arbiter_Intermittent_Bolus__To__Junction1323_1, Junction1323__To__Junction1322_1, Junction1322__To__Junction1321_1, Junction1321__To__Arbiter_Patient_Bolus_1
 		-- condition Action : IM_OUT_Actual_Infusion_Duration++
 		
 		(IM_OUT_Actual_Infusion_Duration_2) 
-	= InfusionMGR_InfusionMGRJunction247__To__InfusionMGR_InfusionMGRJunction246_1_Condition_Action(IM_OUT_Actual_Infusion_Duration_1);
+	= InfusionMGR_InfusionMGRJunction1323__To__InfusionMGR_InfusionMGRJunction1322_1_Condition_Action(IM_OUT_Actual_Infusion_Duration_1);
 		
 
 		(idACTIVE_Arbiter_2) 
 	= 
-		 if (( (idACTIVE_PATIENT_1 = 206) )) then 
+		 if (( (idACTIVE_PATIENT_1 = 1282) )) then 
 		Arbiter_Intermittent_Bolus_ex(idACTIVE_Arbiter_1, false)
 		 else (idACTIVE_Arbiter_1);
 		
 
 		(idACTIVE_Arbiter_3, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2) 
 	= 
-		 if (( (idACTIVE_PATIENT_1 = 206) )) then 
+		 if (( (idACTIVE_PATIENT_1 = 1282) )) then 
 		Arbiter_Patient_Bolus_en(idACTIVE_Arbiter_2, CONFIG_IN_Flow_Rate_Patient_Bolus, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
 		 else (idACTIVE_Arbiter_2, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
 		
 
 
 -- transition trace :
-	--Arbiter_Intermittent_Bolus__To__Junction247_1, Junction247__To__Junction246_1, Junction246__To__Junction245_1, Junction245__To__Arbiter_Intermittent_Bolus_2
+	--Arbiter_Intermittent_Bolus__To__Junction1323_1, Junction1323__To__Junction1322_1, Junction1322__To__Junction1321_1, Junction1321__To__Arbiter_Intermittent_Bolus_2
 		-- condition Action : IM_OUT_Actual_Infusion_Duration++
 		
 		(IM_OUT_Actual_Infusion_Duration_3) 
-	= InfusionMGR_InfusionMGRJunction247__To__InfusionMGR_InfusionMGRJunction246_1_Condition_Action(IM_OUT_Actual_Infusion_Duration_1);
+	= InfusionMGR_InfusionMGRJunction1323__To__InfusionMGR_InfusionMGRJunction1322_1_Condition_Action(IM_OUT_Actual_Infusion_Duration_1);
 		
 
 		(idACTIVE_Arbiter_4) 
 	= 
-		 if (( (idACTIVE_INTERMITTENT_1 = 210) )) then 
+		 if (( (idACTIVE_INTERMITTENT_1 = 1286) )) then 
 		Arbiter_Intermittent_Bolus_ex(idACTIVE_Arbiter_1, false)
 		 else (idACTIVE_Arbiter_1);
 		
 
 		(idACTIVE_Arbiter_5, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Current_System_Mode_3) 
 	= 
-		 if (( (idACTIVE_INTERMITTENT_1 = 210) )) then 
+		 if (( (idACTIVE_INTERMITTENT_1 = 1286) )) then 
 		Arbiter_Intermittent_Bolus_en(idACTIVE_Arbiter_4, CONFIG_IN_Flow_Rate_Intermittent_Bolus, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
 		 else (idACTIVE_Arbiter_4, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
 		
 
 
 -- transition trace :
-	--Arbiter_Intermittent_Bolus__To__Junction247_1, Junction247__To__Junction246_1, Junction246__To__Junction245_1, Junction245__To__Arbiter_Basal_3
+	--Arbiter_Intermittent_Bolus__To__Junction1323_1, Junction1323__To__Junction1322_1, Junction1322__To__Junction1321_1, Junction1321__To__Arbiter_Basal_3
 		-- condition Action : IM_OUT_Actual_Infusion_Duration++
 		
 		(IM_OUT_Actual_Infusion_Duration_4) 
-	= InfusionMGR_InfusionMGRJunction247__To__InfusionMGR_InfusionMGRJunction246_1_Condition_Action(IM_OUT_Actual_Infusion_Duration_1);
+	= InfusionMGR_InfusionMGRJunction1323__To__InfusionMGR_InfusionMGRJunction1322_1_Condition_Action(IM_OUT_Actual_Infusion_Duration_1);
 		
 
 		(idACTIVE_Arbiter_6) 
@@ -6428,10 +6428,10 @@ let
 
 	(idACTIVE_Arbiter, IM_OUT_Current_System_Mode, IM_OUT_Flow_Rate_Commanded, IM_OUT_Actual_Infusion_Duration) 
 	= 
-		 if (( (idACTIVE_PATIENT_1 = 206) )) then 
+		 if (( (idACTIVE_PATIENT_1 = 1282) )) then 
 		(idACTIVE_Arbiter_3, IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Actual_Infusion_Duration_2)
 		 else
-		 if (( (idACTIVE_INTERMITTENT_1 = 210) )) then 
+		 if (( (idACTIVE_INTERMITTENT_1 = 1286) )) then 
 		(idACTIVE_Arbiter_5, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Actual_Infusion_Duration_3)
 		 else (idACTIVE_Arbiter_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Actual_Infusion_Duration_4);
 
@@ -6442,7 +6442,7 @@ let
 
 
 
-	state ARBITER_BASAL__TO__INFUSIONMGR_INFUSIONMGRJUNCTION247_1:
+	state ARBITER_BASAL__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1323_1:
 
 	 var 	idACTIVE_Arbiter_2, idACTIVE_Arbiter_3, idACTIVE_Arbiter_4, idACTIVE_Arbiter_5, idACTIVE_Arbiter_6, idACTIVE_Arbiter_7:int;
 	IM_OUT_Current_System_Mode_2, IM_OUT_Current_System_Mode_3, IM_OUT_Current_System_Mode_4:int;
@@ -6457,57 +6457,57 @@ let
 
 
 -- transition trace :
-	--Arbiter_Basal__To__Junction247_1, Junction247__To__Junction246_1, Junction246__To__Junction245_1, Junction245__To__Arbiter_Patient_Bolus_1
+	--Arbiter_Basal__To__Junction1323_1, Junction1323__To__Junction1322_1, Junction1322__To__Junction1321_1, Junction1321__To__Arbiter_Patient_Bolus_1
 		-- condition Action : IM_OUT_Actual_Infusion_Duration++
 		
 		(IM_OUT_Actual_Infusion_Duration_2) 
-	= InfusionMGR_InfusionMGRJunction247__To__InfusionMGR_InfusionMGRJunction246_1_Condition_Action(IM_OUT_Actual_Infusion_Duration_1);
+	= InfusionMGR_InfusionMGRJunction1323__To__InfusionMGR_InfusionMGRJunction1322_1_Condition_Action(IM_OUT_Actual_Infusion_Duration_1);
 		
 
 		(idACTIVE_Arbiter_2) 
 	= 
-		 if (( (idACTIVE_PATIENT_1 = 206) )) then 
+		 if (( (idACTIVE_PATIENT_1 = 1282) )) then 
 		Arbiter_Basal_ex(idACTIVE_Arbiter_1, false)
 		 else (idACTIVE_Arbiter_1);
 		
 
 		(idACTIVE_Arbiter_3, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Current_System_Mode_2) 
 	= 
-		 if (( (idACTIVE_PATIENT_1 = 206) )) then 
+		 if (( (idACTIVE_PATIENT_1 = 1282) )) then 
 		Arbiter_Patient_Bolus_en(idACTIVE_Arbiter_2, CONFIG_IN_Flow_Rate_Patient_Bolus, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
 		 else (idACTIVE_Arbiter_2, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
 		
 
 
 -- transition trace :
-	--Arbiter_Basal__To__Junction247_1, Junction247__To__Junction246_1, Junction246__To__Junction245_1, Junction245__To__Arbiter_Intermittent_Bolus_2
+	--Arbiter_Basal__To__Junction1323_1, Junction1323__To__Junction1322_1, Junction1322__To__Junction1321_1, Junction1321__To__Arbiter_Intermittent_Bolus_2
 		-- condition Action : IM_OUT_Actual_Infusion_Duration++
 		
 		(IM_OUT_Actual_Infusion_Duration_3) 
-	= InfusionMGR_InfusionMGRJunction247__To__InfusionMGR_InfusionMGRJunction246_1_Condition_Action(IM_OUT_Actual_Infusion_Duration_1);
+	= InfusionMGR_InfusionMGRJunction1323__To__InfusionMGR_InfusionMGRJunction1322_1_Condition_Action(IM_OUT_Actual_Infusion_Duration_1);
 		
 
 		(idACTIVE_Arbiter_4) 
 	= 
-		 if (( (idACTIVE_INTERMITTENT_1 = 210) )) then 
+		 if (( (idACTIVE_INTERMITTENT_1 = 1286) )) then 
 		Arbiter_Basal_ex(idACTIVE_Arbiter_1, false)
 		 else (idACTIVE_Arbiter_1);
 		
 
 		(idACTIVE_Arbiter_5, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Current_System_Mode_3) 
 	= 
-		 if (( (idACTIVE_INTERMITTENT_1 = 210) )) then 
+		 if (( (idACTIVE_INTERMITTENT_1 = 1286) )) then 
 		Arbiter_Intermittent_Bolus_en(idACTIVE_Arbiter_4, CONFIG_IN_Flow_Rate_Intermittent_Bolus, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1, false)
 		 else (idACTIVE_Arbiter_4, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Current_System_Mode_1);
 		
 
 
 -- transition trace :
-	--Arbiter_Basal__To__Junction247_1, Junction247__To__Junction246_1, Junction246__To__Junction245_1, Junction245__To__Arbiter_Basal_3
+	--Arbiter_Basal__To__Junction1323_1, Junction1323__To__Junction1322_1, Junction1322__To__Junction1321_1, Junction1321__To__Arbiter_Basal_3
 		-- condition Action : IM_OUT_Actual_Infusion_Duration++
 		
 		(IM_OUT_Actual_Infusion_Duration_4) 
-	= InfusionMGR_InfusionMGRJunction247__To__InfusionMGR_InfusionMGRJunction246_1_Condition_Action(IM_OUT_Actual_Infusion_Duration_1);
+	= InfusionMGR_InfusionMGRJunction1323__To__InfusionMGR_InfusionMGRJunction1322_1_Condition_Action(IM_OUT_Actual_Infusion_Duration_1);
 		
 
 		(idACTIVE_Arbiter_6) 
@@ -6520,10 +6520,10 @@ let
 
 	(idACTIVE_Arbiter, IM_OUT_Current_System_Mode, IM_OUT_Flow_Rate_Commanded, IM_OUT_Actual_Infusion_Duration) 
 	= 
-		 if (( (idACTIVE_PATIENT_1 = 206) )) then 
+		 if (( (idACTIVE_PATIENT_1 = 1282) )) then 
 		(idACTIVE_Arbiter_3, IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Actual_Infusion_Duration_2)
 		 else
-		 if (( (idACTIVE_INTERMITTENT_1 = 210) )) then 
+		 if (( (idACTIVE_INTERMITTENT_1 = 1286) )) then 
 		(idACTIVE_Arbiter_5, IM_OUT_Current_System_Mode_3, IM_OUT_Flow_Rate_Commanded_3, IM_OUT_Actual_Infusion_Duration_3)
 		 else (idACTIVE_Arbiter_1, IM_OUT_Current_System_Mode_1, IM_OUT_Flow_Rate_Commanded_1, IM_OUT_Actual_Infusion_Duration_4);
 
@@ -6632,17 +6632,17 @@ let
 
 
 
-	unless (idACTIVE_INTERMITTENT_1=210) and (  sbolus_timer_1 >=Step_Scaling_Factor(CONFIG_IN_Duration_Intermittent_Bolus - 1.,step_size) or ALARM_IN_Highest_Level_Alarm=2 ) restart INTERMITTENT_ON__TO__INTERMITTENT_OFF_1
+	unless (idACTIVE_INTERMITTENT_1=1286) and (  sbolus_timer_1 >=Step_Scaling_Factor(CONFIG_IN_Duration_Intermittent_Bolus - 1.,step_size) or ALARM_IN_Highest_Level_Alarm=2 ) restart INTERMITTENT_ON__TO__INTERMITTENT_OFF_1
 
 
 
-	unless (idACTIVE_INTERMITTENT_1=211) and (  sbolus_req_1  and ALARM_IN_Highest_Level_Alarm<2 ) restart INTERMITTENT_OFF__TO__INTERMITTENT_ON_1
+	unless (idACTIVE_INTERMITTENT_1=1287) and (  sbolus_req_1  and ALARM_IN_Highest_Level_Alarm<2 ) restart INTERMITTENT_OFF__TO__INTERMITTENT_ON_1
 
 
 
-	unless (idACTIVE_INTERMITTENT_1=210) restart INTERMITTENT_ON_IDL
+	unless (idACTIVE_INTERMITTENT_1=1286) restart INTERMITTENT_ON_IDL
 
-	unless (idACTIVE_INTERMITTENT_1=211) restart INTERMITTENT_OFF_IDL
+	unless (idACTIVE_INTERMITTENT_1=1287) restart INTERMITTENT_OFF_IDL
 
 	let
 
@@ -6816,23 +6816,23 @@ let
 
 
 
-	unless (idACTIVE_PATIENT_1=206) and (  pbolus_timer_1 >=Step_Scaling_Factor(CONFIG_IN_Duration_Patient_Bolus - 1.,step_size) or ALARM_IN_Highest_Level_Alarm=2 ) restart PATIENT_ON__TO__PATIENT_LOCKOUT_1
+	unless (idACTIVE_PATIENT_1=1282) and (  pbolus_timer_1 >=Step_Scaling_Factor(CONFIG_IN_Duration_Patient_Bolus - 1.,step_size) or ALARM_IN_Highest_Level_Alarm=2 ) restart PATIENT_ON__TO__PATIENT_LOCKOUT_1
 
 
 
-	unless (idACTIVE_PATIENT_1=207) and ( PATIENT_IN_Patient_Bolus_Request and ALARM_IN_Highest_Level_Alarm<2 and  number_pbolus_1 <CONFIG_IN_Max_Number_of_Patient_Bolus ) restart PATIENT_OFF__TO__PATIENT_ON_1
+	unless (idACTIVE_PATIENT_1=1283) and ( PATIENT_IN_Patient_Bolus_Request and ALARM_IN_Highest_Level_Alarm<2 and  number_pbolus_1 <CONFIG_IN_Max_Number_of_Patient_Bolus ) restart PATIENT_OFF__TO__PATIENT_ON_1
 
 
 
-	unless (idACTIVE_PATIENT_1=208) and (  IM_OUT_Lock_Timer_1 >=Step_Scaling_Factor(CONFIG_IN_Lockout_Period_Patient_Bolus - 1.,step_size) ) restart PATIENT_LOCKOUT__TO__PATIENT_OFF_1
+	unless (idACTIVE_PATIENT_1=1284) and (  IM_OUT_Lock_Timer_1 >=Step_Scaling_Factor(CONFIG_IN_Lockout_Period_Patient_Bolus - 1.,step_size) ) restart PATIENT_LOCKOUT__TO__PATIENT_OFF_1
 
 
 
-	unless (idACTIVE_PATIENT_1=206) restart PATIENT_ON_IDL
+	unless (idACTIVE_PATIENT_1=1282) restart PATIENT_ON_IDL
 
-	unless (idACTIVE_PATIENT_1=207) restart PATIENT_OFF_IDL
+	unless (idACTIVE_PATIENT_1=1283) restart PATIENT_OFF_IDL
 
-	unless (idACTIVE_PATIENT_1=208) restart PATIENT_LOCKOUT_IDL
+	unless (idACTIVE_PATIENT_1=1284) restart PATIENT_LOCKOUT_IDL
 
 	let
 
@@ -7078,17 +7078,17 @@ let
 
 
 
-	unless (idACTIVE_BASAL_1=203) and (  IM_OUT_Actual_Infusion_Duration_1 >=Step_Scaling_Factor(CONFIG_IN_Infusion_Total_Duration - 1.,step_size) ) restart BASAL_ON__TO__BASAL_OFF_1
+	unless (idACTIVE_BASAL_1=1279) and (  IM_OUT_Actual_Infusion_Duration_1 >=Step_Scaling_Factor(CONFIG_IN_Infusion_Total_Duration - 1.,step_size) ) restart BASAL_ON__TO__BASAL_OFF_1
 
 
 
-	unless (idACTIVE_BASAL_1=204) and ( OP_CMD_IN_Infusion_Initiate ) restart BASAL_OFF__TO__BASAL_ON_1
+	unless (idACTIVE_BASAL_1=1280) and ( OP_CMD_IN_Infusion_Initiate ) restart BASAL_OFF__TO__BASAL_ON_1
 
 
 
-	unless (idACTIVE_BASAL_1=203) restart BASAL_ON_IDL
+	unless (idACTIVE_BASAL_1=1279) restart BASAL_ON_IDL
 
-	unless (idACTIVE_BASAL_1=204) restart BASAL_OFF_IDL
+	unless (idACTIVE_BASAL_1=1280) restart BASAL_OFF_IDL
 
 	let
 
@@ -7473,17 +7473,17 @@ let
 
 
 
-	unless (idInfusion_Manager_THERAPY_1=197) and ( OP_CMD_IN_Infusion_Inhibit or ALARM_IN_Highest_Level_Alarm>=3 ) restart THERAPY_ACTIVE__TO__THERAPY_PAUSED_1
+	unless (idInfusion_Manager_THERAPY_1=1273) and ( OP_CMD_IN_Infusion_Inhibit or ALARM_IN_Highest_Level_Alarm>=3 ) restart THERAPY_ACTIVE__TO__THERAPY_PAUSED_1
 
 
 
-	unless (idInfusion_Manager_THERAPY_1=214) and ( OP_CMD_IN_Infusion_Initiate and ALARM_IN_Highest_Level_Alarm<3 and not OP_CMD_IN_Infusion_Inhibit ) restart THERAPY_PAUSED__TO__THERAPY_ACTIVE_1
+	unless (idInfusion_Manager_THERAPY_1=1290) and ( OP_CMD_IN_Infusion_Initiate and ALARM_IN_Highest_Level_Alarm<3 and not OP_CMD_IN_Infusion_Inhibit ) restart THERAPY_PAUSED__TO__THERAPY_ACTIVE_1
 
 
 
-	unless (idInfusion_Manager_THERAPY_1=197) restart THERAPY_ACTIVE_IDL
+	unless (idInfusion_Manager_THERAPY_1=1273) restart THERAPY_ACTIVE_IDL
 
-	unless (idInfusion_Manager_THERAPY_1=214) restart THERAPY_PAUSED_IDL
+	unless (idInfusion_Manager_THERAPY_1=1290) restart THERAPY_PAUSED_IDL
 
 	let
 
@@ -7862,25 +7862,25 @@ let
 
 
 
-	unless (idInfusionMGR_Infusion_Manager_1=196) and ( OP_CMD_IN_Infusion_Initiate and CONFIG_IN_Configured=1 and not SYS_STAT_IN_Reservoir_Empty ) restart INFUSION_MANAGER_THERAPY__TO__INFUSIONMGR_INFUSIONMGRJUNCTION234_1
+	unless (idInfusionMGR_Infusion_Manager_1=1272) and ( OP_CMD_IN_Infusion_Initiate and CONFIG_IN_Configured=1 and not SYS_STAT_IN_Reservoir_Empty ) restart INFUSION_MANAGER_THERAPY__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1310_1
 
 
 
-	unless (idInfusionMGR_Infusion_Manager_1=196) and (  IM_OUT_Actual_Infusion_Duration_1 >=Step_Scaling_Factor(CONFIG_IN_Infusion_Total_Duration - 1.,step_size) or SYS_STAT_Volume_Infused>=CONFIG_IN_VTBI_Total or (CONFIG_IN_Configured<1) or (OP_CMD_IN_Infusion_Cancel) ) restart INFUSION_MANAGER_THERAPY__TO__INFUSION_MANAGER_IDLE_2
+	unless (idInfusionMGR_Infusion_Manager_1=1272) and (  IM_OUT_Actual_Infusion_Duration_1 >=Step_Scaling_Factor(CONFIG_IN_Infusion_Total_Duration - 1.,step_size) or SYS_STAT_Volume_Infused>=CONFIG_IN_VTBI_Total or (CONFIG_IN_Configured<1) or (OP_CMD_IN_Infusion_Cancel) ) restart INFUSION_MANAGER_THERAPY__TO__INFUSION_MANAGER_IDLE_2
 
 
 
-	unless (idInfusionMGR_Infusion_Manager_1=226) and ( OP_CMD_IN_Infusion_Cancel ) restart INFUSION_MANAGER_IDLE__TO__INFUSION_MANAGER_IDLE_1
+	unless (idInfusionMGR_Infusion_Manager_1=1302) and ( OP_CMD_IN_Infusion_Cancel ) restart INFUSION_MANAGER_IDLE__TO__INFUSION_MANAGER_IDLE_1
 
 
 
-	unless (idInfusionMGR_Infusion_Manager_1=226) and ( OP_CMD_IN_Infusion_Initiate and CONFIG_IN_Configured>0 and not SYS_STAT_IN_Reservoir_Empty ) restart INFUSION_MANAGER_IDLE__TO__INFUSIONMGR_INFUSIONMGRJUNCTION234_2
+	unless (idInfusionMGR_Infusion_Manager_1=1302) and ( OP_CMD_IN_Infusion_Initiate and CONFIG_IN_Configured>0 and not SYS_STAT_IN_Reservoir_Empty ) restart INFUSION_MANAGER_IDLE__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1310_2
 
 
 
-	unless (idInfusionMGR_Infusion_Manager_1=196) restart INFUSION_MANAGER_THERAPY_IDL
+	unless (idInfusionMGR_Infusion_Manager_1=1272) restart INFUSION_MANAGER_THERAPY_IDL
 
-	unless (idInfusionMGR_Infusion_Manager_1=226) restart INFUSION_MANAGER_IDLE_IDL
+	unless (idInfusionMGR_Infusion_Manager_1=1302) restart INFUSION_MANAGER_IDLE_IDL
 
 	let
 
@@ -7923,7 +7923,7 @@ let
 
 
 
-	state INFUSION_MANAGER_THERAPY__TO__INFUSIONMGR_INFUSIONMGRJUNCTION234_1:
+	state INFUSION_MANAGER_THERAPY__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1310_1:
 
 	 var 	idInfusionMGR_Infusion_Manager_2, idInfusionMGR_Infusion_Manager_3:int;
 	IM_OUT_Current_System_Mode_2, IM_OUT_Current_System_Mode_3:int;
@@ -7952,11 +7952,11 @@ let
 		
 
 -- transition trace :
-	--Infusion_Manager_THERAPY__To__Junction234_1, Junction234__To__Infusion_Manager_THERAPY_1
+	--Infusion_Manager_THERAPY__To__Junction1310_1, Junction1310__To__Infusion_Manager_THERAPY_1
 		-- condition Action : IM_OUT_New_Infusion=1;
 		
 		(IM_OUT_New_Infusion_2) 
-	= InfusionMGR_InfusionMGRJunction234__To__Infusion_Manager_THERAPY_1_Condition_Action(IM_OUT_New_Infusion_1);
+	= InfusionMGR_InfusionMGRJunction1310__To__Infusion_Manager_THERAPY_1_Condition_Action(IM_OUT_New_Infusion_1);
 		
 
 		(idACTIVE_Arbiter_2, idTHERAPY_ACTIVE_2, idACTIVE_INTERMITTENT_2, sbolus_req_2, sbolus_timer_2, idACTIVE_PATIENT_2, pbolus_timer_2, idACTIVE_BASAL_2, idInfusion_Manager_THERAPY_2, IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2, idPAUSED_Alarm_Paused_2, idPAUSED_Arbiter_2, idPAUSED_Manual_Paused_2, idTHERAPY_PAUSED_2, IM_OUT_Is_Locked_Out_2, IM_OUT_New_Infusion_3, idInfusionMGR_Infusion_Manager_2) 
@@ -8065,7 +8065,7 @@ let
 
 
 
-	state INFUSION_MANAGER_IDLE__TO__INFUSIONMGR_INFUSIONMGRJUNCTION234_2:
+	state INFUSION_MANAGER_IDLE__TO__INFUSIONMGR_INFUSIONMGRJUNCTION1310_2:
 
 	 var 	idInfusionMGR_Infusion_Manager_2, idInfusionMGR_Infusion_Manager_3:int;
 	IM_OUT_Current_System_Mode_2, IM_OUT_Current_System_Mode_3:int;
@@ -8094,17 +8094,17 @@ let
 		
 
 -- transition trace :
-	--Infusion_Manager_IDLE__To__Junction234_2, Junction234__To__Infusion_Manager_THERAPY_1
+	--Infusion_Manager_IDLE__To__Junction1310_2, Junction1310__To__Infusion_Manager_THERAPY_1
 		-- condition Action : resetAllInfusionDetails();
 		
 		(IM_OUT_Is_Locked_Out_2, IM_OUT_Lock_Timer_2, inPatientBolus_2, number_pbolus_2) 
-	= Infusion_Manager_IDLE__To__InfusionMGR_InfusionMGRJunction234_2_Condition_Action(IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1);
+	= Infusion_Manager_IDLE__To__InfusionMGR_InfusionMGRJunction1310_2_Condition_Action(IM_OUT_Is_Locked_Out_1, IM_OUT_Lock_Timer_1, inPatientBolus_1, number_pbolus_1);
 		
 
 		-- condition Action : IM_OUT_New_Infusion=1;
 		
 		(IM_OUT_New_Infusion_2) 
-	= InfusionMGR_InfusionMGRJunction234__To__Infusion_Manager_THERAPY_1_Condition_Action(IM_OUT_New_Infusion_1);
+	= InfusionMGR_InfusionMGRJunction1310__To__Infusion_Manager_THERAPY_1_Condition_Action(IM_OUT_New_Infusion_1);
 		
 
 		(IM_OUT_Current_System_Mode_2, IM_OUT_Flow_Rate_Commanded_2, IM_OUT_Is_Locked_Out_3, IM_OUT_Lock_Timer_3, inPatientBolus_3, number_pbolus_3, idInfusionMGR_Infusion_Manager_2) 
@@ -8290,17 +8290,17 @@ let
 
 
 
-	unless (idInfusionMGR_InfusionMGR_1=194) and ( TLM_MODE_IN_System_On ) restart INFUSIONMGR_NOT_ON__TO__INFUSIONMGR_INFUSION_MANAGER_1
+	unless (idInfusionMGR_InfusionMGR_1=1270) and ( TLM_MODE_IN_System_On ) restart INFUSIONMGR_NOT_ON__TO__INFUSIONMGR_INFUSION_MANAGER_1
 
 
 
-	unless (idInfusionMGR_InfusionMGR_1=195) and ( not TLM_MODE_IN_System_On ) restart INFUSIONMGR_INFUSION_MANAGER__TO__INFUSIONMGR_NOT_ON_1
+	unless (idInfusionMGR_InfusionMGR_1=1271) and ( not TLM_MODE_IN_System_On ) restart INFUSIONMGR_INFUSION_MANAGER__TO__INFUSIONMGR_NOT_ON_1
 
 
 
-	unless (idInfusionMGR_InfusionMGR_1=194) restart INFUSIONMGR_NOT_ON_IDL
+	unless (idInfusionMGR_InfusionMGR_1=1270) restart INFUSIONMGR_NOT_ON_IDL
 
-	unless (idInfusionMGR_InfusionMGR_1=195) restart INFUSIONMGR_INFUSION_MANAGER_IDL
+	unless (idInfusionMGR_InfusionMGR_1=1271) restart INFUSIONMGR_INFUSION_MANAGER_IDL
 
 	let
 

@@ -10,8 +10,8 @@ if ~exist('cocoSim_path', 'var')
     cocoSim_path = pwd;
 end
 if ~exist('tool_path', 'var')
-%     tool_path = '/home/hamza/Documents/cocoSim/sf_test/tests_with_properties/';
-    tool_path =    fullfile(cocoSim_path,'sf_test/regression_tests/');
+    tool_path = '/home/hamza/Documents/cocoSim/sf_test/tests_with_properties/';
+%     tool_path =    fullfile(cocoSim_path,'sf_test/regression_tests/');
 end
 addpath(tool_path);
 addpath(fullfile(cocoSim_path,'src/utils/'));
