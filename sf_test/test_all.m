@@ -10,8 +10,8 @@ if ~exist('cocoSim_path', 'var')
     cocoSim_path = pwd;
 end
 if ~exist('tool_path', 'var')
-    tool_path = '/home/hamza/Documents/cocoSim/sf_test/regression_tests/';%not_valid_models/';
-%     tool_path =    fullfile(cocoSim_path,'sf_test/regression_tests/');
+%     tool_path = '/home/hamza/Documents/cocoSim/sf_test/tests_with_properties/';
+    tool_path =    fullfile(cocoSim_path,'sf_test/regression_tests/');
 end
 addpath(tool_path);
 addpath(fullfile(cocoSim_path,'src/utils/'));
@@ -65,6 +65,12 @@ for k=1:count
         lustrec_failed(i) = lustrec_failed_i;
         lustrec_binary_failed(i) = lustrec_binary_failed_i;
         sim_failed(i) = sim_failed_i;
+        %this if you don't need to regenerate lustre code
+%         [model_path, file_name, ~] = fileparts(model_full_path);
+%         output_dir = fullfile(model_path, strcat('lustre_files/src_', file_name));
+%         lus_file_path = fullfile(output_dir, strcat(file_name, '.lus'));
+        
+        
         if ~strcmp(lus_file_path,'')
             d = dir(lus_file_path);
             lus_file_nb_bytes(i) = d.bytes;
@@ -75,8 +81,10 @@ for k=1:count
             cd(lus_file_dir);
             tic
             [status, message] =system(['lustrec -horn ', lus_file_path]);
+%             [status, message] =system(['kind2 ', lus_file_path])
             if status
                 time_lustrec_horn(i) = -1;
+                message = [lus_file_path, '\n', message];
                 L.error('lustrec -horn',message);
             else
                 time_lustrec_horn(i) = toc;

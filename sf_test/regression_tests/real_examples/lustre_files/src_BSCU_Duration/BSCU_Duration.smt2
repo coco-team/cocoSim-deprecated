@@ -1,22 +1,22 @@
-(declare-datatypes () ((duration_duration__type POINTDuration_Duration POINT__TO__DURATION_DURATIONJUNCTION855_1)));
+(declare-datatypes () ((duration_duration__type POINTDuration_Duration POINT__TO__DURATION_DURATIONJUNCTION355_1)));
 
-; Duration_DurationJunction855__To__Duration_DurationJunction857_2_Condition_Action
-(declare-var Duration_DurationJunction855__To__Duration_DurationJunction857_2_Condition_Action.c_1 Int)
-(declare-var Duration_DurationJunction855__To__Duration_DurationJunction857_2_Condition_Action.c Int)
-(declare-rel Duration_DurationJunction855__To__Duration_DurationJunction857_2_Condition_Action (Int Int))
+; Duration_DurationJunction355__To__Duration_DurationJunction357_2_Condition_Action
+(declare-var Duration_DurationJunction355__To__Duration_DurationJunction357_2_Condition_Action.c_1 Int)
+(declare-var Duration_DurationJunction355__To__Duration_DurationJunction357_2_Condition_Action.c Int)
+(declare-rel Duration_DurationJunction355__To__Duration_DurationJunction357_2_Condition_Action (Int Int))
 (rule (=> 
-  (= Duration_DurationJunction855__To__Duration_DurationJunction857_2_Condition_Action.c 0)
-  (Duration_DurationJunction855__To__Duration_DurationJunction857_2_Condition_Action Duration_DurationJunction855__To__Duration_DurationJunction857_2_Condition_Action.c_1 Duration_DurationJunction855__To__Duration_DurationJunction857_2_Condition_Action.c)
+  (= Duration_DurationJunction355__To__Duration_DurationJunction357_2_Condition_Action.c 0)
+  (Duration_DurationJunction355__To__Duration_DurationJunction357_2_Condition_Action Duration_DurationJunction355__To__Duration_DurationJunction357_2_Condition_Action.c_1 Duration_DurationJunction355__To__Duration_DurationJunction357_2_Condition_Action.c)
 ))
 
-; Duration_DurationJunction856__To__Duration_DurationJunction858_1_Condition_Action
-(declare-var Duration_DurationJunction856__To__Duration_DurationJunction858_1_Condition_Action.pre_c Int)
-(declare-var Duration_DurationJunction856__To__Duration_DurationJunction858_1_Condition_Action.c_1 Int)
-(declare-var Duration_DurationJunction856__To__Duration_DurationJunction858_1_Condition_Action.c Int)
-(declare-rel Duration_DurationJunction856__To__Duration_DurationJunction858_1_Condition_Action (Int Int Int))
+; Duration_DurationJunction356__To__Duration_DurationJunction358_1_Condition_Action
+(declare-var Duration_DurationJunction356__To__Duration_DurationJunction358_1_Condition_Action.pre_c Int)
+(declare-var Duration_DurationJunction356__To__Duration_DurationJunction358_1_Condition_Action.c_1 Int)
+(declare-var Duration_DurationJunction356__To__Duration_DurationJunction358_1_Condition_Action.c Int)
+(declare-rel Duration_DurationJunction356__To__Duration_DurationJunction358_1_Condition_Action (Int Int Int))
 (rule (=> 
-  (= Duration_DurationJunction856__To__Duration_DurationJunction858_1_Condition_Action.c (+ Duration_DurationJunction856__To__Duration_DurationJunction858_1_Condition_Action.pre_c 1))
-  (Duration_DurationJunction856__To__Duration_DurationJunction858_1_Condition_Action Duration_DurationJunction856__To__Duration_DurationJunction858_1_Condition_Action.pre_c Duration_DurationJunction856__To__Duration_DurationJunction858_1_Condition_Action.c_1 Duration_DurationJunction856__To__Duration_DurationJunction858_1_Condition_Action.c)
+  (= Duration_DurationJunction356__To__Duration_DurationJunction358_1_Condition_Action.c (+ Duration_DurationJunction356__To__Duration_DurationJunction358_1_Condition_Action.pre_c 1))
+  (Duration_DurationJunction356__To__Duration_DurationJunction358_1_Condition_Action Duration_DurationJunction356__To__Duration_DurationJunction358_1_Condition_Action.pre_c Duration_DurationJunction356__To__Duration_DurationJunction358_1_Condition_Action.c_1 Duration_DurationJunction356__To__Duration_DurationJunction358_1_Condition_Action.c)
 ))
 
 ; duration_duration__POINTDuration_Duration_handler_until
@@ -51,7 +51,7 @@
                     (= duration_duration__POINTDuration_Duration_unless.duration_duration__restart_act duration_duration__POINTDuration_Duration_unless.duration_duration__restart_in)
                     ))
             (or (not (= duration_duration__POINTDuration_Duration_unless.__duration_duration__POINTDuration_Duration_unless_1 true))
-               (and (= duration_duration__POINTDuration_Duration_unless.duration_duration__state_act POINT__TO__DURATION_DURATIONJUNCTION855_1)
+               (and (= duration_duration__POINTDuration_Duration_unless.duration_duration__state_act POINT__TO__DURATION_DURATIONJUNCTION355_1)
                     (= duration_duration__POINTDuration_Duration_unless.duration_duration__restart_act true)
                     ))
        )
@@ -59,70 +59,70 @@
   (duration_duration__POINTDuration_Duration_unless duration_duration__POINTDuration_Duration_unless.duration_duration__restart_in duration_duration__POINTDuration_Duration_unless.duration_duration__state_in duration_duration__POINTDuration_Duration_unless.idDuration_Duration_1 duration_duration__POINTDuration_Duration_unless.duration_duration__restart_act duration_duration__POINTDuration_Duration_unless.duration_duration__state_act)
 ))
 
-; duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until
-(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.idDuration_Duration_1 Int)
-(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.p Bool)
-(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.c_1 Int)
-(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.pre_c Int)
-(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.duration_duration__restart_in Bool)
-(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.duration_duration__state_in duration_duration__type)
-(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.c_out Int)
-(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.idDuration_Duration_out Int)
-(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.__duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until_1 Int)
-(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.c Int)
-(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.c_2 Int)
-(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.c_3 Int)
-(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.idDuration_Duration Int)
-(declare-rel duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until (Int Bool Int Int Bool duration_duration__type Int Int))
+; duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until
+(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.idDuration_Duration_1 Int)
+(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.p Bool)
+(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.c_1 Int)
+(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.pre_c Int)
+(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.duration_duration__restart_in Bool)
+(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.duration_duration__state_in duration_duration__type)
+(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.c_out Int)
+(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.idDuration_Duration_out Int)
+(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.__duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until_1 Int)
+(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.c Int)
+(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.c_2 Int)
+(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.c_3 Int)
+(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.idDuration_Duration Int)
+(declare-rel duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until (Int Bool Int Int Bool duration_duration__type Int Int))
 (rule (=> 
-  (and (and (or (not (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.p true))
-               (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.idDuration_Duration duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.idDuration_Duration_1))
-            (or (not (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.p false))
-               (and (or (not (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.p true))
-                       (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.idDuration_Duration duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.idDuration_Duration_1))
-                    (or (not (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.p false))
-                       (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.idDuration_Duration duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.idDuration_Duration_1))
+  (and (and (or (not (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.p true))
+               (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.idDuration_Duration duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.idDuration_Duration_1))
+            (or (not (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.p false))
+               (and (or (not (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.p true))
+                       (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.idDuration_Duration duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.idDuration_Duration_1))
+                    (or (not (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.p false))
+                       (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.idDuration_Duration duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.idDuration_Duration_1))
                ))
        )
-       (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.idDuration_Duration_out duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.idDuration_Duration)
-       (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.duration_duration__state_in POINTDuration_Duration)
-       (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.duration_duration__restart_in true)
-       (Duration_DurationJunction855__To__Duration_DurationJunction857_2_Condition_Action 
-       duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.c_1
-       duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.c_3)
-       (Duration_DurationJunction856__To__Duration_DurationJunction858_1_Condition_Action 
-       duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.pre_c
-       duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.c_1
-       duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.__duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until_1)
-       (and (or (not (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.p false))
-               (and (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.c_2 duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.c_1)
-                    (and (or (not (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.p true))
-                            (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.c duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.c_2))
-                         (or (not (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.p false))
-                            (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.c duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.c_3))
+       (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.idDuration_Duration_out duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.idDuration_Duration)
+       (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.duration_duration__state_in POINTDuration_Duration)
+       (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.duration_duration__restart_in true)
+       (Duration_DurationJunction355__To__Duration_DurationJunction357_2_Condition_Action 
+       duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.c_1
+       duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.c_3)
+       (Duration_DurationJunction356__To__Duration_DurationJunction358_1_Condition_Action 
+       duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.pre_c
+       duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.c_1
+       duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.__duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until_1)
+       (and (or (not (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.p false))
+               (and (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.c_2 duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.c_1)
+                    (and (or (not (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.p true))
+                            (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.c duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.c_2))
+                         (or (not (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.p false))
+                            (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.c duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.c_3))
                     )
                     ))
-            (or (not (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.p true))
-               (and (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.c_2 duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.__duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until_1)
-                    (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.c duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.c_2)
+            (or (not (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.p true))
+               (and (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.c_2 duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.__duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until_1)
+                    (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.c duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.c_2)
                     ))
        )
-       (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.c_out duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.c)
+       (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.c_out duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.c)
        )
-  (duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.idDuration_Duration_1 duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.p duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.c_1 duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.pre_c duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.duration_duration__restart_in duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.duration_duration__state_in duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.c_out duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until.idDuration_Duration_out)
+  (duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.idDuration_Duration_1 duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.p duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.c_1 duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.pre_c duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.duration_duration__restart_in duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.duration_duration__state_in duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.c_out duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until.idDuration_Duration_out)
 ))
 
-; duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_unless
-(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_unless.duration_duration__restart_in Bool)
-(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_unless.duration_duration__state_in duration_duration__type)
-(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_unless.duration_duration__restart_act Bool)
-(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_unless.duration_duration__state_act duration_duration__type)
-(declare-rel duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_unless (Bool duration_duration__type Bool duration_duration__type))
+; duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_unless
+(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_unless.duration_duration__restart_in Bool)
+(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_unless.duration_duration__state_in duration_duration__type)
+(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_unless.duration_duration__restart_act Bool)
+(declare-var duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_unless.duration_duration__state_act duration_duration__type)
+(declare-rel duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_unless (Bool duration_duration__type Bool duration_duration__type))
 (rule (=> 
-  (and (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_unless.duration_duration__state_act duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_unless.duration_duration__state_in)
-       (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_unless.duration_duration__restart_act duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_unless.duration_duration__restart_in)
+  (and (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_unless.duration_duration__state_act duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_unless.duration_duration__state_in)
+       (= duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_unless.duration_duration__restart_act duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_unless.duration_duration__restart_in)
        )
-  (duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_unless duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_unless.duration_duration__restart_in duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_unless.duration_duration__state_in duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_unless.duration_duration__restart_act duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_unless.duration_duration__state_act)
+  (duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_unless duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_unless.duration_duration__restart_in duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_unless.duration_duration__state_in duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_unless.duration_duration__restart_act duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_unless.duration_duration__state_act)
 ))
 
 ; Duration_Duration_node
@@ -200,8 +200,8 @@
                     (= Duration_Duration_node.duration_duration__state_act Duration_Duration_node.__Duration_Duration_node_4)
                     (= Duration_Duration_node.duration_duration__restart_act Duration_Duration_node.__Duration_Duration_node_3)
                     ))
-            (or (not (= Duration_Duration_node.duration_duration__state_in POINT__TO__DURATION_DURATIONJUNCTION855_1))
-               (and (duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_unless 
+            (or (not (= Duration_Duration_node.duration_duration__state_in POINT__TO__DURATION_DURATIONJUNCTION355_1))
+               (and (duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_unless 
                     Duration_Duration_node.duration_duration__restart_in
                     Duration_Duration_node.duration_duration__state_in
                     Duration_Duration_node.__Duration_Duration_node_1
@@ -223,8 +223,8 @@
                     (= Duration_Duration_node.duration_duration__next_restart_in Duration_Duration_node.__Duration_Duration_node_9)
                     (= Duration_Duration_node.c Duration_Duration_node.__Duration_Duration_node_11)
                     ))
-            (or (not (= Duration_Duration_node.duration_duration__state_act POINT__TO__DURATION_DURATIONJUNCTION855_1))
-               (and (duration_duration__POINT__TO__DURATION_DURATIONJUNCTION855_1_handler_until 
+            (or (not (= Duration_Duration_node.duration_duration__state_act POINT__TO__DURATION_DURATIONJUNCTION355_1))
+               (and (duration_duration__POINT__TO__DURATION_DURATIONJUNCTION355_1_handler_until 
                     Duration_Duration_node.idDuration_Duration_1
                     Duration_Duration_node.p
                     Duration_Duration_node.c_1

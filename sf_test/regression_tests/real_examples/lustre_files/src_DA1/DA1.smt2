@@ -1,8 +1,8 @@
-(declare-datatypes () ((latchcapture_latch__type POINTLatchCapture_latch POINT__TO__LATCH_OPENING_1 LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1 LATCH_OPEN__TO__LATCH_CLOSING_1 LATCH_CLOSING__TO__LATCH_MATED_1 LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2 LATCH_CLOSING__TO__LATCH_CLOSEDBUTUNMATED_3 LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1 LATCH_OPENING__TO__LATCH_OPEN_1 LATCH_OPENING__TO__LATCH_CLOSING_2 LATCH_CLOSEDBUTUNMATED_IDL LATCH_OPEN_IDL LATCH_CLOSING_IDL LATCH_MATED_IDL LATCH_OPENING_IDL)));
+(declare-datatypes () ((latchcapture_latch__type POINTLatchCapture_latch POINT__TO__LATCH_OPENING_1 LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1 LATCH_OPEN__TO__LATCH_CLOSING_1 LATCH_CLOSING__TO__LATCH_MATED_1 LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2 LATCH_CLOSING__TO__LATCH_CLOSEDBUTUNMATED_3 LATCH_MATED__TO__CHART_CHARTJUNCTION609_1 LATCH_OPENING__TO__LATCH_OPEN_1 LATCH_OPENING__TO__LATCH_CLOSING_2 LATCH_CLOSEDBUTUNMATED_IDL LATCH_OPEN_IDL LATCH_CLOSING_IDL LATCH_MATED_IDL LATCH_OPENING_IDL)));
 
 (declare-datatypes () ((missionphasestates_latchcapture__type POINTMissionPhaseStates_LatchCapture MISSIONPHASESTATES_LATCHCAPTURE_PARALLEL_ENTRY MISSIONPHASESTATES_LATCHCAPTURE_PARALLEL_IDL)));
 
-(declare-datatypes () ((latchcapture_latchcapturecheck__type POINTLatchCapture_LatchCaptureCheck POINT__TO__LATCHCAPTURECHECK_CHECKLATCHOPEN_1 LATCHCAPTURECHECK_DOCKED__TO__MISSIONPHASESTATES_JOINTSTABILIZE_1 LATCHCAPTURECHECK_LATCHFAILED__TO__MISSIONPHASESTATES_DOCKINGAPPROACH_1 LATCHCAPTURECHECK_CHECKLATCHOPEN__TO__LATCHCAPTURECHECK_CHECKLATCHMATED_1 LATCHCAPTURECHECK_CHECKLATCHOPEN__TO__LATCHCAPTURECHECK_LATCHFAILED_2 LATCHCAPTURECHECK_CHECKLATCHMATED__TO__LATCHCAPTURECHECK_DOCKED_1 LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2 LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3 LATCHCAPTURECHECK_DOCKED_IDL LATCHCAPTURECHECK_LATCHFAILED_IDL LATCHCAPTURECHECK_CHECKLATCHOPEN_IDL LATCHCAPTURECHECK_CHECKLATCHMATED_IDL)));
+(declare-datatypes () ((latchcapture_latchcapturecheck__type POINTLatchCapture_LatchCaptureCheck POINT__TO__LATCHCAPTURECHECK_CHECKLATCHOPEN_1 LATCHCAPTURECHECK_DOCKED__TO__MISSIONPHASESTATES_JOINTSTABILIZE_1 LATCHCAPTURECHECK_LATCHFAILED__TO__MISSIONPHASESTATES_DOCKINGAPPROACH_1 LATCHCAPTURECHECK_CHECKLATCHOPEN__TO__LATCHCAPTURECHECK_CHECKLATCHMATED_1 LATCHCAPTURECHECK_CHECKLATCHOPEN__TO__LATCHCAPTURECHECK_LATCHFAILED_2 LATCHCAPTURECHECK_CHECKLATCHMATED__TO__LATCHCAPTURECHECK_DOCKED_1 LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2 LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3 LATCHCAPTURECHECK_DOCKED_IDL LATCHCAPTURECHECK_LATCHFAILED_IDL LATCHCAPTURECHECK_CHECKLATCHOPEN_IDL LATCHCAPTURECHECK_CHECKLATCHMATED_IDL)));
 
 (declare-datatypes () ((chart_missionphasestates__type POINTChart_MissionPhaseStates POINT__TO__MISSIONPHASESTATES_START_1 MISSIONPHASESTATES_START__TO__MISSIONPHASESTATES_APPROACHORBIT_1 MISSIONPHASESTATES_COLLISIONAVOIDANCEMANUEVER__TO__MISSIONPHASESTATES_FAILEDAPPROACH_1 MISSIONPHASESTATES_COLLISIONAVOIDANCEMANUEVER__TO__MISSIONPHASESTATES_APPROACHORBIT_2 MISSIONPHASESTATES_APPROACHORBIT__TO__MISSIONPHASESTATES_PROXIMITYOPERATIONS_1 MISSIONPHASESTATES_PROXIMITYOPERATIONS__TO__MISSIONPHASESTATES_APPROACHORBIT_1 MISSIONPHASESTATES_PROXIMITYOPERATIONS__TO__MISSIONPHASESTATES_FARAPPROACH_2 MISSIONPHASESTATES_DISENGAGE__TO__MISSIONPHASESTATES_COLLISIONAVOIDANCEMANUEVER_1 MISSIONPHASESTATES_FARAPPROACH__TO__MISSIONPHASESTATES_COLLISIONAVOIDANCEMANUEVER_1 MISSIONPHASESTATES_FARAPPROACH__TO__MISSIONPHASESTATES_CAPTUREAPPROACH_2 MISSIONPHASESTATES_CAPTUREAPPROACH__TO__MISSIONPHASESTATES_DOCKINGAPPROACH_1 MISSIONPHASESTATES_CAPTUREAPPROACH__TO__MISSIONPHASESTATES_COLLISIONAVOIDANCEMANUEVER_2 MISSIONPHASESTATES_DOCKINGAPPROACH__TO__MISSIONPHASESTATES_LATCHCAPTURE_1 MISSIONPHASESTATES_DOCKINGAPPROACH__TO__MISSIONPHASESTATES_CAPTUREAPPROACH_2 MISSIONPHASESTATES_JOINTSTABILIZE__TO__MISSIONPHASESTATES_DISENGAGE_1 MISSIONPHASESTATES_JOINTSTABILIZE__TO__MISSIONPHASESTATES_JOINTMISSION_2 MISSIONPHASESTATES_START_IDL MISSIONPHASESTATES_COLLISIONAVOIDANCEMANUEVER_IDL MISSIONPHASESTATES_APPROACHORBIT_IDL MISSIONPHASESTATES_PROXIMITYOPERATIONS_IDL MISSIONPHASESTATES_DISENGAGE_IDL MISSIONPHASESTATES_FARAPPROACH_IDL MISSIONPHASESTATES_FAILEDAPPROACH_IDL MISSIONPHASESTATES_JOINTMISSION_IDL MISSIONPHASESTATES_CAPTUREAPPROACH_IDL MISSIONPHASESTATES_DOCKINGAPPROACH_IDL MISSIONPHASESTATES_JOINTSTABILIZE_IDL MISSIONPHASESTATES_LATCHCAPTURE_IDL)));
 
@@ -20,7 +20,7 @@
             (or (not (= (not LatchCaptureCheck_CheckLatchMated_ex.isInner) false))
                (= LatchCaptureCheck_CheckLatchMated_ex.idLatchCapture_LatchCaptureCheck_2 LatchCaptureCheck_CheckLatchMated_ex.idLatchCapture_LatchCaptureCheck_1))
        )
-       (= LatchCaptureCheck_CheckLatchMated_ex.idLatchCapture_LatchCaptureCheck LatchCaptureCheck_CheckLatchMated_ex.idLatchCapture_LatchCaptureCheck_2)
+       (= LatchCaptureCheck_CheckLatchMated_ex.idLatchCapture_LatchCaptureCheck LatchCaptureCheck_CheckLatchMated_ex.idLatchCapture_LatchCaptureCheck_1)
        )
   (LatchCaptureCheck_CheckLatchMated_ex LatchCaptureCheck_CheckLatchMated_ex.idLatchCapture_LatchCaptureCheck_1 LatchCaptureCheck_CheckLatchMated_ex.isInner LatchCaptureCheck_CheckLatchMated_ex.idLatchCapture_LatchCaptureCheck)
 ))
@@ -37,7 +37,7 @@
             (or (not (= (not LatchCaptureCheck_CheckLatchOpen_ex.isInner) false))
                (= LatchCaptureCheck_CheckLatchOpen_ex.idLatchCapture_LatchCaptureCheck_2 LatchCaptureCheck_CheckLatchOpen_ex.idLatchCapture_LatchCaptureCheck_1))
        )
-       (= LatchCaptureCheck_CheckLatchOpen_ex.idLatchCapture_LatchCaptureCheck LatchCaptureCheck_CheckLatchOpen_ex.idLatchCapture_LatchCaptureCheck_2)
+       (= LatchCaptureCheck_CheckLatchOpen_ex.idLatchCapture_LatchCaptureCheck LatchCaptureCheck_CheckLatchOpen_ex.idLatchCapture_LatchCaptureCheck_1)
        )
   (LatchCaptureCheck_CheckLatchOpen_ex LatchCaptureCheck_CheckLatchOpen_ex.idLatchCapture_LatchCaptureCheck_1 LatchCaptureCheck_CheckLatchOpen_ex.isInner LatchCaptureCheck_CheckLatchOpen_ex.idLatchCapture_LatchCaptureCheck)
 ))
@@ -54,7 +54,7 @@
             (or (not (= (not LatchCaptureCheck_Docked_ex.isInner) false))
                (= LatchCaptureCheck_Docked_ex.idLatchCapture_LatchCaptureCheck_2 LatchCaptureCheck_Docked_ex.idLatchCapture_LatchCaptureCheck_1))
        )
-       (= LatchCaptureCheck_Docked_ex.idLatchCapture_LatchCaptureCheck LatchCaptureCheck_Docked_ex.idLatchCapture_LatchCaptureCheck_2)
+       (= LatchCaptureCheck_Docked_ex.idLatchCapture_LatchCaptureCheck LatchCaptureCheck_Docked_ex.idLatchCapture_LatchCaptureCheck_1)
        )
   (LatchCaptureCheck_Docked_ex LatchCaptureCheck_Docked_ex.idLatchCapture_LatchCaptureCheck_1 LatchCaptureCheck_Docked_ex.isInner LatchCaptureCheck_Docked_ex.idLatchCapture_LatchCaptureCheck)
 ))
@@ -71,7 +71,7 @@
             (or (not (= (not LatchCaptureCheck_LatchFailed_ex.isInner) false))
                (= LatchCaptureCheck_LatchFailed_ex.idLatchCapture_LatchCaptureCheck_2 LatchCaptureCheck_LatchFailed_ex.idLatchCapture_LatchCaptureCheck_1))
        )
-       (= LatchCaptureCheck_LatchFailed_ex.idLatchCapture_LatchCaptureCheck LatchCaptureCheck_LatchFailed_ex.idLatchCapture_LatchCaptureCheck_2)
+       (= LatchCaptureCheck_LatchFailed_ex.idLatchCapture_LatchCaptureCheck LatchCaptureCheck_LatchFailed_ex.idLatchCapture_LatchCaptureCheck_1)
        )
   (LatchCaptureCheck_LatchFailed_ex LatchCaptureCheck_LatchFailed_ex.idLatchCapture_LatchCaptureCheck_1 LatchCaptureCheck_LatchFailed_ex.isInner LatchCaptureCheck_LatchFailed_ex.idLatchCapture_LatchCaptureCheck)
 ))
@@ -88,7 +88,7 @@
             (or (not (= (not latch_ClosedButUnmated_ex.isInner) false))
                (= latch_ClosedButUnmated_ex.idLatchCapture_latch_2 latch_ClosedButUnmated_ex.idLatchCapture_latch_1))
        )
-       (= latch_ClosedButUnmated_ex.idLatchCapture_latch latch_ClosedButUnmated_ex.idLatchCapture_latch_2)
+       (= latch_ClosedButUnmated_ex.idLatchCapture_latch latch_ClosedButUnmated_ex.idLatchCapture_latch_1)
        )
   (latch_ClosedButUnmated_ex latch_ClosedButUnmated_ex.idLatchCapture_latch_1 latch_ClosedButUnmated_ex.isInner latch_ClosedButUnmated_ex.idLatchCapture_latch)
 ))
@@ -105,7 +105,7 @@
             (or (not (= (not latch_Closing_ex.isInner) false))
                (= latch_Closing_ex.idLatchCapture_latch_2 latch_Closing_ex.idLatchCapture_latch_1))
        )
-       (= latch_Closing_ex.idLatchCapture_latch latch_Closing_ex.idLatchCapture_latch_2)
+       (= latch_Closing_ex.idLatchCapture_latch latch_Closing_ex.idLatchCapture_latch_1)
        )
   (latch_Closing_ex latch_Closing_ex.idLatchCapture_latch_1 latch_Closing_ex.isInner latch_Closing_ex.idLatchCapture_latch)
 ))
@@ -122,7 +122,7 @@
             (or (not (= (not latch_Mated_ex.isInner) false))
                (= latch_Mated_ex.idLatchCapture_latch_2 latch_Mated_ex.idLatchCapture_latch_1))
        )
-       (= latch_Mated_ex.idLatchCapture_latch latch_Mated_ex.idLatchCapture_latch_2)
+       (= latch_Mated_ex.idLatchCapture_latch latch_Mated_ex.idLatchCapture_latch_1)
        )
   (latch_Mated_ex latch_Mated_ex.idLatchCapture_latch_1 latch_Mated_ex.isInner latch_Mated_ex.idLatchCapture_latch)
 ))
@@ -139,7 +139,7 @@
             (or (not (= (not latch_Open_ex.isInner) false))
                (= latch_Open_ex.idLatchCapture_latch_2 latch_Open_ex.idLatchCapture_latch_1))
        )
-       (= latch_Open_ex.idLatchCapture_latch latch_Open_ex.idLatchCapture_latch_2)
+       (= latch_Open_ex.idLatchCapture_latch latch_Open_ex.idLatchCapture_latch_1)
        )
   (latch_Open_ex latch_Open_ex.idLatchCapture_latch_1 latch_Open_ex.isInner latch_Open_ex.idLatchCapture_latch)
 ))
@@ -156,7 +156,7 @@
             (or (not (= (not latch_Opening_ex.isInner) false))
                (= latch_Opening_ex.idLatchCapture_latch_2 latch_Opening_ex.idLatchCapture_latch_1))
        )
-       (= latch_Opening_ex.idLatchCapture_latch latch_Opening_ex.idLatchCapture_latch_2)
+       (= latch_Opening_ex.idLatchCapture_latch latch_Opening_ex.idLatchCapture_latch_1)
        )
   (latch_Opening_ex latch_Opening_ex.idLatchCapture_latch_1 latch_Opening_ex.isInner latch_Opening_ex.idLatchCapture_latch)
 ))
@@ -196,7 +196,7 @@
        (LatchCaptureCheck_CheckLatchMated_ex LatchCapture_LatchCaptureCheck_ex.idLatchCapture_LatchCaptureCheck_1
                                              false
                                              LatchCapture_LatchCaptureCheck_ex.__LatchCapture_LatchCaptureCheck_ex_6)
-       (= LatchCapture_LatchCaptureCheck_ex.__LatchCapture_LatchCaptureCheck_ex_5 (= LatchCapture_LatchCaptureCheck_ex.idLatchCapture_LatchCaptureCheck_1 1217))
+       (= LatchCapture_LatchCaptureCheck_ex.__LatchCapture_LatchCaptureCheck_ex_5 (= LatchCapture_LatchCaptureCheck_ex.idLatchCapture_LatchCaptureCheck_1 569))
        (and (or (not (= LatchCapture_LatchCaptureCheck_ex.__LatchCapture_LatchCaptureCheck_ex_5 true))
                (= LatchCapture_LatchCaptureCheck_ex.idLatchCapture_LatchCaptureCheck_5 LatchCapture_LatchCaptureCheck_ex.__LatchCapture_LatchCaptureCheck_ex_6))
             (or (not (= LatchCapture_LatchCaptureCheck_ex.__LatchCapture_LatchCaptureCheck_ex_5 false))
@@ -205,7 +205,7 @@
        (LatchCaptureCheck_CheckLatchOpen_ex LatchCapture_LatchCaptureCheck_ex.idLatchCapture_LatchCaptureCheck_1
                                             false
                                             LatchCapture_LatchCaptureCheck_ex.__LatchCapture_LatchCaptureCheck_ex_7)
-       (= LatchCapture_LatchCaptureCheck_ex.__LatchCapture_LatchCaptureCheck_ex_4 (= LatchCapture_LatchCaptureCheck_ex.idLatchCapture_LatchCaptureCheck_1 1210))
+       (= LatchCapture_LatchCaptureCheck_ex.__LatchCapture_LatchCaptureCheck_ex_4 (= LatchCapture_LatchCaptureCheck_ex.idLatchCapture_LatchCaptureCheck_1 562))
        (and (or (not (= LatchCapture_LatchCaptureCheck_ex.__LatchCapture_LatchCaptureCheck_ex_4 true))
                (= LatchCapture_LatchCaptureCheck_ex.idLatchCapture_LatchCaptureCheck_4 LatchCapture_LatchCaptureCheck_ex.__LatchCapture_LatchCaptureCheck_ex_7))
             (or (not (= LatchCapture_LatchCaptureCheck_ex.__LatchCapture_LatchCaptureCheck_ex_4 false))
@@ -214,7 +214,7 @@
        (LatchCaptureCheck_LatchFailed_ex LatchCapture_LatchCaptureCheck_ex.idLatchCapture_LatchCaptureCheck_1
                                          false
                                          LatchCapture_LatchCaptureCheck_ex.__LatchCapture_LatchCaptureCheck_ex_8)
-       (= LatchCapture_LatchCaptureCheck_ex.__LatchCapture_LatchCaptureCheck_ex_3 (= LatchCapture_LatchCaptureCheck_ex.idLatchCapture_LatchCaptureCheck_1 1209))
+       (= LatchCapture_LatchCaptureCheck_ex.__LatchCapture_LatchCaptureCheck_ex_3 (= LatchCapture_LatchCaptureCheck_ex.idLatchCapture_LatchCaptureCheck_1 561))
        (and (or (not (= LatchCapture_LatchCaptureCheck_ex.__LatchCapture_LatchCaptureCheck_ex_3 true))
                (= LatchCapture_LatchCaptureCheck_ex.idLatchCapture_LatchCaptureCheck_3 LatchCapture_LatchCaptureCheck_ex.__LatchCapture_LatchCaptureCheck_ex_8))
             (or (not (= LatchCapture_LatchCaptureCheck_ex.__LatchCapture_LatchCaptureCheck_ex_3 false))
@@ -223,7 +223,7 @@
        (LatchCaptureCheck_Docked_ex LatchCapture_LatchCaptureCheck_ex.idLatchCapture_LatchCaptureCheck_1
                                     false
                                     LatchCapture_LatchCaptureCheck_ex.__LatchCapture_LatchCaptureCheck_ex_9)
-       (= LatchCapture_LatchCaptureCheck_ex.__LatchCapture_LatchCaptureCheck_ex_2 (= LatchCapture_LatchCaptureCheck_ex.idLatchCapture_LatchCaptureCheck_1 1207))
+       (= LatchCapture_LatchCaptureCheck_ex.__LatchCapture_LatchCaptureCheck_ex_2 (= LatchCapture_LatchCaptureCheck_ex.idLatchCapture_LatchCaptureCheck_1 559))
        (and (or (not (= LatchCapture_LatchCaptureCheck_ex.__LatchCapture_LatchCaptureCheck_ex_2 false))
                (and (= LatchCapture_LatchCaptureCheck_ex.idLatchCapture_LatchCaptureCheck_2 LatchCapture_LatchCaptureCheck_ex.idLatchCapture_LatchCaptureCheck_1)
                     (and (or (not (= LatchCapture_LatchCaptureCheck_ex.__LatchCapture_LatchCaptureCheck_ex_3 true))
@@ -250,7 +250,7 @@
             (or (not (= LatchCapture_LatchCaptureCheck_ex.__LatchCapture_LatchCaptureCheck_ex_1 false))
                (= LatchCapture_LatchCaptureCheck_ex.AttemptingToDock_2 LatchCapture_LatchCaptureCheck_ex.AttemptingToDock_1))
        )
-       (= LatchCapture_LatchCaptureCheck_ex.idMissionPhaseStates_LatchCapture LatchCapture_LatchCaptureCheck_ex.idMissionPhaseStates_LatchCapture_2)
+       (= LatchCapture_LatchCaptureCheck_ex.idMissionPhaseStates_LatchCapture LatchCapture_LatchCaptureCheck_ex.idMissionPhaseStates_LatchCapture_1)
        (= LatchCapture_LatchCaptureCheck_ex.idLatchCapture_LatchCaptureCheck 0)
        (= LatchCapture_LatchCaptureCheck_ex.AttemptingToDock LatchCapture_LatchCaptureCheck_ex.AttemptingToDock_2)
        )
@@ -290,7 +290,7 @@
        (latch_Opening_ex LatchCapture_latch_ex.idLatchCapture_latch_1
                          false
                          LatchCapture_latch_ex.__LatchCapture_latch_ex_7)
-       (= LatchCapture_latch_ex.__LatchCapture_latch_ex_6 (= LatchCapture_latch_ex.idLatchCapture_latch_1 1222))
+       (= LatchCapture_latch_ex.__LatchCapture_latch_ex_6 (= LatchCapture_latch_ex.idLatchCapture_latch_1 574))
        (and (or (not (= LatchCapture_latch_ex.__LatchCapture_latch_ex_6 true))
                (= LatchCapture_latch_ex.idLatchCapture_latch_6 LatchCapture_latch_ex.__LatchCapture_latch_ex_7))
             (or (not (= LatchCapture_latch_ex.__LatchCapture_latch_ex_6 false))
@@ -299,7 +299,7 @@
        (latch_Mated_ex LatchCapture_latch_ex.idLatchCapture_latch_1
                        false
                        LatchCapture_latch_ex.__LatchCapture_latch_ex_8)
-       (= LatchCapture_latch_ex.__LatchCapture_latch_ex_5 (= LatchCapture_latch_ex.idLatchCapture_latch_1 1219))
+       (= LatchCapture_latch_ex.__LatchCapture_latch_ex_5 (= LatchCapture_latch_ex.idLatchCapture_latch_1 571))
        (and (or (not (= LatchCapture_latch_ex.__LatchCapture_latch_ex_5 true))
                (= LatchCapture_latch_ex.idLatchCapture_latch_5 LatchCapture_latch_ex.__LatchCapture_latch_ex_8))
             (or (not (= LatchCapture_latch_ex.__LatchCapture_latch_ex_5 false))
@@ -308,13 +308,13 @@
        (latch_Closing_ex LatchCapture_latch_ex.idLatchCapture_latch_1
                          false
                          LatchCapture_latch_ex.__LatchCapture_latch_ex_9)
-       (= LatchCapture_latch_ex.__LatchCapture_latch_ex_4 (= LatchCapture_latch_ex.idLatchCapture_latch_1 1218))
+       (= LatchCapture_latch_ex.__LatchCapture_latch_ex_4 (= LatchCapture_latch_ex.idLatchCapture_latch_1 570))
        (and (or (not (= LatchCapture_latch_ex.__LatchCapture_latch_ex_4 true))
                (= LatchCapture_latch_ex.idLatchCapture_latch_4 LatchCapture_latch_ex.__LatchCapture_latch_ex_9))
             (or (not (= LatchCapture_latch_ex.__LatchCapture_latch_ex_4 false))
                (= LatchCapture_latch_ex.idLatchCapture_latch_4 LatchCapture_latch_ex.idLatchCapture_latch_1))
        )
-       (= LatchCapture_latch_ex.__LatchCapture_latch_ex_3 (= LatchCapture_latch_ex.idLatchCapture_latch_1 1212))
+       (= LatchCapture_latch_ex.__LatchCapture_latch_ex_3 (= LatchCapture_latch_ex.idLatchCapture_latch_1 564))
        (latch_Open_ex LatchCapture_latch_ex.idLatchCapture_latch_1
                       false
                       LatchCapture_latch_ex.__LatchCapture_latch_ex_10)
@@ -323,7 +323,7 @@
             (or (not (= LatchCapture_latch_ex.__LatchCapture_latch_ex_3 false))
                (= LatchCapture_latch_ex.idLatchCapture_latch_3 LatchCapture_latch_ex.idLatchCapture_latch_1))
        )
-       (= LatchCapture_latch_ex.__LatchCapture_latch_ex_2 (= LatchCapture_latch_ex.idLatchCapture_latch_1 1204))
+       (= LatchCapture_latch_ex.__LatchCapture_latch_ex_2 (= LatchCapture_latch_ex.idLatchCapture_latch_1 556))
        (latch_ClosedButUnmated_ex LatchCapture_latch_ex.idLatchCapture_latch_1
                                   false
                                   LatchCapture_latch_ex.__LatchCapture_latch_ex_11)
@@ -352,7 +352,7 @@
                     (= LatchCapture_latch_ex.idLatchCapture_latch_7 LatchCapture_latch_ex.idLatchCapture_latch_2)
                     ))
        )
-       (= LatchCapture_latch_ex.idMissionPhaseStates_LatchCapture LatchCapture_latch_ex.idMissionPhaseStates_LatchCapture_2)
+       (= LatchCapture_latch_ex.idMissionPhaseStates_LatchCapture LatchCapture_latch_ex.idMissionPhaseStates_LatchCapture_1)
        (= LatchCapture_latch_ex.idLatchCapture_latch 0)
        )
   (LatchCapture_latch_ex LatchCapture_latch_ex.idLatchCapture_latch_1 LatchCapture_latch_ex.idMissionPhaseStates_LatchCapture_1 LatchCapture_latch_ex.isInner LatchCapture_latch_ex.idLatchCapture_latch LatchCapture_latch_ex.idMissionPhaseStates_LatchCapture)
@@ -364,7 +364,7 @@
 (declare-var LatchCaptureCheck_CheckLatchMated_en.idLatchCapture_LatchCaptureCheck Int)
 (declare-rel LatchCaptureCheck_CheckLatchMated_en (Int Bool Int))
 (rule (=> 
-  (= LatchCaptureCheck_CheckLatchMated_en.idLatchCapture_LatchCaptureCheck 1217)
+  (= LatchCaptureCheck_CheckLatchMated_en.idLatchCapture_LatchCaptureCheck 569)
   (LatchCaptureCheck_CheckLatchMated_en LatchCaptureCheck_CheckLatchMated_en.idLatchCapture_LatchCaptureCheck_1 LatchCaptureCheck_CheckLatchMated_en.isInner LatchCaptureCheck_CheckLatchMated_en.idLatchCapture_LatchCaptureCheck)
 ))
 
@@ -382,7 +382,7 @@
             (or (not (= (not LatchCaptureCheck_CheckLatchOpen_en.isInner) false))
                (= LatchCaptureCheck_CheckLatchOpen_en.LatchCapture_timer_2 LatchCaptureCheck_CheckLatchOpen_en.LatchCapture_timer_1))
        )
-       (= LatchCaptureCheck_CheckLatchOpen_en.idLatchCapture_LatchCaptureCheck 1210)
+       (= LatchCaptureCheck_CheckLatchOpen_en.idLatchCapture_LatchCaptureCheck 562)
        (= LatchCaptureCheck_CheckLatchOpen_en.LatchCapture_timer LatchCaptureCheck_CheckLatchOpen_en.LatchCapture_timer_2)
        )
   (LatchCaptureCheck_CheckLatchOpen_en LatchCaptureCheck_CheckLatchOpen_en.idLatchCapture_LatchCaptureCheck_1 LatchCaptureCheck_CheckLatchOpen_en.LatchCapture_timer_1 LatchCaptureCheck_CheckLatchOpen_en.isInner LatchCaptureCheck_CheckLatchOpen_en.idLatchCapture_LatchCaptureCheck LatchCaptureCheck_CheckLatchOpen_en.LatchCapture_timer)
@@ -402,7 +402,7 @@
             (or (not (= (not LatchCaptureCheck_Docked_en.isInner) false))
                (= LatchCaptureCheck_Docked_en.LatchCaptureComplete_2 LatchCaptureCheck_Docked_en.LatchCaptureComplete_1))
        )
-       (= LatchCaptureCheck_Docked_en.idLatchCapture_LatchCaptureCheck 1207)
+       (= LatchCaptureCheck_Docked_en.idLatchCapture_LatchCaptureCheck 559)
        (= LatchCaptureCheck_Docked_en.LatchCaptureComplete LatchCaptureCheck_Docked_en.LatchCaptureComplete_2)
        )
   (LatchCaptureCheck_Docked_en LatchCaptureCheck_Docked_en.idLatchCapture_LatchCaptureCheck_1 LatchCaptureCheck_Docked_en.LatchCaptureComplete_1 LatchCaptureCheck_Docked_en.isInner LatchCaptureCheck_Docked_en.idLatchCapture_LatchCaptureCheck LatchCaptureCheck_Docked_en.LatchCaptureComplete)
@@ -414,7 +414,7 @@
 (declare-var LatchCaptureCheck_LatchFailed_en.idLatchCapture_LatchCaptureCheck Int)
 (declare-rel LatchCaptureCheck_LatchFailed_en (Int Bool Int))
 (rule (=> 
-  (= LatchCaptureCheck_LatchFailed_en.idLatchCapture_LatchCaptureCheck 1209)
+  (= LatchCaptureCheck_LatchFailed_en.idLatchCapture_LatchCaptureCheck 561)
   (LatchCaptureCheck_LatchFailed_en LatchCaptureCheck_LatchFailed_en.idLatchCapture_LatchCaptureCheck_1 LatchCaptureCheck_LatchFailed_en.isInner LatchCaptureCheck_LatchFailed_en.idLatchCapture_LatchCaptureCheck)
 ))
 
@@ -434,7 +434,7 @@
                (= latch_ClosedButUnmated_en.latch_status_2 latch_ClosedButUnmated_en.latch_status_1))
        )
        (= latch_ClosedButUnmated_en.latch_status latch_ClosedButUnmated_en.latch_status_2)
-       (= latch_ClosedButUnmated_en.idLatchCapture_latch 1204)
+       (= latch_ClosedButUnmated_en.idLatchCapture_latch 556)
        )
   (latch_ClosedButUnmated_en latch_ClosedButUnmated_en.idLatchCapture_latch_1 latch_ClosedButUnmated_en.CLOSEDBUTUNMATED latch_ClosedButUnmated_en.latch_status_1 latch_ClosedButUnmated_en.isInner latch_ClosedButUnmated_en.idLatchCapture_latch latch_ClosedButUnmated_en.latch_status)
 ))
@@ -455,7 +455,7 @@
                (= latch_Closing_en.latch_status_2 latch_Closing_en.latch_status_1))
        )
        (= latch_Closing_en.latch_status latch_Closing_en.latch_status_2)
-       (= latch_Closing_en.idLatchCapture_latch 1218)
+       (= latch_Closing_en.idLatchCapture_latch 570)
        )
   (latch_Closing_en latch_Closing_en.idLatchCapture_latch_1 latch_Closing_en.INDETERMINATE latch_Closing_en.latch_status_1 latch_Closing_en.isInner latch_Closing_en.idLatchCapture_latch latch_Closing_en.latch_status)
 ))
@@ -476,7 +476,7 @@
                (= latch_Mated_en.latch_status_2 latch_Mated_en.latch_status_1))
        )
        (= latch_Mated_en.latch_status latch_Mated_en.latch_status_2)
-       (= latch_Mated_en.idLatchCapture_latch 1219)
+       (= latch_Mated_en.idLatchCapture_latch 571)
        )
   (latch_Mated_en latch_Mated_en.idLatchCapture_latch_1 latch_Mated_en.MATED latch_Mated_en.latch_status_1 latch_Mated_en.isInner latch_Mated_en.idLatchCapture_latch latch_Mated_en.latch_status)
 ))
@@ -497,7 +497,7 @@
                (= latch_Open_en.latch_status_2 latch_Open_en.latch_status_1))
        )
        (= latch_Open_en.latch_status latch_Open_en.latch_status_2)
-       (= latch_Open_en.idLatchCapture_latch 1212)
+       (= latch_Open_en.idLatchCapture_latch 564)
        )
   (latch_Open_en latch_Open_en.idLatchCapture_latch_1 latch_Open_en.OPEN latch_Open_en.latch_status_1 latch_Open_en.isInner latch_Open_en.idLatchCapture_latch latch_Open_en.latch_status)
 ))
@@ -518,7 +518,7 @@
                (= latch_Opening_en.latch_status_2 latch_Opening_en.latch_status_1))
        )
        (= latch_Opening_en.latch_status latch_Opening_en.latch_status_2)
-       (= latch_Opening_en.idLatchCapture_latch 1222)
+       (= latch_Opening_en.idLatchCapture_latch 574)
        )
   (latch_Opening_en latch_Opening_en.idLatchCapture_latch_1 latch_Opening_en.INDETERMINATE latch_Opening_en.latch_status_1 latch_Opening_en.isInner latch_Opening_en.idLatchCapture_latch latch_Opening_en.latch_status)
 ))
@@ -529,7 +529,7 @@
 (declare-var MissionPhaseStates_JointStabilize_en.idChart_MissionPhaseStates Int)
 (declare-rel MissionPhaseStates_JointStabilize_en (Int Bool Int))
 (rule (=> 
-  (= MissionPhaseStates_JointStabilize_en.idChart_MissionPhaseStates 1205)
+  (= MissionPhaseStates_JointStabilize_en.idChart_MissionPhaseStates 557)
   (MissionPhaseStates_JointStabilize_en MissionPhaseStates_JointStabilize_en.idChart_MissionPhaseStates_1 MissionPhaseStates_JointStabilize_en.isInner MissionPhaseStates_JointStabilize_en.idChart_MissionPhaseStates)
 ))
 
@@ -573,7 +573,7 @@
        (= MissionPhaseStates_LatchCapture_ex.idMissionPhaseStates_LatchCapture 0)
        (= MissionPhaseStates_LatchCapture_ex.idLatchCapture_latch MissionPhaseStates_LatchCapture_ex.idLatchCapture_latch_2)
        (= MissionPhaseStates_LatchCapture_ex.idLatchCapture_LatchCaptureCheck MissionPhaseStates_LatchCapture_ex.idLatchCapture_LatchCaptureCheck_2)
-       (= MissionPhaseStates_LatchCapture_ex.idChart_MissionPhaseStates MissionPhaseStates_LatchCapture_ex.idChart_MissionPhaseStates_2)
+       (= MissionPhaseStates_LatchCapture_ex.idChart_MissionPhaseStates MissionPhaseStates_LatchCapture_ex.idChart_MissionPhaseStates_1)
        (= MissionPhaseStates_LatchCapture_ex.AttemptingToDock MissionPhaseStates_LatchCapture_ex.AttemptingToDock_2)
        )
   (MissionPhaseStates_LatchCapture_ex MissionPhaseStates_LatchCapture_ex.idLatchCapture_latch_1 MissionPhaseStates_LatchCapture_ex.idMissionPhaseStates_LatchCapture_1 MissionPhaseStates_LatchCapture_ex.AttemptingToDock_1 MissionPhaseStates_LatchCapture_ex.idLatchCapture_LatchCaptureCheck_1 MissionPhaseStates_LatchCapture_ex.idChart_MissionPhaseStates_1 MissionPhaseStates_LatchCapture_ex.isInner MissionPhaseStates_LatchCapture_ex.idLatchCapture_latch MissionPhaseStates_LatchCapture_ex.idMissionPhaseStates_LatchCapture MissionPhaseStates_LatchCapture_ex.AttemptingToDock MissionPhaseStates_LatchCapture_ex.idLatchCapture_LatchCaptureCheck MissionPhaseStates_LatchCapture_ex.idChart_MissionPhaseStates)
@@ -585,7 +585,7 @@
 (declare-var MissionPhaseStates_DockingApproach_en.idChart_MissionPhaseStates Int)
 (declare-rel MissionPhaseStates_DockingApproach_en (Int Bool Int))
 (rule (=> 
-  (= MissionPhaseStates_DockingApproach_en.idChart_MissionPhaseStates 1208)
+  (= MissionPhaseStates_DockingApproach_en.idChart_MissionPhaseStates 560)
   (MissionPhaseStates_DockingApproach_en MissionPhaseStates_DockingApproach_en.idChart_MissionPhaseStates_1 MissionPhaseStates_DockingApproach_en.isInner MissionPhaseStates_DockingApproach_en.idChart_MissionPhaseStates)
 ))
 
@@ -635,7 +635,7 @@
   (and (LatchCaptureCheck_CheckLatchMated_en LatchCapture_LatchCaptureCheck_en.idLatchCapture_LatchCaptureCheck_1
                                              false
                                              LatchCapture_LatchCaptureCheck_en.__LatchCapture_LatchCaptureCheck_en_6)
-       (= LatchCapture_LatchCaptureCheck_en.__LatchCapture_LatchCaptureCheck_en_5 (= LatchCapture_LatchCaptureCheck_en.idLatchCapture_LatchCaptureCheck_1 1217))
+       (= LatchCapture_LatchCaptureCheck_en.__LatchCapture_LatchCaptureCheck_en_5 (= LatchCapture_LatchCaptureCheck_en.idLatchCapture_LatchCaptureCheck_1 569))
        (and (or (not (= LatchCapture_LatchCaptureCheck_en.__LatchCapture_LatchCaptureCheck_en_5 true))
                (= LatchCapture_LatchCaptureCheck_en.idLatchCapture_LatchCaptureCheck_7 LatchCapture_LatchCaptureCheck_en.__LatchCapture_LatchCaptureCheck_en_6))
             (or (not (= LatchCapture_LatchCaptureCheck_en.__LatchCapture_LatchCaptureCheck_en_5 false))
@@ -644,7 +644,7 @@
        (LatchCaptureCheck_LatchFailed_en LatchCapture_LatchCaptureCheck_en.idLatchCapture_LatchCaptureCheck_1
                                          false
                                          LatchCapture_LatchCaptureCheck_en.__LatchCapture_LatchCaptureCheck_en_9)
-       (= LatchCapture_LatchCaptureCheck_en.__LatchCapture_LatchCaptureCheck_en_3 (= LatchCapture_LatchCaptureCheck_en.idLatchCapture_LatchCaptureCheck_1 1209))
+       (= LatchCapture_LatchCaptureCheck_en.__LatchCapture_LatchCaptureCheck_en_3 (= LatchCapture_LatchCaptureCheck_en.idLatchCapture_LatchCaptureCheck_1 561))
        (and (or (not (= LatchCapture_LatchCaptureCheck_en.__LatchCapture_LatchCaptureCheck_en_3 true))
                (= LatchCapture_LatchCaptureCheck_en.idLatchCapture_LatchCaptureCheck_5 LatchCapture_LatchCaptureCheck_en.__LatchCapture_LatchCaptureCheck_en_9))
             (or (not (= LatchCapture_LatchCaptureCheck_en.__LatchCapture_LatchCaptureCheck_en_3 false))
@@ -655,8 +655,8 @@
                                             false
                                             LatchCapture_LatchCaptureCheck_en.__LatchCapture_LatchCaptureCheck_en_7
                                             LatchCapture_LatchCaptureCheck_en.__LatchCapture_LatchCaptureCheck_en_8)
-       (= LatchCapture_LatchCaptureCheck_en.__LatchCapture_LatchCaptureCheck_en_4 (= LatchCapture_LatchCaptureCheck_en.idLatchCapture_LatchCaptureCheck_1 1210))
-       (= LatchCapture_LatchCaptureCheck_en.__LatchCapture_LatchCaptureCheck_en_2 (= LatchCapture_LatchCaptureCheck_en.idLatchCapture_LatchCaptureCheck_1 1207))
+       (= LatchCapture_LatchCaptureCheck_en.__LatchCapture_LatchCaptureCheck_en_4 (= LatchCapture_LatchCaptureCheck_en.idLatchCapture_LatchCaptureCheck_1 562))
+       (= LatchCapture_LatchCaptureCheck_en.__LatchCapture_LatchCaptureCheck_en_2 (= LatchCapture_LatchCaptureCheck_en.idLatchCapture_LatchCaptureCheck_1 559))
        (LatchCaptureCheck_Docked_en LatchCapture_LatchCaptureCheck_en.idLatchCapture_LatchCaptureCheck_1
                                     LatchCapture_LatchCaptureCheck_en.LatchCaptureComplete_1
                                     false
@@ -692,7 +692,7 @@
                (= LatchCapture_LatchCaptureCheck_en.AttemptingToDock_2 LatchCapture_LatchCaptureCheck_en.AttemptingToDock_1))
        )
        (and (or (not (= LatchCapture_LatchCaptureCheck_en.__LatchCapture_LatchCaptureCheck_en_1 false))
-               (and (= LatchCapture_LatchCaptureCheck_en.idMissionPhaseStates_LatchCapture_3 1225)
+               (and (= LatchCapture_LatchCaptureCheck_en.idMissionPhaseStates_LatchCapture_3 577)
                     (= LatchCapture_LatchCaptureCheck_en.idLatchCapture_LatchCaptureCheck_3 LatchCapture_LatchCaptureCheck_en.idLatchCapture_LatchCaptureCheck_1)
                     (= LatchCapture_LatchCaptureCheck_en.LatchCapture_timer_3 LatchCapture_LatchCaptureCheck_en.LatchCapture_timer_1)
                     (= LatchCapture_LatchCaptureCheck_en.AttemptingToDock_3 LatchCapture_LatchCaptureCheck_en.AttemptingToDock_2)
@@ -700,7 +700,7 @@
                             (and (or (not (= LatchCapture_LatchCaptureCheck_en.__LatchCapture_LatchCaptureCheck_en_3 false))
                                     (and (or (not (= LatchCapture_LatchCaptureCheck_en.__LatchCapture_LatchCaptureCheck_en_4 false))
                                             (and (or (not (= LatchCapture_LatchCaptureCheck_en.__LatchCapture_LatchCaptureCheck_en_5 false))
-                                                    (and (= LatchCapture_LatchCaptureCheck_en.idMissionPhaseStates_LatchCapture_4 1225)
+                                                    (and (= LatchCapture_LatchCaptureCheck_en.idMissionPhaseStates_LatchCapture_4 577)
                                                          (= LatchCapture_LatchCaptureCheck_en.idLatchCapture_LatchCaptureCheck_8 LatchCapture_LatchCaptureCheck_en.idLatchCapture_LatchCaptureCheck_1)
                                                          (= LatchCapture_LatchCaptureCheck_en.LatchCapture_timer_5 LatchCapture_LatchCaptureCheck_en.LatchCapture_timer_1)
                                                          (= LatchCapture_LatchCaptureCheck_en.LatchCaptureComplete_3 LatchCapture_LatchCaptureCheck_en.LatchCaptureComplete_1)
@@ -740,7 +740,7 @@
                     )
                     ))
             (or (not (= LatchCapture_LatchCaptureCheck_en.__LatchCapture_LatchCaptureCheck_en_1 true))
-               (and (= LatchCapture_LatchCaptureCheck_en.idMissionPhaseStates_LatchCapture_3 1225)
+               (and (= LatchCapture_LatchCaptureCheck_en.idMissionPhaseStates_LatchCapture_3 577)
                     (= LatchCapture_LatchCaptureCheck_en.idLatchCapture_LatchCaptureCheck_3 LatchCapture_LatchCaptureCheck_en.idLatchCapture_LatchCaptureCheck_2)
                     (= LatchCapture_LatchCaptureCheck_en.LatchCapture_timer_3 LatchCapture_LatchCaptureCheck_en.LatchCapture_timer_2)
                     (= LatchCapture_LatchCaptureCheck_en.AttemptingToDock_3 LatchCapture_LatchCaptureCheck_en.AttemptingToDock_2)
@@ -814,7 +814,7 @@
                          false
                          LatchCapture_latch_en.__LatchCapture_latch_en_7
                          LatchCapture_latch_en.__LatchCapture_latch_en_8)
-       (= LatchCapture_latch_en.__LatchCapture_latch_en_6 (= LatchCapture_latch_en.idLatchCapture_latch_1 1222))
+       (= LatchCapture_latch_en.__LatchCapture_latch_en_6 (= LatchCapture_latch_en.idLatchCapture_latch_1 574))
        (and (or (not (= LatchCapture_latch_en.__LatchCapture_latch_en_6 false))
                (and (= LatchCapture_latch_en.latch_status_8 LatchCapture_latch_en.latch_status_1)
                     (= LatchCapture_latch_en.idLatchCapture_latch_8 LatchCapture_latch_en.idLatchCapture_latch_1)
@@ -824,7 +824,7 @@
                     (= LatchCapture_latch_en.idLatchCapture_latch_8 LatchCapture_latch_en.__LatchCapture_latch_en_7)
                     ))
        )
-       (= LatchCapture_latch_en.__LatchCapture_latch_en_5 (= LatchCapture_latch_en.idLatchCapture_latch_1 1219))
+       (= LatchCapture_latch_en.__LatchCapture_latch_en_5 (= LatchCapture_latch_en.idLatchCapture_latch_1 571))
        (latch_Mated_en LatchCapture_latch_en.idLatchCapture_latch_1
                        LatchCapture_latch_en.MATED
                        LatchCapture_latch_en.latch_status_1
@@ -840,7 +840,7 @@
                     (= LatchCapture_latch_en.idLatchCapture_latch_7 LatchCapture_latch_en.__LatchCapture_latch_en_9)
                     ))
        )
-       (= LatchCapture_latch_en.__LatchCapture_latch_en_4 (= LatchCapture_latch_en.idLatchCapture_latch_1 1218))
+       (= LatchCapture_latch_en.__LatchCapture_latch_en_4 (= LatchCapture_latch_en.idLatchCapture_latch_1 570))
        (latch_Closing_en LatchCapture_latch_en.idLatchCapture_latch_1
                          LatchCapture_latch_en.INDETERMINATE
                          LatchCapture_latch_en.latch_status_1
@@ -856,7 +856,7 @@
                     (= LatchCapture_latch_en.idLatchCapture_latch_6 LatchCapture_latch_en.__LatchCapture_latch_en_11)
                     ))
        )
-       (= LatchCapture_latch_en.__LatchCapture_latch_en_3 (= LatchCapture_latch_en.idLatchCapture_latch_1 1212))
+       (= LatchCapture_latch_en.__LatchCapture_latch_en_3 (= LatchCapture_latch_en.idLatchCapture_latch_1 564))
        (latch_Open_en LatchCapture_latch_en.idLatchCapture_latch_1
                       LatchCapture_latch_en.OPEN
                       LatchCapture_latch_en.latch_status_1
@@ -872,7 +872,7 @@
                     (= LatchCapture_latch_en.idLatchCapture_latch_5 LatchCapture_latch_en.__LatchCapture_latch_en_13)
                     ))
        )
-       (= LatchCapture_latch_en.__LatchCapture_latch_en_2 (= LatchCapture_latch_en.idLatchCapture_latch_1 1204))
+       (= LatchCapture_latch_en.__LatchCapture_latch_en_2 (= LatchCapture_latch_en.idLatchCapture_latch_1 556))
        (latch_ClosedButUnmated_en LatchCapture_latch_en.idLatchCapture_latch_1
                                   LatchCapture_latch_en.CLOSEDBUTUNMATED
                                   LatchCapture_latch_en.latch_status_1
@@ -897,7 +897,7 @@
        (= LatchCapture_latch_en.__LatchCapture_latch_en_1 (= LatchCapture_latch_en.idLatchCapture_latch_1 0))
        (and (or (not (= LatchCapture_latch_en.__LatchCapture_latch_en_1 false))
                (and (= LatchCapture_latch_en.latch_status_3 LatchCapture_latch_en.latch_status_1)
-                    (= LatchCapture_latch_en.idMissionPhaseStates_LatchCapture_3 1226)
+                    (= LatchCapture_latch_en.idMissionPhaseStates_LatchCapture_3 578)
                     (= LatchCapture_latch_en.idLatchCapture_latch_3 LatchCapture_latch_en.idLatchCapture_latch_1)
                     (and (or (not (= LatchCapture_latch_en.__LatchCapture_latch_en_2 false))
                             (and (or (not (= LatchCapture_latch_en.__LatchCapture_latch_en_3 false))
@@ -905,7 +905,7 @@
                                             (and (or (not (= LatchCapture_latch_en.__LatchCapture_latch_en_5 false))
                                                     (and (or (not (= LatchCapture_latch_en.__LatchCapture_latch_en_6 false))
                                                             (and (= LatchCapture_latch_en.latch_status_9 LatchCapture_latch_en.latch_status_1)
-                                                                 (= LatchCapture_latch_en.idMissionPhaseStates_LatchCapture_4 1226)
+                                                                 (= LatchCapture_latch_en.idMissionPhaseStates_LatchCapture_4 578)
                                                                  (= LatchCapture_latch_en.idLatchCapture_latch_9 LatchCapture_latch_en.idLatchCapture_latch_1)
                                                                  ))
                                                          (or (not (= LatchCapture_latch_en.__LatchCapture_latch_en_6 true))
@@ -941,7 +941,7 @@
                     ))
             (or (not (= LatchCapture_latch_en.__LatchCapture_latch_en_1 true))
                (and (= LatchCapture_latch_en.latch_status_3 LatchCapture_latch_en.latch_status_2)
-                    (= LatchCapture_latch_en.idMissionPhaseStates_LatchCapture_3 1226)
+                    (= LatchCapture_latch_en.idMissionPhaseStates_LatchCapture_3 578)
                     (= LatchCapture_latch_en.idLatchCapture_latch_3 LatchCapture_latch_en.idLatchCapture_latch_2)
                     (= LatchCapture_latch_en.latch_status_9 LatchCapture_latch_en.latch_status_3)
                     (= LatchCapture_latch_en.idMissionPhaseStates_LatchCapture_4 LatchCapture_latch_en.idMissionPhaseStates_LatchCapture_3)
@@ -1014,110 +1014,110 @@
   (latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED_IDL_unless latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED_IDL_unless.latchcapture_latchcapturecheck__restart_in latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED_IDL_unless.latchcapture_latchcapturecheck__state_in latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED_IDL_unless.latchcapture_latchcapturecheck__restart_act latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED_IDL_unless.latchcapture_latchcapturecheck__state_act)
 ))
 
-; latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.idLatchCapture_LatchCaptureCheck_1 Int)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.LatchCapture_timer_1 Int)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.AttemptingToDock_1 Bool)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.idChart_MissionPhaseStates_1 Int)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.idLatchCapture_latch_1 Int)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.idMissionPhaseStates_LatchCapture_1 Int)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.LatchCaptureComplete_1 Bool)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.latchcapture_latchcapturecheck__restart_in Bool)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.latchcapture_latchcapturecheck__state_in latchcapture_latchcapturecheck__type)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.AttemptingToDock_out Bool)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.LatchCaptureComplete_out Bool)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.LatchCapture_timer_out Int)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.idChart_MissionPhaseStates_out Int)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.idLatchCapture_LatchCaptureCheck_out Int)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.idLatchCapture_latch_out Int)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.idMissionPhaseStates_LatchCapture_out Int)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.idLatchCapture_LatchCaptureCheck_2 Int)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.idLatchCapture_LatchCaptureCheck_3 Int)
-(declare-rel latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until (Int Int Bool Int Int Int Bool Bool latchcapture_latchcapturecheck__type Bool Bool Int Int Int Int Int))
+; latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.idLatchCapture_LatchCaptureCheck_1 Int)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.LatchCapture_timer_1 Int)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.AttemptingToDock_1 Bool)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.idChart_MissionPhaseStates_1 Int)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.idLatchCapture_latch_1 Int)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.idMissionPhaseStates_LatchCapture_1 Int)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.LatchCaptureComplete_1 Bool)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.latchcapture_latchcapturecheck__restart_in Bool)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.latchcapture_latchcapturecheck__state_in latchcapture_latchcapturecheck__type)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.AttemptingToDock_out Bool)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.LatchCaptureComplete_out Bool)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.LatchCapture_timer_out Int)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.idChart_MissionPhaseStates_out Int)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.idLatchCapture_LatchCaptureCheck_out Int)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.idLatchCapture_latch_out Int)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.idMissionPhaseStates_LatchCapture_out Int)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.idLatchCapture_LatchCaptureCheck_2 Int)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.idLatchCapture_LatchCaptureCheck_3 Int)
+(declare-rel latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until (Int Int Bool Int Int Int Bool Bool latchcapture_latchcapturecheck__type Bool Bool Int Int Int Int Int))
 (rule (=> 
-  (and (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.latchcapture_latchcapturecheck__state_in POINTLatchCapture_LatchCaptureCheck)
-       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.latchcapture_latchcapturecheck__restart_in true)
-       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.idMissionPhaseStates_LatchCapture_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.idMissionPhaseStates_LatchCapture_1)
-       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.idLatchCapture_latch_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.idLatchCapture_latch_1)
-       (LatchCaptureCheck_CheckLatchMated_ex latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.idLatchCapture_LatchCaptureCheck_1
+  (and (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.latchcapture_latchcapturecheck__state_in POINTLatchCapture_LatchCaptureCheck)
+       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.latchcapture_latchcapturecheck__restart_in true)
+       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.idMissionPhaseStates_LatchCapture_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.idMissionPhaseStates_LatchCapture_1)
+       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.idLatchCapture_latch_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.idLatchCapture_latch_1)
+       (LatchCaptureCheck_CheckLatchMated_ex latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.idLatchCapture_LatchCaptureCheck_1
                                              false
-                                             latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.idLatchCapture_LatchCaptureCheck_2)
-       (LatchCaptureCheck_LatchFailed_en latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.idLatchCapture_LatchCaptureCheck_2
+                                             latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.idLatchCapture_LatchCaptureCheck_2)
+       (LatchCaptureCheck_LatchFailed_en latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.idLatchCapture_LatchCaptureCheck_2
                                          false
-                                         latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.idLatchCapture_LatchCaptureCheck_3)
-       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.idLatchCapture_LatchCaptureCheck_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.idLatchCapture_LatchCaptureCheck_3)
-       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.idChart_MissionPhaseStates_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.idChart_MissionPhaseStates_1)
-       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.LatchCapture_timer_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.LatchCapture_timer_1)
-       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.LatchCaptureComplete_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.LatchCaptureComplete_1)
-       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.AttemptingToDock_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.AttemptingToDock_1)
+                                         latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.idLatchCapture_LatchCaptureCheck_3)
+       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.idLatchCapture_LatchCaptureCheck_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.idLatchCapture_LatchCaptureCheck_3)
+       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.idChart_MissionPhaseStates_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.idChart_MissionPhaseStates_1)
+       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.LatchCapture_timer_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.LatchCapture_timer_1)
+       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.LatchCaptureComplete_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.LatchCaptureComplete_1)
+       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.AttemptingToDock_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.AttemptingToDock_1)
        )
-  (latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.idLatchCapture_LatchCaptureCheck_1 latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.LatchCapture_timer_1 latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.AttemptingToDock_1 latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.idChart_MissionPhaseStates_1 latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.idLatchCapture_latch_1 latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.idMissionPhaseStates_LatchCapture_1 latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.LatchCaptureComplete_1 latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.latchcapture_latchcapturecheck__restart_in latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.latchcapture_latchcapturecheck__state_in latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.AttemptingToDock_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.LatchCaptureComplete_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.LatchCapture_timer_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.idChart_MissionPhaseStates_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.idLatchCapture_LatchCaptureCheck_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.idLatchCapture_latch_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until.idMissionPhaseStates_LatchCapture_out)
+  (latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.idLatchCapture_LatchCaptureCheck_1 latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.LatchCapture_timer_1 latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.AttemptingToDock_1 latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.idChart_MissionPhaseStates_1 latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.idLatchCapture_latch_1 latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.idMissionPhaseStates_LatchCapture_1 latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.LatchCaptureComplete_1 latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.latchcapture_latchcapturecheck__restart_in latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.latchcapture_latchcapturecheck__state_in latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.AttemptingToDock_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.LatchCaptureComplete_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.LatchCapture_timer_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.idChart_MissionPhaseStates_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.idLatchCapture_LatchCaptureCheck_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.idLatchCapture_latch_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until.idMissionPhaseStates_LatchCapture_out)
 ))
 
-; latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_unless
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_unless.latchcapture_latchcapturecheck__restart_in Bool)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_unless.latchcapture_latchcapturecheck__state_in latchcapture_latchcapturecheck__type)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_unless.latchcapture_latchcapturecheck__restart_act Bool)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_unless.latchcapture_latchcapturecheck__state_act latchcapture_latchcapturecheck__type)
-(declare-rel latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_unless (Bool latchcapture_latchcapturecheck__type Bool latchcapture_latchcapturecheck__type))
+; latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_unless
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_unless.latchcapture_latchcapturecheck__restart_in Bool)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_unless.latchcapture_latchcapturecheck__state_in latchcapture_latchcapturecheck__type)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_unless.latchcapture_latchcapturecheck__restart_act Bool)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_unless.latchcapture_latchcapturecheck__state_act latchcapture_latchcapturecheck__type)
+(declare-rel latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_unless (Bool latchcapture_latchcapturecheck__type Bool latchcapture_latchcapturecheck__type))
 (rule (=> 
-  (and (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_unless.latchcapture_latchcapturecheck__state_act latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_unless.latchcapture_latchcapturecheck__state_in)
-       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_unless.latchcapture_latchcapturecheck__restart_act latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_unless.latchcapture_latchcapturecheck__restart_in)
+  (and (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_unless.latchcapture_latchcapturecheck__state_act latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_unless.latchcapture_latchcapturecheck__state_in)
+       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_unless.latchcapture_latchcapturecheck__restart_act latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_unless.latchcapture_latchcapturecheck__restart_in)
        )
-  (latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_unless latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_unless.latchcapture_latchcapturecheck__restart_in latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_unless.latchcapture_latchcapturecheck__state_in latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_unless.latchcapture_latchcapturecheck__restart_act latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_unless.latchcapture_latchcapturecheck__state_act)
+  (latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_unless latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_unless.latchcapture_latchcapturecheck__restart_in latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_unless.latchcapture_latchcapturecheck__state_in latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_unless.latchcapture_latchcapturecheck__restart_act latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_unless.latchcapture_latchcapturecheck__state_act)
 ))
 
-; latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.idLatchCapture_LatchCaptureCheck_1 Int)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.LatchCapture_timer_1 Int)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.AttemptingToDock_1 Bool)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.idChart_MissionPhaseStates_1 Int)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.idLatchCapture_latch_1 Int)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.idMissionPhaseStates_LatchCapture_1 Int)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.LatchCaptureComplete_1 Bool)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.latchcapture_latchcapturecheck__restart_in Bool)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.latchcapture_latchcapturecheck__state_in latchcapture_latchcapturecheck__type)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.AttemptingToDock_out Bool)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.LatchCaptureComplete_out Bool)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.LatchCapture_timer_out Int)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.idChart_MissionPhaseStates_out Int)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.idLatchCapture_LatchCaptureCheck_out Int)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.idLatchCapture_latch_out Int)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.idMissionPhaseStates_LatchCapture_out Int)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.idLatchCapture_LatchCaptureCheck_2 Int)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.idLatchCapture_LatchCaptureCheck_3 Int)
-(declare-rel latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until (Int Int Bool Int Int Int Bool Bool latchcapture_latchcapturecheck__type Bool Bool Int Int Int Int Int))
+; latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.idLatchCapture_LatchCaptureCheck_1 Int)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.LatchCapture_timer_1 Int)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.AttemptingToDock_1 Bool)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.idChart_MissionPhaseStates_1 Int)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.idLatchCapture_latch_1 Int)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.idMissionPhaseStates_LatchCapture_1 Int)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.LatchCaptureComplete_1 Bool)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.latchcapture_latchcapturecheck__restart_in Bool)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.latchcapture_latchcapturecheck__state_in latchcapture_latchcapturecheck__type)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.AttemptingToDock_out Bool)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.LatchCaptureComplete_out Bool)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.LatchCapture_timer_out Int)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.idChart_MissionPhaseStates_out Int)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.idLatchCapture_LatchCaptureCheck_out Int)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.idLatchCapture_latch_out Int)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.idMissionPhaseStates_LatchCapture_out Int)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.idLatchCapture_LatchCaptureCheck_2 Int)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.idLatchCapture_LatchCaptureCheck_3 Int)
+(declare-rel latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until (Int Int Bool Int Int Int Bool Bool latchcapture_latchcapturecheck__type Bool Bool Int Int Int Int Int))
 (rule (=> 
-  (and (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.latchcapture_latchcapturecheck__state_in POINTLatchCapture_LatchCaptureCheck)
-       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.latchcapture_latchcapturecheck__restart_in true)
-       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.idMissionPhaseStates_LatchCapture_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.idMissionPhaseStates_LatchCapture_1)
-       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.idLatchCapture_latch_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.idLatchCapture_latch_1)
-       (LatchCaptureCheck_CheckLatchMated_ex latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.idLatchCapture_LatchCaptureCheck_1
+  (and (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.latchcapture_latchcapturecheck__state_in POINTLatchCapture_LatchCaptureCheck)
+       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.latchcapture_latchcapturecheck__restart_in true)
+       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.idMissionPhaseStates_LatchCapture_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.idMissionPhaseStates_LatchCapture_1)
+       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.idLatchCapture_latch_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.idLatchCapture_latch_1)
+       (LatchCaptureCheck_CheckLatchMated_ex latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.idLatchCapture_LatchCaptureCheck_1
                                              false
-                                             latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.idLatchCapture_LatchCaptureCheck_2)
-       (LatchCaptureCheck_LatchFailed_en latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.idLatchCapture_LatchCaptureCheck_2
+                                             latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.idLatchCapture_LatchCaptureCheck_2)
+       (LatchCaptureCheck_LatchFailed_en latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.idLatchCapture_LatchCaptureCheck_2
                                          false
-                                         latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.idLatchCapture_LatchCaptureCheck_3)
-       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.idLatchCapture_LatchCaptureCheck_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.idLatchCapture_LatchCaptureCheck_3)
-       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.idChart_MissionPhaseStates_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.idChart_MissionPhaseStates_1)
-       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.LatchCapture_timer_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.LatchCapture_timer_1)
-       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.LatchCaptureComplete_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.LatchCaptureComplete_1)
-       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.AttemptingToDock_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.AttemptingToDock_1)
+                                         latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.idLatchCapture_LatchCaptureCheck_3)
+       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.idLatchCapture_LatchCaptureCheck_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.idLatchCapture_LatchCaptureCheck_3)
+       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.idChart_MissionPhaseStates_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.idChart_MissionPhaseStates_1)
+       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.LatchCapture_timer_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.LatchCapture_timer_1)
+       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.LatchCaptureComplete_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.LatchCaptureComplete_1)
+       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.AttemptingToDock_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.AttemptingToDock_1)
        )
-  (latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.idLatchCapture_LatchCaptureCheck_1 latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.LatchCapture_timer_1 latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.AttemptingToDock_1 latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.idChart_MissionPhaseStates_1 latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.idLatchCapture_latch_1 latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.idMissionPhaseStates_LatchCapture_1 latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.LatchCaptureComplete_1 latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.latchcapture_latchcapturecheck__restart_in latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.latchcapture_latchcapturecheck__state_in latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.AttemptingToDock_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.LatchCaptureComplete_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.LatchCapture_timer_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.idChart_MissionPhaseStates_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.idLatchCapture_LatchCaptureCheck_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.idLatchCapture_latch_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until.idMissionPhaseStates_LatchCapture_out)
+  (latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.idLatchCapture_LatchCaptureCheck_1 latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.LatchCapture_timer_1 latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.AttemptingToDock_1 latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.idChart_MissionPhaseStates_1 latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.idLatchCapture_latch_1 latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.idMissionPhaseStates_LatchCapture_1 latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.LatchCaptureComplete_1 latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.latchcapture_latchcapturecheck__restart_in latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.latchcapture_latchcapturecheck__state_in latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.AttemptingToDock_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.LatchCaptureComplete_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.LatchCapture_timer_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.idChart_MissionPhaseStates_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.idLatchCapture_LatchCaptureCheck_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.idLatchCapture_latch_out latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until.idMissionPhaseStates_LatchCapture_out)
 ))
 
-; latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_unless
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_unless.latchcapture_latchcapturecheck__restart_in Bool)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_unless.latchcapture_latchcapturecheck__state_in latchcapture_latchcapturecheck__type)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_unless.latchcapture_latchcapturecheck__restart_act Bool)
-(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_unless.latchcapture_latchcapturecheck__state_act latchcapture_latchcapturecheck__type)
-(declare-rel latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_unless (Bool latchcapture_latchcapturecheck__type Bool latchcapture_latchcapturecheck__type))
+; latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_unless
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_unless.latchcapture_latchcapturecheck__restart_in Bool)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_unless.latchcapture_latchcapturecheck__state_in latchcapture_latchcapturecheck__type)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_unless.latchcapture_latchcapturecheck__restart_act Bool)
+(declare-var latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_unless.latchcapture_latchcapturecheck__state_act latchcapture_latchcapturecheck__type)
+(declare-rel latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_unless (Bool latchcapture_latchcapturecheck__type Bool latchcapture_latchcapturecheck__type))
 (rule (=> 
-  (and (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_unless.latchcapture_latchcapturecheck__state_act latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_unless.latchcapture_latchcapturecheck__state_in)
-       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_unless.latchcapture_latchcapturecheck__restart_act latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_unless.latchcapture_latchcapturecheck__restart_in)
+  (and (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_unless.latchcapture_latchcapturecheck__state_act latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_unless.latchcapture_latchcapturecheck__state_in)
+       (= latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_unless.latchcapture_latchcapturecheck__restart_act latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_unless.latchcapture_latchcapturecheck__restart_in)
        )
-  (latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_unless latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_unless.latchcapture_latchcapturecheck__restart_in latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_unless.latchcapture_latchcapturecheck__state_in latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_unless.latchcapture_latchcapturecheck__restart_act latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_unless.latchcapture_latchcapturecheck__state_act)
+  (latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_unless latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_unless.latchcapture_latchcapturecheck__restart_in latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_unless.latchcapture_latchcapturecheck__state_in latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_unless.latchcapture_latchcapturecheck__restart_act latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_unless.latchcapture_latchcapturecheck__state_act)
 ))
 
 ; latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__LATCHCAPTURECHECK_DOCKED_1_handler_until
@@ -1603,15 +1603,15 @@
 (declare-var latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.__latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless_9 Bool)
 (declare-rel latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless (Bool latchcapture_latchcapturecheck__type Int Int Int Int Int Int Int Bool latchcapture_latchcapturecheck__type))
 (rule (=> 
-  (and (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.__latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless_9 (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.idLatchCapture_LatchCaptureCheck_1 1210))
-       (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.__latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless_8 (and (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.idLatchCapture_LatchCaptureCheck_1 1217) (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.LatchCapture_timer_1 latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.LatchCapture_timer_upper_limit)))
-       (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.__latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless_7 (and (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.idLatchCapture_LatchCaptureCheck_1 1217) (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.latch_status_1 latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.CLOSEDBUTUNMATED)))
-       (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.__latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless_6 (and (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.idLatchCapture_LatchCaptureCheck_1 1217) (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.latch_status_1 latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.MATED)))
-       (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.__latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless_5 (and (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.idLatchCapture_LatchCaptureCheck_1 1210) (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.LatchCapture_timer_1 latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.LatchCapture_timer_upper_limit)))
-       (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.__latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless_4 (and (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.idLatchCapture_LatchCaptureCheck_1 1210) (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.latch_status_1 latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.OPEN)))
-       (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.__latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless_3 (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.idLatchCapture_LatchCaptureCheck_1 1209))
-       (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.__latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless_2 (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.idLatchCapture_LatchCaptureCheck_1 1207))
-       (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.__latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless_10 (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.idLatchCapture_LatchCaptureCheck_1 1217))
+  (and (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.__latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless_9 (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.idLatchCapture_LatchCaptureCheck_1 562))
+       (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.__latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless_8 (and (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.idLatchCapture_LatchCaptureCheck_1 569) (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.LatchCapture_timer_1 latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.LatchCapture_timer_upper_limit)))
+       (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.__latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless_7 (and (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.idLatchCapture_LatchCaptureCheck_1 569) (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.latch_status_1 latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.CLOSEDBUTUNMATED)))
+       (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.__latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless_6 (and (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.idLatchCapture_LatchCaptureCheck_1 569) (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.latch_status_1 latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.MATED)))
+       (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.__latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless_5 (and (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.idLatchCapture_LatchCaptureCheck_1 562) (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.LatchCapture_timer_1 latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.LatchCapture_timer_upper_limit)))
+       (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.__latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless_4 (and (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.idLatchCapture_LatchCaptureCheck_1 562) (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.latch_status_1 latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.OPEN)))
+       (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.__latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless_3 (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.idLatchCapture_LatchCaptureCheck_1 561))
+       (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.__latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless_2 (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.idLatchCapture_LatchCaptureCheck_1 559))
+       (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.__latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless_10 (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.idLatchCapture_LatchCaptureCheck_1 569))
        (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.__latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless_1 (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.idLatchCapture_LatchCaptureCheck_1 0))
        (and (or (not (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.__latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless_1 false))
                (and (or (not (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.__latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless_2 false))
@@ -1659,12 +1659,12 @@
                                                                     ))
                                                                     (or (not (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.__latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless_8 true))
                                                                     (and 
-                                                                    (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.latchcapture_latchcapturecheck__state_act LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3)
+                                                                    (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.latchcapture_latchcapturecheck__state_act LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3)
                                                                     (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.latchcapture_latchcapturecheck__restart_act true)
                                                                     ))
                                                                ))
                                                             (or (not (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.__latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless_7 true))
-                                                               (and (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.latchcapture_latchcapturecheck__state_act LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2)
+                                                               (and (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.latchcapture_latchcapturecheck__state_act LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2)
                                                                     (= latchcapture_latchcapturecheck__POINTLatchCapture_LatchCaptureCheck_unless.latchcapture_latchcapturecheck__restart_act true)
                                                                     ))
                                                        ))
@@ -1784,47 +1784,47 @@
   (latchcapture_latch__LATCH_CLOSEDBUTUNMATED_IDL_unless latchcapture_latch__LATCH_CLOSEDBUTUNMATED_IDL_unless.latchcapture_latch__restart_in latchcapture_latch__LATCH_CLOSEDBUTUNMATED_IDL_unless.latchcapture_latch__state_in latchcapture_latch__LATCH_CLOSEDBUTUNMATED_IDL_unless.latchcapture_latch__restart_act latchcapture_latch__LATCH_CLOSEDBUTUNMATED_IDL_unless.latchcapture_latch__state_act)
 ))
 
-; latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until
-(declare-var latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.idLatchCapture_latch_1 Int)
-(declare-var latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.INDETERMINATE Int)
-(declare-var latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.latch_status_1 Int)
-(declare-var latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.latchcapture_latch__restart_in Bool)
-(declare-var latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.latchcapture_latch__state_in latchcapture_latch__type)
-(declare-var latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.idLatchCapture_latch_out Int)
-(declare-var latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.latch_status_out Int)
-(declare-var latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.idLatchCapture_latch_2 Int)
-(declare-var latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.idLatchCapture_latch_3 Int)
-(declare-var latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.latch_status_2 Int)
-(declare-rel latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until (Int Int Int Bool latchcapture_latch__type Int Int))
+; latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until
+(declare-var latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until.idLatchCapture_latch_1 Int)
+(declare-var latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until.INDETERMINATE Int)
+(declare-var latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until.latch_status_1 Int)
+(declare-var latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until.latchcapture_latch__restart_in Bool)
+(declare-var latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until.latchcapture_latch__state_in latchcapture_latch__type)
+(declare-var latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until.idLatchCapture_latch_out Int)
+(declare-var latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until.latch_status_out Int)
+(declare-var latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until.idLatchCapture_latch_2 Int)
+(declare-var latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until.idLatchCapture_latch_3 Int)
+(declare-var latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until.latch_status_2 Int)
+(declare-rel latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until (Int Int Int Bool latchcapture_latch__type Int Int))
 (rule (=> 
-  (and (= latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.latchcapture_latch__state_in POINTLatchCapture_latch)
-       (= latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.latchcapture_latch__restart_in true)
-       (latch_ClosedButUnmated_ex latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.idLatchCapture_latch_1
+  (and (= latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until.latchcapture_latch__state_in POINTLatchCapture_latch)
+       (= latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until.latchcapture_latch__restart_in true)
+       (latch_ClosedButUnmated_ex latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until.idLatchCapture_latch_1
                                   false
-                                  latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.idLatchCapture_latch_2)
-       (latch_Opening_en latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.idLatchCapture_latch_2
-                         latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.INDETERMINATE
-                         latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.latch_status_1
+                                  latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until.idLatchCapture_latch_2)
+       (latch_Opening_en latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until.idLatchCapture_latch_2
+                         latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until.INDETERMINATE
+                         latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until.latch_status_1
                          false
-                         latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.idLatchCapture_latch_3
-                         latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.latch_status_2)
-       (= latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.latch_status_out latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.latch_status_2)
-       (= latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.idLatchCapture_latch_out latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.idLatchCapture_latch_3)
+                         latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until.idLatchCapture_latch_3
+                         latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until.latch_status_2)
+       (= latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until.latch_status_out latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until.latch_status_2)
+       (= latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until.idLatchCapture_latch_out latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until.idLatchCapture_latch_3)
        )
-  (latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.idLatchCapture_latch_1 latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.INDETERMINATE latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.latch_status_1 latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.latchcapture_latch__restart_in latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.latchcapture_latch__state_in latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.idLatchCapture_latch_out latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.latch_status_out)
+  (latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until.idLatchCapture_latch_1 latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until.INDETERMINATE latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until.latch_status_1 latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until.latchcapture_latch__restart_in latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until.latchcapture_latch__state_in latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until.idLatchCapture_latch_out latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until.latch_status_out)
 ))
 
-; latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_unless
-(declare-var latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_unless.latchcapture_latch__restart_in Bool)
-(declare-var latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_unless.latchcapture_latch__state_in latchcapture_latch__type)
-(declare-var latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_unless.latchcapture_latch__restart_act Bool)
-(declare-var latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_unless.latchcapture_latch__state_act latchcapture_latch__type)
-(declare-rel latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_unless (Bool latchcapture_latch__type Bool latchcapture_latch__type))
+; latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_unless
+(declare-var latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_unless.latchcapture_latch__restart_in Bool)
+(declare-var latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_unless.latchcapture_latch__state_in latchcapture_latch__type)
+(declare-var latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_unless.latchcapture_latch__restart_act Bool)
+(declare-var latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_unless.latchcapture_latch__state_act latchcapture_latch__type)
+(declare-rel latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_unless (Bool latchcapture_latch__type Bool latchcapture_latch__type))
 (rule (=> 
-  (and (= latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_unless.latchcapture_latch__state_act latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_unless.latchcapture_latch__state_in)
-       (= latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_unless.latchcapture_latch__restart_act latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_unless.latchcapture_latch__restart_in)
+  (and (= latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_unless.latchcapture_latch__state_act latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_unless.latchcapture_latch__state_in)
+       (= latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_unless.latchcapture_latch__restart_act latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_unless.latchcapture_latch__restart_in)
        )
-  (latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_unless latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_unless.latchcapture_latch__restart_in latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_unless.latchcapture_latch__state_in latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_unless.latchcapture_latch__restart_act latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_unless.latchcapture_latch__state_act)
+  (latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_unless latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_unless.latchcapture_latch__restart_in latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_unless.latchcapture_latch__state_in latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_unless.latchcapture_latch__restart_act latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_unless.latchcapture_latch__state_act)
 ))
 
 ; latchcapture_latch__LATCH_CLOSING_IDL_handler_until
@@ -1857,47 +1857,47 @@
   (latchcapture_latch__LATCH_CLOSING_IDL_unless latchcapture_latch__LATCH_CLOSING_IDL_unless.latchcapture_latch__restart_in latchcapture_latch__LATCH_CLOSING_IDL_unless.latchcapture_latch__state_in latchcapture_latch__LATCH_CLOSING_IDL_unless.latchcapture_latch__restart_act latchcapture_latch__LATCH_CLOSING_IDL_unless.latchcapture_latch__state_act)
 ))
 
-; latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until
-(declare-var latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until.idLatchCapture_latch_1 Int)
-(declare-var latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until.INDETERMINATE Int)
-(declare-var latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until.latch_status_1 Int)
-(declare-var latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until.latchcapture_latch__restart_in Bool)
-(declare-var latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until.latchcapture_latch__state_in latchcapture_latch__type)
-(declare-var latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until.idLatchCapture_latch_out Int)
-(declare-var latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until.latch_status_out Int)
-(declare-var latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until.idLatchCapture_latch_2 Int)
-(declare-var latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until.idLatchCapture_latch_3 Int)
-(declare-var latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until.latch_status_2 Int)
-(declare-rel latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until (Int Int Int Bool latchcapture_latch__type Int Int))
+; latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until
+(declare-var latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until.idLatchCapture_latch_1 Int)
+(declare-var latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until.INDETERMINATE Int)
+(declare-var latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until.latch_status_1 Int)
+(declare-var latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until.latchcapture_latch__restart_in Bool)
+(declare-var latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until.latchcapture_latch__state_in latchcapture_latch__type)
+(declare-var latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until.idLatchCapture_latch_out Int)
+(declare-var latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until.latch_status_out Int)
+(declare-var latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until.idLatchCapture_latch_2 Int)
+(declare-var latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until.idLatchCapture_latch_3 Int)
+(declare-var latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until.latch_status_2 Int)
+(declare-rel latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until (Int Int Int Bool latchcapture_latch__type Int Int))
 (rule (=> 
-  (and (= latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until.latchcapture_latch__state_in POINTLatchCapture_latch)
-       (= latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until.latchcapture_latch__restart_in true)
-       (latch_Closing_ex latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until.idLatchCapture_latch_1
+  (and (= latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until.latchcapture_latch__state_in POINTLatchCapture_latch)
+       (= latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until.latchcapture_latch__restart_in true)
+       (latch_Closing_ex latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until.idLatchCapture_latch_1
                          false
-                         latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until.idLatchCapture_latch_2)
-       (latch_Opening_en latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until.idLatchCapture_latch_2
-                         latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until.INDETERMINATE
-                         latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until.latch_status_1
+                         latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until.idLatchCapture_latch_2)
+       (latch_Opening_en latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until.idLatchCapture_latch_2
+                         latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until.INDETERMINATE
+                         latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until.latch_status_1
                          false
-                         latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until.idLatchCapture_latch_3
-                         latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until.latch_status_2)
-       (= latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until.latch_status_out latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until.latch_status_2)
-       (= latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until.idLatchCapture_latch_out latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until.idLatchCapture_latch_3)
+                         latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until.idLatchCapture_latch_3
+                         latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until.latch_status_2)
+       (= latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until.latch_status_out latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until.latch_status_2)
+       (= latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until.idLatchCapture_latch_out latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until.idLatchCapture_latch_3)
        )
-  (latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until.idLatchCapture_latch_1 latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until.INDETERMINATE latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until.latch_status_1 latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until.latchcapture_latch__restart_in latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until.latchcapture_latch__state_in latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until.idLatchCapture_latch_out latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until.latch_status_out)
+  (latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until.idLatchCapture_latch_1 latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until.INDETERMINATE latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until.latch_status_1 latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until.latchcapture_latch__restart_in latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until.latchcapture_latch__state_in latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until.idLatchCapture_latch_out latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until.latch_status_out)
 ))
 
-; latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_unless
-(declare-var latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_unless.latchcapture_latch__restart_in Bool)
-(declare-var latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_unless.latchcapture_latch__state_in latchcapture_latch__type)
-(declare-var latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_unless.latchcapture_latch__restart_act Bool)
-(declare-var latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_unless.latchcapture_latch__state_act latchcapture_latch__type)
-(declare-rel latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_unless (Bool latchcapture_latch__type Bool latchcapture_latch__type))
+; latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_unless
+(declare-var latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_unless.latchcapture_latch__restart_in Bool)
+(declare-var latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_unless.latchcapture_latch__state_in latchcapture_latch__type)
+(declare-var latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_unless.latchcapture_latch__restart_act Bool)
+(declare-var latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_unless.latchcapture_latch__state_act latchcapture_latch__type)
+(declare-rel latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_unless (Bool latchcapture_latch__type Bool latchcapture_latch__type))
 (rule (=> 
-  (and (= latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_unless.latchcapture_latch__state_act latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_unless.latchcapture_latch__state_in)
-       (= latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_unless.latchcapture_latch__restart_act latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_unless.latchcapture_latch__restart_in)
+  (and (= latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_unless.latchcapture_latch__state_act latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_unless.latchcapture_latch__state_in)
+       (= latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_unless.latchcapture_latch__restart_act latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_unless.latchcapture_latch__restart_in)
        )
-  (latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_unless latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_unless.latchcapture_latch__restart_in latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_unless.latchcapture_latch__state_in latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_unless.latchcapture_latch__restart_act latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_unless.latchcapture_latch__state_act)
+  (latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_unless latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_unless.latchcapture_latch__restart_in latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_unless.latchcapture_latch__state_in latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_unless.latchcapture_latch__restart_act latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_unless.latchcapture_latch__state_act)
 ))
 
 ; latchcapture_latch__LATCH_CLOSING__TO__LATCH_CLOSEDBUTUNMATED_3_handler_until
@@ -2016,47 +2016,47 @@
   (latchcapture_latch__LATCH_MATED_IDL_unless latchcapture_latch__LATCH_MATED_IDL_unless.latchcapture_latch__restart_in latchcapture_latch__LATCH_MATED_IDL_unless.latchcapture_latch__state_in latchcapture_latch__LATCH_MATED_IDL_unless.latchcapture_latch__restart_act latchcapture_latch__LATCH_MATED_IDL_unless.latchcapture_latch__state_act)
 ))
 
-; latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until
-(declare-var latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.idLatchCapture_latch_1 Int)
-(declare-var latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.INDETERMINATE Int)
-(declare-var latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.latch_status_1 Int)
-(declare-var latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.latchcapture_latch__restart_in Bool)
-(declare-var latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.latchcapture_latch__state_in latchcapture_latch__type)
-(declare-var latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.idLatchCapture_latch_out Int)
-(declare-var latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.latch_status_out Int)
-(declare-var latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.idLatchCapture_latch_2 Int)
-(declare-var latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.idLatchCapture_latch_3 Int)
-(declare-var latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.latch_status_2 Int)
-(declare-rel latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until (Int Int Int Bool latchcapture_latch__type Int Int))
+; latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until
+(declare-var latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until.idLatchCapture_latch_1 Int)
+(declare-var latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until.INDETERMINATE Int)
+(declare-var latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until.latch_status_1 Int)
+(declare-var latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until.latchcapture_latch__restart_in Bool)
+(declare-var latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until.latchcapture_latch__state_in latchcapture_latch__type)
+(declare-var latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until.idLatchCapture_latch_out Int)
+(declare-var latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until.latch_status_out Int)
+(declare-var latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until.idLatchCapture_latch_2 Int)
+(declare-var latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until.idLatchCapture_latch_3 Int)
+(declare-var latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until.latch_status_2 Int)
+(declare-rel latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until (Int Int Int Bool latchcapture_latch__type Int Int))
 (rule (=> 
-  (and (= latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.latchcapture_latch__state_in POINTLatchCapture_latch)
-       (= latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.latchcapture_latch__restart_in true)
-       (latch_Mated_ex latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.idLatchCapture_latch_1
+  (and (= latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until.latchcapture_latch__state_in POINTLatchCapture_latch)
+       (= latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until.latchcapture_latch__restart_in true)
+       (latch_Mated_ex latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until.idLatchCapture_latch_1
                        false
-                       latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.idLatchCapture_latch_2)
-       (latch_Opening_en latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.idLatchCapture_latch_2
-                         latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.INDETERMINATE
-                         latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.latch_status_1
+                       latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until.idLatchCapture_latch_2)
+       (latch_Opening_en latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until.idLatchCapture_latch_2
+                         latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until.INDETERMINATE
+                         latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until.latch_status_1
                          false
-                         latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.idLatchCapture_latch_3
-                         latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.latch_status_2)
-       (= latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.latch_status_out latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.latch_status_2)
-       (= latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.idLatchCapture_latch_out latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.idLatchCapture_latch_3)
+                         latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until.idLatchCapture_latch_3
+                         latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until.latch_status_2)
+       (= latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until.latch_status_out latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until.latch_status_2)
+       (= latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until.idLatchCapture_latch_out latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until.idLatchCapture_latch_3)
        )
-  (latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.idLatchCapture_latch_1 latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.INDETERMINATE latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.latch_status_1 latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.latchcapture_latch__restart_in latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.latchcapture_latch__state_in latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.idLatchCapture_latch_out latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until.latch_status_out)
+  (latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until.idLatchCapture_latch_1 latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until.INDETERMINATE latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until.latch_status_1 latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until.latchcapture_latch__restart_in latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until.latchcapture_latch__state_in latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until.idLatchCapture_latch_out latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until.latch_status_out)
 ))
 
-; latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_unless
-(declare-var latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_unless.latchcapture_latch__restart_in Bool)
-(declare-var latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_unless.latchcapture_latch__state_in latchcapture_latch__type)
-(declare-var latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_unless.latchcapture_latch__restart_act Bool)
-(declare-var latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_unless.latchcapture_latch__state_act latchcapture_latch__type)
-(declare-rel latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_unless (Bool latchcapture_latch__type Bool latchcapture_latch__type))
+; latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_unless
+(declare-var latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_unless.latchcapture_latch__restart_in Bool)
+(declare-var latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_unless.latchcapture_latch__state_in latchcapture_latch__type)
+(declare-var latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_unless.latchcapture_latch__restart_act Bool)
+(declare-var latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_unless.latchcapture_latch__state_act latchcapture_latch__type)
+(declare-rel latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_unless (Bool latchcapture_latch__type Bool latchcapture_latch__type))
 (rule (=> 
-  (and (= latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_unless.latchcapture_latch__state_act latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_unless.latchcapture_latch__state_in)
-       (= latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_unless.latchcapture_latch__restart_act latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_unless.latchcapture_latch__restart_in)
+  (and (= latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_unless.latchcapture_latch__state_act latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_unless.latchcapture_latch__state_in)
+       (= latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_unless.latchcapture_latch__restart_act latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_unless.latchcapture_latch__restart_in)
        )
-  (latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_unless latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_unless.latchcapture_latch__restart_in latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_unless.latchcapture_latch__state_in latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_unless.latchcapture_latch__restart_act latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_unless.latchcapture_latch__state_act)
+  (latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_unless latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_unless.latchcapture_latch__restart_in latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_unless.latchcapture_latch__state_in latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_unless.latchcapture_latch__restart_act latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_unless.latchcapture_latch__state_act)
 ))
 
 ; latchcapture_latch__LATCH_OPENING_IDL_handler_until
@@ -2279,11 +2279,11 @@
 (declare-var latchcapture_latch__POINTLatchCapture_latch_unless.__latchcapture_latch__POINTLatchCapture_latch_unless_6 Bool)
 (declare-rel latchcapture_latch__POINTLatchCapture_latch_unless (Bool latchcapture_latch__type Int Bool latchcapture_latch__type))
 (rule (=> 
-  (and (= latchcapture_latch__POINTLatchCapture_latch_unless.__latchcapture_latch__POINTLatchCapture_latch_unless_6 (= latchcapture_latch__POINTLatchCapture_latch_unless.idLatchCapture_latch_1 1222))
-       (= latchcapture_latch__POINTLatchCapture_latch_unless.__latchcapture_latch__POINTLatchCapture_latch_unless_5 (= latchcapture_latch__POINTLatchCapture_latch_unless.idLatchCapture_latch_1 1219))
-       (= latchcapture_latch__POINTLatchCapture_latch_unless.__latchcapture_latch__POINTLatchCapture_latch_unless_4 (= latchcapture_latch__POINTLatchCapture_latch_unless.idLatchCapture_latch_1 1218))
-       (= latchcapture_latch__POINTLatchCapture_latch_unless.__latchcapture_latch__POINTLatchCapture_latch_unless_3 (= latchcapture_latch__POINTLatchCapture_latch_unless.idLatchCapture_latch_1 1212))
-       (= latchcapture_latch__POINTLatchCapture_latch_unless.__latchcapture_latch__POINTLatchCapture_latch_unless_2 (= latchcapture_latch__POINTLatchCapture_latch_unless.idLatchCapture_latch_1 1204))
+  (and (= latchcapture_latch__POINTLatchCapture_latch_unless.__latchcapture_latch__POINTLatchCapture_latch_unless_6 (= latchcapture_latch__POINTLatchCapture_latch_unless.idLatchCapture_latch_1 574))
+       (= latchcapture_latch__POINTLatchCapture_latch_unless.__latchcapture_latch__POINTLatchCapture_latch_unless_5 (= latchcapture_latch__POINTLatchCapture_latch_unless.idLatchCapture_latch_1 571))
+       (= latchcapture_latch__POINTLatchCapture_latch_unless.__latchcapture_latch__POINTLatchCapture_latch_unless_4 (= latchcapture_latch__POINTLatchCapture_latch_unless.idLatchCapture_latch_1 570))
+       (= latchcapture_latch__POINTLatchCapture_latch_unless.__latchcapture_latch__POINTLatchCapture_latch_unless_3 (= latchcapture_latch__POINTLatchCapture_latch_unless.idLatchCapture_latch_1 564))
+       (= latchcapture_latch__POINTLatchCapture_latch_unless.__latchcapture_latch__POINTLatchCapture_latch_unless_2 (= latchcapture_latch__POINTLatchCapture_latch_unless.idLatchCapture_latch_1 556))
        (= latchcapture_latch__POINTLatchCapture_latch_unless.__latchcapture_latch__POINTLatchCapture_latch_unless_1 (= latchcapture_latch__POINTLatchCapture_latch_unless.idLatchCapture_latch_1 0))
        (and (or (not (= latchcapture_latch__POINTLatchCapture_latch_unless.__latchcapture_latch__POINTLatchCapture_latch_unless_1 false))
                (and (or (not (= latchcapture_latch__POINTLatchCapture_latch_unless.__latchcapture_latch__POINTLatchCapture_latch_unless_2 false))
@@ -2352,7 +2352,7 @@
                                                                     ))
                                                                ))
                                                             (or (not (= latchcapture_latch__POINTLatchCapture_latch_unless.__latchcapture_latch__POINTLatchCapture_latch_unless_5 true))
-                                                               (and (= latchcapture_latch__POINTLatchCapture_latch_unless.latchcapture_latch__state_act LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1)
+                                                               (and (= latchcapture_latch__POINTLatchCapture_latch_unless.latchcapture_latch__state_act LATCH_MATED__TO__CHART_CHARTJUNCTION609_1)
                                                                     (= latchcapture_latch__POINTLatchCapture_latch_unless.latchcapture_latch__restart_act true)
                                                                     ))
                                                        ))
@@ -2362,7 +2362,7 @@
                                                             ))
                                                ))
                                             (or (not (= latchcapture_latch__POINTLatchCapture_latch_unless.__latchcapture_latch__POINTLatchCapture_latch_unless_4 true))
-                                               (and (= latchcapture_latch__POINTLatchCapture_latch_unless.latchcapture_latch__state_act LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2)
+                                               (and (= latchcapture_latch__POINTLatchCapture_latch_unless.latchcapture_latch__state_act LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2)
                                                     (= latchcapture_latch__POINTLatchCapture_latch_unless.latchcapture_latch__restart_act true)
                                                     ))
                                        ))
@@ -2377,7 +2377,7 @@
                                     ))
                        ))
                     (or (not (= latchcapture_latch__POINTLatchCapture_latch_unless.__latchcapture_latch__POINTLatchCapture_latch_unless_2 true))
-                       (and (= latchcapture_latch__POINTLatchCapture_latch_unless.latchcapture_latch__state_act LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1)
+                       (and (= latchcapture_latch__POINTLatchCapture_latch_unless.latchcapture_latch__state_act LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1)
                             (= latchcapture_latch__POINTLatchCapture_latch_unless.latchcapture_latch__restart_act true)
                             ))
                ))
@@ -2450,7 +2450,7 @@
             (or (not (= (not MissionPhaseStates_ApproachOrbit_ex.isInner) false))
                (= MissionPhaseStates_ApproachOrbit_ex.idChart_MissionPhaseStates_2 MissionPhaseStates_ApproachOrbit_ex.idChart_MissionPhaseStates_1))
        )
-       (= MissionPhaseStates_ApproachOrbit_ex.idChart_MissionPhaseStates MissionPhaseStates_ApproachOrbit_ex.idChart_MissionPhaseStates_2)
+       (= MissionPhaseStates_ApproachOrbit_ex.idChart_MissionPhaseStates MissionPhaseStates_ApproachOrbit_ex.idChart_MissionPhaseStates_1)
        )
   (MissionPhaseStates_ApproachOrbit_ex MissionPhaseStates_ApproachOrbit_ex.idChart_MissionPhaseStates_1 MissionPhaseStates_ApproachOrbit_ex.isInner MissionPhaseStates_ApproachOrbit_ex.idChart_MissionPhaseStates)
 ))
@@ -2461,7 +2461,7 @@
 (declare-var MissionPhaseStates_ProximityOperations_en.idChart_MissionPhaseStates Int)
 (declare-rel MissionPhaseStates_ProximityOperations_en (Int Bool Int))
 (rule (=> 
-  (= MissionPhaseStates_ProximityOperations_en.idChart_MissionPhaseStates 1215)
+  (= MissionPhaseStates_ProximityOperations_en.idChart_MissionPhaseStates 567)
   (MissionPhaseStates_ProximityOperations_en MissionPhaseStates_ProximityOperations_en.idChart_MissionPhaseStates_1 MissionPhaseStates_ProximityOperations_en.isInner MissionPhaseStates_ProximityOperations_en.idChart_MissionPhaseStates)
 ))
 
@@ -2477,7 +2477,7 @@
             (or (not (= (not MissionPhaseStates_CaptureApproach_ex.isInner) false))
                (= MissionPhaseStates_CaptureApproach_ex.idChart_MissionPhaseStates_2 MissionPhaseStates_CaptureApproach_ex.idChart_MissionPhaseStates_1))
        )
-       (= MissionPhaseStates_CaptureApproach_ex.idChart_MissionPhaseStates MissionPhaseStates_CaptureApproach_ex.idChart_MissionPhaseStates_2)
+       (= MissionPhaseStates_CaptureApproach_ex.idChart_MissionPhaseStates MissionPhaseStates_CaptureApproach_ex.idChart_MissionPhaseStates_1)
        )
   (MissionPhaseStates_CaptureApproach_ex MissionPhaseStates_CaptureApproach_ex.idChart_MissionPhaseStates_1 MissionPhaseStates_CaptureApproach_ex.isInner MissionPhaseStates_CaptureApproach_ex.idChart_MissionPhaseStates)
 ))
@@ -2488,7 +2488,7 @@
 (declare-var MissionPhaseStates_CollisionAvoidanceManuever_en.idChart_MissionPhaseStates Int)
 (declare-rel MissionPhaseStates_CollisionAvoidanceManuever_en (Int Bool Int))
 (rule (=> 
-  (= MissionPhaseStates_CollisionAvoidanceManuever_en.idChart_MissionPhaseStates 1211)
+  (= MissionPhaseStates_CollisionAvoidanceManuever_en.idChart_MissionPhaseStates 563)
   (MissionPhaseStates_CollisionAvoidanceManuever_en MissionPhaseStates_CollisionAvoidanceManuever_en.idChart_MissionPhaseStates_1 MissionPhaseStates_CollisionAvoidanceManuever_en.isInner MissionPhaseStates_CollisionAvoidanceManuever_en.idChart_MissionPhaseStates)
 ))
 
@@ -2507,7 +2507,7 @@
 (declare-var MissionPhaseStates_ApproachOrbit_en.idChart_MissionPhaseStates Int)
 (declare-rel MissionPhaseStates_ApproachOrbit_en (Int Bool Int))
 (rule (=> 
-  (= MissionPhaseStates_ApproachOrbit_en.idChart_MissionPhaseStates 1213)
+  (= MissionPhaseStates_ApproachOrbit_en.idChart_MissionPhaseStates 565)
   (MissionPhaseStates_ApproachOrbit_en MissionPhaseStates_ApproachOrbit_en.idChart_MissionPhaseStates_1 MissionPhaseStates_ApproachOrbit_en.isInner MissionPhaseStates_ApproachOrbit_en.idChart_MissionPhaseStates)
 ))
 
@@ -2547,7 +2547,7 @@
                     (= MissionPhaseStates_CollisionAvoidanceManuever_ex.ApproachOrbitComplete_2 false)
                     ))
        )
-       (= MissionPhaseStates_CollisionAvoidanceManuever_ex.idChart_MissionPhaseStates MissionPhaseStates_CollisionAvoidanceManuever_ex.idChart_MissionPhaseStates_2)
+       (= MissionPhaseStates_CollisionAvoidanceManuever_ex.idChart_MissionPhaseStates MissionPhaseStates_CollisionAvoidanceManuever_ex.idChart_MissionPhaseStates_1)
        (= MissionPhaseStates_CollisionAvoidanceManuever_ex.ProximityOperationsComplete MissionPhaseStates_CollisionAvoidanceManuever_ex.ProximityOperationsComplete_2)
        (= MissionPhaseStates_CollisionAvoidanceManuever_ex.FarApproachComplete MissionPhaseStates_CollisionAvoidanceManuever_ex.FarApproachComplete_2)
        (= MissionPhaseStates_CollisionAvoidanceManuever_ex.CaptureApproachComplete MissionPhaseStates_CollisionAvoidanceManuever_ex.CaptureApproachComplete_2)
@@ -2570,7 +2570,7 @@
             (or (not (= (not MissionPhaseStates_FailedApproach_en.isInner) false))
                (= MissionPhaseStates_FailedApproach_en.FailedApproach_2 MissionPhaseStates_FailedApproach_en.FailedApproach_1))
        )
-       (= MissionPhaseStates_FailedApproach_en.idChart_MissionPhaseStates 1224)
+       (= MissionPhaseStates_FailedApproach_en.idChart_MissionPhaseStates 576)
        (= MissionPhaseStates_FailedApproach_en.FailedApproach MissionPhaseStates_FailedApproach_en.FailedApproach_2)
        )
   (MissionPhaseStates_FailedApproach_en MissionPhaseStates_FailedApproach_en.idChart_MissionPhaseStates_1 MissionPhaseStates_FailedApproach_en.FailedApproach_1 MissionPhaseStates_FailedApproach_en.isInner MissionPhaseStates_FailedApproach_en.idChart_MissionPhaseStates MissionPhaseStates_FailedApproach_en.FailedApproach)
@@ -2588,7 +2588,7 @@
             (or (not (= (not MissionPhaseStates_Disengage_ex.isInner) false))
                (= MissionPhaseStates_Disengage_ex.idChart_MissionPhaseStates_2 MissionPhaseStates_Disengage_ex.idChart_MissionPhaseStates_1))
        )
-       (= MissionPhaseStates_Disengage_ex.idChart_MissionPhaseStates MissionPhaseStates_Disengage_ex.idChart_MissionPhaseStates_2)
+       (= MissionPhaseStates_Disengage_ex.idChart_MissionPhaseStates MissionPhaseStates_Disengage_ex.idChart_MissionPhaseStates_1)
        )
   (MissionPhaseStates_Disengage_ex MissionPhaseStates_Disengage_ex.idChart_MissionPhaseStates_1 MissionPhaseStates_Disengage_ex.isInner MissionPhaseStates_Disengage_ex.idChart_MissionPhaseStates)
 ))
@@ -2599,7 +2599,7 @@
 (declare-var MissionPhaseStates_CaptureApproach_en.idChart_MissionPhaseStates Int)
 (declare-rel MissionPhaseStates_CaptureApproach_en (Int Bool Int))
 (rule (=> 
-  (= MissionPhaseStates_CaptureApproach_en.idChart_MissionPhaseStates 1221)
+  (= MissionPhaseStates_CaptureApproach_en.idChart_MissionPhaseStates 573)
   (MissionPhaseStates_CaptureApproach_en MissionPhaseStates_CaptureApproach_en.idChart_MissionPhaseStates_1 MissionPhaseStates_CaptureApproach_en.isInner MissionPhaseStates_CaptureApproach_en.idChart_MissionPhaseStates)
 ))
 
@@ -2615,7 +2615,7 @@
             (or (not (= (not MissionPhaseStates_DockingApproach_ex.isInner) false))
                (= MissionPhaseStates_DockingApproach_ex.idChart_MissionPhaseStates_2 MissionPhaseStates_DockingApproach_ex.idChart_MissionPhaseStates_1))
        )
-       (= MissionPhaseStates_DockingApproach_ex.idChart_MissionPhaseStates MissionPhaseStates_DockingApproach_ex.idChart_MissionPhaseStates_2)
+       (= MissionPhaseStates_DockingApproach_ex.idChart_MissionPhaseStates MissionPhaseStates_DockingApproach_ex.idChart_MissionPhaseStates_1)
        )
   (MissionPhaseStates_DockingApproach_ex MissionPhaseStates_DockingApproach_ex.idChart_MissionPhaseStates_1 MissionPhaseStates_DockingApproach_ex.isInner MissionPhaseStates_DockingApproach_ex.idChart_MissionPhaseStates)
 ))
@@ -2687,7 +2687,7 @@
        (= MissionPhaseStates_LatchCapture_en.idMissionPhaseStates_LatchCapture MissionPhaseStates_LatchCapture_en.idMissionPhaseStates_LatchCapture_3)
        (= MissionPhaseStates_LatchCapture_en.idLatchCapture_latch MissionPhaseStates_LatchCapture_en.idLatchCapture_latch_2)
        (= MissionPhaseStates_LatchCapture_en.idLatchCapture_LatchCaptureCheck MissionPhaseStates_LatchCapture_en.idLatchCapture_LatchCaptureCheck_2)
-       (= MissionPhaseStates_LatchCapture_en.idChart_MissionPhaseStates 1223)
+       (= MissionPhaseStates_LatchCapture_en.idChart_MissionPhaseStates 575)
        (= MissionPhaseStates_LatchCapture_en.LatchCapture_timer MissionPhaseStates_LatchCapture_en.LatchCapture_timer_2)
        (= MissionPhaseStates_LatchCapture_en.LatchCaptureComplete MissionPhaseStates_LatchCapture_en.LatchCaptureComplete_2)
        (= MissionPhaseStates_LatchCapture_en.AttemptingToDock MissionPhaseStates_LatchCapture_en.AttemptingToDock_2)
@@ -2716,7 +2716,7 @@
             (or (not (= (not MissionPhaseStates_FarApproach_ex.isInner) false))
                (= MissionPhaseStates_FarApproach_ex.idChart_MissionPhaseStates_2 MissionPhaseStates_FarApproach_ex.idChart_MissionPhaseStates_1))
        )
-       (= MissionPhaseStates_FarApproach_ex.idChart_MissionPhaseStates MissionPhaseStates_FarApproach_ex.idChart_MissionPhaseStates_2)
+       (= MissionPhaseStates_FarApproach_ex.idChart_MissionPhaseStates MissionPhaseStates_FarApproach_ex.idChart_MissionPhaseStates_1)
        )
   (MissionPhaseStates_FarApproach_ex MissionPhaseStates_FarApproach_ex.idChart_MissionPhaseStates_1 MissionPhaseStates_FarApproach_ex.isInner MissionPhaseStates_FarApproach_ex.idChart_MissionPhaseStates)
 ))
@@ -2727,7 +2727,7 @@
 (declare-var MissionPhaseStates_Disengage_en.idChart_MissionPhaseStates Int)
 (declare-rel MissionPhaseStates_Disengage_en (Int Bool Int))
 (rule (=> 
-  (= MissionPhaseStates_Disengage_en.idChart_MissionPhaseStates 1214)
+  (= MissionPhaseStates_Disengage_en.idChart_MissionPhaseStates 566)
   (MissionPhaseStates_Disengage_en MissionPhaseStates_Disengage_en.idChart_MissionPhaseStates_1 MissionPhaseStates_Disengage_en.isInner MissionPhaseStates_Disengage_en.idChart_MissionPhaseStates)
 ))
 
@@ -2743,7 +2743,7 @@
             (or (not (= (not MissionPhaseStates_JointStabilize_ex.isInner) false))
                (= MissionPhaseStates_JointStabilize_ex.idChart_MissionPhaseStates_2 MissionPhaseStates_JointStabilize_ex.idChart_MissionPhaseStates_1))
        )
-       (= MissionPhaseStates_JointStabilize_ex.idChart_MissionPhaseStates MissionPhaseStates_JointStabilize_ex.idChart_MissionPhaseStates_2)
+       (= MissionPhaseStates_JointStabilize_ex.idChart_MissionPhaseStates MissionPhaseStates_JointStabilize_ex.idChart_MissionPhaseStates_1)
        )
   (MissionPhaseStates_JointStabilize_ex MissionPhaseStates_JointStabilize_ex.idChart_MissionPhaseStates_1 MissionPhaseStates_JointStabilize_ex.isInner MissionPhaseStates_JointStabilize_ex.idChart_MissionPhaseStates)
 ))
@@ -2762,7 +2762,7 @@
             (or (not (= (not MissionPhaseStates_JointMission_en.isInner) false))
                (= MissionPhaseStates_JointMission_en.JointMission_2 MissionPhaseStates_JointMission_en.JointMission_1))
        )
-       (= MissionPhaseStates_JointMission_en.idChart_MissionPhaseStates 1216)
+       (= MissionPhaseStates_JointMission_en.idChart_MissionPhaseStates 568)
        (= MissionPhaseStates_JointMission_en.JointMission MissionPhaseStates_JointMission_en.JointMission_2)
        )
   (MissionPhaseStates_JointMission_en MissionPhaseStates_JointMission_en.idChart_MissionPhaseStates_1 MissionPhaseStates_JointMission_en.JointMission_1 MissionPhaseStates_JointMission_en.isInner MissionPhaseStates_JointMission_en.idChart_MissionPhaseStates MissionPhaseStates_JointMission_en.JointMission)
@@ -3001,8 +3001,8 @@
                     (= LatchCapture_LatchCaptureCheck_node.latchcapture_latchcapturecheck__state_act LatchCapture_LatchCaptureCheck_node.__LatchCapture_LatchCaptureCheck_node_2)
                     (= LatchCapture_LatchCaptureCheck_node.latchcapture_latchcapturecheck__restart_act LatchCapture_LatchCaptureCheck_node.__LatchCapture_LatchCaptureCheck_node_1)
                     ))
-            (or (not (= LatchCapture_LatchCaptureCheck_node.latchcapture_latchcapturecheck__state_in LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2))
-               (and (latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_unless 
+            (or (not (= LatchCapture_LatchCaptureCheck_node.latchcapture_latchcapturecheck__state_in LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2))
+               (and (latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_unless 
                     LatchCapture_LatchCaptureCheck_node.latchcapture_latchcapturecheck__restart_in
                     LatchCapture_LatchCaptureCheck_node.latchcapture_latchcapturecheck__state_in
                     LatchCapture_LatchCaptureCheck_node.__LatchCapture_LatchCaptureCheck_node_11
@@ -3010,8 +3010,8 @@
                     (= LatchCapture_LatchCaptureCheck_node.latchcapture_latchcapturecheck__state_act LatchCapture_LatchCaptureCheck_node.__LatchCapture_LatchCaptureCheck_node_12)
                     (= LatchCapture_LatchCaptureCheck_node.latchcapture_latchcapturecheck__restart_act LatchCapture_LatchCaptureCheck_node.__LatchCapture_LatchCaptureCheck_node_11)
                     ))
-            (or (not (= LatchCapture_LatchCaptureCheck_node.latchcapture_latchcapturecheck__state_in LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3))
-               (and (latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_unless 
+            (or (not (= LatchCapture_LatchCaptureCheck_node.latchcapture_latchcapturecheck__state_in LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3))
+               (and (latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_unless 
                     LatchCapture_LatchCaptureCheck_node.latchcapture_latchcapturecheck__restart_in
                     LatchCapture_LatchCaptureCheck_node.latchcapture_latchcapturecheck__state_in
                     LatchCapture_LatchCaptureCheck_node.__LatchCapture_LatchCaptureCheck_node_9
@@ -3138,8 +3138,8 @@
                     (= LatchCapture_LatchCaptureCheck_node.latchcapture_latchcapturecheck__next_state_in LatchCapture_LatchCaptureCheck_node.__LatchCapture_LatchCaptureCheck_node_28)
                     (= LatchCapture_LatchCaptureCheck_node.latchcapture_latchcapturecheck__next_restart_in LatchCapture_LatchCaptureCheck_node.__LatchCapture_LatchCaptureCheck_node_27)
                     ))
-            (or (not (= LatchCapture_LatchCaptureCheck_node.latchcapture_latchcapturecheck__state_act LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2))
-               (and (latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2_handler_until 
+            (or (not (= LatchCapture_LatchCaptureCheck_node.latchcapture_latchcapturecheck__state_act LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2))
+               (and (latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2_handler_until 
                     LatchCapture_LatchCaptureCheck_node.idLatchCapture_LatchCaptureCheck_1
                     LatchCapture_LatchCaptureCheck_node.LatchCapture_timer_1
                     LatchCapture_LatchCaptureCheck_node.AttemptingToDock_1
@@ -3159,8 +3159,8 @@
                     (= LatchCapture_LatchCaptureCheck_node.latchcapture_latchcapturecheck__next_state_in LatchCapture_LatchCaptureCheck_node.__LatchCapture_LatchCaptureCheck_node_73)
                     (= LatchCapture_LatchCaptureCheck_node.latchcapture_latchcapturecheck__next_restart_in LatchCapture_LatchCaptureCheck_node.__LatchCapture_LatchCaptureCheck_node_72)
                     ))
-            (or (not (= LatchCapture_LatchCaptureCheck_node.latchcapture_latchcapturecheck__state_act LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3))
-               (and (latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3_handler_until 
+            (or (not (= LatchCapture_LatchCaptureCheck_node.latchcapture_latchcapturecheck__state_act LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3))
+               (and (latchcapture_latchcapturecheck__LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3_handler_until 
                     LatchCapture_LatchCaptureCheck_node.idLatchCapture_LatchCaptureCheck_1
                     LatchCapture_LatchCaptureCheck_node.LatchCapture_timer_1
                     LatchCapture_LatchCaptureCheck_node.AttemptingToDock_1
@@ -3402,7 +3402,7 @@
                     (= LatchCapture_LatchCaptureCheck_node.LatchCaptureComplete LatchCapture_LatchCaptureCheck_node.__LatchCapture_LatchCaptureCheck_node_30)
                     (= LatchCapture_LatchCaptureCheck_node.AttemptingToDock LatchCapture_LatchCaptureCheck_node.__LatchCapture_LatchCaptureCheck_node_29)
                     ))
-            (or (not (= LatchCapture_LatchCaptureCheck_node.latchcapture_latchcapturecheck__state_act LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2))
+            (or (not (= LatchCapture_LatchCaptureCheck_node.latchcapture_latchcapturecheck__state_act LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2))
                (and (= LatchCapture_LatchCaptureCheck_node.idMissionPhaseStates_LatchCapture LatchCapture_LatchCaptureCheck_node.__LatchCapture_LatchCaptureCheck_node_80)
                     (= LatchCapture_LatchCaptureCheck_node.idLatchCapture_latch LatchCapture_LatchCaptureCheck_node.__LatchCapture_LatchCaptureCheck_node_79)
                     (= LatchCapture_LatchCaptureCheck_node.idLatchCapture_LatchCaptureCheck LatchCapture_LatchCaptureCheck_node.__LatchCapture_LatchCaptureCheck_node_78)
@@ -3411,7 +3411,7 @@
                     (= LatchCapture_LatchCaptureCheck_node.LatchCaptureComplete LatchCapture_LatchCaptureCheck_node.__LatchCapture_LatchCaptureCheck_node_75)
                     (= LatchCapture_LatchCaptureCheck_node.AttemptingToDock LatchCapture_LatchCaptureCheck_node.__LatchCapture_LatchCaptureCheck_node_74)
                     ))
-            (or (not (= LatchCapture_LatchCaptureCheck_node.latchcapture_latchcapturecheck__state_act LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3))
+            (or (not (= LatchCapture_LatchCaptureCheck_node.latchcapture_latchcapturecheck__state_act LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3))
                (and (= LatchCapture_LatchCaptureCheck_node.idMissionPhaseStates_LatchCapture LatchCapture_LatchCaptureCheck_node.__LatchCapture_LatchCaptureCheck_node_71)
                     (= LatchCapture_LatchCaptureCheck_node.idLatchCapture_latch LatchCapture_LatchCaptureCheck_node.__LatchCapture_LatchCaptureCheck_node_70)
                     (= LatchCapture_LatchCaptureCheck_node.idLatchCapture_LatchCaptureCheck LatchCapture_LatchCaptureCheck_node.__LatchCapture_LatchCaptureCheck_node_69)
@@ -3693,8 +3693,8 @@
                     (= LatchCapture_latch_node.latchcapture_latch__state_act LatchCapture_latch_node.__LatchCapture_latch_node_10)
                     (= LatchCapture_latch_node.latchcapture_latch__restart_act LatchCapture_latch_node.__LatchCapture_latch_node_9)
                     ))
-            (or (not (= LatchCapture_latch_node.latchcapture_latch__state_in LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1))
-               (and (latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_unless 
+            (or (not (= LatchCapture_latch_node.latchcapture_latch__state_in LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1))
+               (and (latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_unless 
                     LatchCapture_latch_node.latchcapture_latch__restart_in
                     LatchCapture_latch_node.latchcapture_latch__state_in
                     LatchCapture_latch_node.__LatchCapture_latch_node_25
@@ -3710,8 +3710,8 @@
                     (= LatchCapture_latch_node.latchcapture_latch__state_act LatchCapture_latch_node.__LatchCapture_latch_node_6)
                     (= LatchCapture_latch_node.latchcapture_latch__restart_act LatchCapture_latch_node.__LatchCapture_latch_node_5)
                     ))
-            (or (not (= LatchCapture_latch_node.latchcapture_latch__state_in LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2))
-               (and (latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_unless 
+            (or (not (= LatchCapture_latch_node.latchcapture_latch__state_in LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2))
+               (and (latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_unless 
                     LatchCapture_latch_node.latchcapture_latch__restart_in
                     LatchCapture_latch_node.latchcapture_latch__state_in
                     LatchCapture_latch_node.__LatchCapture_latch_node_19
@@ -3745,8 +3745,8 @@
                     (= LatchCapture_latch_node.latchcapture_latch__state_act LatchCapture_latch_node.__LatchCapture_latch_node_4)
                     (= LatchCapture_latch_node.latchcapture_latch__restart_act LatchCapture_latch_node.__LatchCapture_latch_node_3)
                     ))
-            (or (not (= LatchCapture_latch_node.latchcapture_latch__state_in LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1))
-               (and (latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_unless 
+            (or (not (= LatchCapture_latch_node.latchcapture_latch__state_in LATCH_MATED__TO__CHART_CHARTJUNCTION609_1))
+               (and (latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_unless 
                     LatchCapture_latch_node.latchcapture_latch__restart_in
                     LatchCapture_latch_node.latchcapture_latch__state_in
                     LatchCapture_latch_node.__LatchCapture_latch_node_15
@@ -3830,8 +3830,8 @@
                     (= LatchCapture_latch_node.latch_status LatchCapture_latch_node.__LatchCapture_latch_node_50)
                     (= LatchCapture_latch_node.idLatchCapture_latch LatchCapture_latch_node.__LatchCapture_latch_node_49)
                     ))
-            (or (not (= LatchCapture_latch_node.latchcapture_latch__state_act LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1))
-               (and (latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1_handler_until 
+            (or (not (= LatchCapture_latch_node.latchcapture_latch__state_act LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1))
+               (and (latchcapture_latch__LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1_handler_until 
                     LatchCapture_latch_node.idLatchCapture_latch_1
                     LatchCapture_latch_node.INDETERMINATE
                     LatchCapture_latch_node.latch_status_1
@@ -3857,8 +3857,8 @@
                     (= LatchCapture_latch_node.latch_status LatchCapture_latch_node.__LatchCapture_latch_node_42)
                     (= LatchCapture_latch_node.idLatchCapture_latch LatchCapture_latch_node.__LatchCapture_latch_node_41)
                     ))
-            (or (not (= LatchCapture_latch_node.latchcapture_latch__state_act LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2))
-               (and (latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2_handler_until 
+            (or (not (= LatchCapture_latch_node.latchcapture_latch__state_act LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2))
+               (and (latchcapture_latch__LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2_handler_until 
                     LatchCapture_latch_node.idLatchCapture_latch_1
                     LatchCapture_latch_node.INDETERMINATE
                     LatchCapture_latch_node.latch_status_1
@@ -3912,8 +3912,8 @@
                     (= LatchCapture_latch_node.latch_status LatchCapture_latch_node.__LatchCapture_latch_node_38)
                     (= LatchCapture_latch_node.idLatchCapture_latch LatchCapture_latch_node.__LatchCapture_latch_node_37)
                     ))
-            (or (not (= LatchCapture_latch_node.latchcapture_latch__state_act LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1))
-               (and (latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1_handler_until 
+            (or (not (= LatchCapture_latch_node.latchcapture_latch__state_act LATCH_MATED__TO__CHART_CHARTJUNCTION609_1))
+               (and (latchcapture_latch__LATCH_MATED__TO__CHART_CHARTJUNCTION609_1_handler_until 
                     LatchCapture_latch_node.idLatchCapture_latch_1
                     LatchCapture_latch_node.INDETERMINATE
                     LatchCapture_latch_node.latch_status_1
@@ -4062,7 +4062,7 @@
             (or (not (= (not MissionPhaseStates_ProximityOperations_ex.isInner) false))
                (= MissionPhaseStates_ProximityOperations_ex.idChart_MissionPhaseStates_2 MissionPhaseStates_ProximityOperations_ex.idChart_MissionPhaseStates_1))
        )
-       (= MissionPhaseStates_ProximityOperations_ex.idChart_MissionPhaseStates MissionPhaseStates_ProximityOperations_ex.idChart_MissionPhaseStates_2)
+       (= MissionPhaseStates_ProximityOperations_ex.idChart_MissionPhaseStates MissionPhaseStates_ProximityOperations_ex.idChart_MissionPhaseStates_1)
        )
   (MissionPhaseStates_ProximityOperations_ex MissionPhaseStates_ProximityOperations_ex.idChart_MissionPhaseStates_1 MissionPhaseStates_ProximityOperations_ex.isInner MissionPhaseStates_ProximityOperations_ex.idChart_MissionPhaseStates)
 ))
@@ -4073,7 +4073,7 @@
 (declare-var MissionPhaseStates_FarApproach_en.idChart_MissionPhaseStates Int)
 (declare-rel MissionPhaseStates_FarApproach_en (Int Bool Int))
 (rule (=> 
-  (= MissionPhaseStates_FarApproach_en.idChart_MissionPhaseStates 1203)
+  (= MissionPhaseStates_FarApproach_en.idChart_MissionPhaseStates 555)
   (MissionPhaseStates_FarApproach_en MissionPhaseStates_FarApproach_en.idChart_MissionPhaseStates_1 MissionPhaseStates_FarApproach_en.isInner MissionPhaseStates_FarApproach_en.idChart_MissionPhaseStates)
 ))
 
@@ -4098,7 +4098,7 @@
             (or (not (= (not MissionPhaseStates_Start_ex.isInner) false))
                (= MissionPhaseStates_Start_ex.idChart_MissionPhaseStates_2 MissionPhaseStates_Start_ex.idChart_MissionPhaseStates_1))
        )
-       (= MissionPhaseStates_Start_ex.idChart_MissionPhaseStates MissionPhaseStates_Start_ex.idChart_MissionPhaseStates_2)
+       (= MissionPhaseStates_Start_ex.idChart_MissionPhaseStates MissionPhaseStates_Start_ex.idChart_MissionPhaseStates_1)
        )
   (MissionPhaseStates_Start_ex MissionPhaseStates_Start_ex.idChart_MissionPhaseStates_1 MissionPhaseStates_Start_ex.isInner MissionPhaseStates_Start_ex.idChart_MissionPhaseStates)
 ))
@@ -4109,7 +4109,7 @@
 (declare-var MissionPhaseStates_Start_en.idChart_MissionPhaseStates Int)
 (declare-rel MissionPhaseStates_Start_en (Int Bool Int))
 (rule (=> 
-  (= MissionPhaseStates_Start_en.idChart_MissionPhaseStates 1206)
+  (= MissionPhaseStates_Start_en.idChart_MissionPhaseStates 558)
   (MissionPhaseStates_Start_en MissionPhaseStates_Start_en.idChart_MissionPhaseStates_1 MissionPhaseStates_Start_en.isInner MissionPhaseStates_Start_en.idChart_MissionPhaseStates)
 ))
 
@@ -6499,31 +6499,31 @@
 (declare-var chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_9 Bool)
 (declare-rel chart_missionphasestates__POINTChart_MissionPhaseStates_unless (Bool chart_missionphasestates__type Int Int Bool chart_missionphasestates__type))
 (rule (=> 
-  (and (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_9 (and (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 1203) (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.StageTransition 5)))
-       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_8 (and (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 1214) (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.StageTransition 7)))
-       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_7 (and (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 1215) (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.StageTransition 3)))
-       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_6 (and (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 1215) (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.StageTransition 1)))
-       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_5 (and (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 1213) (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.StageTransition 2)))
-       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_4 (and (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 1211) (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.StageTransition 6)))
-       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_3 (and (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 1211) (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.StageTransition 8)))
-       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_26 (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 1223))
-       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_25 (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 1205))
-       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_24 (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 1216))
-       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_23 (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 1224))
-       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_22 (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 1203))
-       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_21 (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 1214))
-       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_20 (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 1215))
-       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_2 (and (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 1206) (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.StageTransition 0)))
-       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_19 (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 1213))
-       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_18 (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 1211))
-       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_17 (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 1206))
-       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_16 (and (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 1205) (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.StageTransition 10)))
-       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_15 (and (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 1205) (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.StageTransition 9)))
-       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_14 (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 1208))
-       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_13 (and (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 1208) (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.StageTransition 6)))
-       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_12 (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 1221))
-       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_11 (and (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 1221) (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.StageTransition 5)))
-       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_10 (and (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 1203) (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.StageTransition 4)))
+  (and (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_9 (and (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 555) (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.StageTransition 5)))
+       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_8 (and (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 566) (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.StageTransition 7)))
+       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_7 (and (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 567) (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.StageTransition 3)))
+       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_6 (and (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 567) (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.StageTransition 1)))
+       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_5 (and (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 565) (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.StageTransition 2)))
+       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_4 (and (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 563) (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.StageTransition 6)))
+       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_3 (and (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 563) (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.StageTransition 8)))
+       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_26 (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 575))
+       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_25 (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 557))
+       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_24 (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 568))
+       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_23 (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 576))
+       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_22 (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 555))
+       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_21 (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 566))
+       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_20 (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 567))
+       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_2 (and (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 558) (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.StageTransition 0)))
+       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_19 (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 565))
+       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_18 (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 563))
+       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_17 (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 558))
+       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_16 (and (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 557) (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.StageTransition 10)))
+       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_15 (and (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 557) (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.StageTransition 9)))
+       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_14 (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 560))
+       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_13 (and (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 560) (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.StageTransition 6)))
+       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_12 (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 573))
+       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_11 (and (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 573) (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.StageTransition 5)))
+       (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_10 (and (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 555) (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.StageTransition 4)))
        (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_1 (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.idChart_MissionPhaseStates_1 0))
        (and (or (not (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_1 false))
                (and (or (not (= chart_missionphasestates__POINTChart_MissionPhaseStates_unless.__chart_missionphasestates__POINTChart_MissionPhaseStates_unless_2 false))
@@ -9534,7 +9534,7 @@
 (declare-var Chart_MissionPhaseStates_en.latch_status_3 Int)
 (declare-rel Chart_MissionPhaseStates_en (Int Int Bool Bool Bool Int Int Bool Int Int Int Int Int Int Int Bool Int Int Bool Bool Bool Bool Int Int Int Int Int))
 (rule (=> 
-  (and (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_7 (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1 1203))
+  (and (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_7 (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1 555))
        (MissionPhaseStates_FarApproach_en Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1
                                           false
                                           Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_29)
@@ -9543,7 +9543,7 @@
             (or (not (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_7 false))
                (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_9 Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1))
        )
-       (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_6 (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1 1214))
+       (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_6 (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1 566))
        (MissionPhaseStates_Disengage_en Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1
                                         false
                                         Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_30)
@@ -9552,7 +9552,7 @@
             (or (not (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_6 false))
                (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_8 Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1))
        )
-       (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_5 (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1 1215))
+       (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_5 (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1 567))
        (MissionPhaseStates_ProximityOperations_en Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1
                                                   false
                                                   Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_31)
@@ -9561,7 +9561,7 @@
             (or (not (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_5 false))
                (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_7 Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1))
        )
-       (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_4 (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1 1213))
+       (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_4 (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1 565))
        (MissionPhaseStates_ApproachOrbit_en Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1
                                             false
                                             Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_32)
@@ -9573,7 +9573,7 @@
        (MissionPhaseStates_CollisionAvoidanceManuever_en Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1
                                                          false
                                                          Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_33)
-       (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_3 (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1 1211))
+       (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_3 (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1 563))
        (and (or (not (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_3 true))
                (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_5 Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_33))
             (or (not (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_3 false))
@@ -9582,7 +9582,7 @@
        (MissionPhaseStates_Start_en Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1
                                     false
                                     Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_34)
-       (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_2 (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1 1206))
+       (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_2 (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1 558))
        (and (or (not (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_2 true))
                (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_4 Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_34))
             (or (not (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_2 false))
@@ -9594,7 +9594,7 @@
        (MissionPhaseStates_JointStabilize_en Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1
                                              false
                                              Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_22)
-       (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_12 (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1 1205))
+       (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_12 (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1 557))
        (and (or (not (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_12 true))
                (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_14 Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_22))
             (or (not (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_12 false))
@@ -9603,7 +9603,7 @@
        (MissionPhaseStates_DockingApproach_en Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1
                                               false
                                               Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_23)
-       (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_11 (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1 1208))
+       (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_11 (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1 560))
        (and (or (not (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_11 true))
                (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_13 Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_23))
             (or (not (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_11 false))
@@ -9612,7 +9612,7 @@
        (MissionPhaseStates_CaptureApproach_en Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1
                                               false
                                               Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_24)
-       (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_10 (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1 1221))
+       (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_10 (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1 573))
        (and (or (not (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_10 true))
                (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_12 Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_24))
             (or (not (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_10 false))
@@ -9621,15 +9621,15 @@
        (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_1 (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1 0))
        (and (or (not (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_1 false))
                (and (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_3 Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1)
-                    (= Chart_MissionPhaseStates_en.idChart_Chart_3 1220)
+                    (= Chart_MissionPhaseStates_en.idChart_Chart_3 572)
                     ))
             (or (not (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_1 true))
                (and (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_3 Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_2)
-                    (= Chart_MissionPhaseStates_en.idChart_Chart_3 1220)
+                    (= Chart_MissionPhaseStates_en.idChart_Chart_3 572)
                     ))
        )
-       (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_9 (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1 1216))
-       (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_8 (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1 1224))
+       (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_9 (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1 568))
+       (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_8 (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1 576))
        (MissionPhaseStates_FailedApproach_en Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1
                                              Chart_MissionPhaseStates_en.FailedApproach_1
                                              false
@@ -9661,7 +9661,7 @@
                                            Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_19
                                            Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_20
                                            Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_21)
-       (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_13 (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1 1223))
+       (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_13 (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1 575))
        (and (or (not (= Chart_MissionPhaseStates_en.__Chart_MissionPhaseStates_en_9 false))
                (and (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_11 Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1)
                     (= Chart_MissionPhaseStates_en.JointMission_2 Chart_MissionPhaseStates_en.JointMission_1)
@@ -9725,7 +9725,7 @@
                                                                     (= Chart_MissionPhaseStates_en.idLatchCapture_latch_3 Chart_MissionPhaseStates_en.idLatchCapture_latch_1)
                                                                     (= Chart_MissionPhaseStates_en.idLatchCapture_LatchCaptureCheck_3 Chart_MissionPhaseStates_en.idLatchCapture_LatchCaptureCheck_1)
                                                                     (= Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_16 Chart_MissionPhaseStates_en.idChart_MissionPhaseStates_1)
-                                                                    (= Chart_MissionPhaseStates_en.idChart_Chart_4 1220)
+                                                                    (= Chart_MissionPhaseStates_en.idChart_Chart_4 572)
                                                                     (= Chart_MissionPhaseStates_en.LatchCapture_timer_3 Chart_MissionPhaseStates_en.LatchCapture_timer_1)
                                                                     (= Chart_MissionPhaseStates_en.LatchCaptureComplete_3 Chart_MissionPhaseStates_en.LatchCaptureComplete_1)
                                                                     (= Chart_MissionPhaseStates_en.JointMission_3 Chart_MissionPhaseStates_en.JointMission_1)
@@ -11300,10 +11300,10 @@
             (= DA1_Chart.ni_6._arrow._first_x false))
        (and (or (not (= DA1_Chart.__DA1_Chart_1 false))
                (and (= DA1_Chart.latch_status_1 DA1_Chart.__DA1_Chart_7_c)
-                    (= DA1_Chart.idMissionPhaseStates_LatchCapture_1 DA1_Chart.__DA1_Chart_4_c)
-                    (= DA1_Chart.idLatchCapture_latch_1 DA1_Chart.__DA1_Chart_2_c)
-                    (= DA1_Chart.idLatchCapture_LatchCaptureCheck_1 DA1_Chart.__DA1_Chart_3_c)
-                    (= DA1_Chart.idChart_MissionPhaseStates_1 DA1_Chart.__DA1_Chart_5_c)
+                    (= DA1_Chart.idMissionPhaseStates_LatchCapture_1 DA1_Chart.__DA1_Chart_3_c)
+                    (= DA1_Chart.idLatchCapture_latch_1 DA1_Chart.__DA1_Chart_5_c)
+                    (= DA1_Chart.idLatchCapture_LatchCaptureCheck_1 DA1_Chart.__DA1_Chart_4_c)
+                    (= DA1_Chart.idChart_MissionPhaseStates_1 DA1_Chart.__DA1_Chart_2_c)
                     (= DA1_Chart.idChart_Chart_1 DA1_Chart.__DA1_Chart_6_c)
                     ))
             (or (not (= DA1_Chart.__DA1_Chart_1 true))
@@ -11432,10 +11432,10 @@
        (= DA1_Chart.__DA1_Chart_8_x DA1_Chart.LatchCapture_timer)
        (= DA1_Chart.__DA1_Chart_7_x DA1_Chart.latch_status)
        (= DA1_Chart.__DA1_Chart_6_x DA1_Chart.idChart_Chart)
-       (= DA1_Chart.__DA1_Chart_5_x DA1_Chart.idChart_MissionPhaseStates)
-       (= DA1_Chart.__DA1_Chart_4_x DA1_Chart.idMissionPhaseStates_LatchCapture)
-       (= DA1_Chart.__DA1_Chart_3_x DA1_Chart.idLatchCapture_LatchCaptureCheck)
-       (= DA1_Chart.__DA1_Chart_2_x DA1_Chart.idLatchCapture_latch)
+       (= DA1_Chart.__DA1_Chart_5_x DA1_Chart.idLatchCapture_latch)
+       (= DA1_Chart.__DA1_Chart_4_x DA1_Chart.idLatchCapture_LatchCaptureCheck)
+       (= DA1_Chart.__DA1_Chart_3_x DA1_Chart.idMissionPhaseStates_LatchCapture)
+       (= DA1_Chart.__DA1_Chart_2_x DA1_Chart.idChart_MissionPhaseStates)
        (= DA1_Chart.__DA1_Chart_17_x DA1_Chart.CaptureApproachComplete)
        (= DA1_Chart.__DA1_Chart_16_x DA1_Chart.DockingApproachComplete)
        (= DA1_Chart.__DA1_Chart_15_x DA1_Chart.AttemptingToDock)
@@ -11942,7 +11942,7 @@
             (or (not (= (not MissionPhaseStates_FailedApproach_ex.isInner) false))
                (= MissionPhaseStates_FailedApproach_ex.idChart_MissionPhaseStates_2 MissionPhaseStates_FailedApproach_ex.idChart_MissionPhaseStates_1))
        )
-       (= MissionPhaseStates_FailedApproach_ex.idChart_MissionPhaseStates MissionPhaseStates_FailedApproach_ex.idChart_MissionPhaseStates_2)
+       (= MissionPhaseStates_FailedApproach_ex.idChart_MissionPhaseStates MissionPhaseStates_FailedApproach_ex.idChart_MissionPhaseStates_1)
        )
   (MissionPhaseStates_FailedApproach_ex MissionPhaseStates_FailedApproach_ex.idChart_MissionPhaseStates_1 MissionPhaseStates_FailedApproach_ex.isInner MissionPhaseStates_FailedApproach_ex.idChart_MissionPhaseStates)
 ))
@@ -11959,7 +11959,7 @@
             (or (not (= (not MissionPhaseStates_JointMission_ex.isInner) false))
                (= MissionPhaseStates_JointMission_ex.idChart_MissionPhaseStates_2 MissionPhaseStates_JointMission_ex.idChart_MissionPhaseStates_1))
        )
-       (= MissionPhaseStates_JointMission_ex.idChart_MissionPhaseStates MissionPhaseStates_JointMission_ex.idChart_MissionPhaseStates_2)
+       (= MissionPhaseStates_JointMission_ex.idChart_MissionPhaseStates MissionPhaseStates_JointMission_ex.idChart_MissionPhaseStates_1)
        )
   (MissionPhaseStates_JointMission_ex MissionPhaseStates_JointMission_ex.idChart_MissionPhaseStates_1 MissionPhaseStates_JointMission_ex.isInner MissionPhaseStates_JointMission_ex.idChart_MissionPhaseStates)
 ))
@@ -12870,7 +12870,7 @@
 (declare-var Chart_MissionPhaseStates_ex.idMissionPhaseStates_LatchCapture_3 Int)
 (declare-rel Chart_MissionPhaseStates_ex (Int Bool Bool Bool Bool Bool Int Int Int Int Bool Int Bool Bool Bool Bool Bool Int Int Int Int))
 (rule (=> 
-  (and (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_9 (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1 1216))
+  (and (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_9 (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1 568))
        (MissionPhaseStates_JointMission_ex Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1
                                            false
                                            Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_22)
@@ -12879,7 +12879,7 @@
             (or (not (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_9 false))
                (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_9 Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1))
        )
-       (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_8 (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1 1224))
+       (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_8 (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1 576))
        (MissionPhaseStates_FailedApproach_ex Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1
                                              false
                                              Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_23)
@@ -12888,7 +12888,7 @@
             (or (not (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_8 false))
                (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_8 Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1))
        )
-       (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_7 (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1 1203))
+       (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_7 (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1 555))
        (MissionPhaseStates_FarApproach_ex Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1
                                           false
                                           Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_24)
@@ -12897,7 +12897,7 @@
             (or (not (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_7 false))
                (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_7 Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1))
        )
-       (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_6 (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1 1214))
+       (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_6 (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1 566))
        (MissionPhaseStates_Disengage_ex Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1
                                         false
                                         Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_25)
@@ -12906,7 +12906,7 @@
             (or (not (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_6 false))
                (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_6 Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1))
        )
-       (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_5 (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1 1215))
+       (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_5 (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1 567))
        (MissionPhaseStates_ProximityOperations_ex Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1
                                                   false
                                                   Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_26)
@@ -12915,7 +12915,7 @@
             (or (not (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_5 false))
                (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_5 Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1))
        )
-       (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_4 (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1 1213))
+       (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_4 (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1 565))
        (MissionPhaseStates_ApproachOrbit_ex Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1
                                             false
                                             Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_27)
@@ -12927,7 +12927,7 @@
        (MissionPhaseStates_Start_ex Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1
                                     false
                                     Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_33)
-       (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_2 (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1 1206))
+       (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_2 (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1 558))
        (and (or (not (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_2 true))
                (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_2 Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_33))
             (or (not (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_2 false))
@@ -12936,7 +12936,7 @@
        (MissionPhaseStates_JointStabilize_ex Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1
                                              false
                                              Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_19)
-       (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_12 (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1 1205))
+       (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_12 (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1 557))
        (and (or (not (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_12 true))
                (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_12 Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_19))
             (or (not (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_12 false))
@@ -12945,7 +12945,7 @@
        (MissionPhaseStates_DockingApproach_ex Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1
                                               false
                                               Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_20)
-       (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_11 (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1 1208))
+       (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_11 (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1 560))
        (and (or (not (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_11 true))
                (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_11 Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_20))
             (or (not (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_11 false))
@@ -12954,7 +12954,7 @@
        (MissionPhaseStates_CaptureApproach_ex Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1
                                               false
                                               Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_21)
-       (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_10 (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1 1221))
+       (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_10 (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1 573))
        (and (or (not (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_10 true))
                (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_10 Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_21))
             (or (not (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_10 false))
@@ -12965,7 +12965,7 @@
             (or (not (= (not Chart_MissionPhaseStates_ex.isInner) false))
                (= Chart_MissionPhaseStates_ex.idChart_Chart_2 Chart_MissionPhaseStates_ex.idChart_Chart_1))
        )
-       (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_3 (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1 1211))
+       (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_3 (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1 563))
        (MissionPhaseStates_CollisionAvoidanceManuever_ex Chart_MissionPhaseStates_ex.ApproachOrbitComplete_1
                                                          Chart_MissionPhaseStates_ex.ProximityOperationsComplete_1
                                                          Chart_MissionPhaseStates_ex.FarApproachComplete_1
@@ -12988,7 +12988,7 @@
                                            Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_16
                                            Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_17
                                            Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_18)
-       (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_13 (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1 1223))
+       (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_13 (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates_1 575))
        (and (or (not (= Chart_MissionPhaseStates_ex.__Chart_MissionPhaseStates_ex_13 false))
                (and (= Chart_MissionPhaseStates_ex.idMissionPhaseStates_LatchCapture_2 Chart_MissionPhaseStates_ex.idMissionPhaseStates_LatchCapture_1)
                     (= Chart_MissionPhaseStates_ex.idLatchCapture_latch_2 Chart_MissionPhaseStates_ex.idLatchCapture_latch_1)
@@ -13199,7 +13199,7 @@
        (= Chart_MissionPhaseStates_ex.idLatchCapture_latch Chart_MissionPhaseStates_ex.idLatchCapture_latch_3)
        (= Chart_MissionPhaseStates_ex.idLatchCapture_LatchCaptureCheck Chart_MissionPhaseStates_ex.idLatchCapture_LatchCaptureCheck_3)
        (= Chart_MissionPhaseStates_ex.idChart_MissionPhaseStates 0)
-       (= Chart_MissionPhaseStates_ex.idChart_Chart Chart_MissionPhaseStates_ex.idChart_Chart_2)
+       (= Chart_MissionPhaseStates_ex.idChart_Chart Chart_MissionPhaseStates_ex.idChart_Chart_1)
        (= Chart_MissionPhaseStates_ex.ProximityOperationsComplete Chart_MissionPhaseStates_ex.ProximityOperationsComplete_3)
        (= Chart_MissionPhaseStates_ex.FarApproachComplete Chart_MissionPhaseStates_ex.FarApproachComplete_3)
        (= Chart_MissionPhaseStates_ex.CaptureApproachComplete Chart_MissionPhaseStates_ex.CaptureApproachComplete_3)

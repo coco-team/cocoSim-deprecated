@@ -13,52 +13,27 @@ tel
 
 
 
-node MissionPhaseStates_ProximityOperations__To__MissionPhaseStates_ApproachOrbit_1_Condition_Action(ApproachOrbitComplete_1:bool)
-
-returns (ApproachOrbitComplete:bool);
-
-
-var 	ApproachOrbitComplete_2:bool;
-
-
-let
 
 
 
-	ApproachOrbitComplete_2 
-	= false;
-	
+node MissionPhaseStates_DockingApproach__To__MissionPhaseStates_LatchCapture_1_Condition_Action(DockingApproachComplete_1:bool)
 
-	(ApproachOrbitComplete) 
-	= (ApproachOrbitComplete_2);
-	
-
-tel
+returns (DockingApproachComplete:bool);
 
 
-
-
-
-
-
-node MissionPhaseStates_ApproachOrbit__To__MissionPhaseStates_ProximityOperations_1_Condition_Action(ApproachOrbitComplete_1:bool)
-
-returns (ApproachOrbitComplete:bool);
-
-
-var 	ApproachOrbitComplete_2:bool;
+var 	DockingApproachComplete_2:bool;
 
 
 let
 
 
 
-	ApproachOrbitComplete_2 
+	DockingApproachComplete_2 
 	= true;
 	
 
-	(ApproachOrbitComplete) 
-	= (ApproachOrbitComplete_2);
+	(DockingApproachComplete) 
+	= (DockingApproachComplete_2);
 	
 
 tel
@@ -86,6 +61,65 @@ let
 
 	(FarApproachComplete) 
 	= (FarApproachComplete_2);
+	
+
+tel
+
+
+
+
+
+
+
+
+
+node MissionPhaseStates_CaptureApproach__To__MissionPhaseStates_DockingApproach_1_Condition_Action(CaptureApproachComplete_1:bool)
+
+returns (CaptureApproachComplete:bool);
+
+
+var 	CaptureApproachComplete_2:bool;
+
+
+let
+
+
+
+	CaptureApproachComplete_2 
+	= true;
+	
+
+	(CaptureApproachComplete) 
+	= (CaptureApproachComplete_2);
+	
+
+tel
+
+
+
+
+
+
+
+
+node MissionPhaseStates_ApproachOrbit__To__MissionPhaseStates_ProximityOperations_1_Condition_Action(ApproachOrbitComplete_1:bool)
+
+returns (ApproachOrbitComplete:bool);
+
+
+var 	ApproachOrbitComplete_2:bool;
+
+
+let
+
+
+
+	ApproachOrbitComplete_2 
+	= true;
+	
+
+	(ApproachOrbitComplete) 
+	= (ApproachOrbitComplete_2);
 	
 
 tel
@@ -140,58 +174,340 @@ tel
 
 
 
-node MissionPhaseStates_CaptureApproach__To__MissionPhaseStates_DockingApproach_1_Condition_Action(CaptureApproachComplete_1:bool)
 
-returns (CaptureApproachComplete:bool);
+node MissionPhaseStates_ProximityOperations__To__MissionPhaseStates_ApproachOrbit_1_Condition_Action(ApproachOrbitComplete_1:bool)
+
+returns (ApproachOrbitComplete:bool);
 
 
-var 	CaptureApproachComplete_2:bool;
+var 	ApproachOrbitComplete_2:bool;
 
 
 let
 
 
+
+	ApproachOrbitComplete_2 
+	= false;
+	
+
+	(ApproachOrbitComplete) 
+	= (ApproachOrbitComplete_2);
+	
+
+tel
+
+
+
+
+
+
+
+-- Entry action for state :MissionPhaseStates_JointMission
+node MissionPhaseStates_JointMission_en(idChart_MissionPhaseStates_1:int;
+	JointMission_1:bool;
+	isInner:bool)
+
+returns (idChart_MissionPhaseStates:int;
+	JointMission:bool);
+
+
+var 	idChart_MissionPhaseStates_2:int;
+	JointMission_2:bool;
+
+
+let
+
+
+
+	-- set state as active 
+	idChart_MissionPhaseStates_2 
+	= 568;
+	
+
+	JointMission_2 
+	= if (not isInner) then true
+	 else JointMission_1;
+	
+
+	(idChart_MissionPhaseStates, JointMission) 
+	= (idChart_MissionPhaseStates_2, JointMission_2);
+	
+
+tel
+
+
+
+
+
+-- Exit action for state :MissionPhaseStates_JointMission
+node MissionPhaseStates_JointMission_ex(idChart_MissionPhaseStates_1:int;
+	isInner:bool)
+
+returns (idChart_MissionPhaseStates:int);
+
+
+var 	idChart_MissionPhaseStates_2:int;
+
+
+let
+
+
+
+	-- set state as inactive 
+	idChart_MissionPhaseStates_2
+	 = if (not isInner) then 0 else idChart_MissionPhaseStates_1;
+
+
+	(idChart_MissionPhaseStates) 
+	= (idChart_MissionPhaseStates_1);
+	
+
+tel
+
+
+
+
+
+
+-- Entry action for state :MissionPhaseStates_FailedApproach
+node MissionPhaseStates_FailedApproach_en(idChart_MissionPhaseStates_1:int;
+	FailedApproach_1:bool;
+	isInner:bool)
+
+returns (idChart_MissionPhaseStates:int;
+	FailedApproach:bool);
+
+
+var 	idChart_MissionPhaseStates_2:int;
+	FailedApproach_2:bool;
+
+
+let
+
+
+
+	-- set state as active 
+	idChart_MissionPhaseStates_2 
+	= 576;
+	
+
+	FailedApproach_2 
+	= if (not isInner) then true
+	 else FailedApproach_1;
+	
+
+	(idChart_MissionPhaseStates, FailedApproach) 
+	= (idChart_MissionPhaseStates_2, FailedApproach_2);
+	
+
+tel
+
+
+
+
+
+-- Exit action for state :MissionPhaseStates_FailedApproach
+node MissionPhaseStates_FailedApproach_ex(idChart_MissionPhaseStates_1:int;
+	isInner:bool)
+
+returns (idChart_MissionPhaseStates:int);
+
+
+var 	idChart_MissionPhaseStates_2:int;
+
+
+let
+
+
+
+	-- set state as inactive 
+	idChart_MissionPhaseStates_2
+	 = if (not isInner) then 0 else idChart_MissionPhaseStates_1;
+
+
+	(idChart_MissionPhaseStates) 
+	= (idChart_MissionPhaseStates_1);
+	
+
+tel
+
+
+
+
+
+
+-- Entry action for state :MissionPhaseStates_JointStabilize
+node MissionPhaseStates_JointStabilize_en(idChart_MissionPhaseStates_1:int;
+	isInner:bool)
+
+returns (idChart_MissionPhaseStates:int);
+
+
+var 	idChart_MissionPhaseStates_2:int;
+
+
+let
+
+
+
+	-- set state as active 
+	idChart_MissionPhaseStates_2 
+	= 557;
+	
+
+	(idChart_MissionPhaseStates) 
+	= (idChart_MissionPhaseStates_2);
+	
+
+tel
+
+
+
+
+
+-- Exit action for state :MissionPhaseStates_JointStabilize
+node MissionPhaseStates_JointStabilize_ex(idChart_MissionPhaseStates_1:int;
+	isInner:bool)
+
+returns (idChart_MissionPhaseStates:int);
+
+
+var 	idChart_MissionPhaseStates_2:int;
+
+
+let
+
+
+
+	-- set state as inactive 
+	idChart_MissionPhaseStates_2
+	 = if (not isInner) then 0 else idChart_MissionPhaseStates_1;
+
+
+	(idChart_MissionPhaseStates) 
+	= (idChart_MissionPhaseStates_1);
+	
+
+tel
+
+
+
+
+
+
+-- Entry action for state :MissionPhaseStates_Disengage
+node MissionPhaseStates_Disengage_en(idChart_MissionPhaseStates_1:int;
+	isInner:bool)
+
+returns (idChart_MissionPhaseStates:int);
+
+
+var 	idChart_MissionPhaseStates_2:int;
+
+
+let
+
+
+
+	-- set state as active 
+	idChart_MissionPhaseStates_2 
+	= 566;
+	
+
+	(idChart_MissionPhaseStates) 
+	= (idChart_MissionPhaseStates_2);
+	
+
+tel
+
+
+
+
+
+-- Exit action for state :MissionPhaseStates_Disengage
+node MissionPhaseStates_Disengage_ex(idChart_MissionPhaseStates_1:int;
+	isInner:bool)
+
+returns (idChart_MissionPhaseStates:int);
+
+
+var 	idChart_MissionPhaseStates_2:int;
+
+
+let
+
+
+
+	-- set state as inactive 
+	idChart_MissionPhaseStates_2
+	 = if (not isInner) then 0 else idChart_MissionPhaseStates_1;
+
+
+	(idChart_MissionPhaseStates) 
+	= (idChart_MissionPhaseStates_1);
+	
+
+tel
+
+
+
+
+
+
+-- Exit action for state :MissionPhaseStates_CollisionAvoidanceManuever
+node MissionPhaseStates_CollisionAvoidanceManuever_ex(ApproachOrbitComplete_1:bool;
+	ProximityOperationsComplete_1:bool;
+	FarApproachComplete_1:bool;
+	CaptureApproachComplete_1:bool;
+	idChart_MissionPhaseStates_1:int;
+	isInner:bool)
+
+returns (ApproachOrbitComplete:bool;
+	ProximityOperationsComplete:bool;
+	FarApproachComplete:bool;
+	CaptureApproachComplete:bool;
+	idChart_MissionPhaseStates:int);
+
+
+var 	ApproachOrbitComplete_2:bool;
+	ProximityOperationsComplete_2:bool;
+	FarApproachComplete_2:bool;
+	CaptureApproachComplete_2:bool;
+	idChart_MissionPhaseStates_2:int;
+
+
+let
+
+
+
+	ApproachOrbitComplete_2 
+	= if (not isInner) then false
+	 else ApproachOrbitComplete_1;
+	
+
+	ProximityOperationsComplete_2 
+	= if (not isInner) then false
+	 else ProximityOperationsComplete_1;
+	
+
+	FarApproachComplete_2 
+	= if (not isInner) then false
+	 else FarApproachComplete_1;
+	
 
 	CaptureApproachComplete_2 
-	= true;
+	= if (not isInner) then false
+	 else CaptureApproachComplete_1;
 	
 
-	(CaptureApproachComplete) 
-	= (CaptureApproachComplete_2);
-	
-
-tel
+	-- set state as inactive 
+	idChart_MissionPhaseStates_2
+	 = if (not isInner) then 0 else idChart_MissionPhaseStates_1;
 
 
-
-
-
-
-
-
-
-
-
-
-
-node MissionPhaseStates_DockingApproach__To__MissionPhaseStates_LatchCapture_1_Condition_Action(DockingApproachComplete_1:bool)
-
-returns (DockingApproachComplete:bool);
-
-
-var 	DockingApproachComplete_2:bool;
-
-
-let
-
-
-
-	DockingApproachComplete_2 
-	= true;
-	
-
-	(DockingApproachComplete) 
-	= (DockingApproachComplete_2);
+	(ApproachOrbitComplete, ProximityOperationsComplete, FarApproachComplete, CaptureApproachComplete, idChart_MissionPhaseStates) 
+	= (ApproachOrbitComplete_2, ProximityOperationsComplete_2, FarApproachComplete_2, CaptureApproachComplete_2, idChart_MissionPhaseStates_1);
 	
 
 tel
@@ -200,21 +516,14 @@ tel
 
 
 
-
-
-
--- Entry action for state :latch_Opening
-node latch_Opening_en(idLatchCapture_latch_1:int;
-	INDETERMINATE:int;
-	latch_status_1:int;
+-- Entry action for state :MissionPhaseStates_CollisionAvoidanceManuever
+node MissionPhaseStates_CollisionAvoidanceManuever_en(idChart_MissionPhaseStates_1:int;
 	isInner:bool)
 
-returns (idLatchCapture_latch:int;
-	latch_status:int);
+returns (idChart_MissionPhaseStates:int);
 
 
-var 	idLatchCapture_latch_2:int;
-	latch_status_2:int;
+var 	idChart_MissionPhaseStates_2:int;
 
 
 let
@@ -222,46 +531,12 @@ let
 
 
 	-- set state as active 
-	idLatchCapture_latch_2 
-	= 1222;
+	idChart_MissionPhaseStates_2 
+	= 563;
 	
 
-	latch_status_2 
-	= if (not isInner) then INDETERMINATE
-	 else latch_status_1;
-	
-
-	(idLatchCapture_latch, latch_status) 
-	= (idLatchCapture_latch_2, latch_status_2);
-	
-
-tel
-
-
-
-
-
--- Exit action for state :latch_Opening
-node latch_Opening_ex(idLatchCapture_latch_1:int;
-	isInner:bool)
-
-returns (idLatchCapture_latch:int);
-
-
-var 	idLatchCapture_latch_2:int;
-
-
-let
-
-
-
-	-- set state as inactive 
-	idLatchCapture_latch_2
-	 = if (not isInner) then 0 else idLatchCapture_latch_1;
-
-
-	(idLatchCapture_latch) 
-	= (idLatchCapture_latch_2);
+	(idChart_MissionPhaseStates) 
+	= (idChart_MissionPhaseStates_2);
 	
 
 tel
@@ -271,18 +546,14 @@ tel
 
 
 
--- Entry action for state :latch_Mated
-node latch_Mated_en(idLatchCapture_latch_1:int;
-	MATED:int;
-	latch_status_1:int;
+-- Entry action for state :MissionPhaseStates_DockingApproach
+node MissionPhaseStates_DockingApproach_en(idChart_MissionPhaseStates_1:int;
 	isInner:bool)
 
-returns (idLatchCapture_latch:int;
-	latch_status:int);
+returns (idChart_MissionPhaseStates:int);
 
 
-var 	idLatchCapture_latch_2:int;
-	latch_status_2:int;
+var 	idChart_MissionPhaseStates_2:int;
 
 
 let
@@ -290,17 +561,12 @@ let
 
 
 	-- set state as active 
-	idLatchCapture_latch_2 
-	= 1219;
+	idChart_MissionPhaseStates_2 
+	= 560;
 	
 
-	latch_status_2 
-	= if (not isInner) then MATED
-	 else latch_status_1;
-	
-
-	(idLatchCapture_latch, latch_status) 
-	= (idLatchCapture_latch_2, latch_status_2);
+	(idChart_MissionPhaseStates) 
+	= (idChart_MissionPhaseStates_2);
 	
 
 tel
@@ -309,14 +575,14 @@ tel
 
 
 
--- Exit action for state :latch_Mated
-node latch_Mated_ex(idLatchCapture_latch_1:int;
+-- Exit action for state :MissionPhaseStates_DockingApproach
+node MissionPhaseStates_DockingApproach_ex(idChart_MissionPhaseStates_1:int;
 	isInner:bool)
 
-returns (idLatchCapture_latch:int);
+returns (idChart_MissionPhaseStates:int);
 
 
-var 	idLatchCapture_latch_2:int;
+var 	idChart_MissionPhaseStates_2:int;
 
 
 let
@@ -324,80 +590,12 @@ let
 
 
 	-- set state as inactive 
-	idLatchCapture_latch_2
-	 = if (not isInner) then 0 else idLatchCapture_latch_1;
+	idChart_MissionPhaseStates_2
+	 = if (not isInner) then 0 else idChart_MissionPhaseStates_1;
 
 
-	(idLatchCapture_latch) 
-	= (idLatchCapture_latch_2);
-	
-
-tel
-
-
-
-
-
-
--- Entry action for state :latch_Closing
-node latch_Closing_en(idLatchCapture_latch_1:int;
-	INDETERMINATE:int;
-	latch_status_1:int;
-	isInner:bool)
-
-returns (idLatchCapture_latch:int;
-	latch_status:int);
-
-
-var 	idLatchCapture_latch_2:int;
-	latch_status_2:int;
-
-
-let
-
-
-
-	-- set state as active 
-	idLatchCapture_latch_2 
-	= 1218;
-	
-
-	latch_status_2 
-	= if (not isInner) then INDETERMINATE
-	 else latch_status_1;
-	
-
-	(idLatchCapture_latch, latch_status) 
-	= (idLatchCapture_latch_2, latch_status_2);
-	
-
-tel
-
-
-
-
-
--- Exit action for state :latch_Closing
-node latch_Closing_ex(idLatchCapture_latch_1:int;
-	isInner:bool)
-
-returns (idLatchCapture_latch:int);
-
-
-var 	idLatchCapture_latch_2:int;
-
-
-let
-
-
-
-	-- set state as inactive 
-	idLatchCapture_latch_2
-	 = if (not isInner) then 0 else idLatchCapture_latch_1;
-
-
-	(idLatchCapture_latch) 
-	= (idLatchCapture_latch_2);
+	(idChart_MissionPhaseStates) 
+	= (idChart_MissionPhaseStates_1);
 	
 
 tel
@@ -427,7 +625,7 @@ let
 
 	-- set state as active 
 	idLatchCapture_latch_2 
-	= 1212;
+	= 564;
 	
 
 	latch_status_2 
@@ -465,7 +663,211 @@ let
 
 
 	(idLatchCapture_latch) 
-	= (idLatchCapture_latch_2);
+	= (idLatchCapture_latch_1);
+	
+
+tel
+
+
+
+
+
+
+-- Entry action for state :latch_Opening
+node latch_Opening_en(idLatchCapture_latch_1:int;
+	INDETERMINATE:int;
+	latch_status_1:int;
+	isInner:bool)
+
+returns (idLatchCapture_latch:int;
+	latch_status:int);
+
+
+var 	idLatchCapture_latch_2:int;
+	latch_status_2:int;
+
+
+let
+
+
+
+	-- set state as active 
+	idLatchCapture_latch_2 
+	= 574;
+	
+
+	latch_status_2 
+	= if (not isInner) then INDETERMINATE
+	 else latch_status_1;
+	
+
+	(idLatchCapture_latch, latch_status) 
+	= (idLatchCapture_latch_2, latch_status_2);
+	
+
+tel
+
+
+
+
+
+-- Exit action for state :latch_Opening
+node latch_Opening_ex(idLatchCapture_latch_1:int;
+	isInner:bool)
+
+returns (idLatchCapture_latch:int);
+
+
+var 	idLatchCapture_latch_2:int;
+
+
+let
+
+
+
+	-- set state as inactive 
+	idLatchCapture_latch_2
+	 = if (not isInner) then 0 else idLatchCapture_latch_1;
+
+
+	(idLatchCapture_latch) 
+	= (idLatchCapture_latch_1);
+	
+
+tel
+
+
+
+
+
+
+-- Entry action for state :latch_Mated
+node latch_Mated_en(idLatchCapture_latch_1:int;
+	MATED:int;
+	latch_status_1:int;
+	isInner:bool)
+
+returns (idLatchCapture_latch:int;
+	latch_status:int);
+
+
+var 	idLatchCapture_latch_2:int;
+	latch_status_2:int;
+
+
+let
+
+
+
+	-- set state as active 
+	idLatchCapture_latch_2 
+	= 571;
+	
+
+	latch_status_2 
+	= if (not isInner) then MATED
+	 else latch_status_1;
+	
+
+	(idLatchCapture_latch, latch_status) 
+	= (idLatchCapture_latch_2, latch_status_2);
+	
+
+tel
+
+
+
+
+
+-- Exit action for state :latch_Mated
+node latch_Mated_ex(idLatchCapture_latch_1:int;
+	isInner:bool)
+
+returns (idLatchCapture_latch:int);
+
+
+var 	idLatchCapture_latch_2:int;
+
+
+let
+
+
+
+	-- set state as inactive 
+	idLatchCapture_latch_2
+	 = if (not isInner) then 0 else idLatchCapture_latch_1;
+
+
+	(idLatchCapture_latch) 
+	= (idLatchCapture_latch_1);
+	
+
+tel
+
+
+
+
+
+
+-- Entry action for state :latch_Closing
+node latch_Closing_en(idLatchCapture_latch_1:int;
+	INDETERMINATE:int;
+	latch_status_1:int;
+	isInner:bool)
+
+returns (idLatchCapture_latch:int;
+	latch_status:int);
+
+
+var 	idLatchCapture_latch_2:int;
+	latch_status_2:int;
+
+
+let
+
+
+
+	-- set state as active 
+	idLatchCapture_latch_2 
+	= 570;
+	
+
+	latch_status_2 
+	= if (not isInner) then INDETERMINATE
+	 else latch_status_1;
+	
+
+	(idLatchCapture_latch, latch_status) 
+	= (idLatchCapture_latch_2, latch_status_2);
+	
+
+tel
+
+
+
+
+
+-- Exit action for state :latch_Closing
+node latch_Closing_ex(idLatchCapture_latch_1:int;
+	isInner:bool)
+
+returns (idLatchCapture_latch:int);
+
+
+var 	idLatchCapture_latch_2:int;
+
+
+let
+
+
+
+	-- set state as inactive 
+	idLatchCapture_latch_2
+	 = if (not isInner) then 0 else idLatchCapture_latch_1;
+
+
+	(idLatchCapture_latch) 
+	= (idLatchCapture_latch_1);
 	
 
 tel
@@ -495,7 +897,7 @@ let
 
 	-- set state as active 
 	idLatchCapture_latch_2 
-	= 1204;
+	= 556;
 	
 
 	latch_status_2 
@@ -533,7 +935,222 @@ let
 
 
 	(idLatchCapture_latch) 
-	= (idLatchCapture_latch_2);
+	= (idLatchCapture_latch_1);
+	
+
+tel
+
+
+
+
+
+
+-- Entry action for state :LatchCapture_latch
+node LatchCapture_latch_en(idLatchCapture_latch_1:int;
+	idMissionPhaseStates_LatchCapture_1:int;
+	INDETERMINATE:int;
+	latch_status_1:int;
+	CLOSEDBUTUNMATED:int;
+	OPEN:int;
+	MATED:int;
+	isInner:bool)
+
+returns (idLatchCapture_latch:int;
+	idMissionPhaseStates_LatchCapture:int;
+	latch_status:int);
+
+
+var 	idLatchCapture_latch_2, idLatchCapture_latch_3, idLatchCapture_latch_4, idLatchCapture_latch_5, idLatchCapture_latch_6, idLatchCapture_latch_7, idLatchCapture_latch_8, idLatchCapture_latch_9:int;
+	idMissionPhaseStates_LatchCapture_2, idMissionPhaseStates_LatchCapture_3, idMissionPhaseStates_LatchCapture_4:int;
+	latch_status_2, latch_status_3, latch_status_4, latch_status_5, latch_status_6, latch_status_7, latch_status_8, latch_status_9:int;
+
+
+let
+
+
+
+	-- set state as active 
+	idMissionPhaseStates_LatchCapture_2 
+	= 578;
+	
+
+	
+-- transition trace :
+	--POINT__To__latch_Opening_1
+		(idLatchCapture_latch_2, latch_status_2) 
+	= latch_Opening_en(idLatchCapture_latch_1, INDETERMINATE, latch_status_1, false);
+		
+
+	(idLatchCapture_latch_3, idMissionPhaseStates_LatchCapture_3, latch_status_3) 
+	= 
+
+	if ( idLatchCapture_latch_1 = 0) then
+
+	 (idLatchCapture_latch_2, idMissionPhaseStates_LatchCapture_2, latch_status_2)
+
+	 else(idLatchCapture_latch_1, idMissionPhaseStates_LatchCapture_2, latch_status_1);
+
+	
+
+	(idLatchCapture_latch_4, latch_status_4) 
+	= 
+	if ( idLatchCapture_latch_1 = 556) then
+	latch_ClosedButUnmated_en(idLatchCapture_latch_1, CLOSEDBUTUNMATED, latch_status_1, false)
+	 else (idLatchCapture_latch_1, latch_status_1);
+
+	
+
+	(idLatchCapture_latch_5, latch_status_5) 
+	= 
+	if ( idLatchCapture_latch_1 = 564) then
+	latch_Open_en(idLatchCapture_latch_1, OPEN, latch_status_1, false)
+	 else (idLatchCapture_latch_1, latch_status_1);
+
+	
+
+	(idLatchCapture_latch_6, latch_status_6) 
+	= 
+	if ( idLatchCapture_latch_1 = 570) then
+	latch_Closing_en(idLatchCapture_latch_1, INDETERMINATE, latch_status_1, false)
+	 else (idLatchCapture_latch_1, latch_status_1);
+
+	
+
+	(idLatchCapture_latch_7, latch_status_7) 
+	= 
+	if ( idLatchCapture_latch_1 = 571) then
+	latch_Mated_en(idLatchCapture_latch_1, MATED, latch_status_1, false)
+	 else (idLatchCapture_latch_1, latch_status_1);
+
+	
+
+	(idLatchCapture_latch_8, latch_status_8) 
+	= 
+	if ( idLatchCapture_latch_1 = 574) then
+	latch_Opening_en(idLatchCapture_latch_1, INDETERMINATE, latch_status_1, false)
+	 else (idLatchCapture_latch_1, latch_status_1);
+
+	
+
+	(idLatchCapture_latch_9, idMissionPhaseStates_LatchCapture_4, latch_status_9) 
+	= 
+		 if ( idLatchCapture_latch_1 = 0) then 
+		(idLatchCapture_latch_3, idMissionPhaseStates_LatchCapture_3, latch_status_3)
+		 else
+		 if ( idLatchCapture_latch_1 = 556) then 
+		(idLatchCapture_latch_4, idMissionPhaseStates_LatchCapture_3, latch_status_4)
+		 else
+		 if ( idLatchCapture_latch_1 = 564) then 
+		(idLatchCapture_latch_5, idMissionPhaseStates_LatchCapture_3, latch_status_5)
+		 else
+		 if ( idLatchCapture_latch_1 = 570) then 
+		(idLatchCapture_latch_6, idMissionPhaseStates_LatchCapture_3, latch_status_6)
+		 else
+		 if ( idLatchCapture_latch_1 = 571) then 
+		(idLatchCapture_latch_7, idMissionPhaseStates_LatchCapture_3, latch_status_7)
+		 else
+		 if ( idLatchCapture_latch_1 = 574) then 
+		(idLatchCapture_latch_8, idMissionPhaseStates_LatchCapture_3, latch_status_8)
+		 else (idLatchCapture_latch_1, idMissionPhaseStates_LatchCapture_2, latch_status_1);
+
+
+	(idLatchCapture_latch, idMissionPhaseStates_LatchCapture, latch_status) 
+	= (idLatchCapture_latch_9, idMissionPhaseStates_LatchCapture_4, latch_status_9);
+	
+
+tel
+
+
+
+
+
+-- Exit action for state :LatchCapture_latch
+node LatchCapture_latch_ex(idLatchCapture_latch_1:int;
+	idMissionPhaseStates_LatchCapture_1:int;
+	isInner:bool)
+
+returns (idLatchCapture_latch:int;
+	idMissionPhaseStates_LatchCapture:int);
+
+
+var 	idLatchCapture_latch_2, idLatchCapture_latch_3, idLatchCapture_latch_4, idLatchCapture_latch_5, idLatchCapture_latch_6, idLatchCapture_latch_7, idLatchCapture_latch_8:int;
+	idMissionPhaseStates_LatchCapture_2:int;
+
+
+let
+
+
+
+	
+	(idLatchCapture_latch_2) 
+	= 
+	if ( idLatchCapture_latch_1 = 556) then
+	latch_ClosedButUnmated_ex(idLatchCapture_latch_1, false)
+	 else (idLatchCapture_latch_1);
+
+	
+
+	(idLatchCapture_latch_3) 
+	= 
+	if ( idLatchCapture_latch_1 = 564) then
+	latch_Open_ex(idLatchCapture_latch_1, false)
+	 else (idLatchCapture_latch_1);
+
+	
+
+	(idLatchCapture_latch_4) 
+	= 
+	if ( idLatchCapture_latch_1 = 570) then
+	latch_Closing_ex(idLatchCapture_latch_1, false)
+	 else (idLatchCapture_latch_1);
+
+	
+
+	(idLatchCapture_latch_5) 
+	= 
+	if ( idLatchCapture_latch_1 = 571) then
+	latch_Mated_ex(idLatchCapture_latch_1, false)
+	 else (idLatchCapture_latch_1);
+
+	
+
+	(idLatchCapture_latch_6) 
+	= 
+	if ( idLatchCapture_latch_1 = 574) then
+	latch_Opening_ex(idLatchCapture_latch_1, false)
+	 else (idLatchCapture_latch_1);
+
+	
+
+	(idLatchCapture_latch_7) 
+	= 
+		 if ( idLatchCapture_latch_1 = 556) then 
+		(idLatchCapture_latch_2)
+		 else
+		 if ( idLatchCapture_latch_1 = 564) then 
+		(idLatchCapture_latch_3)
+		 else
+		 if ( idLatchCapture_latch_1 = 570) then 
+		(idLatchCapture_latch_4)
+		 else
+		 if ( idLatchCapture_latch_1 = 571) then 
+		(idLatchCapture_latch_5)
+		 else
+		 if ( idLatchCapture_latch_1 = 574) then 
+		(idLatchCapture_latch_6)
+		 else (idLatchCapture_latch_1);
+
+
+	-- set state as inactive 
+	idMissionPhaseStates_LatchCapture_2
+	 = if (not isInner) then 0 else idMissionPhaseStates_LatchCapture_1;
+
+	idLatchCapture_latch_8 
+	= 0;
+	
+
+	(idLatchCapture_latch, idMissionPhaseStates_LatchCapture) 
+	= (idLatchCapture_latch_8, idMissionPhaseStates_LatchCapture_1);
 	
 
 tel
@@ -559,7 +1176,7 @@ let
 
 	-- set state as active 
 	idLatchCapture_LatchCaptureCheck_2 
-	= 1217;
+	= 569;
 	
 
 	(idLatchCapture_LatchCaptureCheck) 
@@ -592,133 +1209,7 @@ let
 
 
 	(idLatchCapture_LatchCaptureCheck) 
-	= (idLatchCapture_LatchCaptureCheck_2);
-	
-
-tel
-
-
-
-
-
-
--- Entry action for state :LatchCaptureCheck_CheckLatchOpen
-node LatchCaptureCheck_CheckLatchOpen_en(idLatchCapture_LatchCaptureCheck_1:int;
-	LatchCapture_timer_1:int;
-	isInner:bool)
-
-returns (idLatchCapture_LatchCaptureCheck:int;
-	LatchCapture_timer:int);
-
-
-var 	idLatchCapture_LatchCaptureCheck_2:int;
-	LatchCapture_timer_2:int;
-
-
-let
-
-
-
-	-- set state as active 
-	idLatchCapture_LatchCaptureCheck_2 
-	= 1210;
-	
-
-	LatchCapture_timer_2 
-	= if (not isInner) then 0
-	 else LatchCapture_timer_1;
-	
-
-	(idLatchCapture_LatchCaptureCheck, LatchCapture_timer) 
-	= (idLatchCapture_LatchCaptureCheck_2, LatchCapture_timer_2);
-	
-
-tel
-
-
-
-
-
--- Exit action for state :LatchCaptureCheck_CheckLatchOpen
-node LatchCaptureCheck_CheckLatchOpen_ex(idLatchCapture_LatchCaptureCheck_1:int;
-	isInner:bool)
-
-returns (idLatchCapture_LatchCaptureCheck:int);
-
-
-var 	idLatchCapture_LatchCaptureCheck_2:int;
-
-
-let
-
-
-
-	-- set state as inactive 
-	idLatchCapture_LatchCaptureCheck_2
-	 = if (not isInner) then 0 else idLatchCapture_LatchCaptureCheck_1;
-
-
-	(idLatchCapture_LatchCaptureCheck) 
-	= (idLatchCapture_LatchCaptureCheck_2);
-	
-
-tel
-
-
-
-
-
-
--- Entry action for state :LatchCaptureCheck_LatchFailed
-node LatchCaptureCheck_LatchFailed_en(idLatchCapture_LatchCaptureCheck_1:int;
-	isInner:bool)
-
-returns (idLatchCapture_LatchCaptureCheck:int);
-
-
-var 	idLatchCapture_LatchCaptureCheck_2:int;
-
-
-let
-
-
-
-	-- set state as active 
-	idLatchCapture_LatchCaptureCheck_2 
-	= 1209;
-	
-
-	(idLatchCapture_LatchCaptureCheck) 
-	= (idLatchCapture_LatchCaptureCheck_2);
-	
-
-tel
-
-
-
-
-
--- Exit action for state :LatchCaptureCheck_LatchFailed
-node LatchCaptureCheck_LatchFailed_ex(idLatchCapture_LatchCaptureCheck_1:int;
-	isInner:bool)
-
-returns (idLatchCapture_LatchCaptureCheck:int);
-
-
-var 	idLatchCapture_LatchCaptureCheck_2:int;
-
-
-let
-
-
-
-	-- set state as inactive 
-	idLatchCapture_LatchCaptureCheck_2
-	 = if (not isInner) then 0 else idLatchCapture_LatchCaptureCheck_1;
-
-
-	(idLatchCapture_LatchCaptureCheck) 
-	= (idLatchCapture_LatchCaptureCheck_2);
+	= (idLatchCapture_LatchCaptureCheck_1);
 	
 
 tel
@@ -747,7 +1238,7 @@ let
 
 	-- set state as active 
 	idLatchCapture_LatchCaptureCheck_2 
-	= 1207;
+	= 559;
 	
 
 	LatchCaptureComplete_2 
@@ -785,6 +1276,36 @@ let
 
 
 	(idLatchCapture_LatchCaptureCheck) 
+	= (idLatchCapture_LatchCaptureCheck_1);
+	
+
+tel
+
+
+
+
+
+
+-- Entry action for state :LatchCaptureCheck_LatchFailed
+node LatchCaptureCheck_LatchFailed_en(idLatchCapture_LatchCaptureCheck_1:int;
+	isInner:bool)
+
+returns (idLatchCapture_LatchCaptureCheck:int);
+
+
+var 	idLatchCapture_LatchCaptureCheck_2:int;
+
+
+let
+
+
+
+	-- set state as active 
+	idLatchCapture_LatchCaptureCheck_2 
+	= 561;
+	
+
+	(idLatchCapture_LatchCaptureCheck) 
 	= (idLatchCapture_LatchCaptureCheck_2);
 	
 
@@ -794,118 +1315,27 @@ tel
 
 
 
-
--- Entry action for state :LatchCapture_latch
-node LatchCapture_latch_en(idLatchCapture_latch_1:int;
-	idMissionPhaseStates_LatchCapture_1:int;
-	INDETERMINATE:int;
-	latch_status_1:int;
-	CLOSEDBUTUNMATED:int;
-	OPEN:int;
-	MATED:int;
+-- Exit action for state :LatchCaptureCheck_LatchFailed
+node LatchCaptureCheck_LatchFailed_ex(idLatchCapture_LatchCaptureCheck_1:int;
 	isInner:bool)
 
-returns (idLatchCapture_latch:int;
-	idMissionPhaseStates_LatchCapture:int;
-	latch_status:int);
+returns (idLatchCapture_LatchCaptureCheck:int);
 
 
-var 	idLatchCapture_latch_2, idLatchCapture_latch_3, idLatchCapture_latch_4, idLatchCapture_latch_5, idLatchCapture_latch_6, idLatchCapture_latch_7, idLatchCapture_latch_8, idLatchCapture_latch_9:int;
-	idMissionPhaseStates_LatchCapture_2, idMissionPhaseStates_LatchCapture_3, idMissionPhaseStates_LatchCapture_4:int;
-	latch_status_2, latch_status_3, latch_status_4, latch_status_5, latch_status_6, latch_status_7, latch_status_8, latch_status_9:int;
+var 	idLatchCapture_LatchCaptureCheck_2:int;
 
 
 let
 
 
 
-	-- set state as active 
-	idMissionPhaseStates_LatchCapture_2 
-	= 1226;
-	
-
-	
--- transition trace :
-	--POINT__To__latch_Opening_1
-		(idLatchCapture_latch_2, latch_status_2) 
-	= latch_Opening_en(idLatchCapture_latch_1, INDETERMINATE, latch_status_1, false);
-		
-
-	(idLatchCapture_latch_3, idMissionPhaseStates_LatchCapture_3, latch_status_3) 
-	= 
-
-	if ( idLatchCapture_latch_1 = 0) then
-
-	 (idLatchCapture_latch_2, idMissionPhaseStates_LatchCapture_2, latch_status_2)
-
-	 else(idLatchCapture_latch_1, idMissionPhaseStates_LatchCapture_2, latch_status_1);
-
-	
-
-	(idLatchCapture_latch_4, latch_status_4) 
-	= 
-	if ( idLatchCapture_latch_1 = 1204) then
-	latch_ClosedButUnmated_en(idLatchCapture_latch_1, CLOSEDBUTUNMATED, latch_status_1, false)
-	 else (idLatchCapture_latch_1, latch_status_1);
-
-	
-
-	(idLatchCapture_latch_5, latch_status_5) 
-	= 
-	if ( idLatchCapture_latch_1 = 1212) then
-	latch_Open_en(idLatchCapture_latch_1, OPEN, latch_status_1, false)
-	 else (idLatchCapture_latch_1, latch_status_1);
-
-	
-
-	(idLatchCapture_latch_6, latch_status_6) 
-	= 
-	if ( idLatchCapture_latch_1 = 1218) then
-	latch_Closing_en(idLatchCapture_latch_1, INDETERMINATE, latch_status_1, false)
-	 else (idLatchCapture_latch_1, latch_status_1);
-
-	
-
-	(idLatchCapture_latch_7, latch_status_7) 
-	= 
-	if ( idLatchCapture_latch_1 = 1219) then
-	latch_Mated_en(idLatchCapture_latch_1, MATED, latch_status_1, false)
-	 else (idLatchCapture_latch_1, latch_status_1);
-
-	
-
-	(idLatchCapture_latch_8, latch_status_8) 
-	= 
-	if ( idLatchCapture_latch_1 = 1222) then
-	latch_Opening_en(idLatchCapture_latch_1, INDETERMINATE, latch_status_1, false)
-	 else (idLatchCapture_latch_1, latch_status_1);
-
-	
-
-	(idLatchCapture_latch_9, idMissionPhaseStates_LatchCapture_4, latch_status_9) 
-	= 
-		 if ( idLatchCapture_latch_1 = 0) then 
-		(idLatchCapture_latch_3, idMissionPhaseStates_LatchCapture_3, latch_status_3)
-		 else
-		 if ( idLatchCapture_latch_1 = 1204) then 
-		(idLatchCapture_latch_4, idMissionPhaseStates_LatchCapture_3, latch_status_4)
-		 else
-		 if ( idLatchCapture_latch_1 = 1212) then 
-		(idLatchCapture_latch_5, idMissionPhaseStates_LatchCapture_3, latch_status_5)
-		 else
-		 if ( idLatchCapture_latch_1 = 1218) then 
-		(idLatchCapture_latch_6, idMissionPhaseStates_LatchCapture_3, latch_status_6)
-		 else
-		 if ( idLatchCapture_latch_1 = 1219) then 
-		(idLatchCapture_latch_7, idMissionPhaseStates_LatchCapture_3, latch_status_7)
-		 else
-		 if ( idLatchCapture_latch_1 = 1222) then 
-		(idLatchCapture_latch_8, idMissionPhaseStates_LatchCapture_3, latch_status_8)
-		 else (idLatchCapture_latch_1, idMissionPhaseStates_LatchCapture_2, latch_status_1);
+	-- set state as inactive 
+	idLatchCapture_LatchCaptureCheck_2
+	 = if (not isInner) then 0 else idLatchCapture_LatchCaptureCheck_1;
 
 
-	(idLatchCapture_latch, idMissionPhaseStates_LatchCapture, latch_status) 
-	= (idLatchCapture_latch_9, idMissionPhaseStates_LatchCapture_4, latch_status_9);
+	(idLatchCapture_LatchCaptureCheck) 
+	= (idLatchCapture_LatchCaptureCheck_1);
 	
 
 tel
@@ -914,93 +1344,65 @@ tel
 
 
 
--- Exit action for state :LatchCapture_latch
-node LatchCapture_latch_ex(idLatchCapture_latch_1:int;
-	idMissionPhaseStates_LatchCapture_1:int;
+
+-- Entry action for state :LatchCaptureCheck_CheckLatchOpen
+node LatchCaptureCheck_CheckLatchOpen_en(idLatchCapture_LatchCaptureCheck_1:int;
+	LatchCapture_timer_1:int;
 	isInner:bool)
 
-returns (idLatchCapture_latch:int;
-	idMissionPhaseStates_LatchCapture:int);
+returns (idLatchCapture_LatchCaptureCheck:int;
+	LatchCapture_timer:int);
 
 
-var 	idLatchCapture_latch_2, idLatchCapture_latch_3, idLatchCapture_latch_4, idLatchCapture_latch_5, idLatchCapture_latch_6, idLatchCapture_latch_7, idLatchCapture_latch_8:int;
-	idMissionPhaseStates_LatchCapture_2:int;
+var 	idLatchCapture_LatchCaptureCheck_2:int;
+	LatchCapture_timer_2:int;
 
 
 let
 
 
 
-	
-	(idLatchCapture_latch_2) 
-	= 
-	if ( idLatchCapture_latch_1 = 1204) then
-	latch_ClosedButUnmated_ex(idLatchCapture_latch_1, false)
-	 else (idLatchCapture_latch_1);
-
+	-- set state as active 
+	idLatchCapture_LatchCaptureCheck_2 
+	= 562;
 	
 
-	(idLatchCapture_latch_3) 
-	= 
-	if ( idLatchCapture_latch_1 = 1212) then
-	latch_Open_ex(idLatchCapture_latch_1, false)
-	 else (idLatchCapture_latch_1);
-
+	LatchCapture_timer_2 
+	= if (not isInner) then 0
+	 else LatchCapture_timer_1;
 	
 
-	(idLatchCapture_latch_4) 
-	= 
-	if ( idLatchCapture_latch_1 = 1218) then
-	latch_Closing_ex(idLatchCapture_latch_1, false)
-	 else (idLatchCapture_latch_1);
-
+	(idLatchCapture_LatchCaptureCheck, LatchCapture_timer) 
+	= (idLatchCapture_LatchCaptureCheck_2, LatchCapture_timer_2);
 	
 
-	(idLatchCapture_latch_5) 
-	= 
-	if ( idLatchCapture_latch_1 = 1219) then
-	latch_Mated_ex(idLatchCapture_latch_1, false)
-	 else (idLatchCapture_latch_1);
+tel
 
-	
 
-	(idLatchCapture_latch_6) 
-	= 
-	if ( idLatchCapture_latch_1 = 1222) then
-	latch_Opening_ex(idLatchCapture_latch_1, false)
-	 else (idLatchCapture_latch_1);
 
-	
 
-	(idLatchCapture_latch_7) 
-	= 
-		 if ( idLatchCapture_latch_1 = 1204) then 
-		(idLatchCapture_latch_2)
-		 else
-		 if ( idLatchCapture_latch_1 = 1212) then 
-		(idLatchCapture_latch_3)
-		 else
-		 if ( idLatchCapture_latch_1 = 1218) then 
-		(idLatchCapture_latch_4)
-		 else
-		 if ( idLatchCapture_latch_1 = 1219) then 
-		(idLatchCapture_latch_5)
-		 else
-		 if ( idLatchCapture_latch_1 = 1222) then 
-		(idLatchCapture_latch_6)
-		 else (idLatchCapture_latch_1);
+
+-- Exit action for state :LatchCaptureCheck_CheckLatchOpen
+node LatchCaptureCheck_CheckLatchOpen_ex(idLatchCapture_LatchCaptureCheck_1:int;
+	isInner:bool)
+
+returns (idLatchCapture_LatchCaptureCheck:int);
+
+
+var 	idLatchCapture_LatchCaptureCheck_2:int;
+
+
+let
+
 
 
 	-- set state as inactive 
-	idMissionPhaseStates_LatchCapture_2
-	 = if (not isInner) then 0 else idMissionPhaseStates_LatchCapture_1;
+	idLatchCapture_LatchCaptureCheck_2
+	 = if (not isInner) then 0 else idLatchCapture_LatchCaptureCheck_1;
 
-	idLatchCapture_latch_8 
-	= 0;
-	
 
-	(idLatchCapture_latch, idMissionPhaseStates_LatchCapture) 
-	= (idLatchCapture_latch_8, idMissionPhaseStates_LatchCapture_2);
+	(idLatchCapture_LatchCaptureCheck) 
+	= (idLatchCapture_LatchCaptureCheck_1);
 	
 
 tel
@@ -1038,7 +1440,7 @@ let
 
 	-- set state as active 
 	idMissionPhaseStates_LatchCapture_2 
-	= 1225;
+	= 577;
 	
 
 	AttemptingToDock_2 
@@ -1066,7 +1468,7 @@ let
 
 	(idLatchCapture_LatchCaptureCheck_4, LatchCaptureComplete_2) 
 	= 
-	if ( idLatchCapture_LatchCaptureCheck_1 = 1207) then
+	if ( idLatchCapture_LatchCaptureCheck_1 = 559) then
 	LatchCaptureCheck_Docked_en(idLatchCapture_LatchCaptureCheck_1, LatchCaptureComplete_1, false)
 	 else (idLatchCapture_LatchCaptureCheck_1, LatchCaptureComplete_1);
 
@@ -1074,7 +1476,7 @@ let
 
 	(idLatchCapture_LatchCaptureCheck_5) 
 	= 
-	if ( idLatchCapture_LatchCaptureCheck_1 = 1209) then
+	if ( idLatchCapture_LatchCaptureCheck_1 = 561) then
 	LatchCaptureCheck_LatchFailed_en(idLatchCapture_LatchCaptureCheck_1, false)
 	 else (idLatchCapture_LatchCaptureCheck_1);
 
@@ -1082,7 +1484,7 @@ let
 
 	(idLatchCapture_LatchCaptureCheck_6, LatchCapture_timer_4) 
 	= 
-	if ( idLatchCapture_LatchCaptureCheck_1 = 1210) then
+	if ( idLatchCapture_LatchCaptureCheck_1 = 562) then
 	LatchCaptureCheck_CheckLatchOpen_en(idLatchCapture_LatchCaptureCheck_1, LatchCapture_timer_1, false)
 	 else (idLatchCapture_LatchCaptureCheck_1, LatchCapture_timer_1);
 
@@ -1090,7 +1492,7 @@ let
 
 	(idLatchCapture_LatchCaptureCheck_7) 
 	= 
-	if ( idLatchCapture_LatchCaptureCheck_1 = 1217) then
+	if ( idLatchCapture_LatchCaptureCheck_1 = 569) then
 	LatchCaptureCheck_CheckLatchMated_en(idLatchCapture_LatchCaptureCheck_1, false)
 	 else (idLatchCapture_LatchCaptureCheck_1);
 
@@ -1101,16 +1503,16 @@ let
 		 if ( idLatchCapture_LatchCaptureCheck_1 = 0) then 
 		(idLatchCapture_LatchCaptureCheck_3, idMissionPhaseStates_LatchCapture_3, AttemptingToDock_3, LatchCapture_timer_3, LatchCaptureComplete_1)
 		 else
-		 if ( idLatchCapture_LatchCaptureCheck_1 = 1207) then 
+		 if ( idLatchCapture_LatchCaptureCheck_1 = 559) then 
 		(idLatchCapture_LatchCaptureCheck_4, idMissionPhaseStates_LatchCapture_3, AttemptingToDock_3, LatchCapture_timer_3, LatchCaptureComplete_2)
 		 else
-		 if ( idLatchCapture_LatchCaptureCheck_1 = 1209) then 
+		 if ( idLatchCapture_LatchCaptureCheck_1 = 561) then 
 		(idLatchCapture_LatchCaptureCheck_5, idMissionPhaseStates_LatchCapture_3, AttemptingToDock_3, LatchCapture_timer_3, LatchCaptureComplete_2)
 		 else
-		 if ( idLatchCapture_LatchCaptureCheck_1 = 1210) then 
+		 if ( idLatchCapture_LatchCaptureCheck_1 = 562) then 
 		(idLatchCapture_LatchCaptureCheck_6, idMissionPhaseStates_LatchCapture_3, AttemptingToDock_3, LatchCapture_timer_4, LatchCaptureComplete_2)
 		 else
-		 if ( idLatchCapture_LatchCaptureCheck_1 = 1217) then 
+		 if ( idLatchCapture_LatchCaptureCheck_1 = 569) then 
 		(idLatchCapture_LatchCaptureCheck_7, idMissionPhaseStates_LatchCapture_3, AttemptingToDock_3, LatchCapture_timer_4, LatchCaptureComplete_2)
 		 else (idLatchCapture_LatchCaptureCheck_1, idMissionPhaseStates_LatchCapture_2, AttemptingToDock_2, LatchCapture_timer_1, LatchCaptureComplete_1);
 
@@ -1176,7 +1578,7 @@ let
 	
 	(idLatchCapture_LatchCaptureCheck_2) 
 	= 
-	if ( idLatchCapture_LatchCaptureCheck_1 = 1207) then
+	if ( idLatchCapture_LatchCaptureCheck_1 = 559) then
 	LatchCaptureCheck_Docked_ex(idLatchCapture_LatchCaptureCheck_1, false)
 	 else (idLatchCapture_LatchCaptureCheck_1);
 
@@ -1184,7 +1586,7 @@ let
 
 	(idLatchCapture_LatchCaptureCheck_3) 
 	= 
-	if ( idLatchCapture_LatchCaptureCheck_1 = 1209) then
+	if ( idLatchCapture_LatchCaptureCheck_1 = 561) then
 	LatchCaptureCheck_LatchFailed_ex(idLatchCapture_LatchCaptureCheck_1, false)
 	 else (idLatchCapture_LatchCaptureCheck_1);
 
@@ -1192,7 +1594,7 @@ let
 
 	(idLatchCapture_LatchCaptureCheck_4) 
 	= 
-	if ( idLatchCapture_LatchCaptureCheck_1 = 1210) then
+	if ( idLatchCapture_LatchCaptureCheck_1 = 562) then
 	LatchCaptureCheck_CheckLatchOpen_ex(idLatchCapture_LatchCaptureCheck_1, false)
 	 else (idLatchCapture_LatchCaptureCheck_1);
 
@@ -1200,7 +1602,7 @@ let
 
 	(idLatchCapture_LatchCaptureCheck_5) 
 	= 
-	if ( idLatchCapture_LatchCaptureCheck_1 = 1217) then
+	if ( idLatchCapture_LatchCaptureCheck_1 = 569) then
 	LatchCaptureCheck_CheckLatchMated_ex(idLatchCapture_LatchCaptureCheck_1, false)
 	 else (idLatchCapture_LatchCaptureCheck_1);
 
@@ -1208,16 +1610,16 @@ let
 
 	(idLatchCapture_LatchCaptureCheck_6) 
 	= 
-		 if ( idLatchCapture_LatchCaptureCheck_1 = 1207) then 
+		 if ( idLatchCapture_LatchCaptureCheck_1 = 559) then 
 		(idLatchCapture_LatchCaptureCheck_2)
 		 else
-		 if ( idLatchCapture_LatchCaptureCheck_1 = 1209) then 
+		 if ( idLatchCapture_LatchCaptureCheck_1 = 561) then 
 		(idLatchCapture_LatchCaptureCheck_3)
 		 else
-		 if ( idLatchCapture_LatchCaptureCheck_1 = 1210) then 
+		 if ( idLatchCapture_LatchCaptureCheck_1 = 562) then 
 		(idLatchCapture_LatchCaptureCheck_4)
 		 else
-		 if ( idLatchCapture_LatchCaptureCheck_1 = 1217) then 
+		 if ( idLatchCapture_LatchCaptureCheck_1 = 569) then 
 		(idLatchCapture_LatchCaptureCheck_5)
 		 else (idLatchCapture_LatchCaptureCheck_1);
 
@@ -1236,7 +1638,7 @@ let
 	
 
 	(idLatchCapture_LatchCaptureCheck, AttemptingToDock, idMissionPhaseStates_LatchCapture) 
-	= (idLatchCapture_LatchCaptureCheck_7, AttemptingToDock_2, idMissionPhaseStates_LatchCapture_2);
+	= (idLatchCapture_LatchCaptureCheck_7, AttemptingToDock_2, idMissionPhaseStates_LatchCapture_1);
 	
 
 tel
@@ -1287,7 +1689,7 @@ let
 
 	-- set state as active 
 	idChart_MissionPhaseStates_2 
-	= 1223;
+	= 575;
 	
 
 	
@@ -1351,125 +1753,7 @@ let
 	
 
 	(idLatchCapture_latch, idMissionPhaseStates_LatchCapture, AttemptingToDock, idLatchCapture_LatchCaptureCheck, idChart_MissionPhaseStates) 
-	= (idLatchCapture_latch_2, idMissionPhaseStates_LatchCapture_4, AttemptingToDock_2, idLatchCapture_LatchCaptureCheck_2, idChart_MissionPhaseStates_2);
-	
-
-tel
-
-
-
-
-
-
--- Entry action for state :MissionPhaseStates_JointStabilize
-node MissionPhaseStates_JointStabilize_en(idChart_MissionPhaseStates_1:int;
-	isInner:bool)
-
-returns (idChart_MissionPhaseStates:int);
-
-
-var 	idChart_MissionPhaseStates_2:int;
-
-
-let
-
-
-
-	-- set state as active 
-	idChart_MissionPhaseStates_2 
-	= 1205;
-	
-
-	(idChart_MissionPhaseStates) 
-	= (idChart_MissionPhaseStates_2);
-	
-
-tel
-
-
-
-
-
--- Exit action for state :MissionPhaseStates_JointStabilize
-node MissionPhaseStates_JointStabilize_ex(idChart_MissionPhaseStates_1:int;
-	isInner:bool)
-
-returns (idChart_MissionPhaseStates:int);
-
-
-var 	idChart_MissionPhaseStates_2:int;
-
-
-let
-
-
-
-	-- set state as inactive 
-	idChart_MissionPhaseStates_2
-	 = if (not isInner) then 0 else idChart_MissionPhaseStates_1;
-
-
-	(idChart_MissionPhaseStates) 
-	= (idChart_MissionPhaseStates_2);
-	
-
-tel
-
-
-
-
-
-
--- Entry action for state :MissionPhaseStates_DockingApproach
-node MissionPhaseStates_DockingApproach_en(idChart_MissionPhaseStates_1:int;
-	isInner:bool)
-
-returns (idChart_MissionPhaseStates:int);
-
-
-var 	idChart_MissionPhaseStates_2:int;
-
-
-let
-
-
-
-	-- set state as active 
-	idChart_MissionPhaseStates_2 
-	= 1208;
-	
-
-	(idChart_MissionPhaseStates) 
-	= (idChart_MissionPhaseStates_2);
-	
-
-tel
-
-
-
-
-
--- Exit action for state :MissionPhaseStates_DockingApproach
-node MissionPhaseStates_DockingApproach_ex(idChart_MissionPhaseStates_1:int;
-	isInner:bool)
-
-returns (idChart_MissionPhaseStates:int);
-
-
-var 	idChart_MissionPhaseStates_2:int;
-
-
-let
-
-
-
-	-- set state as inactive 
-	idChart_MissionPhaseStates_2
-	 = if (not isInner) then 0 else idChart_MissionPhaseStates_1;
-
-
-	(idChart_MissionPhaseStates) 
-	= (idChart_MissionPhaseStates_2);
+	= (idLatchCapture_latch_2, idMissionPhaseStates_LatchCapture_4, AttemptingToDock_2, idLatchCapture_LatchCaptureCheck_2, idChart_MissionPhaseStates_1);
 	
 
 tel
@@ -1495,7 +1779,7 @@ let
 
 	-- set state as active 
 	idChart_MissionPhaseStates_2 
-	= 1221;
+	= 573;
 	
 
 	(idChart_MissionPhaseStates) 
@@ -1528,141 +1812,7 @@ let
 
 
 	(idChart_MissionPhaseStates) 
-	= (idChart_MissionPhaseStates_2);
-	
-
-tel
-
-
-
-
-
-
--- Entry action for state :MissionPhaseStates_JointMission
-node MissionPhaseStates_JointMission_en(idChart_MissionPhaseStates_1:int;
-	JointMission_1:bool;
-	isInner:bool)
-
-returns (idChart_MissionPhaseStates:int;
-	JointMission:bool);
-
-
-var 	idChart_MissionPhaseStates_2:int;
-	JointMission_2:bool;
-
-
-let
-
-
-
-	-- set state as active 
-	idChart_MissionPhaseStates_2 
-	= 1216;
-	
-
-	JointMission_2 
-	= if (not isInner) then true
-	 else JointMission_1;
-	
-
-	(idChart_MissionPhaseStates, JointMission) 
-	= (idChart_MissionPhaseStates_2, JointMission_2);
-	
-
-tel
-
-
-
-
-
--- Exit action for state :MissionPhaseStates_JointMission
-node MissionPhaseStates_JointMission_ex(idChart_MissionPhaseStates_1:int;
-	isInner:bool)
-
-returns (idChart_MissionPhaseStates:int);
-
-
-var 	idChart_MissionPhaseStates_2:int;
-
-
-let
-
-
-
-	-- set state as inactive 
-	idChart_MissionPhaseStates_2
-	 = if (not isInner) then 0 else idChart_MissionPhaseStates_1;
-
-
-	(idChart_MissionPhaseStates) 
-	= (idChart_MissionPhaseStates_2);
-	
-
-tel
-
-
-
-
-
-
--- Entry action for state :MissionPhaseStates_FailedApproach
-node MissionPhaseStates_FailedApproach_en(idChart_MissionPhaseStates_1:int;
-	FailedApproach_1:bool;
-	isInner:bool)
-
-returns (idChart_MissionPhaseStates:int;
-	FailedApproach:bool);
-
-
-var 	idChart_MissionPhaseStates_2:int;
-	FailedApproach_2:bool;
-
-
-let
-
-
-
-	-- set state as active 
-	idChart_MissionPhaseStates_2 
-	= 1224;
-	
-
-	FailedApproach_2 
-	= if (not isInner) then true
-	 else FailedApproach_1;
-	
-
-	(idChart_MissionPhaseStates, FailedApproach) 
-	= (idChart_MissionPhaseStates_2, FailedApproach_2);
-	
-
-tel
-
-
-
-
-
--- Exit action for state :MissionPhaseStates_FailedApproach
-node MissionPhaseStates_FailedApproach_ex(idChart_MissionPhaseStates_1:int;
-	isInner:bool)
-
-returns (idChart_MissionPhaseStates:int);
-
-
-var 	idChart_MissionPhaseStates_2:int;
-
-
-let
-
-
-
-	-- set state as inactive 
-	idChart_MissionPhaseStates_2
-	 = if (not isInner) then 0 else idChart_MissionPhaseStates_1;
-
-
-	(idChart_MissionPhaseStates) 
-	= (idChart_MissionPhaseStates_2);
+	= (idChart_MissionPhaseStates_1);
 	
 
 tel
@@ -1688,7 +1838,7 @@ let
 
 	-- set state as active 
 	idChart_MissionPhaseStates_2 
-	= 1203;
+	= 555;
 	
 
 	(idChart_MissionPhaseStates) 
@@ -1721,275 +1871,7 @@ let
 
 
 	(idChart_MissionPhaseStates) 
-	= (idChart_MissionPhaseStates_2);
-	
-
-tel
-
-
-
-
-
-
--- Entry action for state :MissionPhaseStates_Disengage
-node MissionPhaseStates_Disengage_en(idChart_MissionPhaseStates_1:int;
-	isInner:bool)
-
-returns (idChart_MissionPhaseStates:int);
-
-
-var 	idChart_MissionPhaseStates_2:int;
-
-
-let
-
-
-
-	-- set state as active 
-	idChart_MissionPhaseStates_2 
-	= 1214;
-	
-
-	(idChart_MissionPhaseStates) 
-	= (idChart_MissionPhaseStates_2);
-	
-
-tel
-
-
-
-
-
--- Exit action for state :MissionPhaseStates_Disengage
-node MissionPhaseStates_Disengage_ex(idChart_MissionPhaseStates_1:int;
-	isInner:bool)
-
-returns (idChart_MissionPhaseStates:int);
-
-
-var 	idChart_MissionPhaseStates_2:int;
-
-
-let
-
-
-
-	-- set state as inactive 
-	idChart_MissionPhaseStates_2
-	 = if (not isInner) then 0 else idChart_MissionPhaseStates_1;
-
-
-	(idChart_MissionPhaseStates) 
-	= (idChart_MissionPhaseStates_2);
-	
-
-tel
-
-
-
-
-
-
--- Entry action for state :MissionPhaseStates_ProximityOperations
-node MissionPhaseStates_ProximityOperations_en(idChart_MissionPhaseStates_1:int;
-	isInner:bool)
-
-returns (idChart_MissionPhaseStates:int);
-
-
-var 	idChart_MissionPhaseStates_2:int;
-
-
-let
-
-
-
-	-- set state as active 
-	idChart_MissionPhaseStates_2 
-	= 1215;
-	
-
-	(idChart_MissionPhaseStates) 
-	= (idChart_MissionPhaseStates_2);
-	
-
-tel
-
-
-
-
-
--- Exit action for state :MissionPhaseStates_ProximityOperations
-node MissionPhaseStates_ProximityOperations_ex(idChart_MissionPhaseStates_1:int;
-	isInner:bool)
-
-returns (idChart_MissionPhaseStates:int);
-
-
-var 	idChart_MissionPhaseStates_2:int;
-
-
-let
-
-
-
-	-- set state as inactive 
-	idChart_MissionPhaseStates_2
-	 = if (not isInner) then 0 else idChart_MissionPhaseStates_1;
-
-
-	(idChart_MissionPhaseStates) 
-	= (idChart_MissionPhaseStates_2);
-	
-
-tel
-
-
-
-
-
-
--- Entry action for state :MissionPhaseStates_ApproachOrbit
-node MissionPhaseStates_ApproachOrbit_en(idChart_MissionPhaseStates_1:int;
-	isInner:bool)
-
-returns (idChart_MissionPhaseStates:int);
-
-
-var 	idChart_MissionPhaseStates_2:int;
-
-
-let
-
-
-
-	-- set state as active 
-	idChart_MissionPhaseStates_2 
-	= 1213;
-	
-
-	(idChart_MissionPhaseStates) 
-	= (idChart_MissionPhaseStates_2);
-	
-
-tel
-
-
-
-
-
--- Exit action for state :MissionPhaseStates_ApproachOrbit
-node MissionPhaseStates_ApproachOrbit_ex(idChart_MissionPhaseStates_1:int;
-	isInner:bool)
-
-returns (idChart_MissionPhaseStates:int);
-
-
-var 	idChart_MissionPhaseStates_2:int;
-
-
-let
-
-
-
-	-- set state as inactive 
-	idChart_MissionPhaseStates_2
-	 = if (not isInner) then 0 else idChart_MissionPhaseStates_1;
-
-
-	(idChart_MissionPhaseStates) 
-	= (idChart_MissionPhaseStates_2);
-	
-
-tel
-
-
-
-
-
-
--- Exit action for state :MissionPhaseStates_CollisionAvoidanceManuever
-node MissionPhaseStates_CollisionAvoidanceManuever_ex(ApproachOrbitComplete_1:bool;
-	ProximityOperationsComplete_1:bool;
-	FarApproachComplete_1:bool;
-	CaptureApproachComplete_1:bool;
-	idChart_MissionPhaseStates_1:int;
-	isInner:bool)
-
-returns (ApproachOrbitComplete:bool;
-	ProximityOperationsComplete:bool;
-	FarApproachComplete:bool;
-	CaptureApproachComplete:bool;
-	idChart_MissionPhaseStates:int);
-
-
-var 	ApproachOrbitComplete_2:bool;
-	ProximityOperationsComplete_2:bool;
-	FarApproachComplete_2:bool;
-	CaptureApproachComplete_2:bool;
-	idChart_MissionPhaseStates_2:int;
-
-
-let
-
-
-
-	ApproachOrbitComplete_2 
-	= if (not isInner) then false
-	 else ApproachOrbitComplete_1;
-	
-
-	ProximityOperationsComplete_2 
-	= if (not isInner) then false
-	 else ProximityOperationsComplete_1;
-	
-
-	FarApproachComplete_2 
-	= if (not isInner) then false
-	 else FarApproachComplete_1;
-	
-
-	CaptureApproachComplete_2 
-	= if (not isInner) then false
-	 else CaptureApproachComplete_1;
-	
-
-	-- set state as inactive 
-	idChart_MissionPhaseStates_2
-	 = if (not isInner) then 0 else idChart_MissionPhaseStates_1;
-
-
-	(ApproachOrbitComplete, ProximityOperationsComplete, FarApproachComplete, CaptureApproachComplete, idChart_MissionPhaseStates) 
-	= (ApproachOrbitComplete_2, ProximityOperationsComplete_2, FarApproachComplete_2, CaptureApproachComplete_2, idChart_MissionPhaseStates_2);
-	
-
-tel
-
-
-
-
-
--- Entry action for state :MissionPhaseStates_CollisionAvoidanceManuever
-node MissionPhaseStates_CollisionAvoidanceManuever_en(idChart_MissionPhaseStates_1:int;
-	isInner:bool)
-
-returns (idChart_MissionPhaseStates:int);
-
-
-var 	idChart_MissionPhaseStates_2:int;
-
-
-let
-
-
-
-	-- set state as active 
-	idChart_MissionPhaseStates_2 
-	= 1211;
-	
-
-	(idChart_MissionPhaseStates) 
-	= (idChart_MissionPhaseStates_2);
+	= (idChart_MissionPhaseStates_1);
 	
 
 tel
@@ -2015,7 +1897,7 @@ let
 
 	-- set state as active 
 	idChart_MissionPhaseStates_2 
-	= 1206;
+	= 558;
 	
 
 	(idChart_MissionPhaseStates) 
@@ -2048,7 +1930,125 @@ let
 
 
 	(idChart_MissionPhaseStates) 
+	= (idChart_MissionPhaseStates_1);
+	
+
+tel
+
+
+
+
+
+
+-- Entry action for state :MissionPhaseStates_ProximityOperations
+node MissionPhaseStates_ProximityOperations_en(idChart_MissionPhaseStates_1:int;
+	isInner:bool)
+
+returns (idChart_MissionPhaseStates:int);
+
+
+var 	idChart_MissionPhaseStates_2:int;
+
+
+let
+
+
+
+	-- set state as active 
+	idChart_MissionPhaseStates_2 
+	= 567;
+	
+
+	(idChart_MissionPhaseStates) 
 	= (idChart_MissionPhaseStates_2);
+	
+
+tel
+
+
+
+
+
+-- Exit action for state :MissionPhaseStates_ProximityOperations
+node MissionPhaseStates_ProximityOperations_ex(idChart_MissionPhaseStates_1:int;
+	isInner:bool)
+
+returns (idChart_MissionPhaseStates:int);
+
+
+var 	idChart_MissionPhaseStates_2:int;
+
+
+let
+
+
+
+	-- set state as inactive 
+	idChart_MissionPhaseStates_2
+	 = if (not isInner) then 0 else idChart_MissionPhaseStates_1;
+
+
+	(idChart_MissionPhaseStates) 
+	= (idChart_MissionPhaseStates_1);
+	
+
+tel
+
+
+
+
+
+
+-- Entry action for state :MissionPhaseStates_ApproachOrbit
+node MissionPhaseStates_ApproachOrbit_en(idChart_MissionPhaseStates_1:int;
+	isInner:bool)
+
+returns (idChart_MissionPhaseStates:int);
+
+
+var 	idChart_MissionPhaseStates_2:int;
+
+
+let
+
+
+
+	-- set state as active 
+	idChart_MissionPhaseStates_2 
+	= 565;
+	
+
+	(idChart_MissionPhaseStates) 
+	= (idChart_MissionPhaseStates_2);
+	
+
+tel
+
+
+
+
+
+-- Exit action for state :MissionPhaseStates_ApproachOrbit
+node MissionPhaseStates_ApproachOrbit_ex(idChart_MissionPhaseStates_1:int;
+	isInner:bool)
+
+returns (idChart_MissionPhaseStates:int);
+
+
+var 	idChart_MissionPhaseStates_2:int;
+
+
+let
+
+
+
+	-- set state as inactive 
+	idChart_MissionPhaseStates_2
+	 = if (not isInner) then 0 else idChart_MissionPhaseStates_1;
+
+
+	(idChart_MissionPhaseStates) 
+	= (idChart_MissionPhaseStates_1);
 	
 
 tel
@@ -2108,7 +2108,7 @@ let
 
 	-- set state as active 
 	idChart_Chart_2 
-	= 1220;
+	= 572;
 	
 
 	
@@ -2131,7 +2131,7 @@ let
 
 	(idChart_MissionPhaseStates_4) 
 	= 
-	if ( idChart_MissionPhaseStates_1 = 1206) then
+	if ( idChart_MissionPhaseStates_1 = 558) then
 	MissionPhaseStates_Start_en(idChart_MissionPhaseStates_1, false)
 	 else (idChart_MissionPhaseStates_1);
 
@@ -2139,7 +2139,7 @@ let
 
 	(idChart_MissionPhaseStates_5) 
 	= 
-	if ( idChart_MissionPhaseStates_1 = 1211) then
+	if ( idChart_MissionPhaseStates_1 = 563) then
 	MissionPhaseStates_CollisionAvoidanceManuever_en(idChart_MissionPhaseStates_1, false)
 	 else (idChart_MissionPhaseStates_1);
 
@@ -2147,7 +2147,7 @@ let
 
 	(idChart_MissionPhaseStates_6) 
 	= 
-	if ( idChart_MissionPhaseStates_1 = 1213) then
+	if ( idChart_MissionPhaseStates_1 = 565) then
 	MissionPhaseStates_ApproachOrbit_en(idChart_MissionPhaseStates_1, false)
 	 else (idChart_MissionPhaseStates_1);
 
@@ -2155,7 +2155,7 @@ let
 
 	(idChart_MissionPhaseStates_7) 
 	= 
-	if ( idChart_MissionPhaseStates_1 = 1215) then
+	if ( idChart_MissionPhaseStates_1 = 567) then
 	MissionPhaseStates_ProximityOperations_en(idChart_MissionPhaseStates_1, false)
 	 else (idChart_MissionPhaseStates_1);
 
@@ -2163,7 +2163,7 @@ let
 
 	(idChart_MissionPhaseStates_8) 
 	= 
-	if ( idChart_MissionPhaseStates_1 = 1214) then
+	if ( idChart_MissionPhaseStates_1 = 566) then
 	MissionPhaseStates_Disengage_en(idChart_MissionPhaseStates_1, false)
 	 else (idChart_MissionPhaseStates_1);
 
@@ -2171,7 +2171,7 @@ let
 
 	(idChart_MissionPhaseStates_9) 
 	= 
-	if ( idChart_MissionPhaseStates_1 = 1203) then
+	if ( idChart_MissionPhaseStates_1 = 555) then
 	MissionPhaseStates_FarApproach_en(idChart_MissionPhaseStates_1, false)
 	 else (idChart_MissionPhaseStates_1);
 
@@ -2179,7 +2179,7 @@ let
 
 	(idChart_MissionPhaseStates_10, FailedApproach_2) 
 	= 
-	if ( idChart_MissionPhaseStates_1 = 1224) then
+	if ( idChart_MissionPhaseStates_1 = 576) then
 	MissionPhaseStates_FailedApproach_en(idChart_MissionPhaseStates_1, FailedApproach_1, false)
 	 else (idChart_MissionPhaseStates_1, FailedApproach_1);
 
@@ -2187,7 +2187,7 @@ let
 
 	(idChart_MissionPhaseStates_11, JointMission_2) 
 	= 
-	if ( idChart_MissionPhaseStates_1 = 1216) then
+	if ( idChart_MissionPhaseStates_1 = 568) then
 	MissionPhaseStates_JointMission_en(idChart_MissionPhaseStates_1, JointMission_1, false)
 	 else (idChart_MissionPhaseStates_1, JointMission_1);
 
@@ -2195,7 +2195,7 @@ let
 
 	(idChart_MissionPhaseStates_12) 
 	= 
-	if ( idChart_MissionPhaseStates_1 = 1221) then
+	if ( idChart_MissionPhaseStates_1 = 573) then
 	MissionPhaseStates_CaptureApproach_en(idChart_MissionPhaseStates_1, false)
 	 else (idChart_MissionPhaseStates_1);
 
@@ -2203,7 +2203,7 @@ let
 
 	(idChart_MissionPhaseStates_13) 
 	= 
-	if ( idChart_MissionPhaseStates_1 = 1208) then
+	if ( idChart_MissionPhaseStates_1 = 560) then
 	MissionPhaseStates_DockingApproach_en(idChart_MissionPhaseStates_1, false)
 	 else (idChart_MissionPhaseStates_1);
 
@@ -2211,7 +2211,7 @@ let
 
 	(idChart_MissionPhaseStates_14) 
 	= 
-	if ( idChart_MissionPhaseStates_1 = 1205) then
+	if ( idChart_MissionPhaseStates_1 = 557) then
 	MissionPhaseStates_JointStabilize_en(idChart_MissionPhaseStates_1, false)
 	 else (idChart_MissionPhaseStates_1);
 
@@ -2219,7 +2219,7 @@ let
 
 	(idMissionPhaseStates_LatchCapture_2, idChart_MissionPhaseStates_15, AttemptingToDock_2, LatchCaptureComplete_2, LatchCapture_timer_2, idLatchCapture_LatchCaptureCheck_2, idLatchCapture_latch_2, latch_status_2) 
 	= 
-	if ( idChart_MissionPhaseStates_1 = 1223) then
+	if ( idChart_MissionPhaseStates_1 = 575) then
 	MissionPhaseStates_LatchCapture_en(idMissionPhaseStates_LatchCapture_1, idChart_MissionPhaseStates_1, AttemptingToDock_1, LatchCaptureComplete_1, LatchCapture_timer_1, idLatchCapture_LatchCaptureCheck_1, CLOSEDBUTUNMATED, INDETERMINATE, MATED, OPEN, idLatchCapture_latch_1, latch_status_1, false)
 	 else (idMissionPhaseStates_LatchCapture_1, idChart_MissionPhaseStates_1, AttemptingToDock_1, LatchCaptureComplete_1, LatchCapture_timer_1, idLatchCapture_LatchCaptureCheck_1, idLatchCapture_latch_1, latch_status_1);
 
@@ -2230,40 +2230,40 @@ let
 		 if ( idChart_MissionPhaseStates_1 = 0) then 
 		(idChart_MissionPhaseStates_3, idChart_Chart_3, FailedApproach_1, JointMission_1, AttemptingToDock_1, LatchCaptureComplete_1, LatchCapture_timer_1, idLatchCapture_LatchCaptureCheck_1, idLatchCapture_latch_1, idMissionPhaseStates_LatchCapture_1, latch_status_1)
 		 else
-		 if ( idChart_MissionPhaseStates_1 = 1206) then 
+		 if ( idChart_MissionPhaseStates_1 = 558) then 
 		(idChart_MissionPhaseStates_4, idChart_Chart_3, FailedApproach_1, JointMission_1, AttemptingToDock_1, LatchCaptureComplete_1, LatchCapture_timer_1, idLatchCapture_LatchCaptureCheck_1, idLatchCapture_latch_1, idMissionPhaseStates_LatchCapture_1, latch_status_1)
 		 else
-		 if ( idChart_MissionPhaseStates_1 = 1211) then 
+		 if ( idChart_MissionPhaseStates_1 = 563) then 
 		(idChart_MissionPhaseStates_5, idChart_Chart_3, FailedApproach_1, JointMission_1, AttemptingToDock_1, LatchCaptureComplete_1, LatchCapture_timer_1, idLatchCapture_LatchCaptureCheck_1, idLatchCapture_latch_1, idMissionPhaseStates_LatchCapture_1, latch_status_1)
 		 else
-		 if ( idChart_MissionPhaseStates_1 = 1213) then 
+		 if ( idChart_MissionPhaseStates_1 = 565) then 
 		(idChart_MissionPhaseStates_6, idChart_Chart_3, FailedApproach_1, JointMission_1, AttemptingToDock_1, LatchCaptureComplete_1, LatchCapture_timer_1, idLatchCapture_LatchCaptureCheck_1, idLatchCapture_latch_1, idMissionPhaseStates_LatchCapture_1, latch_status_1)
 		 else
-		 if ( idChart_MissionPhaseStates_1 = 1215) then 
+		 if ( idChart_MissionPhaseStates_1 = 567) then 
 		(idChart_MissionPhaseStates_7, idChart_Chart_3, FailedApproach_1, JointMission_1, AttemptingToDock_1, LatchCaptureComplete_1, LatchCapture_timer_1, idLatchCapture_LatchCaptureCheck_1, idLatchCapture_latch_1, idMissionPhaseStates_LatchCapture_1, latch_status_1)
 		 else
-		 if ( idChart_MissionPhaseStates_1 = 1214) then 
+		 if ( idChart_MissionPhaseStates_1 = 566) then 
 		(idChart_MissionPhaseStates_8, idChart_Chart_3, FailedApproach_1, JointMission_1, AttemptingToDock_1, LatchCaptureComplete_1, LatchCapture_timer_1, idLatchCapture_LatchCaptureCheck_1, idLatchCapture_latch_1, idMissionPhaseStates_LatchCapture_1, latch_status_1)
 		 else
-		 if ( idChart_MissionPhaseStates_1 = 1203) then 
+		 if ( idChart_MissionPhaseStates_1 = 555) then 
 		(idChart_MissionPhaseStates_9, idChart_Chart_3, FailedApproach_1, JointMission_1, AttemptingToDock_1, LatchCaptureComplete_1, LatchCapture_timer_1, idLatchCapture_LatchCaptureCheck_1, idLatchCapture_latch_1, idMissionPhaseStates_LatchCapture_1, latch_status_1)
 		 else
-		 if ( idChart_MissionPhaseStates_1 = 1224) then 
+		 if ( idChart_MissionPhaseStates_1 = 576) then 
 		(idChart_MissionPhaseStates_10, idChart_Chart_3, FailedApproach_2, JointMission_1, AttemptingToDock_1, LatchCaptureComplete_1, LatchCapture_timer_1, idLatchCapture_LatchCaptureCheck_1, idLatchCapture_latch_1, idMissionPhaseStates_LatchCapture_1, latch_status_1)
 		 else
-		 if ( idChart_MissionPhaseStates_1 = 1216) then 
+		 if ( idChart_MissionPhaseStates_1 = 568) then 
 		(idChart_MissionPhaseStates_11, idChart_Chart_3, FailedApproach_2, JointMission_2, AttemptingToDock_1, LatchCaptureComplete_1, LatchCapture_timer_1, idLatchCapture_LatchCaptureCheck_1, idLatchCapture_latch_1, idMissionPhaseStates_LatchCapture_1, latch_status_1)
 		 else
-		 if ( idChart_MissionPhaseStates_1 = 1221) then 
+		 if ( idChart_MissionPhaseStates_1 = 573) then 
 		(idChart_MissionPhaseStates_12, idChart_Chart_3, FailedApproach_2, JointMission_2, AttemptingToDock_1, LatchCaptureComplete_1, LatchCapture_timer_1, idLatchCapture_LatchCaptureCheck_1, idLatchCapture_latch_1, idMissionPhaseStates_LatchCapture_1, latch_status_1)
 		 else
-		 if ( idChart_MissionPhaseStates_1 = 1208) then 
+		 if ( idChart_MissionPhaseStates_1 = 560) then 
 		(idChart_MissionPhaseStates_13, idChart_Chart_3, FailedApproach_2, JointMission_2, AttemptingToDock_1, LatchCaptureComplete_1, LatchCapture_timer_1, idLatchCapture_LatchCaptureCheck_1, idLatchCapture_latch_1, idMissionPhaseStates_LatchCapture_1, latch_status_1)
 		 else
-		 if ( idChart_MissionPhaseStates_1 = 1205) then 
+		 if ( idChart_MissionPhaseStates_1 = 557) then 
 		(idChart_MissionPhaseStates_14, idChart_Chart_3, FailedApproach_2, JointMission_2, AttemptingToDock_1, LatchCaptureComplete_1, LatchCapture_timer_1, idLatchCapture_LatchCaptureCheck_1, idLatchCapture_latch_1, idMissionPhaseStates_LatchCapture_1, latch_status_1)
 		 else
-		 if ( idChart_MissionPhaseStates_1 = 1223) then 
+		 if ( idChart_MissionPhaseStates_1 = 575) then 
 		(idChart_MissionPhaseStates_15, idChart_Chart_3, FailedApproach_2, JointMission_2, AttemptingToDock_2, LatchCaptureComplete_2, LatchCapture_timer_2, idLatchCapture_LatchCaptureCheck_2, idLatchCapture_latch_2, idMissionPhaseStates_LatchCapture_2, latch_status_2)
 		 else (idChart_MissionPhaseStates_1, idChart_Chart_2, FailedApproach_1, JointMission_1, AttemptingToDock_1, LatchCaptureComplete_1, LatchCapture_timer_1, idLatchCapture_LatchCaptureCheck_1, idLatchCapture_latch_1, idMissionPhaseStates_LatchCapture_1, latch_status_1);
 
@@ -2322,7 +2322,7 @@ let
 	
 	(idChart_MissionPhaseStates_2) 
 	= 
-	if ( idChart_MissionPhaseStates_1 = 1206) then
+	if ( idChart_MissionPhaseStates_1 = 558) then
 	MissionPhaseStates_Start_ex(idChart_MissionPhaseStates_1, false)
 	 else (idChart_MissionPhaseStates_1);
 
@@ -2330,7 +2330,7 @@ let
 
 	(ApproachOrbitComplete_2, ProximityOperationsComplete_2, FarApproachComplete_2, CaptureApproachComplete_2, idChart_MissionPhaseStates_3) 
 	= 
-	if ( idChart_MissionPhaseStates_1 = 1211) then
+	if ( idChart_MissionPhaseStates_1 = 563) then
 	MissionPhaseStates_CollisionAvoidanceManuever_ex(ApproachOrbitComplete_1, ProximityOperationsComplete_1, FarApproachComplete_1, CaptureApproachComplete_1, idChart_MissionPhaseStates_1, false)
 	 else (ApproachOrbitComplete_1, ProximityOperationsComplete_1, FarApproachComplete_1, CaptureApproachComplete_1, idChart_MissionPhaseStates_1);
 
@@ -2338,7 +2338,7 @@ let
 
 	(idChart_MissionPhaseStates_4) 
 	= 
-	if ( idChart_MissionPhaseStates_1 = 1213) then
+	if ( idChart_MissionPhaseStates_1 = 565) then
 	MissionPhaseStates_ApproachOrbit_ex(idChart_MissionPhaseStates_1, false)
 	 else (idChart_MissionPhaseStates_1);
 
@@ -2346,7 +2346,7 @@ let
 
 	(idChart_MissionPhaseStates_5) 
 	= 
-	if ( idChart_MissionPhaseStates_1 = 1215) then
+	if ( idChart_MissionPhaseStates_1 = 567) then
 	MissionPhaseStates_ProximityOperations_ex(idChart_MissionPhaseStates_1, false)
 	 else (idChart_MissionPhaseStates_1);
 
@@ -2354,7 +2354,7 @@ let
 
 	(idChart_MissionPhaseStates_6) 
 	= 
-	if ( idChart_MissionPhaseStates_1 = 1214) then
+	if ( idChart_MissionPhaseStates_1 = 566) then
 	MissionPhaseStates_Disengage_ex(idChart_MissionPhaseStates_1, false)
 	 else (idChart_MissionPhaseStates_1);
 
@@ -2362,7 +2362,7 @@ let
 
 	(idChart_MissionPhaseStates_7) 
 	= 
-	if ( idChart_MissionPhaseStates_1 = 1203) then
+	if ( idChart_MissionPhaseStates_1 = 555) then
 	MissionPhaseStates_FarApproach_ex(idChart_MissionPhaseStates_1, false)
 	 else (idChart_MissionPhaseStates_1);
 
@@ -2370,7 +2370,7 @@ let
 
 	(idChart_MissionPhaseStates_8) 
 	= 
-	if ( idChart_MissionPhaseStates_1 = 1224) then
+	if ( idChart_MissionPhaseStates_1 = 576) then
 	MissionPhaseStates_FailedApproach_ex(idChart_MissionPhaseStates_1, false)
 	 else (idChart_MissionPhaseStates_1);
 
@@ -2378,7 +2378,7 @@ let
 
 	(idChart_MissionPhaseStates_9) 
 	= 
-	if ( idChart_MissionPhaseStates_1 = 1216) then
+	if ( idChart_MissionPhaseStates_1 = 568) then
 	MissionPhaseStates_JointMission_ex(idChart_MissionPhaseStates_1, false)
 	 else (idChart_MissionPhaseStates_1);
 
@@ -2386,7 +2386,7 @@ let
 
 	(idChart_MissionPhaseStates_10) 
 	= 
-	if ( idChart_MissionPhaseStates_1 = 1221) then
+	if ( idChart_MissionPhaseStates_1 = 573) then
 	MissionPhaseStates_CaptureApproach_ex(idChart_MissionPhaseStates_1, false)
 	 else (idChart_MissionPhaseStates_1);
 
@@ -2394,7 +2394,7 @@ let
 
 	(idChart_MissionPhaseStates_11) 
 	= 
-	if ( idChart_MissionPhaseStates_1 = 1208) then
+	if ( idChart_MissionPhaseStates_1 = 560) then
 	MissionPhaseStates_DockingApproach_ex(idChart_MissionPhaseStates_1, false)
 	 else (idChart_MissionPhaseStates_1);
 
@@ -2402,7 +2402,7 @@ let
 
 	(idChart_MissionPhaseStates_12) 
 	= 
-	if ( idChart_MissionPhaseStates_1 = 1205) then
+	if ( idChart_MissionPhaseStates_1 = 557) then
 	MissionPhaseStates_JointStabilize_ex(idChart_MissionPhaseStates_1, false)
 	 else (idChart_MissionPhaseStates_1);
 
@@ -2410,7 +2410,7 @@ let
 
 	(idLatchCapture_latch_2, idMissionPhaseStates_LatchCapture_2, AttemptingToDock_2, idLatchCapture_LatchCaptureCheck_2, idChart_MissionPhaseStates_13) 
 	= 
-	if ( idChart_MissionPhaseStates_1 = 1223) then
+	if ( idChart_MissionPhaseStates_1 = 575) then
 	MissionPhaseStates_LatchCapture_ex(idLatchCapture_latch_1, idMissionPhaseStates_LatchCapture_1, AttemptingToDock_1, idLatchCapture_LatchCaptureCheck_1, idChart_MissionPhaseStates_1, false)
 	 else (idLatchCapture_latch_1, idMissionPhaseStates_LatchCapture_1, AttemptingToDock_1, idLatchCapture_LatchCaptureCheck_1, idChart_MissionPhaseStates_1);
 
@@ -2418,40 +2418,40 @@ let
 
 	(idChart_MissionPhaseStates_14, ApproachOrbitComplete_3, CaptureApproachComplete_3, FarApproachComplete_3, ProximityOperationsComplete_3, AttemptingToDock_3, idLatchCapture_LatchCaptureCheck_3, idLatchCapture_latch_3, idMissionPhaseStates_LatchCapture_3) 
 	= 
-		 if ( idChart_MissionPhaseStates_1 = 1206) then 
+		 if ( idChart_MissionPhaseStates_1 = 558) then 
 		(idChart_MissionPhaseStates_2, ApproachOrbitComplete_1, CaptureApproachComplete_1, FarApproachComplete_1, ProximityOperationsComplete_1, AttemptingToDock_1, idLatchCapture_LatchCaptureCheck_1, idLatchCapture_latch_1, idMissionPhaseStates_LatchCapture_1)
 		 else
-		 if ( idChart_MissionPhaseStates_1 = 1211) then 
+		 if ( idChart_MissionPhaseStates_1 = 563) then 
 		(idChart_MissionPhaseStates_3, ApproachOrbitComplete_2, CaptureApproachComplete_2, FarApproachComplete_2, ProximityOperationsComplete_2, AttemptingToDock_1, idLatchCapture_LatchCaptureCheck_1, idLatchCapture_latch_1, idMissionPhaseStates_LatchCapture_1)
 		 else
-		 if ( idChart_MissionPhaseStates_1 = 1213) then 
+		 if ( idChart_MissionPhaseStates_1 = 565) then 
 		(idChart_MissionPhaseStates_4, ApproachOrbitComplete_2, CaptureApproachComplete_2, FarApproachComplete_2, ProximityOperationsComplete_2, AttemptingToDock_1, idLatchCapture_LatchCaptureCheck_1, idLatchCapture_latch_1, idMissionPhaseStates_LatchCapture_1)
 		 else
-		 if ( idChart_MissionPhaseStates_1 = 1215) then 
+		 if ( idChart_MissionPhaseStates_1 = 567) then 
 		(idChart_MissionPhaseStates_5, ApproachOrbitComplete_2, CaptureApproachComplete_2, FarApproachComplete_2, ProximityOperationsComplete_2, AttemptingToDock_1, idLatchCapture_LatchCaptureCheck_1, idLatchCapture_latch_1, idMissionPhaseStates_LatchCapture_1)
 		 else
-		 if ( idChart_MissionPhaseStates_1 = 1214) then 
+		 if ( idChart_MissionPhaseStates_1 = 566) then 
 		(idChart_MissionPhaseStates_6, ApproachOrbitComplete_2, CaptureApproachComplete_2, FarApproachComplete_2, ProximityOperationsComplete_2, AttemptingToDock_1, idLatchCapture_LatchCaptureCheck_1, idLatchCapture_latch_1, idMissionPhaseStates_LatchCapture_1)
 		 else
-		 if ( idChart_MissionPhaseStates_1 = 1203) then 
+		 if ( idChart_MissionPhaseStates_1 = 555) then 
 		(idChart_MissionPhaseStates_7, ApproachOrbitComplete_2, CaptureApproachComplete_2, FarApproachComplete_2, ProximityOperationsComplete_2, AttemptingToDock_1, idLatchCapture_LatchCaptureCheck_1, idLatchCapture_latch_1, idMissionPhaseStates_LatchCapture_1)
 		 else
-		 if ( idChart_MissionPhaseStates_1 = 1224) then 
+		 if ( idChart_MissionPhaseStates_1 = 576) then 
 		(idChart_MissionPhaseStates_8, ApproachOrbitComplete_2, CaptureApproachComplete_2, FarApproachComplete_2, ProximityOperationsComplete_2, AttemptingToDock_1, idLatchCapture_LatchCaptureCheck_1, idLatchCapture_latch_1, idMissionPhaseStates_LatchCapture_1)
 		 else
-		 if ( idChart_MissionPhaseStates_1 = 1216) then 
+		 if ( idChart_MissionPhaseStates_1 = 568) then 
 		(idChart_MissionPhaseStates_9, ApproachOrbitComplete_2, CaptureApproachComplete_2, FarApproachComplete_2, ProximityOperationsComplete_2, AttemptingToDock_1, idLatchCapture_LatchCaptureCheck_1, idLatchCapture_latch_1, idMissionPhaseStates_LatchCapture_1)
 		 else
-		 if ( idChart_MissionPhaseStates_1 = 1221) then 
+		 if ( idChart_MissionPhaseStates_1 = 573) then 
 		(idChart_MissionPhaseStates_10, ApproachOrbitComplete_2, CaptureApproachComplete_2, FarApproachComplete_2, ProximityOperationsComplete_2, AttemptingToDock_1, idLatchCapture_LatchCaptureCheck_1, idLatchCapture_latch_1, idMissionPhaseStates_LatchCapture_1)
 		 else
-		 if ( idChart_MissionPhaseStates_1 = 1208) then 
+		 if ( idChart_MissionPhaseStates_1 = 560) then 
 		(idChart_MissionPhaseStates_11, ApproachOrbitComplete_2, CaptureApproachComplete_2, FarApproachComplete_2, ProximityOperationsComplete_2, AttemptingToDock_1, idLatchCapture_LatchCaptureCheck_1, idLatchCapture_latch_1, idMissionPhaseStates_LatchCapture_1)
 		 else
-		 if ( idChart_MissionPhaseStates_1 = 1205) then 
+		 if ( idChart_MissionPhaseStates_1 = 557) then 
 		(idChart_MissionPhaseStates_12, ApproachOrbitComplete_2, CaptureApproachComplete_2, FarApproachComplete_2, ProximityOperationsComplete_2, AttemptingToDock_1, idLatchCapture_LatchCaptureCheck_1, idLatchCapture_latch_1, idMissionPhaseStates_LatchCapture_1)
 		 else
-		 if ( idChart_MissionPhaseStates_1 = 1223) then 
+		 if ( idChart_MissionPhaseStates_1 = 575) then 
 		(idChart_MissionPhaseStates_13, ApproachOrbitComplete_2, CaptureApproachComplete_2, FarApproachComplete_2, ProximityOperationsComplete_2, AttemptingToDock_2, idLatchCapture_LatchCaptureCheck_2, idLatchCapture_latch_2, idMissionPhaseStates_LatchCapture_2)
 		 else (idChart_MissionPhaseStates_1, ApproachOrbitComplete_1, CaptureApproachComplete_1, FarApproachComplete_1, ProximityOperationsComplete_1, AttemptingToDock_1, idLatchCapture_LatchCaptureCheck_1, idLatchCapture_latch_1, idMissionPhaseStates_LatchCapture_1);
 
@@ -2465,7 +2465,7 @@ let
 	
 
 	(idChart_MissionPhaseStates, ApproachOrbitComplete, CaptureApproachComplete, FarApproachComplete, ProximityOperationsComplete, AttemptingToDock, idLatchCapture_LatchCaptureCheck, idLatchCapture_latch, idMissionPhaseStates_LatchCapture, idChart_Chart) 
-	= (idChart_MissionPhaseStates_15, ApproachOrbitComplete_3, CaptureApproachComplete_3, FarApproachComplete_3, ProximityOperationsComplete_3, AttemptingToDock_3, idLatchCapture_LatchCaptureCheck_3, idLatchCapture_latch_3, idMissionPhaseStates_LatchCapture_3, idChart_Chart_2);
+	= (idChart_MissionPhaseStates_15, ApproachOrbitComplete_3, CaptureApproachComplete_3, FarApproachComplete_3, ProximityOperationsComplete_3, AttemptingToDock_3, idLatchCapture_LatchCaptureCheck_3, idLatchCapture_latch_3, idMissionPhaseStates_LatchCapture_3, idChart_Chart_1);
 	
 
 tel
@@ -2493,47 +2493,47 @@ let
 
 
 
-	unless (idLatchCapture_latch_1=1204) restart LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1
+	unless (idLatchCapture_latch_1=556) restart LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1
 
 
 
-	unless (idLatchCapture_latch_1=1212) restart LATCH_OPEN__TO__LATCH_CLOSING_1
+	unless (idLatchCapture_latch_1=564) restart LATCH_OPEN__TO__LATCH_CLOSING_1
 
 
 
-	unless (idLatchCapture_latch_1=1218) restart LATCH_CLOSING__TO__LATCH_MATED_1
+	unless (idLatchCapture_latch_1=570) restart LATCH_CLOSING__TO__LATCH_MATED_1
 
 
 
-	unless (idLatchCapture_latch_1=1218) restart LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2
+	unless (idLatchCapture_latch_1=570) restart LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2
 
 
 
-	unless (idLatchCapture_latch_1=1218) restart LATCH_CLOSING__TO__LATCH_CLOSEDBUTUNMATED_3
+	unless (idLatchCapture_latch_1=570) restart LATCH_CLOSING__TO__LATCH_CLOSEDBUTUNMATED_3
 
 
 
-	unless (idLatchCapture_latch_1=1219) restart LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1
+	unless (idLatchCapture_latch_1=571) restart LATCH_MATED__TO__CHART_CHARTJUNCTION609_1
 
 
 
-	unless (idLatchCapture_latch_1=1222) restart LATCH_OPENING__TO__LATCH_OPEN_1
+	unless (idLatchCapture_latch_1=574) restart LATCH_OPENING__TO__LATCH_OPEN_1
 
 
 
-	unless (idLatchCapture_latch_1=1222) restart LATCH_OPENING__TO__LATCH_CLOSING_2
+	unless (idLatchCapture_latch_1=574) restart LATCH_OPENING__TO__LATCH_CLOSING_2
 
 
 
-	unless (idLatchCapture_latch_1=1204) restart LATCH_CLOSEDBUTUNMATED_IDL
+	unless (idLatchCapture_latch_1=556) restart LATCH_CLOSEDBUTUNMATED_IDL
 
-	unless (idLatchCapture_latch_1=1212) restart LATCH_OPEN_IDL
+	unless (idLatchCapture_latch_1=564) restart LATCH_OPEN_IDL
 
-	unless (idLatchCapture_latch_1=1218) restart LATCH_CLOSING_IDL
+	unless (idLatchCapture_latch_1=570) restart LATCH_CLOSING_IDL
 
-	unless (idLatchCapture_latch_1=1219) restart LATCH_MATED_IDL
+	unless (idLatchCapture_latch_1=571) restart LATCH_MATED_IDL
 
-	unless (idLatchCapture_latch_1=1222) restart LATCH_OPENING_IDL
+	unless (idLatchCapture_latch_1=574) restart LATCH_OPENING_IDL
 
 	let
 
@@ -2567,7 +2567,7 @@ let
 
 
 
-	state LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION1257_1:
+	state LATCH_CLOSEDBUTUNMATED__TO__CHART_CHARTJUNCTION609_1:
 
 	 var 	idLatchCapture_latch_2, idLatchCapture_latch_3:int;
 	latch_status_2:int;
@@ -2576,7 +2576,7 @@ let
 		
 
 -- transition trace :
-	--latch_ClosedButUnmated__To__Junction1257_1, Junction1257__To__latch_Opening_1
+	--latch_ClosedButUnmated__To__Junction609_1, Junction609__To__latch_Opening_1
 		(idLatchCapture_latch_2) 
 	= latch_ClosedButUnmated_ex(idLatchCapture_latch_1, false);
 		
@@ -2647,7 +2647,7 @@ let
 
 
 
-	state LATCH_CLOSING__TO__CHART_CHARTJUNCTION1257_2:
+	state LATCH_CLOSING__TO__CHART_CHARTJUNCTION609_2:
 
 	 var 	idLatchCapture_latch_2, idLatchCapture_latch_3:int;
 	latch_status_2:int;
@@ -2656,7 +2656,7 @@ let
 		
 
 -- transition trace :
-	--latch_Closing__To__Junction1257_2, Junction1257__To__latch_Opening_1
+	--latch_Closing__To__Junction609_2, Junction609__To__latch_Opening_1
 		(idLatchCapture_latch_2) 
 	= latch_Closing_ex(idLatchCapture_latch_1, false);
 		
@@ -2701,7 +2701,7 @@ let
 
 
 
-	state LATCH_MATED__TO__CHART_CHARTJUNCTION1257_1:
+	state LATCH_MATED__TO__CHART_CHARTJUNCTION609_1:
 
 	 var 	idLatchCapture_latch_2, idLatchCapture_latch_3:int;
 	latch_status_2:int;
@@ -2710,7 +2710,7 @@ let
 		
 
 -- transition trace :
-	--latch_Mated__To__Junction1257_1, Junction1257__To__latch_Opening_1
+	--latch_Mated__To__Junction609_1, Junction609__To__latch_Opening_1
 		(idLatchCapture_latch_2) 
 	= latch_Mated_ex(idLatchCapture_latch_1, false);
 		
@@ -2897,41 +2897,41 @@ let
 
 
 
-	unless (idLatchCapture_LatchCaptureCheck_1=1207) restart LATCHCAPTURECHECK_DOCKED__TO__MISSIONPHASESTATES_JOINTSTABILIZE_1
+	unless (idLatchCapture_LatchCaptureCheck_1=559) restart LATCHCAPTURECHECK_DOCKED__TO__MISSIONPHASESTATES_JOINTSTABILIZE_1
 
 
 
-	unless (idLatchCapture_LatchCaptureCheck_1=1209) restart LATCHCAPTURECHECK_LATCHFAILED__TO__MISSIONPHASESTATES_DOCKINGAPPROACH_1
+	unless (idLatchCapture_LatchCaptureCheck_1=561) restart LATCHCAPTURECHECK_LATCHFAILED__TO__MISSIONPHASESTATES_DOCKINGAPPROACH_1
 
 
 
-	unless (idLatchCapture_LatchCaptureCheck_1=1210) and (  latch_status_1 =OPEN ) restart LATCHCAPTURECHECK_CHECKLATCHOPEN__TO__LATCHCAPTURECHECK_CHECKLATCHMATED_1
+	unless (idLatchCapture_LatchCaptureCheck_1=562) and (  latch_status_1 =OPEN ) restart LATCHCAPTURECHECK_CHECKLATCHOPEN__TO__LATCHCAPTURECHECK_CHECKLATCHMATED_1
 
 
 
-	unless (idLatchCapture_LatchCaptureCheck_1=1210) and (  LatchCapture_timer_1 =LatchCapture_timer_upper_limit ) restart LATCHCAPTURECHECK_CHECKLATCHOPEN__TO__LATCHCAPTURECHECK_LATCHFAILED_2
+	unless (idLatchCapture_LatchCaptureCheck_1=562) and (  LatchCapture_timer_1 =LatchCapture_timer_upper_limit ) restart LATCHCAPTURECHECK_CHECKLATCHOPEN__TO__LATCHCAPTURECHECK_LATCHFAILED_2
 
 
 
-	unless (idLatchCapture_LatchCaptureCheck_1=1217) and (  latch_status_1 =MATED ) restart LATCHCAPTURECHECK_CHECKLATCHMATED__TO__LATCHCAPTURECHECK_DOCKED_1
+	unless (idLatchCapture_LatchCaptureCheck_1=569) and (  latch_status_1 =MATED ) restart LATCHCAPTURECHECK_CHECKLATCHMATED__TO__LATCHCAPTURECHECK_DOCKED_1
 
 
 
-	unless (idLatchCapture_LatchCaptureCheck_1=1217) and (  latch_status_1 =CLOSEDBUTUNMATED ) restart LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2
+	unless (idLatchCapture_LatchCaptureCheck_1=569) and (  latch_status_1 =CLOSEDBUTUNMATED ) restart LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2
 
 
 
-	unless (idLatchCapture_LatchCaptureCheck_1=1217) and (  LatchCapture_timer_1 =LatchCapture_timer_upper_limit ) restart LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3
+	unless (idLatchCapture_LatchCaptureCheck_1=569) and (  LatchCapture_timer_1 =LatchCapture_timer_upper_limit ) restart LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3
 
 
 
-	unless (idLatchCapture_LatchCaptureCheck_1=1207) restart LATCHCAPTURECHECK_DOCKED_IDL
+	unless (idLatchCapture_LatchCaptureCheck_1=559) restart LATCHCAPTURECHECK_DOCKED_IDL
 
-	unless (idLatchCapture_LatchCaptureCheck_1=1209) restart LATCHCAPTURECHECK_LATCHFAILED_IDL
+	unless (idLatchCapture_LatchCaptureCheck_1=561) restart LATCHCAPTURECHECK_LATCHFAILED_IDL
 
-	unless (idLatchCapture_LatchCaptureCheck_1=1210) restart LATCHCAPTURECHECK_CHECKLATCHOPEN_IDL
+	unless (idLatchCapture_LatchCaptureCheck_1=562) restart LATCHCAPTURECHECK_CHECKLATCHOPEN_IDL
 
-	unless (idLatchCapture_LatchCaptureCheck_1=1217) restart LATCHCAPTURECHECK_CHECKLATCHMATED_IDL
+	unless (idLatchCapture_LatchCaptureCheck_1=569) restart LATCHCAPTURECHECK_CHECKLATCHMATED_IDL
 
 	let
 
@@ -3119,7 +3119,7 @@ let
 
 
 
-	state LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_2:
+	state LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_2:
 
 	 var 	idLatchCapture_LatchCaptureCheck_2, idLatchCapture_LatchCaptureCheck_3:int;
 	let
@@ -3127,7 +3127,7 @@ let
 		
 
 -- transition trace :
-	--LatchCaptureCheck_CheckLatchMated__To__Junction1249_2, Junction1249__To__LatchCaptureCheck_LatchFailed_1
+	--LatchCaptureCheck_CheckLatchMated__To__Junction601_2, Junction601__To__LatchCaptureCheck_LatchFailed_1
 		(idLatchCapture_LatchCaptureCheck_2) 
 	= LatchCaptureCheck_CheckLatchMated_ex(idLatchCapture_LatchCaptureCheck_1, false);
 		
@@ -3146,7 +3146,7 @@ let
 
 
 
-	state LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION1249_3:
+	state LATCHCAPTURECHECK_CHECKLATCHMATED__TO__CHART_CHARTJUNCTION601_3:
 
 	 var 	idLatchCapture_LatchCaptureCheck_2, idLatchCapture_LatchCaptureCheck_3:int;
 	let
@@ -3154,7 +3154,7 @@ let
 		
 
 -- transition trace :
-	--LatchCaptureCheck_CheckLatchMated__To__Junction1249_3, Junction1249__To__LatchCaptureCheck_LatchFailed_1
+	--LatchCaptureCheck_CheckLatchMated__To__Junction601_3, Junction601__To__LatchCaptureCheck_LatchFailed_1
 		(idLatchCapture_LatchCaptureCheck_2) 
 	= LatchCaptureCheck_CheckLatchMated_ex(idLatchCapture_LatchCaptureCheck_1, false);
 		
@@ -3419,89 +3419,89 @@ let
 
 
 
-	unless (idChart_MissionPhaseStates_1=1206) and ( StageTransition=0 ) restart MISSIONPHASESTATES_START__TO__MISSIONPHASESTATES_APPROACHORBIT_1
+	unless (idChart_MissionPhaseStates_1=558) and ( StageTransition=0 ) restart MISSIONPHASESTATES_START__TO__MISSIONPHASESTATES_APPROACHORBIT_1
 
 
 
-	unless (idChart_MissionPhaseStates_1=1211) and ( StageTransition=8 ) restart MISSIONPHASESTATES_COLLISIONAVOIDANCEMANUEVER__TO__MISSIONPHASESTATES_FAILEDAPPROACH_1
+	unless (idChart_MissionPhaseStates_1=563) and ( StageTransition=8 ) restart MISSIONPHASESTATES_COLLISIONAVOIDANCEMANUEVER__TO__MISSIONPHASESTATES_FAILEDAPPROACH_1
 
 
 
-	unless (idChart_MissionPhaseStates_1=1211) and ( StageTransition=6 ) restart MISSIONPHASESTATES_COLLISIONAVOIDANCEMANUEVER__TO__MISSIONPHASESTATES_APPROACHORBIT_2
+	unless (idChart_MissionPhaseStates_1=563) and ( StageTransition=6 ) restart MISSIONPHASESTATES_COLLISIONAVOIDANCEMANUEVER__TO__MISSIONPHASESTATES_APPROACHORBIT_2
 
 
 
-	unless (idChart_MissionPhaseStates_1=1213) and ( StageTransition=2 ) restart MISSIONPHASESTATES_APPROACHORBIT__TO__MISSIONPHASESTATES_PROXIMITYOPERATIONS_1
+	unless (idChart_MissionPhaseStates_1=565) and ( StageTransition=2 ) restart MISSIONPHASESTATES_APPROACHORBIT__TO__MISSIONPHASESTATES_PROXIMITYOPERATIONS_1
 
 
 
-	unless (idChart_MissionPhaseStates_1=1215) and ( StageTransition=1 ) restart MISSIONPHASESTATES_PROXIMITYOPERATIONS__TO__MISSIONPHASESTATES_APPROACHORBIT_1
+	unless (idChart_MissionPhaseStates_1=567) and ( StageTransition=1 ) restart MISSIONPHASESTATES_PROXIMITYOPERATIONS__TO__MISSIONPHASESTATES_APPROACHORBIT_1
 
 
 
-	unless (idChart_MissionPhaseStates_1=1215) and ( StageTransition=3 ) restart MISSIONPHASESTATES_PROXIMITYOPERATIONS__TO__MISSIONPHASESTATES_FARAPPROACH_2
+	unless (idChart_MissionPhaseStates_1=567) and ( StageTransition=3 ) restart MISSIONPHASESTATES_PROXIMITYOPERATIONS__TO__MISSIONPHASESTATES_FARAPPROACH_2
 
 
 
-	unless (idChart_MissionPhaseStates_1=1214) and ( StageTransition=7 ) restart MISSIONPHASESTATES_DISENGAGE__TO__MISSIONPHASESTATES_COLLISIONAVOIDANCEMANUEVER_1
+	unless (idChart_MissionPhaseStates_1=566) and ( StageTransition=7 ) restart MISSIONPHASESTATES_DISENGAGE__TO__MISSIONPHASESTATES_COLLISIONAVOIDANCEMANUEVER_1
 
 
 
-	unless (idChart_MissionPhaseStates_1=1203) and ( StageTransition=5 ) restart MISSIONPHASESTATES_FARAPPROACH__TO__MISSIONPHASESTATES_COLLISIONAVOIDANCEMANUEVER_1
+	unless (idChart_MissionPhaseStates_1=555) and ( StageTransition=5 ) restart MISSIONPHASESTATES_FARAPPROACH__TO__MISSIONPHASESTATES_COLLISIONAVOIDANCEMANUEVER_1
 
 
 
-	unless (idChart_MissionPhaseStates_1=1203) and ( StageTransition=4 ) restart MISSIONPHASESTATES_FARAPPROACH__TO__MISSIONPHASESTATES_CAPTUREAPPROACH_2
+	unless (idChart_MissionPhaseStates_1=555) and ( StageTransition=4 ) restart MISSIONPHASESTATES_FARAPPROACH__TO__MISSIONPHASESTATES_CAPTUREAPPROACH_2
 
 
 
-	unless (idChart_MissionPhaseStates_1=1221) and ( StageTransition=5 ) restart MISSIONPHASESTATES_CAPTUREAPPROACH__TO__MISSIONPHASESTATES_DOCKINGAPPROACH_1
+	unless (idChart_MissionPhaseStates_1=573) and ( StageTransition=5 ) restart MISSIONPHASESTATES_CAPTUREAPPROACH__TO__MISSIONPHASESTATES_DOCKINGAPPROACH_1
 
 
 
-	unless (idChart_MissionPhaseStates_1=1221) restart MISSIONPHASESTATES_CAPTUREAPPROACH__TO__MISSIONPHASESTATES_COLLISIONAVOIDANCEMANUEVER_2
+	unless (idChart_MissionPhaseStates_1=573) restart MISSIONPHASESTATES_CAPTUREAPPROACH__TO__MISSIONPHASESTATES_COLLISIONAVOIDANCEMANUEVER_2
 
 
 
-	unless (idChart_MissionPhaseStates_1=1208) and ( StageTransition=6 ) restart MISSIONPHASESTATES_DOCKINGAPPROACH__TO__MISSIONPHASESTATES_LATCHCAPTURE_1
+	unless (idChart_MissionPhaseStates_1=560) and ( StageTransition=6 ) restart MISSIONPHASESTATES_DOCKINGAPPROACH__TO__MISSIONPHASESTATES_LATCHCAPTURE_1
 
 
 
-	unless (idChart_MissionPhaseStates_1=1208) restart MISSIONPHASESTATES_DOCKINGAPPROACH__TO__MISSIONPHASESTATES_CAPTUREAPPROACH_2
+	unless (idChart_MissionPhaseStates_1=560) restart MISSIONPHASESTATES_DOCKINGAPPROACH__TO__MISSIONPHASESTATES_CAPTUREAPPROACH_2
 
 
 
-	unless (idChart_MissionPhaseStates_1=1205) and ( StageTransition=9 ) restart MISSIONPHASESTATES_JOINTSTABILIZE__TO__MISSIONPHASESTATES_DISENGAGE_1
+	unless (idChart_MissionPhaseStates_1=557) and ( StageTransition=9 ) restart MISSIONPHASESTATES_JOINTSTABILIZE__TO__MISSIONPHASESTATES_DISENGAGE_1
 
 
 
-	unless (idChart_MissionPhaseStates_1=1205) and ( StageTransition=10 ) restart MISSIONPHASESTATES_JOINTSTABILIZE__TO__MISSIONPHASESTATES_JOINTMISSION_2
+	unless (idChart_MissionPhaseStates_1=557) and ( StageTransition=10 ) restart MISSIONPHASESTATES_JOINTSTABILIZE__TO__MISSIONPHASESTATES_JOINTMISSION_2
 
 
 
-	unless (idChart_MissionPhaseStates_1=1206) restart MISSIONPHASESTATES_START_IDL
+	unless (idChart_MissionPhaseStates_1=558) restart MISSIONPHASESTATES_START_IDL
 
-	unless (idChart_MissionPhaseStates_1=1211) restart MISSIONPHASESTATES_COLLISIONAVOIDANCEMANUEVER_IDL
+	unless (idChart_MissionPhaseStates_1=563) restart MISSIONPHASESTATES_COLLISIONAVOIDANCEMANUEVER_IDL
 
-	unless (idChart_MissionPhaseStates_1=1213) restart MISSIONPHASESTATES_APPROACHORBIT_IDL
+	unless (idChart_MissionPhaseStates_1=565) restart MISSIONPHASESTATES_APPROACHORBIT_IDL
 
-	unless (idChart_MissionPhaseStates_1=1215) restart MISSIONPHASESTATES_PROXIMITYOPERATIONS_IDL
+	unless (idChart_MissionPhaseStates_1=567) restart MISSIONPHASESTATES_PROXIMITYOPERATIONS_IDL
 
-	unless (idChart_MissionPhaseStates_1=1214) restart MISSIONPHASESTATES_DISENGAGE_IDL
+	unless (idChart_MissionPhaseStates_1=566) restart MISSIONPHASESTATES_DISENGAGE_IDL
 
-	unless (idChart_MissionPhaseStates_1=1203) restart MISSIONPHASESTATES_FARAPPROACH_IDL
+	unless (idChart_MissionPhaseStates_1=555) restart MISSIONPHASESTATES_FARAPPROACH_IDL
 
-	unless (idChart_MissionPhaseStates_1=1224) restart MISSIONPHASESTATES_FAILEDAPPROACH_IDL
+	unless (idChart_MissionPhaseStates_1=576) restart MISSIONPHASESTATES_FAILEDAPPROACH_IDL
 
-	unless (idChart_MissionPhaseStates_1=1216) restart MISSIONPHASESTATES_JOINTMISSION_IDL
+	unless (idChart_MissionPhaseStates_1=568) restart MISSIONPHASESTATES_JOINTMISSION_IDL
 
-	unless (idChart_MissionPhaseStates_1=1221) restart MISSIONPHASESTATES_CAPTUREAPPROACH_IDL
+	unless (idChart_MissionPhaseStates_1=573) restart MISSIONPHASESTATES_CAPTUREAPPROACH_IDL
 
-	unless (idChart_MissionPhaseStates_1=1208) restart MISSIONPHASESTATES_DOCKINGAPPROACH_IDL
+	unless (idChart_MissionPhaseStates_1=560) restart MISSIONPHASESTATES_DOCKINGAPPROACH_IDL
 
-	unless (idChart_MissionPhaseStates_1=1205) restart MISSIONPHASESTATES_JOINTSTABILIZE_IDL
+	unless (idChart_MissionPhaseStates_1=557) restart MISSIONPHASESTATES_JOINTSTABILIZE_IDL
 
-	unless (idChart_MissionPhaseStates_1=1223) restart MISSIONPHASESTATES_LATCHCAPTURE_IDL
+	unless (idChart_MissionPhaseStates_1=575) restart MISSIONPHASESTATES_LATCHCAPTURE_IDL
 
 	let
 
@@ -4449,21 +4449,39 @@ var CaptureApproachComplete_1: bool;
 
 	idChart_Chart, idChart_Chart_1: int;
 
-	idChart_MissionPhaseStates, idChart_MissionPhaseStates_1: int;
-
-	idMissionPhaseStates_LatchCapture, idMissionPhaseStates_LatchCapture_1: int;
+	idLatchCapture_latch, idLatchCapture_latch_1: int;
 
 	idLatchCapture_LatchCaptureCheck, idLatchCapture_LatchCaptureCheck_1: int;
 
-	idLatchCapture_latch, idLatchCapture_latch_1: int;
+	idMissionPhaseStates_LatchCapture, idMissionPhaseStates_LatchCapture_1: int;
 
-		dockingSensor_timer_upper_limit: int;
+	idChart_MissionPhaseStates, idChart_MissionPhaseStates_1: int;
 
-		BRIGHT: bool;
+		MATED: int;
+
+		LatchCapture_timer_upper_limit: int;
+
+		INDETERMINATE: int;
+
+		CaptureApproach_timer_upper_limit: int;
+
+		DockingApproach_timer_upper_limit: int;
 
 		CLOSEDBUTUNMATED: int;
 
-		StarPlanetTracker_timer_upper_limit: int;
+		InertialNavigation_timer_upper_limit: int;
+
+		dockingSensor_timer_upper_limit: int;
+
+		EXPIRED: bool;
+
+		POOR: int;
+
+		AVAILABLE: bool;
+
+		GPS_timer_upper_limit: int;
+
+		EXIST: bool;
 
 		OPEN: int;
 
@@ -4471,27 +4489,9 @@ var CaptureApproachComplete_1: bool;
 
 		GOOD: int;
 
-		AVAILABLE: bool;
+		BRIGHT: bool;
 
-		POOR: int;
-
-		MATED: int;
-
-		InertialNavigation_timer_upper_limit: int;
-
-		DockingApproach_timer_upper_limit: int;
-
-		CaptureApproach_timer_upper_limit: int;
-
-		LatchCapture_timer_upper_limit: int;
-
-		GPS_timer_upper_limit: int;
-
-		EXPIRED: bool;
-
-		INDETERMINATE: int;
-
-		EXIST: bool;
+		StarPlanetTracker_timer_upper_limit: int;
 
 	let
 
@@ -4519,21 +4519,39 @@ var CaptureApproachComplete_1: bool;
 
 	idChart_Chart_1 = 0 -> pre idChart_Chart;
 
-	idChart_MissionPhaseStates_1 = 0 -> pre idChart_MissionPhaseStates;
-
-	idMissionPhaseStates_LatchCapture_1 = 0 -> pre idMissionPhaseStates_LatchCapture;
+	idLatchCapture_latch_1 = 0 -> pre idLatchCapture_latch;
 
 	idLatchCapture_LatchCaptureCheck_1 = 0 -> pre idLatchCapture_LatchCaptureCheck;
 
-	idLatchCapture_latch_1 = 0 -> pre idLatchCapture_latch;
+	idMissionPhaseStates_LatchCapture_1 = 0 -> pre idMissionPhaseStates_LatchCapture;
 
-	dockingSensor_timer_upper_limit = 6;
+	idChart_MissionPhaseStates_1 = 0 -> pre idChart_MissionPhaseStates;
 
-	BRIGHT = true;
+	MATED = 3;
+
+	LatchCapture_timer_upper_limit = 8;
+
+	INDETERMINATE = 0;
+
+	CaptureApproach_timer_upper_limit = 11;
+
+	DockingApproach_timer_upper_limit = 9;
 
 	CLOSEDBUTUNMATED = 2;
 
-	StarPlanetTracker_timer_upper_limit = 6;
+	InertialNavigation_timer_upper_limit = 6;
+
+	dockingSensor_timer_upper_limit = 6;
+
+	EXPIRED = true;
+
+	POOR = 1;
+
+	AVAILABLE = true;
+
+	GPS_timer_upper_limit = 6;
+
+	EXIST = true;
 
 	OPEN = 1;
 
@@ -4541,27 +4559,9 @@ var CaptureApproachComplete_1: bool;
 
 	GOOD = 2;
 
-	AVAILABLE = true;
+	BRIGHT = true;
 
-	POOR = 1;
-
-	MATED = 3;
-
-	InertialNavigation_timer_upper_limit = 6;
-
-	DockingApproach_timer_upper_limit = 9;
-
-	CaptureApproach_timer_upper_limit = 11;
-
-	LatchCapture_timer_upper_limit = 8;
-
-	GPS_timer_upper_limit = 6;
-
-	EXPIRED = true;
-
-	INDETERMINATE = 0;
-
-	EXIST = true;
+	StarPlanetTracker_timer_upper_limit = 6;
 
 	
 

@@ -6,35 +6,7 @@
 
 
 
-
-node Junctions5_A__To__Junctions5_Junctions5Junction41_1_Condition_Action(a_1:real)
-
-returns (a:real);
-
-
-var 	a_2:real;
-
-
-let
-
-
-
-	a_2 
-	=  a_1 +10.;
-	
-
-	(a) 
-	= (a_2);
-	
-
-tel
-
-
-
-
-
-
-node Junctions5_Junctions5Junction42__To__Junctions5_B_1_Condition_Action(a_1:real)
+node Junctions5_Junctions5Junction1585__To__Junctions5_B_1_Condition_Action(a_1:real)
 
 returns (a:real);
 
@@ -61,7 +33,7 @@ tel
 
 
 
-node Junctions5_Junctions5Junction41__To__Junctions5_Junctions5Junction42_1_Condition_Action(a_1:real)
+node Junctions5_A__To__Junctions5_Junctions5Junction1584_1_Condition_Action(a_1:real)
 
 returns (a:real);
 
@@ -74,7 +46,7 @@ let
 
 
 	a_2 
-	=  a_1 +100.;
+	=  a_1 +10.;
 	
 
 	(a) 
@@ -88,7 +60,7 @@ tel
 
 
 
-node Junctions5_A__To__Junctions5_Junctions5Junction41_2_Condition_Action(a_1:real)
+node Junctions5_A__To__Junctions5_Junctions5Junction1584_2_Condition_Action(a_1:real)
 
 returns (a:real);
 
@@ -102,6 +74,34 @@ let
 
 	a_2 
 	=  a_1 +1.;
+	
+
+	(a) 
+	= (a_2);
+	
+
+tel
+
+
+
+
+
+
+
+node Junctions5_Junctions5Junction1584__To__Junctions5_Junctions5Junction1585_1_Condition_Action(a_1:real)
+
+returns (a:real);
+
+
+var 	a_2:real;
+
+
+let
+
+
+
+	a_2 
+	=  a_1 +100.;
 	
 
 	(a) 
@@ -168,7 +168,7 @@ let
 
 	-- set state as active 
 	idJunctions5_Junctions5_2 
-	= 37;
+	= 1580;
 	
 
 	(idJunctions5_Junctions5) 
@@ -235,7 +235,7 @@ let
 
 	-- set state as active 
 	idJunctions5_Junctions5_2 
-	= 38;
+	= 1581;
 	
 
 	(idJunctions5_Junctions5) 
@@ -264,17 +264,17 @@ let
 
 
 
-	unless (idJunctions5_Junctions5_1=37) and ( x mod 3=1 ) restart JUNCTIONS5_A__TO__JUNCTIONS5_JUNCTIONS5JUNCTION41_1
+	unless (idJunctions5_Junctions5_1=1580) and ( x mod 3=1 ) restart JUNCTIONS5_A__TO__JUNCTIONS5_JUNCTIONS5JUNCTION1584_1
 
 
 
-	unless (idJunctions5_Junctions5_1=37) and ( x mod 3=0 ) restart JUNCTIONS5_A__TO__JUNCTIONS5_JUNCTIONS5JUNCTION41_2
+	unless (idJunctions5_Junctions5_1=1580) and ( x mod 3=0 ) restart JUNCTIONS5_A__TO__JUNCTIONS5_JUNCTIONS5JUNCTION1584_2
 
 
 
-	unless (idJunctions5_Junctions5_1=37) restart JUNCTIONS5_A_IDL
+	unless (idJunctions5_Junctions5_1=1580) restart JUNCTIONS5_A_IDL
 
-	unless (idJunctions5_Junctions5_1=38) restart JUNCTIONS5_B_IDL
+	unless (idJunctions5_Junctions5_1=1581) restart JUNCTIONS5_B_IDL
 
 	let
 
@@ -311,7 +311,7 @@ let
 
 
 
-	state JUNCTIONS5_A__TO__JUNCTIONS5_JUNCTIONS5JUNCTION41_1:
+	state JUNCTIONS5_A__TO__JUNCTIONS5_JUNCTIONS5JUNCTION1584_1:
 
 	 var 	idJunctions5_Junctions5_2, idJunctions5_Junctions5_3:int;
 	a_2, a_3, a_4, a_5:real;
@@ -322,11 +322,11 @@ let
 
 
 -- transition trace :
-	--Junctions5_A__To__Junction41_1, Junction41__To__Junction42_1, Junction42__To__Junctions5_B_1
+	--Junctions5_A__To__Junction1584_1, Junction1584__To__Junction1585_1, Junction1585__To__Junctions5_B_1
 		-- condition Action : a+=10
 		
 		(a_2) 
-	= Junctions5_A__To__Junctions5_Junctions5Junction41_1_Condition_Action(a_1);
+	= Junctions5_A__To__Junctions5_Junctions5Junction1584_1_Condition_Action(a_1);
 		
 
 		-- condition Action : a+=100
@@ -334,7 +334,7 @@ let
 		(a_3) 
 	= 
 		 if (( x>=2 )) then 
-		Junctions5_Junctions5Junction41__To__Junctions5_Junctions5Junction42_1_Condition_Action(a_2)
+		Junctions5_Junctions5Junction1584__To__Junctions5_Junctions5Junction1585_1_Condition_Action(a_2)
 		 else (a_2);
 		
 
@@ -343,7 +343,7 @@ let
 		(a_4) 
 	= 
 		 if (( x>=2 ) and ( x>=4 )) then 
-		Junctions5_Junctions5Junction42__To__Junctions5_B_1_Condition_Action(a_3)
+		Junctions5_Junctions5Junction1585__To__Junctions5_B_1_Condition_Action(a_3)
 		 else (a_3);
 		
 
@@ -377,7 +377,7 @@ let
 
 
 
-	state JUNCTIONS5_A__TO__JUNCTIONS5_JUNCTIONS5JUNCTION41_2:
+	state JUNCTIONS5_A__TO__JUNCTIONS5_JUNCTIONS5JUNCTION1584_2:
 
 	 var 	idJunctions5_Junctions5_2, idJunctions5_Junctions5_3:int;
 	a_2, a_3, a_4, a_5:real;
@@ -388,11 +388,11 @@ let
 
 
 -- transition trace :
-	--Junctions5_A__To__Junction41_2, Junction41__To__Junction42_1, Junction42__To__Junctions5_B_1
+	--Junctions5_A__To__Junction1584_2, Junction1584__To__Junction1585_1, Junction1585__To__Junctions5_B_1
 		-- condition Action : a+=1
 		
 		(a_2) 
-	= Junctions5_A__To__Junctions5_Junctions5Junction41_2_Condition_Action(a_1);
+	= Junctions5_A__To__Junctions5_Junctions5Junction1584_2_Condition_Action(a_1);
 		
 
 		-- condition Action : a+=100
@@ -400,7 +400,7 @@ let
 		(a_3) 
 	= 
 		 if (( x>=2 )) then 
-		Junctions5_Junctions5Junction41__To__Junctions5_Junctions5Junction42_1_Condition_Action(a_2)
+		Junctions5_Junctions5Junction1584__To__Junctions5_Junctions5Junction1585_1_Condition_Action(a_2)
 		 else (a_2);
 		
 
@@ -409,7 +409,7 @@ let
 		(a_4) 
 	= 
 		 if (( x>=2 ) and ( x>=4 )) then 
-		Junctions5_Junctions5Junction42__To__Junctions5_B_1_Condition_Action(a_3)
+		Junctions5_Junctions5Junction1585__To__Junctions5_B_1_Condition_Action(a_3)
 		 else (a_3);
 		
 

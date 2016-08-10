@@ -187,13 +187,8 @@ for idx_block=1:nblk
 	elseif strcmp(inter_blk{idx_block}.type, 'Fcn')
         
 		fun_expr = get_param(blks{idx_block},'Expr');
-        
-        %old version
-%         [block_string, ext_node, ext_matlab_function, var_str] = write_function_block(inter_blk{idx_block}, inter_blk, fun_expr, xml_trace);
-%         extern_matlab_functions{numel(extern_matlab_functions)+1} = ext_matlab_function;
-% 		extern_s_functions_string = [extern_s_functions_string ext_node];
 
-		[block_string, ext_node, var_str, external_math_functions_i] = write_function_blockV2(inter_blk{idx_block}, inter_blk, fun_expr, xml_trace);
+		[block_string, ext_node, var_str, external_math_functions_i] = write_function_block(inter_blk{idx_block}, inter_blk, fun_expr, xml_trace);
 		extern_s_functions_string = [extern_s_functions_string, ext_node];
 		 external_math_functions = [external_math_functions, external_math_functions_i];
 	%%%%%%%%%%%%% Saturation %%%%%%%%%%%%%

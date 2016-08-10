@@ -6,36 +6,9 @@
 
 
 
-node Duration_DurationJunction856__To__Duration_DurationJunction858_1_Condition_Action(pre_c:int;
-	c_1:int)
-
-returns (c:int);
 
 
-var 	c_2:int;
-
-
-let
-
-
-
-	c_2 
-	= pre_c+1;
-	
-
-	(c) 
-	= (c_2);
-	
-
-tel
-
-
-
-
-
-
-
-node Duration_DurationJunction855__To__Duration_DurationJunction857_2_Condition_Action(c_1:int)
+node Duration_DurationJunction355__To__Duration_DurationJunction357_2_Condition_Action(c_1:int)
 
 returns (c:int);
 
@@ -61,6 +34,33 @@ tel
 
 
 
+
+node Duration_DurationJunction356__To__Duration_DurationJunction358_1_Condition_Action(pre_c:int;
+	c_1:int)
+
+returns (c:int);
+
+
+var 	c_2:int;
+
+
+let
+
+
+
+	c_2 
+	= pre_c+1;
+	
+
+	(c) 
+	= (c_2);
+	
+
+tel
+
+
+
+
 --***************************************************State :Duration_Duration Automaton***************************************************
 
 node Duration_Duration_node(idDuration_Duration_1:int;
@@ -77,7 +77,7 @@ let
 	 automaton duration_duration
 
 	state POINTDuration_Duration:
-	unless (idDuration_Duration_1=0) restart POINT__TO__DURATION_DURATIONJUNCTION855_1
+	unless (idDuration_Duration_1=0) restart POINT__TO__DURATION_DURATIONJUNCTION355_1
 
 
 
@@ -91,7 +91,7 @@ let
 
 
 
-	state POINT__TO__DURATION_DURATIONJUNCTION855_1:
+	state POINT__TO__DURATION_DURATIONJUNCTION355_1:
 
 	 var 	c_2, c_3:int;
 	let
@@ -105,13 +105,13 @@ let
 
 
 -- transition trace :
-	--POINT__To__Junction855_1, Junction855__To__Junction856_1, Junction856__To__Junction858_1, Junction858__To__Junction857_1, Junction857__To__Junction859_1
+	--POINT__To__Junction355_1, Junction355__To__Junction356_1, Junction356__To__Junction358_1, Junction358__To__Junction357_1, Junction357__To__Junction359_1
 		-- condition Action : c=pre_c+1;
 		
 		(c_2) 
 	= 
 		 if (( p )) then 
-		Duration_DurationJunction856__To__Duration_DurationJunction858_1_Condition_Action(pre_c, c_1)
+		Duration_DurationJunction356__To__Duration_DurationJunction358_1_Condition_Action(pre_c, c_1)
 		 else (c_1);
 		
 
@@ -119,11 +119,11 @@ let
 
 
 -- transition trace :
-	--POINT__To__Junction855_1, Junction855__To__Junction857_2, Junction857__To__Junction859_1
+	--POINT__To__Junction355_1, Junction355__To__Junction357_2, Junction357__To__Junction359_1
 		-- condition Action : c=0;
 		
 		(c_3) 
-	= Duration_DurationJunction855__To__Duration_DurationJunction857_2_Condition_Action(c_1);
+	= Duration_DurationJunction355__To__Duration_DurationJunction357_2_Condition_Action(c_1);
 		
 
 	(idDuration_Duration, c) 

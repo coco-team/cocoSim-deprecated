@@ -552,15 +552,15 @@ if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
         end
     end
 else
-    OldPwd = pwd;
-    cd(output_dir);
-    command = sprintf('lustrec -horn %s',nom_lustre_file);
-    [status, lustre_out] = system(command);
-    cd(OldPwd);
-    if status
-        msq = sprintf('lustrec failed for model "%s" :\n%s',file_name,lustre_out);
-        display_msg(msq, Constants.ERROR, 'lustrec -horn', '');
-    end
+%     OldPwd = pwd;
+%     cd(output_dir);
+%     command = sprintf('lustrec -horn %s',nom_lustre_file);
+%     [status, lustre_out] = system(command);
+%     cd(OldPwd);
+%     if status
+%         msq = sprintf('lustrec failed for model "%s" :\n%s',file_name,lustre_out);
+%         display_msg(msq, Constants.ERROR, 'lustrec -horn', '');
+%     end
 end
 
 %%%%%%%%%%%% Cleaning and end of operations %%%%%%%%%%

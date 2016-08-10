@@ -6,7 +6,7 @@
 
 
 
-node Junctions7_A__To__Junctions7_Junctions7Junction145_1_Condition_Action(y_1:int)
+node Junctions7_A__To__Junctions7_Junctions7Junction1654_1_Condition_Action(y_1:int)
 
 returns (y:int);
 
@@ -34,7 +34,8 @@ tel
 
 
 
-node Junctions7_A__To__Junctions7_Junctions7Junction145_2_Condition_Action(y_1:int)
+
+node Junctions7_A__To__Junctions7_Junctions7Junction1654_2_Condition_Action(y_1:int)
 
 returns (y:int);
 
@@ -61,7 +62,6 @@ tel
 
 
 
-
 -- Entry action for state :Junctions7_B
 node Junctions7_B_en(idJunctions7_Junctions7_1:int;
 	isInner:bool)
@@ -78,7 +78,7 @@ let
 
 	-- set state as active 
 	idJunctions7_Junctions7_2 
-	= 142;
+	= 1651;
 	
 
 	(idJunctions7_Junctions7) 
@@ -137,7 +137,7 @@ let
 
 	-- set state as active 
 	idJunctions7_Junctions7_2 
-	= 141;
+	= 1650;
 	
 
 	(idJunctions7_Junctions7) 
@@ -195,17 +195,17 @@ let
 
 
 
-	unless (idJunctions7_Junctions7_1=141) and ( x!=0 ) restart JUNCTIONS7_A__TO__JUNCTIONS7_JUNCTIONS7JUNCTION145_1
+	unless (idJunctions7_Junctions7_1=1650) and ( x!=0 ) restart JUNCTIONS7_A__TO__JUNCTIONS7_JUNCTIONS7JUNCTION1654_1
 
 
 
-	unless (idJunctions7_Junctions7_1=141) and ( x=0 ) restart JUNCTIONS7_A__TO__JUNCTIONS7_JUNCTIONS7JUNCTION145_2
+	unless (idJunctions7_Junctions7_1=1650) and ( x=0 ) restart JUNCTIONS7_A__TO__JUNCTIONS7_JUNCTIONS7JUNCTION1654_2
 
 
 
-	unless (idJunctions7_Junctions7_1=141) restart JUNCTIONS7_A_IDL
+	unless (idJunctions7_Junctions7_1=1650) restart JUNCTIONS7_A_IDL
 
-	unless (idJunctions7_Junctions7_1=142) restart JUNCTIONS7_B_IDL
+	unless (idJunctions7_Junctions7_1=1651) restart JUNCTIONS7_B_IDL
 
 	let
 
@@ -242,7 +242,7 @@ let
 
 
 
-	state JUNCTIONS7_A__TO__JUNCTIONS7_JUNCTIONS7JUNCTION145_1:
+	state JUNCTIONS7_A__TO__JUNCTIONS7_JUNCTIONS7JUNCTION1654_1:
 
 	 var 	idJunctions7_Junctions7_2, idJunctions7_Junctions7_3:int;
 	y_2:int;
@@ -251,11 +251,11 @@ let
 		
 
 -- transition trace :
-	--Junctions7_A__To__Junction145_1, Junction145__To__Junctions7_B_1
+	--Junctions7_A__To__Junction1654_1, Junction1654__To__Junctions7_B_1
 		-- condition Action : y++
 		
 		(y_2) 
-	= Junctions7_A__To__Junctions7_Junctions7Junction145_1_Condition_Action(y_1);
+	= Junctions7_A__To__Junctions7_Junctions7Junction1654_1_Condition_Action(y_1);
 		
 
 		(idJunctions7_Junctions7_2) 
@@ -285,7 +285,7 @@ let
 
 
 
-	state JUNCTIONS7_A__TO__JUNCTIONS7_JUNCTIONS7JUNCTION145_2:
+	state JUNCTIONS7_A__TO__JUNCTIONS7_JUNCTIONS7JUNCTION1654_2:
 
 	 var 	idJunctions7_Junctions7_2, idJunctions7_Junctions7_3:int;
 	y_2:int;
@@ -294,11 +294,11 @@ let
 		
 
 -- transition trace :
-	--Junctions7_A__To__Junction145_2, Junction145__To__Junctions7_B_1
+	--Junctions7_A__To__Junction1654_2, Junction1654__To__Junctions7_B_1
 		-- condition Action : y--
 		
 		(y_2) 
-	= Junctions7_A__To__Junctions7_Junctions7Junction145_2_Condition_Action(y_1);
+	= Junctions7_A__To__Junctions7_Junctions7Junction1654_2_Condition_Action(y_1);
 		
 
 		(idJunctions7_Junctions7_2) 

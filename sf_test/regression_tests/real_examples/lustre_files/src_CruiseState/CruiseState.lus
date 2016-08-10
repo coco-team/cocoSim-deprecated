@@ -21,172 +21,6 @@
 
 
 
--- Entry action for state :Regulation_On
-node Regulation_On_en(idEnabled_Regulation_1:int;
-	Regul_OFF_1:bool;
-	Regul_ON_1:bool;
-	Regul_STDBY_1:bool;
-	isInner:bool)
-
-returns (idEnabled_Regulation:int;
-	Regul_OFF:bool;
-	Regul_ON:bool;
-	Regul_STDBY:bool);
-
-
-var 	idEnabled_Regulation_2:int;
-	Regul_OFF_2:bool;
-	Regul_ON_2:bool;
-	Regul_STDBY_2:bool;
-
-
-let
-
-
-
-	-- set state as active 
-	idEnabled_Regulation_2 
-	= 945;
-	
-
-	Regul_OFF_2 
-	= if (not isInner) then false
-	 else Regul_OFF_1;
-	
-
-	Regul_ON_2 
-	= if (not isInner) then true
-	 else Regul_ON_1;
-	
-
-	Regul_STDBY_2 
-	= if (not isInner) then false
-	 else Regul_STDBY_1;
-	
-
-	(idEnabled_Regulation, Regul_OFF, Regul_ON, Regul_STDBY) 
-	= (idEnabled_Regulation_2, Regul_OFF_2, Regul_ON_2, Regul_STDBY_2);
-	
-
-tel
-
-
-
-
-
--- Exit action for state :Regulation_On
-node Regulation_On_ex(idEnabled_Regulation_1:int;
-	isInner:bool)
-
-returns (idEnabled_Regulation:int);
-
-
-var 	idEnabled_Regulation_2:int;
-
-
-let
-
-
-
-	-- set state as inactive 
-	idEnabled_Regulation_2
-	 = if (not isInner) then 0 else idEnabled_Regulation_1;
-
-
-	(idEnabled_Regulation) 
-	= (idEnabled_Regulation_2);
-	
-
-tel
-
-
-
-
-
-
--- Entry action for state :Regulation_StandBy
-node Regulation_StandBy_en(idEnabled_Regulation_1:int;
-	Regul_OFF_1:bool;
-	Regul_ON_1:bool;
-	Regul_STDBY_1:bool;
-	isInner:bool)
-
-returns (idEnabled_Regulation:int;
-	Regul_OFF:bool;
-	Regul_ON:bool;
-	Regul_STDBY:bool);
-
-
-var 	idEnabled_Regulation_2:int;
-	Regul_OFF_2:bool;
-	Regul_ON_2:bool;
-	Regul_STDBY_2:bool;
-
-
-let
-
-
-
-	-- set state as active 
-	idEnabled_Regulation_2 
-	= 946;
-	
-
-	Regul_OFF_2 
-	= if (not isInner) then false
-	 else Regul_OFF_1;
-	
-
-	Regul_ON_2 
-	= if (not isInner) then false
-	 else Regul_ON_1;
-	
-
-	Regul_STDBY_2 
-	= if (not isInner) then true
-	 else Regul_STDBY_1;
-	
-
-	(idEnabled_Regulation, Regul_OFF, Regul_ON, Regul_STDBY) 
-	= (idEnabled_Regulation_2, Regul_OFF_2, Regul_ON_2, Regul_STDBY_2);
-	
-
-tel
-
-
-
-
-
--- Exit action for state :Regulation_StandBy
-node Regulation_StandBy_ex(idEnabled_Regulation_1:int;
-	isInner:bool)
-
-returns (idEnabled_Regulation:int);
-
-
-var 	idEnabled_Regulation_2:int;
-
-
-let
-
-
-
-	-- set state as inactive 
-	idEnabled_Regulation_2
-	 = if (not isInner) then 0 else idEnabled_Regulation_1;
-
-
-	(idEnabled_Regulation) 
-	= (idEnabled_Regulation_2);
-	
-
-tel
-
-
-
-
-
-
 -- Entry action for state :Enabled_Interrupted
 node Enabled_Interrupted_en(idCruiseStateMgt_Enabled_1:int;
 	Regul_OFF_1:bool;
@@ -212,7 +46,7 @@ let
 
 	-- set state as active 
 	idCruiseStateMgt_Enabled_2 
-	= 947;
+	= 410;
 	
 
 	Regul_OFF_2 
@@ -260,7 +94,173 @@ let
 
 
 	(idCruiseStateMgt_Enabled) 
-	= (idCruiseStateMgt_Enabled_2);
+	= (idCruiseStateMgt_Enabled_1);
+	
+
+tel
+
+
+
+
+
+
+-- Entry action for state :Regulation_StandBy
+node Regulation_StandBy_en(idEnabled_Regulation_1:int;
+	Regul_OFF_1:bool;
+	Regul_ON_1:bool;
+	Regul_STDBY_1:bool;
+	isInner:bool)
+
+returns (idEnabled_Regulation:int;
+	Regul_OFF:bool;
+	Regul_ON:bool;
+	Regul_STDBY:bool);
+
+
+var 	idEnabled_Regulation_2:int;
+	Regul_OFF_2:bool;
+	Regul_ON_2:bool;
+	Regul_STDBY_2:bool;
+
+
+let
+
+
+
+	-- set state as active 
+	idEnabled_Regulation_2 
+	= 409;
+	
+
+	Regul_OFF_2 
+	= if (not isInner) then false
+	 else Regul_OFF_1;
+	
+
+	Regul_ON_2 
+	= if (not isInner) then false
+	 else Regul_ON_1;
+	
+
+	Regul_STDBY_2 
+	= if (not isInner) then true
+	 else Regul_STDBY_1;
+	
+
+	(idEnabled_Regulation, Regul_OFF, Regul_ON, Regul_STDBY) 
+	= (idEnabled_Regulation_2, Regul_OFF_2, Regul_ON_2, Regul_STDBY_2);
+	
+
+tel
+
+
+
+
+
+-- Exit action for state :Regulation_StandBy
+node Regulation_StandBy_ex(idEnabled_Regulation_1:int;
+	isInner:bool)
+
+returns (idEnabled_Regulation:int);
+
+
+var 	idEnabled_Regulation_2:int;
+
+
+let
+
+
+
+	-- set state as inactive 
+	idEnabled_Regulation_2
+	 = if (not isInner) then 0 else idEnabled_Regulation_1;
+
+
+	(idEnabled_Regulation) 
+	= (idEnabled_Regulation_1);
+	
+
+tel
+
+
+
+
+
+
+-- Entry action for state :Regulation_On
+node Regulation_On_en(idEnabled_Regulation_1:int;
+	Regul_OFF_1:bool;
+	Regul_ON_1:bool;
+	Regul_STDBY_1:bool;
+	isInner:bool)
+
+returns (idEnabled_Regulation:int;
+	Regul_OFF:bool;
+	Regul_ON:bool;
+	Regul_STDBY:bool);
+
+
+var 	idEnabled_Regulation_2:int;
+	Regul_OFF_2:bool;
+	Regul_ON_2:bool;
+	Regul_STDBY_2:bool;
+
+
+let
+
+
+
+	-- set state as active 
+	idEnabled_Regulation_2 
+	= 408;
+	
+
+	Regul_OFF_2 
+	= if (not isInner) then false
+	 else Regul_OFF_1;
+	
+
+	Regul_ON_2 
+	= if (not isInner) then true
+	 else Regul_ON_1;
+	
+
+	Regul_STDBY_2 
+	= if (not isInner) then false
+	 else Regul_STDBY_1;
+	
+
+	(idEnabled_Regulation, Regul_OFF, Regul_ON, Regul_STDBY) 
+	= (idEnabled_Regulation_2, Regul_OFF_2, Regul_ON_2, Regul_STDBY_2);
+	
+
+tel
+
+
+
+
+
+-- Exit action for state :Regulation_On
+node Regulation_On_ex(idEnabled_Regulation_1:int;
+	isInner:bool)
+
+returns (idEnabled_Regulation:int);
+
+
+var 	idEnabled_Regulation_2:int;
+
+
+let
+
+
+
+	-- set state as inactive 
+	idEnabled_Regulation_2
+	 = if (not isInner) then 0 else idEnabled_Regulation_1;
+
+
+	(idEnabled_Regulation) 
+	= (idEnabled_Regulation_1);
 	
 
 tel
@@ -300,14 +300,14 @@ let
 
 	-- set state as active 
 	idCruiseStateMgt_Enabled_2 
-	= 948;
+	= 411;
 	
 
 	
 
 
 -- transition trace :
-	--POINT__To__Junction950_1, Junction950__To__Regulation_StandBy_1
+	--POINT__To__Junction413_1, Junction413__To__Regulation_StandBy_1
 		(idEnabled_Regulation_2, Regul_OFF_2, Regul_ON_2, Regul_STDBY_2) 
 	= 
 		 if (( AccelPressed or SpeedOutOffLimits )) then 
@@ -317,7 +317,7 @@ let
 
 
 -- transition trace :
-	--POINT__To__Junction950_1, Junction950__To__Regulation_On_2
+	--POINT__To__Junction413_1, Junction413__To__Regulation_On_2
 		(idEnabled_Regulation_3, Regul_OFF_3, Regul_ON_3, Regul_STDBY_3) 
 	= Regulation_On_en(idEnabled_Regulation_1, Regul_OFF_1, Regul_ON_1, Regul_STDBY_1, false);
 		
@@ -338,7 +338,7 @@ let
 
 	(idEnabled_Regulation_5, Regul_OFF_5, Regul_ON_5, Regul_STDBY_5) 
 	= 
-	if ( idEnabled_Regulation_1 = 946) then
+	if ( idEnabled_Regulation_1 = 409) then
 	Regulation_StandBy_en(idEnabled_Regulation_1, Regul_OFF_1, Regul_ON_1, Regul_STDBY_1, false)
 	 else (idEnabled_Regulation_1, Regul_OFF_1, Regul_ON_1, Regul_STDBY_1);
 
@@ -346,7 +346,7 @@ let
 
 	(idEnabled_Regulation_6, Regul_OFF_6, Regul_ON_6, Regul_STDBY_6) 
 	= 
-	if ( idEnabled_Regulation_1 = 945) then
+	if ( idEnabled_Regulation_1 = 408) then
 	Regulation_On_en(idEnabled_Regulation_1, Regul_OFF_1, Regul_ON_1, Regul_STDBY_1, false)
 	 else (idEnabled_Regulation_1, Regul_OFF_1, Regul_ON_1, Regul_STDBY_1);
 
@@ -357,10 +357,10 @@ let
 		 if ( idEnabled_Regulation_1 = 0) then 
 		(idEnabled_Regulation_4, idCruiseStateMgt_Enabled_3, Regul_OFF_4, Regul_ON_4, Regul_STDBY_4)
 		 else
-		 if ( idEnabled_Regulation_1 = 946) then 
+		 if ( idEnabled_Regulation_1 = 409) then 
 		(idEnabled_Regulation_5, idCruiseStateMgt_Enabled_3, Regul_OFF_5, Regul_ON_5, Regul_STDBY_5)
 		 else
-		 if ( idEnabled_Regulation_1 = 945) then 
+		 if ( idEnabled_Regulation_1 = 408) then 
 		(idEnabled_Regulation_6, idCruiseStateMgt_Enabled_3, Regul_OFF_6, Regul_ON_6, Regul_STDBY_6)
 		 else (idEnabled_Regulation_1, idCruiseStateMgt_Enabled_2, Regul_OFF_1, Regul_ON_1, Regul_STDBY_1);
 
@@ -395,7 +395,7 @@ let
 	
 	(idEnabled_Regulation_2) 
 	= 
-	if ( idEnabled_Regulation_1 = 946) then
+	if ( idEnabled_Regulation_1 = 409) then
 	Regulation_StandBy_ex(idEnabled_Regulation_1, false)
 	 else (idEnabled_Regulation_1);
 
@@ -403,7 +403,7 @@ let
 
 	(idEnabled_Regulation_3) 
 	= 
-	if ( idEnabled_Regulation_1 = 945) then
+	if ( idEnabled_Regulation_1 = 408) then
 	Regulation_On_ex(idEnabled_Regulation_1, false)
 	 else (idEnabled_Regulation_1);
 
@@ -411,10 +411,10 @@ let
 
 	(idEnabled_Regulation_4) 
 	= 
-		 if ( idEnabled_Regulation_1 = 946) then 
+		 if ( idEnabled_Regulation_1 = 409) then 
 		(idEnabled_Regulation_2)
 		 else
-		 if ( idEnabled_Regulation_1 = 945) then 
+		 if ( idEnabled_Regulation_1 = 408) then 
 		(idEnabled_Regulation_3)
 		 else (idEnabled_Regulation_1);
 
@@ -428,7 +428,7 @@ let
 	
 
 	(idEnabled_Regulation, idCruiseStateMgt_Enabled) 
-	= (idEnabled_Regulation_5, idCruiseStateMgt_Enabled_2);
+	= (idEnabled_Regulation_5, idCruiseStateMgt_Enabled_1);
 	
 
 tel
@@ -472,14 +472,14 @@ let
 
 	-- set state as active 
 	idCruiseStateMgt_CruiseStateMgt_2 
-	= 949;
+	= 412;
 	
 
 	
 
 
 -- transition trace :
-	--POINT__To__Junction956_1, Junction956__To__Enabled_Interrupted_1
+	--POINT__To__Junction419_1, Junction419__To__Enabled_Interrupted_1
 		(idCruiseStateMgt_Enabled_2, Regul_OFF_2, Regul_ON_2, Regul_STDBY_2) 
 	= 
 		 if (( BrakePressed )) then 
@@ -489,7 +489,7 @@ let
 
 
 -- transition trace :
-	--POINT__To__Junction956_1, Junction956__To__Enabled_Regulation_2
+	--POINT__To__Junction419_1, Junction419__To__Enabled_Regulation_2
 		(idEnabled_Regulation_2, idCruiseStateMgt_Enabled_3, Regul_OFF_3, Regul_ON_3, Regul_STDBY_3) 
 	= Enabled_Regulation_en(idEnabled_Regulation_1, idCruiseStateMgt_Enabled_1, AccelPressed, SpeedOutOffLimits, Regul_OFF_1, Regul_ON_1, Regul_STDBY_1, false);
 		
@@ -510,7 +510,7 @@ let
 
 	(idEnabled_Regulation_4, idCruiseStateMgt_Enabled_5, Regul_OFF_5, Regul_ON_5, Regul_STDBY_5) 
 	= 
-	if ( idCruiseStateMgt_Enabled_1 = 948) then
+	if ( idCruiseStateMgt_Enabled_1 = 411) then
 	Enabled_Regulation_en(idEnabled_Regulation_1, idCruiseStateMgt_Enabled_1, AccelPressed, SpeedOutOffLimits, Regul_OFF_1, Regul_ON_1, Regul_STDBY_1, false)
 	 else (idEnabled_Regulation_1, idCruiseStateMgt_Enabled_1, Regul_OFF_1, Regul_ON_1, Regul_STDBY_1);
 
@@ -518,7 +518,7 @@ let
 
 	(idCruiseStateMgt_Enabled_6, Regul_OFF_6, Regul_ON_6, Regul_STDBY_6) 
 	= 
-	if ( idCruiseStateMgt_Enabled_1 = 947) then
+	if ( idCruiseStateMgt_Enabled_1 = 410) then
 	Enabled_Interrupted_en(idCruiseStateMgt_Enabled_1, Regul_OFF_1, Regul_ON_1, Regul_STDBY_1, false)
 	 else (idCruiseStateMgt_Enabled_1, Regul_OFF_1, Regul_ON_1, Regul_STDBY_1);
 
@@ -529,10 +529,10 @@ let
 		 if ( idCruiseStateMgt_Enabled_1 = 0) then 
 		(idCruiseStateMgt_Enabled_4, idCruiseStateMgt_CruiseStateMgt_3, Regul_OFF_4, Regul_ON_4, Regul_STDBY_4, idEnabled_Regulation_3)
 		 else
-		 if ( idCruiseStateMgt_Enabled_1 = 948) then 
+		 if ( idCruiseStateMgt_Enabled_1 = 411) then 
 		(idCruiseStateMgt_Enabled_5, idCruiseStateMgt_CruiseStateMgt_3, Regul_OFF_5, Regul_ON_5, Regul_STDBY_5, idEnabled_Regulation_4)
 		 else
-		 if ( idCruiseStateMgt_Enabled_1 = 947) then 
+		 if ( idCruiseStateMgt_Enabled_1 = 410) then 
 		(idCruiseStateMgt_Enabled_6, idCruiseStateMgt_CruiseStateMgt_3, Regul_OFF_6, Regul_ON_6, Regul_STDBY_6, idEnabled_Regulation_4)
 		 else (idCruiseStateMgt_Enabled_1, idCruiseStateMgt_CruiseStateMgt_2, Regul_OFF_1, Regul_ON_1, Regul_STDBY_1, idEnabled_Regulation_1);
 
@@ -570,7 +570,7 @@ let
 	
 	(idEnabled_Regulation_2, idCruiseStateMgt_Enabled_2) 
 	= 
-	if ( idCruiseStateMgt_Enabled_1 = 948) then
+	if ( idCruiseStateMgt_Enabled_1 = 411) then
 	Enabled_Regulation_ex(idEnabled_Regulation_1, idCruiseStateMgt_Enabled_1, false)
 	 else (idEnabled_Regulation_1, idCruiseStateMgt_Enabled_1);
 
@@ -578,7 +578,7 @@ let
 
 	(idCruiseStateMgt_Enabled_3) 
 	= 
-	if ( idCruiseStateMgt_Enabled_1 = 947) then
+	if ( idCruiseStateMgt_Enabled_1 = 410) then
 	Enabled_Interrupted_ex(idCruiseStateMgt_Enabled_1, false)
 	 else (idCruiseStateMgt_Enabled_1);
 
@@ -586,10 +586,10 @@ let
 
 	(idEnabled_Regulation_3, idCruiseStateMgt_Enabled_4) 
 	= 
-		 if ( idCruiseStateMgt_Enabled_1 = 948) then 
+		 if ( idCruiseStateMgt_Enabled_1 = 411) then 
 		(idEnabled_Regulation_2, idCruiseStateMgt_Enabled_2)
 		 else
-		 if ( idCruiseStateMgt_Enabled_1 = 947) then 
+		 if ( idCruiseStateMgt_Enabled_1 = 410) then 
 		(idEnabled_Regulation_2, idCruiseStateMgt_Enabled_3)
 		 else (idEnabled_Regulation_1, idCruiseStateMgt_Enabled_1);
 
@@ -603,7 +603,7 @@ let
 	
 
 	(idEnabled_Regulation, idCruiseStateMgt_Enabled, idCruiseStateMgt_CruiseStateMgt) 
-	= (idEnabled_Regulation_3, idCruiseStateMgt_Enabled_5, idCruiseStateMgt_CruiseStateMgt_2);
+	= (idEnabled_Regulation_3, idCruiseStateMgt_Enabled_5, idCruiseStateMgt_CruiseStateMgt_1);
 	
 
 tel
@@ -638,7 +638,7 @@ let
 
 	-- set state as active 
 	idCruiseStateMgt_CruiseStateMgt_2 
-	= 944;
+	= 407;
 	
 
 	Regul_OFF_2 
@@ -686,7 +686,7 @@ let
 
 
 	(idCruiseStateMgt_CruiseStateMgt) 
-	= (idCruiseStateMgt_CruiseStateMgt_2);
+	= (idCruiseStateMgt_CruiseStateMgt_1);
 	
 
 tel
@@ -712,21 +712,21 @@ let
 	 automaton enabled_regulation
 
 	state POINTEnabled_Regulation:
-	unless (idEnabled_Regulation_1=0) restart POINT__TO__CRUISESTATEMGT_CRUISESTATEMGTJUNCTION950_1
+	unless (idEnabled_Regulation_1=0) restart POINT__TO__CRUISESTATEMGT_CRUISESTATEMGTJUNCTION413_1
 
 
 
-	unless (idEnabled_Regulation_1=946) and ( not AccelPressed and not SpeedOutOffLimits ) restart REGULATION_STANDBY__TO__REGULATION_ON_1
+	unless (idEnabled_Regulation_1=409) and ( not AccelPressed and not SpeedOutOffLimits ) restart REGULATION_STANDBY__TO__REGULATION_ON_1
 
 
 
-	unless (idEnabled_Regulation_1=945) and ( AccelPressed or SpeedOutOffLimits ) restart REGULATION_ON__TO__REGULATION_STANDBY_1
+	unless (idEnabled_Regulation_1=408) and ( AccelPressed or SpeedOutOffLimits ) restart REGULATION_ON__TO__REGULATION_STANDBY_1
 
 
 
-	unless (idEnabled_Regulation_1=946) restart REGULATION_STANDBY_IDL
+	unless (idEnabled_Regulation_1=409) restart REGULATION_STANDBY_IDL
 
-	unless (idEnabled_Regulation_1=945) restart REGULATION_ON_IDL
+	unless (idEnabled_Regulation_1=408) restart REGULATION_ON_IDL
 
 	let
 
@@ -738,7 +738,7 @@ let
 
 
 
-	state POINT__TO__CRUISESTATEMGT_CRUISESTATEMGTJUNCTION950_1:
+	state POINT__TO__CRUISESTATEMGT_CRUISESTATEMGTJUNCTION413_1:
 
 	 var 	idEnabled_Regulation_2, idEnabled_Regulation_3:int;
 	Regul_OFF_2, Regul_OFF_3:bool;
@@ -749,7 +749,7 @@ let
 		
 
 -- transition trace :
-	--POINT__To__Junction950_1, Junction950__To__Regulation_StandBy_1
+	--POINT__To__Junction413_1, Junction413__To__Regulation_StandBy_1
 		(idEnabled_Regulation_2, Regul_OFF_2, Regul_ON_2, Regul_STDBY_2) 
 	= 
 		 if (( AccelPressed or SpeedOutOffLimits )) then 
@@ -759,7 +759,7 @@ let
 
 
 -- transition trace :
-	--POINT__To__Junction950_1, Junction950__To__Regulation_On_2
+	--POINT__To__Junction413_1, Junction413__To__Regulation_On_2
 		(idEnabled_Regulation_3, Regul_OFF_3, Regul_ON_3, Regul_STDBY_3) 
 	= Regulation_On_en(idEnabled_Regulation_1, Regul_OFF_1, Regul_ON_1, Regul_STDBY_1, false);
 		
@@ -892,21 +892,21 @@ let
 	 automaton cruisestatemgt_enabled
 
 	state POINTCruiseStateMgt_Enabled:
-	unless (idCruiseStateMgt_Enabled_1=0) restart POINT__TO__CRUISESTATEMGT_CRUISESTATEMGTJUNCTION956_1
+	unless (idCruiseStateMgt_Enabled_1=0) restart POINT__TO__CRUISESTATEMGT_CRUISESTATEMGTJUNCTION419_1
 
 
 
-	unless (idCruiseStateMgt_Enabled_1=948) and ( BrakePressed ) restart ENABLED_REGULATION__TO__ENABLED_INTERRUPTED_1
+	unless (idCruiseStateMgt_Enabled_1=411) and ( BrakePressed ) restart ENABLED_REGULATION__TO__ENABLED_INTERRUPTED_1
 
 
 
-	unless (idCruiseStateMgt_Enabled_1=947) and ( Resume and not BrakePressed ) restart ENABLED_INTERRUPTED__TO__ENABLED_REGULATION_1
+	unless (idCruiseStateMgt_Enabled_1=410) and ( Resume and not BrakePressed ) restart ENABLED_INTERRUPTED__TO__ENABLED_REGULATION_1
 
 
 
-	unless (idCruiseStateMgt_Enabled_1=948) restart ENABLED_REGULATION_IDL
+	unless (idCruiseStateMgt_Enabled_1=411) restart ENABLED_REGULATION_IDL
 
-	unless (idCruiseStateMgt_Enabled_1=947) restart ENABLED_INTERRUPTED_IDL
+	unless (idCruiseStateMgt_Enabled_1=410) restart ENABLED_INTERRUPTED_IDL
 
 	let
 
@@ -918,7 +918,7 @@ let
 
 
 
-	state POINT__TO__CRUISESTATEMGT_CRUISESTATEMGTJUNCTION956_1:
+	state POINT__TO__CRUISESTATEMGT_CRUISESTATEMGTJUNCTION419_1:
 
 	 var 	idCruiseStateMgt_Enabled_2, idCruiseStateMgt_Enabled_3:int;
 	Regul_OFF_2, Regul_OFF_3:bool;
@@ -930,7 +930,7 @@ let
 		
 
 -- transition trace :
-	--POINT__To__Junction956_1, Junction956__To__Enabled_Interrupted_1
+	--POINT__To__Junction419_1, Junction419__To__Enabled_Interrupted_1
 		(idCruiseStateMgt_Enabled_2, Regul_OFF_2, Regul_ON_2, Regul_STDBY_2) 
 	= 
 		 if (( BrakePressed )) then 
@@ -940,7 +940,7 @@ let
 
 
 -- transition trace :
-	--POINT__To__Junction956_1, Junction956__To__Enabled_Regulation_2
+	--POINT__To__Junction419_1, Junction419__To__Enabled_Regulation_2
 		(idEnabled_Regulation_2, idCruiseStateMgt_Enabled_3, Regul_OFF_3, Regul_ON_3, Regul_STDBY_3) 
 	= Enabled_Regulation_en(idEnabled_Regulation_1, idCruiseStateMgt_Enabled_1, AccelPressed, SpeedOutOffLimits, Regul_OFF_1, Regul_ON_1, Regul_STDBY_1, false);
 		
@@ -1088,21 +1088,21 @@ let
 	 automaton cruisestatemgt_cruisestatemgt
 
 	state POINTCruiseStateMgt_CruiseStateMgt:
-	unless (idCruiseStateMgt_CruiseStateMgt_1=0) restart POINT__TO__CRUISESTATEMGT_CRUISESTATEMGTJUNCTION971_1
+	unless (idCruiseStateMgt_CruiseStateMgt_1=0) restart POINT__TO__CRUISESTATEMGT_CRUISESTATEMGTJUNCTION434_1
 
 
 
-	unless (idCruiseStateMgt_CruiseStateMgt_1=944) and ( On ) restart CRUISESTATEMGT_DISABLED__TO__CRUISESTATEMGT_ENABLED_1
+	unless (idCruiseStateMgt_CruiseStateMgt_1=407) and ( On ) restart CRUISESTATEMGT_DISABLED__TO__CRUISESTATEMGT_ENABLED_1
 
 
 
-	unless (idCruiseStateMgt_CruiseStateMgt_1=949) and ( Off ) restart CRUISESTATEMGT_ENABLED__TO__CRUISESTATEMGT_DISABLED_1
+	unless (idCruiseStateMgt_CruiseStateMgt_1=412) and ( Off ) restart CRUISESTATEMGT_ENABLED__TO__CRUISESTATEMGT_DISABLED_1
 
 
 
-	unless (idCruiseStateMgt_CruiseStateMgt_1=944) restart CRUISESTATEMGT_DISABLED_IDL
+	unless (idCruiseStateMgt_CruiseStateMgt_1=407) restart CRUISESTATEMGT_DISABLED_IDL
 
-	unless (idCruiseStateMgt_CruiseStateMgt_1=949) restart CRUISESTATEMGT_ENABLED_IDL
+	unless (idCruiseStateMgt_CruiseStateMgt_1=412) restart CRUISESTATEMGT_ENABLED_IDL
 
 	let
 
@@ -1114,7 +1114,7 @@ let
 
 
 
-	state POINT__TO__CRUISESTATEMGT_CRUISESTATEMGTJUNCTION971_1:
+	state POINT__TO__CRUISESTATEMGT_CRUISESTATEMGTJUNCTION434_1:
 
 	 var 	idCruiseStateMgt_CruiseStateMgt_2, idCruiseStateMgt_CruiseStateMgt_3:int;
 	Regul_OFF_2, Regul_OFF_3:bool;
@@ -1127,7 +1127,7 @@ let
 		
 
 -- transition trace :
-	--POINT__To__Junction971_1, Junction971__To__CruiseStateMgt_Enabled_1
+	--POINT__To__Junction434_1, Junction434__To__CruiseStateMgt_Enabled_1
 		(idCruiseStateMgt_Enabled_2, idCruiseStateMgt_CruiseStateMgt_2, Regul_OFF_2, Regul_ON_2, Regul_STDBY_2, idEnabled_Regulation_2) 
 	= 
 		 if (( On )) then 
@@ -1137,7 +1137,7 @@ let
 
 
 -- transition trace :
-	--POINT__To__Junction971_1, Junction971__To__CruiseStateMgt_Disabled_2
+	--POINT__To__Junction434_1, Junction434__To__CruiseStateMgt_Disabled_2
 		(idCruiseStateMgt_CruiseStateMgt_3, Regul_OFF_3, Regul_ON_3, Regul_STDBY_3) 
 	= CruiseStateMgt_Disabled_en(idCruiseStateMgt_CruiseStateMgt_1, Regul_OFF_1, Regul_ON_1, Regul_STDBY_1, false);
 		
@@ -1146,7 +1146,7 @@ let
 	= 
 		 if (( On )) then 
 		(idCruiseStateMgt_CruiseStateMgt_2, Regul_OFF_2, Regul_ON_2, Regul_STDBY_2, idCruiseStateMgt_Enabled_2, idEnabled_Regulation_2)
-		 else (idCruiseStateMgt_CruiseStateMgt_3, Regul_OFF_3, Regul_ON_3, Regul_STDBY_3, idCruiseStateMgt_Enabled_2, idEnabled_Regulation_2);
+		 else (idCruiseStateMgt_CruiseStateMgt_3, Regul_OFF_3, Regul_ON_3, Regul_STDBY_3, idCruiseStateMgt_Enabled_1, idEnabled_Regulation_1);
 
 
 	tel
@@ -1282,9 +1282,9 @@ var Regul_ON_1: bool;
 
 	idCruiseStateMgt_CruiseStateMgt, idCruiseStateMgt_CruiseStateMgt_1: int;
 
-	idCruiseStateMgt_Enabled, idCruiseStateMgt_Enabled_1: int;
-
 	idEnabled_Regulation, idEnabled_Regulation_1: int;
+
+	idCruiseStateMgt_Enabled, idCruiseStateMgt_Enabled_1: int;
 
 	let
 
@@ -1296,9 +1296,9 @@ var Regul_ON_1: bool;
 
 	idCruiseStateMgt_CruiseStateMgt_1 = 0 -> pre idCruiseStateMgt_CruiseStateMgt;
 
-	idCruiseStateMgt_Enabled_1 = 0 -> pre idCruiseStateMgt_Enabled;
-
 	idEnabled_Regulation_1 = 0 -> pre idEnabled_Regulation;
+
+	idCruiseStateMgt_Enabled_1 = 0 -> pre idCruiseStateMgt_Enabled;
 
 	
 

@@ -6,15 +6,7 @@
 
 
 
-
-
-
-
-
-
-
-
-node Brake_Cmd_Brake_CmdJunction786__To__Brake_Cmd_Brake_CmdJunction795_1_Condition_Action(BRAKE_PRESSURE_LO:int;
+node Brake_Cmd_Brake_CmdJunction309__To__Brake_Cmd_Brake_CmdJunction310_1_Condition_Action(pedal:int;
 	r_1:int)
 
 returns (r:int);
@@ -28,7 +20,7 @@ let
 
 
 	r_2 
-	= BRAKE_PRESSURE_LO;
+	= pedal;
 	
 
 	(r) 
@@ -42,7 +34,12 @@ tel
 
 
 
-node Brake_Cmd_Brake_CmdJunction788__To__Brake_Cmd_Brake_CmdJunction794_1_Condition_Action(BRAKE_PRESSURE_MED:int;
+
+
+
+
+
+node Brake_Cmd_Brake_CmdJunction306__To__Brake_Cmd_Brake_CmdJunction312_1_Condition_Action(BRAKE_PRESSURE_MED:int;
 	r_1:int)
 
 returns (r:int);
@@ -73,7 +70,8 @@ tel
 
 
 
-node Brake_Cmd_Brake_CmdJunction791__To__Brake_Cmd_Brake_CmdJunction792_1_Condition_Action(pedal:int;
+
+node Brake_Cmd_Brake_CmdJunction304__To__Brake_Cmd_Brake_CmdJunction313_1_Condition_Action(BRAKE_PRESSURE_LO:int;
 	r_1:int)
 
 returns (r:int);
@@ -87,7 +85,7 @@ let
 
 
 	r_2 
-	= pedal;
+	= BRAKE_PRESSURE_LO;
 	
 
 	(r) 
@@ -101,7 +99,7 @@ tel
 
 
 
-node Brake_Cmd_Brake_CmdJunction790__To__Brake_Cmd_Brake_CmdJunction793_1_Condition_Action(BRAKE_PRESSURE_MAX:int;
+node Brake_Cmd_Brake_CmdJunction308__To__Brake_Cmd_Brake_CmdJunction311_1_Condition_Action(BRAKE_PRESSURE_MAX:int;
 	r_1:int)
 
 returns (r:int);
@@ -123,6 +121,8 @@ let
 	
 
 tel
+
+
 
 
 --***************************************************State :Brake_Cmd_Brake_Cmd Automaton***************************************************
@@ -147,7 +147,7 @@ let
 	 automaton brake_cmd_brake_cmd
 
 	state POINTBrake_Cmd_Brake_Cmd:
-	unless (idBrake_Cmd_Brake_Cmd_1=0) restart POINT__TO__BRAKE_CMD_BRAKE_CMDJUNCTION785_1
+	unless (idBrake_Cmd_Brake_Cmd_1=0) restart POINT__TO__BRAKE_CMD_BRAKE_CMDJUNCTION303_1
 
 
 
@@ -161,7 +161,7 @@ let
 
 
 
-	state POINT__TO__BRAKE_CMD_BRAKE_CMDJUNCTION785_1:
+	state POINT__TO__BRAKE_CMD_BRAKE_CMDJUNCTION303_1:
 
 	 var 	r_2, r_3, r_4, r_5:int;
 	let
@@ -179,13 +179,13 @@ let
 
 
 -- transition trace :
-	--POINT__To__Junction785_1, Junction785__To__Junction786_1, Junction786__To__Junction795_1, Junction795__To__Junction794_1, Junction794__To__Junction793_1, Junction793__To__Junction792_1, Junction792__To__Junction796_1
+	--POINT__To__Junction303_1, Junction303__To__Junction304_1, Junction304__To__Junction313_1, Junction313__To__Junction312_1, Junction312__To__Junction311_1, Junction311__To__Junction310_1, Junction310__To__Junction314_1
 		-- condition Action : r=BRAKE_PRESSURE_LO;
 		
 		(r_2) 
 	= 
 		 if (( mode=LO )) then 
-		Brake_Cmd_Brake_CmdJunction786__To__Brake_Cmd_Brake_CmdJunction795_1_Condition_Action(BRAKE_PRESSURE_LO, r_1)
+		Brake_Cmd_Brake_CmdJunction304__To__Brake_Cmd_Brake_CmdJunction313_1_Condition_Action(BRAKE_PRESSURE_LO, r_1)
 		 else (r_1);
 		
 
@@ -201,13 +201,13 @@ let
 
 
 -- transition trace :
-	--POINT__To__Junction785_1, Junction785__To__Junction787_2, Junction787__To__Junction788_1, Junction788__To__Junction794_1, Junction794__To__Junction793_1, Junction793__To__Junction792_1, Junction792__To__Junction796_1
+	--POINT__To__Junction303_1, Junction303__To__Junction305_2, Junction305__To__Junction306_1, Junction306__To__Junction312_1, Junction312__To__Junction311_1, Junction311__To__Junction310_1, Junction310__To__Junction314_1
 		-- condition Action : r=BRAKE_PRESSURE_MED;
 		
 		(r_3) 
 	= 
 		 if (( mode=MED )) then 
-		Brake_Cmd_Brake_CmdJunction788__To__Brake_Cmd_Brake_CmdJunction794_1_Condition_Action(BRAKE_PRESSURE_MED, r_1)
+		Brake_Cmd_Brake_CmdJunction306__To__Brake_Cmd_Brake_CmdJunction312_1_Condition_Action(BRAKE_PRESSURE_MED, r_1)
 		 else (r_1);
 		
 
@@ -221,13 +221,13 @@ let
 
 
 -- transition trace :
-	--POINT__To__Junction785_1, Junction785__To__Junction787_2, Junction787__To__Junction789_2, Junction789__To__Junction790_1, Junction790__To__Junction793_1, Junction793__To__Junction792_1, Junction792__To__Junction796_1
+	--POINT__To__Junction303_1, Junction303__To__Junction305_2, Junction305__To__Junction307_2, Junction307__To__Junction308_1, Junction308__To__Junction311_1, Junction311__To__Junction310_1, Junction310__To__Junction314_1
 		-- condition Action : r=BRAKE_PRESSURE_MAX;
 		
 		(r_4) 
 	= 
 		 if (( mode=MAX )) then 
-		Brake_Cmd_Brake_CmdJunction790__To__Brake_Cmd_Brake_CmdJunction793_1_Condition_Action(BRAKE_PRESSURE_MAX, r_1)
+		Brake_Cmd_Brake_CmdJunction308__To__Brake_Cmd_Brake_CmdJunction311_1_Condition_Action(BRAKE_PRESSURE_MAX, r_1)
 		 else (r_1);
 		
 
@@ -237,11 +237,11 @@ let
 
 
 -- transition trace :
-	--POINT__To__Junction785_1, Junction785__To__Junction787_2, Junction787__To__Junction789_2, Junction789__To__Junction791_2, Junction791__To__Junction792_1, Junction792__To__Junction796_1
+	--POINT__To__Junction303_1, Junction303__To__Junction305_2, Junction305__To__Junction307_2, Junction307__To__Junction309_2, Junction309__To__Junction310_1, Junction310__To__Junction314_1
 		-- condition Action : r=pedal;
 		
 		(r_5) 
-	= Brake_Cmd_Brake_CmdJunction791__To__Brake_Cmd_Brake_CmdJunction792_1_Condition_Action(pedal, r_1);
+	= Brake_Cmd_Brake_CmdJunction309__To__Brake_Cmd_Brake_CmdJunction310_1_Condition_Action(pedal, r_1);
 		
 
 	(idBrake_Cmd_Brake_Cmd, r) 
@@ -287,19 +287,19 @@ var r_1: int;
 
 	idBrake_Cmd_Brake_Cmd, idBrake_Cmd_Brake_Cmd_1: int;
 
-		BRAKE_PRESSURE_MED: int;
-
-		BRAKE_PRESSURE_LO: int;
-
 		LO: int;
 
-		MANUAL: int;
+		MED: int;
+
+		BRAKE_PRESSURE_MED: int;
 
 		MAX: int;
 
 		BRAKE_PRESSURE_MAX: int;
 
-		MED: int;
+		BRAKE_PRESSURE_LO: int;
+
+		MANUAL: int;
 
 	let
 
@@ -307,19 +307,19 @@ var r_1: int;
 
 	idBrake_Cmd_Brake_Cmd_1 = 0 -> pre idBrake_Cmd_Brake_Cmd;
 
-	BRAKE_PRESSURE_MED = 340;
-
-	BRAKE_PRESSURE_LO = 170;
-
 	LO = 2;
 
-	MANUAL = 1;
+	MED = 3;
+
+	BRAKE_PRESSURE_MED = 340;
 
 	MAX = 4;
 
 	BRAKE_PRESSURE_MAX = 510;
 
-	MED = 3;
+	BRAKE_PRESSURE_LO = 170;
+
+	MANUAL = 1;
 
 	
 

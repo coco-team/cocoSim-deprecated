@@ -6,7 +6,7 @@
 
 
 
-node Flowchart3_A__To__Flowchart3_Flowchart3Junction628_1_Condition_Action(x_1:int)
+node Flowchart3_A__To__Flowchart3_Flowchart3Junction590_1_Condition_Action(x_1:int)
 
 returns (x:int);
 
@@ -52,7 +52,7 @@ let
 
 	-- set state as active 
 	idFlowchart3_Flowchart3_2 
-	= 627;
+	= 589;
 	
 
 	-- case of state without states but contains transitions 
@@ -110,7 +110,7 @@ let
 	 automaton flowchart3_a
 
 	state POINTFlowchart3_A:
-	unless true restart FLOWCHART3_A__TO__FLOWCHART3_FLOWCHART3JUNCTION628_1
+	unless true restart FLOWCHART3_A__TO__FLOWCHART3_FLOWCHART3JUNCTION590_1
 
 
 
@@ -124,17 +124,17 @@ let
 
 
 
-	state FLOWCHART3_A__TO__FLOWCHART3_FLOWCHART3JUNCTION628_1:
+	state FLOWCHART3_A__TO__FLOWCHART3_FLOWCHART3JUNCTION590_1:
 
 	 var 	x_2:int;
 	let
 
 		-- transition trace :
-	--Flowchart3_A__To__Junction628_1
+	--Flowchart3_A__To__Junction590_1
 		-- condition Action : x++;
 		
 		(x_2) 
-	= Flowchart3_A__To__Flowchart3_Flowchart3Junction628_1_Condition_Action(x_1);
+	= Flowchart3_A__To__Flowchart3_Flowchart3Junction590_1_Condition_Action(x_1);
 		
 
 	(idFlowchart3_A, x) 

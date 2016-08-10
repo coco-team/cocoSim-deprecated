@@ -6,8 +6,7 @@
 
 
 
-
-node Junctions4_Junctions4Junction1909__To__TOP_B_2_Condition_Action(a_1:int)
+node Junctions4_Junctions4Junction1508__To__TOP_B_2_Condition_Action(a_1:int)
 
 returns (a:int);
 
@@ -33,7 +32,7 @@ tel
 
 
 
-node Junctions4_Junctions4Junction1909__To__TOP_B_2_Transition_Action(a_1:int;
+node Junctions4_Junctions4Junction1508__To__TOP_B_2_Transition_Action(a_1:int;
 	b_1:int)
 
 returns (a:int;
@@ -53,88 +52,6 @@ let
 
 	(a, b) 
 	= (a_1, b_2);
-	
-
-tel
-
-
-
-
-
-
-node Junctions4_Junctions4Junction1909__To__TOP_B_1_Condition_Action(a_1:int)
-
-returns (a:int);
-
-
-var 	a_2:int;
-
-
-let
-
-
-
-	a_2 
-	=  a_1 +100000;
-	
-
-	(a) 
-	= (a_2);
-	
-
-tel
-
-
-
-
-
-node Junctions4_Junctions4Junction1909__To__TOP_B_1_Transition_Action(a_1:int;
-	b_1:int)
-
-returns (a:int;
-	b:int);
-
-
-var 	b_2:int;
-
-
-let
-
-
-
-	b_2 
-	=  b_1 +100000;
-	
-
-	(a, b) 
-	= (a_1, b_2);
-	
-
-tel
-
-
-
-
-
-
-node TOP_A__To__Junctions4_Junctions4Junction1909_1_Condition_Action(a_1:int)
-
-returns (a:int);
-
-
-var 	a_2:int;
-
-
-let
-
-
-
-	a_2 
-	=  a_1 +1000;
-	
-
-	(a) 
-	= (a_2);
 	
 
 tel
@@ -199,32 +116,6 @@ tel
 
 
 
-node TOP_A__To__Junctions4_Junctions4Junction1909_2_Condition_Action(a_1:int)
-
-returns (a:int);
-
-
-var 	a_2:int;
-
-
-let
-
-
-
-	a_2 
-	=  a_1 +100;
-	
-
-	(a) 
-	= (a_2);
-	
-
-tel
-
-
-
-
-
 
 node POINT__To__TOP_A_1_Condition_Action(a_1:int)
 
@@ -281,6 +172,115 @@ tel
 
 
 
+node Junctions4_Junctions4Junction1508__To__TOP_B_1_Condition_Action(a_1:int)
+
+returns (a:int);
+
+
+var 	a_2:int;
+
+
+let
+
+
+
+	a_2 
+	=  a_1 +100000;
+	
+
+	(a) 
+	= (a_2);
+	
+
+tel
+
+
+
+
+
+node Junctions4_Junctions4Junction1508__To__TOP_B_1_Transition_Action(a_1:int;
+	b_1:int)
+
+returns (a:int;
+	b:int);
+
+
+var 	b_2:int;
+
+
+let
+
+
+
+	b_2 
+	=  b_1 +100000;
+	
+
+	(a, b) 
+	= (a_1, b_2);
+	
+
+tel
+
+
+
+
+
+
+node TOP_A__To__Junctions4_Junctions4Junction1508_2_Condition_Action(a_1:int)
+
+returns (a:int);
+
+
+var 	a_2:int;
+
+
+let
+
+
+
+	a_2 
+	=  a_1 +100;
+	
+
+	(a) 
+	= (a_2);
+	
+
+tel
+
+
+
+
+
+
+node TOP_A__To__Junctions4_Junctions4Junction1508_1_Condition_Action(a_1:int)
+
+returns (a:int);
+
+
+var 	a_2:int;
+
+
+let
+
+
+
+	a_2 
+	=  a_1 +1000;
+	
+
+	(a) 
+	= (a_2);
+	
+
+tel
+
+
+
+
+
+
 
 -- Entry action for state :TOP_A
 node TOP_A_en(idJunctions4_TOP_1:int;
@@ -301,7 +301,7 @@ let
 
 	-- set state as active 
 	idJunctions4_TOP_2 
-	= 1906;
+	= 1505;
 	
 
 	c_2 
@@ -376,7 +376,7 @@ let
 
 	-- set state as active 
 	idJunctions4_TOP_2 
-	= 1907;
+	= 1506;
 	
 
 	c_2 
@@ -480,7 +480,7 @@ let
 
 	-- set state as active 
 	idJunctions4_Junctions4_2 
-	= 1908;
+	= 1507;
 	
 
 	
@@ -553,7 +553,7 @@ let
 
 	(idJunctions4_TOP_5, c_5) 
 	= 
-	if ( idJunctions4_TOP_1 = 1906) then
+	if ( idJunctions4_TOP_1 = 1505) then
 	TOP_A_en(idJunctions4_TOP_1, c_1, false)
 	 else (idJunctions4_TOP_1, c_1);
 
@@ -561,7 +561,7 @@ let
 
 	(idJunctions4_TOP_6, c_6) 
 	= 
-	if ( idJunctions4_TOP_1 = 1907) then
+	if ( idJunctions4_TOP_1 = 1506) then
 	TOP_B_en(idJunctions4_TOP_1, c_1, false)
 	 else (idJunctions4_TOP_1, c_1);
 
@@ -572,10 +572,10 @@ let
 		 if ( idJunctions4_TOP_1 = 0) then 
 		(idJunctions4_TOP_4, idJunctions4_Junctions4_3, a_6, b_4, c_4)
 		 else
-		 if ( idJunctions4_TOP_1 = 1906) then 
+		 if ( idJunctions4_TOP_1 = 1505) then 
 		(idJunctions4_TOP_5, idJunctions4_Junctions4_3, a_6, b_4, c_5)
 		 else
-		 if ( idJunctions4_TOP_1 = 1907) then 
+		 if ( idJunctions4_TOP_1 = 1506) then 
 		(idJunctions4_TOP_6, idJunctions4_Junctions4_3, a_6, b_4, c_6)
 		 else (idJunctions4_TOP_1, idJunctions4_Junctions4_2, a_1, b_1, c_1);
 
@@ -613,7 +613,7 @@ let
 	
 	(c_2, idJunctions4_TOP_2) 
 	= 
-	if ( idJunctions4_TOP_1 = 1906) then
+	if ( idJunctions4_TOP_1 = 1505) then
 	TOP_A_ex(c_1, idJunctions4_TOP_1, false)
 	 else (c_1, idJunctions4_TOP_1);
 
@@ -621,7 +621,7 @@ let
 
 	(idJunctions4_TOP_3) 
 	= 
-	if ( idJunctions4_TOP_1 = 1907) then
+	if ( idJunctions4_TOP_1 = 1506) then
 	TOP_B_ex(idJunctions4_TOP_1, false)
 	 else (idJunctions4_TOP_1);
 
@@ -629,10 +629,10 @@ let
 
 	(c_3, idJunctions4_TOP_4) 
 	= 
-		 if ( idJunctions4_TOP_1 = 1906) then 
+		 if ( idJunctions4_TOP_1 = 1505) then 
 		(c_2, idJunctions4_TOP_2)
 		 else
-		 if ( idJunctions4_TOP_1 = 1907) then 
+		 if ( idJunctions4_TOP_1 = 1506) then 
 		(c_2, idJunctions4_TOP_3)
 		 else (c_1, idJunctions4_TOP_1);
 
@@ -681,21 +681,21 @@ let
 
 
 
-	unless (idJunctions4_TOP_1=1906) and ( x>=4 ) restart TOP_A__TO__JUNCTIONS4_JUNCTIONS4JUNCTION1909_1
+	unless (idJunctions4_TOP_1=1505) and ( x>=4 ) restart TOP_A__TO__JUNCTIONS4_JUNCTIONS4JUNCTION1508_1
 
 
 
-	unless (idJunctions4_TOP_1=1906) and ( x<4 ) restart TOP_A__TO__JUNCTIONS4_JUNCTIONS4JUNCTION1909_2
+	unless (idJunctions4_TOP_1=1505) and ( x<4 ) restart TOP_A__TO__JUNCTIONS4_JUNCTIONS4JUNCTION1508_2
 
 
 
-	unless (idJunctions4_TOP_1=1907) restart TOP_B__TO__JUNCTIONS4_TOP_1
+	unless (idJunctions4_TOP_1=1506) restart TOP_B__TO__JUNCTIONS4_TOP_1
 
 
 
-	unless (idJunctions4_TOP_1=1906) restart TOP_A_IDL
+	unless (idJunctions4_TOP_1=1505) restart TOP_A_IDL
 
-	unless (idJunctions4_TOP_1=1907) restart TOP_B_IDL
+	unless (idJunctions4_TOP_1=1506) restart TOP_B_IDL
 
 	let
 
@@ -783,7 +783,7 @@ let
 
 
 
-	state TOP_A__TO__JUNCTIONS4_JUNCTIONS4JUNCTION1909_1:
+	state TOP_A__TO__JUNCTIONS4_JUNCTIONS4JUNCTION1508_1:
 
 	 var 	idJunctions4_TOP_2, idJunctions4_TOP_3, idJunctions4_TOP_4, idJunctions4_TOP_5:int;
 	a_2, a_3, a_4, a_5, a_6, a_7:int;
@@ -794,11 +794,11 @@ let
 		
 
 -- transition trace :
-	--TOP_A__To__Junction1909_1, Junction1909__To__TOP_B_1
+	--TOP_A__To__Junction1508_1, Junction1508__To__TOP_B_1
 		-- condition Action : a+=1000
 		
 		(a_2) 
-	= TOP_A__To__Junctions4_Junctions4Junction1909_1_Condition_Action(a_1);
+	= TOP_A__To__Junctions4_Junctions4Junction1508_1_Condition_Action(a_1);
 		
 
 		-- condition Action : a+=100000
@@ -806,7 +806,7 @@ let
 		(a_3) 
 	= 
 		 if (( x mod 3=1 )) then 
-		Junctions4_Junctions4Junction1909__To__TOP_B_1_Condition_Action(a_2)
+		Junctions4_Junctions4Junction1508__To__TOP_B_1_Condition_Action(a_2)
 		 else (a_2);
 		
 
@@ -820,7 +820,7 @@ let
 		(a_4, b_2) 
 	= 
 		 if (( x mod 3=1 )) then 
-		Junctions4_Junctions4Junction1909__To__TOP_B_1_Transition_Action(a_3, b_1)
+		Junctions4_Junctions4Junction1508__To__TOP_B_1_Transition_Action(a_3, b_1)
 		 else (a_3, b_1);
 		
 
@@ -833,11 +833,11 @@ let
 
 
 -- transition trace :
-	--TOP_A__To__Junction1909_1, Junction1909__To__TOP_B_2
+	--TOP_A__To__Junction1508_1, Junction1508__To__TOP_B_2
 		-- condition Action : a+=1000
 		
 		(a_5) 
-	= TOP_A__To__Junctions4_Junctions4Junction1909_1_Condition_Action(a_1);
+	= TOP_A__To__Junctions4_Junctions4Junction1508_1_Condition_Action(a_1);
 		
 
 		-- condition Action : a+=10000
@@ -845,7 +845,7 @@ let
 		(a_6) 
 	= 
 		 if (( x mod 3=0 )) then 
-		Junctions4_Junctions4Junction1909__To__TOP_B_2_Condition_Action(a_5)
+		Junctions4_Junctions4Junction1508__To__TOP_B_2_Condition_Action(a_5)
 		 else (a_5);
 		
 
@@ -859,7 +859,7 @@ let
 		(a_7, b_3) 
 	= 
 		 if (( x mod 3=0 )) then 
-		Junctions4_Junctions4Junction1909__To__TOP_B_2_Transition_Action(a_6, b_1)
+		Junctions4_Junctions4Junction1508__To__TOP_B_2_Transition_Action(a_6, b_1)
 		 else (a_6, b_1);
 		
 
@@ -890,7 +890,7 @@ let
 
 
 
-	state TOP_A__TO__JUNCTIONS4_JUNCTIONS4JUNCTION1909_2:
+	state TOP_A__TO__JUNCTIONS4_JUNCTIONS4JUNCTION1508_2:
 
 	 var 	idJunctions4_TOP_2, idJunctions4_TOP_3, idJunctions4_TOP_4, idJunctions4_TOP_5:int;
 	a_2, a_3, a_4, a_5, a_6, a_7:int;
@@ -901,11 +901,11 @@ let
 		
 
 -- transition trace :
-	--TOP_A__To__Junction1909_2, Junction1909__To__TOP_B_1
+	--TOP_A__To__Junction1508_2, Junction1508__To__TOP_B_1
 		-- condition Action : a+=100
 		
 		(a_2) 
-	= TOP_A__To__Junctions4_Junctions4Junction1909_2_Condition_Action(a_1);
+	= TOP_A__To__Junctions4_Junctions4Junction1508_2_Condition_Action(a_1);
 		
 
 		-- condition Action : a+=100000
@@ -913,7 +913,7 @@ let
 		(a_3) 
 	= 
 		 if (( x mod 3=1 )) then 
-		Junctions4_Junctions4Junction1909__To__TOP_B_1_Condition_Action(a_2)
+		Junctions4_Junctions4Junction1508__To__TOP_B_1_Condition_Action(a_2)
 		 else (a_2);
 		
 
@@ -927,7 +927,7 @@ let
 		(a_4, b_2) 
 	= 
 		 if (( x mod 3=1 )) then 
-		Junctions4_Junctions4Junction1909__To__TOP_B_1_Transition_Action(a_3, b_1)
+		Junctions4_Junctions4Junction1508__To__TOP_B_1_Transition_Action(a_3, b_1)
 		 else (a_3, b_1);
 		
 
@@ -940,11 +940,11 @@ let
 
 
 -- transition trace :
-	--TOP_A__To__Junction1909_2, Junction1909__To__TOP_B_2
+	--TOP_A__To__Junction1508_2, Junction1508__To__TOP_B_2
 		-- condition Action : a+=100
 		
 		(a_5) 
-	= TOP_A__To__Junctions4_Junctions4Junction1909_2_Condition_Action(a_1);
+	= TOP_A__To__Junctions4_Junctions4Junction1508_2_Condition_Action(a_1);
 		
 
 		-- condition Action : a+=10000
@@ -952,7 +952,7 @@ let
 		(a_6) 
 	= 
 		 if (( x mod 3=0 )) then 
-		Junctions4_Junctions4Junction1909__To__TOP_B_2_Condition_Action(a_5)
+		Junctions4_Junctions4Junction1508__To__TOP_B_2_Condition_Action(a_5)
 		 else (a_5);
 		
 
@@ -966,7 +966,7 @@ let
 		(a_7, b_3) 
 	= 
 		 if (( x mod 3=0 )) then 
-		Junctions4_Junctions4Junction1909__To__TOP_B_2_Transition_Action(a_6, b_1)
+		Junctions4_Junctions4Junction1508__To__TOP_B_2_Transition_Action(a_6, b_1)
 		 else (a_6, b_1);
 		
 
@@ -1095,7 +1095,7 @@ let
 
 
 
-	unless (idJunctions4_Junctions4_1=1908) restart JUNCTIONS4_TOP_IDL
+	unless (idJunctions4_Junctions4_1=1507) restart JUNCTIONS4_TOP_IDL
 
 	let
 

@@ -122,7 +122,7 @@ end
 % Write external node
 ext_node = sprintf('node %s (', node_call_name);
 ext_node = app_sprintf(ext_node, 'u: %s)\n', in_var_print_dt);
-ext_node = app_sprintf(ext_node, 'returns (out: %s)\n', out_var_print_dt);
+ext_node = app_sprintf(ext_node, 'returns (out: %s);\n', out_var_print_dt);
 
 expression = '(\n|\.{3}|/\*(\s*\w*\W*\s*)*\*/)';
 replace = '';
@@ -160,7 +160,7 @@ if ~isempty(strfind(fun_expr,'&&')) || ~isempty(strfind(fun_expr,'||')) || ~isem
         || ~isempty(strfind(fun_expr,'==')) || ~isempty(strfind(fun_expr,'!=')) || ~isempty(strfind(fun_expr,'>')) || ~isempty(strfind(fun_expr,'<'))
     
     ext_node = app_sprintf(ext_node, 'var expr:bool;\n');
-    code = ['expr = ', label_mod, ';\n\tout = if expr then 1. else 0.;'];
+    code = ['expr = ', label_mod, ';\n\tout = if expr then 1.0 else 0.0;'];
 else
     code = ['out = ', label_mod, ';'];
 end

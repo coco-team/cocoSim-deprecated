@@ -6,34 +6,7 @@
 
 
 
-node POINT__To__Flowchart10_Flowchart10Junction528_1_Condition_Action(y_1:int)
-
-returns (y:int);
-
-
-var 	y_2:int;
-
-
-let
-
-
-
-	y_2 
-	=  y_1  + 1;
-	
-
-	(y) 
-	= (y_2);
-	
-
-tel
-
-
-
-
-
-
-node Flowchart10_A__To__Flowchart10_Flowchart10Junction530_2_Condition_Action(y_1:int)
+node Flowchart10_A__To__Flowchart10_Flowchart10Junction523_2_Condition_Action(y_1:int)
 
 returns (y:int);
 
@@ -60,7 +33,7 @@ tel
 
 
 
-node Flowchart10_A__To__Flowchart10_Flowchart10Junction531_1_Condition_Action(y_1:int)
+node POINT__To__Flowchart10_Flowchart10Junction521_1_Condition_Action(y_1:int)
 
 returns (y:int);
 
@@ -73,7 +46,7 @@ let
 
 
 	y_2 
-	=  y_1 -2;
+	=  y_1  + 1;
 	
 
 	(y) 
@@ -87,7 +60,7 @@ tel
 
 
 
-node POINT__To__Flowchart10_Flowchart10Junction529_2_Condition_Action(y_1:int)
+node POINT__To__Flowchart10_Flowchart10Junction522_2_Condition_Action(y_1:int)
 
 returns (y:int);
 
@@ -101,6 +74,33 @@ let
 
 	y_2 
 	=  y_1  - 1;
+	
+
+	(y) 
+	= (y_2);
+	
+
+tel
+
+
+
+
+
+
+node Flowchart10_A__To__Flowchart10_Flowchart10Junction524_1_Condition_Action(y_1:int)
+
+returns (y:int);
+
+
+var 	y_2:int;
+
+
+let
+
+
+
+	y_2 
+	=  y_1 -2;
 	
 
 	(y) 
@@ -137,29 +137,29 @@ let
 
 	-- set state as active 
 	idFlowchart10_Flowchart10_2 
-	= 527;
+	= 520;
 	
 
 	
 -- transition trace :
-	--POINT__To__Junction528_1
+	--POINT__To__Junction521_1
 		-- condition Action : y++;
 		
 		(y_2) 
 	= 
 		 if (( x=0 )) then 
-		POINT__To__Flowchart10_Flowchart10Junction528_1_Condition_Action(y_1)
+		POINT__To__Flowchart10_Flowchart10Junction521_1_Condition_Action(y_1)
 		 else (y_1);
 		
 
 -- transition trace :
-	--POINT__To__Junction529_2
+	--POINT__To__Junction522_2
 		-- condition Action : y--;
 		
 		(y_3) 
 	= 
 		 if (( x>0 )) then 
-		POINT__To__Flowchart10_Flowchart10Junction529_2_Condition_Action(y_2)
+		POINT__To__Flowchart10_Flowchart10Junction522_2_Condition_Action(y_2)
 		 else (y_2);
 		
 
@@ -241,19 +241,19 @@ let
 	 automaton flowchart10_a
 
 	state POINTFlowchart10_A:
-	unless (idFlowchart10_A_1=0) and ( x=0 ) restart POINT__TO__FLOWCHART10_FLOWCHART10JUNCTION528_1
+	unless (idFlowchart10_A_1=0) and ( x=0 ) restart POINT__TO__FLOWCHART10_FLOWCHART10JUNCTION521_1
 
 
 
-	unless (idFlowchart10_A_1=0) and ( x>0 ) restart POINT__TO__FLOWCHART10_FLOWCHART10JUNCTION529_2
+	unless (idFlowchart10_A_1=0) and ( x>0 ) restart POINT__TO__FLOWCHART10_FLOWCHART10JUNCTION522_2
 
 
 
-	unless true and ( x>0 ) restart FLOWCHART10_A__TO__FLOWCHART10_FLOWCHART10JUNCTION531_1
+	unless true and ( x>0 ) restart FLOWCHART10_A__TO__FLOWCHART10_FLOWCHART10JUNCTION524_1
 
 
 
-	unless true and ( x=0 ) restart FLOWCHART10_A__TO__FLOWCHART10_FLOWCHART10JUNCTION530_2
+	unless true and ( x=0 ) restart FLOWCHART10_A__TO__FLOWCHART10_FLOWCHART10JUNCTION523_2
 
 
 
@@ -267,17 +267,17 @@ let
 
 
 
-	state POINT__TO__FLOWCHART10_FLOWCHART10JUNCTION528_1:
+	state POINT__TO__FLOWCHART10_FLOWCHART10JUNCTION521_1:
 
 	 var 	y_2:int;
 	let
 
 		-- transition trace :
-	--POINT__To__Junction528_1
+	--POINT__To__Junction521_1
 		-- condition Action : y++;
 		
 		(y_2) 
-	= POINT__To__Flowchart10_Flowchart10Junction528_1_Condition_Action(y_1);
+	= POINT__To__Flowchart10_Flowchart10Junction521_1_Condition_Action(y_1);
 		
 
 	(idFlowchart10_A, y) 
@@ -290,17 +290,17 @@ let
 
 
 
-	state POINT__TO__FLOWCHART10_FLOWCHART10JUNCTION529_2:
+	state POINT__TO__FLOWCHART10_FLOWCHART10JUNCTION522_2:
 
 	 var 	y_2:int;
 	let
 
 		-- transition trace :
-	--POINT__To__Junction529_2
+	--POINT__To__Junction522_2
 		-- condition Action : y--;
 		
 		(y_2) 
-	= POINT__To__Flowchart10_Flowchart10Junction529_2_Condition_Action(y_1);
+	= POINT__To__Flowchart10_Flowchart10Junction522_2_Condition_Action(y_1);
 		
 
 	(idFlowchart10_A, y) 
@@ -313,17 +313,17 @@ let
 
 
 
-	state FLOWCHART10_A__TO__FLOWCHART10_FLOWCHART10JUNCTION531_1:
+	state FLOWCHART10_A__TO__FLOWCHART10_FLOWCHART10JUNCTION524_1:
 
 	 var 	y_2:int;
 	let
 
 		-- transition trace :
-	--Flowchart10_A__To__Junction531_1
+	--Flowchart10_A__To__Junction524_1
 		-- condition Action : y-=2;
 		
 		(y_2) 
-	= Flowchart10_A__To__Flowchart10_Flowchart10Junction531_1_Condition_Action(y_1);
+	= Flowchart10_A__To__Flowchart10_Flowchart10Junction524_1_Condition_Action(y_1);
 		
 
 	(idFlowchart10_A, y) 
@@ -336,17 +336,17 @@ let
 
 
 
-	state FLOWCHART10_A__TO__FLOWCHART10_FLOWCHART10JUNCTION530_2:
+	state FLOWCHART10_A__TO__FLOWCHART10_FLOWCHART10JUNCTION523_2:
 
 	 var 	y_2:int;
 	let
 
 		-- transition trace :
-	--Flowchart10_A__To__Junction530_2
+	--Flowchart10_A__To__Junction523_2
 		-- condition Action : y+=2;
 		
 		(y_2) 
-	= Flowchart10_A__To__Flowchart10_Flowchart10Junction530_2_Condition_Action(y_1);
+	= Flowchart10_A__To__Flowchart10_Flowchart10Junction523_2_Condition_Action(y_1);
 		
 
 	(idFlowchart10_A, y) 

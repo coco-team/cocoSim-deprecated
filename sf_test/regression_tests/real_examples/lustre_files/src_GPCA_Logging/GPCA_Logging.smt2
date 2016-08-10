@@ -1,23 +1,23 @@
-(declare-datatypes () ((logsubsystem_writelog__type POINTLogSubSystem_writeLog POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1)));
+(declare-datatypes () ((logsubsystem_writelog__type POINTLogSubSystem_writeLog POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1)));
 
 (declare-datatypes () ((logsubsystem_logsubsystem__type POINTLogSubSystem_LogSubSystem POINT__TO__LOGSUBSYSTEM_LOG_1 POINT__TO__LOGSUBSYSTEM_NOT_ON_2 LOGSUBSYSTEM_NOT_ON__TO__LOGSUBSYSTEM_LOG_1 LOGSUBSYSTEM_LOG__TO__LOGSUBSYSTEM_NOT_ON_1 LOGSUBSYSTEM_NOT_ON_IDL LOGSUBSYSTEM_LOG_IDL)));
 
-; LogSubSystem_writeLogJunction294__To__LogSubSystem_writeLogJunction295_1_Condition_Action
-(declare-var LogSubSystem_writeLogJunction294__To__LogSubSystem_writeLogJunction295_1_Condition_Action.logging_OUT_Log_1 Int)
-(declare-var LogSubSystem_writeLogJunction294__To__LogSubSystem_writeLogJunction295_1_Condition_Action.logging_OUT_Log Int)
-(declare-rel LogSubSystem_writeLogJunction294__To__LogSubSystem_writeLogJunction295_1_Condition_Action (Int Int))
+; LogSubSystem_writeLogJunction639__To__LogSubSystem_writeLogJunction640_1_Condition_Action
+(declare-var LogSubSystem_writeLogJunction639__To__LogSubSystem_writeLogJunction640_1_Condition_Action.logging_OUT_Log_1 Int)
+(declare-var LogSubSystem_writeLogJunction639__To__LogSubSystem_writeLogJunction640_1_Condition_Action.logging_OUT_Log Int)
+(declare-rel LogSubSystem_writeLogJunction639__To__LogSubSystem_writeLogJunction640_1_Condition_Action (Int Int))
 (rule (=> 
-  (= LogSubSystem_writeLogJunction294__To__LogSubSystem_writeLogJunction295_1_Condition_Action.logging_OUT_Log 1)
-  (LogSubSystem_writeLogJunction294__To__LogSubSystem_writeLogJunction295_1_Condition_Action LogSubSystem_writeLogJunction294__To__LogSubSystem_writeLogJunction295_1_Condition_Action.logging_OUT_Log_1 LogSubSystem_writeLogJunction294__To__LogSubSystem_writeLogJunction295_1_Condition_Action.logging_OUT_Log)
+  (= LogSubSystem_writeLogJunction639__To__LogSubSystem_writeLogJunction640_1_Condition_Action.logging_OUT_Log 1)
+  (LogSubSystem_writeLogJunction639__To__LogSubSystem_writeLogJunction640_1_Condition_Action LogSubSystem_writeLogJunction639__To__LogSubSystem_writeLogJunction640_1_Condition_Action.logging_OUT_Log_1 LogSubSystem_writeLogJunction639__To__LogSubSystem_writeLogJunction640_1_Condition_Action.logging_OUT_Log)
 ))
 
-; POINT__To__LogSubSystem_writeLogJunction294_1_Condition_Action
-(declare-var POINT__To__LogSubSystem_writeLogJunction294_1_Condition_Action.logging_OUT_Log_1 Int)
-(declare-var POINT__To__LogSubSystem_writeLogJunction294_1_Condition_Action.logging_OUT_Log Int)
-(declare-rel POINT__To__LogSubSystem_writeLogJunction294_1_Condition_Action (Int Int))
+; POINT__To__LogSubSystem_writeLogJunction639_1_Condition_Action
+(declare-var POINT__To__LogSubSystem_writeLogJunction639_1_Condition_Action.logging_OUT_Log_1 Int)
+(declare-var POINT__To__LogSubSystem_writeLogJunction639_1_Condition_Action.logging_OUT_Log Int)
+(declare-rel POINT__To__LogSubSystem_writeLogJunction639_1_Condition_Action (Int Int))
 (rule (=> 
-  (= POINT__To__LogSubSystem_writeLogJunction294_1_Condition_Action.logging_OUT_Log 0)
-  (POINT__To__LogSubSystem_writeLogJunction294_1_Condition_Action POINT__To__LogSubSystem_writeLogJunction294_1_Condition_Action.logging_OUT_Log_1 POINT__To__LogSubSystem_writeLogJunction294_1_Condition_Action.logging_OUT_Log)
+  (= POINT__To__LogSubSystem_writeLogJunction639_1_Condition_Action.logging_OUT_Log 0)
+  (POINT__To__LogSubSystem_writeLogJunction639_1_Condition_Action POINT__To__LogSubSystem_writeLogJunction639_1_Condition_Action.logging_OUT_Log_1 POINT__To__LogSubSystem_writeLogJunction639_1_Condition_Action.logging_OUT_Log)
 ))
 
 ; logsubsystem_writelog__POINTLogSubSystem_writeLog_handler_until
@@ -52,7 +52,7 @@
                     (= logsubsystem_writelog__POINTLogSubSystem_writeLog_unless.logsubsystem_writelog__restart_act logsubsystem_writelog__POINTLogSubSystem_writeLog_unless.logsubsystem_writelog__restart_in)
                     ))
             (or (not (= logsubsystem_writelog__POINTLogSubSystem_writeLog_unless.__logsubsystem_writelog__POINTLogSubSystem_writeLog_unless_1 true))
-               (and (= logsubsystem_writelog__POINTLogSubSystem_writeLog_unless.logsubsystem_writelog__state_act POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1)
+               (and (= logsubsystem_writelog__POINTLogSubSystem_writeLog_unless.logsubsystem_writelog__state_act POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1)
                     (= logsubsystem_writelog__POINTLogSubSystem_writeLog_unless.logsubsystem_writelog__restart_act true)
                     ))
        )
@@ -60,66 +60,66 @@
   (logsubsystem_writelog__POINTLogSubSystem_writeLog_unless logsubsystem_writelog__POINTLogSubSystem_writeLog_unless.logsubsystem_writelog__restart_in logsubsystem_writelog__POINTLogSubSystem_writeLog_unless.logsubsystem_writelog__state_in logsubsystem_writelog__POINTLogSubSystem_writeLog_unless.idLogSubSystem_writeLog_1 logsubsystem_writelog__POINTLogSubSystem_writeLog_unless.logsubsystem_writelog__restart_act logsubsystem_writelog__POINTLogSubSystem_writeLog_unless.logsubsystem_writelog__state_act)
 ))
 
-; logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until
-(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.idLogSubSystem_writeLog_1 Int)
-(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.logging_OUT_Log_1 Int)
-(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.TLM_MODE_IN_Log_Message_ID Int)
-(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.SYS_STAT_IN_Log_Message_ID Int)
-(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.ALARM_IN_Log_Message_ID Int)
-(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.CONFIG_IN_Log_Message_ID Int)
-(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.IM_IN_Log_Message_ID Int)
-(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.logsubsystem_writelog__restart_in Bool)
-(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.logsubsystem_writelog__state_in logsubsystem_writelog__type)
-(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.idLogSubSystem_writeLog_out Int)
-(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.logging_OUT_Log_out Int)
-(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.__logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until_1 Bool)
-(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.__logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until_2 Int)
-(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.idLogSubSystem_writeLog Int)
-(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.logging_OUT_Log Int)
-(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.logging_OUT_Log_2 Int)
-(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.logging_OUT_Log_3 Int)
-(declare-rel logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until (Int Int Int Int Int Int Int Bool logsubsystem_writelog__type Int Int))
+; logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until
+(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.idLogSubSystem_writeLog_1 Int)
+(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.logging_OUT_Log_1 Int)
+(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.TLM_MODE_IN_Log_Message_ID Int)
+(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.SYS_STAT_IN_Log_Message_ID Int)
+(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.ALARM_IN_Log_Message_ID Int)
+(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.CONFIG_IN_Log_Message_ID Int)
+(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.IM_IN_Log_Message_ID Int)
+(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.logsubsystem_writelog__restart_in Bool)
+(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.logsubsystem_writelog__state_in logsubsystem_writelog__type)
+(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.idLogSubSystem_writeLog_out Int)
+(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.logging_OUT_Log_out Int)
+(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.__logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until_1 Bool)
+(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.__logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until_2 Int)
+(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.idLogSubSystem_writeLog Int)
+(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.logging_OUT_Log Int)
+(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.logging_OUT_Log_2 Int)
+(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.logging_OUT_Log_3 Int)
+(declare-rel logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until (Int Int Int Int Int Int Int Bool logsubsystem_writelog__type Int Int))
 (rule (=> 
-  (and (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.logsubsystem_writelog__state_in POINTLogSubSystem_writeLog)
-       (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.logsubsystem_writelog__restart_in true)
-       (POINT__To__LogSubSystem_writeLogJunction294_1_Condition_Action 
-       logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.logging_OUT_Log_1
-       logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.logging_OUT_Log_2)
-       (LogSubSystem_writeLogJunction294__To__LogSubSystem_writeLogJunction295_1_Condition_Action 
-       logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.logging_OUT_Log_2
-       logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.__logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until_2)
-       (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.__logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until_1 (or (or (or (or (> logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.TLM_MODE_IN_Log_Message_ID 0) (> logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.SYS_STAT_IN_Log_Message_ID 0)) (> logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.ALARM_IN_Log_Message_ID 0)) (> logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.CONFIG_IN_Log_Message_ID 0)) (> logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.IM_IN_Log_Message_ID 0)))
-       (and (or (not (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.__logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until_1 false))
-               (and (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.logging_OUT_Log_3 logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.logging_OUT_Log_2)
-                    (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.logging_OUT_Log logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.logging_OUT_Log_2)
+  (and (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.logsubsystem_writelog__state_in POINTLogSubSystem_writeLog)
+       (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.logsubsystem_writelog__restart_in true)
+       (POINT__To__LogSubSystem_writeLogJunction639_1_Condition_Action 
+       logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.logging_OUT_Log_1
+       logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.logging_OUT_Log_2)
+       (LogSubSystem_writeLogJunction639__To__LogSubSystem_writeLogJunction640_1_Condition_Action 
+       logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.logging_OUT_Log_2
+       logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.__logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until_2)
+       (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.__logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until_1 (or (or (or (or (> logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.TLM_MODE_IN_Log_Message_ID 0) (> logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.SYS_STAT_IN_Log_Message_ID 0)) (> logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.ALARM_IN_Log_Message_ID 0)) (> logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.CONFIG_IN_Log_Message_ID 0)) (> logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.IM_IN_Log_Message_ID 0)))
+       (and (or (not (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.__logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until_1 false))
+               (and (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.logging_OUT_Log_3 logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.logging_OUT_Log_2)
+                    (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.logging_OUT_Log logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.logging_OUT_Log_2)
                     ))
-            (or (not (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.__logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until_1 true))
-               (and (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.logging_OUT_Log_3 logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.__logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until_2)
-                    (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.logging_OUT_Log logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.logging_OUT_Log_3)
+            (or (not (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.__logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until_1 true))
+               (and (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.logging_OUT_Log_3 logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.__logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until_2)
+                    (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.logging_OUT_Log logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.logging_OUT_Log_3)
                     ))
        )
-       (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.logging_OUT_Log_out logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.logging_OUT_Log)
-       (and (or (not (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.__logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until_1 true))
-               (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.idLogSubSystem_writeLog logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.idLogSubSystem_writeLog_1))
-            (or (not (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.__logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until_1 false))
-               (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.idLogSubSystem_writeLog logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.idLogSubSystem_writeLog_1))
+       (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.logging_OUT_Log_out logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.logging_OUT_Log)
+       (and (or (not (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.__logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until_1 true))
+               (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.idLogSubSystem_writeLog logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.idLogSubSystem_writeLog_1))
+            (or (not (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.__logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until_1 false))
+               (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.idLogSubSystem_writeLog logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.idLogSubSystem_writeLog_1))
        )
-       (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.idLogSubSystem_writeLog_out logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.idLogSubSystem_writeLog)
+       (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.idLogSubSystem_writeLog_out logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.idLogSubSystem_writeLog)
        )
-  (logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.idLogSubSystem_writeLog_1 logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.logging_OUT_Log_1 logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.TLM_MODE_IN_Log_Message_ID logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.SYS_STAT_IN_Log_Message_ID logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.ALARM_IN_Log_Message_ID logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.CONFIG_IN_Log_Message_ID logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.IM_IN_Log_Message_ID logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.logsubsystem_writelog__restart_in logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.logsubsystem_writelog__state_in logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.idLogSubSystem_writeLog_out logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until.logging_OUT_Log_out)
+  (logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.idLogSubSystem_writeLog_1 logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.logging_OUT_Log_1 logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.TLM_MODE_IN_Log_Message_ID logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.SYS_STAT_IN_Log_Message_ID logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.ALARM_IN_Log_Message_ID logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.CONFIG_IN_Log_Message_ID logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.IM_IN_Log_Message_ID logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.logsubsystem_writelog__restart_in logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.logsubsystem_writelog__state_in logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.idLogSubSystem_writeLog_out logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until.logging_OUT_Log_out)
 ))
 
-; logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_unless
-(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_unless.logsubsystem_writelog__restart_in Bool)
-(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_unless.logsubsystem_writelog__state_in logsubsystem_writelog__type)
-(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_unless.logsubsystem_writelog__restart_act Bool)
-(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_unless.logsubsystem_writelog__state_act logsubsystem_writelog__type)
-(declare-rel logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_unless (Bool logsubsystem_writelog__type Bool logsubsystem_writelog__type))
+; logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_unless
+(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_unless.logsubsystem_writelog__restart_in Bool)
+(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_unless.logsubsystem_writelog__state_in logsubsystem_writelog__type)
+(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_unless.logsubsystem_writelog__restart_act Bool)
+(declare-var logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_unless.logsubsystem_writelog__state_act logsubsystem_writelog__type)
+(declare-rel logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_unless (Bool logsubsystem_writelog__type Bool logsubsystem_writelog__type))
 (rule (=> 
-  (and (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_unless.logsubsystem_writelog__state_act logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_unless.logsubsystem_writelog__state_in)
-       (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_unless.logsubsystem_writelog__restart_act logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_unless.logsubsystem_writelog__restart_in)
+  (and (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_unless.logsubsystem_writelog__state_act logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_unless.logsubsystem_writelog__state_in)
+       (= logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_unless.logsubsystem_writelog__restart_act logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_unless.logsubsystem_writelog__restart_in)
        )
-  (logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_unless logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_unless.logsubsystem_writelog__restart_in logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_unless.logsubsystem_writelog__state_in logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_unless.logsubsystem_writelog__restart_act logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_unless.logsubsystem_writelog__state_act)
+  (logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_unless logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_unless.logsubsystem_writelog__restart_in logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_unless.logsubsystem_writelog__state_in logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_unless.logsubsystem_writelog__restart_act logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_unless.logsubsystem_writelog__state_act)
 ))
 
 ; LogSubSystem_writeLog_node
@@ -200,8 +200,8 @@
                     (= LogSubSystem_writeLog_node.logsubsystem_writelog__state_act LogSubSystem_writeLog_node.__LogSubSystem_writeLog_node_4)
                     (= LogSubSystem_writeLog_node.logsubsystem_writelog__restart_act LogSubSystem_writeLog_node.__LogSubSystem_writeLog_node_3)
                     ))
-            (or (not (= LogSubSystem_writeLog_node.logsubsystem_writelog__state_in POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1))
-               (and (logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_unless 
+            (or (not (= LogSubSystem_writeLog_node.logsubsystem_writelog__state_in POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1))
+               (and (logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_unless 
                     LogSubSystem_writeLog_node.logsubsystem_writelog__restart_in
                     LogSubSystem_writeLog_node.logsubsystem_writelog__state_in
                     LogSubSystem_writeLog_node.__LogSubSystem_writeLog_node_1
@@ -223,8 +223,8 @@
                     (= LogSubSystem_writeLog_node.logging_OUT_Log LogSubSystem_writeLog_node.__LogSubSystem_writeLog_node_12)
                     (= LogSubSystem_writeLog_node.idLogSubSystem_writeLog LogSubSystem_writeLog_node.__LogSubSystem_writeLog_node_11)
                     ))
-            (or (not (= LogSubSystem_writeLog_node.logsubsystem_writelog__state_act POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1))
-               (and (logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1_handler_until 
+            (or (not (= LogSubSystem_writeLog_node.logsubsystem_writelog__state_act POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1))
+               (and (logsubsystem_writelog__POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1_handler_until 
                     LogSubSystem_writeLog_node.idLogSubSystem_writeLog_1
                     LogSubSystem_writeLog_node.logging_OUT_Log_1
                     LogSubSystem_writeLog_node.TLM_MODE_IN_Log_Message_ID
@@ -601,7 +601,7 @@
        )
        (= LogSubSystem_LOG_ex.logging_OUT_Logging_Failed LogSubSystem_LOG_ex.logging_OUT_Logging_Failed_2)
        (= LogSubSystem_LOG_ex.logging_OUT_Log LogSubSystem_LOG_ex.logging_OUT_Log_2)
-       (= LogSubSystem_LOG_ex.idLogSubSystem_LogSubSystem LogSubSystem_LOG_ex.idLogSubSystem_LogSubSystem_2)
+       (= LogSubSystem_LOG_ex.idLogSubSystem_LogSubSystem LogSubSystem_LOG_ex.idLogSubSystem_LogSubSystem_1)
        )
   (LogSubSystem_LOG_ex_step LogSubSystem_LOG_ex.logging_OUT_Logging_Failed_1
                             LogSubSystem_LOG_ex.TLM_MODE_IN_Log_Message_ID
@@ -644,7 +644,7 @@
                (= LogSubSystem_NOT_ON_en.logging_OUT_Log_2 LogSubSystem_NOT_ON_en.logging_OUT_Log_1))
        )
        (= LogSubSystem_NOT_ON_en.logging_OUT_Log LogSubSystem_NOT_ON_en.logging_OUT_Log_2)
-       (= LogSubSystem_NOT_ON_en.idLogSubSystem_LogSubSystem 284)
+       (= LogSubSystem_NOT_ON_en.idLogSubSystem_LogSubSystem 629)
        )
   (LogSubSystem_NOT_ON_en LogSubSystem_NOT_ON_en.idLogSubSystem_LogSubSystem_1 LogSubSystem_NOT_ON_en.logging_OUT_Log_1 LogSubSystem_NOT_ON_en.isInner LogSubSystem_NOT_ON_en.idLogSubSystem_LogSubSystem LogSubSystem_NOT_ON_en.logging_OUT_Log)
 ))
@@ -765,7 +765,7 @@
        )
        (= LogSubSystem_LOG_en.logging_OUT_Logging_Failed LogSubSystem_LOG_en.logging_OUT_Logging_Failed_2)
        (= LogSubSystem_LOG_en.logging_OUT_Log LogSubSystem_LOG_en.logging_OUT_Log_2)
-       (= LogSubSystem_LOG_en.idLogSubSystem_LogSubSystem 285)
+       (= LogSubSystem_LOG_en.idLogSubSystem_LogSubSystem 630)
        )
   (LogSubSystem_LOG_en_step LogSubSystem_LOG_en.idLogSubSystem_LogSubSystem_1
                             LogSubSystem_LOG_en.logging_OUT_Logging_Failed_1
@@ -815,7 +815,7 @@
                     ))
        )
        (= LogSubSystem_NOT_ON_ex.logging_OUT_Log LogSubSystem_NOT_ON_ex.logging_OUT_Log_2)
-       (= LogSubSystem_NOT_ON_ex.idLogSubSystem_LogSubSystem LogSubSystem_NOT_ON_ex.idLogSubSystem_LogSubSystem_2)
+       (= LogSubSystem_NOT_ON_ex.idLogSubSystem_LogSubSystem LogSubSystem_NOT_ON_ex.idLogSubSystem_LogSubSystem_1)
        )
   (LogSubSystem_NOT_ON_ex LogSubSystem_NOT_ON_ex.logging_OUT_Log_1 LogSubSystem_NOT_ON_ex.idLogSubSystem_LogSubSystem_1 LogSubSystem_NOT_ON_ex.isInner LogSubSystem_NOT_ON_ex.logging_OUT_Log LogSubSystem_NOT_ON_ex.idLogSubSystem_LogSubSystem)
 ))
@@ -1345,10 +1345,10 @@
 (declare-var logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless.__logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless_6 Bool)
 (declare-rel logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless (Bool logsubsystem_logsubsystem__type Int Bool Bool logsubsystem_logsubsystem__type))
 (rule (=> 
-  (and (= logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless.__logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless_6 (= logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless.idLogSubSystem_LogSubSystem_1 285))
-       (= logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless.__logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless_5 (= logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless.idLogSubSystem_LogSubSystem_1 284))
-       (= logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless.__logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless_4 (and (= logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless.idLogSubSystem_LogSubSystem_1 285) (not logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless.TLM_MODE_IN_System_On)))
-       (= logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless.__logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless_3 (and (= logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless.idLogSubSystem_LogSubSystem_1 284) logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless.TLM_MODE_IN_System_On))
+  (and (= logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless.__logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless_6 (= logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless.idLogSubSystem_LogSubSystem_1 630))
+       (= logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless.__logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless_5 (= logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless.idLogSubSystem_LogSubSystem_1 629))
+       (= logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless.__logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless_4 (and (= logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless.idLogSubSystem_LogSubSystem_1 630) (not logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless.TLM_MODE_IN_System_On)))
+       (= logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless.__logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless_3 (and (= logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless.idLogSubSystem_LogSubSystem_1 629) logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless.TLM_MODE_IN_System_On))
        (= logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless.__logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless_2 (= logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless.idLogSubSystem_LogSubSystem_1 0))
        (= logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless.__logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless_1 (and (= logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless.idLogSubSystem_LogSubSystem_1 0) logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless.TLM_MODE_IN_System_On))
        (and (or (not (= logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless.__logsubsystem_logsubsystem__POINTLogSubSystem_LogSubSystem_unless_1 false))

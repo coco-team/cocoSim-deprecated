@@ -3,18 +3,18 @@
 
 -- Extern nodes
 node Fcn_Fcn (u: real^6)
-returns (out: real)
+returns (out: real);
 var expr:bool;
 let
-	expr = (u[4]>=u[5])&&(0.5*u[2]*u[1]+u[6]>=u[5])&&(0.5*u[2]*u[1]+u[6]<=u[4]);
-	out = if expr then 1. else 0.;
+	expr = (u[4]>=u[5]) and (0.5*u[2]*u[1]+u[6]>=u[5]) and (0.5*u[2]*u[1]+u[6]<=u[4]);
+	out = if expr then 1.0 else 0.0;
 tel
 node Fcn_Fcn1 (u: real^4)
-returns (out: real)
+returns (out: real);
 var expr:bool;
 let
 	expr = u[4]=0.5*u[2]*u[1]+u[3];
-	out = if expr then 1. else 0.;
+	out = if expr then 1.0 else 0.0;
 tel
 
 -- System nodes

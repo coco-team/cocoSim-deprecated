@@ -6,7 +6,7 @@
 
 
 
-node POINT__To__Flowchart2_Flowchart2Junction604_1_Condition_Action(x_1:int)
+node POINT__To__Flowchart2_Flowchart2Junction574_1_Condition_Action(x_1:int)
 
 returns (x:int);
 
@@ -55,7 +55,7 @@ let
 
 	-- set state as active 
 	idFlowchart2_Flowchart2_2 
-	= 603;
+	= 573;
 	
 
 	x_2 
@@ -65,11 +65,11 @@ let
 
 	
 -- transition trace :
-	--POINT__To__Junction604_1
+	--POINT__To__Junction574_1
 		-- condition Action : x++;
 		
 		(x_3) 
-	= POINT__To__Flowchart2_Flowchart2Junction604_1_Condition_Action(x_2);
+	= POINT__To__Flowchart2_Flowchart2Junction574_1_Condition_Action(x_2);
 		
 
 	(idFlowchart2_A_2, idFlowchart2_Flowchart2_3, x_4) 
@@ -170,7 +170,7 @@ let
 	 automaton flowchart2_a
 
 	state POINTFlowchart2_A:
-	unless (idFlowchart2_A_1=0) restart POINT__TO__FLOWCHART2_FLOWCHART2JUNCTION604_1
+	unless (idFlowchart2_A_1=0) restart POINT__TO__FLOWCHART2_FLOWCHART2JUNCTION574_1
 
 
 
@@ -184,17 +184,17 @@ let
 
 
 
-	state POINT__TO__FLOWCHART2_FLOWCHART2JUNCTION604_1:
+	state POINT__TO__FLOWCHART2_FLOWCHART2JUNCTION574_1:
 
 	 var 	x_2:int;
 	let
 
 		-- transition trace :
-	--POINT__To__Junction604_1
+	--POINT__To__Junction574_1
 		-- condition Action : x++;
 		
 		(x_2) 
-	= POINT__To__Flowchart2_Flowchart2Junction604_1_Condition_Action(x_1);
+	= POINT__To__Flowchart2_Flowchart2Junction574_1_Condition_Action(x_1);
 		
 
 	(idFlowchart2_A, x) 
@@ -230,7 +230,7 @@ let
 
 
 
-	unless (idFlowchart2_Flowchart2_1=603) restart FLOWCHART2_A_IDL
+	unless (idFlowchart2_Flowchart2_1=573) restart FLOWCHART2_A_IDL
 
 	let
 

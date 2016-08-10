@@ -10,65 +10,6 @@
 
 
 
--- Entry action for state :SystemMonitorSubSystem_NOT_ON
-node SystemMonitorSubSystem_NOT_ON_en(idSystemMonitorSubSystem_SystemMonitorSubSystem_1:int;
-	isInner:bool)
-
-returns (idSystemMonitorSubSystem_SystemMonitorSubSystem:int);
-
-
-var 	idSystemMonitorSubSystem_SystemMonitorSubSystem_2:int;
-
-
-let
-
-
-
-	-- set state as active 
-	idSystemMonitorSubSystem_SystemMonitorSubSystem_2 
-	= 339;
-	
-
-	(idSystemMonitorSubSystem_SystemMonitorSubSystem) 
-	= (idSystemMonitorSubSystem_SystemMonitorSubSystem_2);
-	
-
-tel
-
-
-
-
-
--- Exit action for state :SystemMonitorSubSystem_NOT_ON
-node SystemMonitorSubSystem_NOT_ON_ex(idSystemMonitorSubSystem_SystemMonitorSubSystem_1:int;
-	isInner:bool)
-
-returns (idSystemMonitorSubSystem_SystemMonitorSubSystem:int);
-
-
-var 	idSystemMonitorSubSystem_SystemMonitorSubSystem_2:int;
-
-
-let
-
-
-
-	-- set state as inactive 
-	idSystemMonitorSubSystem_SystemMonitorSubSystem_2
-	 = if (not isInner) then 0 else idSystemMonitorSubSystem_SystemMonitorSubSystem_1;
-
-
-	(idSystemMonitorSubSystem_SystemMonitorSubSystem) 
-	= (idSystemMonitorSubSystem_SystemMonitorSubSystem_2);
-	
-
-tel
-
-
-
-
-
-
 -- Entry action for state :SystemMonitorSubSystem_System_Monitor
 node SystemMonitorSubSystem_System_Monitor_en(idSystemMonitorSubSystem_SystemMonitorSubSystem_1:int;
 	SYS_MON_OUT_System_Monitor_Failed_1:bool;
@@ -88,7 +29,7 @@ let
 
 	-- set state as active 
 	idSystemMonitorSubSystem_SystemMonitorSubSystem_2 
-	= 338;
+	= 671;
 	
 
 	SYS_MON_OUT_System_Monitor_Failed_2 
@@ -161,7 +102,66 @@ let
 
 
 	(SYS_MON_OUT_System_Monitor_Failed, idSystemMonitorSubSystem_SystemMonitorSubSystem) 
-	= (SYS_MON_OUT_System_Monitor_Failed_2, idSystemMonitorSubSystem_SystemMonitorSubSystem_2);
+	= (SYS_MON_OUT_System_Monitor_Failed_2, idSystemMonitorSubSystem_SystemMonitorSubSystem_1);
+	
+
+tel
+
+
+
+
+
+
+-- Entry action for state :SystemMonitorSubSystem_NOT_ON
+node SystemMonitorSubSystem_NOT_ON_en(idSystemMonitorSubSystem_SystemMonitorSubSystem_1:int;
+	isInner:bool)
+
+returns (idSystemMonitorSubSystem_SystemMonitorSubSystem:int);
+
+
+var 	idSystemMonitorSubSystem_SystemMonitorSubSystem_2:int;
+
+
+let
+
+
+
+	-- set state as active 
+	idSystemMonitorSubSystem_SystemMonitorSubSystem_2 
+	= 672;
+	
+
+	(idSystemMonitorSubSystem_SystemMonitorSubSystem) 
+	= (idSystemMonitorSubSystem_SystemMonitorSubSystem_2);
+	
+
+tel
+
+
+
+
+
+-- Exit action for state :SystemMonitorSubSystem_NOT_ON
+node SystemMonitorSubSystem_NOT_ON_ex(idSystemMonitorSubSystem_SystemMonitorSubSystem_1:int;
+	isInner:bool)
+
+returns (idSystemMonitorSubSystem_SystemMonitorSubSystem:int);
+
+
+var 	idSystemMonitorSubSystem_SystemMonitorSubSystem_2:int;
+
+
+let
+
+
+
+	-- set state as inactive 
+	idSystemMonitorSubSystem_SystemMonitorSubSystem_2
+	 = if (not isInner) then 0 else idSystemMonitorSubSystem_SystemMonitorSubSystem_1;
+
+
+	(idSystemMonitorSubSystem_SystemMonitorSubSystem) 
+	= (idSystemMonitorSubSystem_SystemMonitorSubSystem_1);
 	
 
 tel
@@ -190,17 +190,17 @@ let
 
 
 
-	unless (idSystemMonitorSubSystem_SystemMonitorSubSystem_1=338) and ( not TLM_MODE_IN_System_On ) restart SYSTEMMONITORSUBSYSTEM_SYSTEM_MONITOR__TO__SYSTEMMONITORSUBSYSTEM_NOT_ON_1
+	unless (idSystemMonitorSubSystem_SystemMonitorSubSystem_1=671) and ( not TLM_MODE_IN_System_On ) restart SYSTEMMONITORSUBSYSTEM_SYSTEM_MONITOR__TO__SYSTEMMONITORSUBSYSTEM_NOT_ON_1
 
 
 
-	unless (idSystemMonitorSubSystem_SystemMonitorSubSystem_1=339) and ( TLM_MODE_IN_System_On ) restart SYSTEMMONITORSUBSYSTEM_NOT_ON__TO__SYSTEMMONITORSUBSYSTEM_SYSTEM_MONITOR_1
+	unless (idSystemMonitorSubSystem_SystemMonitorSubSystem_1=672) and ( TLM_MODE_IN_System_On ) restart SYSTEMMONITORSUBSYSTEM_NOT_ON__TO__SYSTEMMONITORSUBSYSTEM_SYSTEM_MONITOR_1
 
 
 
-	unless (idSystemMonitorSubSystem_SystemMonitorSubSystem_1=338) restart SYSTEMMONITORSUBSYSTEM_SYSTEM_MONITOR_IDL
+	unless (idSystemMonitorSubSystem_SystemMonitorSubSystem_1=671) restart SYSTEMMONITORSUBSYSTEM_SYSTEM_MONITOR_IDL
 
-	unless (idSystemMonitorSubSystem_SystemMonitorSubSystem_1=339) restart SYSTEMMONITORSUBSYSTEM_NOT_ON_IDL
+	unless (idSystemMonitorSubSystem_SystemMonitorSubSystem_1=672) restart SYSTEMMONITORSUBSYSTEM_NOT_ON_IDL
 
 	let
 

@@ -6,7 +6,7 @@
 
 
 
-node POINT__To__LogSubSystem_writeLogJunction294_1_Condition_Action(logging_OUT_Log_1:int)
+node POINT__To__LogSubSystem_writeLogJunction639_1_Condition_Action(logging_OUT_Log_1:int)
 
 returns (logging_OUT_Log:int);
 
@@ -33,7 +33,7 @@ tel
 
 
 
-node LogSubSystem_writeLogJunction294__To__LogSubSystem_writeLogJunction295_1_Condition_Action(logging_OUT_Log_1:int)
+node LogSubSystem_writeLogJunction639__To__LogSubSystem_writeLogJunction640_1_Condition_Action(logging_OUT_Log_1:int)
 
 returns (logging_OUT_Log:int);
 
@@ -75,7 +75,7 @@ let
 	 automaton logsubsystem_writelog
 
 	state POINTLogSubSystem_writeLog:
-	unless (idLogSubSystem_writeLog_1=0) restart POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1
+	unless (idLogSubSystem_writeLog_1=0) restart POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1
 
 
 
@@ -89,7 +89,7 @@ let
 
 
 
-	state POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION294_1:
+	state POINT__TO__LOGSUBSYSTEM_WRITELOGJUNCTION639_1:
 
 	 var 	logging_OUT_Log_2, logging_OUT_Log_3:int;
 	let
@@ -97,11 +97,11 @@ let
 		
 
 -- transition trace :
-	--POINT__To__Junction294_1, Junction294__To__Junction295_1
+	--POINT__To__Junction639_1, Junction639__To__Junction640_1
 		-- condition Action : logging_OUT_Log=0;
 		
 		(logging_OUT_Log_2) 
-	= POINT__To__LogSubSystem_writeLogJunction294_1_Condition_Action(logging_OUT_Log_1);
+	= POINT__To__LogSubSystem_writeLogJunction639_1_Condition_Action(logging_OUT_Log_1);
 		
 
 		-- condition Action : logging_OUT_Log=1;
@@ -109,7 +109,7 @@ let
 		(logging_OUT_Log_3) 
 	= 
 		 if (( (TLM_MODE_IN_Log_Message_ID>0) or (SYS_STAT_IN_Log_Message_ID>0) or (ALARM_IN_Log_Message_ID>0) or (CONFIG_IN_Log_Message_ID>0) or (IM_IN_Log_Message_ID>0) )) then 
-		LogSubSystem_writeLogJunction294__To__LogSubSystem_writeLogJunction295_1_Condition_Action(logging_OUT_Log_2)
+		LogSubSystem_writeLogJunction639__To__LogSubSystem_writeLogJunction640_1_Condition_Action(logging_OUT_Log_2)
 		 else (logging_OUT_Log_2);
 		
 
@@ -200,7 +200,7 @@ let
 
 	-- set state as active 
 	idLogSubSystem_LogSubSystem_2 
-	= 285;
+	= 630;
 	
 
 	logging_OUT_Logging_Failed_2 
@@ -303,7 +303,7 @@ let
 
 
 	(logging_OUT_Logging_Failed, logging_OUT_Log, idLogSubSystem_LogSubSystem) 
-	= (logging_OUT_Logging_Failed_2, logging_OUT_Log_2, idLogSubSystem_LogSubSystem_2);
+	= (logging_OUT_Logging_Failed_2, logging_OUT_Log_2, idLogSubSystem_LogSubSystem_1);
 	
 
 tel
@@ -332,7 +332,7 @@ let
 
 	-- set state as active 
 	idLogSubSystem_LogSubSystem_2 
-	= 284;
+	= 629;
 	
 
 	logging_OUT_Log_2 
@@ -405,7 +405,7 @@ let
 
 
 	(logging_OUT_Log, idLogSubSystem_LogSubSystem) 
-	= (logging_OUT_Log_2, idLogSubSystem_LogSubSystem_2);
+	= (logging_OUT_Log_2, idLogSubSystem_LogSubSystem_1);
 	
 
 tel
@@ -441,17 +441,17 @@ let
 
 
 
-	unless (idLogSubSystem_LogSubSystem_1=284) and ( TLM_MODE_IN_System_On ) restart LOGSUBSYSTEM_NOT_ON__TO__LOGSUBSYSTEM_LOG_1
+	unless (idLogSubSystem_LogSubSystem_1=629) and ( TLM_MODE_IN_System_On ) restart LOGSUBSYSTEM_NOT_ON__TO__LOGSUBSYSTEM_LOG_1
 
 
 
-	unless (idLogSubSystem_LogSubSystem_1=285) and ( not TLM_MODE_IN_System_On ) restart LOGSUBSYSTEM_LOG__TO__LOGSUBSYSTEM_NOT_ON_1
+	unless (idLogSubSystem_LogSubSystem_1=630) and ( not TLM_MODE_IN_System_On ) restart LOGSUBSYSTEM_LOG__TO__LOGSUBSYSTEM_NOT_ON_1
 
 
 
-	unless (idLogSubSystem_LogSubSystem_1=284) restart LOGSUBSYSTEM_NOT_ON_IDL
+	unless (idLogSubSystem_LogSubSystem_1=629) restart LOGSUBSYSTEM_NOT_ON_IDL
 
-	unless (idLogSubSystem_LogSubSystem_1=285) restart LOGSUBSYSTEM_LOG_IDL
+	unless (idLogSubSystem_LogSubSystem_1=630) restart LOGSUBSYSTEM_LOG_IDL
 
 	let
 

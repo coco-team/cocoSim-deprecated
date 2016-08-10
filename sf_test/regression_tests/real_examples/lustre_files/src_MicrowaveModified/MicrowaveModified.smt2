@@ -1,6 +1,6 @@
-(declare-datatypes () ((mode_logic_mode_logic__type POINTMode_logic_Mode_logic POINT__TO__MODE_LOGIC_SETUP_1 MODE_LOGIC_SETUP__TO__MODE_LOGIC_RUNNING_1 MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1 MODE_LOGIC_SETUP_IDL MODE_LOGIC_RUNNING_IDL)));
+(declare-datatypes () ((mode_logic_mode_logic__type POINTMode_logic_Mode_logic POINT__TO__MODE_LOGIC_SETUP_1 MODE_LOGIC_SETUP__TO__MODE_LOGIC_RUNNING_1 MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1 MODE_LOGIC_SETUP_IDL MODE_LOGIC_RUNNING_IDL)));
 
-(declare-datatypes () ((mode_logic_running__type POINTMode_logic_RUNNING POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1 RUNNING_COOKING__TO__RUNNING_SUSPENDED_1 RUNNING_COOKING__TO__RUNNING_COOKING_2 RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1 RUNNING_SUSPENDED__TO__RUNNING_COOKING_2 RUNNING_COOKING_IDL RUNNING_SUSPENDED_IDL)));
+(declare-datatypes () ((mode_logic_running__type POINTMode_logic_RUNNING POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1 RUNNING_COOKING__TO__RUNNING_SUSPENDED_1 RUNNING_COOKING__TO__RUNNING_COOKING_2 RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1 RUNNING_SUSPENDED__TO__RUNNING_COOKING_2 RUNNING_COOKING_IDL RUNNING_SUSPENDED_IDL)));
 
 ; RUNNING_COOKING_ex
 (declare-var RUNNING_COOKING_ex.idMode_logic_RUNNING_1 Int)
@@ -14,7 +14,7 @@
             (or (not (= (not RUNNING_COOKING_ex.isInner) false))
                (= RUNNING_COOKING_ex.idMode_logic_RUNNING_2 RUNNING_COOKING_ex.idMode_logic_RUNNING_1))
        )
-       (= RUNNING_COOKING_ex.idMode_logic_RUNNING RUNNING_COOKING_ex.idMode_logic_RUNNING_2)
+       (= RUNNING_COOKING_ex.idMode_logic_RUNNING RUNNING_COOKING_ex.idMode_logic_RUNNING_1)
        )
   (RUNNING_COOKING_ex RUNNING_COOKING_ex.idMode_logic_RUNNING_1 RUNNING_COOKING_ex.isInner RUNNING_COOKING_ex.idMode_logic_RUNNING)
 ))
@@ -31,7 +31,7 @@
             (or (not (= (not RUNNING_SUSPENDED_ex.isInner) false))
                (= RUNNING_SUSPENDED_ex.idMode_logic_RUNNING_2 RUNNING_SUSPENDED_ex.idMode_logic_RUNNING_1))
        )
-       (= RUNNING_SUSPENDED_ex.idMode_logic_RUNNING RUNNING_SUSPENDED_ex.idMode_logic_RUNNING_2)
+       (= RUNNING_SUSPENDED_ex.idMode_logic_RUNNING RUNNING_SUSPENDED_ex.idMode_logic_RUNNING_1)
        )
   (RUNNING_SUSPENDED_ex RUNNING_SUSPENDED_ex.idMode_logic_RUNNING_1 RUNNING_SUSPENDED_ex.isInner RUNNING_SUSPENDED_ex.idMode_logic_RUNNING)
 ))
@@ -51,7 +51,7 @@
                (= RUNNING_COOKING_en.mode_2 RUNNING_COOKING_en.mode_1))
        )
        (= RUNNING_COOKING_en.mode RUNNING_COOKING_en.mode_2)
-       (= RUNNING_COOKING_en.idMode_logic_RUNNING 522)
+       (= RUNNING_COOKING_en.idMode_logic_RUNNING 789)
        )
   (RUNNING_COOKING_en RUNNING_COOKING_en.idMode_logic_RUNNING_1 RUNNING_COOKING_en.mode_1 RUNNING_COOKING_en.isInner RUNNING_COOKING_en.idMode_logic_RUNNING RUNNING_COOKING_en.mode)
 ))
@@ -71,7 +71,7 @@
                (= RUNNING_SUSPENDED_en.mode_2 RUNNING_SUSPENDED_en.mode_1))
        )
        (= RUNNING_SUSPENDED_en.mode RUNNING_SUSPENDED_en.mode_2)
-       (= RUNNING_SUSPENDED_en.idMode_logic_RUNNING 523)
+       (= RUNNING_SUSPENDED_en.idMode_logic_RUNNING 790)
        )
   (RUNNING_SUSPENDED_en RUNNING_SUSPENDED_en.idMode_logic_RUNNING_1 RUNNING_SUSPENDED_en.mode_1 RUNNING_SUSPENDED_en.isInner RUNNING_SUSPENDED_en.idMode_logic_RUNNING RUNNING_SUSPENDED_en.mode)
 ))
@@ -104,7 +104,7 @@
   (and (RUNNING_SUSPENDED_ex Mode_logic_RUNNING_ex.idMode_logic_RUNNING_1
                              false
                              Mode_logic_RUNNING_ex.__Mode_logic_RUNNING_ex_4)
-       (= Mode_logic_RUNNING_ex.__Mode_logic_RUNNING_ex_3 (= Mode_logic_RUNNING_ex.idMode_logic_RUNNING_1 523))
+       (= Mode_logic_RUNNING_ex.__Mode_logic_RUNNING_ex_3 (= Mode_logic_RUNNING_ex.idMode_logic_RUNNING_1 790))
        (and (or (not (= Mode_logic_RUNNING_ex.__Mode_logic_RUNNING_ex_3 true))
                (= Mode_logic_RUNNING_ex.idMode_logic_RUNNING_3 Mode_logic_RUNNING_ex.__Mode_logic_RUNNING_ex_4))
             (or (not (= Mode_logic_RUNNING_ex.__Mode_logic_RUNNING_ex_3 false))
@@ -113,7 +113,7 @@
        (RUNNING_COOKING_ex Mode_logic_RUNNING_ex.idMode_logic_RUNNING_1
                            false
                            Mode_logic_RUNNING_ex.__Mode_logic_RUNNING_ex_5)
-       (= Mode_logic_RUNNING_ex.__Mode_logic_RUNNING_ex_2 (= Mode_logic_RUNNING_ex.idMode_logic_RUNNING_1 522))
+       (= Mode_logic_RUNNING_ex.__Mode_logic_RUNNING_ex_2 (= Mode_logic_RUNNING_ex.idMode_logic_RUNNING_1 789))
        (and (or (not (= Mode_logic_RUNNING_ex.__Mode_logic_RUNNING_ex_2 false))
                (and (= Mode_logic_RUNNING_ex.idMode_logic_RUNNING_2 Mode_logic_RUNNING_ex.idMode_logic_RUNNING_1)
                     (and (or (not (= Mode_logic_RUNNING_ex.__Mode_logic_RUNNING_ex_3 true))
@@ -133,7 +133,7 @@
                (= Mode_logic_RUNNING_ex.idMode_logic_Mode_logic_2 Mode_logic_RUNNING_ex.idMode_logic_Mode_logic_1))
        )
        (= Mode_logic_RUNNING_ex.idMode_logic_RUNNING 0)
-       (= Mode_logic_RUNNING_ex.idMode_logic_Mode_logic Mode_logic_RUNNING_ex.idMode_logic_Mode_logic_2)
+       (= Mode_logic_RUNNING_ex.idMode_logic_Mode_logic Mode_logic_RUNNING_ex.idMode_logic_Mode_logic_1)
        )
   (Mode_logic_RUNNING_ex Mode_logic_RUNNING_ex.idMode_logic_RUNNING_1 Mode_logic_RUNNING_ex.idMode_logic_Mode_logic_1 Mode_logic_RUNNING_ex.isInner Mode_logic_RUNNING_ex.idMode_logic_RUNNING Mode_logic_RUNNING_ex.idMode_logic_Mode_logic)
 ))
@@ -164,7 +164,7 @@
        )
        (= Mode_logic_SETUP_en.steps_remaining Mode_logic_SETUP_en.steps_remaining_2)
        (= Mode_logic_SETUP_en.mode Mode_logic_SETUP_en.mode_2)
-       (= Mode_logic_SETUP_en.idMode_logic_Mode_logic 521)
+       (= Mode_logic_SETUP_en.idMode_logic_Mode_logic 788)
        )
   (Mode_logic_SETUP_en Mode_logic_SETUP_en.idMode_logic_Mode_logic_1 Mode_logic_SETUP_en.mode_1 Mode_logic_SETUP_en.steps_to_cook Mode_logic_SETUP_en.steps_remaining_1 Mode_logic_SETUP_en.isInner Mode_logic_SETUP_en.idMode_logic_Mode_logic Mode_logic_SETUP_en.mode Mode_logic_SETUP_en.steps_remaining)
 ))
@@ -211,12 +211,12 @@
 (declare-var mode_logic_running__POINTMode_logic_RUNNING_unless.__mode_logic_running__POINTMode_logic_RUNNING_unless_7 Bool)
 (declare-rel mode_logic_running__POINTMode_logic_RUNNING_unless (Bool mode_logic_running__type Int Bool Bool Int Bool Bool mode_logic_running__type))
 (rule (=> 
-  (and (= mode_logic_running__POINTMode_logic_RUNNING_unless.__mode_logic_running__POINTMode_logic_RUNNING_unless_7 (= mode_logic_running__POINTMode_logic_RUNNING_unless.idMode_logic_RUNNING_1 523))
-       (= mode_logic_running__POINTMode_logic_RUNNING_unless.__mode_logic_running__POINTMode_logic_RUNNING_unless_6 (= mode_logic_running__POINTMode_logic_RUNNING_unless.idMode_logic_RUNNING_1 522))
-       (= mode_logic_running__POINTMode_logic_RUNNING_unless.__mode_logic_running__POINTMode_logic_RUNNING_unless_5 (and (= mode_logic_running__POINTMode_logic_RUNNING_unless.idMode_logic_RUNNING_1 523) (and mode_logic_running__POINTMode_logic_RUNNING_unless.start mode_logic_running__POINTMode_logic_RUNNING_unless.door_closed)))
-       (= mode_logic_running__POINTMode_logic_RUNNING_unless.__mode_logic_running__POINTMode_logic_RUNNING_unless_4 (and (= mode_logic_running__POINTMode_logic_RUNNING_unless.idMode_logic_RUNNING_1 523) mode_logic_running__POINTMode_logic_RUNNING_unless.clear))
-       (= mode_logic_running__POINTMode_logic_RUNNING_unless.__mode_logic_running__POINTMode_logic_RUNNING_unless_3 (and (= mode_logic_running__POINTMode_logic_RUNNING_unless.idMode_logic_RUNNING_1 522) (> mode_logic_running__POINTMode_logic_RUNNING_unless.steps_remaining_1 0)))
-       (= mode_logic_running__POINTMode_logic_RUNNING_unless.__mode_logic_running__POINTMode_logic_RUNNING_unless_2 (and (= mode_logic_running__POINTMode_logic_RUNNING_unless.idMode_logic_RUNNING_1 522) (or mode_logic_running__POINTMode_logic_RUNNING_unless.clear (not mode_logic_running__POINTMode_logic_RUNNING_unless.door_closed))))
+  (and (= mode_logic_running__POINTMode_logic_RUNNING_unless.__mode_logic_running__POINTMode_logic_RUNNING_unless_7 (= mode_logic_running__POINTMode_logic_RUNNING_unless.idMode_logic_RUNNING_1 790))
+       (= mode_logic_running__POINTMode_logic_RUNNING_unless.__mode_logic_running__POINTMode_logic_RUNNING_unless_6 (= mode_logic_running__POINTMode_logic_RUNNING_unless.idMode_logic_RUNNING_1 789))
+       (= mode_logic_running__POINTMode_logic_RUNNING_unless.__mode_logic_running__POINTMode_logic_RUNNING_unless_5 (and (= mode_logic_running__POINTMode_logic_RUNNING_unless.idMode_logic_RUNNING_1 790) (and mode_logic_running__POINTMode_logic_RUNNING_unless.start mode_logic_running__POINTMode_logic_RUNNING_unless.door_closed)))
+       (= mode_logic_running__POINTMode_logic_RUNNING_unless.__mode_logic_running__POINTMode_logic_RUNNING_unless_4 (and (= mode_logic_running__POINTMode_logic_RUNNING_unless.idMode_logic_RUNNING_1 790) mode_logic_running__POINTMode_logic_RUNNING_unless.clear))
+       (= mode_logic_running__POINTMode_logic_RUNNING_unless.__mode_logic_running__POINTMode_logic_RUNNING_unless_3 (and (= mode_logic_running__POINTMode_logic_RUNNING_unless.idMode_logic_RUNNING_1 789) (> mode_logic_running__POINTMode_logic_RUNNING_unless.steps_remaining_1 0)))
+       (= mode_logic_running__POINTMode_logic_RUNNING_unless.__mode_logic_running__POINTMode_logic_RUNNING_unless_2 (and (= mode_logic_running__POINTMode_logic_RUNNING_unless.idMode_logic_RUNNING_1 789) (or mode_logic_running__POINTMode_logic_RUNNING_unless.clear (not mode_logic_running__POINTMode_logic_RUNNING_unless.door_closed))))
        (= mode_logic_running__POINTMode_logic_RUNNING_unless.__mode_logic_running__POINTMode_logic_RUNNING_unless_1 (= mode_logic_running__POINTMode_logic_RUNNING_unless.idMode_logic_RUNNING_1 0))
        (and (or (not (= mode_logic_running__POINTMode_logic_RUNNING_unless.__mode_logic_running__POINTMode_logic_RUNNING_unless_1 false))
                (and (or (not (= mode_logic_running__POINTMode_logic_RUNNING_unless.__mode_logic_running__POINTMode_logic_RUNNING_unless_2 false))
@@ -244,7 +244,7 @@
                                                     ))
                                        ))
                                     (or (not (= mode_logic_running__POINTMode_logic_RUNNING_unless.__mode_logic_running__POINTMode_logic_RUNNING_unless_4 true))
-                                       (and (= mode_logic_running__POINTMode_logic_RUNNING_unless.mode_logic_running__state_act RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1)
+                                       (and (= mode_logic_running__POINTMode_logic_RUNNING_unless.mode_logic_running__state_act RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1)
                                             (= mode_logic_running__POINTMode_logic_RUNNING_unless.mode_logic_running__restart_act true)
                                             ))
                                ))
@@ -259,7 +259,7 @@
                             ))
                ))
             (or (not (= mode_logic_running__POINTMode_logic_RUNNING_unless.__mode_logic_running__POINTMode_logic_RUNNING_unless_1 true))
-               (and (= mode_logic_running__POINTMode_logic_RUNNING_unless.mode_logic_running__state_act POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1)
+               (and (= mode_logic_running__POINTMode_logic_RUNNING_unless.mode_logic_running__state_act POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1)
                     (= mode_logic_running__POINTMode_logic_RUNNING_unless.mode_logic_running__restart_act true)
                     ))
        )
@@ -267,77 +267,77 @@
   (mode_logic_running__POINTMode_logic_RUNNING_unless mode_logic_running__POINTMode_logic_RUNNING_unless.mode_logic_running__restart_in mode_logic_running__POINTMode_logic_RUNNING_unless.mode_logic_running__state_in mode_logic_running__POINTMode_logic_RUNNING_unless.idMode_logic_RUNNING_1 mode_logic_running__POINTMode_logic_RUNNING_unless.door_closed mode_logic_running__POINTMode_logic_RUNNING_unless.clear mode_logic_running__POINTMode_logic_RUNNING_unless.steps_remaining_1 mode_logic_running__POINTMode_logic_RUNNING_unless.start mode_logic_running__POINTMode_logic_RUNNING_unless.mode_logic_running__restart_act mode_logic_running__POINTMode_logic_RUNNING_unless.mode_logic_running__state_act)
 ))
 
-; mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until
-(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.idMode_logic_RUNNING_1 Int)
-(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.door_closed Bool)
-(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.mode_1 Int)
-(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.steps_remaining_1 Int)
-(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.idMode_logic_Mode_logic_1 Int)
-(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.mode_logic_running__restart_in Bool)
-(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.mode_logic_running__state_in mode_logic_running__type)
-(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.idMode_logic_Mode_logic_out Int)
-(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.idMode_logic_RUNNING_out Int)
-(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.mode_out Int)
-(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.steps_remaining_out Int)
-(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.__mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until_1 Int)
-(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.__mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until_2 Int)
-(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.idMode_logic_RUNNING Int)
-(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.idMode_logic_RUNNING_2 Int)
-(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.idMode_logic_RUNNING_3 Int)
-(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.mode Int)
-(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.mode_2 Int)
-(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.mode_3 Int)
-(declare-rel mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until (Int Bool Int Int Int Bool mode_logic_running__type Int Int Int Int))
+; mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until
+(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.idMode_logic_RUNNING_1 Int)
+(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.door_closed Bool)
+(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.mode_1 Int)
+(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.steps_remaining_1 Int)
+(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.idMode_logic_Mode_logic_1 Int)
+(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.mode_logic_running__restart_in Bool)
+(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.mode_logic_running__state_in mode_logic_running__type)
+(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.idMode_logic_Mode_logic_out Int)
+(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.idMode_logic_RUNNING_out Int)
+(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.mode_out Int)
+(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.steps_remaining_out Int)
+(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.__mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until_1 Int)
+(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.__mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until_2 Int)
+(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.idMode_logic_RUNNING Int)
+(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.idMode_logic_RUNNING_2 Int)
+(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.idMode_logic_RUNNING_3 Int)
+(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.mode Int)
+(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.mode_2 Int)
+(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.mode_3 Int)
+(declare-rel mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until (Int Bool Int Int Int Bool mode_logic_running__type Int Int Int Int))
 (rule (=> 
-  (and (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.steps_remaining_out mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.steps_remaining_1)
-       (RUNNING_SUSPENDED_en mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.idMode_logic_RUNNING_1
-                             mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.mode_1
+  (and (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.steps_remaining_out mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.steps_remaining_1)
+       (RUNNING_SUSPENDED_en mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.idMode_logic_RUNNING_1
+                             mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.mode_1
                              false
-                             mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.idMode_logic_RUNNING_3
-                             mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.mode_3)
-       (RUNNING_COOKING_en mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.idMode_logic_RUNNING_1
-                           mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.mode_1
+                             mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.idMode_logic_RUNNING_3
+                             mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.mode_3)
+       (RUNNING_COOKING_en mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.idMode_logic_RUNNING_1
+                           mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.mode_1
                            false
-                           mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.__mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until_1
-                           mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.__mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until_2)
-       (and (or (not (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.door_closed false))
-               (and (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.mode_2 mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.mode_1)
-                    (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.mode mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.mode_3)
+                           mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.__mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until_1
+                           mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.__mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until_2)
+       (and (or (not (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.door_closed false))
+               (and (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.mode_2 mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.mode_1)
+                    (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.mode mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.mode_3)
                     ))
-            (or (not (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.door_closed true))
-               (and (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.mode_2 mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.__mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until_2)
-                    (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.mode mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.mode_2)
-                    ))
-       )
-       (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.mode_out mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.mode)
-       (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.mode_logic_running__state_in POINTMode_logic_RUNNING)
-       (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.mode_logic_running__restart_in true)
-       (and (or (not (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.door_closed false))
-               (and (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.idMode_logic_RUNNING_2 mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.idMode_logic_RUNNING_1)
-                    (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.idMode_logic_RUNNING mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.idMode_logic_RUNNING_3)
-                    ))
-            (or (not (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.door_closed true))
-               (and (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.idMode_logic_RUNNING_2 mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.__mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until_1)
-                    (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.idMode_logic_RUNNING mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.idMode_logic_RUNNING_2)
+            (or (not (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.door_closed true))
+               (and (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.mode_2 mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.__mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until_2)
+                    (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.mode mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.mode_2)
                     ))
        )
-       (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.idMode_logic_RUNNING_out mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.idMode_logic_RUNNING)
-       (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.idMode_logic_Mode_logic_out mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.idMode_logic_Mode_logic_1)
+       (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.mode_out mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.mode)
+       (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.mode_logic_running__state_in POINTMode_logic_RUNNING)
+       (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.mode_logic_running__restart_in true)
+       (and (or (not (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.door_closed false))
+               (and (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.idMode_logic_RUNNING_2 mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.idMode_logic_RUNNING_1)
+                    (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.idMode_logic_RUNNING mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.idMode_logic_RUNNING_3)
+                    ))
+            (or (not (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.door_closed true))
+               (and (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.idMode_logic_RUNNING_2 mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.__mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until_1)
+                    (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.idMode_logic_RUNNING mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.idMode_logic_RUNNING_2)
+                    ))
        )
-  (mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.idMode_logic_RUNNING_1 mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.door_closed mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.mode_1 mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.steps_remaining_1 mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.idMode_logic_Mode_logic_1 mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.mode_logic_running__restart_in mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.mode_logic_running__state_in mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.idMode_logic_Mode_logic_out mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.idMode_logic_RUNNING_out mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.mode_out mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until.steps_remaining_out)
+       (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.idMode_logic_RUNNING_out mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.idMode_logic_RUNNING)
+       (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.idMode_logic_Mode_logic_out mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.idMode_logic_Mode_logic_1)
+       )
+  (mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.idMode_logic_RUNNING_1 mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.door_closed mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.mode_1 mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.steps_remaining_1 mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.idMode_logic_Mode_logic_1 mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.mode_logic_running__restart_in mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.mode_logic_running__state_in mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.idMode_logic_Mode_logic_out mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.idMode_logic_RUNNING_out mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.mode_out mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until.steps_remaining_out)
 ))
 
-; mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_unless
-(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_unless.mode_logic_running__restart_in Bool)
-(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_unless.mode_logic_running__state_in mode_logic_running__type)
-(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_unless.mode_logic_running__restart_act Bool)
-(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_unless.mode_logic_running__state_act mode_logic_running__type)
-(declare-rel mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_unless (Bool mode_logic_running__type Bool mode_logic_running__type))
+; mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_unless
+(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_unless.mode_logic_running__restart_in Bool)
+(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_unless.mode_logic_running__state_in mode_logic_running__type)
+(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_unless.mode_logic_running__restart_act Bool)
+(declare-var mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_unless.mode_logic_running__state_act mode_logic_running__type)
+(declare-rel mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_unless (Bool mode_logic_running__type Bool mode_logic_running__type))
 (rule (=> 
-  (and (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_unless.mode_logic_running__state_act mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_unless.mode_logic_running__state_in)
-       (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_unless.mode_logic_running__restart_act mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_unless.mode_logic_running__restart_in)
+  (and (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_unless.mode_logic_running__state_act mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_unless.mode_logic_running__state_in)
+       (= mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_unless.mode_logic_running__restart_act mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_unless.mode_logic_running__restart_in)
        )
-  (mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_unless mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_unless.mode_logic_running__restart_in mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_unless.mode_logic_running__state_in mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_unless.mode_logic_running__restart_act mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_unless.mode_logic_running__state_act)
+  (mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_unless mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_unless.mode_logic_running__restart_in mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_unless.mode_logic_running__state_in mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_unless.mode_logic_running__restart_act mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_unless.mode_logic_running__state_act)
 ))
 
 ; mode_logic_running__RUNNING_COOKING_IDL_handler_until
@@ -509,59 +509,59 @@
   (mode_logic_running__RUNNING_SUSPENDED_IDL_unless mode_logic_running__RUNNING_SUSPENDED_IDL_unless.mode_logic_running__restart_in mode_logic_running__RUNNING_SUSPENDED_IDL_unless.mode_logic_running__state_in mode_logic_running__RUNNING_SUSPENDED_IDL_unless.mode_logic_running__restart_act mode_logic_running__RUNNING_SUSPENDED_IDL_unless.mode_logic_running__state_act)
 ))
 
-; mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until
-(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_RUNNING_1 Int)
-(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.mode_1 Int)
-(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.steps_remaining_1 Int)
-(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_Mode_logic_1 Int)
-(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.steps_to_cook Int)
-(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.mode_logic_running__restart_in Bool)
-(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.mode_logic_running__state_in mode_logic_running__type)
-(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_Mode_logic_out Int)
-(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_RUNNING_out Int)
-(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.mode_out Int)
-(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.steps_remaining_out Int)
-(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_Mode_logic_2 Int)
-(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_Mode_logic_3 Int)
-(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_RUNNING_2 Int)
-(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.mode_2 Int)
-(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.steps_remaining_2 Int)
-(declare-rel mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until (Int Int Int Int Int Bool mode_logic_running__type Int Int Int Int))
+; mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until
+(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_RUNNING_1 Int)
+(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.mode_1 Int)
+(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.steps_remaining_1 Int)
+(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_Mode_logic_1 Int)
+(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.steps_to_cook Int)
+(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.mode_logic_running__restart_in Bool)
+(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.mode_logic_running__state_in mode_logic_running__type)
+(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_Mode_logic_out Int)
+(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_RUNNING_out Int)
+(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.mode_out Int)
+(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.steps_remaining_out Int)
+(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_Mode_logic_2 Int)
+(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_Mode_logic_3 Int)
+(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_RUNNING_2 Int)
+(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.mode_2 Int)
+(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.steps_remaining_2 Int)
+(declare-rel mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until (Int Int Int Int Int Bool mode_logic_running__type Int Int Int Int))
 (rule (=> 
-  (and (Mode_logic_RUNNING_ex mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_RUNNING_1
-                              mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_Mode_logic_1
+  (and (Mode_logic_RUNNING_ex mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_RUNNING_1
+                              mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_Mode_logic_1
                               false
-                              mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_RUNNING_2
-                              mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_Mode_logic_2)
-       (Mode_logic_SETUP_en mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_Mode_logic_2
-                            mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.mode_1
-                            mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.steps_to_cook
-                            mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.steps_remaining_1
+                              mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_RUNNING_2
+                              mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_Mode_logic_2)
+       (Mode_logic_SETUP_en mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_Mode_logic_2
+                            mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.mode_1
+                            mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.steps_to_cook
+                            mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.steps_remaining_1
                             false
-                            mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_Mode_logic_3
-                            mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.mode_2
-                            mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.steps_remaining_2)
-       (= mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.steps_remaining_out mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.steps_remaining_2)
-       (= mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.mode_out mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.mode_2)
-       (= mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.mode_logic_running__state_in POINTMode_logic_RUNNING)
-       (= mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.mode_logic_running__restart_in true)
-       (= mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_RUNNING_out mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_RUNNING_2)
-       (= mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_Mode_logic_out mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_Mode_logic_3)
+                            mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_Mode_logic_3
+                            mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.mode_2
+                            mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.steps_remaining_2)
+       (= mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.steps_remaining_out mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.steps_remaining_2)
+       (= mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.mode_out mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.mode_2)
+       (= mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.mode_logic_running__state_in POINTMode_logic_RUNNING)
+       (= mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.mode_logic_running__restart_in true)
+       (= mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_RUNNING_out mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_RUNNING_2)
+       (= mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_Mode_logic_out mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_Mode_logic_3)
        )
-  (mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_RUNNING_1 mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.mode_1 mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.steps_remaining_1 mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_Mode_logic_1 mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.steps_to_cook mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.mode_logic_running__restart_in mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.mode_logic_running__state_in mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_Mode_logic_out mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_RUNNING_out mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.mode_out mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.steps_remaining_out)
+  (mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_RUNNING_1 mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.mode_1 mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.steps_remaining_1 mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_Mode_logic_1 mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.steps_to_cook mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.mode_logic_running__restart_in mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.mode_logic_running__state_in mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_Mode_logic_out mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_RUNNING_out mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.mode_out mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.steps_remaining_out)
 ))
 
-; mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless
-(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless.mode_logic_running__restart_in Bool)
-(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless.mode_logic_running__state_in mode_logic_running__type)
-(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless.mode_logic_running__restart_act Bool)
-(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless.mode_logic_running__state_act mode_logic_running__type)
-(declare-rel mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless (Bool mode_logic_running__type Bool mode_logic_running__type))
+; mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless
+(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless.mode_logic_running__restart_in Bool)
+(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless.mode_logic_running__state_in mode_logic_running__type)
+(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless.mode_logic_running__restart_act Bool)
+(declare-var mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless.mode_logic_running__state_act mode_logic_running__type)
+(declare-rel mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless (Bool mode_logic_running__type Bool mode_logic_running__type))
 (rule (=> 
-  (and (= mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless.mode_logic_running__state_act mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless.mode_logic_running__state_in)
-       (= mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless.mode_logic_running__restart_act mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless.mode_logic_running__restart_in)
+  (and (= mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless.mode_logic_running__state_act mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless.mode_logic_running__state_in)
+       (= mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless.mode_logic_running__restart_act mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless.mode_logic_running__restart_in)
        )
-  (mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless.mode_logic_running__restart_in mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless.mode_logic_running__state_in mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless.mode_logic_running__restart_act mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless.mode_logic_running__state_act)
+  (mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless.mode_logic_running__restart_in mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless.mode_logic_running__state_in mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless.mode_logic_running__restart_act mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless.mode_logic_running__state_act)
 ))
 
 ; mode_logic_running__RUNNING_SUSPENDED__TO__RUNNING_COOKING_2_handler_until
@@ -748,8 +748,8 @@
                     (= Mode_logic_RUNNING_node.mode_logic_running__state_act Mode_logic_RUNNING_node.__Mode_logic_RUNNING_node_16)
                     (= Mode_logic_RUNNING_node.mode_logic_running__restart_act Mode_logic_RUNNING_node.__Mode_logic_RUNNING_node_15)
                     ))
-            (or (not (= Mode_logic_RUNNING_node.mode_logic_running__state_in POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1))
-               (and (mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_unless 
+            (or (not (= Mode_logic_RUNNING_node.mode_logic_running__state_in POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1))
+               (and (mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_unless 
                     Mode_logic_RUNNING_node.mode_logic_running__restart_in
                     Mode_logic_RUNNING_node.mode_logic_running__state_in
                     Mode_logic_RUNNING_node.__Mode_logic_RUNNING_node_13
@@ -792,8 +792,8 @@
                     (= Mode_logic_RUNNING_node.mode_logic_running__state_act Mode_logic_RUNNING_node.__Mode_logic_RUNNING_node_2)
                     (= Mode_logic_RUNNING_node.mode_logic_running__restart_act Mode_logic_RUNNING_node.__Mode_logic_RUNNING_node_1)
                     ))
-            (or (not (= Mode_logic_RUNNING_node.mode_logic_running__state_in RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1))
-               (and (mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless 
+            (or (not (= Mode_logic_RUNNING_node.mode_logic_running__state_in RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1))
+               (and (mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless 
                     Mode_logic_RUNNING_node.mode_logic_running__restart_in
                     Mode_logic_RUNNING_node.mode_logic_running__state_in
                     Mode_logic_RUNNING_node.__Mode_logic_RUNNING_node_7
@@ -830,8 +830,8 @@
                     (= Mode_logic_RUNNING_node.idMode_logic_RUNNING Mode_logic_RUNNING_node.__Mode_logic_RUNNING_node_62)
                     (= Mode_logic_RUNNING_node.idMode_logic_Mode_logic Mode_logic_RUNNING_node.__Mode_logic_RUNNING_node_61)
                     ))
-            (or (not (= Mode_logic_RUNNING_node.mode_logic_running__state_act POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1))
-               (and (mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION525_1_handler_until 
+            (or (not (= Mode_logic_RUNNING_node.mode_logic_running__state_act POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1))
+               (and (mode_logic_running__POINT__TO__MODE_LOGIC_MODE_LOGICJUNCTION792_1_handler_until 
                     Mode_logic_RUNNING_node.idMode_logic_RUNNING_1
                     Mode_logic_RUNNING_node.door_closed
                     Mode_logic_RUNNING_node.mode_1
@@ -926,8 +926,8 @@
                     (= Mode_logic_RUNNING_node.idMode_logic_RUNNING Mode_logic_RUNNING_node.__Mode_logic_RUNNING_node_20)
                     (= Mode_logic_RUNNING_node.idMode_logic_Mode_logic Mode_logic_RUNNING_node.__Mode_logic_RUNNING_node_19)
                     ))
-            (or (not (= Mode_logic_RUNNING_node.mode_logic_running__state_act RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1))
-               (and (mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until 
+            (or (not (= Mode_logic_RUNNING_node.mode_logic_running__state_act RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1))
+               (and (mode_logic_running__RUNNING_SUSPENDED__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until 
                     Mode_logic_RUNNING_node.idMode_logic_RUNNING_1
                     Mode_logic_RUNNING_node.mode_1
                     Mode_logic_RUNNING_node.steps_remaining_1
@@ -1026,7 +1026,7 @@
                              false
                              Mode_logic_RUNNING_en.__Mode_logic_RUNNING_en_4
                              Mode_logic_RUNNING_en.__Mode_logic_RUNNING_en_5)
-       (= Mode_logic_RUNNING_en.__Mode_logic_RUNNING_en_3 (= Mode_logic_RUNNING_en.idMode_logic_RUNNING_1 523))
+       (= Mode_logic_RUNNING_en.__Mode_logic_RUNNING_en_3 (= Mode_logic_RUNNING_en.idMode_logic_RUNNING_1 790))
        (and (or (not (= Mode_logic_RUNNING_en.__Mode_logic_RUNNING_en_3 false))
                (and (= Mode_logic_RUNNING_en.mode_6 Mode_logic_RUNNING_en.mode_1)
                     (= Mode_logic_RUNNING_en.idMode_logic_RUNNING_6 Mode_logic_RUNNING_en.idMode_logic_RUNNING_1)
@@ -1041,7 +1041,7 @@
                            false
                            Mode_logic_RUNNING_en.__Mode_logic_RUNNING_en_6
                            Mode_logic_RUNNING_en.__Mode_logic_RUNNING_en_7)
-       (= Mode_logic_RUNNING_en.__Mode_logic_RUNNING_en_2 (= Mode_logic_RUNNING_en.idMode_logic_RUNNING_1 522))
+       (= Mode_logic_RUNNING_en.__Mode_logic_RUNNING_en_2 (= Mode_logic_RUNNING_en.idMode_logic_RUNNING_1 789))
        (and (or (not (= Mode_logic_RUNNING_en.__Mode_logic_RUNNING_en_2 false))
                (and (= Mode_logic_RUNNING_en.mode_5 Mode_logic_RUNNING_en.mode_1)
                     (= Mode_logic_RUNNING_en.idMode_logic_RUNNING_5 Mode_logic_RUNNING_en.idMode_logic_RUNNING_1)
@@ -1069,12 +1069,12 @@
        (and (or (not (= Mode_logic_RUNNING_en.__Mode_logic_RUNNING_en_1 false))
                (and (= Mode_logic_RUNNING_en.mode_4 Mode_logic_RUNNING_en.mode_1)
                     (= Mode_logic_RUNNING_en.idMode_logic_RUNNING_4 Mode_logic_RUNNING_en.idMode_logic_RUNNING_1)
-                    (= Mode_logic_RUNNING_en.idMode_logic_Mode_logic_3 524)
+                    (= Mode_logic_RUNNING_en.idMode_logic_Mode_logic_3 791)
                     (and (or (not (= Mode_logic_RUNNING_en.__Mode_logic_RUNNING_en_2 false))
                             (and (or (not (= Mode_logic_RUNNING_en.__Mode_logic_RUNNING_en_3 false))
                                     (and (= Mode_logic_RUNNING_en.mode_7 Mode_logic_RUNNING_en.mode_1)
                                          (= Mode_logic_RUNNING_en.idMode_logic_RUNNING_7 Mode_logic_RUNNING_en.idMode_logic_RUNNING_1)
-                                         (= Mode_logic_RUNNING_en.idMode_logic_Mode_logic_4 524)
+                                         (= Mode_logic_RUNNING_en.idMode_logic_Mode_logic_4 791)
                                          ))
                                  (or (not (= Mode_logic_RUNNING_en.__Mode_logic_RUNNING_en_3 true))
                                     (and (= Mode_logic_RUNNING_en.mode_7 Mode_logic_RUNNING_en.mode_6)
@@ -1093,12 +1093,12 @@
                (and (and (or (not (= Mode_logic_RUNNING_en.door_closed false))
                             (and (= Mode_logic_RUNNING_en.mode_4 Mode_logic_RUNNING_en.mode_3)
                                  (= Mode_logic_RUNNING_en.idMode_logic_RUNNING_4 Mode_logic_RUNNING_en.idMode_logic_RUNNING_3)
-                                 (= Mode_logic_RUNNING_en.idMode_logic_Mode_logic_3 524)
+                                 (= Mode_logic_RUNNING_en.idMode_logic_Mode_logic_3 791)
                                  ))
                          (or (not (= Mode_logic_RUNNING_en.door_closed true))
                             (and (= Mode_logic_RUNNING_en.mode_4 Mode_logic_RUNNING_en.mode_2)
                                  (= Mode_logic_RUNNING_en.idMode_logic_RUNNING_4 Mode_logic_RUNNING_en.idMode_logic_RUNNING_2)
-                                 (= Mode_logic_RUNNING_en.idMode_logic_Mode_logic_3 524)
+                                 (= Mode_logic_RUNNING_en.idMode_logic_Mode_logic_3 791)
                                  ))
                     )
                     (= Mode_logic_RUNNING_en.mode_7 Mode_logic_RUNNING_en.mode_4)
@@ -1135,7 +1135,7 @@
             (or (not (= (not Mode_logic_SETUP_ex.isInner) false))
                (= Mode_logic_SETUP_ex.idMode_logic_Mode_logic_2 Mode_logic_SETUP_ex.idMode_logic_Mode_logic_1))
        )
-       (= Mode_logic_SETUP_ex.idMode_logic_Mode_logic Mode_logic_SETUP_ex.idMode_logic_Mode_logic_2)
+       (= Mode_logic_SETUP_ex.idMode_logic_Mode_logic Mode_logic_SETUP_ex.idMode_logic_Mode_logic_1)
        )
   (Mode_logic_SETUP_ex Mode_logic_SETUP_ex.idMode_logic_Mode_logic_1 Mode_logic_SETUP_ex.isInner Mode_logic_SETUP_ex.idMode_logic_Mode_logic)
 ))
@@ -1255,59 +1255,59 @@
   (mode_logic_mode_logic__MODE_LOGIC_RUNNING_IDL_unless mode_logic_mode_logic__MODE_LOGIC_RUNNING_IDL_unless.mode_logic_mode_logic__restart_in mode_logic_mode_logic__MODE_LOGIC_RUNNING_IDL_unless.mode_logic_mode_logic__state_in mode_logic_mode_logic__MODE_LOGIC_RUNNING_IDL_unless.mode_logic_mode_logic__restart_act mode_logic_mode_logic__MODE_LOGIC_RUNNING_IDL_unless.mode_logic_mode_logic__state_act)
 ))
 
-; mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until
-(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_Mode_logic_1 Int)
-(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.mode_1 Int)
-(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.steps_remaining_1 Int)
-(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.steps_to_cook Int)
-(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_RUNNING_1 Int)
-(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.mode_logic_mode_logic__restart_in Bool)
-(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.mode_logic_mode_logic__state_in mode_logic_mode_logic__type)
-(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_Mode_logic_out Int)
-(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_RUNNING_out Int)
-(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.mode_out Int)
-(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.steps_remaining_out Int)
-(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_Mode_logic_2 Int)
-(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_Mode_logic_3 Int)
-(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_RUNNING_2 Int)
-(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.mode_2 Int)
-(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.steps_remaining_2 Int)
-(declare-rel mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until (Int Int Int Int Int Bool mode_logic_mode_logic__type Int Int Int Int))
+; mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until
+(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_Mode_logic_1 Int)
+(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.mode_1 Int)
+(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.steps_remaining_1 Int)
+(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.steps_to_cook Int)
+(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_RUNNING_1 Int)
+(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.mode_logic_mode_logic__restart_in Bool)
+(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.mode_logic_mode_logic__state_in mode_logic_mode_logic__type)
+(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_Mode_logic_out Int)
+(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_RUNNING_out Int)
+(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.mode_out Int)
+(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.steps_remaining_out Int)
+(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_Mode_logic_2 Int)
+(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_Mode_logic_3 Int)
+(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_RUNNING_2 Int)
+(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.mode_2 Int)
+(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.steps_remaining_2 Int)
+(declare-rel mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until (Int Int Int Int Int Bool mode_logic_mode_logic__type Int Int Int Int))
 (rule (=> 
-  (and (Mode_logic_RUNNING_ex mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_RUNNING_1
-                              mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_Mode_logic_1
+  (and (Mode_logic_RUNNING_ex mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_RUNNING_1
+                              mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_Mode_logic_1
                               false
-                              mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_RUNNING_2
-                              mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_Mode_logic_2)
-       (Mode_logic_SETUP_en mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_Mode_logic_2
-                            mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.mode_1
-                            mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.steps_to_cook
-                            mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.steps_remaining_1
+                              mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_RUNNING_2
+                              mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_Mode_logic_2)
+       (Mode_logic_SETUP_en mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_Mode_logic_2
+                            mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.mode_1
+                            mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.steps_to_cook
+                            mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.steps_remaining_1
                             false
-                            mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_Mode_logic_3
-                            mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.mode_2
-                            mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.steps_remaining_2)
-       (= mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.steps_remaining_out mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.steps_remaining_2)
-       (= mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.mode_out mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.mode_2)
-       (= mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.mode_logic_mode_logic__state_in POINTMode_logic_Mode_logic)
-       (= mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.mode_logic_mode_logic__restart_in true)
-       (= mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_RUNNING_out mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_RUNNING_2)
-       (= mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_Mode_logic_out mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_Mode_logic_3)
+                            mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_Mode_logic_3
+                            mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.mode_2
+                            mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.steps_remaining_2)
+       (= mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.steps_remaining_out mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.steps_remaining_2)
+       (= mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.mode_out mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.mode_2)
+       (= mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.mode_logic_mode_logic__state_in POINTMode_logic_Mode_logic)
+       (= mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.mode_logic_mode_logic__restart_in true)
+       (= mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_RUNNING_out mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_RUNNING_2)
+       (= mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_Mode_logic_out mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_Mode_logic_3)
        )
-  (mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_Mode_logic_1 mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.mode_1 mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.steps_remaining_1 mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.steps_to_cook mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_RUNNING_1 mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.mode_logic_mode_logic__restart_in mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.mode_logic_mode_logic__state_in mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_Mode_logic_out mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.idMode_logic_RUNNING_out mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.mode_out mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until.steps_remaining_out)
+  (mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_Mode_logic_1 mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.mode_1 mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.steps_remaining_1 mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.steps_to_cook mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_RUNNING_1 mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.mode_logic_mode_logic__restart_in mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.mode_logic_mode_logic__state_in mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_Mode_logic_out mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.idMode_logic_RUNNING_out mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.mode_out mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until.steps_remaining_out)
 ))
 
-; mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless
-(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless.mode_logic_mode_logic__restart_in Bool)
-(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless.mode_logic_mode_logic__state_in mode_logic_mode_logic__type)
-(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless.mode_logic_mode_logic__restart_act Bool)
-(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless.mode_logic_mode_logic__state_act mode_logic_mode_logic__type)
-(declare-rel mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless (Bool mode_logic_mode_logic__type Bool mode_logic_mode_logic__type))
+; mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless
+(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless.mode_logic_mode_logic__restart_in Bool)
+(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless.mode_logic_mode_logic__state_in mode_logic_mode_logic__type)
+(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless.mode_logic_mode_logic__restart_act Bool)
+(declare-var mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless.mode_logic_mode_logic__state_act mode_logic_mode_logic__type)
+(declare-rel mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless (Bool mode_logic_mode_logic__type Bool mode_logic_mode_logic__type))
 (rule (=> 
-  (and (= mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless.mode_logic_mode_logic__state_act mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless.mode_logic_mode_logic__state_in)
-       (= mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless.mode_logic_mode_logic__restart_act mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless.mode_logic_mode_logic__restart_in)
+  (and (= mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless.mode_logic_mode_logic__state_act mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless.mode_logic_mode_logic__state_in)
+       (= mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless.mode_logic_mode_logic__restart_act mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless.mode_logic_mode_logic__restart_in)
        )
-  (mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless.mode_logic_mode_logic__restart_in mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless.mode_logic_mode_logic__state_in mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless.mode_logic_mode_logic__restart_act mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless.mode_logic_mode_logic__state_act)
+  (mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless.mode_logic_mode_logic__restart_in mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless.mode_logic_mode_logic__state_in mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless.mode_logic_mode_logic__restart_act mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless.mode_logic_mode_logic__state_act)
 ))
 
 ; mode_logic_mode_logic__MODE_LOGIC_SETUP_IDL_handler_until
@@ -1442,10 +1442,10 @@
 (declare-var mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless.__mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless_5 Bool)
 (declare-rel mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless (Bool mode_logic_mode_logic__type Int Int Int Bool Bool mode_logic_mode_logic__type))
 (rule (=> 
-  (and (= mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless.__mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless_5 (= mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless.idMode_logic_Mode_logic_1 524))
-       (= mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless.__mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless_4 (= mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless.idMode_logic_Mode_logic_1 521))
-       (= mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless.__mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless_3 (and (= mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless.idMode_logic_Mode_logic_1 524) (<= mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless.steps_remaining_1 0)))
-       (= mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless.__mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless_2 (and (= mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless.idMode_logic_Mode_logic_1 521) (and mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless.start (> mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless.steps_to_cook 0))))
+  (and (= mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless.__mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless_5 (= mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless.idMode_logic_Mode_logic_1 791))
+       (= mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless.__mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless_4 (= mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless.idMode_logic_Mode_logic_1 788))
+       (= mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless.__mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless_3 (and (= mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless.idMode_logic_Mode_logic_1 791) (<= mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless.steps_remaining_1 0)))
+       (= mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless.__mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless_2 (and (= mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless.idMode_logic_Mode_logic_1 788) (and mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless.start (> mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless.steps_to_cook 0))))
        (= mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless.__mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless_1 (= mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless.idMode_logic_Mode_logic_1 0))
        (and (or (not (= mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless.__mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless_1 false))
                (and (or (not (= mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless.__mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless_2 false))
@@ -1466,7 +1466,7 @@
                                             ))
                                ))
                             (or (not (= mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless.__mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless_3 true))
-                               (and (= mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless.mode_logic_mode_logic__state_act MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1)
+                               (and (= mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless.mode_logic_mode_logic__state_act MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1)
                                     (= mode_logic_mode_logic__POINTMode_logic_Mode_logic_unless.mode_logic_mode_logic__restart_act true)
                                     ))
                        ))
@@ -1670,8 +1670,8 @@
                     (= Mode_logic_Mode_logic_node.mode_logic_mode_logic__state_act Mode_logic_Mode_logic_node.__Mode_logic_Mode_logic_node_2)
                     (= Mode_logic_Mode_logic_node.mode_logic_mode_logic__restart_act Mode_logic_Mode_logic_node.__Mode_logic_Mode_logic_node_1)
                     ))
-            (or (not (= Mode_logic_Mode_logic_node.mode_logic_mode_logic__state_in MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1))
-               (and (mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_unless 
+            (or (not (= Mode_logic_Mode_logic_node.mode_logic_mode_logic__state_in MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1))
+               (and (mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_unless 
                     Mode_logic_Mode_logic_node.mode_logic_mode_logic__restart_in
                     Mode_logic_Mode_logic_node.mode_logic_mode_logic__state_in
                     Mode_logic_Mode_logic_node.__Mode_logic_Mode_logic_node_5
@@ -1768,8 +1768,8 @@
                     (= Mode_logic_Mode_logic_node.idMode_logic_RUNNING Mode_logic_Mode_logic_node.__Mode_logic_Mode_logic_node_16)
                     (= Mode_logic_Mode_logic_node.idMode_logic_Mode_logic Mode_logic_Mode_logic_node.__Mode_logic_Mode_logic_node_15)
                     ))
-            (or (not (= Mode_logic_Mode_logic_node.mode_logic_mode_logic__state_act MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1))
-               (and (mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION538_1_handler_until 
+            (or (not (= Mode_logic_Mode_logic_node.mode_logic_mode_logic__state_act MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1))
+               (and (mode_logic_mode_logic__MODE_LOGIC_RUNNING__TO__MODE_LOGIC_MODE_LOGICJUNCTION805_1_handler_until 
                     Mode_logic_Mode_logic_node.idMode_logic_Mode_logic_1
                     Mode_logic_Mode_logic_node.mode_1
                     Mode_logic_Mode_logic_node.steps_remaining_1
