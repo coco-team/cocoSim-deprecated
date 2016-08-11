@@ -11,7 +11,7 @@ function new_file = cocosim_pp(file_name, constant_file, varargin)
 %   verification purposes.
 
 % Cleans the workspace before executing the process
-evalin('base','clear all')
+% evalin('base','clear all')
 
 % Reading options
 evalin('base','global verif;');

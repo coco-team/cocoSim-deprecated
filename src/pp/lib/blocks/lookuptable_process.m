@@ -24,9 +24,16 @@ function [new_block] = lookuptable_block_process(init_block)
 %   the block to process.
 
 % Obtaining tables
+try
 indexes = eval(get_param(init_block, 'InputValues'));
+catch
+    indexes = evalin('base',get_param(init_block, 'InputValues'));
+end
+try
 datatable = eval(get_param(init_block, 'Table'));
-
+catch
+    datatable = evalin('base',get_param(init_block, 'Table'));
+end
 new_block = strcat(init_block,'_p');
 datatable_process(indexes,datatable,new_block);
 

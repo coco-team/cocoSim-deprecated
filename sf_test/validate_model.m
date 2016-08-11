@@ -7,7 +7,7 @@ if ~exist('cocoSim_path', 'var')
     cocoSim_path = pwd;
 end
 addpath(fullfile(cocoSim_path,'src/'));
-addpath(fullfile(cocoSim_path,'src/utils/'));
+% addpath(fullfile(cocoSim_path,'src/utils/'));
 
 assignin('base', 'SOLVER', 'NONE');
 assignin('base', 'RUST_GEN', 0);
@@ -82,7 +82,7 @@ catch ME
 end
 fprintf('start lustrec for model "%s"\n',file_name);
 
-command = sprintf('lustrec -node %s %s.lus',chart_name, lus_file_name);
+command = sprintf('lustrec -node %s %s.lus',Utils.name_format(chart_name), lus_file_name);
 [status, lustre_out] = system(command);
 if status
     fprintf('lustrec failed for model "%s" :\n%s',file_name,lustre_out);
@@ -103,7 +103,7 @@ else
         cd(OldPwd);
         return
     else
-        lustre_binary = strcat(file_name,'_',chart_name);
+        lustre_binary = strcat(file_name,'_',Utils.name_format(chart_name));
         input_struct.time = (0:simulation_step:stop_time)';
         input_struct.signals = [];
         for i=1:numberOfInports
@@ -279,3 +279,4 @@ close_system(model_full_path,0);
 bdclose('all')
 cd(OldPwd);
 end
+
