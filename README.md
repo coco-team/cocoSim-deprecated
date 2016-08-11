@@ -1,8 +1,8 @@
 # CoCoSim #
 
-CoCoSim is a modular, integrated analysis framework for Simulink(c) models. It consists of a compiler and an interface to backend solvers (model checkers):
+CoCoSim is a modular, integrated analysis framework for Simulink and Stateflow models. It consists of a compiler and an interface to backend safety verifiers (model checkers):
 
-* **Compiler**: It modularly compiles a Simulink(c) model (+ design property) into [Lustre](https://en.wikipedia.org/wiki/Lustre_(programming_language) code. An earlier version of this module was developed by Claire Pagetti, Thomas Loquen and Eric Noulard at ONERA (France). The current version is a complete re-implimentation by Arnaud Dieumegard (CMU) and Temesghen Kahsai (NASA Ames / CMU).
+* **Compiler**: It modularly compiles a Simulink(c) model (+ design property) into a synchoronous dataflow program. An earlier version of this module was developed by Claire Pagetti, Thomas Loquen and Eric Noulard at ONERA (France). The current version is a complete re-implimentation done at NASA Ames and CMU led by Temesghen Kahsai (NASA Ames / CMU).
 * **Model Checker**: In principle CoCoSim can use any model checker for Lustre code. The current version of CoCoSim can use either: [Zustre](https://github.com/lememta/zustre), [Kind2](https://github.com/kind2-mc/kind2) or [Eldarica](https://github.com/uuverifiers/eldarica) as the backend model checkers.
 
 CoCoSim is currently under development. We welcome any feedback and bug report.
@@ -34,6 +34,7 @@ CoCoSim can be installed and use as follows:
 * `KIND2`: Path to [Kind2](https://github.com/kind2-mc/kind2) binary.
 * `LUSTREC`: Path to [LustreC](https://github.com/coco-team/lustrec) binary.
 * `Z3`: Path to Z3 binary. If you install Zustre, Z3 can be found in `ZUSTRE_PATH/build/run/bin/z3`.
+* `JKIND`: Path to [JKind](https://github.com/agacek/jkind).
 
 
 ### Launching ###
@@ -62,3 +63,4 @@ More information about CoCoSim can be found [here](https://github.com/coco-team/
 ##Contributors##
 
 * Arnaud Dieumegard (Fabruary - August 2015)
+* Hamza BOURBOUH (July - September 2016) 
