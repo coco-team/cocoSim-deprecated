@@ -29,7 +29,7 @@ end
      try
       [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
       addpath(fullfile(prog_path, 'pp'));
-      simulink_name = gcs;
+      simulink_name = get_param(gcs,'FileName');%gcs;
       pp_model = cocosim_pp(simulink_name);
       load_system(char(pp_model));
      catch ME

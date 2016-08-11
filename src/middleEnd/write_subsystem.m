@@ -156,7 +156,7 @@ else
     sf_sub = get_param(unbloc.annotation, 'SFBlockType');
     if strcmp(sf_sub, 'Chart')
         activated = true;
-        if strcmp(list_in_str,'')
+        if isempty(list_in_str)
             list_in_str = 'true';
         end
     end
@@ -202,11 +202,11 @@ if activated
             for idx_new_outs=1:nb_var_to_add
                 input_dt = unbloc.inports_dt{cpt_dim};
                 if strfind(input_dt,'int')
-                    initial_value = '0';
+                    initial_value = '1';
                 elseif strfind(input_dt,'bool')
-                    initial_value = 'false';
+                    initial_value = 'true';
                 else
-                    initial_value = '0.0';
+                    initial_value = '1.0';
                 end
 				list_def_out = [list_def_out {initial_value}];
             end
@@ -236,12 +236,18 @@ if activated
 	end
 
 	% Print final call to subsystem
+    if isempty(list_in_str)
+        list_in_str = '0.0';
+    end
     if strcmp(cond_str,'')
         output_string = app_sprintf(output_string, '\t%s =  %s(%s);\n', list_out_str, node_call_name, list_in_str);
     else
         output_string = app_sprintf(output_string, '\t%s = if %s then %s(%s) else %s;\n', list_out_str, cond_str, node_call_name, list_in_str, list_def_out);
     end
 elseif unbloc.foriter
+    if isempty(list_in_str)
+        list_in_str = '0.0';
+    end
 	% The block has a ForIterator block inside
 	inner_blocks = find_system(unbloc.origin_name, 'SearchDepth', 1);
 	inner_blocks_bt = get_param(inner_blocks, 'BlockType');
@@ -277,7 +283,8 @@ elseif unbloc.foriter
 			else
 				add_inputs = [add_inputs ', false'];
 			end
-		end
+        end
+
 		if idx_iter ~= iter_limit-1+start
 			out_dts = cellfun(@(x) Utils.get_lustre_dt(x), unbloc.outports_dt, 'UniformOutput', false);
 			if numel(list_out) > 1

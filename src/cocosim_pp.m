@@ -84,7 +84,7 @@ if nargin > 1
     end
 end
 % Load Pre-GAL default_constants file
-evalin('base','default_constants');
+% evalin('base','default_constants');
 
 % Looking for GAL non-supported blocks
 fprintf('Looking for CoCoSim non-supported blocks...\n\n')

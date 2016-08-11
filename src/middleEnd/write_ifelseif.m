@@ -90,7 +90,6 @@ for idx_in=1:unbloc.num_input
 		end
 	end
 end
-
 % Replace operators
 if_expr = convert_operators(if_expr);
 if_expr = convert_to_double(if_expr, unbloc);
@@ -177,8 +176,12 @@ function result = convert_to_double(str, unbloc)
 		convert = true;
 	end
 	if convert
-		% Add a dot after an integer
-		result = regexprep(str, '(?<!\w)(\d+)((?=$)|(?=\W))', '$1.');
+		% Add a dot after an integer       
+        %old solution doesnt work it changes 0.0 to 0..0.
+% 		result = regexprep(str, '(?<!\w)(\d+)((?=$)|(?=\W))', '$1.');
+        expression = '([^a-zA-Z_\[\.])(\d+)([^a-zA-Z_\.\]])';
+        replace = '$1$2.$3';
+        result = regexprep(str,expression,replace);
 	else
 		result = str;
 	end

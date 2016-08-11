@@ -224,7 +224,7 @@ for idx_block=1:nblk
 	        
 	%%%%%%%%%%%%% UnitDelay %%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'UnitDelay')
-        
+%         display(inter_blk{idx_block})
 		init = get_param(blks{idx_block}, 'X0');
         init = evalin('base', init);
 		Ts = get_param(blks{idx_block}, 'SampleTime');
@@ -596,6 +596,7 @@ for idx_block=1:nblk
 
 		%%%%%%%%%%%%%%%%%% Classical SubSystem %%%%%%%%%%%%
 		elseif inter_blk{idx_block}.num_output ~= 0
+%             display(inter_blk{idx_block}.origin_name{1});
             [block_string, var_str] = write_subsystem(inter_blk{idx_block}, inter_blk, main_blk, xml_trace);
 		end
 
