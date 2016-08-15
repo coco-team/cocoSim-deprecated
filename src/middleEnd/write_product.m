@@ -303,7 +303,7 @@ else
 			list_in2 = list_in((in1_dim_r*in1_dim_c + 1):end);
 			for idx_row=1:in1_dim_r
 				for idx_col=1:in2_dim_c
-					out_idx = idx_col + ((idx_row-1) * in1_dim_c);
+					out_idx = idx_col + ((idx_row-1) * in2_dim_c);
 					product_str = '';
 					if is_complex
 						for idx_iter=1:in1_dim_c
@@ -326,7 +326,7 @@ else
 							in2_idx = idx_col + (idx_iter-1) * in2_dim_c;
 							product_str = sprintf('%s%s * %s', product_str, list_in1{in1_idx}, list_in2{in2_idx});
 						end
-					end
+                    end
 					output_string = [output_string sprintf('\t%s = %s;\n', list_out{out_idx}, product_str)];
 				end
 			end

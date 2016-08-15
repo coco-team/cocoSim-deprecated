@@ -70,8 +70,8 @@ IMAX = 10; %IMAX for randi the max born for random number
 
 try
     fprintf('start translating model "%s" to lustre automaton\n',file_name);
-    lus_file_path= '/home/hamza/Documents/cocoSim/LM/4_nlguide/lustre_files/src_NLGuidance_12B/NLGuidance_12B.lus';
-%     lus_file_path=cocoSim(model_full_path);
+%     lus_file_path= '/home/hamza/Documents/cocoSim/LM/5_nn/lustre_files/src_nn_12B/nn_12B.lus';
+    lus_file_path=cocoSim(model_full_path);
     chart_name = file_name;
     configSet = copy(getActiveConfigSet(file_name));
     [lus_file_dir, lus_file_name, ~] = fileparts(lus_file_path);
@@ -222,7 +222,7 @@ else
                             output_value = regexp(outputs_array{index_out},'\s*:\s*','split');
                             if ~isempty(output_value)
                                 output_val = output_value{2};
-                                output_val = str2num(output_val(2:end-1));
+                                output_val = str2num(output_val(2:end-1))
                                 valid = valid && (abs(yout_values(j)-output_val)<eps);
                                 if  ~valid
                                     error_index = i+1;

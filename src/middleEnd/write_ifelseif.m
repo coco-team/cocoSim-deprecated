@@ -179,9 +179,13 @@ function result = convert_to_double(str, unbloc)
 		% Add a dot after an integer       
         %old solution doesnt work it changes 0.0 to 0..0.
 % 		result = regexprep(str, '(?<!\w)(\d+)((?=$)|(?=\W))', '$1.');
-        expression = '([^a-zA-Z_\[\.])(\d+)([^a-zA-Z_\.\]])';
-        replace = '$1$2.$3';
-        result = regexprep(str,expression,replace);
+        if isempty(strfind(str,'.'))
+            expression = '([^a-zA-Z_\[\.])([0-9]+)((?=$)|(?=\W))';
+            replace = '$1$2.0$3';
+            result = regexprep(str,expression,replace);
+        else
+            result = str;
+        end
 	else
 		result = str;
 	end
