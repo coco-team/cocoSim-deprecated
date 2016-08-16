@@ -131,7 +131,7 @@ function conversion = compute_conversion(block)
 	elseif strcmp(block.type,'Fcn')
 		%fun_expr= get_param(blks{idx_block},'Expr');
 		for idx_in=1:numel(block.inports_dt)
-			conversion{idx_in} = 'no';
+			conversion{idx_in} = 'double';
 		end
 		
 	%%%%%%%%%%%%% Saturation %%%%%%%%%%%%%
@@ -311,6 +311,10 @@ function conversion = compute_conversion(block)
 					conversion{1} = block.outports_dt{1};
 					conversion{2} = block.outports_dt{1};
              
+                elseif strcmp(block.mask_type,'Create 3x3 Matrix') 
+                    for idx_in=1:numel(block.inports_dt)
+                        conversion{idx_in} = block.outports_dt{1};
+                    end
             else
                 msg = ['Data type conversion mechanism not supported for block: ' block.mask_type];
                 display_msg(msg, Constants.ERROR, 'blocks_dt_conversion', '');
@@ -410,7 +414,8 @@ function conversion = compute_conversion(block)
 		end
 	%%%%%%%%%%%%%%%%%% Blocks with nothing specific to do %%%%%%%%%%%%%%%%%%%
 	elseif strcmp(block.type, 'Inport') || strcmp(block.type, 'ToWorkspace') || strcmp(block.type, 'Terminator') || strcmp(block.type, 'Scope') || strcmp(block.type, 'From') || strcmp(block.type, 'FromWorkspace')
-
+    
+    
 	else
 		msg = ['Data type conversion mechanism not supported for block: ' block.type{1}];
 		display_msg(msg, Constants.WARNING, 'blocks_dt_conversion', '');

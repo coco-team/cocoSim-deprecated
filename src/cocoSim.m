@@ -641,10 +641,11 @@ fclose(fid);
 end
 
 function [str] = print_int_to_real()
-str = ['node int_to_real (In : int)\n'];
-str = [str 'returns (Out : real)\n'];
-str = [str 'let\n\tOut = 0.0;\ntel'];
-str = sprintf('%s\n', str);
+% str = ['node int_to_real (In : int)\n'];
+% str = [str 'returns (Out : real)\n'];
+% str = [str 'let\n\tOut = 0.0;\ntel'];
+% str = sprintf('%s\n', str);
+str = '#open <conv>';
 end
 
 function [nodes] = print_dt_conversion_nodes(rounding)

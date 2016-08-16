@@ -39,7 +39,7 @@
          </Input>
       </InputList>
       <OutputList>
-         <Output variable="Req3_1_1">
+         <Output variable="Req_3_1_1">
             <block_name>Fcn/Req3</block_name>
             <in_port_nb>1</in_port_nb>
             <dimension>1</dimension>
@@ -56,7 +56,7 @@
             <out_port_nb>1</out_port_nb>
             <dimension>1</dimension>
          </Variable>
-         <Variable variable="Constant1_1_1">
+         <Variable variable="Constant_1_1_1">
             <block_name>Fcn/Constant1</block_name>
             <out_port_nb>1</out_port_nb>
             <dimension>1</dimension>
@@ -66,30 +66,30 @@
             <out_port_nb>1</out_port_nb>
             <dimension>1</dimension>
          </Variable>
-         <Variable variable="Fcn1_1_1">
+         <Variable variable="Fcn_1_1_1">
             <block_name>Fcn/Fcn1</block_name>
             <out_port_nb>1</out_port_nb>
             <dimension>1</dimension>
          </Variable>
-         <Variable variable="LogicalOperator1_1_1">
+         <Variable variable="LogicalOperator_1_1_1">
             <block_name>Fcn/Logical
 Operator1</block_name>
             <out_port_nb>1</out_port_nb>
             <dimension>1</dimension>
          </Variable>
-         <Variable variable="LogicalOperator2_1_1">
+         <Variable variable="LogicalOperator_2_1_1">
             <block_name>Fcn/Logical
 Operator2</block_name>
             <out_port_nb>1</out_port_nb>
             <dimension>1</dimension>
          </Variable>
-         <Variable variable="LogicalOperator3_1_1">
+         <Variable variable="LogicalOperator_3_1_1">
             <block_name>Fcn/Logical
 Operator3</block_name>
             <out_port_nb>1</out_port_nb>
             <dimension>1</dimension>
          </Variable>
-         <Variable variable="LogicalOperator4_1_1">
+         <Variable variable="LogicalOperator_4_1_1">
             <block_name>Fcn/Logical
 Operator4</block_name>
             <out_port_nb>1</out_port_nb>
@@ -100,7 +100,7 @@ Operator4</block_name>
             <out_port_nb>1</out_port_nb>
             <dimension>1</dimension>
          </Variable>
-         <Variable variable="Memory1_1_1">
+         <Variable variable="Memory_1_1_1">
             <block_name>Fcn/Memory1</block_name>
             <out_port_nb>1</out_port_nb>
             <dimension>1</dimension>
@@ -135,22 +135,22 @@ Operator4</block_name>
             <out_port_nb>1</out_port_nb>
             <dimension>6</dimension>
          </Variable>
-         <Variable variable="Mux1_1_1">
+         <Variable variable="Mux_1_1_1">
             <block_name>Fcn/Mux1</block_name>
             <out_port_nb>1</out_port_nb>
             <dimension>1</dimension>
          </Variable>
-         <Variable variable="Mux1_1_2">
+         <Variable variable="Mux_1_1_2">
             <block_name>Fcn/Mux1</block_name>
             <out_port_nb>1</out_port_nb>
             <dimension>2</dimension>
          </Variable>
-         <Variable variable="Mux1_1_3">
+         <Variable variable="Mux_1_1_3">
             <block_name>Fcn/Mux1</block_name>
             <out_port_nb>1</out_port_nb>
             <dimension>3</dimension>
          </Variable>
-         <Variable variable="Mux1_1_4">
+         <Variable variable="Mux_1_1_4">
             <block_name>Fcn/Mux1</block_name>
             <out_port_nb>1</out_port_nb>
             <dimension>4</dimension>
@@ -170,12 +170,12 @@ Operator4</block_name>
             <out_port_nb>1</out_port_nb>
             <dimension>1</dimension>
          </Variable>
-         <Variable is_temporary="True" variable="tmp_in_Fcn_Fcn1">
+         <Variable is_temporary="True" variable="tmp_in_Fcn_Fcn_1">
             <block_name>Fcn/Fcn1</block_name>
             <out_port_nb>1</out_port_nb>
             <dimension>1</dimension>
          </Variable>
-         <Variable is_temporary="True" variable="tmp_out_Fcn_Fcn1">
+         <Variable is_temporary="True" variable="tmp_out_Fcn_Fcn_1">
             <block_name>Fcn/Fcn1</block_name>
             <out_port_nb>1</out_port_nb>
             <dimension>1</dimension>

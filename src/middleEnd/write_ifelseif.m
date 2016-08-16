@@ -180,7 +180,7 @@ function result = convert_to_double(str, unbloc)
         %old solution doesnt work it changes 0.0 to 0..0.
 % 		result = regexprep(str, '(?<!\w)(\d+)((?=$)|(?=\W))', '$1.');
         if isempty(strfind(str,'.'))
-            expression = '([^a-zA-Z_\[\.])([0-9]+)((?=$)|(?=\W))';
+            expression = '(^|[^a-zA-Z_\[\.])([0-9]+)((?=$)|(?=\W))';
             replace = '$1$2.0$3';
             result = regexprep(str,expression,replace);
         else

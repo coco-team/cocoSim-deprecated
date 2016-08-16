@@ -188,13 +188,16 @@ for idx_block=newinit:nblk
 		end
 	end
 end
-node_header = app_sprintf(node_header, '\t%s;\n', 'i_virtual_local : real');
+if idx_subsys==1
+    node_header = app_sprintf(node_header, '\t%s;\n', 'i_virtual_local : real');
+end
 %%%%%%%%%%%%%%%% Retrieve nodes code
 
 [let_tel_code_string, extern_s_functions_string, extern_functions, properties_nodes, additional_variables, property_node_names, extern_matlab_functions, c_code, external_math_functions] = ...
     write_code(nblk, inter_blk, blks, main_blks, myblk, nom_lustre_file, idx_subsys, false, trace, xml_trace);
-
+if idx_subsys==1
 let_tel_code_string = app_sprintf(let_tel_code_string, '\t%s;\n', 'i_virtual_local= 0.0 -> 1.0');
+end
 % Add additional variables (ex in the MinMax block backend)
 if ~strcmp(additional_variables, '')
 	node_header = app_sprintf(node_header, '%s', additional_variables);

@@ -127,6 +127,15 @@ ext_node = app_sprintf(ext_node, 'returns (out: %s);\n', out_var_print_dt);
 expression = '(\n|\.{3}|/\*(\s*\w*\W*\s*)*\*/)';
 replace = '';
 label_mod = regexprep(fun_expr,expression,replace);
+expression = 'u\((\d*)\)';
+replace = 'u\[$1\]';
+label_mod = regexprep(label_mod,expression,replace);
+%in lustre arrays start with 0 as in C,
+for i=1:numel(list_in)
+    expression = strcat('u\[',num2str(i),'\]');
+    replace = strcat('u\[',num2str(i-1),'\]');
+    label_mod = regexprep(label_mod,expression,replace);
+end
 expression = '={2}';
 replace = '=';
 label_mod = regexprep(label_mod,expression,replace);
@@ -140,11 +149,9 @@ label_mod = regexprep(label_mod,expression,replace);
 expression = '(!)([^=]\w*)';
 replace = ' not $2';
 label_mod = regexprep(label_mod,expression,replace);
-expression = 'u\((\d*)\)';
-replace = 'u\[$1\]';
-label_mod = regexprep(label_mod,expression,replace);
-expression = '([^a-zA-Z_\[\.])(\d+)([^a-zA-Z_\.\]])';
-replace = '$1$2.$3';
+
+expression = '(^|[^a-zA-Z_\[\.])(\d+)((?=$)|[^a-zA-Z_\.\]])';
+replace = '$1$2.0$3';
 label_mod = regexprep(label_mod,expression,replace);
 expression = 'power\(';
 replace = 'pow\(';

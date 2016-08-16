@@ -70,7 +70,7 @@ IMAX = 10; %IMAX for randi the max born for random number
 
 try
     fprintf('start translating model "%s" to lustre automaton\n',file_name);
-%     lus_file_path= '/home/hamza/Documents/cocoSim/LM/5_nn/lustre_files/src_nn_12B/nn_12B.lus';
+%     lus_file_path= '/home/hamza/Documents/cocoSim/LM/9_euler/lustre_files/src_euler321_I2B_12B/euler321_I2B_12B.lus';
     lus_file_path=cocoSim(model_full_path);
     chart_name = file_name;
     configSet = copy(getActiveConfigSet(file_name));
@@ -192,6 +192,7 @@ else
                     set_param(configSet, 'ExternalInput', 'input_struct');
                     hws = get_param(file_name, 'modelworkspace');
                     hws.assignin('input_struct',eval('input_struct'));
+                    assignin('base','input_struct',input_struct)
                     if show_models
                         open(file_name)
                     end
@@ -204,6 +205,7 @@ else
                 end
                 yout = get(simOut,'yout');
                 yout_signals = yout.signals;
+%                 assignin('base','yout_signals',yout_signals)
                 numberOfOutputs = numel(yout_signals);
                 outputs_array = importdata('outputs_values','\n');
                 valid = true;
@@ -212,17 +214,25 @@ else
                 index_out = 0;
                 for i=0:nb_steps-1
                     for k=1:numberOfOutputs
-                        yout_values = yout_signals(k).values(i+1,:);
                         dim = yout_signals(k).dimensions;
                         if numel(dim)==2
+                            if dim(1)>1
+                                yout_values = [];
+                                y = yout_signals(k).values(:,:,i+1);
+                                for idr=1:dim(1)
+                                    yout_values = [yout_values; y(idr,:)'];
+                                end
+                            end
                             dim = dim(1)*dim(2);
+                        else
+                            yout_values = yout_signals(k).values(i+1,:);
                         end
                         for j=1:dim
                             index_out = index_out + 1;
                             output_value = regexp(outputs_array{index_out},'\s*:\s*','split');
                             if ~isempty(output_value)
                                 output_val = output_value{2};
-                                output_val = str2num(output_val(2:end-1))
+                                output_val = str2num(output_val(2:end-1));
                                 valid = valid && (abs(yout_values(j)-output_val)<eps);
                                 if  ~valid
                                     error_index = i+1;
@@ -248,7 +258,7 @@ else
                     fprintf('The right order of inputs in your model is described in this counter example\n');
                     
                     fprintf('Here is the counter example:\n');
-                    index_out = 1;
+                    index_out = 0;
                     for i=0:error_index-1
                         for j=1:numberOfInports
                             dim = input_struct.signals(j).dimensions;
@@ -259,10 +269,18 @@ else
                             end
                         end
                         for k=1:numberOfOutputs
-                            yout_values = yout_signals(k).values(i+1,:);
                             dim = yout_signals(k).dimensions;
                             if numel(dim)==2
+                                if dim(1)>1
+                                    yout_values = [];
+                                    y = yout_signals(k).values(:,:,i+1);
+                                    for idr=1:dim(1)
+                                        yout_values = [yout_values; y(idr,:)'];
+                                    end
+                                end
                                 dim = dim(1)*dim(2);
+                            else
+                                yout_values = yout_signals(k).values(i+1,:);
                             end
                             for j=1:dim
                                 index_out = index_out + 1;

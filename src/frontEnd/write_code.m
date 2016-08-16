@@ -542,7 +542,6 @@ for idx_block=1:nblk
                     [block_string, var_str] = write_compareto(inter_blk{idx_block}, inter_blk, relop, const, outdtstr, xml_trace);
 
                 else
-                    
 					error_msg = ['Unhandled masked block: ' inter_blk{idx_block}.origin_name{1}];
 					error_msg = [error_msg '\nMask type: ' inter_blk{idx_block}.mask_type];
 					display_msg(error_msg, Constants.ERROR, 'write_code', '');
@@ -588,6 +587,8 @@ for idx_block=1:nblk
 
 				block_string = write_crossproduct(inter_blk{idx_block}, inter_blk);
 				                
+            elseif strcmp(inter_blk{idx_block}.mask_type, 'Create 3x3 Matrix')
+                block_string = write_3x3_Matrix(inter_blk{idx_block}, inter_blk);
 			else
 				error_msg = ['Unhandled masked block: ' inter_blk{idx_block}.origin_name{1}];
 				error_msg = [error_msg '\nMask type: ' inter_blk{idx_block}.mask_type];
