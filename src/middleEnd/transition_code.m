@@ -137,7 +137,7 @@ for i=1:n
                 if (n2<=1)||( n2>1 && transitions2(end)==transitions(i+1))
                     print = true;
                 end
-                if print
+                if  print
                     output_updated_i = struct('condition',c_trans,'variables_struct',variables_struct);
                     output_updated = [output_updated_i, output_updated];
                 end
@@ -551,8 +551,12 @@ if ~strcmp(transitions(end).Destination.Type,'CONNECTIVE')
     
 
 end
-output_updated_final = struct('condition',c_trans,'variables_struct',variables_struct);
-output_updated = [output_updated_final, output_updated];
+if strcmp(c_trans,'')
+    output_updated = struct('condition',c_trans,'variables_struct',variables_struct);
+else
+    output_updated_final = struct('condition',c_trans,'variables_struct',variables_struct);
+    output_updated = [output_updated_final, output_updated];
+end
 
 end
 

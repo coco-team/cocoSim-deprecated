@@ -13,15 +13,15 @@ function [transition_actions, nb_transition_actions, external_nodes, global_node
     nb_transition_actions =0;
     if ~isempty(condition_action)
 %         fprintf('before:%s\nafter:%s\n',label,condition_action);
-        [transition_action_code, external_nodes, node_struct] = write_transition_action(chart, data,transition , 'Condition_Action',condition_action, variables_struct, isFunction, node_struct, global_nodes_struct);
+        [transition_action_code, external_nodes, node_struct_i] = write_transition_action(chart, data,transition , 'Condition_Action',condition_action, variables_struct, isFunction, node_struct, global_nodes_struct);
         transition_actions = [transition_actions '\n\n'  transition_action_code];
-        global_nodes_struct = [global_nodes_struct, node_struct];
+        global_nodes_struct = [global_nodes_struct, node_struct_i];
         nb_transition_actions = nb_transition_actions +1;
     end
     if ~isempty(transition_action)
-        [transition_action_code, external_nodes, node_struct] = write_transition_action(chart, data, transition , 'Transition_Action', transition_action, variables_struct, isFunction, node_struct, global_nodes_struct);
+        [transition_action_code, external_nodes, node_struct_i] = write_transition_action(chart, data, transition , 'Transition_Action', transition_action, variables_struct, isFunction, node_struct, global_nodes_struct);
         transition_actions = [transition_actions '\n\n'  transition_action_code];
-        global_nodes_struct = [global_nodes_struct, node_struct];
+        global_nodes_struct = [global_nodes_struct, node_struct_i];
         nb_transition_actions = nb_transition_actions +1;
     end
 end

@@ -1,16 +1,16 @@
-function result = test_all(tool_path,count,cocoSim_path, Debug)
+function result = test_all(tool_path,count,cocoSim_path, show_models)
 bdclose('all')
 if ~exist('count', 'var')
     count = 1;
 end
 if ~exist('Debug', 'var')
-    Debug = 0;
+    show_models = 0;
 end
 if ~exist('cocoSim_path', 'var')
     cocoSim_path = pwd;
 end
 if ~exist('tool_path', 'var')
-    tool_path = '/home/hamza/Documents/cocoSim/sf_test/tests_with_properties/';
+    tool_path = '/home/hamza/Documents/coco_team/regression-test/stateflow/tests_with_properties/';%not_valid_models/';
 %     tool_path =    fullfile(cocoSim_path,'sf_test/regression_tests/');
 end
 addpath(tool_path);
@@ -54,7 +54,7 @@ for k=1:count
 
         close_system(char(model_full_path),0);
         try
-        [valid_i, sf2lus_failed_i,lustrec_failed_i, lustrec_binary_failed_i, sim_failed_i, lus_file_path]=validate_model(char(model_full_path),cocoSim_path,Debug,L);
+        [valid_i, sf2lus_failed_i,lustrec_failed_i, lustrec_binary_failed_i, sim_failed_i, lus_file_path]=validate_model(char(model_full_path),cocoSim_path,show_models,L);
         catch ME
             warning('%s\n',ME.message);
             L.error('validate_model',getReport(ME,'extended'));

@@ -70,7 +70,7 @@ IMAX = 10; %IMAX for randi the max born for random number
 
 try
     fprintf('start translating model "%s" to lustre automaton\n',file_name);
-%     lus_file_path= '/home/hamza/Documents/cocoSim/LM/9_euler/lustre_files/src_euler321_I2B_12B/euler321_I2B_12B.lus';
+%     lus_file_path= '/home/hamza/Documents/coco_team/regression-test/stateflow/tests_with_properties/not_valid_models/lustre_files/src_GPCA_INFUSION_MGR/GPCA_INFUSION_MGR.lus';
     lus_file_path=cocoSim(model_full_path);
     chart_name = file_name;
     configSet = copy(getActiveConfigSet(file_name));
@@ -115,6 +115,7 @@ else
         lustre_binary = strcat(file_name,'_',Utils.name_format(chart_name));
         input_struct.time = (0:simulation_step:stop_time)';
         input_struct.signals = [];
+        number_of_inputs = 0;
         for i=1:numberOfInports
             input_struct.signals(i).name = inports(i).Name;
             dim = inports(i).Dimension;
@@ -131,10 +132,16 @@ else
                 input_struct.signals(i).values = Utils.construct_random_doubles(nb_steps, dim);
                 input_struct.signals(i).dimensions = dim;
             end
+            if numel(dim)==1
+                number_of_inputs = number_of_inputs + nb_steps*dim;
+            else
+                number_of_inputs = number_of_inputs + nb_steps*(dim(1) * dim(2));
+            end
 %             input_struct.signals(i).values
 %             input_struct.signals(i).dimensions
         end
         if numberOfInports>=1
+            lustre_input_values = ones(number_of_inputs,1);
             index = 0;
             for i=0:nb_steps-1
                 for j=1:numberOfInports

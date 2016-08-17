@@ -242,6 +242,7 @@ function [action_code, variables_struct, node_struct] = write_children_action(ch
                 end
             end
             for i=1:n
+                variables_struct = initialize_unused_variables(variables_struct,old_struct);
                 name = [get_full_name(children(i)), '_', token];
                 id_value = num2str(children(i).get('Id'));
                 index = find(strcmp({global_nodes_struct.Name},name),1);
@@ -333,7 +334,9 @@ function [result, output_updated, variables_struct, node_struct] = get_initial_s
     n_tr = numel(default_transition);
     output_updated_struct_array = cell(n_tr,1);
     if ~isempty(default_transition)
+        old_struct = variables_struct;
         for i=1:n_tr
+            variables_struct = initialize_unused_variables(variables_struct,old_struct);
             [result_i, output_updated_struct, variables_struct, node_struct] = transition_code(chart, data, state, default_transition(i), true, variables_struct, node_struct, global_nodes_struct);
             output_updated_struct_array{i} =output_updated_struct;
             result = [result,'\n', result_i];
@@ -404,5 +407,13 @@ end
 
 
 
+function variables_struct_new = initialize_unused_variables(variables_struct,old_variables_struct)
+variables_struct_new = variables_struct;
+for i=1:numel(variables_struct_new)
+    if ~old_variables_struct(i).used 
+        variables_struct_new(i).used = 0;
+    end
+end
 
+end
 

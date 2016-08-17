@@ -16,6 +16,6 @@ expression = '(\s*|\-|/)';
 replace = '';
 object_name = regexprep(object.Name,expression,replace);
 object_parent_name = regexprep(object_parent_name,expression,replace);
-object_full_name = strcat(object_parent_name,'_',object_name);
+object_full_name = Utils.name_format(strcat(object_parent_name,'_',object_name));
 end
 

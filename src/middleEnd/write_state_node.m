@@ -227,8 +227,11 @@ for j=1:n
     end
 end
 
-if ~strcmp(output_updated,'') && strcmp(output_updated(end-3:end),'else')
+if  strcmp(output_updated(end-3:end),'else')
     [~, right_exp] = add_variables(outputs,false, old_struct);
+    output_updated = [output_updated,' ', right_exp];
+elseif strcmp(output_updated,'')
+    [~, right_exp] = add_variables(outputs,false, variables_struct);
     output_updated = [output_updated,' ', right_exp];
 end
 
