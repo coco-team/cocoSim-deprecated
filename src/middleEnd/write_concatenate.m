@@ -80,24 +80,59 @@ if strcmp(mode, 'Vector')
 	end
 else
 	if strcmp(dim, '1')
-		idx_out = 1;
-		[dim_r dim_c] = Utils.get_port_dims_simple(unbloc.inports_dim, 1);
-		for idx_c=1:dim_c
-			prec = 0;
-			for idx_in=1:unbloc.num_input
-				[in_dim_r in_dim_c] = Utils.get_port_dims_simple(unbloc.inports_dim, idx_in);
-				for idx_r=1:in_dim_r
-					idx = (idx_c - 1) * in_dim_r + idx_r + prec;
-					output_string = app_sprintf(output_string, '\t%s = %s;\n', list_out{idx_out}, list_in{idx});
-					idx_out = idx_out + 1;
-				end
-				prec = prec + in_dim_r * in_dim_c;
-			end
-		end
-	else
+        %previous code
+% 		idx_out = 1;
+% 		[dim_r dim_c] = Utils.get_port_dims_simple(unbloc.inports_dim, 1);
+% 		for idx_c=1:dim_c
+% 			prec = 0;
+% 			for idx_in=1:unbloc.num_input
+% 				[in_dim_r in_dim_c] = Utils.get_port_dims_simple(unbloc.inports_dim, idx_in);
+% 				for idx_r=1:in_dim_r
+% 					idx = (idx_c - 1) * in_dim_r + idx_r + prec;
+% 					output_string = app_sprintf(output_string, '\t%s = %s;\n', list_out{idx_out}, list_in{idx});
+% 					idx_out = idx_out + 1;
+% 				end
+% 				prec = prec + in_dim_r * in_dim_c;
+% 			end
+%         end
+
+        %new code
 		for idx=1:numel(list_out)
 			output_string = app_sprintf(output_string, '\t%s = %s;\n', list_out{idx}, list_in{idx});
 		end
+    else
+        %previous code
+% 		for idx=1:numel(list_out)
+% 			output_string = app_sprintf(output_string, '\t%s = %s;\n', list_out{idx}, list_in{idx});
+% 		end
+
+        %new code
+        ind_in = 1;
+        res = [];
+        nb_col = 0;
+        for idx_in=1:unbloc.num_input
+            [in_dim_r, in_dim_c] = Utils.get_port_dims_simple(unbloc.inports_dim, idx_in);
+            for dim1=1:in_dim_r
+                for dim2=1:in_dim_c
+                    res(dim1,nb_col+dim2) = ind_in;
+                    ind_in = ind_in + 1;
+                end
+            end
+            nb_col = nb_col + in_dim_c;
+        end
+        [r,c] = size(res);
+        k = 1;
+        indexes =[];
+        for i=1:r
+            for j=1:c
+                indexes(k) = res(i,j);
+                k = k+1;
+            end
+        end
+        
+        for idx=1:numel(list_out)
+			output_string = app_sprintf(output_string, '\t%s = %s;\n', list_out{idx}, list_in{indexes(idx)});
+        end
 	end
 end
 

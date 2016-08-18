@@ -77,7 +77,7 @@ add_vars = '';
 in_dt = Utils.get_lustre_dt(unbloc.inports_dt{1});
 
 if strcmp(in_dt, 'bool')
-	[list_const] = Utils.list_cst(const, 'real');
+	[list_const] = Utils.list_cst(const, 'write_compareto_bool');
 else
 	[list_const] = Utils.list_cst(const, unbloc.inports_dt{1});
 end

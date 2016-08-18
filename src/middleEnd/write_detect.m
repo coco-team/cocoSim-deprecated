@@ -92,11 +92,11 @@
 %
 %%% + If Input is a boolean
 %
-%  Output = not(Input) and (vinit -> pre(Input));
+%  Output = not(Input) and (not vinit -> pre(Input));
 %
 %%% + else
 %
-%  Output = Input <= zero and not ((vinit -> pre (Input)) <= zero);
+%  Output = Input <= zero and not (vinit < zero -> pre (Input)<= zero);
 %
 %% Code
 %
@@ -170,7 +170,7 @@ if strcmp(mask, Constants.detect_change)
 elseif strcmp(mask, Constants.detect_dec) 
 	if strcmp(unbloc.inports_dt{1}, 'boolean')
 		for idx=1:numel(list_out)
-			output_string = app_sprintf(output_string, '\t%s = %s and not (%s -> pre(%s));\n', list_out{idx}, list_in{idx}, list_vinit{idx}, list_in{idx});
+			output_string = app_sprintf(output_string, '\t%s = not(%s) and (%s -> pre(%s));\n', list_out{idx}, list_in{idx}, list_vinit{idx}, list_in{idx});
 		end
 	else
 		for idx=1:numel(list_out)
@@ -180,7 +180,7 @@ elseif strcmp(mask, Constants.detect_dec)
 elseif strcmp(mask, Constants.detect_inc) 
 	if strcmp(unbloc.inports_dt{1}, 'boolean')
 		for idx=1:numel(list_out)
-			output_string = app_sprintf(output_string, '\t%s = not(%s) and (%s -> pre(%s));\n', list_out{idx}, list_in{idx}, list_vinit{idx}, list_in{idx});
+			output_string = app_sprintf(output_string, '\t%s = %s and not (%s -> pre(%s));\n', list_out{idx}, list_in{idx}, list_vinit{idx}, list_in{idx});
 		end
 	else
 		for idx=1:numel(list_out)
@@ -220,11 +220,11 @@ elseif strcmp(mask, Constants.detect_fall_neg)
 elseif strcmp(mask, Constants.detect_fall_nonpos)
 	if strcmp(unbloc.inports_dt{1}, 'boolean')
 		for idx=1:numel(list_out)
-			output_string = app_sprintf(output_string, '\t%s = not(%s) and (%s -> pre (%s));\n', list_out{idx}, list_in{idx}, list_vinit{idx}, list_in{idx});
+			output_string = app_sprintf(output_string, '\t%s = not(%s) and (not %s -> pre (%s));\n', list_out{idx}, list_in{idx}, list_vinit{idx}, list_in{idx});
 		end
 	else
 		for idx=1:numel(list_out)
-			output_string = app_sprintf(output_string, '\t%s = %s <= %s and not ((%s -> pre (%s)) <= %s);\n', list_out{idx}, list_in{idx}, zero, list_vinit{idx}, list_in{idx}, zero);
+			output_string = app_sprintf(output_string, '\t%s = %s <= %s and not ((%s < %s) -> (pre (%s) <= %s));\n', list_out{idx}, list_in{idx}, zero, list_vinit{idx}, zero,list_in{idx}, zero);
 		end
 	end	
 else

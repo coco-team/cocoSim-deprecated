@@ -43,6 +43,7 @@ for idx_block=1:nblk
             is_Chart = true;
         end
     end
+%     display(inter_blk{idx_block}.type);
 	%%%%%%%%%%% Gain %%%%%%%%%%%%%%%%%%%%%%
 	if strcmp(inter_blk{idx_block}.type, 'Gain')
 		K = evalin('base', get_param(blks{idx_block}, 'Gain'));
@@ -152,7 +153,9 @@ for idx_block=1:nblk
 
 		mode = get_param(blks{idx_block}, 'Mode');
 		dim = get_param(blks{idx_block}, 'ConcatenateDimension');
-
+%         display(inter_blk{idx_block})
+%         display(mode)
+%         display(dim)
 		block_string = write_concatenate(inter_blk{idx_block}, mode, dim, inter_blk);
 		
 	%%%%%%%%%%%%%%%%%%% MultiPortSwitch %%%%%%%%%%%%%
