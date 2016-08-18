@@ -58,6 +58,8 @@
 %
 %  Output = Input > (vinit -> pre(Input));
 %
+
+% in the following blocks : The initial condition vinit determines the initial value of the boolean expression (U/z >= 0).
 %%% Detect Rise Positive
 %
 %%% + If Input is a boolean
@@ -66,27 +68,25 @@
 %
 %%% + else
 %
-%  Output = Input > zero and not ((vinit -> pre (Input)) > zero);
+%  Output = Input > zero and not (vinit -> pre (Input) > zero);
 %
 %%% Detect Rise NonNegative
 %
-%%% + If Input is a boolean
-%
-%  Output = true;
+%  Output = true and not (vinit -> true);
 %
 %%% + else
 %
-%  Output = Input >= zero and not ((vinit -> pre (Input)) >= zero);
+%  Output = Input >= zero and not (vinit -> pre (Input) >= zero);
 %
 %%% Detect Fall Negative
 %
 %%% + If Input is a boolean
 %
-%  Output = false;
+%  Output =  false;
 %
 %%% + else
 %
-%  Output = Input < zero and not ((vinit -> pre (Input)) < zero);
+%  Output = Input < zero and not (vinit -> pre (Input) < zero);
 %
 %%% Detect Fall NonPositive
 %
@@ -96,7 +96,7 @@
 %
 %%% + else
 %
-%  Output = Input <= zero and not (vinit < zero -> pre (Input)<= zero);
+%  Output = Input <= zero and not (vinit  -> pre (Input)<= zero);
 %
 %% Code
 %
@@ -194,17 +194,17 @@ elseif strcmp(mask, Constants.detect_rise_pos)
 		end
 	else
 		for idx=1:numel(list_out)
-			output_string = app_sprintf(output_string, '\t%s = %s > %s and not ((%s -> pre (%s)) > %s);\n', list_out{idx}, list_in{idx}, zero, list_vinit{idx}, list_in{idx}, zero);
+			output_string = app_sprintf(output_string, '\t%s = %s > %s and not ((if %s=%s then false else true) -> pre (%s) > %s);\n', list_out{idx}, list_in{idx}, zero, list_vinit{idx}, zero, list_in{idx}, zero);
 		end
 	end
 elseif strcmp(mask, Constants.detect_rise_nonneg) 
 	if strcmp(unbloc.inports_dt{1}, 'boolean')
 		for idx=1:numel(list_out)
-			output_string = app_sprintf(output_string, '\t%s = true;\n', list_out{idx});
+			output_string = app_sprintf(output_string, '\t%s = true and not (%s -> true);\n', list_out{idx}, list_vinit{idx});
 		end
 	else
 		for idx=1:numel(list_out)
-			output_string = app_sprintf(output_string, '\t%s = %s >= %s and not ((%s -> pre (%s)) >= %s);\n', list_out{idx}, list_in{idx}, zero, list_vinit{idx}, list_in{idx}, zero);
+			output_string = app_sprintf(output_string, '\t%s = %s >= %s and not ((if %s=%s then false else true) -> pre (%s) >= %s);\n', list_out{idx}, list_in{idx}, zero, list_vinit{idx}, zero, list_in{idx}, zero);
 		end
 	end
 elseif strcmp(mask, Constants.detect_fall_neg) 
@@ -214,7 +214,7 @@ elseif strcmp(mask, Constants.detect_fall_neg)
 		end
 	else
 		for idx=1:numel(list_out)
-			output_string = app_sprintf(output_string, '\t%s = %s < %s and not ((%s -> pre (%s)) < %s);\n', list_out{idx}, list_in{idx}, zero, list_vinit{idx}, list_in{idx}, zero);
+			output_string = app_sprintf(output_string, '\t%s = %s < %s and not ((if %s=%s then false else true) -> pre (%s) < %s);\n', list_out{idx}, list_in{idx}, zero, list_vinit{idx}, zero, list_in{idx}, zero);
 		end
 	end
 elseif strcmp(mask, Constants.detect_fall_nonpos)
@@ -224,7 +224,7 @@ elseif strcmp(mask, Constants.detect_fall_nonpos)
 		end
 	else
 		for idx=1:numel(list_out)
-			output_string = app_sprintf(output_string, '\t%s = %s <= %s and not ((%s < %s) -> (pre (%s) <= %s));\n', list_out{idx}, list_in{idx}, zero, list_vinit{idx}, zero,list_in{idx}, zero);
+			output_string = app_sprintf(output_string, '\t%s = %s <= %s and not ((if %s=%s then false else true) -> pre (%s) <= %s);\n', list_out{idx}, list_in{idx}, zero, list_vinit{idx}, zero,list_in{idx}, zero);
 		end
 	end	
 else

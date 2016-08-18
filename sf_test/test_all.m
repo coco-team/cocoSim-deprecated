@@ -10,7 +10,8 @@ if ~exist('cocoSim_path', 'var')
     cocoSim_path = pwd;
 end
 if ~exist('tool_path', 'var')
-    tool_path = '/home/hamza/Documents/coco_team/regression-test/stateflow/tests_with_properties/';%not_valid_models/';
+    tool_path = '/home/hamza/Documents/coco_team/regression-test/simulink/unit_test/not_valid_models/';
+%     tool_path = '/home/hamza/Documents/coco_team/regression-test/stateflow/regression_tests/';
 %     tool_path =    fullfile(cocoSim_path,'sf_test/regression_tests/');
 end
 addpath(tool_path);
@@ -23,8 +24,7 @@ models_name = {mdl_models.name};
 
 n = numel(models_name);
 for k=1:count
-    nb_states = zeros(n,1);
-    nb_transitions = zeros(n,1);
+    
     lus_file_nb_bytes = zeros(n,1);
     valid = zeros(n,1);
     sf2lus_failed = zeros(n,1);
@@ -34,25 +34,6 @@ for k=1:count
     time_lustrec_horn = zeros(n,1);
     for i=1:n
         model_full_path = fullfile(tool_path, char(models_name{i}));
-        try
-        load_system(char(model_full_path));
-        catch ME
-            warning('%s\n',ME.message);
-            L.error('load_system',[char(models_name{i}), '\n' getReport(ME,'extended')]);
-            continue;
-        end
-        rt = sfroot;
-        m = rt.find('-isa', 'Simulink.BlockDiagram');
-        chartArray = m.find('-isa','Stateflow.Chart');
-        chart = chartArray(1);
-
-        states = chart.find('-isa', 'Stateflow.State');
-        nb_states(i) = numel(states);
-
-        transitions = chart.find('-isa','Stateflow.Transition');
-        nb_transitions(i) = numel(transitions);
-
-        close_system(char(model_full_path),0);
         try
         [valid_i, sf2lus_failed_i,lustrec_failed_i, lustrec_binary_failed_i, sim_failed_i, lus_file_path]=validate_model(char(model_full_path),cocoSim_path,show_models,L);
         catch ME
@@ -96,8 +77,9 @@ for k=1:count
     end
 
 
-    result = table(models_name', nb_states, nb_transitions, valid, sf2lus_failed,lustrec_failed, lustrec_binary_failed, sim_failed, lus_file_nb_bytes,time_lustrec_horn);
-    result = sortrows(result,9);
+    result = table(models_name', valid, sf2lus_failed,lustrec_failed, lustrec_binary_failed, sim_failed, lus_file_nb_bytes,time_lustrec_horn);
+    % if you want to order the result by a column
+%     result = sortrows(result,7);
     %if you want to debug the invalid examples
     not_valid_inexes = find(~valid);
     if ~isempty(not_valid_inexes)

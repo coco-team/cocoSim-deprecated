@@ -51,8 +51,8 @@ for i=1:numel(block_paths)
             if dimension==-1
                 dimension_struct = get_param(block,'CompiledPortDimensions');
                 dimension = dimension_struct.Outport;
-                if dimension(1)==1 && dimension(1)==1
-                    dimension = 1;
+                if numel(dimension)== 2 && dimension(1)==1
+                    dimension = dimension(2);
                 end
             end
             inports = [inports, struct('Name',Utils.naming_alone(block), 'DataType', DataType, 'Dimension', dimension)];
@@ -63,14 +63,17 @@ code_on=sprintf('%s([], [], [], ''term'')', file_name);
 evalin('base',code_on);
 
 numberOfInports = numel(inports);
+% stop_time = 0;
+% simulation_step = 1;
+% nb_steps = 1;
 stop_time = 100;
 simulation_step = 1;
 nb_steps = stop_time/simulation_step +1;
-IMAX = 10; %IMAX for randi the max born for random number
+IMAX = 100; %IMAX for randi the max born for random number
 
 try
     fprintf('start translating model "%s" to lustre automaton\n',file_name);
-%     lus_file_path= '/home/hamza/Documents/coco_team/regression-test/stateflow/tests_with_properties/not_valid_models/lustre_files/src_GPCA_INFUSION_MGR/GPCA_INFUSION_MGR.lus';
+%     lus_file_path= '/home/hamza/Documents/coco_team/regression-test/simulink/unit_test/not_valid_models/lustre_files/src_assignment_port_test/assignment_port_test.lus';
     lus_file_path=cocoSim(model_full_path);
     chart_name = file_name;
     configSet = copy(getActiveConfigSet(file_name));
@@ -128,8 +131,11 @@ else
             elseif strcmp(sT2fT(inports(i).DataType),'int') 
                 input_struct.signals(i).values = Utils.construct_random_integers(nb_steps, IMAX, inports(i).DataType, dim);
                 input_struct.signals(i).dimensions = dim;
+            elseif strcmp(inports(i).DataType,'single') 
+                input_struct.signals(i).values = single(Utils.construct_random_doubles(nb_steps, IMAX,dim));
+                input_struct.signals(i).dimensions = dim;
             else
-                input_struct.signals(i).values = Utils.construct_random_doubles(nb_steps, dim);
+                input_struct.signals(i).values = Utils.construct_random_doubles(nb_steps, IMAX,dim);
                 input_struct.signals(i).dimensions = dim;
             end
             if numel(dim)==1
@@ -140,6 +146,8 @@ else
 %             input_struct.signals(i).values
 %             input_struct.signals(i).dimensions
         end
+%         input_struct = evalin('base','xin');
+
         if numberOfInports>=1
             lustre_input_values = ones(number_of_inputs,1);
             index = 0;
@@ -151,7 +159,12 @@ else
                         lustre_input_values(index+1:index2) = input_struct.signals(j).values(i+1,:)';
                     else
                         index2 = index + (dim(1) * dim(2));
-                        lustre_input_values(index+1:index2) = input_struct.signals(j).values(i+1,:)';
+                        yout_values = [];
+                        y = input_struct.signals(j).values(:,:,i+1);
+                        for idr=1:dim(1)
+                            yout_values = [yout_values; y(idr,:)'];
+                        end
+                        lustre_input_values(index+1:index2) = yout_values;
                     end
                     
                     index = index2;
@@ -212,7 +225,7 @@ else
                 end
                 yout = get(simOut,'yout');
                 yout_signals = yout.signals;
-%                 assignin('base','yout_signals',yout_signals)
+                assignin('base','yout_signals',yout_signals)
                 numberOfOutputs = numel(yout_signals);
                 outputs_array = importdata('outputs_values','\n');
                 valid = true;
@@ -223,12 +236,10 @@ else
                     for k=1:numberOfOutputs
                         dim = yout_signals(k).dimensions;
                         if numel(dim)==2
-                            if dim(1)>1
-                                yout_values = [];
-                                y = yout_signals(k).values(:,:,i+1);
-                                for idr=1:dim(1)
-                                    yout_values = [yout_values; y(idr,:)'];
-                                end
+                            yout_values = [];
+                            y = yout_signals(k).values(:,:,i+1);
+                            for idr=1:dim(1)
+                                yout_values = [yout_values; y(idr,:)'];
                             end
                             dim = dim(1)*dim(2);
                         else
@@ -269,10 +280,20 @@ else
                     for i=0:error_index-1
                         for j=1:numberOfInports
                             dim = input_struct.signals(j).dimensions;
-                            for k=1:dim
+                            if numel(dim)==1
                                 in = input_struct.signals(j).values(i+1,:);
                                 name = input_struct.signals(j).name;
-                                fprintf('input %s_%d:%d\n',name,k,in(k));
+                                for k=1:dim
+                                    fprintf('input %s_%d:%d\n',name,k,in(k));
+                                end
+                            else
+                                in = input_struct.signals(j).values(:,:,i+1);
+                                name = input_struct.signals(j).name;
+                                for dim1=1:dim(1)
+                                    for dim2=1:dim(2)
+                                        fprintf('input %s_%d_%d:%d\n',name,dim1,dim2,in(dim1, dim2));
+                                    end
+                                end
                             end
                         end
                         for k=1:numberOfOutputs
@@ -320,10 +341,10 @@ else
                 system(command);
                 cd(OldPwd);
             catch ME
-                fprintf('simulation failed for model "%s" :\n%s\n%s',file_name,ME.identifier,ME.message);
-                cellfun(@disp, ME.cause);
-                fprintf('\n');
-                disp(ME.stack);
+                fprintf('simulation failed for model "%s" :\n%s\n%s\n%s',file_name,ME.identifier,ME.message, getReport(ME,'extended'));
+%                 cellfun(@disp, ME.cause);
+%                 fprintf('\n');
+%                 disp(ME.stack);
                 sim_failed = 1;
                 valid = 0;
                 close_system(model_full_path,0);
