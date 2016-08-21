@@ -56,9 +56,13 @@
 %  Output_1_2 = vinit{2} -> (K{2} * T) + pre(Input_1_2);
 %  Output_1_3 = vinit{3} -> (K{3} * T) + pre(Input_1_3);
 %
+%%%The External reset parameter lets you determine the attribute 
+%of the reset signal that triggers the reset. 
+%The trigger options include:rising, falling, either, level, 
+%sampled level
 %% Code
 %
-function [output_string] = write_discreteintegrator(unbloc, K, external_reset, T, vinit, inter_blk)
+function [output_string, var_str] = write_discreteintegrator(unbloc, K, external_reset, T, vinit, inter_blk)
 
 output_string = '';
 
@@ -126,16 +130,17 @@ if strcmp(unbloc.outports_dt{1}, 'double') || strcmp(unbloc.outports_dt{1}, 'sim
 else
 	conv_int = true;
 end
-
+var_str = [];
 if ~strcmp(external_reset, 'none') && strcmp(vinit, '')
 	% 3 inputs to the block
 	for idx_row=1:dim_r
 		for idx_col=1:dim_c
 			in_out_idx = idx_col + ((idx_row - 1) * dim_c);
 			prestate = ['pre ' list_in{in_out_idx}];
-			cstate = [sprintf('(%s * %s) + %s', list_const{in_out_idx}, list_T{1}, prestate)];
+            preOut = ['pre ' list_out{in_out_idx}];
+			cstate = sprintf('(%s * %s)*(%s) + %s', list_const{in_out_idx}, list_T{1}, prestate,preOut);
 
-			[in2_dim_r in2_dim_c] = Utils.get_port_dims_simple(unbloc.inports_dim, 2);
+			[in2_dim_r, in2_dim_c] = Utils.get_port_dims_simple(unbloc.inports_dim, 2);
 
 			nb_elem_second = in2_dim_r * in2_dim_c;
 			shift_third_input = nb_elem_first + nb_elem_second;
@@ -143,10 +148,16 @@ if ~strcmp(external_reset, 'none') && strcmp(vinit, '')
 			reset_cond = '';
 			if is_reset
 				reset_cond = sprintf('if %s then %s else ', reset_var_name, list_in{in_out_idx + shift_third_input});
-			end
-
+            end
+            %new code : add Reset Trigger Types (see description above)
+            cond_var = list_in{in_out_idx + nb_elem_first};
+            expression = get_trigger_conditions(unbloc,external_reset, cond_var);
+            var_name = strcat(Utils.name_format(Utils.naming_alone(unbloc.origin_name{1})),'_Reset_Trigger',num2str(idx_row),'_', num2str(idx_col));
+            output_string = app_sprintf(output_string, '\t%s = %s;\n', var_name,expression);
+            var_str = [var_str, sprintf('\t%s: bool;\n',var_name)];
+            
 			out_str = sprintf('%s%s -> ', reset_cond, list_in{in_out_idx + shift_third_input});
-			out_str = app_sprintf(out_str, 'if %s ', list_in{in_out_idx + nb_elem_first});
+			out_str = app_sprintf(out_str, 'if %s ', var_name);
 			out_str = app_sprintf(out_str, 'then %s ', list_in{in_out_idx + shift_third_input});
 			out_str = app_sprintf(out_str, 'else %s', cstate);
 			if needs_convert
@@ -161,16 +172,23 @@ elseif ~strcmp(external_reset, 'none')
 	for idx_row=1:dim_r
 		for idx_col=1:dim_c
 			in_out_idx = idx_col + ((idx_row - 1) * dim_c);
-			prestate = ['pre ' list_in{in_out_idx}];
-			cstate = [sprintf('(%s * %s) + %s', list_const{in_out_idx}, list_T{1}, prestate)];
+            prestate = ['pre ' list_in{in_out_idx}];
+            preOut = ['pre ' list_out{in_out_idx}];
+			cstate = sprintf('(%s * %s)*(%s) + %s', list_const{in_out_idx}, list_T{1}, prestate,preOut);
 
 			reset_cond = '';
 			if is_reset
 				reset_cond = sprintf('if %s then %s else ', reset_var_name, list_init{in_out_idx});
-			end
-
+            end
+            %new code : add Reset Trigger Types (see description above)
+            cond_var = list_in{in_out_idx + nb_elem_first};
+            expression = get_trigger_conditions(unbloc, external_reset,cond_var);
+            var_name = strcat(Utils.name_format(Utils.naming_alone(unbloc.origin_name{1})),'_Reset_Trigger',num2str(idx_row),'_', num2str(idx_col));
+            output_string = app_sprintf(output_string, '\t%s = %s;\n', var_name,expression);
+            var_str = [var_str, sprintf('\t%s: bool;\n',var_name)];
+            
 			out_str = sprintf('%s%s -> ', reset_cond, list_init{in_out_idx});
-			out_str = app_sprintf(out_str, 'if %s ', list_in{in_out_idx + nb_elem_first});
+			out_str = app_sprintf(out_str, 'if %s ', var_name);
 			out_str = app_sprintf(out_str, 'then %s ', list_init{in_out_idx});
 			out_str = app_sprintf(out_str, 'else %s', cstate);
 			if needs_convert
@@ -185,8 +203,9 @@ elseif strcmp(vinit, '')
 	for idx_row=1:dim_r
 		for idx_col=1:dim_c
 			in_out_idx = idx_col + ((idx_row - 1) * dim_c);
-			prestate = ['pre ' list_in{in_out_idx}];
-			cstate = [sprintf('(%s * %s) + %s', list_const{in_out_idx}, list_T{1}, prestate)];
+            prestate = ['pre ' list_in{in_out_idx}];
+            preOut = ['pre ' list_out{in_out_idx}];
+			cstate = sprintf('(%s * %s)*(%s) + %s', list_const{in_out_idx}, list_T{1}, prestate,preOut);
 
 			reset_cond = '';
 			if is_reset
@@ -207,8 +226,9 @@ else
 	for idx_row=1:dim_r
 		for idx_col=1:dim_c
 			in_out_idx = idx_col + ((idx_row - 1) * dim_c);
-			prestate = ['pre ' list_in{in_out_idx}];
-			cstate = [sprintf('(%s * %s) + %s', list_const{in_out_idx}, list_T{1}, prestate)];
+            prestate = ['pre ' list_in{in_out_idx}];
+            preOut = ['pre ' list_out{in_out_idx}];
+			cstate = sprintf('(%s * %s)*(%s) + %s', list_const{in_out_idx}, list_T{1}, prestate,preOut);
 
 			reset_cond = '';
 			if is_reset
@@ -227,4 +247,53 @@ else
 end
 
 end
-
+function [expression] = get_trigger_conditions(unbloc, external_reset,cond_var)
+trigger_dt = Utils.get_lustre_dt(unbloc.inports_dt{2});
+expression = '';
+if strcmp(trigger_dt, 'bool')
+        if strcmp(external_reset, 'rising')
+            expression = sprintf('false -> (not(pre %s) and %s)', cond_var, cond_var);
+        elseif strcmp(external_reset, 'falling')
+            expression = sprintf('false -> (pre(%s) and not(%s))', cond_var, cond_var);
+        elseif strcmp(external_reset, 'either')
+            expression = sprintf('false -> (not(pre(%s) = %s))', cond_var, cond_var);
+        elseif strcmp(external_reset, 'level')
+            expression = sprintf('false -> %s or (not(pre(%s) = %s))', cond_var, cond_var, cond_var);
+        elseif strcmp(external_reset, 'sampled level')
+            expression = cond_var;
+        else
+            msg = sprintf('%s trigger not supported\n', external_reset);
+            display_msg(msg, Constants.ERROR, 'write_discreteintegrator', '');
+        end
+elseif strcmp(trigger_dt, 'int')
+        if strcmp(external_reset, 'rising')
+            expression = sprintf('false -> (pre(%s) <= 0 and %s > 0)', cond_var, cond_var);
+        elseif strcmp(external_reset, 'falling')
+            expression = sprintf('false -> (pre(%s) > 0 and %s <= 0)', cond_var, cond_var);
+        elseif strcmp(external_reset, 'either')
+            expression = sprintf('false -> ((pre(%s) > 0 and %s <= 0) or (pre(%s) <= 0 and %s > 0))', cond_var, cond_var,cond_var,cond_var);
+        elseif strcmp(external_reset, 'level')
+            expression = sprintf('false -> %s>0 or (not((pre(%s) > 0 and %s <= 0) or (pre(%s) <= 0 and %s > 0)))', cond_var,cond_var,cond_var, cond_var, cond_var);
+        elseif strcmp(external_reset, 'sampled level')
+            expression = sprintf('false -> (%s > 0)', cond_var);
+        else
+            msg = sprintf('%s trigger not supported\n', external_reset);
+            display_msg(msg, Constants.ERROR, 'write_discreteintegrator', '');
+        end
+else
+        if strcmp(external_reset, 'rising')
+            expression = sprintf('false -> (pre(%s) <= 0.0 and %s > 0.0)', cond_var, cond_var);
+        elseif strcmp(external_reset, 'falling')
+            expression = sprintf('false -> (pre(%s) > 0.0 and %s <= 0.0)', cond_var, cond_var);
+        elseif strcmp(external_reset, 'either')
+            expression = sprintf('false -> ((pre(%s) > 0.0 and %s <= 0.0) or (pre(%s) <= 0.0 and %s > 0.0))', cond_var, cond_var,cond_var,cond_var);
+        elseif strcmp(external_reset, 'level')
+            expression = sprintf('false -> %s>0.0 or (not((pre(%s) > 0.0 and %s <= 0.0) or (pre(%s) <= 0.0 and %s > 0.0)))', cond_var,cond_var,cond_var, cond_var, cond_var);
+        elseif strcmp(external_reset, 'sampled level')
+            expression = sprintf('false -> (%s > 0.0)', cond_var);
+        else
+            msg = sprintf('%s trigger not supported\n', external_reset);
+            display_msg(msg, Constants.ERROR, 'write_discreteintegrator', '');
+        end
+end
+end

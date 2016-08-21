@@ -113,7 +113,10 @@ for idx_block=1:nblk
 	elseif strcmp(inter_blk{idx_block}.type, 'DiscreteIntegrator')
 
 		K = evalin('base', get_param(blks{idx_block}, 'gainval'));
-		T = evalin('base', inter_blk{idx_block}.sample_time);
+        T = evalin('base', get_param(blks{idx_block}, 'SampleTime'));
+        if strcmp(T,'-1')
+            T = evalin('base', inter_blk{idx_block}.sample_time);
+        end
 		% The initial condition is defined unsing an external constant block
 		if strcmp(get_param(inter_blk{idx_block}.origin_name, 'InitialConditionSource'), 'external')
 			vinit = '';
@@ -122,7 +125,7 @@ for idx_block=1:nblk
 		end
 		external_reset =  get_param(blks{idx_block}, 'ExternalReset');
 
-		block_string = write_discreteintegrator(inter_blk{idx_block}, K, external_reset, T, vinit, inter_blk);
+		[block_string, var_str] = write_discreteintegrator(inter_blk{idx_block}, K, external_reset, T, vinit, inter_blk);
 
 	%%%%%%%%%%%%%%%% Sum %%%%%%%%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'Sum')
@@ -184,7 +187,7 @@ for idx_block=1:nblk
 		dss_D = evalin('base', get_param(blks{idx_block}, 'D'));
 		X0 = evalin('base', get_param(blks{idx_block}, 'X0'));
 
-		[block_string var_str] = write_dss(inter_blk{idx_block}, dss_A, dss_B, dss_C,dss_D, X0, inter_blk, xml_trace);
+		[block_string, var_str] = write_dss(inter_blk{idx_block}, dss_A, dss_B, dss_C,dss_D, X0, inter_blk, xml_trace);
 
 	%%%%%%%%%%%%%%%% Function %%%%%%%%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'Fcn')
@@ -271,7 +274,7 @@ for idx_block=1:nblk
 
 		tag_value = get_param(blks{idx_block}, 'GotoTag');
 		   
-      [block_string var_str] = write_goto_from(inter_blk{idx_block}, inter_blk, tag_value, xml_trace);
+      [block_string, var_str] = write_goto_from(inter_blk{idx_block}, inter_blk, tag_value, xml_trace);
 		
 	%%%%%%%%%%%%% Merge %%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'Merge')
@@ -320,7 +323,7 @@ for idx_block=1:nblk
 	%%%%%%%%%%%%% DotProduct %%%%%%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'DotProduct')
 
-		[block_string var_str] = write_dotproduct(inter_blk{idx_block}, inter_blk, xml_trace);
+		[block_string, var_str] = write_dotproduct(inter_blk{idx_block}, inter_blk, xml_trace);
 		
 	%%%%%%%%%%%%% Maths function & Sqrt %%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'Math') || strcmp(inter_blk{idx_block}.type, 'Sqrt')

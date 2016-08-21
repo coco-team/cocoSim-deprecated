@@ -76,8 +76,10 @@ for k1=1:nstate
 		xi_state0{k1} = num2str(0, '%10.10f');
     else % or the vector is specified by the user
 		xi_state0{k1} = num2str(X0(k1), '%10.10f');
-	end
-	prestate{k1}= ['pre ' tmp_var_prefix num2str(k1)];
+    end
+    %old code : misunderstanding of the system equation
+%     prestate{k1}= ['(pre ' tmp_var_prefix num2str(k1) ')'];
+	prestate{k1}= ['(' xi_state0{k1} ' -> pre ' tmp_var_prefix num2str(k1) ')'];
 	for k2=1:nstate
 		Avalue{k1,k2} = num2str(dss_A(k1,k2), '%10.10f');
 	end
@@ -87,7 +89,9 @@ end
 input=list_in;
 
 for k1=1:ninput
-	preinput{k1} = ['pre ' list_in{k1}];
+    %old code : misunderstanding of the system equation
+% 	preinput{k1} = ['(pre ' list_in{k1} ')'];
+    preinput{k1} = list_in{k1};
 	for k2=1:nstate
 		Bvalue{k2,k1} = num2str(dss_B(k2,k1), '%10.10f');
 	end
@@ -125,20 +129,31 @@ buffer = get_dss_mat_contrib(nstate, ninput, preinput, dss_B, Bvalue);
 if nstate > 0
 	cinput = buffer;
 end
-
+%old code : misunderstanding of the system equation. The initial state
+%should be applied to the state x(n) and not to whole wquation Ax(n) +
+%Bu(n)
+% for k1=1:nstate
+% 	if strcmp(cinput{k1},'') ~= 0
+% 		output_string = app_sprintf(output_string,'\t%s = %s -> (%s) ;\n', xi_state{k1}, xi_state0{k1}, cstate{k1});
+% 	else
+% 		output_string = app_sprintf(output_string,'\t%s = %s -> ((%s) + (%s));\n', xi_state{k1}, xi_state0{k1}, cstate{k1}, cinput{k1});
+% 	end
+% end
 for k1=1:nstate
 	if strcmp(cinput{k1},'') ~= 0
-		output_string = app_sprintf(output_string,'\t%s = %s -> (%s) ;\n', xi_state{k1}, xi_state0{k1}, cstate{k1});
+		output_string = app_sprintf(output_string,'\t%s = %s ;\n', xi_state{k1}, cstate{k1});
 	else
-		output_string = app_sprintf(output_string,'\t%s = %s -> ((%s) + (%s));\n', xi_state{k1}, xi_state0{k1}, cstate{k1}, cinput{k1});
+		output_string = app_sprintf(output_string,'\t%s = (%s) + (%s);\n', xi_state{k1}, cstate{k1}, cinput{k1});
 	end
 end
-
 clear buffer;
 % Writing outputs
 
 % States contributions
-buffer = get_dss_mat_contrib(noutput, nstate, xi_state, dss_C, Cvalue);
+%old code : misunderstanding of the system equation. we use x(n) and not
+%x(n+1)
+% buffer = get_dss_mat_contrib(noutput, nstate, xi_state, dss_C, Cvalue);
+buffer = get_dss_mat_contrib(noutput, nstate, prestate, dss_C, Cvalue);
 
 cstate = buffer;
 

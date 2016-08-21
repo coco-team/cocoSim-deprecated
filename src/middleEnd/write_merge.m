@@ -40,11 +40,11 @@ n = numel(list_out);
 n2 = numel(list_in);
 outport_dt = unbloc.outports_dt{1};
 if strfind(outport_dt,'int')
-    initial_value = '1';
+    initial_value = '0';
 elseif strfind(outport_dt,'bool')
-    initial_value = 'true';
+    initial_value = 'false';
 else
-    initial_value = '1.0';
+    initial_value = '0.0';
 end
 for k1=1:n
     str = '';

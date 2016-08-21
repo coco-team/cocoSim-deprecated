@@ -109,8 +109,8 @@ if numel(unbloc.action) > 0 || numel(unbloc.trigger) > 0 || numel(unbloc.enable)
 	if numel(unbloc.action) > 0
 		type = 'Action';
 		list_cond = list_var_action(unbloc, inter_blk, type);
-	else
-		if numel(unbloc.trigger) > 0
+    else
+        if numel(unbloc.trigger) > 0
 			type = 'Trigger';
 			list_var_cond_trigger = list_var_action(unbloc, inter_blk, type);
 			[cond_str_trigger, list_in_str_trigger, additional_outputs, add_vars] = get_trigger_conditions(unbloc, list_var_cond_trigger);
@@ -121,8 +121,11 @@ if numel(unbloc.action) > 0 || numel(unbloc.trigger) > 0 || numel(unbloc.enable)
 			type = 'Enable';
 			if numel(unbloc.trigger) > 0
 				list_var_cond_enable = list_var_action(unbloc, inter_blk, type);
-				[cond_str_enable list_in_str_enable] = get_enable_conditions(unbloc, list_var_cond_enable);
+				[cond_str_enable, list_in_str_enable] = get_enable_conditions(unbloc, list_var_cond_enable);
 				list_cond = [cond_str_trigger cond_str_enable];
+                if numel(list_in_str_enable) > 0
+					list_in_str = [list_in_str ', ' list_in_str_enable];
+				end
 				if numel(list_in_str_trigger) > 0
                     if strcmp(list_in_str,'')
                         list_in_str =  list_in_str_trigger;
@@ -130,15 +133,16 @@ if numel(unbloc.action) > 0 || numel(unbloc.trigger) > 0 || numel(unbloc.enable)
                         list_in_str = [list_in_str ', ' list_in_str_trigger];
                     end
 				end
-				if numel(list_in_str_enable) > 0
-					list_in_str = [list_in_str ', ' list_in_str_enable];
-				end
+				
 			else
 				list_var_cond_enable = list_var_action(unbloc, inter_blk, type);
-				[list_cond list_in_str_enable] = get_enable_conditions(unbloc, list_var_cond_enable);
+				[list_cond, list_in_str_enable] = get_enable_conditions(unbloc, list_var_cond_enable);
 				if numel(list_in_str_enable) > 0
 					list_in_str = [list_in_str ', ' list_in_str_enable];
-				end
+                end
+                if numel(list_cond)>1
+                    list_cond = {Utils.concat_delim(list_cond, ' or ')};
+                end
 			end
 		else
 			[list_cond] = cond_str_trigger;
@@ -168,18 +172,23 @@ if activated
 	if numel(list_cond) > 1
 		cond_str = ['(' Utils.concat_delim(list_cond, ' and ') ')'];
 	elseif numel(list_cond) == 1
-		cond_str = list_cond{1};
+		cond_str =  ['(' list_cond{1} ')'];
 	end
 
-	% Add the input reset if necessary
-	if unbloc.action_reset || unbloc.enable_reset
+	% Add the input reset if necessary    
+	if unbloc.action_reset || unbloc.enable_reset 
+        v_name = strcat(Utils.name_format(Utils.naming_alone(unbloc.origin_name{1})),'_reset_cond');
 		reset_cond = sprintf('%s and not pre (%s)', cond_str, cond_str);
-		list_in_str = [list_in_str ', ' reset_cond];
+		list_in_str = [list_in_str ', ' v_name];
+        additional_outputs = [ '\t', v_name, ' = ', reset_cond, ';\n'];
+        add_vars =  sprintf('\t%s: bool;\n',v_name);
+        output_string = [output_string, additional_outputs];
+        var_str = [var_str, add_vars];
 	end
-
+    enable_held = numel(unbloc.enable) > 0;
 	% Get the default output
 	list_def_out = {};
-    
+    num_pred = 0;
 	for idx_out=1:unbloc.num_output
 		[out_dim_r out_dim_c] = Utils.get_port_dims_simple(unbloc.outports_dim, idx_out);
 		dim_out = out_dim_r * out_dim_c;
@@ -190,8 +199,26 @@ if activated
         else
             compatible_in_idx = find(strcmp(out_dt, cellfun(@(x) Utils.get_lustre_dt(x), unbloc.inports_dt, 'UniformOutput', false)));
         end
-            % Here we find a match among the inputs
-		if compatible_in_idx ~= 0
+        % Here we find a match among the inputs
+        if numel(unbloc.enable) > 0
+            
+            [out_dim_r, out_dim_c] = Utils.get_port_dims_simple(unbloc.outports_dim, idx_out);
+            for idx_row=1:out_dim_r
+                for idx_col=1:out_dim_c
+                    in_out_idx = idx_col + ((idx_row-1) * out_dim_c);
+                    initial_value = ['pre ' list_out{num_pred + in_out_idx}];
+                    list_def_out = [list_def_out initial_value];
+                end
+            end
+            num_pred = num_pred + (out_dim_r * out_dim_c);
+            if ~unbloc.enable_reset 
+                %we can support this, but the code is complicated
+                msg = sprintf('block : %s is an enabled block with "held" option\n', unbloc.origin_name{1});
+                msg = [msg 'This option is not well translated when there is access to variables previous memory\n'];
+                msg = [msg 'Choose "Reset" instead\n'];
+                display_msg(msg, Constants.WARNING, 'write_subsystem', '');
+            end
+        elseif compatible_in_idx ~= 0
 			cpt_dim = 1;
 			for idx_in=1:compatible_in_idx-1
 				[in_dim_r in_dim_c] = Utils.get_port_dims_simple(unbloc.inports_dim, idx_in);
@@ -202,32 +229,33 @@ if activated
             for idx_new_outs=1:nb_var_to_add
                 input_dt = unbloc.inports_dt{cpt_dim};
                 if strfind(input_dt,'int')
-                    initial_value = '1';
+                    initial_value = '0';
                 elseif strfind(input_dt,'bool')
-                    initial_value = 'true';
+                    initial_value = 'false';
                 else
-                    initial_value = '1.0';
+                    initial_value = '0.0';
                 end
-				list_def_out = [list_def_out {initial_value}];
+                
+				list_def_out = [list_def_out initial_value];
             end
             
 % 			for idx_new_outs=1:nb_var_to_add
 % 				list_def_out = [list_def_out list_in{cpt_dim}];
 % 			end
-		else
-			if strcmp(out_dt, 'real')
-				new_out = '1.0';
+        else
+            if strcmp(out_dt, 'real')
+				new_out = '0.0';
 			elseif strcmp(out_dt, 'int')
-				new_out = '1';
+                new_out = '0';
 			else
-				new_out = 'true';
-			end
+                new_out = 'false';
+            end
 			[out_dim_r out_dim_c] = Utils.get_port_dims_simple(unbloc.outports_dim, idx_out);
 			nb_var_to_add = out_dim_r * out_dim_c;
 			for idx_new_outs=1:nb_var_to_add
 				list_def_out = [list_def_out new_out];
-			end
-		end
+            end
+        end
 	end
 	if numel(list_def_out) > 1
 		list_def_out = ['(' Utils.concat_delim(list_def_out, ', ') ')'];
@@ -352,67 +380,71 @@ for idx=1:numel(list_cond_var)
         event = events(strcmp(events.get('Name'),event_name));
         trigger_type = lower(event.Trigger);
     end
-	if strcmp(trigger_dt, 'bool')
+    if strcmp(trigger_dt, 'bool')
 		if strcmp(trigger_type, 'rising')
-			cond_str{idx} = sprintf('false -> (not(pre %s) and %s)', cond_var, cond_var);
+			expression = sprintf('false -> (not(pre %s) and %s)', cond_var, cond_var);
 		elseif strcmp(trigger_type, 'falling')
-			cond_str{idx} = sprintf('false -> (pre(%s) and not(%s))', cond_var, cond_var);
+			expression = sprintf('false -> (pre(%s) and not(%s))', cond_var, cond_var);
 		elseif strcmp(trigger_type, 'either')
-			cond_str{idx} = sprintf('false -> (not(pre(%s) = %s))', cond_var, cond_var);
+			expression = sprintf('false -> (not(pre(%s) = %s))', cond_var, cond_var);
 		else
 			msg = sprintf('%s trigger not supported\n', trigger_type);
 			msg = [msg unbloc.triggername];
-			display_msg(error_msg, Constants.ERROR, 'write_subsystem:get_trigger_conditions', '');
+			display_msg(msg, Constants.ERROR, 'write_subsystem:get_trigger_conditions', '');
 		end
+    elseif strcmp(trigger_dt, 'int')
+            if strcmp(trigger_type, 'rising')
+                expression = sprintf('false -> (pre(%s) <= 0 and %s > 0)', cond_var, cond_var);
+            elseif strcmp(trigger_type, 'falling')
+                expression = sprintf('false -> (pre(%s) > 0 and %s <= 0)', cond_var, cond_var);
+            elseif strcmp(trigger_type, 'either')
+                expression = sprintf('false -> ((pre(%s) > 0 and %s <= 0) or (pre(%s) <= 0 and %s > 0))', cond_var, cond_var,cond_var,cond_var);
+            else
+                msg = sprintf('%s trigger not supported\n', trigger_type);
+                msg = [msg unbloc.triggername];
+                display_msg(msg, Constants.ERROR, 'write_subsystem', '');
+            end
     else
-        if is_Chart
             if strcmp(trigger_type, 'rising')
-                cond_str{idx} = sprintf('false -> (pre(%s) <= 0.0 and %s > 0.0)', cond_var, cond_var);
+                expression = sprintf('false -> (pre(%s) <= 0.0 and %s > 0.0)', cond_var, cond_var);
             elseif strcmp(trigger_type, 'falling')
-                cond_str{idx} = sprintf('false -> (pre(%s) > 0.0 and %s <= 0.0)', cond_var, cond_var);
+                expression = sprintf('false -> (pre(%s) > 0.0 and %s <= 0.0)', cond_var, cond_var);
             elseif strcmp(trigger_type, 'either')
-                cond_str{idx} = sprintf('false -> ((pre(%s) > 0.0 and %s <= 0.0) or (pre(%s) <= 0.0 and %s > 0.0))', cond_var, cond_var,cond_var,cond_var);
+                expression = sprintf('false -> ((pre(%s) > 0.0 and %s <= 0.0) or (pre(%s) <= 0.0 and %s > 0.0))', cond_var, cond_var,cond_var,cond_var);
             else
                 msg = sprintf('%s trigger not supported\n', trigger_type);
                 msg = [msg unbloc.triggername];
                 display_msg(msg, Constants.ERROR, 'write_subsystem', '');
             end
-        else
-            if strcmp(trigger_type, 'rising')
-                cond_str{idx} = sprintf('false -> (pre(%s) < %s)', cond_var, cond_var);
-            elseif strcmp(trigger_type, 'falling')
-                cond_str{idx} = sprintf('false -> (pre(%s) >  %s )', cond_var, cond_var);
-            elseif strcmp(trigger_type, 'either')
-                cond_str{idx} = sprintf('false -> (pre(%s) != %s )', cond_var, cond_var);
-            else
-                msg = sprintf('%s trigger not supported\n', trigger_type);
-                msg = [msg unbloc.triggername];
-                display_msg(msg, Constants.ERROR, 'write_subsystem', '');
-            end
-        end
     end
     if is_Chart
-        events_names{idx} = strcat(cond_var,'_event');
-        additional_outputs = [additional_outputs, '\t', strcat(cond_var,'_event'), ' = ', cond_str{idx}, ';\n'];
+        events_names{idx} = strcat(Utils.name_format(Utils.naming_alone(unbloc.origin_name{1})),cond_var,'_event');
+        additional_outputs = [additional_outputs, '\t', strcat(cond_var,'_event'), ' = ', expression, ';\n'];
         add_vars = [add_vars, sprintf('\t%s: bool;\n',events_names{idx})];
+    else
+        cond_str{idx} = strcat(Utils.name_format(Utils.naming_alone(unbloc.origin_name{1})),cond_var,'_cond_str_trigger');
+        additional_outputs = [additional_outputs, '\t', cond_str{idx}, ' = ', expression, ';\n'];
+        add_vars = [add_vars, sprintf('\t%s: bool;\n',cond_str{idx})];
     end
-end
-
-% Add the additional inputs parameters for an 'either' trigger
-if strcmp(trigger_type, 'either') && strcmp(show_port, 'on')
-	str_in_trigg = '';
-	str_in_trigg_pre = '';
-	for idx=1:numel(list_cond_var)
-		str_in_trigg{idx} = sprintf('%s', list_cond_var{idx});
-		str_in_trigg_pre{idx} = sprintf('pre(%s)', list_cond_var{idx});
-	end
-	list_in_str = Utils.concat_delim(str_in_trigg, ', ');
-	list_in_str = [list_in_str ', ' Utils.concat_delim(str_in_trigg_pre, ', ')];
 end
 if is_Chart
     list_in_str = Utils.concat_delim(events_names, ', ');
     cond_str = {};
+
+% Add the additional inputs parameters for an 'either' trigger
+elseif strcmp(trigger_type, 'either') && strcmp(show_port, 'on')
+	str_in_trigg = '';
+	str_in_trigg_pre = '';
+	for idx=1:numel(list_cond_var)
+		str_in_trigg{idx} = sprintf('%s', list_cond_var{idx});
+		str_in_trigg_pre{idx} = strcat(Utils.name_format(Utils.naming_alone(unbloc.origin_name{1})),'pre_',list_cond_var{idx});
+        additional_outputs = [additional_outputs, '\t', str_in_trigg_pre{idx}, ' = ', sprintf('pre(%s)', list_cond_var{idx}), ';\n'];
+        add_vars = [add_vars, sprintf('\t%s: %s;\n',str_in_trigg_pre{idx},trigger_dt)];
+	end
+	list_in_str = Utils.concat_delim(str_in_trigg, ', ');
+	list_in_str = [list_in_str ', ' Utils.concat_delim(str_in_trigg_pre, ', ')];
 end
+
 end
 
 % Manage enabled subsystem and add inputs in call if necessary

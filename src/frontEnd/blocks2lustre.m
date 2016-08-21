@@ -114,9 +114,9 @@ end
 [is_reset var_name] = Utils.is_reset(inter_blk);
 if is_reset
 	if is_foriter
-		node_header = [node_header ' '];
+		node_header = [node_header '  '];
 	end
-	node_header = app_sprintf(node_header, '%s: bool;', var_name);
+	node_header = app_sprintf(node_header, '%s: bool; ', var_name);
 	nbin = nbin + 1;
 end
 

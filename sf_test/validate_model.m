@@ -73,7 +73,7 @@ IMAX = 100; %IMAX for randi the max born for random number
 
 try
     fprintf('start translating model "%s" to lustre automaton\n',file_name);
-%     lus_file_path= '/home/hamza/Documents/coco_team/regression-test/simulink/unit_test/not_valid_models/lustre_files/src_assignment_port_test/assignment_port_test.lus';
+%     lus_file_path= '/home/hamza/Documents/coco_team/regression-test/simulink/unit_test/not_valid_models/lustre_files/src_enable_held_with_pre/enable_held_with_pre.lus';
     lus_file_path=cocoSim(model_full_path);
     chart_name = file_name;
     configSet = copy(getActiveConfigSet(file_name));
@@ -135,6 +135,7 @@ else
                 input_struct.signals(i).values = single(Utils.construct_random_doubles(nb_steps, IMAX,dim));
                 input_struct.signals(i).dimensions = dim;
             else
+%                 input_struct.signals(i).values = double(Utils.construct_random_integers(nb_steps, IMAX, inports(i).DataType, dim));
                 input_struct.signals(i).values = Utils.construct_random_doubles(nb_steps, IMAX,dim);
                 input_struct.signals(i).dimensions = dim;
             end
@@ -178,7 +179,7 @@ else
         values_file = fullfile(lus_file_dir, 'input_values');
         fid = fopen(values_file, 'w');
         for i=1:numel(lustre_input_values)
-            value = strcat(num2str(lustre_input_values(i)),'\n');
+            value = [num2str(lustre_input_values(i),'%30.16f') '\n'];
             fprintf(fid, value);
         end
         fclose(fid);
@@ -230,7 +231,7 @@ else
                 outputs_array = importdata('outputs_values','\n');
                 valid = true;
                 error_index = 1;
-                eps = 0.01;
+                eps = 1;
                 index_out = 0;
                 for i=0:nb_steps-1
                     for k=1:numberOfOutputs
@@ -249,10 +250,13 @@ else
                             index_out = index_out + 1;
                             output_value = regexp(outputs_array{index_out},'\s*:\s*','split');
                             if ~isempty(output_value)
-                                output_val = output_value{2};
-                                output_val = str2num(output_val(2:end-1));
-                                valid = valid && (abs(yout_values(j)-output_val)<eps);
+                                output_val_str = output_value{2};
+                                output_val = str2num(output_val_str(2:end-1));
+%                                 display(yout_values(j));
+                                diff = abs(yout_values(j)-output_val);
+                                valid = valid && (diff<eps);
                                 if  ~valid
+%                                     fprintf('difference between outputs is :%2.10f\n',diff);
                                     error_index = i+1;
                                     break
                                 end
@@ -262,7 +266,9 @@ else
                                 break;
                             end
                         end
-                        
+                        if  ~valid
+                            break;
+                        end
                     end
                     if  ~valid
                         break;
@@ -284,14 +290,14 @@ else
                                 in = input_struct.signals(j).values(i+1,:);
                                 name = input_struct.signals(j).name;
                                 for k=1:dim
-                                    fprintf('input %s_%d:%d\n',name,k,in(k));
+                                    fprintf('input %s_%d:%f\n',name,k,in(k));
                                 end
                             else
                                 in = input_struct.signals(j).values(:,:,i+1);
                                 name = input_struct.signals(j).name;
                                 for dim1=1:dim(1)
                                     for dim2=1:dim(2)
-                                        fprintf('input %s_%d_%d:%d\n',name,dim1,dim2,in(dim1, dim2));
+                                        fprintf('input %s_%d_%d:%10.10f\n',name,dim1,dim2,in(dim1, dim2));
                                     end
                                 end
                             end
@@ -318,8 +324,8 @@ else
                                     output_val = output_value{2};
                                     output_val = str2num(output_val(2:end-1));
                                     output_name1 = Utils.naming_alone(yout_signals(k).blockName);
-                                    fprintf('output %s: %d\n',output_name1,yout_values(j));
-                                    fprintf('Lustre output %s: %d\n',output_name,output_val);
+                                    fprintf('output %s: %10.16f\n',output_name1,yout_values(j));
+                                    fprintf('Lustre output %s: %10.16f\n',output_name,output_val);
                                 else
                                     warning('strang behavour of output %s',outputs_array{numberOfOutputs*i+k});
                                     return;
@@ -328,7 +334,7 @@ else
                         end
                         
                     end
-                    
+                    fprintf('difference between outputs is :%2.10f\n',diff);
                 else
                     fprintf('translation for model "%s" is valid \n',file_name);
                 end

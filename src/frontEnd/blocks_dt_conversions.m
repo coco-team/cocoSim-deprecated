@@ -91,14 +91,14 @@ function conversion = compute_conversion(block)
 		conversion{1} = 'double';
 		external_reset = get_param(block.origin_name, 'ExternalReset');
 		ic_source = get_param(block.origin_name, 'InitialConditionSource');
-		
+% 		block
 		if ~strcmp(external_reset, 'none') && strcmp(ic_source, 'external')
-			conversion{2} = 'boolean';
-			conversion{3} = 'double';
+			conversion{2} = block.inports_dt{2};
+			conversion{3} = block.inports_dt{3};
 		elseif ~strcmp(external_reset, 'none')
-			conversion{2} = 'boolean';
+			conversion{2} = block.inports_dt{2};
 		elseif strcmp(ic_source, 'external')
-			conversion{2} = 'double';
+			conversion{2} = block.inports_dt{2};
 		end
 
 	%%%%%%%%%%%%%%%% SUM %%%%%%%%%%%%%%%%%%%

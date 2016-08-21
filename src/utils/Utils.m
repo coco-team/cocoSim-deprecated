@@ -567,7 +567,7 @@ classdef Utils
             res = false;
             var_name = '';
             if strcmp(inter_blk{1}.type, 'SubSystem')
-                if inter_blk{1}.action_reset || inter_blk{1}.enable_reset || inter_blk{1}.foriter_reset
+                if inter_blk{1}.action_reset || inter_blk{1}.foriter_reset || inter_blk{1}.enable_reset 
                     res = true;
                 end
             end
@@ -665,6 +665,7 @@ classdef Utils
             str_out = strrep(str_out, '}', '_rbrak_');
             %hamza modification
             str_out = strrep(str_out, ',', '_comma_');
+%             str_out = strrep(str_out, '/', '_slash_');
             str_out = strrep(str_out, '=', '_equal_');
             str_out = regexprep(str_out, '^(\d+)', '_$1');
         end
@@ -711,17 +712,14 @@ classdef Utils
         
         function vector = construct_random_doubles(nb_iterations, IMAX,dim)
             if numel(dim)==1
-                vector = double(10*rand([nb_iterations,dim]));
+                vector = double(100*rand([nb_iterations,dim]));
             else
-                vector = double(10*rand([dim, nb_iterations]));
+                vector = double(100*rand([dim, nb_iterations]));
             end
-            %         if numel(dim)==1
-            %             vector = double(randi(IMAX, [nb_iterations,dim]));
-            %         else
-            %             vector = double(randi(IMAX, [dim,nb_iterations]));
-            %         end
-            seuil = IMAX;
+            seuil = vector(1);
             vector(vector>seuil) = double(0);
+%             seuil = vector(2);
+%             vector(vector>seuil) = double(-1);
             %         vector(vector<1) = double(1);
         end
     end
