@@ -247,7 +247,6 @@ if numel(unused_outports_variables) ~= 0
     unused_vars_str = Utils.concat_delim(unused_outports_variables, ';\n\t');
     header = app_sprintf(header, '\t%s;\n', unused_vars_str);
 end
-
 %cpt = 1;
 %for idx_add_inputs=1:numel(obs_inputs_outputs_idxs)
 %	str = '';
@@ -281,6 +280,8 @@ additional_variables = '';
     main_blk, nom_lustre_file, obs_idx_subsys, false, trace, xml_trace);
  
 header = app_sprintf(header, additional_variables);
+header = app_sprintf(header, '\t%s;\n', 'i_virtual_local : real');
+let_tel_code_string = app_sprintf(let_tel_code_string, '\t%s;\n', 'i_virtual_local= 0.0 -> 1.0');
 
 property_node = app_sprintf(header, 'let\n%s%s', assertions, let_tel_code_string);
 

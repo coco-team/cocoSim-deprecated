@@ -25,7 +25,7 @@
  end
  LUSTREC = fullfile(solvers_path,'lustrec');
  ZUSTRE = fullfile(solvers_path,'zustre');
- Z3 = 'PATH';
- KIND2 = 'PATH';
+ Z3 = fullfile(solvers_path,'z3');
+ KIND2 = '/usr/local/bin/kind2';
  SEAHORN = 'PATH';
  JKIND =fullfile(solvers_path,'jkind/jkind');

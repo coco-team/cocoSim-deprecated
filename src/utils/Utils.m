@@ -667,7 +667,8 @@ classdef Utils
             str_out = strrep(str_out, ',', '_comma_');
 %             str_out = strrep(str_out, '/', '_slash_');
             str_out = strrep(str_out, '=', '_equal_');
-            str_out = regexprep(str_out, '^(\d+)', '_$1');
+            
+            str_out = regexprep(str_out, '/(\d+)', '/_$1');
         end
         
         function [found, idx_sub_res, idx_block_res] = get_block_position(inter_blk, origin_name)

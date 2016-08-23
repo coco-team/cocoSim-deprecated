@@ -73,8 +73,8 @@ IMAX = 100; %IMAX for randi the max born for random number
 
 try
     fprintf('start translating model "%s" to lustre automaton\n',file_name);
-%     lus_file_path= '/home/hamza/Documents/coco_team/regression-test/simulink/unit_test/not_valid_models/lustre_files/src_enable_held_with_pre/enable_held_with_pre.lus';
-    lus_file_path=cocoSim(model_full_path);
+    lus_file_path= '/home/hamza/Documents/coco_team/regression-test/simulink/unit_test/Enable_Held_problem/src_enable_held_with_pre/enable_held_with_pre.lus';
+%     lus_file_path=cocoSim(model_full_path);
     chart_name = file_name;
     configSet = copy(getActiveConfigSet(file_name));
     [lus_file_dir, lus_file_name, ~] = fileparts(lus_file_path);

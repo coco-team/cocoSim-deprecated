@@ -188,7 +188,7 @@ for idx_block=newinit:nblk
 		end
 	end
 end
-if idx_subsys==1
+if idx_subsys==1 
     node_header = app_sprintf(node_header, '\t%s;\n', 'i_virtual_local : real');
 end
 %%%%%%%%%%%%%%%% Retrieve nodes code

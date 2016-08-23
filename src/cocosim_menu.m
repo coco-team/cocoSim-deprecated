@@ -95,7 +95,7 @@ function schema = viewContract(callbackInfo)
   function synchObsCallback(callbackInfo)
   try 
       [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
-      simulink_name = gcs;
+      simulink_name = get_param(gcs,'FileName');%gcs;
       add_cocospec(simulink_name);
       
   catch ME
