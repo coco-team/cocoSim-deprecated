@@ -122,8 +122,6 @@ end
 
 if nbin == 1
 	node_header = app_sprintf(node_header, 'i_virtual : real');
-else
-    node_header = node_header(1:end-2);
 end
 node_header = app_sprintf(node_header, ')\nreturns (');
 

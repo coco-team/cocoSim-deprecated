@@ -92,9 +92,9 @@ catch ME
 
     return
 end
-fprintf('start lustrec for model "%s"\n',file_name);
 
 command = sprintf('lustrec -node %s %s.lus',Utils.name_format(chart_name), lus_file_name);
+fprintf('LUSTREC_COMMAND : %s\n',command);
 [status, lustre_out] = system(command);
 if status
     fprintf('lustrec failed for model "%s" :\n%s',file_name,lustre_out);
