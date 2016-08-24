@@ -28,8 +28,20 @@ end
      try
       [cocoSim_path, ~, ~] = fileparts(mfilename('fullpath'));
       model_full_path = get_param(gcs,'FileName');%gcs;
-      validate_model(model_full_path,cocoSim_path,1)
+      [valid, cocoSim_failed,lustrec_failed, ...
+          lustrec_binary_failed, sim_failed, lus_file_path]=validate_model(model_full_path,cocoSim_path,1);
       open(model_full_path);
+      if valid
+          display('The simulation is valid');
+      elseif cocoSim_failed
+          display('CocoSim translation has failed');
+      elseif lustrec_failed
+          open(lus_file_path)
+      elseif lustrec_binary_failed
+          display('Lustre binary generation failed');
+      elseif sim_failed
+          display('running Simulation has failed');
+      end
      catch ME
          disp(ME.message)
      end
