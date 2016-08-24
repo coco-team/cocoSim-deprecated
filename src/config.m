@@ -21,7 +21,7 @@
 
 %
  if ~exist('solvers_path', 'var')
-    solvers_path = '/home/hamza/Documents/zustre/build2/run/bin';
+    solvers_path = '/home/hamza/Documents/coco_team/zustre/build/run/bin/';
  end
  LUSTREC = fullfile(solvers_path,'lustrec');
  ZUSTRE = fullfile(solvers_path,'zustre');
