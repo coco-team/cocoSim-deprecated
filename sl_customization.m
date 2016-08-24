@@ -14,11 +14,26 @@ end
   schema.statustip = 'Modular Analysis Engine';
   schema.autoDisableWhen = 'Busy';
   
-  schema.childrenFcns = {@getVerify, @viewContract @getProps, ...
+  schema.childrenFcns = {@getVerify,@getValidate @viewContract @getProps, ...
                         @getPP,  @getCompiler};
  end
  
+ function schema = getValidate(callbackInfo)     
+  schema = sl_action_schema;
+  schema.label = 'Translation Validation'; 
+  schema.callback = @validateCallBack;
+ end
 
+ function validateCallBack(callbackInfo)
+     try
+      [cocoSim_path, ~, ~] = fileparts(mfilename('fullpath'));
+      model_full_path = get_param(gcs,'FileName');%gcs;
+      validate_model(model_full_path,cocoSim_path,1)
+      open(model_full_path);
+     catch ME
+         disp(ME.message)
+     end
+ end
  function schema = getPP(callbackInfo)     
   schema = sl_action_schema;
   schema.label = 'CoCoSim Pre-Processor'; 
