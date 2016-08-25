@@ -36,22 +36,25 @@ output_string = '';
 
 [list_out] = list_var_sortie(unbloc);
 [list_in] = list_var_entree(unbloc,inter_blk);
-n = numel(list_out);
-n2 = numel(list_in);
-outport_dt = unbloc.outports_dt{1};
-if strfind(outport_dt,'int')
-    initial_value = '0';
-elseif strfind(outport_dt,'bool')
-    initial_value = 'false';
-else
-    initial_value = '0.0';
-end
-for k1=1:n
-    str = '';
-    for i=k1:n:n2
-        str = app_sprintf(str,'\tif  %s != %s then %s else\n', list_in{i},initial_value,list_in{i});
+numel_out = numel(list_out);
+numel_in = numel(list_in);
+right_exp = '';
+for ind_in=1:numel_out:numel_in
+    condition={};
+    for k=1:numel_out
+        condition{k} = ['(' char(list_in(ind_in+k-1)) ' != pre ' char(list_in(ind_in+k-1)) ')'];
     end
-    output_string = app_sprintf(output_string,'\t%s = %s \t%s;\n', list_out{k1},str,initial_value);
+    inputs = ['(' Utils.concat_delim(list_in(ind_in:ind_in+numel_out-1), ', ') ')'];
+    condition_str = ['(' Utils.concat_delim(condition, ' or ') ')'];
+    right_exp = app_sprintf(right_exp,'\tif  %s then %s else\n', condition_str,inputs);
 end
 
+if numel_out > 1
+    list_def_out = ['(pre ' Utils.concat_delim(list_out, ', pre ') ')'];
+    left_exp = ['(' Utils.concat_delim(list_out, ', ') ')'];
+else
+    list_def_out = ['pre ' list_out{1}];
+    left_exp = list_out{1};
+end
+output_string = app_sprintf(output_string,'\t%s = %s \t%s;\n', left_exp,right_exp,list_def_out);
 end

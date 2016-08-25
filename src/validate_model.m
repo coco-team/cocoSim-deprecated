@@ -92,7 +92,6 @@ catch ME
 
     return
 end
-
 command = sprintf('lustrec -node %s %s.lus',Utils.name_format(chart_name), lus_file_name);
 fprintf('LUSTREC_COMMAND : %s\n',command);
 [status, lustre_out] = system(command);
