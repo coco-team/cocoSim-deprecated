@@ -34,27 +34,27 @@
 %
 %%% If the block has 3 inputs (value to integrate (Input_1), reset (Input_2), initial condition( Input_3))
 %
-%  Output_1_1 = Input_3_1 -> if Input_2_1 then Input_3_1 else (K{1} * T) + pre(Input_1_1);
-%  Output_1_2 = Input_3_2 -> if Input_2_2 then Input_3_2 else (K{2} * T) + pre(Input_1_2);
-%  Output_1_3 = Input_3_3 -> if Input_2_3 then Input_3_3 else (K{3} * T) + pre(Input_1_3);
+%  Output_1_1 = Input_3_1 -> if Input_2_1 then Input_3_1 else (K{1} * T) * pre(Input_1_1) + pre(Output_1_1);
+%  Output_1_2 = Input_3_2 -> if Input_2_2 then Input_3_2 else (K{2} * T) * pre(Input_1_2) + pre(Output_1_2);
+%  Output_1_3 = Input_3_3 -> if Input_2_3 then Input_3_3 else (K{3} * T) * pre(Input_1_3) + pre(Output_1_3);
 %
 %%% If the block has 2 inputs (value to integrate (Input_1), reset (Input_2))
 %
-%  Output_1_1 = vinit{1} -> if Input_2_1 then vinit{1} else (K{1} * T) + pre(Input_1_1);
-%  Output_1_2 = vinit{2} -> if Input_2_2 then vinit{2} else (K{2} * T) + pre(Input_1_2);
-%  Output_1_3 = vinit{3} -> if Input_2_3 then vinit{3} else (K{3} * T) + pre(Input_1_3);
+%  Output_1_1 = vinit{1} -> if Input_2_1 then vinit{1} else (K{1} * T) * pre(Input_1_1) + pre(Output_1_1);
+%  Output_1_2 = vinit{2} -> if Input_2_2 then vinit{2} else (K{2} * T) * pre(Input_1_2) + pre(Output_1_2);
+%  Output_1_3 = vinit{3} -> if Input_2_3 then vinit{3} else (K{3} * T) * pre(Input_1_3) + pre(Output_1_3);
 %
 %%% If the block has 2 inputs (value to integrate (Input_1), initial condition (Input_2))
 %
-%  Output_1_1 = Input_2_1 -> (K{1} * T) + pre(Input_1_1);
-%  Output_1_2 = Input_2_2 -> (K{2} * T) + pre(Input_1_2);
-%  Output_1_3 = Input_2_3 -> (K{3} * T) + pre(Input_1_3);
+%  Output_1_1 = Input_2_1 -> (K{1} * T) * pre(Input_1_1) + pre(Output_1_1);
+%  Output_1_2 = Input_2_2 -> (K{2} * T) * pre(Input_1_2) + pre(Output_1_2);
+%  Output_1_3 = Input_2_3 -> (K{3} * T) * pre(Input_1_3) + pre(Output_1_3);
 %
 %%% If the block has one input (value to integrate (Input_1))
 %
-%  Output_1_1 = vinit{1} -> (K{1} * T) + pre(Input_1_1);
-%  Output_1_2 = vinit{2} -> (K{2} * T) + pre(Input_1_2);
-%  Output_1_3 = vinit{3} -> (K{3} * T) + pre(Input_1_3);
+%  Output_1_1 = vinit{1} -> (K{1} * T) * pre(Input_1_1) + pre(Output_1_1);
+%  Output_1_2 = vinit{2} -> (K{2} * T) * pre(Input_1_2) + pre(Output_1_2);
+%  Output_1_3 = vinit{3} -> (K{3} * T) * pre(Input_1_3) + pre(Output_1_3);
 %
 %%%The External reset parameter lets you determine the attribute 
 %of the reset signal that triggers the reset. 
@@ -66,9 +66,14 @@ function [output_string, var_str] = write_discreteintegrator(unbloc, K, external
 
 output_string = '';
 
+if strcmp(unbloc.inports_dt{1},'boolean')
+    cst_type = 'int8';
+else
+    cst_type = unbloc.inports_dt{1};
+end
 [list_out] = list_var_sortie(unbloc);
-[list_const] = Utils.list_cst(K, 'double');
-[list_T] = Utils.list_cst(T, 'double');
+[list_const] = Utils.list_cst(K, cst_type);
+[list_T] = Utils.list_cst(T, cst_type);
 [list_in] = list_var_entree(unbloc, inter_blk);
 
 [dim_r dim_c] = Utils.get_port_dims_simple(unbloc.outports_dim, 1);
@@ -91,7 +96,7 @@ end
 
 % Expand vinit if necessary
 if ~strcmp(vinit, '')
-	[list_init] = Utils.list_cst(vinit, 'double');
+	[list_init] = Utils.list_cst(vinit, cst_type);
 	if numel(list_init) == 1 && unbloc.dstport_size ~= 1
 		value = list_init{1, 1};
 		for idx_row=1:dim_r
@@ -104,9 +109,10 @@ if ~strcmp(vinit, '')
 end
 
 out_dt = Utils.get_lustre_dt(unbloc.outports_dt{1});
+in_dt = Utils.get_lustre_dt(unbloc.inports_dt{1});
 needs_convert = false;
 convert_fun = '';
-if ~strcmp('real', out_dt)
+if ~strcmp('real', out_dt) &&  ~(strcmp('int', in_dt) || strcmp('bool', in_dt))
 	convert_fun = get_param(unbloc.annotation, 'RndMeth');
 	needs_convert = true;
 	if exist('tmp_dt_conv.mat', 'file') == 2
