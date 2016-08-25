@@ -61,9 +61,9 @@ classdef Utils
                     for k2=1:c
                         idx = k2 + (k1-1) * c;
                         if isreal(K(k1,k2))
-                            lc{idx} = sprintf('%10.10f', K(k1,k2));
+                            lc{idx} = sprintf('%10.8f', K(k1,k2));
                         else
-                            lc{idx} = sprintf('%10.10f + i*%10.10f', real(K(k1,k2)), imag(K(k1,k2)));
+                            lc{idx} = sprintf('%10.8f + i*%10.10f', real(K(k1,k2)), imag(K(k1,k2)));
                         end
                     end
                 end
@@ -75,8 +75,8 @@ classdef Utils
                 const_val_real = evalin('base', sprintf('real(%s);', list_const{idx}));
                 const_val_imag = evalin('base', sprintf('imag(%s);', list_const{idx}));
                 if strcmp(dt, 'real')
-                    list_const_r{idx} = sprintf('%10.10f', const_val_real);
-                    list_const_i{idx} = sprintf('%10.10f', const_val_imag);
+                    list_const_r{idx} = sprintf('%10.8f', const_val_real);
+                    list_const_i{idx} = sprintf('%10.8f', const_val_imag);
                 else
                     list_const_r{idx} = sprintf('%d', const_val_real);
                     list_const_i{idx} = sprintf('%d', const_val_imag);
@@ -88,7 +88,7 @@ classdef Utils
             const_val_real = evalin('base', sprintf('real(%s);', complex_str));
             const_val_imag = evalin('base', sprintf('imag(%s);', complex_str));
             if strcmp(dt, 'real')
-                complex_def = sprintf('complex_%s{r=%10.10f; i=%10.10f}', dt, const_val_real, const_val_imag);
+                complex_def = sprintf('complex_%s{r=%10.8f; i=%10.10f}', dt, const_val_real, const_val_imag);
             else
                 complex_def = sprintf('complex_%s{r=%d; i=%d}', dt, const_val_real, const_val_imag);
             end
