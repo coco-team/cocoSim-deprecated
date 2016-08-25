@@ -86,17 +86,9 @@ function conversion = compute_conversion(block)
 
 	%%%%%%%%%%%%% Discrete intgrator %%%%%%%%%%%%%
 	elseif strcmp(block.type, 'DiscreteIntegrator')
-		%K = eval(get_param(blks{idx_block}, 'gainval'));
-		%T = eval(block.sample_time);
-        if strcmp(block.inports_dt{1},'boolean') 
-            integrator_type = 'int8';
-        else
-            integrator_type = block.inports_dt{1};
-        end
-		conversion{1} = integrator_type;
+		conversion{1} = block.outports_dt{1};
 		external_reset = get_param(block.origin_name, 'ExternalReset');
 		ic_source = get_param(block.origin_name, 'InitialConditionSource');
-% 		block
 		if ~strcmp(external_reset, 'none') && strcmp(ic_source, 'external')
 			conversion{2} = block.inports_dt{2};
 			conversion{3} = block.inports_dt{3};

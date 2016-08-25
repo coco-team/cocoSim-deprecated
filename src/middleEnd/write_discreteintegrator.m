@@ -66,11 +66,8 @@ function [output_string, var_str] = write_discreteintegrator(unbloc, K, external
 
 output_string = '';
 
-if strcmp(unbloc.inports_dt{1},'boolean')
-    cst_type = 'int8';
-else
-    cst_type = unbloc.inports_dt{1};
-end
+
+cst_type = unbloc.outports_dt{1};
 [list_out] = list_var_sortie(unbloc);
 [list_const] = Utils.list_cst(K, cst_type);
 [list_T] = Utils.list_cst(T, cst_type);
