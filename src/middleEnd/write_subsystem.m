@@ -59,7 +59,7 @@
 %
 %% Code
 %
-function [output_string var_str] = write_subsystem(unbloc, inter_blk, main_blk, xml_trace)
+function [output_string, var_str] = write_subsystem(unbloc, inter_blk, main_blk, xml_trace)
 
 output_string = '';
 var_str = '';
@@ -170,15 +170,15 @@ if activated
     % Get the activation condition
     cond_str = '';
     if numel(list_cond) > 1
-        cond_str = ['(' Utils.concat_delim(list_cond, ' and ') ')'];
+        cond_str = [Utils.concat_delim(list_cond, ' and ')];
     elseif numel(list_cond) == 1
-        cond_str =  ['(' list_cond{1} ')'];
+        cond_str =  list_cond{1};
     end
     
     % Add the input reset if necessary
     if unbloc.action_reset || unbloc.enable_reset
         v_name = strcat(Utils.name_format(Utils.naming_alone(unbloc.origin_name{1})),'_reset_cond');
-        reset_cond = sprintf('%s and not pre (%s)', cond_str, cond_str);
+        reset_cond = sprintf('(%s) and not pre (%s)', cond_str, cond_str);
         list_in_str = [list_in_str ', ' v_name];
         additional_outputs = [ '\t', v_name, ' = ', reset_cond, ';\n'];
         add_vars =  sprintf('\t%s: bool;\n',v_name);
@@ -194,11 +194,11 @@ if activated
         dim_out = out_dim_r * out_dim_c;
         
         out_dt = Utils.get_lustre_dt(unbloc.outports_dt{idx_out});
-        if isempty(unbloc.inports_dt)
-            compatible_in_idx = 0;
-        else
-            compatible_in_idx = find(strcmp(out_dt, cellfun(@(x) Utils.get_lustre_dt(x), unbloc.inports_dt, 'UniformOutput', false)));
-        end
+%         if isempty(unbloc.inports_dt)
+%             compatible_in_idx = 0;
+%         else
+%             compatible_in_idx = find(strcmp(out_dt, cellfun(@(x) Utils.get_lustre_dt(x), unbloc.inports_dt, 'UniformOutput', false)));
+%         end
         if numel(unbloc.enable) > 0 || unbloc.action
             
             [out_dim_r, out_dim_c] = Utils.get_port_dims_simple(unbloc.outports_dim, idx_out);
@@ -272,8 +272,28 @@ if activated
     end
     if strcmp(cond_str,'')
         output_string = app_sprintf(output_string, '\t%s =  %s(%s);\n', list_out_str, node_call_name, list_in_str);
+        blk_type = get_param(unbloc.post{1}, 'BlockType');
+        if strcmp(blk_type,'Merge')
+            annotation = regexprep(num2str(unbloc.post{1}),'\.','_');
+            name = strcat('Merge_',annotation,'_input',num2str(unbloc.dstport{1}),'_hasChanged');
+            var_str = [var_str '\t' name ': bool;\n'];
+            condition={};
+            for k=1:numel(list_out)
+                condition{k} = ['(' char(list_out(k)) ' != pre ' char(list_out(k)) ')'];
+            end
+            condition_str = ['(' Utils.concat_delim(condition, ' or ') ')'];
+
+            output_string = app_sprintf(output_string, '\t%s = %s;\n', name, condition_str);
+        end
     else
-        output_string = app_sprintf(output_string, '\t%s = if %s then %s(%s) else %s;\n', list_out_str, cond_str, node_call_name, list_in_str, list_def_out);
+        output_string = app_sprintf(output_string, '\t%s = if (%s) then %s(%s) else %s;\n', list_out_str, cond_str, node_call_name, list_in_str, list_def_out);
+        blk_type = get_param(unbloc.post{1}, 'BlockType');
+        if strcmp(blk_type,'Merge')
+            annotation = regexprep(num2str(unbloc.post{1}),'\.','_');
+            name = strcat('Merge_',annotation,'_input',num2str(unbloc.dstport{1}),'_hasChanged');
+            var_str = [var_str '\t' name ': bool;\n'];
+            output_string = app_sprintf(output_string, '\t%s = %s;\n', name, cond_str);
+        end
     end
 elseif unbloc.foriter
     if isempty(list_in_str)
@@ -349,6 +369,18 @@ elseif unbloc.foriter
     end
 else
     output_string = app_sprintf(output_string, '\t%s = %s(%s);\n', list_out_str, node_call_name, list_in_str);
+    blk_type = get_param(unbloc.post{1}, 'BlockType');
+    if strcmp(blk_type,'Merge')
+        annotation = regexprep(num2str(unbloc.post{1}),'\.','_');
+        name = strcat('Merge_',annotation,'_input',num2str(unbloc.dstport{1}),'_hasChanged');
+        var_str = [var_str '\t' name ': bool;\n'];
+        condition={};
+        for k=1:numel(list_out)
+            condition{k} = ['(' char(list_out(k)) ' != pre ' char(list_out(k)) ')'];
+        end
+        condition_str = ['(' Utils.concat_delim(condition, ' or ') ')'];
+        output_string = app_sprintf(output_string, '\t%s = %s;\n', name, condition_str);
+    end
 end
 
 end

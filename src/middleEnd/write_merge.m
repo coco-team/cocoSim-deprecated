@@ -33,19 +33,31 @@
 function  [output_string] =write_merge(unbloc, inter_blk)
 
 output_string = '';
-
+% unbloc
 [list_out] = list_var_sortie(unbloc);
 [list_in] = list_var_entree(unbloc,inter_blk);
 numel_out = numel(list_out);
 numel_in = numel(list_in);
 right_exp = '';
+annotation = regexprep(num2str(unbloc.annotation),'\.','_');
 for ind_in=1:numel_out:numel_in
-    condition={};
-    for k=1:numel_out
-        condition{k} = ['(' char(list_in(ind_in+k-1)) ' != pre ' char(list_in(ind_in+k-1)) ')'];
+    %this version has the problem if an input change its value but it still
+    %equal to previous value.
+%     condition={};
+%     for k=1:numel_out
+%         condition{k} = ['(' char(list_in(ind_in+k-1)) ' != pre ' char(list_in(ind_in+k-1)) ')'];
+%     end
+%     condition_str = ['(' Utils.concat_delim(condition, ' or ') ')'];
+
+    %this version rely on creating local variables, that save who changed.
+    if numel_out==1
+        ind_src = ind_in-1;
+    else
+        ind_src = (ind_in-mod(ind_in, numel_out))/numel_out;  
     end
-    inputs = ['(' Utils.concat_delim(list_in(ind_in:ind_in+numel_out-1), ', ') ')'];
-    condition_str = ['(' Utils.concat_delim(condition, ' or ') ')'];
+    condition_str = strcat('Merge_',annotation,'_input',num2str(ind_src),'_hasChanged');
+    
+    inputs = ['(' Utils.concat_delim(list_in(ind_in:ind_in+numel_out-1), ', ') ')'];    
     right_exp = app_sprintf(right_exp,'\tif  %s then %s else\n', condition_str,inputs);
 end
 

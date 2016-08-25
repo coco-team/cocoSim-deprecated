@@ -33,6 +33,7 @@ property_node_names = {};
 external_math_functions = [];
 
 for idx_block=1:nblk
+%     display(inter_blk{idx_block}.type)
 	block_string = '';
 	extern_funs = {};
 	var_str = '';
@@ -257,7 +258,7 @@ for idx_block=1:nblk
 
 		Kvalue = evalin('base', get_param(blks{idx_block}, 'Value'));
 
-      block_string = write_constant(nom_lustre_file, inter_blk{idx_block}, inter_blk, Kvalue);
+      [block_string,var_str] = write_constant(nom_lustre_file, inter_blk{idx_block}, inter_blk, Kvalue);
 		
 	%%%%%%%%%%% DataTypeConversion %%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'DataTypeConversion')
