@@ -92,7 +92,7 @@ catch ME
 
     return
 end
-command = sprintf('%s -node %s %s.lus',LUSTREC,Utils.name_format(chart_name), lus_file_name);
+command = sprintf('%s -node %s %s',LUSTREC,Utils.name_format(chart_name), lus_file_path);
 fprintf('LUSTREC_COMMAND : %s\n',command);
 [status, lustre_out] = system(command);
 if status
@@ -104,7 +104,8 @@ if status
     return
 else
     fprintf('start compiling model "%s"\n',file_name);
-    command = sprintf('make -f %s.makefile', file_name);
+    makefile_name = fullfile(lus_file_dir,strcat(file_name,'.makefile'));
+    command = sprintf('make -f %s', makefile_name);
     fprintf('MAKE_LUSTREC_COMMAND : %s\n',command);
     [status, make_out] = system(command);
     if status
@@ -115,7 +116,7 @@ else
         cd(OldPwd);
         return
     else
-        lustre_binary = strcat(file_name,'_',Utils.name_format(chart_name));
+        
         input_struct.time = (0:simulation_step:stop_time)';
         input_struct.signals = [];
         number_of_inputs = 0;
@@ -135,7 +136,6 @@ else
                 input_struct.signals(i).values = single(Utils.construct_random_doubles(nb_steps, IMAX,dim));
                 input_struct.signals(i).dimensions = dim;
             else
-%                 input_struct.signals(i).values = double(Utils.construct_random_integers(nb_steps, IMAX, inports(i).DataType, dim));
                 input_struct.signals(i).values = Utils.construct_random_doubles(nb_steps, IMAX,dim);
                 input_struct.signals(i).dimensions = dim;
             end
@@ -144,10 +144,7 @@ else
             else
                 number_of_inputs = number_of_inputs + nb_steps*(dim(1) * dim(2));
             end
-%             input_struct.signals(i).values
-%             input_struct.signals(i).dimensions
         end
-%         input_struct = evalin('base','xin');
 
         if numberOfInports>=1
             lustre_input_values = ones(number_of_inputs,1);
@@ -175,7 +172,6 @@ else
         else
             lustre_input_values = ones(1*nb_steps,1);
         end
-%         lustre_input_values
         values_file = fullfile(lus_file_dir, 'input_values');
         fid = fopen(values_file, 'w');
         for i=1:numel(lustre_input_values)
@@ -183,6 +179,7 @@ else
             fprintf(fid, value);
         end
         fclose(fid);
+        lustre_binary = strcat(file_name,'_',Utils.name_format(chart_name));
         command  = sprintf('./%s  < input_values > outputs_values',lustre_binary);
         [status, binary_out] =system(command);
         if status
@@ -252,11 +249,9 @@ else
                             if ~isempty(output_value)
                                 output_val_str = output_value{2};
                                 output_val = str2num(output_val_str(2:end-1));
-%                                 display(yout_values(j));
                                 diff = abs(yout_values(j)-output_val);
                                 valid = valid && (diff<eps);
                                 if  ~valid
-%                                     fprintf('difference between outputs is :%2.10f\n',diff);
                                     error_index = i+1;
                                     break
                                 end
@@ -348,16 +343,12 @@ else
                 cd(OldPwd);
             catch ME
                 fprintf('simulation failed for model "%s" :\n%s\n%s\n%s',file_name,ME.identifier,ME.message, getReport(ME,'extended'));
-%                 cellfun(@disp, ME.cause);
-%                 fprintf('\n');
-%                 disp(ME.stack);
                 sim_failed = 1;
                 valid = 0;
                 close_system(model_full_path,0);
                 bdclose('all')
                 cd(OldPwd);
                 L.error('sim',[file_name, '\n' getReport(ME,'extended')]);
-%                 rethrow(ME)
                 return
             end
             
