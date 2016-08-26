@@ -8,7 +8,7 @@ if ~exist('cocoSim_path', 'var')
 end
 addpath(fullfile(cocoSim_path,'src/'));
 addpath(fullfile(cocoSim_path,'src/utils/'));
-
+config;
 assignin('base', 'SOLVER', 'NONE');
 assignin('base', 'RUST_GEN', 0);
 assignin('base', 'C_GEN', 0);
@@ -92,7 +92,7 @@ catch ME
 
     return
 end
-command = sprintf('lustrec -node %s %s.lus',Utils.name_format(chart_name), lus_file_name);
+command = sprintf('%s -node %s %s.lus',LUSTREC,Utils.name_format(chart_name), lus_file_name);
 fprintf('LUSTREC_COMMAND : %s\n',command);
 [status, lustre_out] = system(command);
 if status
@@ -105,6 +105,7 @@ if status
 else
     fprintf('start compiling model "%s"\n',file_name);
     command = sprintf('make -f %s.makefile', file_name);
+    fprintf('MAKE_LUSTREC_COMMAND : %s\n',command);
     [status, make_out] = system(command);
     if status
         

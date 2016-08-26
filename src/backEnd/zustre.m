@@ -49,9 +49,9 @@ config;
             if exist(smt_file, 'file')
                 command = sprintf('%s "%s" --node %s --xml --cg --s-func %s --timeout 600', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name, smt_file);
             elseif strcmp(SOLVER, 'E')
-                command = sprintf('%s "%s" --node %s --xml --eldarica %s --timeout 600', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name, smt_file);
+                command = sprintf('%s "%s" --node %s --xml --eldarica %s --timeout 600 ', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name, smt_file);
             else
-                command = sprintf('%s "%s" --node %s --xml --timeout 60', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name);
+                command = sprintf('%s "%s" --node %s --xml --cg --timeout 60 --save ', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name);
             end
             disp(['ZUSTRE_COMMAND ' command])
             [status, zustre_out] = system(command);
