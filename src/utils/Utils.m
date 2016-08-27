@@ -704,7 +704,7 @@ classdef Utils
                 vector = randi(IMAX, [dim,nb_iterations],dt);
             end
             seuil = randi(IMAX);
-            vector(vector>seuil) = feval(dt,0);
+%             vector(vector>seuil) = feval(dt,0);
         end
         
         function vector = construct_random_booleans(nb_iterations, IMAX, dim)
@@ -718,10 +718,7 @@ classdef Utils
                 vector = double(100*rand([dim, nb_iterations]));
             end
             seuil = vector(1);
-            vector(vector>seuil) = double(0);
-%             seuil = vector(2);
-%             vector(vector>seuil) = double(-1);
-            %         vector(vector<1) = double(1);
+%             vector(vector>seuil) = double(0);
         end
     end
     

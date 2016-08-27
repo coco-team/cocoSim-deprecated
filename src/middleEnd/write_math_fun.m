@@ -123,12 +123,21 @@ if ~is_complex
 			output_string = app_sprintf(output_string, '\t%s = %s(%s);\n', list_out{idx_dim}, math_op, list_in{idx_dim});
 		end
 		extern_funs{1} = sprintf('%s %s', math_op, dt);
-	elseif strcmp(math_op, 'sqrt') || strcmp(math_op, 'rSqrt')
+	elseif strcmp(math_op, 'sqrt') 
 		for idx_dim=1:dim
 			if needs_convert
 				output_string = app_sprintf(output_string, '\t%s = %s(%s(%s));\n', list_out{idx_dim}, convert_fun, math_op, list_in{idx_dim});
 			else
 				output_string = app_sprintf(output_string, '\t%s = %s(%s);\n', list_out{idx_dim}, math_op, list_in{idx_dim});
+			end
+		end
+		extern_funs{1} = sprintf('%s double', math_op);
+    elseif strcmp(math_op, 'rSqrt')
+		for idx_dim=1:dim
+			if needs_convert
+				output_string = app_sprintf(output_string, '\t%s = %s(1.0/sqrt(%s));\n', list_out{idx_dim}, convert_fun, list_in{idx_dim});
+			else
+				output_string = app_sprintf(output_string, '\t%s = 1.0/sqrt(%s);\n', list_out{idx_dim}, list_in{idx_dim});
 			end
 		end
 		extern_funs{1} = sprintf('%s double', math_op);
