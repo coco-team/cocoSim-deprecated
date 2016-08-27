@@ -215,8 +215,14 @@ function conversion = compute_conversion(block)
   
 	%%%%%%%%%%%%% Maths function %%%%%%%%%%%%%
 	elseif strcmp(block.type,'Math')
+        math_op = get_param(block.origin_name, 'Operator');
+        if strcmp(math_op, 'sqrt') || strcmp(math_op, 'rSqrt') || strcmp(math_op, 'signedSqrt')
+            dt = 'double';
+        else
+            dt = block.outports_dt{1};
+        end
 		for idx_in=1:numel(block.inports_dt)
-			conversion{idx_in} = block.outports_dt{1};
+			conversion{idx_in} =dt;
 		end
 
 	%%%%%%%%%%%% Sqrt %%%%%%%%%%%%%%%%%%%

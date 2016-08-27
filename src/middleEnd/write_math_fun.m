@@ -87,7 +87,8 @@ convert_fun = '';
 needs_convert = false;
 if strcmp(math_op, 'sqrt') || strcmp(math_op, 'rSqrt') || strcmp(math_op, 'signedSqrt')
 	out_dt = Utils.get_lustre_dt(unbloc.outports_dt{1});
-	if ~strcmp('real', out_dt)
+    in_dt = Utils.get_lustre_dt(unbloc.inports_dt{1});
+	if ~strcmp('real', out_dt) &&  ~(strcmp('int', in_dt) || strcmp('bool', in_dt))
 		convert_fun = get_param(unbloc.annotation, 'RndMeth');
 		needs_convert = true;
 		if exist('tmp_dt_conv.mat', 'file') == 2
@@ -101,8 +102,12 @@ if strcmp(math_op, 'sqrt') || strcmp(math_op, 'rSqrt') || strcmp(math_op, 'signe
 		else
 			rounding = convert_fun;
 			save('tmp_dt_conv.mat', 'rounding');
-		end
-	end
+        end
+    end
+    if strcmp('int', out_dt)
+        needs_convert = true;
+        convert_fun = 'real_to_int';
+    end
 end
 
 dim = unbloc.dstport_size(1);

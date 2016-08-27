@@ -73,7 +73,7 @@ IMAX = 100; %IMAX for randi the max born for random number
 
 try
     fprintf('start translating model "%s" to lustre automaton\n',file_name);
-%     lus_file_path= '/home/hamza/Documents/coco_team/regression-test/simulink/unit_test/Enable_Held_problem/src_enable_held_with_pre/enable_held_with_pre.lus';
+%     lus_file_path= '/home/hamza/Documents/coco_team/regression-test/simulink/unit_test/not_valid_models/lustre_files/src_math_int_2_test/math_int_2_test.lus';
     lus_file_path=cocoSim(model_full_path);
     chart_name = file_name;
     configSet = copy(getActiveConfigSet(file_name));
@@ -113,6 +113,13 @@ else
         fprintf('compile lustre file failed for model "%s" :\n%s',file_name,make_out);
         close_system(model_full_path,0);
         bdclose('all')
+        command = sprintf('rm %s.makefile %s.c %s.h %s.o %s.lusic  %s_main.* %s_alloc.h %s_sfun.mexa64 %s',...
+            file_name, file_name,file_name,file_name,file_name,file_name,file_name,file_name,lustre_binary);
+        system(command);
+        command = sprintf('rm *.o input_values outputs_values ');
+        system(command);
+        command = sprintf('rm -r slprj');
+        system(command);
         cd(OldPwd);
         return
     else
@@ -187,6 +194,13 @@ else
             lustrec_binary_failed = 1;
             close_system(model_full_path,0);
             bdclose('all')
+            command = sprintf('rm %s.makefile %s.c %s.h %s.o %s.lusic  %s_main.* %s_alloc.h %s_sfun.mexa64 %s',...
+                file_name, file_name,file_name,file_name,file_name,file_name,file_name,file_name,lustre_binary);
+            system(command);
+            command = sprintf('rm *.o input_values outputs_values ');
+            system(command);
+            command = sprintf('rm -r slprj');
+            system(command);
             cd(OldPwd);
             return
         else
