@@ -270,6 +270,7 @@ else
                                 end
                                 valid = valid && (diff<eps);
                                 if  ~valid
+                                    diff_name =  Utils.naming_alone(yout_signals(k).blockName);
                                     error_index = i+1;
                                     break
                                 end
@@ -347,7 +348,7 @@ else
                         end
                         
                     end
-                    fprintf('difference between outputs is :%2.10f\n',diff);
+                    fprintf('difference between outputs %s is :%2.10f\n',diff_name, diff);
                 else
                     fprintf('translation for model "%s" is valid \n',file_name);
                 end
