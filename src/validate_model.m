@@ -249,7 +249,11 @@ else
                             if ~isempty(output_value)
                                 output_val_str = output_value{2};
                                 output_val = str2num(output_val_str(2:end-1));
-                                diff = abs(yout_values(j)-output_val);
+                                if yout_values(j)==inf
+                                    diff=0;
+                                else
+                                    diff = abs(yout_values(j)-output_val);
+                                end
                                 valid = valid && (diff<eps);
                                 if  ~valid
                                     error_index = i+1;
