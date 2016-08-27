@@ -3,9 +3,9 @@
 % Copyright (C) 2014-2015  Carnegie Mellon University
 % Original contribution from ONERA
 %
-%    cocoSim  is free software: you can redistribute it 
-%    and/or modify it under the terms of the GNU General Public License as 
-%    published by the Free Software Foundation, either version 3 of the 
+%    cocoSim  is free software: you can redistribute it
+%    and/or modify it under the terms of the GNU General Public License as
+%    published by the Free Software Foundation, either version 3 of the
 %    License, or (at your option) any later version.
 %
 %    cocoSim compiler + verifier is distributed in the hope that it will be useful,
@@ -50,45 +50,46 @@ output_string = '';
 [list_in] = list_var_entree(unbloc, inter_blk);
 
 if strcmp(operator, 'NOT')
-	for idx_dim=1:unbloc.dstport_size
-		output_string = app_sprintf(output_string, '\t%s = not %s;\n', list_out{idx_dim}, list_in{idx_dim});
-	end
+    for idx_dim=1:unbloc.dstport_size
+        output_string = app_sprintf(output_string, '\t%s = not %s;\n', list_out{idx_dim}, list_in{idx_dim});
+    end
 else
-	list_in = Utils.expand_all_inputs(unbloc, list_in);
-
-	if strcmp(operator, 'AND') || strcmp(operator, 'OR') || strcmp(operator, 'XOR')
-		for idx_dim=1:unbloc.dstport_size
-			list_in_nth = Utils.get_elem_nth_shift(list_in, idx_dim, unbloc.dstport_size(1));
-			right_string = Utils.concat_delim(list_in_nth, [' ' lower(operator) ' ']);
-			output_string = app_sprintf(output_string, '\t%s = %s;\n', list_out{idx_dim}, right_string);
+    list_in = Utils.expand_all_inputs(unbloc, list_in);
+    
+    if strcmp(operator, 'AND') || strcmp(operator, 'OR') || strcmp(operator, 'XOR')
+        for idx_dim=1:unbloc.dstport_size
+            list_in_nth = Utils.get_elem_nth_shift(list_in, idx_dim, unbloc.dstport_size(1));
+            right_string = Utils.concat_delim(list_in_nth, [' ' lower(operator) ' ']);
+            output_string = app_sprintf(output_string, '\t%s = %s;\n', list_out{idx_dim}, right_string);
         end
     elseif strcmp(operator, 'IMPLIES')
-		for idx_dim=1:unbloc.dstport_size
-			list_in_nth = Utils.get_elem_nth_shift(list_in, idx_dim, unbloc.dstport_size(1));
-			right_string = Utils.concat_delim(list_in_nth, [' ' '=>' ' ']);
-			output_string = app_sprintf(output_string, '\t%s = %s;\n', list_out{idx_dim}, right_string);
-		end
-	elseif strcmp(operator, 'NXOR')
-		for idx_dim=1:unbloc.dstport_size
-			list_in_nth = Utils.get_elem_nth_shift(list_in, idx_dim, unbloc.dstport_size(1));
-			right_string = Utils.concat_delim(list_in_nth, [' xor ']);
-			output_string = app_sprintf(output_string, '\t%s = not(%s);\n', list_out{idx_dim}, right_string);
-		end
-	else
-		% NAND or NOR operator
-		operator_name = lower(operator(2:end));
-		for idx_dim=1:unbloc.dstport_size
-			list_in_nth = Utils.get_elem_nth_shift(list_in, idx_dim, unbloc.dstport_size(1));
-			right_string = '';
-			final_parenthesis = '';
-			for idx_in=1:numel(list_in_nth)-1
-				right_string = [right_string 'not(' list_in_nth{idx_in} ' ' operator_name ' '];
-				final_parenthesis = [final_parenthesis ')'];
-			end
-			right_string = [right_string list_in_nth{end} final_parenthesis];
-			output_string = app_sprintf(output_string, '\t%s = %s;\n', list_out{idx_dim}, right_string);
-		end
-	end
+        for idx_dim=1:unbloc.dstport_size
+            list_in_nth = Utils.get_elem_nth_shift(list_in, idx_dim, unbloc.dstport_size(1));
+            right_string = Utils.concat_delim(list_in_nth, [' ' '=>' ' ']);
+            output_string = app_sprintf(output_string, '\t%s = %s;\n', list_out{idx_dim}, right_string);
+        end
+    elseif strcmp(operator, 'NXOR')
+        for idx_dim=1:unbloc.dstport_size
+            list_in_nth = Utils.get_elem_nth_shift(list_in, idx_dim, unbloc.dstport_size(1));
+            right_string = Utils.concat_delim(list_in_nth, [' xor ']);
+            output_string = app_sprintf(output_string, '\t%s = not(%s);\n', list_out{idx_dim}, right_string);
+        end
+    elseif strcmp(operator, 'NAND')
+        for idx_dim=1:unbloc.dstport_size
+            list_in_nth = Utils.get_elem_nth_shift(list_in, idx_dim, unbloc.dstport_size(1));
+            right_string = Utils.concat_delim(list_in_nth, [' and ']);
+            output_string = app_sprintf(output_string, '\t%s = not(%s);\n', list_out{idx_dim}, right_string);
+        end
+    elseif strcmp(operator, 'NOR')
+        for idx_dim=1:unbloc.dstport_size
+            list_in_nth = Utils.get_elem_nth_shift(list_in, idx_dim, unbloc.dstport_size(1));
+            right_string = Utils.concat_delim(list_in_nth, [' or ']);
+            output_string = app_sprintf(output_string, '\t%s = not(%s);\n', list_out{idx_dim}, right_string);
+        end
+    else
+        msg = sprintf('The block %s has type %s not supported \n', char(unbloc.origin_name),operator);
+        display_msg(msg, Constants.ERROR, 'write_logic', '');
+    end
 end
 
 end
