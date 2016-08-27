@@ -125,7 +125,11 @@ if ~strcmp('real', out_dt) &&  ~(strcmp('int', in_dt) || strcmp('bool', in_dt))
 		save('tmp_dt_conv.mat', 'rounding');
 	end
 end
-
+if strcmp('real', out_dt) &&  (strcmp('int', in_dt) || strcmp('bool', in_dt))
+    msg = sprintf('The block %s has input of type %s but output of type %s \n', char(unbloc.origin_name),in_dt,char(list_out{1}),out_dt);
+    msg = [msg sprintf('Be sure to change inputs to %s\n',out_dt)];
+    display_msg(msg, Constants.ERROR, 'write_discreteintegrator', '');
+end
 nb_elem_first = dim_r * dim_c;
 
 if strcmp(unbloc.outports_dt{1}, 'double') || strcmp(unbloc.outports_dt{1}, 'simple') || strncmp(unbloc.outports_dt{1}, 'sfix', 4) || strncmp(unbloc.outports_dt{1}, 'ufix', 4)
