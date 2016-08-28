@@ -440,7 +440,7 @@ end
 % Write conversion functions
 if exist('tmp_dt_conv.mat', 'file') == 2
     load 'tmp_dt_conv'
-    if exist('int_to_real') == 1
+    if exist('int_to_real') == 1 || exist('real_to_int') == 1
         fprintf(fid, print_int_to_real());
     end
     if exist('rounding') == 1

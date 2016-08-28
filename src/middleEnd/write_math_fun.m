@@ -88,25 +88,31 @@ needs_convert = false;
 if strcmp(math_op, 'sqrt') || strcmp(math_op, 'rSqrt') || strcmp(math_op, 'signedSqrt')
 	out_dt = Utils.get_lustre_dt(unbloc.outports_dt{1});
     in_dt = Utils.get_lustre_dt(unbloc.inports_dt{1});
-	if ~strcmp('real', out_dt) &&  ~(strcmp('int', in_dt) || strcmp('bool', in_dt))
-		convert_fun = get_param(unbloc.annotation, 'RndMeth');
-		needs_convert = true;
-		if exist('tmp_dt_conv.mat', 'file') == 2
-			load 'tmp_dt_conv'
-			if exist('rounding', 'var')
-				rounding = [rounding ' ' convert_fun];
-			else
-				rounding = convert_fun;
-			end
-			save('tmp_dt_conv.mat', 'rounding', '-append');
-		else
-			rounding = convert_fun;
-			save('tmp_dt_conv.mat', 'rounding');
-        end
-    end
+% 	if ~strcmp('real', out_dt) &&  ~(strcmp('int', in_dt) || strcmp('bool', in_dt))
+% 		convert_fun = get_param(unbloc.annotation, 'RndMeth');
+% 		needs_convert = true;
+% 		if exist('tmp_dt_conv.mat', 'file') == 2
+% 			load 'tmp_dt_conv'
+% 			if exist('rounding', 'var')
+% 				rounding = [rounding ' ' convert_fun];
+% 			else
+% 				rounding = convert_fun;
+% 			end
+% 			save('tmp_dt_conv.mat', 'rounding', '-append');
+% 		else
+% 			rounding = convert_fun;
+% 			save('tmp_dt_conv.mat', 'rounding');
+%         end
+%     end
     if strcmp('int', out_dt)
         needs_convert = true;
         convert_fun = 'real_to_int';
+        real_to_int = convert_fun;
+        if exist('tmp_dt_conv.mat', 'file') == 2
+            save('tmp_dt_conv.mat', 'real_to_int', '-append');
+        else
+            save('tmp_dt_conv.mat', 'real_to_int');
+        end
     end
 end
 
