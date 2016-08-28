@@ -156,7 +156,7 @@ if numel(unbloc.action) > 0 || numel(unbloc.trigger) > 0 || numel(unbloc.enable)
         end
     end
     activated = true;
-else
+elseif ~strcmp(unbloc.type, 'ModelReference')
     sf_sub = get_param(unbloc.annotation, 'SFBlockType');
     if strcmp(sf_sub, 'Chart')
         activated = true;
@@ -393,15 +393,19 @@ events_names = {};
 list_in_str = '';
 additional_outputs = '';
 add_vars = '';
-
-sf_sub = get_param(unbloc.annotation, 'SFBlockType');
 is_Chart = false;
-if strcmp(sf_sub, 'Chart')
-    is_Chart = true;
-    rt = sfroot;
-    m = rt.find('-isa', 'Simulink.BlockDiagram');
-    events = m.find('-isa','Stateflow.Event','Scope','Input');
-    show_port = 'off';
+if ~strcmp(unbloc.type, 'ModelReference')
+    sf_sub = get_param(unbloc.annotation, 'SFBlockType');
+    if strcmp(sf_sub, 'Chart')
+        is_Chart = true;
+        rt = sfroot;
+        m = rt.find('-isa', 'Simulink.BlockDiagram');
+        events = m.find('-isa','Stateflow.Event','Scope','Input');
+        show_port = 'off';
+    else
+        trigger_type = get_param(unbloc.triggerblock, 'TriggerType');
+        show_port = get_param(unbloc.triggerblock, 'ShowOutputPort');
+    end
 else
     trigger_type = get_param(unbloc.triggerblock, 'TriggerType');
     show_port = get_param(unbloc.triggerblock, 'ShowOutputPort');
