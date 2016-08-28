@@ -103,7 +103,7 @@ for idx_fun=1:numel(functions)
 			% Write include and write external trigo functions nodes
 			out_trigo_file = fullfile(output_dir, 'trigo_utils.lus');
 			[exec_path, m_fil_name, ext] = fileparts(mfilename('fullpath'));
-			pp_path = [exec_path filesep '..' filesep 'utils' filesep 'generate-tables.py'];
+			pp_path = [fileparts(exec_path) filesep 'utils' filesep 'generate-tables.py'];
 			command = ['python ' pp_path];
 			[status res] = system(command);
 			fid = fopen(out_trigo_file, 'w');
@@ -118,7 +118,8 @@ for idx_fun=1:numel(functions)
 			% Write_ include and write external complex arithmetic nodes
 			out_complex_arith_file = fullfile(output_dir, 'complex_arith_int.lus');
 			[file_path, m_fil_name, ext] = fileparts(mfilename('fullpath'));
-			content = fileread([file_path filesep '..' filesep 'templates' filesep 'complex_arith_int.lus']);
+            path = fullfile(fileparts(file_path),'backEnd', 'templates' , 'complex_arith_int.lus');
+			content = fileread(path);
 			fid = fopen(out_complex_arith_file, 'w');
 			fprintf(fid, content);
 			fclose(fid);
@@ -128,8 +129,9 @@ for idx_fun=1:numel(functions)
 		elseif ~included_complex_arith_real && strcmp(fun, 'complex_arith_real')
 			% Write_ include and write external complex arithmetic nodes
 			out_complex_arith_file = fullfile(output_dir, 'complex_arith_real.lus');
-			[file_path, m_fil_name, ext] = fileparts(mfilename('fullpath'));
-			content = fileread([file_path filesep '..' filesep 'templates' filesep 'complex_arith_real.lus']);
+			[file_path, ~, ~] = fileparts(mfilename('fullpath'));
+            path = fullfile(fileparts(file_path),'backEnd', 'templates' , 'complex_arith_real.lus');
+			content = fileread(path);
 			fid = fopen(out_complex_arith_file, 'w');
 			fprintf(fid, content);
 			fclose(fid);

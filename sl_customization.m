@@ -41,6 +41,8 @@ end
           display('Lustre binary generation failed');
       elseif sim_failed
           display('running Simulation has failed');
+      else
+          open(lus_file_path)
       end
      catch ME
          disp(ME.message)

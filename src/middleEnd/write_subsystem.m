@@ -199,7 +199,7 @@ if activated
 %         else
 %             compatible_in_idx = find(strcmp(out_dt, cellfun(@(x) Utils.get_lustre_dt(x), unbloc.inports_dt, 'UniformOutput', false)));
 %         end
-        if numel(unbloc.enable) > 0 || unbloc.action
+        if numel(unbloc.enable) > 0 || numel(unbloc.action) > 0
             
             [out_dim_r, out_dim_c] = Utils.get_port_dims_simple(unbloc.outports_dim, idx_out);
             for idx_row=1:out_dim_r
