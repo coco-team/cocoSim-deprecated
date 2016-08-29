@@ -440,10 +440,15 @@ end
 % Write conversion functions
 if exist('tmp_dt_conv.mat', 'file') == 2
     load 'tmp_dt_conv'
+    open_conv = false;
     if exist('int_to_real') == 1 || exist('real_to_int') == 1
         fprintf(fid, print_int_to_real());
+        open_conv = true;
     end
     if exist('rounding') == 1
+        if ~open_conv
+            fprintf(fid, print_int_to_real());
+        end
         fprintf(fid, print_dt_conversion_nodes(rounding));
     end
     path = which('tmp_dt_conv.mat');
@@ -645,7 +650,7 @@ function [str] = print_int_to_real()
 % str = [str 'returns (Out : real)\n'];
 % str = [str 'let\n\tOut = 0.0;\ntel'];
 % str = sprintf('%s\n', str);
-str = '#open <conv>';
+str = '#open <conv>\n';
 end
 
 function [nodes] = print_dt_conversion_nodes(rounding)
@@ -659,7 +664,7 @@ if numel(elems) > 0
         % Print rounding node
         str = ['\nnode ' elems{idx_round} '(In : real)\n'];
         str = [str 'returns (Out : int)\n'];
-        str = [str 'let\n\tOut = 0;\ntel'];
+        str = [str 'let\n\tOut = real_to_int(In);\ntel'];
         str = sprintf('%s\n', str);
         nodes = [nodes str];
     end
