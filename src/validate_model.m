@@ -319,13 +319,16 @@ else
                         for k=1:numberOfOutputs
                             dim = yout_signals(k).dimensions;
                             if numel(dim)==2
-                                if dim(1)>1
+%                                 if dim(1)>1
                                     yout_values = [];
                                     y = yout_signals(k).values(:,:,i+1);
                                     for idr=1:dim(1)
                                         yout_values = [yout_values; y(idr,:)'];
                                     end
-                                end
+%                                 else
+%                                     y = yout_signals(k).values(:,:,i+1);
+%                                     yout_values = y(1,:)';
+%                                 end
                                 dim = dim(1)*dim(2);
                             else
                                 yout_values = yout_signals(k).values(i+1,:);

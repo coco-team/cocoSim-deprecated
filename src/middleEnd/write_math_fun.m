@@ -155,9 +155,9 @@ if ~is_complex
 		end
 		for idx_dim=1:dim
 			if needs_convert
-				output_string = app_sprintf(output_string, '\t%s = %s(if %s >= %s then sqrt(%s) else -sqrt(%s));\n', list_out{idx_dim}, convert_fun, list_in{idx_dim}, zero, list_in{idx_dim}, list_in{idx_dim});
+				output_string = app_sprintf(output_string, '\t%s = %s(if %s >= %s then sqrt(%s) else -sqrt(-%s));\n', list_out{idx_dim}, convert_fun, list_in{idx_dim}, zero, list_in{idx_dim}, list_in{idx_dim});
 			else
-				output_string = app_sprintf(output_string, '\t%s = if %s >= %s then sqrt(%s) else -sqrt(%s);\n', list_out{idx_dim}, list_in{idx_dim}, zero, list_in{idx_dim}, list_in{idx_dim});
+				output_string = app_sprintf(output_string, '\t%s = if %s >= %s then sqrt(%s) else -sqrt(-%s);\n', list_out{idx_dim}, list_in{idx_dim}, zero, list_in{idx_dim}, list_in{idx_dim});
 			end
 		end
 		extern_funs{1} = sprintf('sqrt double');
