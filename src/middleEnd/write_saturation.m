@@ -49,7 +49,7 @@ for i=1:n
         ind = ind+1;
     end
 end
-sat_max = sat
+sat_max = sat;
 sat = [];
 [n,m] = size(sat_min);
 ind = 1;
@@ -59,7 +59,7 @@ for i=1:n
         ind = ind+1;
     end
 end
-sat_min = sat
+sat_min = sat;
 
 dim_sat_max = numel(sat_max);
 dim_sat_min = numel(sat_min);

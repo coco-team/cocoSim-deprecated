@@ -257,8 +257,6 @@ else
                         else
                             yout_values = yout_signals(k).values(i+1,:);
                         end
-                        k
-                        yout_values
                         for j=1:dim
                             index_out = index_out + 1;
                             output_value = regexp(outputs_array{index_out},'\s*:\s*','split');

@@ -200,9 +200,8 @@ for idx_block=1:nblk
 		 external_math_functions = [external_math_functions, external_math_functions_i];
 	%%%%%%%%%%%%% Saturation %%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'Saturate')
-        inter_blk{idx_block}
-		sat_min = get_param(blks{idx_block},'LowerLimit')
-		sat_max = get_param(blks{idx_block},'UpperLimit')
+		sat_min = get_param(blks{idx_block},'LowerLimit');
+		sat_max = get_param(blks{idx_block},'UpperLimit');
 		rndmeth = get_param(blks{idx_block}, 'RndMeth');
 
 		block_string = write_saturation(nom_lustre_file, inter_blk{idx_block}, sat_min, sat_max, rndmeth, inter_blk);
