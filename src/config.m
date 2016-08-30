@@ -21,11 +21,17 @@
 
 %
  if ~exist('solvers_path', 'var')
-    solvers_path = '/home/hamza/Documents/coco_team/zustre/build/run/bin/';
+     if ismac
+        solvers_path = '/home/hamza/Documents/cocoSim/tools/Verifiers/mac/bin/';
+    elseif isunix
+        solvers_path = '/home/hamza/Documents/cocoSim/tools/Verifiers/linux/bin/';
+    else
+        disp('Platform not supported')
+    end
  end
  LUSTREC = fullfile(solvers_path,'lustrec');
  ZUSTRE = fullfile(solvers_path,'zustre');
  Z3 = fullfile(solvers_path,'z3');
- KIND2 = '/usr/local/bin/kind2';
+ KIND2 = fullfile(solvers_path,'kind2');
  SEAHORN = 'PATH';
  JKIND =fullfile(solvers_path,'jkind/jkind');

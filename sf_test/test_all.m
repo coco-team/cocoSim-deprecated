@@ -1,7 +1,7 @@
 function result = test_all(tool_path,count,cocoSim_path, show_models)
 bdclose('all')
 if ~exist('count', 'var')
-    count = 1;
+    count = 10;
 end
 if ~exist('Debug', 'var')
     show_models = 0;
@@ -10,7 +10,7 @@ if ~exist('cocoSim_path', 'var')
     cocoSim_path = pwd;
 end
 if ~exist('tool_path', 'var')
-    tool_path = '/home/hamza/Documents/coco_team/regression-test/simulink/unit_test/not_valid_models/';
+    tool_path = '/home/hamza/Documents/coco_team/regression-test/simulink/unit_test/';
 %     tool_path = '/home/hamza/Documents/coco_team/regression-test/stateflow/regression_tests/';
 %     tool_path =    fullfile(cocoSim_path,'sf_test/regression_tests/');
 end
