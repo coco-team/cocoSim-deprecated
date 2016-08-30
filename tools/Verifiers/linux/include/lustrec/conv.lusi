@@ -1,0 +1,2 @@
+function real_to_int (in1: real) returns (out: int) prototype C;
+function int_to_real (in1: int) returns (out: real) prototype C;

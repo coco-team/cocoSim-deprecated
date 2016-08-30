@@ -1,0 +1,17 @@
+function acos (x: real) returns (y: real) prototype C lib m;
+function acosh (x: real) returns (y: real) prototype C lib m;
+function asin (x: real) returns (y: real) prototype C lib m;
+function asinh (x: real) returns (y: real) prototype C lib m;
+function atan (x: real) returns (y: real) prototype C lib m;
+function atan2(x:real; n: real) returns (y: real) prototype C lib m;
+function atanh (x: real) returns (y: real) prototype C lib m;
+function cbrt (x: real) returns (y: real) prototype C lib m;
+function cos (x: real) returns (y: real) prototype C lib m;
+function cosh (x: real) returns (y: real) prototype C lib m;
+function ceil (x: real) returns (y: real) prototype C lib m;
+function erf (x: real) returns (y: real) prototype C lib m;
+function fabs (x: real) returns (y: real) prototype C lib m;
+function pow (x:real; n: real) returns (y: real) prototype C lib m;
+function sin (x: real) returns (y: real) prototype C lib m;
+function sinh (x: real) returns (y: real) prototype C lib m;
+function sqrt (x: real) returns (y: real) prototype C lib m;

@@ -1,0 +1,109 @@
+#!/usr/bin/env python
+
+import sys
+import os
+import os.path
+import threading
+from multiprocessing import Process, Pool
+import multiprocessing
+
+
+def parseArgs (argv):
+    import argparse as a
+    p = a.ArgumentParser (description='\t Zustre: A fully automated verification and contract generation engine for Lustre Programs')
+
+    p.add_argument ('file', metavar='BENCHMARK', help='Benchmark file')
+    p.add_argument ('--pp',
+                    help='Enable default pre-processing',
+                    action='store_true', default=False)
+    p.add_argument ('--trace', help='Trace levels to enable',
+                   default='')
+    p.add_argument ('--stat', help='Print Spacer statistics', dest="stat",
+                    default=False, action='store_true')
+    p.add_argument ('--verbose', help='Verbose', action='store_true',
+                    default=False, dest="verbose")
+    p.add_argument ('--spacer_verbose', help='Spacer Verbose', action='store_true', default= False, dest='spacer_verbose')
+    p.add_argument ('--no-simp', help='Z3 simplification', action='store_false',
+                    default=True, dest="simp")
+    p.add_argument ('--invs', help='Additional invariants', default=None)
+    p.add_argument ('--node', help='Specify top node (default:top)'
+                    , dest='node', default="top")
+    p.add_argument ('--cg', dest='cg', default=False, action='store_true',
+                    help='Generate CoCoSpec Contract')
+    p.add_argument ('--ri', dest='ri', default=False, action='store_true',
+                    help='Get Raw Invariants')
+    p.add_argument ('--smt2', dest='smt2', default=False, action='store_true',
+                    help='Directly encoded file in SMT2 Format')
+    p.add_argument ('--to-smt', dest='tosmt', default=False, action='store_true',
+                       help='Print Horn Clause in SMT Format')
+    p.add_argument ('--no-solving', dest='no_solving', default=False, action='store_true',
+                    help='Generate only Horn clauses, i.e. do not solve')
+    p.add_argument ('--validate', help='Validate generated contract with Kind2', action='store_true',
+                    default=False, dest="kind2")
+    p.add_argument ('--xml', help='Output result in XML format', action='store_true',
+                    default=False, dest="xml")
+    p.add_argument ('--save', help='Save intermediate files', action='store_true',
+                    default=False, dest="save")
+    p.add_argument ('--no-dl', help='Disable Difference Logic (UTVPI) in SPACER', action='store_true',
+                    default=False, dest="utvpi")
+    p.add_argument ('--reg-test', help='Run regression tests', action='store_true',
+                      default=False, dest="regTest")
+    p.add_argument ('--timeout', help='Timeout',
+                    type=float, default=20.0, dest="timeout")
+    p.add_argument ('--s-func', help='S-Function', default=None, dest="sfunction")
+    p.add_argument ('--eldarica', help='Use Eldarica', default =False, action='store_true', dest="eldarica")
+    pars = p.parse_args (argv)
+    return pars
+
+
+def stat (key, val): stats.put (key, val)
+
+
+def main (args):
+    from zustre import Zustre
+    import z3
+    stat ('Result', 'UNKNOWN')
+    ctx = z3.Context ()
+    fp = z3.Fixedpoint (ctx=ctx)
+    zus = Zustre(args,ctx,fp)
+    if args.no_solving:
+        zus.encode()
+    elif args.sfunction:
+        zus.sFunction()
+    elif args.eldarica:
+        zus.eldarica()
+    else:
+        zus.encodeAndSolve()
+
+
+if __name__ == '__main__':
+     # unbuffered output
+    sys.stdout = os.fdopen (sys.stdout.fileno (), 'w', 0)
+    path = os.path.abspath (sys.argv[0])
+    path = os.path.dirname(path)
+
+    ## update system PATH to location of the package
+    if os.path.isdir (path):
+        os.environ['PATH'] = path + os.pathsep + os.environ['PATH']
+
+    path = os.path.abspath (os.path.join(path, '..', 'lib', 'zustrepy', 'src'))
+    if os.path.isdir (path): sys.path.insert(0, path)
+    z3_path = os.path.abspath (os.path.join(path, '..', '..', '..', 'lib', 'z3py'))
+    if os.path.isdir (z3_path):   sys.path.insert(0, z3_path)
+    import stats
+    args = parseArgs(sys.argv[1:])
+    try:
+        p = multiprocessing.Process(target=main, args=(args,))
+        p.start()
+        p.join(args.timeout)
+        if p.is_alive():
+            stat('Result','TIMEOUT')
+            if args.xml:
+                stats.xml_print(args.node, None, None, True)
+            else:
+                stats.brunch_print()
+            p.terminate()
+            p.join()
+        #main (args)
+    except Exception as e:
+        print str(e)
