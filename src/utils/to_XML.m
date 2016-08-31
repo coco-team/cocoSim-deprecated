@@ -60,8 +60,8 @@ function fieldElem = parseValue(value, name, rootDoc)
 	else
 		fieldElem = name;
 	end
-	if strcmp(class(value), 'char')
-		fieldElem.appendChild(rootDoc.create_Text_Node(
+% 	if strcmp(class(value), 'char')
+% 		fieldElem.appendChild(rootDoc.create_Text_Node(
 
 end
 

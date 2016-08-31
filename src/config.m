@@ -21,10 +21,12 @@
 
 %
  if ~exist('solvers_path', 'var')
-     if ismac
-        solvers_path = '/home/hamza/Documents/cocoSim/tools/Verifiers/mac/bin/';
+    [file_path, ~, ~] = fileparts(mfilename('fullpath'));
+    coco_sim_path = fileparts(file_path);
+    if ismac
+        solvers_path = fullfile(coco_sim_path, 'tools/Verifiers/mac/bin/');
     elseif isunix
-        solvers_path = '/home/hamza/Documents/cocoSim/tools/Verifiers/linux/bin/';
+        solvers_path = fullfile(coco_sim_path, 'tools/Verifiers/linux/bin/');
     else
         disp('Platform not supported')
     end
