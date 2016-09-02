@@ -14,10 +14,25 @@ end
   schema.statustip = 'Modular Analysis Engine';
   schema.autoDisableWhen = 'Busy';
   
-  schema.childrenFcns = {@getVerify,@getValidate @viewContract @getProps, ...
+  schema.childrenFcns = {@getVerify,@getValidate, @getCheckBlocks, @viewContract @getProps, ...
                         @getPP,  @getCompiler};
  end
  
+function schema = getCheckBlocks(callbackInfo)     
+    schema = sl_action_schema;
+    schema.label = 'Check unsupported blocks'; 
+    schema.callback = @checkBlocksCallBack;
+end
+ function checkBlocksCallBack(callbackInfo)
+     try
+         model_full_path = get_param(gcs,'FileName');
+         unsupported_blocks( model_full_path );
+         open(model_full_path);
+     catch ME
+         disp(ME.message)
+         disp('run the command in the top level of the model')
+     end
+ end
  function schema = getValidate(callbackInfo)     
   schema = sl_action_schema;
   schema.label = 'Translation Validation'; 
@@ -46,6 +61,7 @@ end
       end
      catch ME
          disp(ME.message)
+         disp('run the command in the top level of the model')
      end
  end
  function schema = getPP(callbackInfo)     
@@ -63,6 +79,7 @@ end
       load_system(char(pp_model));
      catch ME
          disp(ME.message)
+         disp('run the command in the top level of the model')
      end
  end
  
@@ -158,6 +175,7 @@ function schema = viewContract(callbackInfo)
       cocoSim(simulink_name);
   catch ME
       disp(ME.message)
+      disp('run the command in the top level of the model')
   end
  end
  
@@ -180,6 +198,7 @@ function schema = viewContract(callbackInfo)
       cocoSim(simulink_name);
   catch ME
       disp(ME.message)
+      disp('run the command in the top level of the model')
   end
  end
  
@@ -212,6 +231,7 @@ end
       cocoSim(simulink_name);
   catch ME
       disp(ME.message)
+      disp('run the command in the top level of the model')
   end
  end
  
@@ -233,6 +253,7 @@ function kindCallback(callbackInfo)
       cocoSim(simulink_name);
   catch ME
       disp(ME.message)
+      disp('run the command in the top level of the model')
   end
 end
  
@@ -254,6 +275,7 @@ function jkindCallback(callbackInfo)
       cocoSim(simulink_name);
   catch ME
       disp(ME.message)
+      disp('run the command in the top level of the model')
   end
 end
  
