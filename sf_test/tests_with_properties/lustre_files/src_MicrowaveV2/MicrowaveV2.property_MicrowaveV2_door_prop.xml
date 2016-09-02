@@ -1,11 +1,17 @@
-<?xml version="1.0"?>
-   <Results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-     <Property name="MicrowaveV2_door_prop">
-      <Date>2016-07-27 14:02</Date>
-      <Lustre2Horn unit="sec">0.00</Lustre2Horn>
-      <Parse unit="sec">0.00</Parse>
-      <Query unit="sec">21.68</Query>
-      <Answer>SAFE</Answer>
-     </Property>
-   </Results>
-
+Process Process-1:
+Traceback (most recent call last):
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/multiprocessing/process.py", line 114, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/Teme/Documents/GitHub/cocoSim/tools/Verifiers/osx/bin/zustre", line 76, in main
+    zus.encodeAndSolve()
+  File "/Users/Teme/Documents/GitHub/cocoSim/tools/Verifiers/osx/lib/zustrepy/src/zustre.py", line 198, in encodeAndSolve
+    contract_file = self.mk_contract (preds)
+  File "/Users/Teme/Documents/GitHub/cocoSim/tools/Verifiers/osx/lib/zustrepy/src/zustre.py", line 115, in mk_contract
+    cocoSpec = self.coco.mkCoCoSpec(lusFile)
+  File "/Users/Teme/Documents/GitHub/cocoSim/tools/Verifiers/osx/lib/zustrepy/src/CoCoSpec.py", line 204, in mkCoCoSpec
+    ag_dict = self.reformulateAG(coco_dict)
+  File "/Users/Teme/Documents/GitHub/cocoSim/tools/Verifiers/osx/lib/zustrepy/src/CoCoSpec.py", line 130, in reformulateAG
+    inputVars = self.getInput(self.varMappingAll[node]['input'])
+KeyError: 'mode_logic_mode_logic__MODE_LOGIC_RUNNING_IDL_handler_until_reset'
