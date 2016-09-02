@@ -28,7 +28,7 @@
     elseif isunix
         solvers_path = fullfile(coco_sim_path, 'tools/Verifiers/linux/bin/');
     else
-        disp('Platform not supported')
+        errordlg('OS not supported yet','CoCoSim Configuration');
     end
  end
  LUSTREC = fullfile(solvers_path,'lustrec');

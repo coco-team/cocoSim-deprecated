@@ -229,42 +229,47 @@ function IO_struct = get_IO_struct(model_inter_blk, xml_trace, prop_node_name)
 
 end
 
+
 function [IO_struct, found] = parseCEX(cex, model_name, IO_struct, prop_node_name, date_value, xml_trace)
 	first_cex = cex.item(0); % Only one CounterExample for now, do we will need more ?
-	signals = first_cex.getElementsByTagName('Signal');
-	time_steps = 0;
-	found = false;
+    nodes = first_cex.getElementsByTagName('Node');
     
-	prop_name = prop_node_name.prop_name;
+    prop_name = prop_node_name.prop_name;       
 	parent_name = prop_node_name.parent_node_name;
 	parent_block_name = prop_node_name.parent_block_name;
+    time_steps = 0;
+	found = false;
     
-	% Browse through all the signals
-	for idx=0:(signals.getLength-1)
-		signal = signals.item(idx);
-		name = signal.getAttribute('name');
-		node = signal.getAttribute('node');
-		if strcmp(char(node), parent_name)
-			input_names = cellfun(@(x) x.origin_name, IO_struct.inputs, 'UniformOutput', 0);
+    % Browse through all the nodes
+	for idx=0:(nodes.getLength-1)
+		node = nodes.item(idx);
+		node_name = node.getAttribute('name');
+        streams = node.getElementsByTagName('Stream');
+        for i=0:(streams.getLength-1)
+            stream = streams.item(i);
+            stream_name = stream.getAttribute('name');
+            input_names = cellfun(@(x) x.origin_name, IO_struct.inputs, 'UniformOutput', 0);
 			output_names = cellfun(@(x) x.origin_name, IO_struct.outputs, 'UniformOutput', 0);
-			var_name = xml_trace.get_block_name_from_variable(parent_block_name, char(name));
-			if numel(find(strcmp(input_names, var_name))) ~= 0
+			var_name = xml_trace.get_block_name_from_variable(parent_block_name, char(stream_name));
+            if numel(find(strcmp(input_names, var_name))) ~= 0
 				index = find(strcmp(input_names, var_name));
-				[IO_struct.inputs{index} time_steps] = addValue_IO_struct(IO_struct.inputs{index}, signal, prop_name, date_value, time_steps);
-				found = true;
+				[IO_struct.inputs{index}, time_steps] = addValue_IO_struct(IO_struct.inputs{index}, stream, prop_name, date_value, time_steps);		
+                found = true;
 			elseif numel(find(strcmp(output_names, var_name))) ~= 0
 				index = find(strcmp(output_names, var_name));
-				[IO_struct.outputs{index} time_steps] = addValue_IO_struct(IO_struct.outputs{index}, signal, prop_name, date_value, time_steps);
+				[IO_struct.outputs{index}, time_steps] = addValue_IO_struct(IO_struct.outputs{index}, stream, prop_name, date_value, time_steps);
 				found = true;
 			end
-		end
-	end
+        end
+    end
+    
 	if ~found
 		display_msg('Impossible to parse correctly the generated counter example', Constants.WARNING, 'CEX replay', '');
 	end
 	IO_struct = IO_struct;
 	IO_struct.time_steps = time_steps;
 end
+
 
 function [out, time_step] = addValue_IO_struct(struct, signal, prop_name, date_value, time_steps)
 	out = struct;
