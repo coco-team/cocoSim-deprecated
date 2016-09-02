@@ -26,7 +26,7 @@
     if ismac
         solvers_path = fullfile(coco_sim_path, 'tools/Verifiers/mac/bin/');
     elseif isunix
-        solvers_path = fullfile(coco_sim_path, 'tools/Verifiers/linux/bin/');
+        solvers_path = fullfile(coco_sim_path, 'tools/Verifiers/linux_binaries/bin/');
     else
         disp('Platform not supported')
     end
