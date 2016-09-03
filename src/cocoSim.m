@@ -195,7 +195,7 @@ output_dir = fullfile(model_path, strcat('lustre_files/src_', file_name));
 [status, message, message_id] = mkdir(output_dir);
 nom_lustre_file = fullfile(output_dir, strcat(file_name, '.lus'));
 
-trace_file_name = fullfile(output_dir, strcat(file_name, '.trace.xml'));
+trace_file_name = fullfile(output_dir, strcat(file_name, '.cocosim.trace.xml'));
 property_file_base_name = fullfile(output_dir, strcat(file_name, '.property'));
 
 % TODO: Ask the user for file overriding
@@ -245,6 +245,7 @@ nodes_string = '';
 node_header = '';
 cocospec = [];
 print_spec = false;
+is_SF = false;
 
 display_msg('Code printing', Constants.INFO, 'cocoSim', '');
 for idx_subsys=numel(inter_blk):-1:1
@@ -261,6 +262,7 @@ for idx_subsys=numel(inter_blk):-1:1
             is_matlab_function = true;
         elseif strcmp(sf_sub, 'Chart')
             is_Chart = true;
+            is_SF = true;
         end
     end
     
@@ -537,7 +539,7 @@ if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
     if strcmp(SOLVER, 'Z')
         display_msg('Running Zustre', Constants.INFO, 'Verification', '');
         try
-            zustre(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace, smt_file);
+            zustre(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace, is_SF, smt_file);
         catch ME
             display_msg(ME.message, Constants.ERROR, 'Verification', '');
         end

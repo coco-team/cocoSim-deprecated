@@ -353,7 +353,8 @@ else
                     end
                     fprintf('difference between outputs %s is :%2.10f\n',diff_name, diff);
                 else
-                    fprintf('translation for model "%s" is valid \n',file_name);
+                    msg = sprintf('Translation for model "%s" is valid \n',file_name);
+                    display_msg(msg, Constants.RESULT, 'Translation Validation', '');
                 end
                 
                 %uncommetn these two lines if you want to remove input and
@@ -367,7 +368,8 @@ else
                 system(command);
                 cd(OldPwd);
             catch ME
-                fprintf('simulation failed for model "%s" :\n%s\n%s\n%s',file_name,ME.identifier,ME.message, getReport(ME,'extended'));
+                msg = sprintf('simulation failed for model "%s" :\n%s\n%s\n%s',file_name,ME.identifier,ME.message, getReport(ME,'extended'));
+                display_msg(msg, Constants.ERROR, 'Translation Validation', '');
                 sim_failed = 1;
                 valid = 0;
                 close_system(model_full_path,0);
