@@ -1,53 +1,41 @@
 Model {
   Name			  "MicrowaveV2"
-  Version		  8.7
-  MdlSubVersion		  1
-  SavedCharacterEncoding  "UTF-8"
+  Version		  8.5
+  MdlSubVersion		  0
+  SavedCharacterEncoding  "ISO-8859-1"
   GraphicalInterface {
     NumRootInports	    4
     Inport {
       Name		      "start"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "clear"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "steps_to_cook"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "door_closed"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     NumRootOutports	    2
     Outport {
       Name		      "mode"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
     }
     Outport {
       Name		      "steps_remaining"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.24"
+    ComputedModelVersion    "1.26"
     NumModelReferences	    0
     NumTestPointedSignals   0
-    NumProvidedFunctions    0
-    NumRequiredFunctions    0
   }
   slprops.hdlmdlprops {
     $PropName		    "HDLParams"
@@ -69,7 +57,6 @@ Model {
   MinMaxOverflowArchiveMode "Overwrite"
   FPTRunName		  "Run 1"
   MaxMDLFileLineLength	  120
-  LastSavedArchitecture	  "glnxa64"
   Object {
     $PropName		    "BdWindowsInfo"
     $ObjectID		    2
@@ -79,7 +66,7 @@ Model {
       $ObjectID		      3
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [65.0, 24.0, 1019.0, 898.0]
+      Location		      [210.0, 23.0, 1019.0, 773.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		4
@@ -103,9 +90,9 @@ Model {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[965.0, 705.0]
+	Extents			[985.0, 603.0]
 	ZoomFactor		[0.8]
-	Offset			[26.874999999999886, -36.5]
+	Offset			[26.874999999999886, -47.950693905353546]
       }
     }
   }
@@ -113,11 +100,11 @@ Model {
   Creator		  "bourbouh"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "hamza"
+  LastModifiedBy	  "Teme"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Jul 27 14:02:51 2016"
-  RTWModifiedTimeStamp	  390953067
-  ModelVersionFormat	  "1.%<AutoIncrement:24>"
+  LastModifiedDate	  "Fri Sep 02 09:48:39 2016"
+  RTWModifiedTimeStamp	  394710517
+  ModelVersionFormat	  "1.%<AutoIncrement:26>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -125,10 +112,6 @@ Model {
   WideLines		  off
   ShowLineDimensions	  off
   ShowPortDataTypes	  off
-  ShowEditTimeErrors	  on
-  ShowEditTimeWarnings	  off
-  ShowEditTimeAdvisorChecks off
-  ShowPortUnits		  off
   ShowDesignRanges	  off
   ShowLoopsOnError	  on
   IgnoreBidirectionalLines off
@@ -137,10 +120,8 @@ Model {
   ShowSignalResolutionIcons on
   ShowViewerIcons	  on
   SortedOrder		  off
-  VariantCondition	  off
   ExecutionContextIcon	  off
   ShowLinearizationAnnotations on
-  ShowVisualizeInsertedRTB on
   ShowMarkup		  on
   BlockNameDataTip	  off
   BlockParametersDataTip  off
@@ -148,7 +129,6 @@ Model {
   ToolBar		  on
   StatusBar		  on
   BrowserShowLibraryLinks off
-  FunctionConnectors	  off
   BrowserLookUnderMasks	  off
   SimulationMode	  "normal"
   PauseTimes		  "5"
@@ -182,6 +162,27 @@ Model {
       PropName		      "logAsSpecifiedByModelsSSIDs_"
     }
   }
+  RecordCoverage	  off
+  CovPath		  "/"
+  CovSaveName		  "covdata"
+  CovMetricSettings	  "dw"
+  CovNameIncrementing	  off
+  CovHtmlReporting	  on
+  CovForceBlockReductionOff on
+  CovEnableCumulative	  on
+  covSaveCumulativeToWorkspaceVar on
+  CovSaveSingleToWorkspaceVar on
+  CovCumulativeVarName	  "covCumulativeData"
+  CovCumulativeReport	  off
+  CovReportOnPause	  on
+  CovModelRefEnable	  "Off"
+  CovExternalEMLEnable	  off
+  CovSFcnEnable		  on
+  CovBoundaryAbsTol	  0.000010
+  CovBoundaryRelTol	  0.010000
+  CovUseTimeInterval	  off
+  CovStartTime		  0
+  CovStopTime		  0
   ExtModeBatchMode	  off
   ExtModeEnableFloating	  on
   ExtModeTrigType	  "manual"
@@ -210,13 +211,13 @@ Model {
     Dimension		    1
     Simulink.ConfigSet {
       $ObjectID		      8
-      Version		      "1.16.2"
+      Version		      "1.15.0"
       Array {
 	Type			"Handle"
 	Dimension		10
 	Simulink.SolverCC {
 	  $ObjectID		  9
-	  Version		  "1.16.2"
+	  Version		  "1.15.0"
 	  StartTime		  "0.0"
 	  StopTime		  "20"
 	  AbsTol		  "auto"
@@ -243,8 +244,6 @@ Model {
 	  ZeroCrossControl	  "UseLocalSettings"
 	  ZeroCrossAlgorithm	  "Nonadaptive"
 	  AlgebraicLoopSolver	  "TrustRegion"
-	  SolverInfoToggleStatus  on
-	  IsAutoAppliedInSIP	  off
 	  SolverResetMethod	  "Fast"
 	  PositivePriorityOrder	  off
 	  AutoInsertRateTranBlk	  off
@@ -253,7 +252,7 @@ Model {
 	}
 	Simulink.DataIOCC {
 	  $ObjectID		  10
-	  Version		  "1.16.2"
+	  Version		  "1.15.0"
 	  Decimation		  "1"
 	  ExternalInput		  "[t, u]"
 	  FinalStateName	  "xFinal"
@@ -272,8 +271,6 @@ Model {
 	  DSMLogging		  off
 	  InspectSignalLogs	  off
 	  VisualizeSimOutput	  on
-	  StreamToWorkspace	  off
-	  StreamVariableName	  "streamout"
 	  SaveTime		  off
 	  ReturnWorkspaceOutputs  off
 	  StateSaveName		  "xout"
@@ -285,13 +282,10 @@ Model {
 	  OutputTimes		  "[]"
 	  ReturnWorkspaceOutputsName "out"
 	  Refine		  "1"
-	  LoggingToFile		  off
-	  LoggingFileName	  "out.mat"
-	  LoggingIntervals	  "[-inf, inf]"
 	}
 	Simulink.OptimizationCC {
 	  $ObjectID		  11
-	  Version		  "1.16.2"
+	  Version		  "1.15.0"
 	  Array {
 	    Type		    "Cell"
 	    Dimension		    8
@@ -308,7 +302,7 @@ Model {
 	  BlockReduction	  on
 	  BooleanDataType	  on
 	  ConditionallyExecuteInputs on
-	  DefaultParameterBehavior "Tunable"
+	  InlineParams		  off
 	  UseDivisionForNetSlopeComputation "off"
 	  UseFloatMulNetSlope	  off
 	  DefaultUnderspecifiedDataType	"double"
@@ -348,7 +342,7 @@ Model {
 	}
 	Simulink.DebuggingCC {
 	  $ObjectID		  12
-	  Version		  "1.16.2"
+	  Version		  "1.15.0"
 	  RTPrefix		  "error"
 	  ConsistencyChecking	  "none"
 	  ArrayBoundsChecking	  "none"
@@ -375,6 +369,7 @@ Model {
 	  IgnoredZcDiagnostic	  "warning"
 	  SolverPrmCheckMsg	  "none"
 	  InheritedTsInSrcMsg	  "warning"
+	  DiscreteInheritContinuousMsg "warning"
 	  MultiTaskDSMMsg	  "error"
 	  MultiTaskCondExecSysMsg "error"
 	  MultiTaskRateTransMsg	  "error"
@@ -407,7 +402,6 @@ Model {
 	  BusObjectLabelMismatch  "warning"
 	  RootOutportRequireBusObject "warning"
 	  AssertControl		  "UseLocalSettings"
-	  AllowSymbolicDim	  on
 	  ModelReferenceIOMsg	  "none"
 	  ModelReferenceMultiInstanceNormalModeStructChecksumCheck "error"
 	  ModelReferenceVersionMismatchMessage "none"
@@ -423,9 +417,6 @@ Model {
 	  StrictBusMsg		  "ErrorLevel1"
 	  BusNameAdapt		  "WarnAndRepair"
 	  NonBusSignalsTreatedAsBus "none"
-	  SymbolicDimMinMaxWarning "warning"
-	  LossOfSymbolicDimsSimulationWarning "warning"
-	  LossOfSymbolicDimsCodeGenerationWarning "error"
 	  BlockIODiagnostic	  "none"
 	  SFUnusedDataAndEventsDiag "warning"
 	  SFUnexpectedBacktrackingDiag "warning"
@@ -437,13 +428,10 @@ Model {
 	  SFTransitionActionBeforeConditionDiag	"warning"
 	  SFOutputUsedAsStateInMooreChartDiag "error"
 	  IntegerSaturationMsg	  "warning"
-	  AllowedUnitSystems	  "all"
-	  UnitsInconsistencyMsg	  "warning"
-	  AllowAutomaticUnitConversions	on
 	}
 	Simulink.HardwareCC {
 	  $ObjectID		  13
-	  Version		  "1.16.2"
+	  Version		  "1.15.0"
 	  ProdBitPerChar	  8
 	  ProdBitPerShort	  16
 	  ProdBitPerInt		  32
@@ -480,14 +468,11 @@ Model {
 	  TargetHWDeviceType	  "Specified"
 	  TargetUnknown		  off
 	  ProdEqTarget		  on
-	  UseEmbeddedCoderFeatures on
-	  UseSimulinkCoderFeatures on
 	}
 	Simulink.ModelReferenceCC {
 	  $ObjectID		  14
-	  Version		  "1.16.2"
+	  Version		  "1.15.0"
 	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
-	  EnableRefExpFcnMdlSchedulingChecks on
 	  CheckModelReferenceTargetMessage "error"
 	  EnableParallelModelReferenceBuilds off
 	  ParallelModelReferenceErrorOnInvalidPool on
@@ -501,7 +486,8 @@ Model {
 	}
 	Simulink.SFSimCC {
 	  $ObjectID		  15
-	  Version		  "1.16.2"
+	  Version		  "1.15.0"
+	  SFSimOverflowDetection  on
 	  SFSimEcho		  on
 	  SimCtrlC		  on
 	  SimIntegrity		  on
@@ -513,7 +499,7 @@ Model {
 	Simulink.RTWCC {
 	  $BackupClass		  "Simulink.RTWCC"
 	  $ObjectID		  16
-	  Version		  "1.16.2"
+	  Version		  "1.15.0"
 	  Array {
 	    Type		    "Cell"
 	    Dimension		    16
@@ -536,12 +522,12 @@ Model {
 	    PropName		    "DisabledProps"
 	  }
 	  SystemTargetFile	  "grt.tlc"
-	  HardwareBoard		  "None"
 	  TLCOptions		  ""
 	  GenCodeOnly		  off
 	  MakeCommand		  "make_rtw"
 	  GenerateMakefile	  on
 	  PackageGeneratedCodeAndArtifacts off
+	  PackageName		  ""
 	  TemplateMakefile	  "grt_default_tmf"
 	  PostCodeGenCommand	  ""
 	  Description		  ""
@@ -555,6 +541,13 @@ Model {
 	  TLCAssert		  off
 	  RTWUseLocalCustomCode	  off
 	  RTWUseSimCustomCode	  off
+	  CustomSourceCode	  ""
+	  CustomHeaderCode	  ""
+	  CustomInclude		  ""
+	  CustomSource		  ""
+	  CustomLibrary		  ""
+	  CustomInitializer	  ""
+	  CustomTerminator	  ""
 	  Toolchain		  "Automatically locate an installed toolchain"
 	  BuildConfiguration	  "Faster Builds"
 	  IncludeHyperlinkInReport off
@@ -586,7 +579,7 @@ Model {
 	    Dimension		    2
 	    Simulink.CodeAppCC {
 	      $ObjectID		      17
-	      Version		      "1.16.2"
+	      Version		      "1.15.0"
 	      Array {
 		Type			"Cell"
 		Dimension		24
@@ -658,7 +651,7 @@ Model {
 	    Simulink.GRTTargetCC {
 	      $BackupClass	      "Simulink.TargetCC"
 	      $ObjectID		      18
-	      Version		      "1.16.2"
+	      Version		      "1.15.0"
 	      Array {
 		Type			"Cell"
 		Dimension		13
@@ -679,6 +672,7 @@ Model {
 	      }
 	      TargetFcnLib	      "ansi_tfl_table_tmw.mat"
 	      TargetLibSuffix	      ""
+	      TargetPreCompLibLocation ""
 	      GenFloatMathFcnCalls    "NOT IN USE"
 	      TargetLangStandard      "C89/C90 (ANSI)"
 	      CodeReplacementLibrary  "None"
@@ -721,7 +715,6 @@ Model {
 	      AutosarCompliant	      off
 	      GRTInterface	      off
 	      GenerateAllocFcn	      off
-	      UseToolchainInfoCompliant	on
 	      GenerateSharedConstants on
 	      UseMalloc		      off
 	      ExtMode		      off
@@ -743,7 +736,7 @@ Model {
 	}
 	SlCovCC.ConfigComp {
 	  $ObjectID		  19
-	  Version		  "1.16.2"
+	  Version		  "1.15.0"
 	  Description		  "Simulink Coverage Configuration Component"
 	  Name			  "Simulink Coverage"
 	  CovEnable		  off
@@ -776,7 +769,7 @@ Model {
 	}
 	hdlcoderui.hdlcc {
 	  $ObjectID		  20
-	  Version		  "1.16.2"
+	  Version		  "1.15.0"
 	  Description		  "HDL Coder custom configuration component"
 	  Name			  "HDL Coder"
 	  Array {
@@ -844,7 +837,7 @@ Model {
   MaskDefaults {
     SelfModifiable	    "off"
     IconFrame		    "on"
-    IconOpaque		    "opaque"
+    IconOpaque		    "on"
     RunInitForIconRedraw    "off"
     IconRotate		    "none"
     PortRotate		    "default"
@@ -889,7 +882,6 @@ Model {
       OutDataTypeStr	      "Inherit: auto"
       LockScale		      off
       BusOutputAsStruct	      off
-      Unit		      "inherit"
       PortDimensions	      "-1"
       VarSizeSig	      "Inherit"
       SampleTime	      "-1"
@@ -907,7 +899,6 @@ Model {
       OutDataTypeStr	      "Inherit: auto"
       LockScale		      off
       BusOutputAsStruct	      off
-      Unit		      "inherit"
       PortDimensions	      "-1"
       VarSizeSig	      "Inherit"
       SampleTime	      "-1"
@@ -922,6 +913,8 @@ Model {
       FunctionName	      "system"
       SFunctionModules	      "''"
       PortCounts	      "[]"
+      SFunctionDeploymentMode off
+      EnableBusSupport	      off
     }
     Block {
       BlockType		      SubSystem
@@ -950,8 +943,8 @@ Model {
       Opaque		      off
       MaskHideContents	      off
       SFBlockType	      "NONE"
+      Variant		      off
       GeneratePreprocessorConditionals off
-      TreatAsGroupedWhenPropagatingVariantConditions on
       ContentPreviewEnabled   off
       IsWebBlock	      off
     }
@@ -976,7 +969,7 @@ Model {
   }
   System {
     Name		    "MicrowaveV2"
-    Location		    [65, 24, 1084, 922]
+    Location		    [210, 23, 1229, 796]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -990,12 +983,12 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "80"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "54"
+    SIDHighWatermark	    "79"
     Block {
       BlockType		      Inport
       Name		      "start"
       SID		      "10"
-      Position		      [160, 58, 190, 72]
+      Position		      [160, 143, 190, 157]
       ZOrder		      20
       IconDisplay	      "Port number"
     }
@@ -1003,7 +996,7 @@ Model {
       BlockType		      Inport
       Name		      "clear"
       SID		      "11"
-      Position		      [160, 153, 190, 167]
+      Position		      [160, 238, 190, 252]
       ZOrder		      21
       Port		      "2"
       IconDisplay	      "Port number"
@@ -1012,7 +1005,7 @@ Model {
       BlockType		      Inport
       Name		      "steps_to_cook"
       SID		      "12"
-      Position		      [160, 248, 190, 262]
+      Position		      [160, 333, 190, 347]
       ZOrder		      22
       Port		      "3"
       IconDisplay	      "Port number"
@@ -1021,7 +1014,7 @@ Model {
       BlockType		      Inport
       Name		      "door_closed"
       SID		      "13"
-      Position		      [150, 343, 180, 357]
+      Position		      [150, 428, 180, 442]
       ZOrder		      23
       Port		      "4"
       IconDisplay	      "Port number"
@@ -1031,14 +1024,13 @@ Model {
       Name		      "Mode_logic"
       SID		      "1"
       Ports		      [4, 2]
-      Position		      [265, 17, 535, 398]
+      Position		      [265, 102, 535, 483]
       ZOrder		      1
       ErrorFcn		      "Stateflow.Translate.translate"
       PermitHierarchicalResolution "ExplicitOnly"
       TreatAsAtomicUnit	      on
       RequestExecContextInheritance off
       SFBlockType	      "Chart"
-      Variant		      off
       System {
 	Name			"Mode_logic"
 	Location		[41, 10, 832, 908]
@@ -1109,7 +1101,6 @@ Model {
 	  ZOrder		  4
 	  FunctionName		  "sf_sfun"
 	  PortCounts		  "[4 3]"
-	  SFunctionDeploymentMode off
 	  EnableBusSupport	  on
 	  Port {
 	    PortNumber		    2
@@ -1214,15 +1205,13 @@ Model {
     Block {
       BlockType		      SubSystem
       Name		      "door_prop"
-      SID		      "36"
+      SID		      "55"
       Ports		      [5, 1]
-      Position		      [630, 4, 780, 66]
-      ZOrder		      29
-      ForegroundColor	      "green"
-      BackgroundColor	      "green"
+      Position		      [660, 18, 810, 82]
+      ZOrder		      31
+      ForegroundColor	      "red"
       TreatAsAtomicUnit	      on
       RequestExecContextInheritance off
-      Variant		      off
       Object {
 	$PropName		"MaskObject"
 	$ObjectID		22
@@ -1231,8 +1220,8 @@ Model {
 	Description		"Set an observer for the system.\nThe annotation type parameter sets the type of observer:\n- requires :"
 	" pre-condition\n- ensures : post-condition\n- assert : an assertion\n- observer : the observer computes a special typ"
 	"e of properties"
-	Display			"color('black')\ntext(0.5, 0.5, ['Property: ''' get_param(gcb,'name') ''''], 'horizontalAlignment', 'center"
-	"');\ntext(0.99, 0.03, '{\\bf\\fontsize{12}SAFE}', 'hor', 'right', 'ver', 'bottom', 'texmode', 'on');"
+	Display			"color('red')\ntext(0.5, 0.5, ['CoCoSpec: ''' get_param(gcb,'name') ''''], 'horizontalAlignment', 'center')"
+	";\ntext(0.99, 0.03, '{\\bf\\fontsize{12}TO BE VERIFIED}', 'hor', 'right', 'ver', 'bottom', 'texmode', 'on');"
 	IconUnits		"normalized"
 	Array {
 	  Type			  "Simulink.MaskParameter"
@@ -1263,7 +1252,6 @@ Model {
 	    Prompt		    "Observer type"
 	    Value		    "[]"
 	    Evaluate		    "off"
-	    Visible		    "off"
 	    Callback		    "paramStr = get_param(gcb, 'MaskValues');\nif strcmp(paramStr{1}(1),'o')\nset_param(gcb,'MaskVisibi"
 	    "lities',{'on';'on'});\nparamStr{2} = 'ellipsoid';\nset_param(gcb,'MaskValues',paramStr);\nelse\nset_param(gcb,'Ma"
 	    "skVisibilities',{'on';'off'});\nend\nclear paramStr;\n"
@@ -1273,71 +1261,71 @@ Model {
       }
       System {
 	Name			"door_prop"
-	Location		[41, 10, 832, 908]
+	Location		[210, 23, 1229, 796]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
 	PaperOrientation	"landscape"
 	PaperPositionMode	"auto"
-	PaperType		"A4"
-	PaperUnits		"centimeters"
-	TiledPaperMargins	[1.270000, 1.270000, 1.270000, 1.270000]
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
 	TiledPageScale		1
 	ShowPageBoundaries	off
-	ZoomFactor		"100"
+	ZoomFactor		"142"
 	Block {
 	  BlockType		  Inport
 	  Name			  "start"
-	  SID			  "37"
-	  Position		  [90, 92, 120, 108]
-	  ZOrder		  1
+	  SID			  "68"
+	  Position		  [205, 362, 235, 378]
+	  ZOrder		  24
 	  IconDisplay		  "Port number"
 	}
 	Block {
 	  BlockType		  Inport
 	  Name			  "clear"
-	  SID			  "39"
-	  Position		  [90, 152, 120, 168]
-	  ZOrder		  3
+	  SID			  "69"
+	  Position		  [205, 422, 235, 438]
+	  ZOrder		  26
 	  Port			  "2"
 	  IconDisplay		  "Port number"
 	}
 	Block {
 	  BlockType		  Inport
 	  Name			  "steps_to_cook"
-	  SID			  "41"
-	  Position		  [90, 212, 120, 228]
-	  ZOrder		  5
+	  SID			  "70"
+	  Position		  [205, 482, 235, 498]
+	  ZOrder		  28
 	  Port			  "3"
 	  IconDisplay		  "Port number"
 	}
 	Block {
 	  BlockType		  Inport
 	  Name			  "door_closed"
-	  SID			  "43"
-	  Position		  [295, 352, 325, 368]
-	  ZOrder		  7
+	  SID			  "71"
+	  Position		  [410, 622, 440, 638]
+	  ZOrder		  30
 	  Port			  "4"
 	  IconDisplay		  "Port number"
 	}
 	Block {
 	  BlockType		  Inport
 	  Name			  "mode"
-	  SID			  "45"
-	  Position		  [120, 402, 150, 418]
-	  ZOrder		  9
+	  SID			  "72"
+	  Position		  [235, 672, 265, 688]
+	  ZOrder		  31
 	  Port			  "5"
 	  IconDisplay		  "Port number"
 	}
 	Block {
 	  BlockType		  Reference
 	  Name			  "Compare\nTo Constant"
-	  SID			  "54"
+	  SID			  "73"
 	  Ports			  [1, 1]
-	  Position		  [200, 395, 230, 425]
-	  ZOrder		  23
-	  LibraryVersion	  "1.386"
+	  Position		  [315, 665, 345, 695]
+	  ZOrder		  35
+	  LibraryVersion	  "1.356"
 	  SourceBlock		  "simulink/Logic and Bit\nOperations/Compare\nTo Constant"
 	  SourceType		  "Compare To Constant"
 	  ContentPreviewEnabled	  off
@@ -1349,17 +1337,17 @@ Model {
 	Block {
 	  BlockType		  Constant
 	  Name			  "Constant"
-	  SID			  "51"
-	  Position		  [295, 450, 325, 480]
-	  ZOrder		  21
+	  SID			  "74"
+	  Position		  [410, 720, 440, 750]
+	  ZOrder		  33
 	  Value			  "true"
 	}
 	Block {
 	  BlockType		  Switch
 	  Name			  "Switch"
-	  SID			  "52"
-	  Position		  [425, 390, 475, 430]
-	  ZOrder		  22
+	  SID			  "75"
+	  Position		  [540, 660, 590, 700]
+	  ZOrder		  34
 	  Criteria		  "u2 > Threshold"
 	  InputSameDT		  off
 	  SaturateOnIntegerOverflow off
@@ -1367,55 +1355,55 @@ Model {
 	Block {
 	  BlockType		  Terminator
 	  Name			  "clear_term"
-	  SID			  "40"
-	  Position		  [160, 150, 180, 170]
-	  ZOrder		  4
+	  SID			  "76"
+	  Position		  [275, 420, 295, 440]
+	  ZOrder		  27
 	}
 	Block {
 	  BlockType		  Terminator
 	  Name			  "start_term"
-	  SID			  "38"
-	  Position		  [160, 90, 180, 110]
-	  ZOrder		  2
+	  SID			  "77"
+	  Position		  [275, 360, 295, 380]
+	  ZOrder		  25
 	}
 	Block {
 	  BlockType		  Terminator
 	  Name			  "steps_to_cook_term"
-	  SID			  "42"
-	  Position		  [185, 210, 205, 230]
-	  ZOrder		  6
+	  SID			  "78"
+	  Position		  [300, 480, 320, 500]
+	  ZOrder		  29
 	}
 	Block {
 	  BlockType		  Outport
 	  Name			  "door_prop"
-	  SID			  "47"
-	  Position		  [605, 402, 635, 418]
-	  ZOrder		  11
+	  SID			  "79"
+	  Position		  [720, 672, 750, 688]
+	  ZOrder		  32
 	  IconDisplay		  "Port number"
 	}
 	Line {
-	  ZOrder		  1
+	  ZOrder		  6
 	  SrcBlock		  "start"
 	  SrcPort		  1
 	  DstBlock		  "start_term"
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  2
+	  ZOrder		  7
 	  SrcBlock		  "clear"
 	  SrcPort		  1
 	  DstBlock		  "clear_term"
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  3
+	  ZOrder		  8
 	  SrcBlock		  "steps_to_cook"
 	  SrcPort		  1
 	  DstBlock		  "steps_to_cook_term"
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  12
+	  ZOrder		  9
 	  SrcBlock		  "door_closed"
 	  SrcPort		  1
 	  Points		  [18, 0; 0, 35]
@@ -1423,14 +1411,14 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  14
+	  ZOrder		  10
 	  SrcBlock		  "Switch"
 	  SrcPort		  1
 	  DstBlock		  "door_prop"
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  9
+	  ZOrder		  11
 	  SrcBlock		  "Constant"
 	  SrcPort		  1
 	  Points		  [68, 0; 0, -40]
@@ -1438,14 +1426,14 @@ Model {
 	  DstPort		  3
 	}
 	Line {
-	  ZOrder		  15
+	  ZOrder		  12
 	  SrcBlock		  "mode"
 	  SrcPort		  1
 	  DstBlock		  "Compare\nTo Constant"
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  16
+	  ZOrder		  13
 	  SrcBlock		  "Compare\nTo Constant"
 	  SrcPort		  1
 	  DstBlock		  "Switch"
@@ -1456,16 +1444,16 @@ Model {
     Block {
       BlockType		      Terminator
       Name		      "door_prop_term"
-      SID		      "48"
-      Position		      [820, 20, 840, 40]
-      ZOrder		      30
+      SID		      "67"
+      Position		      [885, 40, 905, 60]
+      ZOrder		      32
       ForegroundColor	      "red"
     }
     Block {
       BlockType		      Outport
       Name		      "mode"
       SID		      "14"
-      Position		      [630, 108, 660, 122]
+      Position		      [630, 193, 660, 207]
       ZOrder		      24
       IconDisplay	      "Port number"
     }
@@ -1473,92 +1461,75 @@ Model {
       BlockType		      Outport
       Name		      "steps_remaining"
       SID		      "16"
-      Position		      [630, 298, 660, 312]
+      Position		      [630, 383, 660, 397]
       ZOrder		      26
       Port		      "2"
       IconDisplay	      "Port number"
     }
     Line {
-      ZOrder		      27
+      ZOrder		      52
       SrcBlock		      "start"
       SrcPort		      1
-      Points		      [0, 0]
+      Points		      [20, 0]
       Branch {
-	ZOrder			16
-	DstBlock		"Mode_logic"
+	ZOrder			64
+	Points			[0, -120]
+	DstBlock		"door_prop"
 	DstPort			1
       }
       Branch {
-	ZOrder			28
-	Points			[350, -50]
-	DstBlock		"door_prop"
+	ZOrder			27
+	DstBlock		"Mode_logic"
 	DstPort			1
       }
     }
     Line {
-      ZOrder		      33
+      ZOrder		      58
       SrcBlock		      "door_closed"
       SrcPort		      1
-      Points		      [0, 0]
+      Points		      [50, 0]
       Branch {
-	ZOrder			39
-	Points			[0, 5; 423, -310]
+	ZOrder			68
+	Points			[0, -385]
 	DstBlock		"door_prop"
-	DstPort			4
+	DstPort			3
       }
       Branch {
-	ZOrder			22
+	ZOrder			33
 	DstBlock		"Mode_logic"
 	DstPort			4
       }
     }
     Line {
-      ZOrder		      31
-      SrcBlock		      "steps_to_cook"
-      SrcPort		      1
-      Points		      [0, 0]
-      Branch {
-	ZOrder			20
-	DstBlock		"Mode_logic"
-	DstPort			3
-      }
-      Branch {
-	ZOrder			32
-	Points			[402, -220]
-	DstBlock		"door_prop"
-	DstPort			3
-      }
-    }
-    Line {
-      ZOrder		      29
+      ZOrder		      54
       SrcBlock		      "clear"
       SrcPort		      1
-      Points		      [0, 0]
+      Points		      [31, 0]
       Branch {
-	ZOrder			18
-	DstBlock		"Mode_logic"
+	ZOrder			67
+	Points			[0, -205]
+	DstBlock		"door_prop"
 	DstPort			2
       }
       Branch {
-	ZOrder			30
-	Points			[392, -135]
-	DstBlock		"door_prop"
+	ZOrder			29
+	DstBlock		"Mode_logic"
 	DstPort			2
       }
     }
     Line {
-      ZOrder		      35
+      ZOrder		      60
       SrcBlock		      "Mode_logic"
       SrcPort		      1
       Points		      [0, 0]
       Branch {
-	ZOrder			38
-	Points			[0, 5; 70, -65]
+	ZOrder			73
+	Points			[44, -35; 4, 0; 0, -95]
 	DstBlock		"door_prop"
 	DstPort			5
       }
       Branch {
-	ZOrder			24
+	ZOrder			35
 	DstBlock		"mode"
 	DstPort			1
       }
@@ -1571,18 +1542,34 @@ Model {
       DstPort		      1
     }
     Line {
-      ZOrder		      37
+      ZOrder		      63
       SrcBlock		      "door_prop"
       SrcPort		      1
-      Points		      [10, 0; 0, -5]
       DstBlock		      "door_prop_term"
       DstPort		      1
+    }
+    Line {
+      ZOrder		      56
+      SrcBlock		      "steps_to_cook"
+      SrcPort		      1
+      Points		      [0, 0]
+      Branch {
+	ZOrder			72
+	Points			[0, -280]
+	DstBlock		"door_prop"
+	DstPort			4
+      }
+      Branch {
+	ZOrder			31
+	DstBlock		"Mode_logic"
+	DstPort			3
+      }
     }
   }
 }
 #Finite State Machines
 #
-#   Stateflow 80000009
+#   Stateflow 80000005
 #
 #
 Stateflow {
@@ -1592,7 +1579,7 @@ Stateflow {
     created		    "03-May-2016 00:12:14"
     isLibrary		    0
     firstTarget		    27
-    sfVersion		    80000009
+    sfVersion		    80000005
   }
   chart {
     id			    2
@@ -1874,9 +1861,6 @@ Stateflow {
 	isSigned		1
 	wordLength		"16"
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -1892,9 +1876,6 @@ Stateflow {
 	primitive		SF_BOOLEAN_TYPE
 	isSigned		1
 	wordLength		"16"
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "boolean"
@@ -1912,9 +1893,6 @@ Stateflow {
 	isSigned		1
 	wordLength		"16"
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint16"
   }
@@ -1930,9 +1908,6 @@ Stateflow {
 	primitive		SF_BOOLEAN_TYPE
 	isSigned		1
 	wordLength		"16"
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "boolean"
@@ -1951,9 +1926,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -1975,9 +1947,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint16"
   }

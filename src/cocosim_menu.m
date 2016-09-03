@@ -14,11 +14,60 @@ end
   schema.statustip = 'Modular Analysis Engine';
   schema.autoDisableWhen = 'Busy';
   
-  schema.childrenFcns = {@getVerify, @viewContract @getProps, ...
+  schema.childrenFcns = {@getVerify,@getValidate, @getCheckBlocks, @viewContract @getProps, ...
                         @getPP,  @getCompiler};
  end
  
+function schema = getCheckBlocks(callbackInfo)     
+    schema = sl_action_schema;
+    schema.label = 'Check unsupported blocks'; 
+    schema.callback = @checkBlocksCallBack;
+end
+ function checkBlocksCallBack(callbackInfo)
+     try
+         model_full_path = get_param(gcs,'FileName');
+         unsupported_blocks( model_full_path );
+         open(model_full_path);
+     catch ME
+         disp(ME.message)
+         disp('run the command in the top level of the model')
+     end
+ end
+ function schema = getValidate(callbackInfo)     
+  schema = sl_action_schema;
+  schema.label = 'Translation Validation'; 
+  schema.callback = @validateCallBack;
+ end
 
+ function validateCallBack(callbackInfo)
+     try
+      [cocoSim_path, ~, ~] = fileparts(mfilename('fullpath'));
+      model_full_path = get_param(gcs,'FileName');%gcs;
+      [valid, cocoSim_failed,lustrec_failed, ...
+          lustrec_binary_failed, sim_failed, lus_file_path]=validate_model(model_full_path,cocoSim_path,1);
+      open(model_full_path);
+      msg = '';
+      if valid
+          msg = 'VALID';
+      elseif cocoSim_failed
+          msg = 'INVALID';
+      end
+      h = msgbox(msg,'CoCoSim Translation Validation');
+      if lustrec_failed
+          open(lus_file_path)
+      elseif lustrec_binary_failed
+          display('Lustre binary generation failed');
+      elseif sim_failed
+          display('running Simulation has failed');
+      else
+          open(lus_file_path)
+      end
+      
+     catch ME
+         disp(ME.message)
+         disp('run the command in the top level of the model')
+     end
+ end
  function schema = getPP(callbackInfo)     
   schema = sl_action_schema;
   schema.label = 'CoCoSim Pre-Processor'; 
@@ -34,6 +83,7 @@ end
       load_system(char(pp_model));
      catch ME
          disp(ME.message)
+         disp('run the command in the top level of the model')
      end
  end
  
@@ -79,7 +129,7 @@ function schema = viewContract(callbackInfo)
       catch ME
           disp(ME.message)
           msg = sprintf('No CoCoSpec Contract for %s \n Verify the model with Zustre', simulink_name);
-          cocoSimDialog(msg);
+          warndlg(msg,'CoCoSim: Warning');
       end
   catch ME
       disp(ME.message)
@@ -95,7 +145,7 @@ function schema = viewContract(callbackInfo)
   function synchObsCallback(callbackInfo)
   try 
       [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
-      simulink_name = get_param(gcs,'FileName');%gcs;
+      simulink_name = gcs;
       add_cocospec(simulink_name);
       
   catch ME
@@ -119,16 +169,14 @@ function schema = viewContract(callbackInfo)
   function rustCallback(callbackInfo)
   try 
       [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
-%       fileID = fopen([prog_path filesep 'src' filesep 'config.m'],'a');
-%       fprintf(fileID, '\nSOLVER=''NONE'';\nRUST_GEN=1;\nC_GEN=0;');
-%       fclose(fileID);
       assignin('base', 'SOLVER', 'NONE');
       assignin('base', 'RUST_GEN', 1);
       assignin('base', 'C_GEN', 0);
-      simulink_name = gcs;
+      simulink_name = get_param(gcs,'FileName');%gcs;
       cocoSim(simulink_name);
   catch ME
       disp(ME.message)
+      disp('run the command in the top level of the model')
   end
  end
  
@@ -141,16 +189,14 @@ function schema = viewContract(callbackInfo)
  function cCallback(callbackInfo)
   try 
       [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
-%       fileID = fopen([prog_path filesep 'src' filesep 'config.m'],'a');
-%       fprintf(fileID, '\nSOLVER=''NONE'';\nRUST_GEN=0;\nC_GEN=1;');
-%       fclose(fileID);
       assignin('base', 'SOLVER', 'NONE');
       assignin('base', 'RUST_GEN', 0);
       assignin('base', 'C_GEN', 1);
-      simulink_name = gcs;
+      simulink_name = get_param(gcs,'FileName');%gcs;
       cocoSim(simulink_name);
   catch ME
       disp(ME.message)
+      disp('run the command in the top level of the model')
   end
  end
  
@@ -183,6 +229,7 @@ end
       cocoSim(simulink_name);
   catch ME
       disp(ME.message)
+      disp('run the command in the top level of the model')
   end
  end
  
@@ -200,10 +247,11 @@ function kindCallback(callbackInfo)
       assignin('base', 'SOLVER', 'K');
       assignin('base', 'RUST_GEN', 0);
       assignin('base', 'C_GEN', 0);
-      simulink_name = gcs;
+      simulink_name = get_param(gcs,'FileName');%gcs;
       cocoSim(simulink_name);
   catch ME
       disp(ME.message)
+      disp('run the command in the top level of the model')
   end
 end
  
@@ -221,10 +269,11 @@ function jkindCallback(callbackInfo)
       assignin('base', 'SOLVER', 'J');
       assignin('base', 'RUST_GEN', 0);
       assignin('base', 'C_GEN', 0);
-      simulink_name = gcs;
+      simulink_name = get_param(gcs,'FileName');%gcs;
       cocoSim(simulink_name);
   catch ME
       disp(ME.message)
+      disp('run the command in the top level of the model')
   end
 end
  

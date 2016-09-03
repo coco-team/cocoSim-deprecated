@@ -24,11 +24,11 @@
     [file_path, ~, ~] = fileparts(mfilename('fullpath'));
     coco_sim_path = fileparts(file_path);
     if ismac
-        solvers_path = fullfile(coco_sim_path, 'tools/Verifiers/mac/bin/');
+        solvers_path = fullfile(coco_sim_path, 'tools/Verifiers/osx/bin/');
     elseif isunix
-        solvers_path = fullfile(coco_sim_path, 'tools/Verifiers/linux_binaries/bin/');
+        solvers_path = fullfile(coco_sim_path, 'tools/Verifiers/linux/bin/');
     else
-        disp('Platform not supported')
+        errordlg('OS not supported yet','CoCoSim Configuration');
     end
  end
  LUSTREC = fullfile(solvers_path,'lustrec');

@@ -1,170 +1,155 @@
 Model {
   Name			  "DockingApproachExample_Ext"
-  Version		  8.7
-  MdlSubVersion		  1
-  SavedCharacterEncoding  "UTF-8"
+  Version		  8.5
+  MdlSubVersion		  0
+  SavedCharacterEncoding  "ISO-8859-1"
   GraphicalInterface {
     NumRootInports	    13
     Inport {
       Name		      "GroundTrack_OrbitalPosition"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
+      DisplayName	      ""
     }
     Inport {
       Name		      "GroundTrack_OrbitalVelocity"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
+      DisplayName	      ""
     }
     Inport {
       Name		      "dockVisibility_status"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
+      DisplayName	      ""
     }
     Inport {
       Name		      "opticsAvailability_status"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
+      DisplayName	      ""
     }
     Inport {
       Name		      "sunlight_status"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
+      DisplayName	      ""
     }
     Inport {
       Name		      "GPS_satelliteVisibility_status"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
+      DisplayName	      ""
     }
     Inport {
       Name		      "GPS_receiverAvailability_status"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
+      DisplayName	      ""
     }
     Inport {
       Name		      "StarPlanetTracker_planetVisibility"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
+      DisplayName	      ""
     }
     Inport {
       Name		      "StarPlanetTracker_starVisibility"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
+      DisplayName	      ""
     }
     Inport {
       Name		      "InertialNavigation_time"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
+      DisplayName	      ""
     }
     Inport {
       Name		      "GroundTrack_Time"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
+      DisplayName	      ""
     }
     Inport {
       Name		      "RealTimeClock_time"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
+      DisplayName	      ""
     }
     Inport {
       Name		      "StageTransition"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
+      DisplayName	      ""
     }
     NumRootOutports	    12
     Outport {
       Name		      "CaptureApproachComplete"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
+      DisplayName	      ""
     }
     Outport {
       Name		      "DockingApproachComplete"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
+      DisplayName	      ""
     }
     Outport {
       Name		      "AttemptingToDock"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
+      DisplayName	      ""
     }
     Outport {
       Name		      "LatchCaptureComplete"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
+      DisplayName	      ""
     }
     Outport {
       Name		      "DockingApproach"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
+      DisplayName	      ""
     }
     Outport {
       Name		      "ApproachOrbitComplete"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
+      DisplayName	      ""
     }
     Outport {
       Name		      "FarApproachComplete"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
+      DisplayName	      ""
     }
     Outport {
       Name		      "ProximityOperationsComplete"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
+      DisplayName	      ""
     }
     Outport {
       Name		      "FailedApproach"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
+      DisplayName	      ""
     }
     Outport {
       Name		      "JointMission"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
+      DisplayName	      ""
     }
     Outport {
       Name		      "CaptureApproachFailed"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
+      DisplayName	      ""
     }
     Outport {
       Name		      "LatchCapture_timer"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
+      DisplayName	      ""
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.499"
+    ComputedModelVersion    "1.500"
     NumModelReferences	    0
     NumTestPointedSignals   0
-    NumProvidedFunctions    0
-    NumRequiredFunctions    0
   }
   ScopeRefreshTime	  0.035000
-  OverrideScopeRefreshTime on
+  OverrideScopeRefreshTime off
   DisableAllScopes	  off
   DataTypeOverride	  "UseLocalSettings"
   DataTypeOverrideAppliesTo "AllNumericTypes"
@@ -172,7 +157,6 @@ Model {
   MinMaxOverflowArchiveMode "Overwrite"
   FPTRunName		  "Run 1"
   MaxMDLFileLineLength	  120
-  LastSavedArchitecture	  "glnxa64"
   Object {
     $PropName		    "BdWindowsInfo"
     $ObjectID		    1
@@ -182,7 +166,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [65.0, 24.0, 1855.0, 1056.0]
+      Location		      [65.0, 24.0, 1280.0, 773.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -206,9 +190,9 @@ Model {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1626.0, 911.0]
-	ZoomFactor		[0.8]
-	Offset			[107.11031779646873, -10.559703312814236]
+	Extents			[1056.0, 603.0]
+	ZoomFactor		[0.52849264705882359]
+	Offset			[-122.56782608695647, -20.4904347826087]
       }
     }
   }
@@ -216,11 +200,11 @@ Model {
   Creator		  "mwwhalen"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "hamza"
+  LastModifiedBy	  "Teme"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Jul 22 23:27:30 2016"
-  RTWModifiedTimeStamp	  391130703
-  ModelVersionFormat	  "1.%<AutoIncrement:499>"
+  LastModifiedDate	  "Fri Sep 02 14:31:41 2016"
+  RTWModifiedTimeStamp	  394727465
+  ModelVersionFormat	  "1.%<AutoIncrement:500>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -228,10 +212,6 @@ Model {
   WideLines		  off
   ShowLineDimensions	  off
   ShowPortDataTypes	  off
-  ShowEditTimeErrors	  on
-  ShowEditTimeWarnings	  off
-  ShowEditTimeAdvisorChecks off
-  ShowPortUnits		  off
   ShowDesignRanges	  off
   ShowLoopsOnError	  on
   IgnoreBidirectionalLines off
@@ -240,10 +220,8 @@ Model {
   ShowSignalResolutionIcons on
   ShowViewerIcons	  on
   SortedOrder		  off
-  VariantCondition	  off
   ExecutionContextIcon	  off
   ShowLinearizationAnnotations on
-  ShowVisualizeInsertedRTB on
   ShowMarkup		  on
   BlockNameDataTip	  on
   BlockParametersDataTip  on
@@ -251,7 +229,6 @@ Model {
   ToolBar		  on
   StatusBar		  on
   BrowserShowLibraryLinks off
-  FunctionConnectors	  off
   BrowserLookUnderMasks	  off
   SimulationMode	  "normal"
   PauseTimes		  "5"
@@ -284,6 +261,27 @@ Model {
       PropName		      "logAsSpecifiedByModelsSSIDs_"
     }
   }
+  RecordCoverage	  off
+  CovPath		  "/"
+  CovSaveName		  "covdata"
+  CovMetricSettings	  "dw"
+  CovNameIncrementing	  off
+  CovHtmlReporting	  on
+  CovForceBlockReductionOff on
+  CovEnableCumulative	  on
+  covSaveCumulativeToWorkspaceVar on
+  CovSaveSingleToWorkspaceVar on
+  CovCumulativeVarName	  "covCumulativeData"
+  CovCumulativeReport	  off
+  CovReportOnPause	  on
+  CovModelRefEnable	  "Off"
+  CovExternalEMLEnable	  off
+  CovSFcnEnable		  on
+  CovBoundaryAbsTol	  0.000010
+  CovBoundaryRelTol	  0.010000
+  CovUseTimeInterval	  off
+  CovStartTime		  0
+  CovStopTime		  0
   ExtModeBatchMode	  off
   ExtModeEnableFloating	  on
   ExtModeTrigType	  "manual"
@@ -312,13 +310,13 @@ Model {
     Dimension		    1
     Simulink.ConfigSet {
       $ObjectID		      7
-      Version		      "1.16.2"
+      Version		      "1.15.0"
       Array {
 	Type			"Handle"
 	Dimension		9
 	Simulink.SolverCC {
 	  $ObjectID		  8
-	  Version		  "1.16.2"
+	  Version		  "1.15.0"
 	  StartTime		  "0.0"
 	  StopTime		  "300"
 	  AbsTol		  "auto"
@@ -345,8 +343,6 @@ Model {
 	  ZeroCrossControl	  "UseLocalSettings"
 	  ZeroCrossAlgorithm	  "Nonadaptive"
 	  AlgebraicLoopSolver	  "TrustRegion"
-	  SolverInfoToggleStatus  off
-	  IsAutoAppliedInSIP	  off
 	  SolverResetMethod	  "Fast"
 	  PositivePriorityOrder	  off
 	  AutoInsertRateTranBlk	  off
@@ -355,7 +351,7 @@ Model {
 	}
 	Simulink.DataIOCC {
 	  $ObjectID		  9
-	  Version		  "1.16.2"
+	  Version		  "1.15.0"
 	  Decimation		  "1"
 	  ExternalInput		  "[t,u]"
 	  FinalStateName	  "xFinal"
@@ -374,8 +370,6 @@ Model {
 	  DSMLogging		  on
 	  InspectSignalLogs	  off
 	  VisualizeSimOutput	  on
-	  StreamToWorkspace	  off
-	  StreamVariableName	  "streamout"
 	  SaveTime		  on
 	  ReturnWorkspaceOutputs  off
 	  StateSaveName		  "xout"
@@ -387,13 +381,10 @@ Model {
 	  OutputTimes		  "[]"
 	  ReturnWorkspaceOutputsName "out"
 	  Refine		  "1"
-	  LoggingToFile		  off
-	  LoggingFileName	  "out.mat"
-	  LoggingIntervals	  "[-inf, inf]"
 	}
 	Simulink.OptimizationCC {
 	  $ObjectID		  10
-	  Version		  "1.16.2"
+	  Version		  "1.15.0"
 	  Array {
 	    Type		    "Cell"
 	    Dimension		    8
@@ -410,7 +401,7 @@ Model {
 	  BlockReduction	  on
 	  BooleanDataType	  on
 	  ConditionallyExecuteInputs on
-	  DefaultParameterBehavior "Tunable"
+	  InlineParams		  off
 	  UseDivisionForNetSlopeComputation "off"
 	  UseFloatMulNetSlope	  off
 	  DefaultUnderspecifiedDataType	"double"
@@ -450,7 +441,7 @@ Model {
 	}
 	Simulink.DebuggingCC {
 	  $ObjectID		  11
-	  Version		  "1.16.2"
+	  Version		  "1.15.0"
 	  RTPrefix		  "error"
 	  ConsistencyChecking	  "none"
 	  ArrayBoundsChecking	  "none"
@@ -477,6 +468,7 @@ Model {
 	  IgnoredZcDiagnostic	  "warning"
 	  SolverPrmCheckMsg	  "warning"
 	  InheritedTsInSrcMsg	  "warning"
+	  DiscreteInheritContinuousMsg "warning"
 	  MultiTaskDSMMsg	  "warning"
 	  MultiTaskCondExecSysMsg "none"
 	  MultiTaskRateTransMsg	  "error"
@@ -509,7 +501,6 @@ Model {
 	  BusObjectLabelMismatch  "warning"
 	  RootOutportRequireBusObject "warning"
 	  AssertControl		  "UseLocalSettings"
-	  AllowSymbolicDim	  on
 	  ModelReferenceIOMsg	  "none"
 	  ModelReferenceMultiInstanceNormalModeStructChecksumCheck "error"
 	  ModelReferenceVersionMismatchMessage "none"
@@ -525,9 +516,6 @@ Model {
 	  StrictBusMsg		  "ErrorLevel1"
 	  BusNameAdapt		  "WarnAndRepair"
 	  NonBusSignalsTreatedAsBus "none"
-	  SymbolicDimMinMaxWarning "warning"
-	  LossOfSymbolicDimsSimulationWarning "warning"
-	  LossOfSymbolicDimsCodeGenerationWarning "error"
 	  BlockIODiagnostic	  "none"
 	  SFUnusedDataAndEventsDiag "warning"
 	  SFUnexpectedBacktrackingDiag "warning"
@@ -539,13 +527,10 @@ Model {
 	  SFTransitionActionBeforeConditionDiag	"warning"
 	  SFOutputUsedAsStateInMooreChartDiag "error"
 	  IntegerSaturationMsg	  "warning"
-	  AllowedUnitSystems	  "all"
-	  UnitsInconsistencyMsg	  "warning"
-	  AllowAutomaticUnitConversions	on
 	}
 	Simulink.HardwareCC {
 	  $ObjectID		  12
-	  Version		  "1.16.2"
+	  Version		  "1.15.0"
 	  ProdBitPerChar	  8
 	  ProdBitPerShort	  16
 	  ProdBitPerInt		  32
@@ -582,14 +567,11 @@ Model {
 	  TargetHWDeviceType	  "Specified"
 	  TargetUnknown		  off
 	  ProdEqTarget		  on
-	  UseEmbeddedCoderFeatures on
-	  UseSimulinkCoderFeatures on
 	}
 	Simulink.ModelReferenceCC {
 	  $ObjectID		  13
-	  Version		  "1.16.2"
+	  Version		  "1.15.0"
 	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
-	  EnableRefExpFcnMdlSchedulingChecks on
 	  CheckModelReferenceTargetMessage "error"
 	  EnableParallelModelReferenceBuilds off
 	  ParallelModelReferenceErrorOnInvalidPool on
@@ -603,7 +585,8 @@ Model {
 	}
 	Simulink.SFSimCC {
 	  $ObjectID		  14
-	  Version		  "1.16.2"
+	  Version		  "1.15.0"
+	  SFSimOverflowDetection  on
 	  SFSimEcho		  on
 	  SimCtrlC		  on
 	  SimIntegrity		  on
@@ -615,7 +598,7 @@ Model {
 	Simulink.RTWCC {
 	  $BackupClass		  "Simulink.RTWCC"
 	  $ObjectID		  15
-	  Version		  "1.16.2"
+	  Version		  "1.15.0"
 	  Array {
 	    Type		    "Cell"
 	    Dimension		    15
@@ -637,7 +620,6 @@ Model {
 	    PropName		    "DisabledProps"
 	  }
 	  SystemTargetFile	  "grt.tlc"
-	  HardwareBoard		  "None"
 	  TLCOptions		  ""
 	  GenCodeOnly		  off
 	  MakeCommand		  "make_rtw"
@@ -657,6 +639,13 @@ Model {
 	  TLCAssert		  off
 	  RTWUseLocalCustomCode	  off
 	  RTWUseSimCustomCode	  off
+	  CustomSourceCode	  ""
+	  CustomHeaderCode	  ""
+	  CustomInclude		  ""
+	  CustomSource		  ""
+	  CustomLibrary		  ""
+	  CustomInitializer	  ""
+	  CustomTerminator	  ""
 	  Toolchain		  "Automatically locate an installed toolchain"
 	  BuildConfiguration	  "Faster Builds"
 	  IncludeHyperlinkInReport off
@@ -694,7 +683,7 @@ Model {
 	    Dimension		    2
 	    Simulink.CodeAppCC {
 	      $ObjectID		      16
-	      Version		      "1.16.2"
+	      Version		      "1.15.0"
 	      Array {
 		Type			"Cell"
 		Dimension		22
@@ -764,7 +753,7 @@ Model {
 	    Simulink.GRTTargetCC {
 	      $BackupClass	      "Simulink.TargetCC"
 	      $ObjectID		      17
-	      Version		      "1.16.2"
+	      Version		      "1.15.0"
 	      Array {
 		Type			"Cell"
 		Dimension		14
@@ -786,6 +775,7 @@ Model {
 	      }
 	      TargetFcnLib	      "ansi_tfl_tmw.mat"
 	      TargetLibSuffix	      ""
+	      TargetPreCompLibLocation ""
 	      GenFloatMathFcnCalls    "NOT IN USE"
 	      TargetLangStandard      "C89/C90 (ANSI)"
 	      CodeReplacementLibrary  "None"
@@ -828,7 +818,6 @@ Model {
 	      AutosarCompliant	      off
 	      GRTInterface	      on
 	      GenerateAllocFcn	      off
-	      UseToolchainInfoCompliant	on
 	      GenerateSharedConstants on
 	      UseMalloc		      off
 	      ExtMode		      off
@@ -850,7 +839,7 @@ Model {
 	}
 	SlCovCC.ConfigComp {
 	  $ObjectID		  18
-	  Version		  "1.16.2"
+	  Version		  "1.15.0"
 	  Description		  "Simulink Coverage Configuration Component"
 	  Name			  "Simulink Coverage"
 	  CovEnable		  off
@@ -939,7 +928,7 @@ Model {
   MaskDefaults {
     SelfModifiable	    "off"
     IconFrame		    "on"
-    IconOpaque		    "opaque"
+    IconOpaque		    "on"
     RunInitForIconRedraw    "off"
     IconRotate		    "none"
     PortRotate		    "default"
@@ -971,7 +960,6 @@ Model {
       OutDataTypeStr	      "Inherit: auto"
       LockScale		      off
       BusOutputAsStruct	      off
-      Unit		      "inherit"
       PortDimensions	      "-1"
       VarSizeSig	      "Inherit"
       SampleTime	      "-1"
@@ -1007,7 +995,6 @@ Model {
       OutDataTypeStr	      "Inherit: auto"
       LockScale		      off
       BusOutputAsStruct	      off
-      Unit		      "inherit"
       PortDimensions	      "-1"
       VarSizeSig	      "Inherit"
       SampleTime	      "-1"
@@ -1022,6 +1009,8 @@ Model {
       FunctionName	      "system"
       SFunctionModules	      "''"
       PortCounts	      "[]"
+      SFunctionDeploymentMode off
+      EnableBusSupport	      off
     }
     Block {
       BlockType		      SubSystem
@@ -1050,8 +1039,8 @@ Model {
       Opaque		      off
       MaskHideContents	      off
       SFBlockType	      "NONE"
+      Variant		      off
       GeneratePreprocessorConditionals off
-      TreatAsGroupedWhenPropagatingVariantConditions on
       ContentPreviewEnabled   off
       IsWebBlock	      off
     }
@@ -1061,7 +1050,7 @@ Model {
   }
   System {
     Name		    "DockingApproachExample_Ext"
-    Location		    [65, 24, 1920, 1080]
+    Location		    [65, 24, 1345, 797]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    212
@@ -1073,7 +1062,7 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "80"
+    ZoomFactor		    "53"
     ReportName		    "simulink-default.rpt"
     SIDHighWatermark	    "132"
     Block {
@@ -1082,6 +1071,7 @@ Model {
       SID		      "1"
       Position		      [285, 68, 315, 82]
       ZOrder		      -1
+      ShowName		      off
       IconDisplay	      "Port number"
     }
     Block {
@@ -1090,6 +1080,7 @@ Model {
       SID		      "2"
       Position		      [285, 128, 315, 142]
       ZOrder		      -2
+      ShowName		      off
       Port		      "2"
       IconDisplay	      "Port number"
     }
@@ -1099,6 +1090,7 @@ Model {
       SID		      "3"
       Position		      [285, 188, 315, 202]
       ZOrder		      -3
+      ShowName		      off
       Port		      "3"
       IconDisplay	      "Port number"
     }
@@ -1108,6 +1100,7 @@ Model {
       SID		      "4"
       Position		      [280, 248, 310, 262]
       ZOrder		      -4
+      ShowName		      off
       Port		      "4"
       IconDisplay	      "Port number"
     }
@@ -1117,6 +1110,7 @@ Model {
       SID		      "5"
       Position		      [280, 308, 310, 322]
       ZOrder		      -5
+      ShowName		      off
       Port		      "5"
       IconDisplay	      "Port number"
     }
@@ -1126,6 +1120,7 @@ Model {
       SID		      "6"
       Position		      [280, 368, 310, 382]
       ZOrder		      -6
+      ShowName		      off
       Port		      "6"
       IconDisplay	      "Port number"
     }
@@ -1135,6 +1130,7 @@ Model {
       SID		      "7"
       Position		      [280, 428, 310, 442]
       ZOrder		      -7
+      ShowName		      off
       Port		      "7"
       IconDisplay	      "Port number"
     }
@@ -1144,6 +1140,7 @@ Model {
       SID		      "8"
       Position		      [280, 488, 310, 502]
       ZOrder		      -8
+      ShowName		      off
       Port		      "8"
       IconDisplay	      "Port number"
     }
@@ -1153,6 +1150,7 @@ Model {
       SID		      "9"
       Position		      [280, 548, 310, 562]
       ZOrder		      -9
+      ShowName		      off
       Port		      "9"
       IconDisplay	      "Port number"
     }
@@ -1162,6 +1160,7 @@ Model {
       SID		      "10"
       Position		      [280, 608, 310, 622]
       ZOrder		      -10
+      ShowName		      off
       Port		      "10"
       IconDisplay	      "Port number"
     }
@@ -1171,6 +1170,7 @@ Model {
       SID		      "11"
       Position		      [285, 668, 315, 682]
       ZOrder		      -11
+      ShowName		      off
       Port		      "11"
       IconDisplay	      "Port number"
     }
@@ -1180,6 +1180,7 @@ Model {
       SID		      "12"
       Position		      [275, 728, 305, 742]
       ZOrder		      -12
+      ShowName		      off
       Port		      "12"
       IconDisplay	      "Port number"
     }
@@ -1189,6 +1190,7 @@ Model {
       SID		      "13"
       Position		      [275, 788, 305, 802]
       ZOrder		      -13
+      ShowName		      off
       Port		      "13"
       IconDisplay	      "Port number"
     }
@@ -1199,12 +1201,12 @@ Model {
       Ports		      [13, 12]
       Position		      [545, 29, 1010, 901]
       ZOrder		      -14
+      ShowName		      off
       ErrorFcn		      "Stateflow.Translate.translate"
       PermitHierarchicalResolution "ExplicitOnly"
       TreatAsAtomicUnit	      on
       RequestExecContextInheritance off
       SFBlockType	      "Chart"
-      Variant		      off
       System {
 	Name			"Chart"
 	Location		[65, 24, 1920, 1080]
@@ -1356,7 +1358,6 @@ Model {
 	  ZOrder		  4
 	  FunctionName		  "sf_sfun"
 	  PortCounts		  "[13 13]"
-	  SFunctionDeploymentMode off
 	  EnableBusSupport	  on
 	  Port {
 	    PortNumber		    2
@@ -1768,9 +1769,9 @@ Model {
       Position		      [1225, 20, 1375, 90]
       ZOrder		      5
       ForegroundColor	      "red"
+      ShowName		      off
       TreatAsAtomicUnit	      on
       RequestExecContextInheritance off
-      Variant		      off
       Object {
 	$PropName		"MaskObject"
 	$ObjectID		20
@@ -1975,7 +1976,7 @@ Model {
 	  Ports			  [1, 1]
 	  Position		  [690, 590, 720, 620]
 	  ZOrder		  32
-	  LibraryVersion	  "1.386"
+	  LibraryVersion	  "1.356"
 	  SourceBlock		  "simulink/Logic and Bit\nOperations/Compare\nTo Constant"
 	  SourceType		  "Compare To Constant"
 	  ContentPreviewEnabled	  off
@@ -2242,6 +2243,7 @@ Model {
       Position		      [1415, 20, 1435, 40]
       ZOrder		      6
       ForegroundColor	      "red"
+      ShowName		      off
     }
     Block {
       BlockType		      SubSystem
@@ -2251,9 +2253,9 @@ Model {
       Position		      [1415, 1020, 1565, 1090]
       ZOrder		      7
       ForegroundColor	      "red"
+      ShowName		      off
       TreatAsAtomicUnit	      on
       RequestExecContextInheritance off
-      Variant		      off
       Object {
 	$PropName		"MaskObject"
 	$ObjectID		23
@@ -2458,7 +2460,7 @@ Model {
 	  Ports			  [1, 1]
 	  Position		  [725, 585, 755, 615]
 	  ZOrder		  33
-	  LibraryVersion	  "1.386"
+	  LibraryVersion	  "1.356"
 	  SourceBlock		  "simulink/Logic and Bit\nOperations/Compare\nTo Constant"
 	  SourceType		  "Compare To Constant"
 	  ContentPreviewEnabled	  off
@@ -2722,6 +2724,7 @@ Model {
       Position		      [1610, 1045, 1630, 1065]
       ZOrder		      8
       ForegroundColor	      "red"
+      ShowName		      off
     }
     Block {
       BlockType		      Outport
@@ -2729,6 +2732,7 @@ Model {
       SID		      "16"
       Position		      [1110, 58, 1140, 72]
       ZOrder		      -15
+      ShowName		      off
       IconDisplay	      "Port number"
     }
     Block {
@@ -2737,6 +2741,7 @@ Model {
       SID		      "15"
       Position		      [1110, 138, 1140, 152]
       ZOrder		      -16
+      ShowName		      off
       Port		      "2"
       IconDisplay	      "Port number"
     }
@@ -2746,6 +2751,7 @@ Model {
       SID		      "17"
       Position		      [1110, 218, 1140, 232]
       ZOrder		      -17
+      ShowName		      off
       Port		      "3"
       IconDisplay	      "Port number"
     }
@@ -2755,6 +2761,7 @@ Model {
       SID		      "18"
       Position		      [1110, 298, 1140, 312]
       ZOrder		      -18
+      ShowName		      off
       Port		      "4"
       IconDisplay	      "Port number"
     }
@@ -2764,6 +2771,7 @@ Model {
       SID		      "19"
       Position		      [1110, 378, 1140, 392]
       ZOrder		      -19
+      ShowName		      off
       Port		      "5"
       IconDisplay	      "Port number"
     }
@@ -2773,6 +2781,7 @@ Model {
       SID		      "21"
       Position		      [1110, 458, 1140, 472]
       ZOrder		      -20
+      ShowName		      off
       Port		      "6"
       IconDisplay	      "Port number"
     }
@@ -2782,6 +2791,7 @@ Model {
       SID		      "22"
       Position		      [1110, 538, 1140, 552]
       ZOrder		      -21
+      ShowName		      off
       Port		      "7"
       IconDisplay	      "Port number"
     }
@@ -2791,6 +2801,7 @@ Model {
       SID		      "23"
       Position		      [1110, 618, 1140, 632]
       ZOrder		      -22
+      ShowName		      off
       Port		      "8"
       IconDisplay	      "Port number"
     }
@@ -2800,6 +2811,7 @@ Model {
       SID		      "24"
       Position		      [1170, 668, 1200, 682]
       ZOrder		      -23
+      ShowName		      off
       Port		      "9"
       IconDisplay	      "Port number"
     }
@@ -2809,6 +2821,7 @@ Model {
       SID		      "25"
       Position		      [1225, 708, 1255, 722]
       ZOrder		      -24
+      ShowName		      off
       Port		      "10"
       IconDisplay	      "Port number"
     }
@@ -2818,6 +2831,7 @@ Model {
       SID		      "26"
       Position		      [1215, 773, 1245, 787]
       ZOrder		      -25
+      ShowName		      off
       Port		      "11"
       IconDisplay	      "Port number"
     }
@@ -2827,6 +2841,7 @@ Model {
       SID		      "59"
       Position		      [1205, 843, 1235, 857]
       ZOrder		      4
+      ShowName		      off
       Port		      "12"
       IconDisplay	      "Port number"
     }
@@ -3322,7 +3337,7 @@ Model {
 }
 #Finite State Machines
 #
-#   Stateflow 80000009
+#   Stateflow 80000005
 #
 #
 Stateflow {
@@ -3332,7 +3347,7 @@ Stateflow {
     created		    "26-Jul-2006 11:31:47"
     isLibrary		    0
     firstTarget		    281
-    sfVersion		    80000009
+    sfVersion		    80000005
   }
   chart {
     id			    2
@@ -4470,9 +4485,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
   }
@@ -4489,9 +4501,6 @@ Stateflow {
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "int8"
@@ -4541,9 +4550,6 @@ Stateflow {
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "double"
@@ -5621,9 +5627,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
   }
@@ -6691,9 +6694,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint32"
   }
@@ -7319,9 +7319,6 @@ Stateflow {
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "boolean"
@@ -8127,9 +8124,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
   }
@@ -8147,9 +8141,6 @@ Stateflow {
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "int8"
@@ -8169,9 +8160,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
   }
@@ -8189,9 +8177,6 @@ Stateflow {
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "int8"
@@ -8211,9 +8196,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
   }
@@ -8231,9 +8213,6 @@ Stateflow {
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "boolean"
@@ -8253,9 +8232,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -8272,9 +8248,6 @@ Stateflow {
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "int8"
@@ -8293,9 +8266,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
   }
@@ -8312,9 +8282,6 @@ Stateflow {
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "int8"
@@ -8333,9 +8300,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
   }
@@ -8352,9 +8316,6 @@ Stateflow {
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "int8"
@@ -8374,9 +8335,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
   }
@@ -8395,9 +8353,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
   }
@@ -8414,9 +8369,6 @@ Stateflow {
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "int8"
@@ -8435,9 +8387,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
   }
@@ -8454,9 +8403,6 @@ Stateflow {
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "int8"
@@ -8475,9 +8421,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
   }
@@ -8494,9 +8437,6 @@ Stateflow {
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "int8"
@@ -8515,9 +8455,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
   }
@@ -8534,9 +8471,6 @@ Stateflow {
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "int8"
@@ -8555,9 +8489,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
   }
@@ -8574,9 +8505,6 @@ Stateflow {
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "int8"
@@ -8595,9 +8523,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
   }
@@ -8614,9 +8539,6 @@ Stateflow {
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "int8"
@@ -8635,9 +8557,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
   }
@@ -8654,9 +8573,6 @@ Stateflow {
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "int8"
@@ -8675,9 +8591,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
   }
@@ -8694,9 +8607,6 @@ Stateflow {
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "int8"
@@ -8715,9 +8625,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
   }
@@ -8734,9 +8641,6 @@ Stateflow {
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "int8"
@@ -8755,9 +8659,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
   }
@@ -8774,9 +8675,6 @@ Stateflow {
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "int8"
@@ -8795,9 +8693,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
   }
@@ -8814,9 +8709,6 @@ Stateflow {
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "int8"
@@ -8835,9 +8727,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -8854,9 +8743,6 @@ Stateflow {
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "boolean"
@@ -8875,9 +8761,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
   }
@@ -8894,9 +8777,6 @@ Stateflow {
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "boolean"
@@ -8915,9 +8795,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
   }
@@ -8934,9 +8811,6 @@ Stateflow {
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "int8"
@@ -8955,9 +8829,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -8974,9 +8845,6 @@ Stateflow {
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "int8"
@@ -8995,9 +8863,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
   }
@@ -9014,9 +8879,6 @@ Stateflow {
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "int8"
@@ -9035,9 +8897,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
   }
@@ -9054,9 +8913,6 @@ Stateflow {
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "int8"
@@ -9075,9 +8931,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
   }
@@ -9094,9 +8947,6 @@ Stateflow {
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "int8"
@@ -9116,9 +8966,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -9135,9 +8982,6 @@ Stateflow {
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "int8"
@@ -9157,9 +9001,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
   }
@@ -9178,9 +9019,6 @@ Stateflow {
 	}
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -9199,9 +9037,6 @@ Stateflow {
 	}
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -9220,9 +9055,6 @@ Stateflow {
 	}
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -9241,9 +9073,6 @@ Stateflow {
 	}
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -9262,9 +9091,6 @@ Stateflow {
 	}
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -9283,9 +9109,6 @@ Stateflow {
 	}
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -9304,9 +9127,6 @@ Stateflow {
 	}
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -9325,9 +9145,6 @@ Stateflow {
 	}
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -9346,9 +9163,6 @@ Stateflow {
 	}
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -9367,9 +9181,6 @@ Stateflow {
 	}
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -9387,9 +9198,6 @@ Stateflow {
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "int8"
@@ -9409,9 +9217,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
   }
@@ -9429,9 +9234,6 @@ Stateflow {
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "int8"
@@ -9451,9 +9253,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
   }
@@ -9471,9 +9270,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -9492,9 +9288,6 @@ Stateflow {
 	}
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
   }
@@ -9513,9 +9306,6 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
   }
@@ -9533,9 +9323,6 @@ Stateflow {
 	fixpt {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "int8"

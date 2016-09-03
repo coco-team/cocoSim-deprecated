@@ -46,11 +46,14 @@ end
       [valid, cocoSim_failed,lustrec_failed, ...
           lustrec_binary_failed, sim_failed, lus_file_path]=validate_model(model_full_path,cocoSim_path,1);
       open(model_full_path);
+      msg = '';
       if valid
-          display('The simulation is valid');
+          msg = 'VALID';
       elseif cocoSim_failed
-          display('CocoSim translation has failed');
-      elseif lustrec_failed
+          msg = 'INVALID';
+      end
+      h = msgbox(msg,'CoCoSim Translation Validation');
+      if lustrec_failed
           open(lus_file_path)
       elseif lustrec_binary_failed
           display('Lustre binary generation failed');
@@ -59,6 +62,7 @@ end
       else
           open(lus_file_path)
       end
+      
      catch ME
          disp(ME.message)
          disp('run the command in the top level of the model')
@@ -165,9 +169,6 @@ function schema = viewContract(callbackInfo)
   function rustCallback(callbackInfo)
   try 
       [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
-%       fileID = fopen([prog_path filesep 'src' filesep 'config.m'],'a');
-%       fprintf(fileID, '\nSOLVER=''NONE'';\nRUST_GEN=1;\nC_GEN=0;');
-%       fclose(fileID);
       assignin('base', 'SOLVER', 'NONE');
       assignin('base', 'RUST_GEN', 1);
       assignin('base', 'C_GEN', 0);
@@ -188,9 +189,6 @@ function schema = viewContract(callbackInfo)
  function cCallback(callbackInfo)
   try 
       [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
-%       fileID = fopen([prog_path filesep 'src' filesep 'config.m'],'a');
-%       fprintf(fileID, '\nSOLVER=''NONE'';\nRUST_GEN=0;\nC_GEN=1;');
-%       fclose(fileID);
       assignin('base', 'SOLVER', 'NONE');
       assignin('base', 'RUST_GEN', 0);
       assignin('base', 'C_GEN', 1);

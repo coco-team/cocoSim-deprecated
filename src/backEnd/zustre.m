@@ -35,7 +35,7 @@
 %		time_steps: the number of time steps recorded for the counter example
 
 % TODO: return status, modularisation of the tool
-function zustre(lustre_file_name, property_node_names, property_file_base_name, model_inter_blk, xml_trace, smt_file)
+function zustre(lustre_file_name, property_node_names, property_file_base_name, model_inter_blk, xml_trace, is_SF, smt_file)
 
 config;
     SOLVER = evalin('base','SOLVER');
@@ -50,6 +50,8 @@ config;
                 command = sprintf('%s "%s" --node %s --xml --cg --s-func %s --timeout 600', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name, smt_file);
             elseif strcmp(SOLVER, 'E')
                 command = sprintf('%s "%s" --node %s --xml --eldarica %s --timeout 600 ', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name, smt_file);
+            elseif is_SF
+                 command = sprintf('%s "%s" --node %s --xml --cg --timeout 60 --save --stateflow', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name);
             else
                 command = sprintf('%s "%s" --node %s --xml --cg --timeout 60 --save ', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name);
             end
@@ -93,8 +95,12 @@ config;
 
 						try
 							% Definition of the values and variable names
-							[IO_struct, found] = parseCEX(cex, file, IO_struct, property_node_names{idx_prop}, date_value, xml_trace);
-						catch ERR
+                            if is_SF
+                                [IO_struct, found] = parseSFCEX(cex, file, IO_struct, property_node_names{idx_prop}, date_value, xml_trace);
+                            else
+							     [IO_struct, found] = parseCEX(cex, file, IO_struct, property_node_names{idx_prop}, date_value, xml_trace);
+                            end
+                        catch ERR
 							found = false;
 							msg = ['Zustre: FAILURE to parse the counter example provided by Zustre: ' property_node_names{idx_prop}.prop_name '\n' getReport(ERR)];
 							display_msg(msg, Constants.INFO, 'Zustre', '');
@@ -229,36 +235,81 @@ function IO_struct = get_IO_struct(model_inter_blk, xml_trace, prop_node_name)
 
 end
 
+
 function [IO_struct, found] = parseCEX(cex, model_name, IO_struct, prop_node_name, date_value, xml_trace)
 	first_cex = cex.item(0); % Only one CounterExample for now, do we will need more ?
-	signals = first_cex.getElementsByTagName('Signal');
-	time_steps = 0;
-	found = false;
+    nodes = first_cex.getElementsByTagName('Node');
     
-	prop_name = prop_node_name.prop_name;
+    prop_name = prop_node_name.prop_name;       
 	parent_name = prop_node_name.parent_node_name;
 	parent_block_name = prop_node_name.parent_block_name;
+    time_steps = 0;
+	found = false;
     
-	% Browse through all the signals
-	for idx=0:(signals.getLength-1)
-		signal = signals.item(idx);
-		name = signal.getAttribute('name');
-		node = signal.getAttribute('node');
-		if strcmp(char(node), parent_name)
-			input_names = cellfun(@(x) x.origin_name, IO_struct.inputs, 'UniformOutput', 0);
+    % Browse through all the nodes
+	for idx=0:(nodes.getLength-1)
+		node = nodes.item(idx);
+		node_name = node.getAttribute('name');
+        streams = node.getElementsByTagName('Stream');
+        for i=0:(streams.getLength-1)
+            stream = streams.item(i);
+            stream_name = stream.getAttribute('name');
+            input_names = cellfun(@(x) x.origin_name, IO_struct.inputs, 'UniformOutput', 0);
 			output_names = cellfun(@(x) x.origin_name, IO_struct.outputs, 'UniformOutput', 0);
-			var_name = xml_trace.get_block_name_from_variable(parent_block_name, char(name));
-			if numel(find(strcmp(input_names, var_name))) ~= 0
+			var_name = xml_trace.get_block_name_from_variable(parent_block_name, char(stream_name));
+            if numel(find(strcmp(input_names, var_name))) ~= 0
 				index = find(strcmp(input_names, var_name));
-				[IO_struct.inputs{index} time_steps] = addValue_IO_struct(IO_struct.inputs{index}, signal, prop_name, date_value, time_steps);
-				found = true;
+				[IO_struct.inputs{index}, time_steps] = addValue_IO_struct(IO_struct.inputs{index}, stream, prop_name, date_value, time_steps);		
+                found = true;
 			elseif numel(find(strcmp(output_names, var_name))) ~= 0
 				index = find(strcmp(output_names, var_name));
-				[IO_struct.outputs{index} time_steps] = addValue_IO_struct(IO_struct.outputs{index}, signal, prop_name, date_value, time_steps);
+				[IO_struct.outputs{index}, time_steps] = addValue_IO_struct(IO_struct.outputs{index}, stream, prop_name, date_value, time_steps);
 				found = true;
 			end
-		end
+        end
+    end
+    
+	if ~found
+		display_msg('Impossible to parse correctly the generated counter example', Constants.WARNING, 'CEX replay', '');
 	end
+	IO_struct = IO_struct;
+	IO_struct.time_steps = time_steps;
+end
+
+
+function [IO_struct, found] = parseSFCEX(cex, model_name, IO_struct, prop_node_name, date_value, xml_trace)
+	first_cex = cex.item(0); % Only one CounterExample for now, do we will need more ?
+    nodes = first_cex.getElementsByTagName('Node');
+    
+    prop_name = prop_node_name.prop_name;       
+	parent_name = prop_node_name.parent_node_name;
+	parent_block_name = prop_node_name.parent_block_name;
+    time_steps = 0;
+	found = false;
+    
+    % Browse through all the nodes
+	for idx=0:(nodes.getLength-1)
+		node = nodes.item(idx);
+		node_name = node.getAttribute('name');
+        streams = node.getElementsByTagName('Stream');
+        for i=0:(streams.getLength-1)
+            stream = streams.item(i);
+            stream_name = stream.getAttribute('name');
+            input_names = cellfun(@(x) x.origin_name, IO_struct.inputs, 'UniformOutput', 0);
+			output_names = cellfun(@(x) x.origin_name, IO_struct.outputs, 'UniformOutput', 0);
+			var_name = xml_trace.get_block_name_from_variable_sf(node_name, parent_block_name, char(stream_name));
+            if numel(find(strcmp(input_names, var_name))) ~= 0
+				index = find(strcmp(input_names, var_name));
+				[IO_struct.inputs{index}, time_steps] = addValue_IO_struct(IO_struct.inputs{index}, stream, prop_name, date_value, time_steps);		
+                found = true;
+			elseif numel(find(strcmp(output_names, var_name))) ~= 0
+				index = find(strcmp(output_names, var_name));
+				[IO_struct.outputs{index}, time_steps] = addValue_IO_struct(IO_struct.outputs{index}, stream, prop_name, date_value, time_steps);
+                found = true;
+			end
+        end
+    end
+    
 	if ~found
 		display_msg('Impossible to parse correctly the generated counter example', Constants.WARNING, 'CEX replay', '');
 	end
@@ -291,12 +342,12 @@ function IO_struct = create_configuration(IO_struct, file, prop_node_name, date_
 	set_param(configSet, 'Solver', 'FixedStepDiscrete');
 	set_param(configSet, 'FixedStep', '1.0');
 	set_param(configSet, 'SaveState', 'on');
+    set_param(configSet, 'SaveOutput', 'on');
 	set_param(configSet, 'StateSaveName', 'xout');
 	set_param(configSet, 'OutputSaveName', 'yout');
 	set_param(configSet, 'StartTime', '0.0');
 	set_param(configSet, 'StopTime', [num2str(IO_struct.time_steps + 1) '.0']);
 	set_param(configSet, 'SaveFormat', 'Structure');
-	set_param(configSet, 'SaveOutput', 'on');
 	set_param(configSet, 'SaveTime', 'on');
 
 	prop_name = regexp(prop_node_name.origin_block_name, '/', 'split');
@@ -317,50 +368,57 @@ function IO_struct = create_configuration(IO_struct, file, prop_node_name, date_
 	time_set = sprintf('%s.time = (0:%s);', output_struct_name, num2str(IO_struct.time_steps));
 	evalin('base', time_set);
     
-	for idx_in=1:numel(IO_struct.inputs)
-		var_name = IO_struct.inputs{idx_in}.name;
-		value = IO_struct.inputs{idx_in}.value;
-		dim_r = IO_struct.inputs{idx_in}.dim_r;
-		dim_c = IO_struct.inputs{idx_in}.dim_c;
-		if strcmp(IO_struct.inputs{idx_in}.dt, 'boolean')
-			signals_values_set = sprintf('%s.signals(%s).values = boolean(%s)'';', input_struct_name, num2str(idx_in), mat2str(value));
-		else
-			signals_values_set = sprintf('%s.signals(%s).values = %s'';', input_struct_name, num2str(idx_in), mat2str(value));
-		end
-		if dim_r == 1 || dim_c == 1
-			signals_dimensions_set = sprintf('%s.signals(%s).dimensions = %d;', input_struct_name, num2str(idx_in), max(dim_r,dim_c));
-		else
-			signals_dimensions_set = sprintf('%s.signals(%s).dimensions = [%d %d];', input_struct_name, num2str(idx_in), dim_r, dim_c);
-		end
-		var_name_set = sprintf('%s.signals(%s).var_name = ''%s'';', input_struct_name, num2str(idx_in), var_name);
-
-		evalin('base', signals_values_set);
-		evalin('base', signals_dimensions_set);
-		evalin('base', var_name_set);
-	end
-    
-	a.(input_struct_name) = evalin('base', input_struct_name);
+    try
+        for idx_in=1:numel(IO_struct.inputs)
+            var_name = IO_struct.inputs{idx_in}.name;
+            value = IO_struct.inputs{idx_in}.value;
+            dim_r = IO_struct.inputs{idx_in}.dim_r;
+            dim_c = IO_struct.inputs{idx_in}.dim_c;
+            if strcmp(IO_struct.inputs{idx_in}.dt, 'boolean')
+                signals_values_set = sprintf('%s.signals(%s).values = boolean(%s)'';', input_struct_name, num2str(idx_in), mat2str(value));
+            else
+                signals_values_set = sprintf('%s.signals(%s).values = %s'';', input_struct_name, num2str(idx_in), mat2str(value));
+            end
+            if dim_r == 1 || dim_c == 1
+                signals_dimensions_set = sprintf('%s.signals(%s).dimensions = %d;', input_struct_name, num2str(idx_in), max(dim_r,dim_c));
+            else
+                signals_dimensions_set = sprintf('%s.signals(%s).dimensions = [%d %d];', input_struct_name, num2str(idx_in), dim_r, dim_c);
+            end
+            var_name_set = sprintf('%s.signals(%s).var_name = ''%s'';', input_struct_name, num2str(idx_in), var_name);
+            
+            evalin('base', signals_values_set);
+            evalin('base', signals_dimensions_set);
+            evalin('base', var_name_set);
+        end
         
-	for idx_out=1:numel(IO_struct.outputs)
-		var_name = IO_struct.outputs{idx_out}.name;
-		value = IO_struct.outputs{idx_out}.value;
-		dim_r = IO_struct.outputs{idx_out}.dim_r;
-		dim_c = IO_struct.outputs{idx_out}.dim_c;
-		signals_values_set = sprintf('%s.signals(%s).values = %s'';', output_struct_name, num2str(idx_out), mat2str(value));
-		if dim_r == 1 || dim_c == 1
-			signals_dimensions_set = sprintf('%s.signals(%s).dimensions = %d;', output_struct_name, num2str(idx_out), max(dim_r,dim_c));
-		else
-			signals_dimensions_set = sprintf('%s.signals(%s).dimensions = [%d %d];', output_struct_name, num2str(idx_out), dim_r, dim_c);
-		end
-		var_name_set = sprintf('%s.signals(%s).var_name = ''%s'';', output_struct_name, num2str(idx_out), var_name);
-
-		evalin('base', time_set);
-		evalin('base', signals_values_set);
-		evalin('base', signals_dimensions_set);
-		evalin('base', var_name_set);
-	end
-
+        a.(input_struct_name) = evalin('base', input_struct_name);
+    catch
+        display_msg('No Input Signal in CEX', Constants.WARNING, 'CEX', '');
+    end
+    
+    try
+        for idx_out=1:numel(IO_struct.outputs)
+            var_name = IO_struct.outputs{idx_out}.name;
+            value = IO_struct.outputs{idx_out}.value;
+            dim_r = IO_struct.outputs{idx_out}.dim_r;
+            dim_c = IO_struct.outputs{idx_out}.dim_c;
+            signals_values_set = sprintf('%s.signals(%s).values = %s'';', output_struct_name, num2str(idx_out), mat2str(value));
+            if dim_r == 1 || dim_c == 1
+                signals_dimensions_set = sprintf('%s.signals(%s).dimensions = %d;', output_struct_name, num2str(idx_out), max(dim_r,dim_c));
+            else
+                signals_dimensions_set = sprintf('%s.signals(%s).dimensions = [%d %d];', output_struct_name, num2str(idx_out), dim_r, dim_c);
+            end
+            var_name_set = sprintf('%s.signals(%s).var_name = ''%s'';', output_struct_name, num2str(idx_out), var_name);
+            
+            evalin('base', time_set);
+            evalin('base', signals_values_set);
+            evalin('base', signals_dimensions_set);
+            evalin('base', var_name_set);
+        end
 	a.(output_struct_name) = evalin('base', output_struct_name);
+    catch
+        display_msg('No Outputs Signal in CEX', Constants.WARNING, 'CEX', '');
+    end
 	
 	set_param(configSet, 'ExtMode', 'on');
 	set_param(configSet, 'LoadExternalInput', 'on');
