@@ -458,7 +458,7 @@ for idx=1:numel(list_cond_var)
     end
     if is_Chart
         events_names{idx} = strcat(Utils.name_format(Utils.naming_alone(unbloc.origin_name{1})),cond_var,'_event');
-        additional_outputs = [additional_outputs, '\t', strcat(cond_var,'_event'), ' = ', expression, ';\n'];
+        additional_outputs = [additional_outputs, '\t', events_names{idx}, ' = ', expression, ';\n'];
         add_vars = [add_vars, sprintf('\t%s: bool;\n',events_names{idx})];
     else
         cond_str{idx} = strcat(Utils.name_format(Utils.naming_alone(unbloc.origin_name{1})),cond_var,'_cond_str_trigger');

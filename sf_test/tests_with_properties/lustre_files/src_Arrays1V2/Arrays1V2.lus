@@ -11,11 +11,13 @@ var
 	x1_1_1 : int;
 	x2_1_1 : int;
 	x3_1_1 : int;
+	i_virtual_local : real;
 let
 	LogicalOperator_1_1 = RelationalOperator_1_1 and RelationalOperator1_1_1;
 	RelationalOperator_1_1 = x1_1_1 >= x2_1_1;
 	RelationalOperator1_1_1 = x2_1_1 >= x3_1_1;
 	prop_1_1 = LogicalOperator_1_1;
+	i_virtual_local= 0.0 -> 1.0;
 
 	(x1_1_1, x2_1_1, x3_1_1) = Arrays1V2(E_1_1, F_1_1);
 	--%PROPERTY prop_1_1; 
@@ -33,6 +35,7 @@ var
 	x1_1_1 : int;
 	x2_1_1 : int;
 	x3_1_1 : int;
+	i_virtual_local : real;
 let
 	CompareToConstant_1_1 = Subtract_1_1 <= 1;
 	CompareToConstant1_1_1 = Subtract1_1_1 <= 1;
@@ -40,6 +43,7 @@ let
 	Subtract_1_1 = x1_1_1 - x2_1_1;
 	Subtract1_1_1 = x2_1_1 - x3_1_1;
 	prop2_1_1 = LogicalOperator_1_1;
+	i_virtual_local= 0.0 -> 1.0;
 
 	(x1_1_1, x2_1_1, x3_1_1) = Arrays1V2(E_1_1, F_1_1);
 	--%PROPERTY prop2_1_1; 
@@ -75,7 +79,7 @@ let
 
 	-- set state as active 
 	idArrays1_Arrays1_2 
-	= 525;
+	= 364;
 	
 
 	x2_2 
@@ -142,7 +146,7 @@ let
 
 	-- set state as active 
 	idArrays1_Arrays1_2 
-	= 524;
+	= 363;
 	
 
 	x1_2 
@@ -209,7 +213,7 @@ let
 
 	-- set state as active 
 	idArrays1_Arrays1_2 
-	= 526;
+	= 365;
 	
 
 	x3_2 
@@ -277,23 +281,23 @@ let
 
 
 
-	unless (idArrays1_Arrays1_1=524) and E restart ARRAYS1_A__TO__ARRAYS1_B_1
+	unless (idArrays1_Arrays1_1=363) and E restart ARRAYS1_A__TO__ARRAYS1_B_1
 
 
 
-	unless (idArrays1_Arrays1_1=525) and F restart ARRAYS1_B__TO__ARRAYS1_C_1
+	unless (idArrays1_Arrays1_1=364) and F restart ARRAYS1_B__TO__ARRAYS1_C_1
 
 
 
-	unless (idArrays1_Arrays1_1=526) and E restart ARRAYS1_C__TO__ARRAYS1_A_1
+	unless (idArrays1_Arrays1_1=365) and E restart ARRAYS1_C__TO__ARRAYS1_A_1
 
 
 
-	unless (idArrays1_Arrays1_1=524) restart ARRAYS1_A_IDL
+	unless (idArrays1_Arrays1_1=363) restart ARRAYS1_A_IDL
 
-	unless (idArrays1_Arrays1_1=525) restart ARRAYS1_B_IDL
+	unless (idArrays1_Arrays1_1=364) restart ARRAYS1_B_IDL
 
-	unless (idArrays1_Arrays1_1=526) restart ARRAYS1_C_IDL
+	unless (idArrays1_Arrays1_1=365) restart ARRAYS1_C_IDL
 
 	let
 
@@ -528,23 +532,25 @@ tel
 
 
 
-node Arrays1V2 (E_1_1 : real; F_1_1 : real)
+node Arrays1V2 (E_1_1 : real; F_1_1 : real; )
 returns (x1_1_1 : int;
 	x2_2_1 : int;
 	x3_3_1 : int); 
 var
 	Arrays1_1_1 : int; Arrays1_2_1 : int; Arrays1_3_1 : int;
 	Mux_1_1 : real; Mux_1_2 : real;
-	Mux_1_1_event: bool;
-	Mux_1_2_event: bool;
+	i_virtual_local : real;
+	Arrays1Mux_1_1_event: bool;
+	Arrays1Mux_1_2_event: bool;
 let 
-	Mux_1_1_event = false -> (pre(Mux_1_1) > 0.0 and Mux_1_1 <= 0.0);
-	Mux_1_2_event = false -> (pre(Mux_1_2) <= 0.0 and Mux_1_2 > 0.0);
-	(Arrays1_1_1, Arrays1_2_1, Arrays1_3_1) =  Arrays1V2_Arrays1(Mux_1_1_event, Mux_1_2_event);
+	Arrays1Mux_1_1_event = false -> (pre(Mux_1_1) > 0.0 and Mux_1_1 <= 0.0);
+	Arrays1Mux_1_2_event = false -> (pre(Mux_1_2) <= 0.0 and Mux_1_2 > 0.0);
+	(Arrays1_1_1, Arrays1_2_1, Arrays1_3_1) =  Arrays1V2_Arrays1(Arrays1Mux_1_1_event, Arrays1Mux_1_2_event);
 	Mux_1_1 = E_1_1 ;
 	Mux_1_2 = F_1_1 ;
 	x1_1_1 = Arrays1_1_1;
 	x2_2_1 = Arrays1_2_1;
 	x3_3_1 = Arrays1_3_1;
+	i_virtual_local= 0.0 -> 1.0;
 tel
 
