@@ -158,8 +158,7 @@ function unsupported_blocks( model )
         list_title = strrep(list_title, '[List_Content]', actions);
         annot_text = [annot_text list_title];
 
-        footer = fileread([cocoSim_path filesep 'backEnd' filesep 'templates' filesep 'footer.html']);
-        annot_text = [annot_text footer];
+        annot_text = [annot_text '</body></html>'];
         
         annot = Simulink.Annotation([name '/Unsupported Blocks']);
 
@@ -179,7 +178,7 @@ function unsupported_blocks( model )
                 min_y = min(min_y, positions{idx_pos}(2));
             end
         end
-        annot.position = [(max_x + abs(min_x) + 10) min_y];
+        annot.position = [(max_x + 10) min_y];
         annot.Description = 'Unsupported Blocks';
         annot.text = annot_text;
         annot.DropShadow = 'on';

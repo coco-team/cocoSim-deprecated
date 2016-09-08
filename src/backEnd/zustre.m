@@ -441,8 +441,14 @@ function createAnnotation(lustre_file_name, property_node_names, IO_struct, conf
 	property_node_name = property_node_names.origin_block_name;
     
 	[lus_dir, file_name, ~] = fileparts(lustre_file_name);
+    %header
+    css_source = fullfile(cocoSim_path,'backEnd' , 'templates' , 'materialize.css');
 	html_text = fileread([cocoSim_path filesep 'backEnd' filesep 'templates' filesep 'header.html']);
+    html_text = strrep(html_text, '[css_source]', css_source);
 	annot_text = fileread([cocoSim_path filesep 'backEnd' filesep 'templates' filesep 'header.html']);
+    annot_text = strrep(annot_text, '[css_source]', css_source);
+    
+    %title
 	title = fileread([cocoSim_path filesep 'backEnd' filesep 'templates' filesep 'title.html']);
 	title = strrep(title, '[observer_full_name]', property_node_name);
 	annot_text = [annot_text title];
@@ -467,7 +473,7 @@ function createAnnotation(lustre_file_name, property_node_names, IO_struct, conf
     
     
 	footer = fileread([cocoSim_path filesep 'backEnd' filesep 'templates' filesep 'footer.html']);
-	annot_text = [annot_text footer];
+	annot_text = [annot_text '</body></html>'];
     html_text = [html_text footer];
     %Delete the previous CEX annotations. So the user can run the model many
     %times
