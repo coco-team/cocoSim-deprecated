@@ -44,7 +44,7 @@ config;
 
 	if exist(ZUSTRE,'file')
 		% Create a date time value to be used for files post-fixing
-		date_value = datestr(now, 'ddmmyyyyHHMMSS');
+% 		date_value = datestr(now, 'ddmmyyyyHHMMSS');
 		for idx_prop=1:numel(property_node_names)
             if exist(smt_file, 'file')
                 command = sprintf('%s "%s" --node %s --xml --cg --s-func %s --timeout 600', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name, smt_file);
@@ -87,7 +87,7 @@ config;
 					set_param(property_node_names{idx_prop}.origin_block_name, 'ForegroundColor', 'red');
 					if strcmp(answer, 'CEX') && ~strcmp(cex, '')
 						% Init mat file name
-						mat_file_name = ['config_' property_node_names{idx_prop}.prop_name '_' date_value '.mat'];
+						mat_file_name = ['config_' property_node_names{idx_prop}.prop_name '.mat'];
 						mat_full_file = fullfile(path, mat_file_name);
 
 						% Initialisation of the IO_struct
@@ -96,9 +96,9 @@ config;
 						try
 							% Definition of the values and variable names
                             if is_SF
-                                [IO_struct, found] = parseSFCEX(cex, file, IO_struct, property_node_names{idx_prop}, date_value, xml_trace);
+                                [IO_struct, found] = parseSFCEX(cex, file, IO_struct, property_node_names{idx_prop}, xml_trace);
                             else
-							     [IO_struct, found] = parseCEX(cex, file, IO_struct, property_node_names{idx_prop}, date_value, xml_trace);
+							     [IO_struct, found] = parseCEX(cex, file, IO_struct, property_node_names{idx_prop}, xml_trace);
                             end
                         catch ERR
 							found = false;
@@ -109,7 +109,7 @@ config;
 						if found
 							try
 								% Creation of the simulation configuration
-								IO_struct = create_configuration(IO_struct, file, property_node_names{idx_prop}, date_value, mat_full_file, idx_prop);
+								IO_struct = create_configuration(IO_struct, file, property_node_names{idx_prop}, mat_full_file, idx_prop);
 								config_created = true;
 							catch ERR
 								msg = ['Verification: FAILURE to create the Simulink simulation configuration\n' getReport(ERR)];
@@ -236,7 +236,7 @@ function IO_struct = get_IO_struct(model_inter_blk, xml_trace, prop_node_name)
 end
 
 
-function [IO_struct, found] = parseCEX(cex, model_name, IO_struct, prop_node_name, date_value, xml_trace)
+function [IO_struct, found] = parseCEX(cex, model_name, IO_struct, prop_node_name, xml_trace)
 	first_cex = cex.item(0); % Only one CounterExample for now, do we will need more ?
     nodes = first_cex.getElementsByTagName('Node');
     
@@ -259,11 +259,11 @@ function [IO_struct, found] = parseCEX(cex, model_name, IO_struct, prop_node_nam
 			var_name = xml_trace.get_block_name_from_variable(parent_block_name, char(stream_name));
             if numel(find(strcmp(input_names, var_name))) ~= 0
 				index = find(strcmp(input_names, var_name));
-				[IO_struct.inputs{index}, time_steps] = addValue_IO_struct(IO_struct.inputs{index}, stream, prop_name, date_value, time_steps);		
+				[IO_struct.inputs{index}, time_steps] = addValue_IO_struct(IO_struct.inputs{index}, stream, prop_name, time_steps);		
                 found = true;
 			elseif numel(find(strcmp(output_names, var_name))) ~= 0
 				index = find(strcmp(output_names, var_name));
-				[IO_struct.outputs{index}, time_steps] = addValue_IO_struct(IO_struct.outputs{index}, stream, prop_name, date_value, time_steps);
+				[IO_struct.outputs{index}, time_steps] = addValue_IO_struct(IO_struct.outputs{index}, stream, prop_name, time_steps);
 				found = true;
 			end
         end
@@ -277,7 +277,7 @@ function [IO_struct, found] = parseCEX(cex, model_name, IO_struct, prop_node_nam
 end
 
 
-function [IO_struct, found] = parseSFCEX(cex, model_name, IO_struct, prop_node_name, date_value, xml_trace)
+function [IO_struct, found] = parseSFCEX(cex, model_name, IO_struct, prop_node_name, xml_trace)
 	first_cex = cex.item(0); % Only one CounterExample for now, do we will need more ?
     nodes = first_cex.getElementsByTagName('Node');
     
@@ -300,11 +300,11 @@ function [IO_struct, found] = parseSFCEX(cex, model_name, IO_struct, prop_node_n
 			var_name = xml_trace.get_block_name_from_variable_sf(node_name, parent_block_name, char(stream_name));
             if numel(find(strcmp(input_names, var_name))) ~= 0
 				index = find(strcmp(input_names, var_name));
-				[IO_struct.inputs{index}, time_steps] = addValue_IO_struct(IO_struct.inputs{index}, stream, prop_name, date_value, time_steps);		
+				[IO_struct.inputs{index}, time_steps] = addValue_IO_struct(IO_struct.inputs{index}, stream, prop_name, time_steps);		
                 found = true;
 			elseif numel(find(strcmp(output_names, var_name))) ~= 0
 				index = find(strcmp(output_names, var_name));
-				[IO_struct.outputs{index}, time_steps] = addValue_IO_struct(IO_struct.outputs{index}, stream, prop_name, date_value, time_steps);
+				[IO_struct.outputs{index}, time_steps] = addValue_IO_struct(IO_struct.outputs{index}, stream, prop_name, time_steps);
                 found = true;
 			end
         end
@@ -317,10 +317,10 @@ function [IO_struct, found] = parseSFCEX(cex, model_name, IO_struct, prop_node_n
 	IO_struct.time_steps = time_steps;
 end
 
-function [out, time_step] = addValue_IO_struct(struct, signal, prop_name, date_value, time_steps)
+function [out, time_step] = addValue_IO_struct(struct, signal, prop_name, time_steps)
 	out = struct;
 	values = signal.getElementsByTagName('Value');
-	for idx=0:(values.getLength-1)
+    for idx=0:(values.getLength-1)
 		val = char(values.item(idx).getTextContent);
 		if strcmp(val, 'False')
 			out.value(idx+1) = false;
@@ -329,15 +329,16 @@ function [out, time_step] = addValue_IO_struct(struct, signal, prop_name, date_v
 		else
 			out.value(idx+1) = str2num(val);
 		end
-	end
+    end
+
 	time_step = max(time_steps, idx);
-	out.var_name = sprintf('%s_%s_%s', out.name, prop_name, date_value);
+	out.var_name = sprintf('%s_%s', out.name, prop_name);
 end
 
 % Create simulation configuration and attach it to the model
 % Saves the simulation input values to an external mat file to ease replay
 % TODO: This function structure should be improved
-function IO_struct = create_configuration(IO_struct, file, prop_node_name, date_value, mat_file, idx_prop)
+function IO_struct = create_configuration(IO_struct, file, prop_node_name, mat_file, idx_prop)
 	configSet = copy(getActiveConfigSet(file));
 	set_param(configSet, 'Solver', 'FixedStepDiscrete');
 	set_param(configSet, 'FixedStep', '1.0');
@@ -349,10 +350,10 @@ function IO_struct = create_configuration(IO_struct, file, prop_node_name, date_
 	set_param(configSet, 'StopTime', [num2str(IO_struct.time_steps + 1) '.0']);
 	set_param(configSet, 'SaveFormat', 'Structure');
 	set_param(configSet, 'SaveTime', 'on');
-
+    
 	prop_name = regexp(prop_node_name.origin_block_name, '/', 'split');
 	prop_name = [prop_name{end} '_' num2str(idx_prop)];
-	IO_struct.prop_name = [prop_name '_' date_value];
+	IO_struct.prop_name = prop_name;
 
 	IO_struct.prop_name = regexprep(IO_struct.prop_name, '[\s#{}[]&]', '_');
     
@@ -374,11 +375,8 @@ function IO_struct = create_configuration(IO_struct, file, prop_node_name, date_
             value = IO_struct.inputs{idx_in}.value;
             dim_r = IO_struct.inputs{idx_in}.dim_r;
             dim_c = IO_struct.inputs{idx_in}.dim_c;
-            if strcmp(IO_struct.inputs{idx_in}.dt, 'boolean')
-                signals_values_set = sprintf('%s.signals(%s).values = boolean(%s)'';', input_struct_name, num2str(idx_in), mat2str(value));
-            else
-                signals_values_set = sprintf('%s.signals(%s).values = %s'';', input_struct_name, num2str(idx_in), mat2str(value));
-            end
+            dt = char(IO_struct.inputs{idx_in}.dt);
+            signals_values_set = sprintf('%s.signals(%s).values = %s(%s)'';', input_struct_name, num2str(idx_in),dt, mat2str(value));
             if dim_r == 1 || dim_c == 1
                 signals_dimensions_set = sprintf('%s.signals(%s).dimensions = %d;', input_struct_name, num2str(idx_in), max(dim_r,dim_c));
             else
@@ -435,31 +433,46 @@ function IO_struct = create_configuration(IO_struct, file, prop_node_name, date_
 end
 
 % Add an annotation to display the Counter example replay/config
-function createAnnotation(lustre_file_name, property_node_names, IO_struct, config_mat_full_file, out_path)
+function createAnnotation(lustre_file_name, property_node_names, IO_struct, config_mat_full_file, path)
 
 	% Load cocoSim_path variable
 	load 'tmp_data'
 
 	property_node_name = property_node_names.origin_block_name;
     
-	[path file_name ext] = fileparts(lustre_file_name);
-
+	[lus_dir, file_name, ~] = fileparts(lustre_file_name);
+	html_text = fileread([cocoSim_path filesep 'backEnd' filesep 'templates' filesep 'header.html']);
 	annot_text = fileread([cocoSim_path filesep 'backEnd' filesep 'templates' filesep 'header.html']);
 	title = fileread([cocoSim_path filesep 'backEnd' filesep 'templates' filesep 'title.html']);
 	title = strrep(title, '[observer_full_name]', property_node_name);
 	annot_text = [annot_text title];
-
+    html_text = [html_text title];
+    
 	list_title = fileread([cocoSim_path filesep 'backEnd' filesep 'templates' filesep 'list_title.html']);
 	list_title = strrep(list_title, '[Title]', 'Actions');
 	
 	% Define clear, load and replay actions
 	actions = createActions(lustre_file_name, property_node_names, config_mat_full_file, IO_struct, cocoSim_path);
-	list_title = strrep(list_title, '[List_Content]', actions);
-	annot_text = [annot_text list_title];
-
+	list_title_html = strrep(list_title, '[List_Content]', actions);
+    html_text = [html_text list_title_html];
+    
+    title = 'open Counter example actions';
+    action = fileread([cocoSim_path filesep 'backEnd' filesep 'templates' filesep 'list_item_mat_code.html']);
+    action = strrep(action, '[Item]', title);
+    html_output = fullfile(lus_dir, strcat(file_name,property_node_names.prop_name,'.html'));
+    content = sprintf('open(''%s'')\n;',html_output);
+    action = strrep(action, '[Matlab_code]', content);
+    list_title_ann = strrep(list_title, '[List_Content]', action);
+	annot_text = [annot_text list_title_ann];
+    
+    
 	footer = fileread([cocoSim_path filesep 'backEnd' filesep 'templates' filesep 'footer.html']);
 	annot_text = [annot_text footer];
-	
+    html_text = [html_text footer];
+    %Delete the previous CEX annotations. So the user can run the model many
+    %times
+	delete(find_system(file_name, 'FindAll', 'on', 'type', 'annotation',...
+            'Description', 'CEX'));
 	annot = Simulink.Annotation([file_name '/Counter example annotation']);
 
 	% Find correct position for the annotation
@@ -480,13 +493,20 @@ function createAnnotation(lustre_file_name, property_node_names, IO_struct, conf
 		end
 	end
 	annot.position = [(max_x + abs(min_x) + 150) min_y];
-
 	annot.name = annot_text;
 	annot.DropShadow = 'on';
-	annot.ForegroundColor = 'black';
+	annot.ForegroundColor = 'white' ;
+    annot.Description = 'CEX';
 	annot.BackgroundColor = 'red';
 	annot.InternalMargins = [5, 5, 5, 5];
 	annot.Interpreter = 'rich';
+    
+    %save the annotation as an html file, it is more clear for the user
+    % Open file for writing
+    fid = fopen(html_output, 'w+');
+    if ~strcmp(html_text, '')
+        fprintf(fid, html_text);
+    end
 end
 
 %% Create actions to be added to the generated Annotation as the callback code executed when the hyperlinks are clicked.
@@ -505,14 +525,21 @@ function actions = createActions(lustre_file_name, property_node_names, config_m
 	config_name = IO_struct.configSet_name;
     
 	% Display values action
-	code_display = sprintf('load(''%s'');\n', config_mat_full_file);
-	code_display = app_sprintf(code_display, 'values = {Inputs_%s , Outputs_%s};\n', IO_struct.prop_name, IO_struct.prop_name);
-	code_display = app_sprintf(code_display, 'addpath(''%s'');\n', output_full_path);
-	code_display = app_sprintf(code_display, 'plotting(''CEX values for %s'', values);\n', property_name);
-	action = createAction('Display counter example I/O values', code_display, cocoSim_path);
-	actions = [actions action];
-	add_plotting_function(cocoSim_path, output_full_path);
-
+    
+    code_display = sprintf('load(''%s'');\n', config_mat_full_file);
+    if isfield(IO_struct.outputs{1},'value')
+        code_display = app_sprintf(code_display, 'values = {Inputs_%s , Outputs_%s};\n', IO_struct.prop_name, IO_struct.prop_name);
+        title = 'Display counter example Input/Output values';
+    else
+        code_display = app_sprintf(code_display, 'values = {Inputs_%s};\n', IO_struct.prop_name);
+        title = 'Display counter example Input values';
+    end
+    code_display = app_sprintf(code_display, 'addpath(''%s'');\n', output_full_path);
+    code_display = app_sprintf(code_display, 'plotting(''CEX values for %s'', values);\n', property_name);
+    action = createAction(title, code_display, cocoSim_path);
+    actions = [actions action];
+    add_plotting_function(cocoSim_path, output_full_path);
+    
 	% Clear action
 	code_clear = sprintf('%s;\n', 'clear');
 	matlab_code = [matlab_code code_clear];
@@ -528,7 +555,7 @@ function actions = createActions(lustre_file_name, property_node_names, config_m
 	code_load = sprintf('load(''%s'');\n', config_mat_full_file);
 	matlab_code = [matlab_code code_load];
 
-	action = createAction('Load counter example input values', code_load, cocoSim_path);
+	action = createAction('Load counter example input values and sim configuration', code_load, cocoSim_path);
 	actions = [actions action];
 
 	% Here we need to know if we are working on the complete system or on a subsystem
@@ -539,17 +566,10 @@ function actions = createActions(lustre_file_name, property_node_names, config_m
 	end
     
 	if main_system_simu
-		% Activate configuration action
-		code_active_config = sprintf('attachConfigSetCopy(model{1}, %s, true);\n', config_name);
-		code_active_config = app_sprintf(code_active_config, 'setActiveConfigSet(model{1}, ''%s'');\n', config_name);
-		matlab_code = [matlab_code code_active_config];
-
-		action_code = [code_find_system code_active_config];
-		action = createAction('Add counter example simulation configuration', action_code, cocoSim_path);
-		actions = [actions action];
 
 		% Launch simulation action
-		code_launch = sprintf('sim(model{1});\n');
+		code_launch = sprintf('simOut = sim(model{1},%s);\n',config_name);
+        code_launch = app_sprintf(code_launch, 'yout = get(simOut,''yout'');\n', '');
 		code_launch = app_sprintf(code_launch, 'addpath(''%s'');\n', output_full_path);
 		code_launch = app_sprintf(code_launch, 'values = {Inputs_%s};\n', IO_struct.prop_name);
   
@@ -580,19 +600,10 @@ function actions = createActions(lustre_file_name, property_node_names, config_m
 		action = createAction('Create CEX model for observed subsystem', code_create_cex_model, cocoSim_path);
 		actions = [actions action];
 
-		% Attach configuration to CEX Model
-		code_attach_config = sprintf('attachConfigSetCopy(''%s'', %s, true);\n', property_node_names.parent_node_name, config_name);
-		code_attach_config = app_sprintf(code_attach_config, 'cex_model = find_system(''%s'');\n', property_node_names.parent_node_name);
-		code_attach_config = app_sprintf(code_attach_config, 'setActiveConfigSet(cex_model{1}, ''%s'');\n', config_name);
-		code_attach_config = app_sprintf(code_attach_config, 'save_system(''%s.mdl'');\n', property_node_names.parent_node_name);
-		code_attach_config = app_sprintf(code_attach_config, 'clear cex_model;\n', property_node_names.parent_node_name);
-
-		action = createAction('Add counter example simulation configuration', code_attach_config, cocoSim_path);
-		actions = [actions action];
-
 		% Launch simulation action
 		code_launch = sprintf('cex_model = find_system(''%s'');\n', property_node_names.parent_node_name);
-		code_launch = app_sprintf(code_launch, 'sim(''%s'');\n', property_node_names.parent_node_name);
+        code_launch = app_sprintf(code_launch,'simOut = sim(''%s'',%s);\n',property_node_names.parent_node_name,config_name);
+        code_launch = app_sprintf(code_launch, 'yout = get(simOut,''yout'');\n', '');
 		code_launch = app_sprintf(code_launch, 'addpath(''%s'');\n', output_full_path);
 		code_launch = app_sprintf(code_launch, 'values = {Inputs_%s};\n', IO_struct.prop_name);
   
