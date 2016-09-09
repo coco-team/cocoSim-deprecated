@@ -1,11 +1,6 @@
 # CoCoSim #
 
-CoCoSim is a modular, integrated analysis framework for Simulink and Stateflow models. It consists of a compiler and an interface to backend safety verifiers (model checkers):
-
-* **Compiler**: It modularly compiles a Simulink(c) model (+ design property) into a synchoronous dataflow program. An earlier version of this module was developed by Claire Pagetti, Thomas Loquen and Eric Noulard at ONERA (France). The current version is a complete re-implimentation done at NASA Ames and CMU led by Temesghen Kahsai (NASA Ames / CMU).
-* **Model Checker**: In principle CoCoSim can use any model checker for Lustre code. The current version of CoCoSim can use either: [Zustre](https://github.com/lememta/zustre), [Kind2](https://github.com/kind2-mc/kind2) or [Eldarica](https://github.com/uuverifiers/eldarica) as the backend model checkers.
-
-CoCoSim is currently under development. We welcome any feedback and bug report.
+CoCoSim is an automated analysis framework for Simulink and Stateflow models. CoCoSim is currently under development. We welcome any feedback and bug report.
 
 [![ScreenCast of CoCoSim](http://i.imgur.com/itLte0X.png)](https://youtu.be/iqwVCiU46Y4)
 
@@ -22,7 +17,6 @@ CoCoSim can be installed and use as follows:
 * (Optional) [SeaHorn](http://seahorn.github.io/) -- Experimental
 * (Optional) [Eldarica](https://github.com/uuverifiers/eldarica) -- Exerimental
 * Python2.7
-* (Optional) (lus2lic)[https://www-verimag.imag.fr/Lustre-V6.html] from the Verimag LustreV6 toolbox for testing purpose
 
 ### Configuration ###
 
@@ -63,4 +57,5 @@ More information about CoCoSim can be found [here](https://github.com/coco-team/
 ##Contributors##
 
 * Arnaud Dieumegard (Fabruary - August 2015)
-* Hamza BOURBOUH (July - September 2016) 
+* Hamza BOURBOUH (July - September 2016)
+* An earlier version of the internal compiler of CoCoSim was developed by Claire Pagetti, Thomas Loquen and Eric Noulard at ONERA (France). 
