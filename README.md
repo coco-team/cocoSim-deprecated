@@ -50,7 +50,7 @@ More information about CoCoSim can be found [here](https://github.com/coco-team/
 
 ## Waffle
 [![Stories in Ready](https://badge.waffle.io/coco-team/cocoSim.png?label=ready&title=Ready)](https://waffle.io/coco-team/cocoSim)
-[![Throughput Graph](https://graphs.waffle.io/coco-team/cocoSim/throughput.svg)](https://waffle.io/coco-team/cocoSim/metrics/throughput
+[![Throughput Graph](https://graphs.waffle.io/coco-team/cocoSim/throughput.svg)](https://waffle.io/coco-team/cocoSim/metrics/throughput)
 
 ##Developers##
 
