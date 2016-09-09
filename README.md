@@ -4,9 +4,6 @@ CoCoSim is an automated analysis framework for Simulink and Stateflow models. Co
 
 [![ScreenCast of CoCoSim](http://i.imgur.com/itLte0X.png)](https://youtu.be/iqwVCiU46Y4)
 
-## Waffle
-[![Stories in Ready](https://badge.waffle.io/coco-team/cocoSim.png?label=ready&title=Ready)](https://waffle.io/coco-team/cocoSim)
-[![Throughput Graph](https://graphs.waffle.io/coco-team/cocoSim/throughput.svg)](https://waffle.io/coco-team/cocoSim/metrics/throughput)
 ## Installation ##
 
 CoCoSim can be installed and use as follows:
@@ -42,8 +39,6 @@ CoCoSim can be installed and use as follows:
 + Make sure to have one of the backround solvers installed (e.g. Zustre, Kind2 and or JKind)
 + You can now open your Simulink model, e.g. ```open test/properties/property_3_test.mdl```
 
-
-
 ### Example ###
 
 1. To test a safe property: `open test/properties/property_2_test.mdl`
@@ -52,6 +47,10 @@ CoCoSim can be installed and use as follows:
 2. To test an unsafe property (which also provide a counterexample): `open test/properties/property_3_unsafe_test.mdl`
 
 More information about CoCoSim can be found [here](https://github.com/coco-team/cocoSim/wiki/CoCoSim)
+
+## Waffle
+[![Stories in Ready](https://badge.waffle.io/coco-team/cocoSim.png?label=ready&title=Ready)](https://waffle.io/coco-team/cocoSim)
+[![Throughput Graph](https://graphs.waffle.io/coco-team/cocoSim/throughput.svg)](https://waffle.io/coco-team/cocoSim/metrics/throughput
 
 ##Developers##
 
