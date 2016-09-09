@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/coco-team/cocoSim.png?label=ready&title=Ready)](https://waffle.io/coco-team/cocoSim)
 # CoCoSim #
 
 CoCoSim is a modular, integrated analysis framework for Simulink and Stateflow models. It consists of a compiler and an interface to backend safety verifiers (model checkers):
