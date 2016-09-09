@@ -1,10 +1,12 @@
-[![Stories in Ready](https://badge.waffle.io/coco-team/cocoSim.png?label=ready&title=Ready)](https://waffle.io/coco-team/cocoSim)
 # CoCoSim #
 
 CoCoSim is an automated analysis framework for Simulink and Stateflow models. CoCoSim is currently under development. We welcome any feedback and bug report.
 
 [![ScreenCast of CoCoSim](http://i.imgur.com/itLte0X.png)](https://youtu.be/iqwVCiU46Y4)
 
+## Waffle
+[![Stories in Ready](https://badge.waffle.io/coco-team/cocoSim.png?label=ready&title=Ready)](https://waffle.io/coco-team/cocoSim)
+[![Throughput Graph](https://graphs.waffle.io/coco-team/cocoSim/throughput.svg)](https://waffle.io/coco-team/cocoSim/metrics/throughput)
 ## Installation ##
 
 CoCoSim can be installed and use as follows:
