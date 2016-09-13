@@ -51,7 +51,7 @@ config;
             elseif strcmp(SOLVER, 'E')
                 command = sprintf('%s "%s" --node %s --xml --eldarica %s --timeout 600 ', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name, smt_file);
             elseif is_SF
-                 command = sprintf('%s "%s" --node %s --xml --cg --timeout 60 --save --stateflow', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name);
+                 command = sprintf('%s "%s" --node %s --xml  --timeout 60 --save --stateflow', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name);
             else
                 command = sprintf('%s "%s" --node %s --xml --cg --timeout 60 --save ', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name);
             end

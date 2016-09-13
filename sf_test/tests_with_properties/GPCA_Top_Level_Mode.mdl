@@ -52,7 +52,7 @@ Model {
       UnitExpr		      "inherit"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.12"
+    ComputedModelVersion    "1.13"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -77,7 +77,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [547.0, 24.0, 1389.0, 1076.0]
+      Location		      [521.0, 14.0, 1409.0, 1076.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -101,7 +101,7 @@ Model {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1335.0, 883.0]
+	Extents			[1355.0, 883.0]
 	ZoomFactor		[0.8]
 	Offset			[-98.25, -69.75]
       }
@@ -113,9 +113,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "hamza"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Jul 29 19:01:24 2016"
-  RTWModifiedTimeStamp	  391719677
-  ModelVersionFormat	  "1.%<AutoIncrement:12>"
+  LastModifiedDate	  "Sun Sep 11 22:16:16 2016"
+  RTWModifiedTimeStamp	  395532973
+  ModelVersionFormat	  "1.%<AutoIncrement:13>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -962,7 +962,7 @@ Model {
   }
   System {
     Name		    "GPCA_Top_Level_Mode"
-    Location		    [547, 24, 1936, 1100]
+    Location		    [521, 14, 1930, 1090]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -1286,7 +1286,7 @@ Model {
       }
       System {
 	Name			"not_system_start_implies_system_off"
-	Location		[547, 14, 1936, 1090]
+	Location		[521, 14, 1930, 1090]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -1534,7 +1534,7 @@ Model {
 	  SID			  "46"
 	  Name			  "-- property not_system_start_implies_system_off \n\n	prop2 = if not(OP_CMD_IN_System_Start) &&  tLM_MODE_"
 	  "OUT_Request_Confirm_Stop_1 then not(tLM_MODE_OUT_System_On)  else true; "
-	  Position		  [370, 477, 1032, 515]
+	  Position		  [309, 429, 971, 467]
 	  InternalMargins	  [0, 0, 0, 0]
 	  FixedHeight		  off
 	  FixedWidth		  off
@@ -2041,7 +2041,7 @@ Model {
 	  "tLM_MODE_OUT_Request_Confirm_Stop) else true; \n\n--property system_stop_implies_not_system_on \n	prop5 = if tLM_MO"
 	  "DE_OUT_System_On_1 && (OP_CMD_IN_System_Stop) && not tLM_MODE_OUT_Request_Confirm_Stop_1  then tLM_MODE_OUT_Request"
 	  "_Confirm_Stop else true;\n	"
-	  Position		  [300, 780, 1157, 842]
+	  Position		  [286, 725, 1143, 787]
 	  InternalMargins	  [0, 0, 0, 0]
 	  FixedHeight		  off
 	  FixedWidth		  off
@@ -2121,7 +2121,7 @@ Model {
       }
       System {
 	Name			"sys_start_implies_sys_on"
-	Location		[636, 144, 1828, 872]
+	Location		[521, 14, 1930, 1090]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -2285,7 +2285,7 @@ Model {
 	  SID			  "24"
 	  Name			  "--property system_start_implies_system_on \n	prop1 = if (OP_CMD_IN_System_Start) then  tLM_MODE_OUT_Syste"
 	  "m_On else true;"
-	  Position		  [587, 352, 991, 378]
+	  Position		  [307, 387, 711, 413]
 	  InternalMargins	  [0, 0, 0, 0]
 	  FixedHeight		  off
 	  FixedWidth		  off
