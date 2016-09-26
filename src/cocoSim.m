@@ -210,16 +210,6 @@ display_msg('Internal representation building', Constants.INFO, 'cocoSim', '');
 %%%%%% Internal representation building %%%%%%
 
 [inter_blk, blks, complex_structs]= mk_internalRep(file_name, dfexport, models, subsystems, mat_files, default_Ts);
-% disp('inter_blk :');
-% for i=1:numel(inter_blk)
-%     for j=1:numel(inter_blk{i})
-%         inter_blk{i}{j}
-%     end
-% end
-% % cellfun(@disp,inter_blk);
-% disp('blks : ');
-% cellfun(@disp,blks);
-% if CS_LOG==1 celldisp(inter_blk); end
 
 % Creation of the traceability XML node
 xml_trace = XML_Trace(model_full_path, trace_file_name);

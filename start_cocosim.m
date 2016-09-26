@@ -17,6 +17,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 warning ('off','all');
 [cocoSim_path, function_name, ext] = fileparts(mfilename('fullpath'));
+disp('--------------------------')
+disp('    WELCOME TO COCOSIM    ')
+disp('--------------------------')
 disp('... adding cocoSim path')
 addpath(fullfile(cocoSim_path, 'src'));
 config;
