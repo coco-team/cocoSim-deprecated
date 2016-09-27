@@ -187,7 +187,9 @@ function unsupported_blocks( model )
         annot.InternalMargins = [5, 5, 5, 5];
         annot.Interpreter = 'rich';
     else
-        disp('--- all blocks are supported');
+        msg = 'All blocks are supported';
+        disp('--- All blocks are supported  ---');
+        uiwait(msgbox(msg));
     end
 	diary off;
     if print

@@ -1,6 +1,9 @@
-Main authors to cocoSim:
-  Arnaud Dieumegard  : arnaud DOT dieumegard AT gmail DOT com (CMU now at IRIT)
+Main author to CoCoSim:
   Temesghen Kahsai   : teme DOT Kahsai AT sv DOT cmu DOT com (NASA AMES / CMU)
+
+Contributors:
+   Hamza BOURBOUH : bourbouhh AT gmail DOT com (July - September 2016)
+   Arnaud Dieumegard  : arnaud DOT dieumegard AT gmail DOT com (May - August 2015)
 
 
 Original authors/contributors for Sim2PreludeLustre (compiler from Simulink to Lustre):

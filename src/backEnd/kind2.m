@@ -17,21 +17,20 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-function kind2(lustre_file_name, property_node_names, property_file_base_name, model_inter_blk)
+function kind2(lustre_file_name, property_node_names, property_file_base_name, model_inter_blk, xml_trace)
      
-	[path file ext] = fileparts(lustre_file_name);
     config;
     
     for idx_prop=1:numel(property_node_names)
         if exist(KIND2,'file') && exist(Z3,'file')
             date_value = datestr(now, 'ddmmyyyyHHMMSS');
-            command = sprintf('%s --z3_bin %s -xml --lustre_main %s %s', KIND2, Z3, property_node_names{idx_prop}.prop_name, lustre_file_name);
+            command = sprintf('%s --z3_bin %s -xml --lus_main %s %s', KIND2, Z3, property_node_names{idx_prop}.prop_name, lustre_file_name);
             disp(['KIND2_COMMAND ' command])
             [status, kind2_out] = system(command);
             disp('   -- KIND_OUT --')
             disp(kind2_out)
             disp('   -- KIND_OUT --')
-            [answer cex] = solver_result('KIND2', kind2_out, property_node_names{idx_prop}.prop_name, property_file_base_name);
+            [answer, cex] = solver_result('KIND2', kind2_out, property_node_names{idx_prop}.prop_name, property_file_base_name);
             % Change the observer block display according to answer
             display = sprintf('color(''black'')\n');
             display = [display sprintf('text(0.5, 0.5, [''Property: '''''' get_param(gcb,''name'') ''''''''], ''horizontalAlignment'', ''center'');\n')];
@@ -52,43 +51,63 @@ function kind2(lustre_file_name, property_node_names, property_file_base_name, m
             elseif strcmp(answer, 'CEX')
                 set_param(property_node_names{idx_prop}.origin_block_name, 'BackgroundColor', 'red');
                 set_param(property_node_names{idx_prop}.origin_block_name, 'ForegroundColor', 'red');
-                % TEME TODO HERE
-%                 if ~strcmp(cex, '')
-%                    try
-%                      display_cex(cex, path, property_node_names{idx_prop}, model_inter_blk, date_value, file)
-%                     catch ME
-%                         display_msg(ME.message, Constants.ERROR, 'Verification', '');
-%                    end
-%                 end
+                if ~strcmp(cex, '')
+                   try
+                     display_cex(cex, property_node_names{idx_prop}, ...
+                                  model_inter_blk, date_value, ...
+                                   lustre_file_name, idx_prop, xml_trace);
+                    catch ME
+                        display_msg(ME.message, Constants.ERROR, 'JKind', '');
+                   end
+                end
             end
         else
-            msg = 'Running Kind2: Impossible to find Kind2 and/or Z3';
+            msg = 'Kind2: Impossible to find Kind2';
             display_msg(msg, Constants.ERROR, 'Kind2', '');
         end
     end
 end
 
-function [status] = display_cex(cex, path, prop, model, date_value, lustre_file)
+function [status] = display_cex(cex, prop, model, date_value, lustre_file_name, idx_prop,xml_trace)
    status = 1;
+  [path, lustre_file, ext] = fileparts(lustre_file_name);
    mat_file_name = ['config_' prop.prop_name '_' date_value '.mat'];
    mat_full_file = fullfile(path, mat_file_name);
+
    % Initialisation of the IO_struct
-   IO_struct = get_IO_struct(model, prop);
-   disp(cex);
+   IO_struct = mk_IO_struct(model, prop);
    try
        % Definition of the values and variable names
-       [IO_struct, found] = parseCEX(cex, lustre_file, IO_struct, prop, date_value);
-       
+       [IO_struct, found] = parseCEX(cex, IO_struct, prop, xml_trace);
    catch ERR
        found = false;
-       msg = ['Kind2: FAILURE to parse the CEX : ' prop.prop_name '\n' getReport(ERR)];
+       msg = ['JKIND: FAILURE to parse the CEX : ' prop.prop_name '\n' getReport(ERR)];
        display_msg(msg, Constants.INFO, 'Kind2', '');
+   end
+   if found
+       try
+           % Simulation configuration
+           IO_struct = create_configuration(IO_struct, lustre_file, prop, mat_full_file, idx_prop);
+           config_created = true;
+       catch ERR
+           msg = ['FAILURE to create the Simulink simulation configuration\n' getReport(ERR)];
+           display_msg(msg, Constants.INFO, 'Kind2', '');
+           config_created = false;
+       end
+       if config_created
+           try
+               % Create the annotation with the links to setup and launch the simulation
+               createAnnotation(lustre_file_name, prop, IO_struct, mat_full_file, path);
+           catch ERR
+               msg = ['FAILURE to create the Simulink CEX replay annotation\n' getReport(ERR)];
+               display_msg(msg, Constants.INFO, 'Kind2', '');
+           end
+       end
    end
 end
 
-
 % Builds the IO structure for the counter example:
-function IO_struct = get_IO_struct(model_inter_blk, prop_node_name)
+function IO_struct = mk_IO_struct(model_inter_blk, prop_node_name)
 	IO_struct = '';
 	cpt_in = 1;
 	cpt_out = 1;
@@ -146,12 +165,10 @@ function IO_struct = get_IO_struct(model_inter_blk, prop_node_name)
 end
 
 
-function [IO_struct, found] = parseCEX(cex, model_name, IO_struct, prop_node_name, xml_trace)
+function [IO_struct, found] = parseCEX(cex, IO_struct, prop_node_name, xml_trace)
 	first_cex = cex.item(0); % Only one CounterExample for now, do we will need more ?
     nodes = first_cex.getElementsByTagName('Node');
-    
     prop_name = prop_node_name.prop_name;       
-	parent_name = prop_node_name.parent_node_name;
 	parent_block_name = prop_node_name.parent_block_name;
     time_steps = 0;
 	found = false;
@@ -159,7 +176,6 @@ function [IO_struct, found] = parseCEX(cex, model_name, IO_struct, prop_node_nam
     % Browse through all the nodes
 	for idx=0:(nodes.getLength-1)
 		node = nodes.item(idx);
-		node_name = node.getAttribute('name');
         streams = node.getElementsByTagName('Stream');
         for i=0:(streams.getLength-1)
             stream = streams.item(i);
@@ -174,15 +190,14 @@ function [IO_struct, found] = parseCEX(cex, model_name, IO_struct, prop_node_nam
 			elseif numel(find(strcmp(output_names, var_name))) ~= 0
 				index = find(strcmp(output_names, var_name));
 				[IO_struct.outputs{index}, time_steps] = addValue_IO_struct(IO_struct.outputs{index}, stream, prop_name, time_steps);
-				found = true;
+                found = true;
 			end
         end
     end
     
 	if ~found
-		display_msg('Impossible to parse correctly the generated counter example', Constants.WARNING, 'CEX replay', '');
-	end
-	IO_struct = IO_struct;
+		display_msg('Impossible to parse correctly the generated CEX', Constants.WARNING, 'CEX replay', '');
+    end
 	IO_struct.time_steps = time_steps;
 end
 
@@ -304,7 +319,6 @@ end
 
 % Add an annotation to display the Counter example replay/config
 function createAnnotation(lustre_file_name, property_node_names, IO_struct, config_mat_full_file, path)
-
 	% Load cocoSim_path variable
 	load 'tmp_data'
 
@@ -341,7 +355,6 @@ function createAnnotation(lustre_file_name, property_node_names, IO_struct, conf
     list_title_ann = strrep(list_title, '[List_Content]', action);
 	annot_text = [annot_text list_title_ann];
     
-    
 	footer = fileread([cocoSim_path filesep 'backEnd' filesep 'templates' filesep 'footer.html']);
 	annot_text = [annot_text '</body></html>'];
     html_text = [html_text footer];
@@ -356,7 +369,6 @@ function createAnnotation(lustre_file_name, property_node_names, IO_struct, conf
 	positions = get_param(blocks, 'Position');
 	max_x = 0;
 	min_x = 0;
-	max_y = 0;
 	min_y = 0;
 	for idx_pos=1:numel(positions)
 		max_x = max(max_x, positions{idx_pos}(3));
@@ -389,7 +401,6 @@ end
 function actions = createActions(lustre_file_name, property_node_names, config_mat_full_file, IO_struct, cocoSim_path)
 	actions = '';
 	matlab_code = '';
-
 	[output_full_path, file_name, ext] = fileparts(lustre_file_name);
 	pwd_path = pwd;
 	if ~strcmp(pwd_path(1), output_full_path(1))
@@ -401,7 +412,6 @@ function actions = createActions(lustre_file_name, property_node_names, config_m
 	config_name = IO_struct.configSet_name;
     
 	% Display values action
-    
     code_display = sprintf('load(''%s'');\n', config_mat_full_file);
     if isfield(IO_struct.outputs{1},'value')
         code_display = app_sprintf(code_display, 'values = {Inputs_%s , Outputs_%s};\n', IO_struct.prop_name, IO_struct.prop_name);

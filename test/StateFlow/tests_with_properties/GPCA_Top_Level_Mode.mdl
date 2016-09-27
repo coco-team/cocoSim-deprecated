@@ -1,0 +1,3329 @@
+Model {
+  Name			  "GPCA_Top_Level_Mode"
+  Version		  8.7
+  MdlSubVersion		  1
+  SavedCharacterEncoding  "UTF-8"
+  GraphicalInterface {
+    NumRootInports	    4
+    Inport {
+      Name		      "Sys_Start"
+      BusObject		      ""
+      OutputFunctionCall      "off"
+      UnitExpr		      "inherit"
+    }
+    Inport {
+      Name		      "Sys_Stop"
+      BusObject		      ""
+      OutputFunctionCall      "off"
+      UnitExpr		      "inherit"
+    }
+    Inport {
+      Name		      "Cancel"
+      BusObject		      ""
+      OutputFunctionCall      "off"
+      UnitExpr		      "inherit"
+    }
+    Inport {
+      Name		      "Max_Conf_Stop_Duration"
+      BusObject		      ""
+      OutputFunctionCall      "off"
+      UnitExpr		      "inherit"
+    }
+    NumRootOutports	    3
+    Outport {
+      Name		      "System_On"
+      BusObject		      ""
+      BusOutputAsStruct	      "off"
+      SignalName	      "tLM_MODE_OUT_System_On"
+      UnitExpr		      "inherit"
+    }
+    Outport {
+      Name		      "Req_Confirm_Stop"
+      BusObject		      ""
+      BusOutputAsStruct	      "off"
+      SignalName	      "tLM_MODE_OUT_Request_Confirm_Stop"
+      UnitExpr		      "inherit"
+    }
+    Outport {
+      Name		      "Log_Msg_ID"
+      BusObject		      ""
+      BusOutputAsStruct	      "off"
+      SignalName	      "tLM_MODE_OUT_Log_Message_ID"
+      UnitExpr		      "inherit"
+    }
+    ParameterArgumentNames  ""
+    ComputedModelVersion    "1.13"
+    NumModelReferences	    0
+    NumTestPointedSignals   0
+    NumProvidedFunctions    0
+    NumRequiredFunctions    0
+  }
+  ScopeRefreshTime	  0.035000
+  OverrideScopeRefreshTime on
+  DisableAllScopes	  off
+  DataTypeOverride	  "UseLocalSettings"
+  DataTypeOverrideAppliesTo "AllNumericTypes"
+  MinMaxOverflowLogging	  "UseLocalSettings"
+  MinMaxOverflowArchiveMode "Overwrite"
+  FPTRunName		  "Run 1"
+  MaxMDLFileLineLength	  120
+  LastSavedArchitecture	  "glnxa64"
+  Object {
+    $PropName		    "BdWindowsInfo"
+    $ObjectID		    1
+    $ClassName		    "Simulink.BDWindowsInfo"
+    Object {
+      $PropName		      "WindowsInfo"
+      $ObjectID		      2
+      $ClassName	      "Simulink.WindowInfo"
+      IsActive		      [1]
+      Location		      [521.0, 14.0, 1409.0, 1076.0]
+      Object {
+	$PropName		"ModelBrowserInfo"
+	$ObjectID		3
+	$ClassName		"Simulink.ModelBrowserInfo"
+	Visible			[0]
+	DockPosition		"Left"
+	Width			[50]
+	Height			[50]
+	Filter			[9]
+      }
+      Object {
+	$PropName		"ExplorerBarInfo"
+	$ObjectID		4
+	$ClassName		"Simulink.ExplorerBarInfo"
+	Visible			[1]
+      }
+      Object {
+	$PropName		"EditorsInfo"
+	$ObjectID		5
+	$ClassName		"Simulink.EditorInfo"
+	IsActive		[1]
+	ViewObjType		"SimulinkTopLevel"
+	LoadSaveID		"0"
+	Extents			[1355.0, 883.0]
+	ZoomFactor		[0.8]
+	Offset			[-98.25, -69.75]
+      }
+    }
+  }
+  Created		  "Wed Jul 13 12:11:13 2016"
+  Creator		  "bourbouh"
+  UpdateHistory		  "UpdateHistoryNever"
+  ModifiedByFormat	  "%<Auto>"
+  LastModifiedBy	  "hamza"
+  ModifiedDateFormat	  "%<Auto>"
+  LastModifiedDate	  "Sun Sep 11 22:16:16 2016"
+  RTWModifiedTimeStamp	  395532973
+  ModelVersionFormat	  "1.%<AutoIncrement:13>"
+  ConfigurationManager	  "none"
+  SampleTimeColors	  off
+  SampleTimeAnnotations	  off
+  LibraryLinkDisplay	  "disabled"
+  WideLines		  off
+  ShowLineDimensions	  off
+  ShowPortDataTypes	  off
+  ShowEditTimeErrors	  on
+  ShowEditTimeWarnings	  off
+  ShowEditTimeAdvisorChecks off
+  ShowPortUnits		  off
+  ShowDesignRanges	  off
+  ShowLoopsOnError	  on
+  IgnoreBidirectionalLines off
+  ShowStorageClass	  off
+  ShowTestPointIcons	  on
+  ShowSignalResolutionIcons on
+  ShowViewerIcons	  on
+  SortedOrder		  off
+  VariantCondition	  off
+  ExecutionContextIcon	  off
+  ShowLinearizationAnnotations on
+  ShowVisualizeInsertedRTB on
+  ShowMarkup		  on
+  BlockNameDataTip	  off
+  BlockParametersDataTip  off
+  BlockDescriptionStringDataTip	off
+  ToolBar		  on
+  StatusBar		  on
+  BrowserShowLibraryLinks off
+  FunctionConnectors	  off
+  BrowserLookUnderMasks	  off
+  SimulationMode	  "normal"
+  PauseTimes		  "5"
+  NumberOfSteps		  1
+  SnapshotBufferSize	  10
+  SnapshotInterval	  10
+  NumberOfLastSnapshots	  0
+  LinearizationMsg	  "none"
+  Profile		  off
+  ParamWorkspaceSource	  "MATLABWorkspace"
+  AccelSystemTargetFile	  "accel.tlc"
+  AccelTemplateMakefile	  "accel_default_tmf"
+  AccelMakeCommand	  "make_rtw"
+  TryForcingSFcnDF	  off
+  Object {
+    $PropName		    "DataLoggingOverride"
+    $ObjectID		    6
+    $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
+    model_		    "GPCA_Top_Level_Mode"
+    overrideMode_	    [0.0]
+    Array {
+      Type		      "Cell"
+      Dimension		      1
+      Cell		      "GPCA_Top_Level_Mode"
+      PropName		      "logAsSpecifiedByModels_"
+    }
+    Array {
+      Type		      "Cell"
+      Dimension		      1
+      Cell		      []
+      PropName		      "logAsSpecifiedByModelsSSIDs_"
+    }
+  }
+  ExtModeBatchMode	  off
+  ExtModeEnableFloating	  on
+  ExtModeTrigType	  "manual"
+  ExtModeTrigMode	  "normal"
+  ExtModeTrigPort	  "1"
+  ExtModeTrigElement	  "any"
+  ExtModeTrigDuration	  1000
+  ExtModeTrigDurationFloating "auto"
+  ExtModeTrigHoldOff	  0
+  ExtModeTrigDelay	  0
+  ExtModeTrigDirection	  "rising"
+  ExtModeTrigLevel	  0
+  ExtModeArchiveMode	  "off"
+  ExtModeAutoIncOneShot	  off
+  ExtModeIncDirWhenArm	  off
+  ExtModeAddSuffixToVar	  off
+  ExtModeWriteAllDataToWs off
+  ExtModeArmWhenConnect	  on
+  ExtModeSkipDownloadWhenConnect off
+  ExtModeLogAll		  on
+  ExtModeAutoUpdateStatusClock on
+  ShowModelReferenceBlockVersion off
+  ShowModelReferenceBlockIO off
+  Array {
+    Type		    "Handle"
+    Dimension		    1
+    Simulink.ConfigSet {
+      $ObjectID		      7
+      Version		      "1.16.2"
+      Array {
+	Type			"Handle"
+	Dimension		10
+	Simulink.SolverCC {
+	  $ObjectID		  8
+	  Version		  "1.16.2"
+	  StartTime		  "0.0"
+	  StopTime		  "10.0"
+	  AbsTol		  "auto"
+	  FixedStep		  "auto"
+	  InitialStep		  "auto"
+	  MaxNumMinSteps	  "-1"
+	  MaxOrder		  5
+	  ZcThreshold		  "auto"
+	  ConsecutiveZCsStepRelTol "10*128*eps"
+	  MaxConsecutiveZCs	  "1000"
+	  ExtrapolationOrder	  4
+	  NumberNewtonIterations  1
+	  MaxStep		  "auto"
+	  MinStep		  "auto"
+	  MaxConsecutiveMinStep	  "1"
+	  RelTol		  "1e-3"
+	  SolverMode		  "Auto"
+	  EnableConcurrentExecution off
+	  ConcurrentTasks	  off
+	  Solver		  "VariableStepAuto"
+	  SolverName		  "VariableStepAuto"
+	  SolverJacobianMethodControl "auto"
+	  ShapePreserveControl	  "DisableAll"
+	  ZeroCrossControl	  "UseLocalSettings"
+	  ZeroCrossAlgorithm	  "Nonadaptive"
+	  AlgebraicLoopSolver	  "TrustRegion"
+	  SolverInfoToggleStatus  off
+	  IsAutoAppliedInSIP	  off
+	  SolverResetMethod	  "Fast"
+	  PositivePriorityOrder	  off
+	  AutoInsertRateTranBlk	  off
+	  SampleTimeConstraint	  "Unconstrained"
+	  InsertRTBMode		  "Whenever possible"
+	}
+	Simulink.DataIOCC {
+	  $ObjectID		  9
+	  Version		  "1.16.2"
+	  Decimation		  "1"
+	  ExternalInput		  "[t, u]"
+	  FinalStateName	  "xFinal"
+	  InitialState		  "xInitial"
+	  LimitDataPoints	  off
+	  MaxDataPoints		  "1000"
+	  LoadExternalInput	  off
+	  LoadInitialState	  off
+	  SaveFinalState	  off
+	  SaveCompleteFinalSimState off
+	  SaveFormat		  "Dataset"
+	  SignalLoggingSaveFormat "Dataset"
+	  SaveOutput		  on
+	  SaveState		  off
+	  SignalLogging		  on
+	  DSMLogging		  on
+	  InspectSignalLogs	  off
+	  VisualizeSimOutput	  on
+	  StreamToWorkspace	  off
+	  StreamVariableName	  "streamout"
+	  SaveTime		  on
+	  ReturnWorkspaceOutputs  off
+	  StateSaveName		  "xout"
+	  TimeSaveName		  "tout"
+	  OutputSaveName	  "yout"
+	  SignalLoggingName	  "logsout"
+	  DSMLoggingName	  "dsmout"
+	  OutputOption		  "RefineOutputTimes"
+	  OutputTimes		  "[]"
+	  ReturnWorkspaceOutputsName "out"
+	  Refine		  "1"
+	  LoggingToFile		  off
+	  LoggingFileName	  "out.mat"
+	  LoggingIntervals	  "[-inf, inf]"
+	}
+	Simulink.OptimizationCC {
+	  $ObjectID		  10
+	  Version		  "1.16.2"
+	  Array {
+	    Type		    "Cell"
+	    Dimension		    8
+	    Cell		    "BooleansAsBitfields"
+	    Cell		    "PassReuseOutputArgsAs"
+	    Cell		    "PassReuseOutputArgsThreshold"
+	    Cell		    "ZeroExternalMemoryAtStartup"
+	    Cell		    "ZeroInternalMemoryAtStartup"
+	    Cell		    "OptimizeModelRefInitCode"
+	    Cell		    "NoFixptDivByZeroProtection"
+	    Cell		    "UseSpecifiedMinMax"
+	    PropName		    "DisabledProps"
+	  }
+	  BlockReduction	  on
+	  BooleanDataType	  on
+	  ConditionallyExecuteInputs on
+	  DefaultParameterBehavior "Tunable"
+	  UseDivisionForNetSlopeComputation "off"
+	  UseFloatMulNetSlope	  off
+	  DefaultUnderspecifiedDataType	"double"
+	  UseSpecifiedMinMax	  off
+	  InlineInvariantSignals  off
+	  OptimizeBlockIOStorage  on
+	  BufferReuse		  on
+	  EnhancedBackFolding	  off
+	  CachingGlobalReferences off
+	  GlobalBufferReuse	  on
+	  StrengthReduction	  off
+	  ExpressionFolding	  on
+	  BooleansAsBitfields	  off
+	  BitfieldContainerType	  "uint_T"
+	  EnableMemcpy		  on
+	  MemcpyThreshold	  64
+	  PassReuseOutputArgsAs	  "Structure reference"
+	  PassReuseOutputArgsThreshold 12
+	  ExpressionDepthLimit	  128
+	  LocalBlockOutputs	  on
+	  RollThreshold		  5
+	  StateBitsets		  off
+	  DataBitsets		  off
+	  ActiveStateOutputEnumStorageType "Native Integer"
+	  ZeroExternalMemoryAtStartup on
+	  ZeroInternalMemoryAtStartup on
+	  InitFltsAndDblsToZero	  off
+	  NoFixptDivByZeroProtection off
+	  EfficientFloat2IntCast  off
+	  EfficientMapNaN2IntZero on
+	  OptimizeModelRefInitCode off
+	  LifeSpan		  "inf"
+	  MaxStackSize		  "Inherit from target"
+	  BufferReusableBoundary  on
+	  SimCompilerOptimization "off"
+	  AccelVerboseBuild	  off
+	}
+	Simulink.DebuggingCC {
+	  $ObjectID		  11
+	  Version		  "1.16.2"
+	  RTPrefix		  "error"
+	  ConsistencyChecking	  "none"
+	  ArrayBoundsChecking	  "none"
+	  SignalInfNanChecking	  "none"
+	  SignalRangeChecking	  "none"
+	  ReadBeforeWriteMsg	  "UseLocalSettings"
+	  WriteAfterWriteMsg	  "UseLocalSettings"
+	  WriteAfterReadMsg	  "UseLocalSettings"
+	  AlgebraicLoopMsg	  "warning"
+	  ArtificialAlgebraicLoopMsg "warning"
+	  SaveWithDisabledLinksMsg "warning"
+	  SaveWithParameterizedLinksMsg	"warning"
+	  CheckSSInitialOutputMsg on
+	  UnderspecifiedInitializationDetection	"Simplified"
+	  MergeDetectMultiDrivingBlocksExec "error"
+	  CheckExecutionContextPreStartOutputMsg off
+	  CheckExecutionContextRuntimeOutputMsg	off
+	  SignalResolutionControl "UseLocalSettings"
+	  BlockPriorityViolationMsg "warning"
+	  MinStepSizeMsg	  "warning"
+	  TimeAdjustmentMsg	  "none"
+	  MaxConsecutiveZCsMsg	  "error"
+	  MaskedZcDiagnostic	  "warning"
+	  IgnoredZcDiagnostic	  "warning"
+	  SolverPrmCheckMsg	  "none"
+	  InheritedTsInSrcMsg	  "warning"
+	  MultiTaskDSMMsg	  "error"
+	  MultiTaskCondExecSysMsg "error"
+	  MultiTaskRateTransMsg	  "error"
+	  SingleTaskRateTransMsg  "none"
+	  TasksWithSamePriorityMsg "warning"
+	  SigSpecEnsureSampleTimeMsg "warning"
+	  CheckMatrixSingularityMsg "none"
+	  IntegerOverflowMsg	  "warning"
+	  Int32ToFloatConvMsg	  "warning"
+	  ParameterDowncastMsg	  "error"
+	  ParameterOverflowMsg	  "error"
+	  ParameterUnderflowMsg	  "none"
+	  ParameterPrecisionLossMsg "warning"
+	  ParameterTunabilityLossMsg "warning"
+	  FixptConstUnderflowMsg  "none"
+	  FixptConstOverflowMsg	  "none"
+	  FixptConstPrecisionLossMsg "none"
+	  UnderSpecifiedDataTypeMsg "none"
+	  UnnecessaryDatatypeConvMsg "none"
+	  VectorMatrixConversionMsg "none"
+	  InvalidFcnCallConnMsg	  "error"
+	  FcnCallInpInsideContextMsg "EnableAllAsError"
+	  SignalLabelMismatchMsg  "none"
+	  UnconnectedInputMsg	  "warning"
+	  UnconnectedOutputMsg	  "warning"
+	  UnconnectedLineMsg	  "warning"
+	  SFcnCompatibilityMsg	  "none"
+	  FrameProcessingCompatibilityMsg "error"
+	  UniqueDataStoreMsg	  "none"
+	  BusObjectLabelMismatch  "warning"
+	  RootOutportRequireBusObject "warning"
+	  AssertControl		  "UseLocalSettings"
+	  AllowSymbolicDim	  on
+	  ModelReferenceIOMsg	  "none"
+	  ModelReferenceMultiInstanceNormalModeStructChecksumCheck "error"
+	  ModelReferenceVersionMismatchMessage "none"
+	  ModelReferenceIOMismatchMessage "none"
+	  UnknownTsInhSupMsg	  "warning"
+	  ModelReferenceDataLoggingMessage "warning"
+	  ModelReferenceSymbolNameMessage "warning"
+	  ModelReferenceExtraNoncontSigs "error"
+	  StateNameClashWarn	  "none"
+	  SimStateInterfaceChecksumMismatchMsg "warning"
+	  SimStateOlderReleaseMsg "error"
+	  InitInArrayFormatMsg	  "warning"
+	  StrictBusMsg		  "ErrorLevel1"
+	  BusNameAdapt		  "WarnAndRepair"
+	  NonBusSignalsTreatedAsBus "none"
+	  SymbolicDimMinMaxWarning "warning"
+	  LossOfSymbolicDimsSimulationWarning "warning"
+	  LossOfSymbolicDimsCodeGenerationWarning "error"
+	  BlockIODiagnostic	  "none"
+	  SFUnusedDataAndEventsDiag "warning"
+	  SFUnexpectedBacktrackingDiag "warning"
+	  SFInvalidInputDataAccessInChartInitDiag "warning"
+	  SFNoUnconditionalDefaultTransitionDiag "warning"
+	  SFTransitionOutsideNaturalParentDiag "warning"
+	  SFUnconditionalTransitionShadowingDiag "warning"
+	  SFUndirectedBroadcastEventsDiag "warning"
+	  SFTransitionActionBeforeConditionDiag	"warning"
+	  SFOutputUsedAsStateInMooreChartDiag "error"
+	  IntegerSaturationMsg	  "warning"
+	  AllowedUnitSystems	  "all"
+	  UnitsInconsistencyMsg	  "warning"
+	  AllowAutomaticUnitConversions	on
+	}
+	Simulink.HardwareCC {
+	  $ObjectID		  12
+	  Version		  "1.16.2"
+	  ProdBitPerChar	  8
+	  ProdBitPerShort	  16
+	  ProdBitPerInt		  32
+	  ProdBitPerLong	  32
+	  ProdBitPerLongLong	  64
+	  ProdBitPerFloat	  32
+	  ProdBitPerDouble	  64
+	  ProdBitPerPointer	  64
+	  ProdLargestAtomicInteger "Char"
+	  ProdLargestAtomicFloat  "Float"
+	  ProdIntDivRoundTo	  "Zero"
+	  ProdEndianess		  "LittleEndian"
+	  ProdWordSize		  64
+	  ProdShiftRightIntArith  on
+	  ProdLongLongMode	  off
+	  ProdHWDeviceType	  "Intel->x86-64 (Windows64)"
+	  TargetBitPerChar	  8
+	  TargetBitPerShort	  16
+	  TargetBitPerInt	  32
+	  TargetBitPerLong	  32
+	  TargetBitPerLongLong	  64
+	  TargetBitPerFloat	  32
+	  TargetBitPerDouble	  64
+	  TargetBitPerPointer	  32
+	  TargetLargestAtomicInteger "Char"
+	  TargetLargestAtomicFloat "None"
+	  TargetShiftRightIntArith on
+	  TargetLongLongMode	  off
+	  TargetIntDivRoundTo	  "Undefined"
+	  TargetEndianess	  "Unspecified"
+	  TargetWordSize	  32
+	  TargetPreprocMaxBitsSint 32
+	  TargetPreprocMaxBitsUint 32
+	  TargetHWDeviceType	  "Specified"
+	  TargetUnknown		  off
+	  ProdEqTarget		  on
+	  UseEmbeddedCoderFeatures on
+	  UseSimulinkCoderFeatures on
+	}
+	Simulink.ModelReferenceCC {
+	  $ObjectID		  13
+	  Version		  "1.16.2"
+	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
+	  EnableRefExpFcnMdlSchedulingChecks on
+	  CheckModelReferenceTargetMessage "error"
+	  EnableParallelModelReferenceBuilds off
+	  ParallelModelReferenceErrorOnInvalidPool on
+	  ParallelModelReferenceMATLABWorkerInit "None"
+	  ModelReferenceNumInstancesAllowed "Multi"
+	  PropagateVarSize	  "Infer from blocks in model"
+	  ModelReferencePassRootInputsByReference on
+	  ModelReferenceMinAlgLoopOccurrences off
+	  PropagateSignalLabelsOutOfModel on
+	  SupportModelReferenceSimTargetCustomCode off
+	}
+	Simulink.SFSimCC {
+	  $ObjectID		  14
+	  Version		  "1.16.2"
+	  SFSimEcho		  on
+	  SimCtrlC		  on
+	  SimIntegrity		  on
+	  SimUseLocalCustomCode	  off
+	  SimParseCustomCode	  on
+	  SimBuildMode		  "sf_incremental_build"
+	  SimGenImportedTypeDefs  off
+	}
+	Simulink.RTWCC {
+	  $BackupClass		  "Simulink.RTWCC"
+	  $ObjectID		  15
+	  Version		  "1.16.2"
+	  Array {
+	    Type		    "Cell"
+	    Dimension		    15
+	    Cell		    "IncludeHyperlinkInReport"
+	    Cell		    "GenerateTraceInfo"
+	    Cell		    "GenerateTraceReport"
+	    Cell		    "GenerateTraceReportSl"
+	    Cell		    "GenerateTraceReportSf"
+	    Cell		    "GenerateTraceReportEml"
+	    Cell		    "PortableWordSizes"
+	    Cell		    "GenerateWebview"
+	    Cell		    "GenerateCodeMetricsReport"
+	    Cell		    "GenerateCodeReplacementReport"
+	    Cell		    "GenerateErtSFunction"
+	    Cell		    "CreateSILPILBlock"
+	    Cell		    "CodeExecutionProfiling"
+	    Cell		    "CodeProfilingSaveOptions"
+	    Cell		    "CodeProfilingInstrumentation"
+	    PropName		    "DisabledProps"
+	  }
+	  SystemTargetFile	  "grt.tlc"
+	  HardwareBoard		  "None"
+	  TLCOptions		  ""
+	  GenCodeOnly		  off
+	  MakeCommand		  "make_rtw"
+	  GenerateMakefile	  on
+	  PackageGeneratedCodeAndArtifacts off
+	  TemplateMakefile	  "grt_default_tmf"
+	  PostCodeGenCommand	  ""
+	  Description		  ""
+	  GenerateReport	  off
+	  SaveLog		  off
+	  RTWVerbose		  on
+	  RetainRTWFile		  off
+	  ProfileTLC		  off
+	  TLCDebug		  off
+	  TLCCoverage		  off
+	  TLCAssert		  off
+	  RTWUseLocalCustomCode	  off
+	  RTWUseSimCustomCode	  off
+	  Toolchain		  "Automatically locate an installed toolchain"
+	  BuildConfiguration	  "Faster Builds"
+	  IncludeHyperlinkInReport off
+	  LaunchReport		  off
+	  PortableWordSizes	  off
+	  CreateSILPILBlock	  "None"
+	  CodeExecutionProfiling  off
+	  CodeExecutionProfileVariable "executionProfile"
+	  CodeProfilingSaveOptions "SummaryOnly"
+	  CodeProfilingInstrumentation off
+	  SILDebugging		  off
+	  TargetLang		  "C"
+	  IncludeBusHierarchyInRTWFileBlockHierarchyMap	off
+	  GenerateTraceInfo	  off
+	  GenerateTraceReport	  off
+	  GenerateTraceReportSl	  off
+	  GenerateTraceReportSf	  off
+	  GenerateTraceReportEml  off
+	  GenerateWebview	  off
+	  GenerateCodeMetricsReport off
+	  GenerateCodeReplacementReport	off
+	  GenerateMissedCodeReplacementReport off
+	  RTWCompilerOptimization "off"
+	  RTWCustomCompilerOptimizations ""
+	  CheckMdlBeforeBuild	  "Off"
+	  SharedConstantsCachingThreshold 1024
+	  Array {
+	    Type		    "Handle"
+	    Dimension		    2
+	    Simulink.CodeAppCC {
+	      $ObjectID		      16
+	      Version		      "1.16.2"
+	      Array {
+		Type			"Cell"
+		Dimension		23
+		Cell			"IgnoreCustomStorageClasses"
+		Cell			"IgnoreTestpoints"
+		Cell			"InsertBlockDesc"
+		Cell			"InsertPolySpaceComments"
+		Cell			"SFDataObjDesc"
+		Cell			"MATLABFcnDesc"
+		Cell			"SimulinkDataObjDesc"
+		Cell			"DefineNamingRule"
+		Cell			"SignalNamingRule"
+		Cell			"ParamNamingRule"
+		Cell			"InternalIdentifier"
+		Cell			"InlinedPrmAccess"
+		Cell			"CustomSymbolStr"
+		Cell			"CustomSymbolStrGlobalVar"
+		Cell			"CustomSymbolStrType"
+		Cell			"CustomSymbolStrField"
+		Cell			"CustomSymbolStrFcn"
+		Cell			"CustomSymbolStrFcnArg"
+		Cell			"CustomSymbolStrBlkIO"
+		Cell			"CustomSymbolStrTmpVar"
+		Cell			"CustomSymbolStrMacro"
+		Cell			"CustomSymbolStrUtil"
+		Cell			"ReqsInCode"
+		PropName		"DisabledProps"
+	      }
+	      ForceParamTrailComments off
+	      GenerateComments	      on
+	      CommentStyle	      "Auto"
+	      IgnoreCustomStorageClasses on
+	      IgnoreTestpoints	      off
+	      IncHierarchyInIds	      off
+	      MaxIdLength	      31
+	      PreserveName	      off
+	      PreserveNameWithParent  off
+	      ShowEliminatedStatement off
+	      OperatorAnnotations     off
+	      IncAutoGenComments      off
+	      SimulinkDataObjDesc     off
+	      SFDataObjDesc	      off
+	      MATLABFcnDesc	      off
+	      IncDataTypeInIds	      off
+	      MangleLength	      1
+	      CustomSymbolStrGlobalVar "$R$N$M"
+	      CustomSymbolStrType     "$N$R$M_T"
+	      CustomSymbolStrField    "$N$M"
+	      CustomSymbolStrFcn      "$R$N$M$F"
+	      CustomSymbolStrFcnArg   "rt$I$N$M"
+	      CustomSymbolStrBlkIO    "rtb_$N$M"
+	      CustomSymbolStrTmpVar   "$N$M"
+	      CustomSymbolStrMacro    "$R$N$M"
+	      CustomSymbolStrUtil     "$N$C"
+	      DefineNamingRule	      "None"
+	      ParamNamingRule	      "None"
+	      SignalNamingRule	      "None"
+	      InsertBlockDesc	      off
+	      InsertPolySpaceComments off
+	      SimulinkBlockComments   on
+	      MATLABSourceComments    off
+	      EnableCustomComments    off
+	      InternalIdentifier      "Shortened"
+	      InlinedPrmAccess	      "Literals"
+	      ReqsInCode	      off
+	      UseSimReservedNames     off
+	    }
+	    Simulink.GRTTargetCC {
+	      $BackupClass	      "Simulink.TargetCC"
+	      $ObjectID		      17
+	      Version		      "1.16.2"
+	      Array {
+		Type			"Cell"
+		Dimension		13
+		Cell			"GeneratePreprocessorConditionals"
+		Cell			"IncludeMdlTerminateFcn"
+		Cell			"SupportNonInlinedSFcns"
+		Cell			"SuppressErrorStatus"
+		Cell			"ERTCustomFileBanners"
+		Cell			"GenerateSampleERTMain"
+		Cell			"GenerateTestInterfaces"
+		Cell			"ModelStepFunctionPrototypeControlCompliant"
+		Cell			"GenerateAllocFcn"
+		Cell			"PurelyIntegerCode"
+		Cell			"SupportComplex"
+		Cell			"SupportAbsoluteTime"
+		Cell			"SupportContinuousTime"
+		PropName		"DisabledProps"
+	      }
+	      TargetFcnLib	      "ansi_tfl_table_tmw.mat"
+	      TargetLibSuffix	      ""
+	      GenFloatMathFcnCalls    "NOT IN USE"
+	      TargetLangStandard      "C89/C90 (ANSI)"
+	      CodeReplacementLibrary  "None"
+	      UtilityFuncGeneration   "Auto"
+	      ERTMultiwordTypeDef     "System defined"
+	      ERTMultiwordLength      256
+	      MultiwordLength	      2048
+	      GenerateFullHeader      on
+	      InferredTypesCompatibility off
+	      GenerateSampleERTMain   off
+	      GenerateTestInterfaces  off
+	      ModelReferenceCompliant on
+	      ParMdlRefBuildCompliant on
+	      CompOptLevelCompliant   on
+	      ConcurrentExecutionCompliant on
+	      IncludeMdlTerminateFcn  on
+	      GeneratePreprocessorConditionals "Disable all"
+	      CombineOutputUpdateFcns on
+	      CombineSignalStateStructs	off
+	      SuppressErrorStatus     off
+	      ERTFirstTimeCompliant   off
+	      IncludeFileDelimiter    "Auto"
+	      ERTCustomFileBanners    off
+	      SupportAbsoluteTime     on
+	      LogVarNameModifier      "rt_"
+	      MatFileLogging	      on
+	      MultiInstanceERTCode    off
+	      CodeInterfacePackaging  "Nonreusable function"
+	      SupportNonFinite	      on
+	      SupportComplex	      on
+	      PurelyIntegerCode	      off
+	      SupportContinuousTime   on
+	      SupportNonInlinedSFcns  on
+	      SupportVariableSizeSignals off
+	      ParenthesesLevel	      "Nominal"
+	      CastingMode	      "Nominal"
+	      MATLABClassNameForMDSCustomization "Simulink.SoftwareTarget.GRTCustomization"
+	      ModelStepFunctionPrototypeControlCompliant off
+	      CPPClassGenCompliant    on
+	      AutosarCompliant	      off
+	      GRTInterface	      off
+	      GenerateAllocFcn	      off
+	      UseToolchainInfoCompliant	on
+	      GenerateSharedConstants on
+	      UseMalloc		      off
+	      ExtMode		      off
+	      ExtModeStaticAlloc      off
+	      ExtModeTesting	      off
+	      ExtModeStaticAllocSize  1000000
+	      ExtModeTransport	      0
+	      ExtModeMexFile	      "ext_comm"
+	      ExtModeIntrfLevel	      "Level1"
+	      RTWCAPISignals	      off
+	      RTWCAPIParams	      off
+	      RTWCAPIStates	      off
+	      RTWCAPIRootIO	      off
+	      GenerateASAP2	      off
+	      MultiInstanceErrorCode  "Error"
+	    }
+	    PropName		    "Components"
+	  }
+	}
+	SlCovCC.ConfigComp {
+	  $ObjectID		  18
+	  Version		  "1.16.2"
+	  Description		  "Simulink Coverage Configuration Component"
+	  Name			  "Simulink Coverage"
+	  CovEnable		  off
+	  CovScope		  "EntireSystem"
+	  CovIncludeTopModel	  on
+	  RecordCoverage	  off
+	  CovPath		  "/"
+	  CovSaveName		  "covdata"
+	  CovMetricSettings	  "dw"
+	  CovNameIncrementing	  off
+	  CovHtmlReporting	  on
+	  CovForceBlockReductionOff on
+	  CovEnableCumulative	  on
+	  CovSaveCumulativeToWorkspaceVar on
+	  CovSaveSingleToWorkspaceVar on
+	  CovCumulativeVarName	  "covCumulativeData"
+	  CovCumulativeReport	  off
+	  CovSaveOutputData	  on
+	  CovOutputDir		  "slcov_output/$ModelName$"
+	  CovDataFileName	  "$ModelName$_cvdata"
+	  CovReportOnPause	  on
+	  CovModelRefEnable	  "off"
+	  CovExternalEMLEnable	  off
+	  CovSFcnEnable		  on
+	  CovBoundaryAbsTol	  1e-05
+	  CovBoundaryRelTol	  0.01
+	  CovUseTimeInterval	  off
+	  CovStartTime		  0
+	  CovStopTime		  0
+	}
+	hdlcoderui.hdlcc {
+	  $ObjectID		  19
+	  Version		  "1.16.2"
+	  Description		  "HDL Coder custom configuration component"
+	  Name			  "HDL Coder"
+	  Array {
+	    Type		    "Cell"
+	    Dimension		    1
+	    Cell		    " "
+	    PropName		    "HDLConfigFile"
+	  }
+	  HDLCActiveTab		  "0"
+	}
+	PropName		"Components"
+      }
+      Name		      "Configuration"
+      CurrentDlgPage	      "Solver"
+      ConfigPrmDlgPosition     [ 65, 0, 1024, 768 ] 
+    }
+    PropName		    "ConfigurationSets"
+  }
+  Simulink.ConfigSet {
+    $PropName		    "ActiveConfigurationSet"
+    $ObjectID		    7
+  }
+  Object {
+    $PropName		    "DataTransfer"
+    $ObjectID		    20
+    $ClassName		    "Simulink.GlobalDataTransfer"
+    DefaultTransitionBetweenSyncTasks "Ensure deterministic transfer (maximum delay)"
+    DefaultTransitionBetweenAsyncTasks "Ensure data integrity only"
+    DefaultTransitionBetweenContTasks "Ensure deterministic transfer (minimum delay)"
+    DefaultExtrapolationMethodBetweenContTasks "None"
+    AutoInsertRateTranBlk   [0]
+  }
+  ExplicitPartitioning	  off
+  BlockDefaults {
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    NamePlacement	    "normal"
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+    ShowName		    on
+    BlockRotation	    0
+    BlockMirror		    off
+  }
+  AnnotationDefaults {
+    HorizontalAlignment	    "center"
+    VerticalAlignment	    "middle"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+    UseDisplayTextAsClickCallback off
+  }
+  LineDefaults {
+    FontName		    "Helvetica"
+    FontSize		    9
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  MaskDefaults {
+    SelfModifiable	    "off"
+    IconFrame		    "on"
+    IconOpaque		    "opaque"
+    RunInitForIconRedraw    "off"
+    IconRotate		    "none"
+    PortRotate		    "default"
+    IconUnits		    "autoscale"
+  }
+  MaskParameterDefaults {
+    Evaluate		    "on"
+    Tunable		    "on"
+    NeverSave		    "off"
+    Internal		    "off"
+    ReadOnly		    "off"
+    Enabled		    "on"
+    Visible		    "on"
+    ToolTip		    "on"
+  }
+  BlockParameterDefaults {
+    Block {
+      BlockType		      Demux
+      Outputs		      "4"
+      DisplayOption	      "none"
+      BusSelectionMode	      off
+    }
+    Block {
+      BlockType		      Inport
+      Port		      "1"
+      OutputFunctionCall      off
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      LockScale		      off
+      BusOutputAsStruct	      off
+      Unit		      "inherit"
+      PortDimensions	      "-1"
+      VarSizeSig	      "Inherit"
+      SampleTime	      "-1"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      LatchByDelayingOutsideSignal off
+      LatchInputForFeedbackSignals off
+      Interpolate	      on
+    }
+    Block {
+      BlockType		      Logic
+      Operator		      "AND"
+      Inputs		      "2"
+      IconShape		      "rectangular"
+      AllPortsSameDT	      on
+      OutDataTypeStr	      "Inherit: Logical (see Configuration Parameters: Optimization)"
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Memory
+      X0		      "0"
+      InheritSampleTime	      off
+      LinearizeMemory	      off
+      LinearizeAsDelay	      off
+      StateMustResolveToSignalObject off
+      RTWStateStorageClass    "Auto"
+    }
+    Block {
+      BlockType		      Outport
+      Port		      "1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      LockScale		      off
+      BusOutputAsStruct	      off
+      Unit		      "inherit"
+      PortDimensions	      "-1"
+      VarSizeSig	      "Inherit"
+      SampleTime	      "-1"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      SourceOfInitialOutputValue "Dialog"
+      OutputWhenDisabled      "held"
+      InitialOutput	      "[]"
+    }
+    Block {
+      BlockType		      S-Function
+      FunctionName	      "system"
+      SFunctionModules	      "''"
+      PortCounts	      "[]"
+    }
+    Block {
+      BlockType		      SubSystem
+      ShowPortLabels	      "FromPortIcon"
+      Permissions	      "ReadWrite"
+      PermitHierarchicalResolution "All"
+      TreatAsAtomicUnit	      off
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      CheckFcnCallInpInsideContextMsg off
+      SystemSampleTime	      "-1"
+      RTWSystemCode	      "Auto"
+      RTWFcnNameOpts	      "Auto"
+      RTWFileNameOpts	      "Auto"
+      FunctionInterfaceSpec   "void_void"
+      FunctionWithSeparateData off
+      RTWMemSecFuncInitTerm   "Inherit from model"
+      RTWMemSecFuncExecute    "Inherit from model"
+      RTWMemSecDataConstants  "Inherit from model"
+      RTWMemSecDataInternal   "Inherit from model"
+      RTWMemSecDataParameters "Inherit from model"
+      SimViewingDevice	      off
+      DataTypeOverride	      "UseLocalSettings"
+      DataTypeOverrideAppliesTo	"AllNumericTypes"
+      MinMaxOverflowLogging   "UseLocalSettings"
+      Opaque		      off
+      MaskHideContents	      off
+      SFBlockType	      "NONE"
+      GeneratePreprocessorConditionals off
+      TreatAsGroupedWhenPropagatingVariantConditions on
+      ContentPreviewEnabled   off
+      IsWebBlock	      off
+    }
+    Block {
+      BlockType		      Terminator
+    }
+  }
+  System {
+    Name		    "GPCA_Top_Level_Mode"
+    Location		    [521, 14, 1930, 1090]
+    Open		    on
+    ModelBrowserVisibility  off
+    ModelBrowserWidth	    200
+    ScreenColor		    "white"
+    PaperOrientation	    "landscape"
+    PaperPositionMode	    "auto"
+    PaperType		    "usletter"
+    PaperUnits		    "inches"
+    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+    TiledPageScale	    1
+    ShowPageBoundaries	    off
+    ZoomFactor		    "80"
+    ReportName		    "simulink-default.rpt"
+    SIDHighWatermark	    "106"
+    Block {
+      BlockType		      Inport
+      Name		      "Sys_Start"
+      SID		      "2"
+      Position		      [75, 48, 105, 62]
+      ZOrder		      2
+      IconDisplay	      "Port number"
+    }
+    Block {
+      BlockType		      Inport
+      Name		      "Sys_Stop"
+      SID		      "3"
+      Position		      [85, 123, 115, 137]
+      ZOrder		      3
+      Port		      "2"
+      IconDisplay	      "Port number"
+    }
+    Block {
+      BlockType		      Inport
+      Name		      "Cancel"
+      SID		      "4"
+      Position		      [85, 198, 115, 212]
+      ZOrder		      4
+      Port		      "3"
+      IconDisplay	      "Port number"
+    }
+    Block {
+      BlockType		      Inport
+      Name		      "Max_Conf_Stop_Duration"
+      SID		      "5"
+      Position		      [100, 273, 130, 287]
+      ZOrder		      5
+      Port		      "4"
+      IconDisplay	      "Port number"
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "Top_Level_Mode_Sub_System"
+      SID		      "1"
+      Ports		      [4, 3]
+      Position		      [215, 20, 630, 315]
+      ZOrder		      1
+      LibraryVersion	      "1.251"
+      FontName		      "Arial Narrow"
+      FontSize		      8
+      ErrorFcn		      "Stateflow.Translate.translate"
+      PermitHierarchicalResolution "ExplicitOnly"
+      TreatAsAtomicUnit	      on
+      RequestExecContextInheritance off
+      SFBlockType	      "Chart"
+      Variant		      off
+      System {
+	Name			"Top_Level_Mode_Sub_System"
+	Location		[636, 144, 1828, 872]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"A4"
+	PaperUnits		"centimeters"
+	TiledPaperMargins	[1.270000, 1.270000, 1.270000, 1.270000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	SIDHighWatermark	"342"
+	Block {
+	  BlockType		  Inport
+	  Name			  "OP_CMD_IN_System_Start"
+	  SID			  "1::332"
+	  Position		  [20, 101, 40, 119]
+	  ZOrder		  288
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "OP_CMD_IN_System_Stop"
+	  SID			  "1::333"
+	  Position		  [20, 136, 40, 154]
+	  ZOrder		  289
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "OP_CMD_IN_Cancel"
+	  SID			  "1::336"
+	  Position		  [20, 171, 40, 189]
+	  ZOrder		  292
+	  Port			  "3"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "CONST_IN_Max_Confirm_Stop_Duration"
+	  SID			  "1::335"
+	  Position		  [20, 206, 40, 224]
+	  ZOrder		  291
+	  Port			  "4"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Demux
+	  Name			  " Demux "
+	  SID			  "1::341"
+	  Ports			  [1, 1]
+	  Position		  [270, 245, 320, 285]
+	  ZOrder		  297
+	  Outputs		  "1"
+	}
+	Block {
+	  BlockType		  S-Function
+	  Name			  " SFunction "
+	  SID			  "1::340"
+	  Tag			  "Stateflow S-Function GPCA_Top_Level_Mode 2"
+	  Ports			  [4, 4]
+	  Position		  [180, 102, 230, 203]
+	  ZOrder		  296
+	  FunctionName		  "sf_sfun"
+	  Parameters		  "step_size"
+	  PortCounts		  "[4 4]"
+	  SFunctionDeploymentMode off
+	  EnableBusSupport	  on
+	  Port {
+	    PortNumber		    2
+	    Name		    "tLM_MODE_OUT_System_On"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    3
+	    Name		    "tLM_MODE_OUT_Request_Confirm_Stop"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    4
+	    Name		    "tLM_MODE_OUT_Log_Message_ID"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  " Terminator "
+	  SID			  "1::342"
+	  Position		  [460, 256, 480, 274]
+	  ZOrder		  298
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "tLM_MODE_OUT_System_On"
+	  SID			  "1::338"
+	  Position		  [460, 101, 480, 119]
+	  ZOrder		  294
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "tLM_MODE_OUT_Request_Confirm_Stop"
+	  SID			  "1::339"
+	  Position		  [460, 136, 480, 154]
+	  ZOrder		  295
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "tLM_MODE_OUT_Log_Message_ID"
+	  SID			  "1::337"
+	  Position		  [460, 171, 480, 189]
+	  ZOrder		  293
+	  Port			  "3"
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  ZOrder		  1
+	  SrcBlock		  "OP_CMD_IN_System_Start"
+	  SrcPort		  1
+	  DstBlock		  " SFunction "
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  2
+	  SrcBlock		  "OP_CMD_IN_System_Stop"
+	  SrcPort		  1
+	  DstBlock		  " SFunction "
+	  DstPort		  2
+	}
+	Line {
+	  ZOrder		  3
+	  SrcBlock		  "OP_CMD_IN_Cancel"
+	  SrcPort		  1
+	  DstBlock		  " SFunction "
+	  DstPort		  3
+	}
+	Line {
+	  ZOrder		  4
+	  SrcBlock		  "CONST_IN_Max_Confirm_Stop_Duration"
+	  SrcPort		  1
+	  DstBlock		  " SFunction "
+	  DstPort		  4
+	}
+	Line {
+	  Name			  "tLM_MODE_OUT_System_On"
+	  ZOrder		  5
+	  Labels		  [0, 0]
+	  SrcBlock		  " SFunction "
+	  SrcPort		  2
+	  DstBlock		  "tLM_MODE_OUT_System_On"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "tLM_MODE_OUT_Request_Confirm_Stop"
+	  ZOrder		  6
+	  Labels		  [0, 0]
+	  SrcBlock		  " SFunction "
+	  SrcPort		  3
+	  DstBlock		  "tLM_MODE_OUT_Request_Confirm_Stop"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "tLM_MODE_OUT_Log_Message_ID"
+	  ZOrder		  7
+	  Labels		  [0, 0]
+	  SrcBlock		  " SFunction "
+	  SrcPort		  4
+	  DstBlock		  "tLM_MODE_OUT_Log_Message_ID"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  8
+	  SrcBlock		  " Demux "
+	  SrcPort		  1
+	  DstBlock		  " Terminator "
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  9
+	  SrcBlock		  " SFunction "
+	  SrcPort		  1
+	  DstBlock		  " Demux "
+	  DstPort		  1
+	}
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "not_system_start_implies_system_off"
+      SID		      "25"
+      Ports		      [6, 1]
+      Position		      [785, 94, 935, 156]
+      ZOrder		      11
+      ForegroundColor	      "green"
+      BackgroundColor	      "green"
+      TreatAsAtomicUnit	      on
+      RequestExecContextInheritance off
+      Variant		      off
+      Object {
+	$PropName		"MaskObject"
+	$ObjectID		21
+	$ClassName		"Simulink.Mask"
+	Type			"Observer"
+	Description		"Set an observer for the system.\nThe annotation type parameter sets the type of observer:\n- requires :"
+	" pre-condition\n- ensures : post-condition\n- assert : an assertion\n- observer : the observer computes a special typ"
+	"e of properties"
+	Display			"color('black')\ntext(0.5, 0.5, ['Property: ''' get_param(gcb,'name') ''''], 'horizontalAlignment', 'center"
+	"');\ntext(0.99, 0.03, '{\\bf\\fontsize{12}SAFE}', 'hor', 'right', 'ver', 'bottom', 'texmode', 'on');"
+	IconUnits		"normalized"
+	Array {
+	  Type			  "Simulink.MaskParameter"
+	  Dimension		  2
+	  Object {
+	    $ObjectID		    22
+	    Type		    "popup"
+	    Array {
+	      Type		      "Cell"
+	      Dimension		      4
+	      Cell		      "ensures"
+	      Cell		      "requires"
+	      Cell		      "assert"
+	      Cell		      "observer"
+	      PropName		      "TypeOptions"
+	    }
+	    Name		    "AnnotationType"
+	    Prompt		    "Type of annotation (pre/post...)"
+	    Value		    "ensures"
+	    Callback		    "paramStr = get_param(gcb, 'MaskValues');\nif strcmp(paramStr{1}(1),'o')\nset_param(gcb,'MaskVisibi"
+	    "lities',{'on';'on'});\nparamStr{2} = 'ellipsoid';\nset_param(gcb,'MaskValues',paramStr);\nelse\nset_param(gcb,'Ma"
+	    "skVisibilities',{'on';'off'});\nend\nclear paramStr;\n"
+	  }
+	  Object {
+	    $ObjectID		    23
+	    Type		    "edit"
+	    Name		    "ObserverType"
+	    Prompt		    "Observer type"
+	    Value		    "[]"
+	    Evaluate		    "off"
+	    Visible		    "off"
+	    Callback		    "paramStr = get_param(gcb, 'MaskValues');\nif strcmp(paramStr{1}(1),'o')\nset_param(gcb,'MaskVisibi"
+	    "lities',{'on';'on'});\nparamStr{2} = 'ellipsoid';\nset_param(gcb,'MaskValues',paramStr);\nelse\nset_param(gcb,'Ma"
+	    "skVisibilities',{'on';'off'});\nend\nclear paramStr;\n"
+	  }
+	  PropName		  "Parameters"
+	}
+      }
+      System {
+	Name			"not_system_start_implies_system_off"
+	Location		[521, 14, 1930, 1090]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  Inport
+	  Name			  "Sys_Start"
+	  SID			  "26"
+	  Position		  [370, 202, 400, 218]
+	  ZOrder		  1
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Sys_Stop"
+	  SID			  "28"
+	  Position		  [90, 152, 120, 168]
+	  ZOrder		  3
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Cancel"
+	  SID			  "30"
+	  Position		  [90, 212, 120, 228]
+	  ZOrder		  5
+	  Port			  "3"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Max_Conf_Stop_Duration"
+	  SID			  "32"
+	  Position		  [90, 272, 120, 288]
+	  ZOrder		  7
+	  Port			  "4"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "System_On"
+	  SID			  "34"
+	  Position		  [495, 367, 525, 383]
+	  ZOrder		  9
+	  Port			  "5"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Req_Confirm_Stop"
+	  SID			  "36"
+	  Position		  [335, 287, 365, 303]
+	  ZOrder		  11
+	  Port			  "6"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Cancel_term"
+	  SID			  "31"
+	  Position		  [160, 210, 180, 230]
+	  ZOrder		  6
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator"
+	  SID			  "40"
+	  Ports			  [1, 1]
+	  Position		  [445, 194, 475, 226]
+	  ZOrder		  14
+	  Operator		  "NOT"
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator1"
+	  SID			  "41"
+	  Ports			  [2, 1]
+	  Position		  [555, 222, 585, 253]
+	  ZOrder		  15
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator2"
+	  SID			  "43"
+	  Ports			  [1, 1]
+	  Position		  [625, 224, 655, 256]
+	  ZOrder		  17
+	  Operator		  "NOT"
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator3"
+	  SID			  "44"
+	  Ports			  [1, 1]
+	  Position		  [625, 359, 655, 391]
+	  ZOrder		  18
+	  Operator		  "NOT"
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator4"
+	  SID			  "45"
+	  Ports			  [2, 1]
+	  Position		  [715, 292, 745, 323]
+	  ZOrder		  19
+	  Operator		  "OR"
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Max_Conf_Stop_Duration_term"
+	  SID			  "33"
+	  Position		  [160, 270, 180, 290]
+	  ZOrder		  8
+	}
+	Block {
+	  BlockType		  Memory
+	  Name			  "Memory"
+	  SID			  "42"
+	  Position		  [410, 280, 440, 310]
+	  ZOrder		  16
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Sys_Stop_term"
+	  SID			  "29"
+	  Position		  [160, 150, 180, 170]
+	  ZOrder		  4
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "not_system_start_implies_system_off"
+	  SID			  "38"
+	  Position		  [870, 302, 900, 318]
+	  ZOrder		  13
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  ZOrder		  7
+	  SrcBlock		  "Sys_Start"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  2
+	  SrcBlock		  "Sys_Stop"
+	  SrcPort		  1
+	  DstBlock		  "Sys_Stop_term"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  3
+	  SrcBlock		  "Cancel"
+	  SrcPort		  1
+	  DstBlock		  "Cancel_term"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  4
+	  SrcBlock		  "Max_Conf_Stop_Duration"
+	  SrcPort		  1
+	  DstBlock		  "Max_Conf_Stop_Duration_term"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  12
+	  SrcBlock		  "System_On"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator3"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  8
+	  SrcBlock		  "Req_Confirm_Stop"
+	  SrcPort		  1
+	  DstBlock		  "Memory"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  9
+	  SrcBlock		  "Memory"
+	  SrcPort		  1
+	  Points		  [69, 0; 0, -50]
+	  DstBlock		  "Logical\nOperator1"
+	  DstPort		  2
+	}
+	Line {
+	  ZOrder		  10
+	  SrcBlock		  "Logical\nOperator"
+	  SrcPort		  1
+	  Points		  [36, 0; 0, 20]
+	  DstBlock		  "Logical\nOperator1"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  11
+	  SrcBlock		  "Logical\nOperator1"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator2"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  13
+	  SrcBlock		  "Logical\nOperator2"
+	  SrcPort		  1
+	  Points		  [27, 0; 0, 60]
+	  DstBlock		  "Logical\nOperator4"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  14
+	  SrcBlock		  "Logical\nOperator3"
+	  SrcPort		  1
+	  Points		  [23, 0; 0, -60]
+	  DstBlock		  "Logical\nOperator4"
+	  DstPort		  2
+	}
+	Line {
+	  ZOrder		  15
+	  SrcBlock		  "Logical\nOperator4"
+	  SrcPort		  1
+	  DstBlock		  "not_system_start_implies_system_off"
+	  DstPort		  1
+	}
+	Annotation {
+	  SID			  "46"
+	  Name			  "-- property not_system_start_implies_system_off \n\n	prop2 = if not(OP_CMD_IN_System_Start) &&  tLM_MODE_"
+	  "OUT_Request_Confirm_Stop_1 then not(tLM_MODE_OUT_System_On)  else true; "
+	  Position		  [309, 429, 971, 467]
+	  InternalMargins	  [0, 0, 0, 0]
+	  FixedHeight		  off
+	  FixedWidth		  off
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  ZOrder		  -1
+	}
+      }
+    }
+    Block {
+      BlockType		      Terminator
+      Name		      "not_system_start_implies_system_off_term"
+      SID		      "39"
+      Position		      [975, 195, 995, 215]
+      ZOrder		      12
+      ForegroundColor	      "red"
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "prop3"
+      SID		      "72"
+      Ports		      [6, 1]
+      Position		      [785, 384, 935, 446]
+      ZOrder		      15
+      ForegroundColor	      "green"
+      BackgroundColor	      "green"
+      TreatAsAtomicUnit	      on
+      RequestExecContextInheritance off
+      Variant		      off
+      Object {
+	$PropName		"MaskObject"
+	$ObjectID		24
+	$ClassName		"Simulink.Mask"
+	Type			"Observer"
+	Description		"Set an observer for the system.\nThe annotation type parameter sets the type of observer:\n- requires :"
+	" pre-condition\n- ensures : post-condition\n- assert : an assertion\n- observer : the observer computes a special typ"
+	"e of properties"
+	Display			"color('black')\ntext(0.5, 0.5, ['Property: ''' get_param(gcb,'name') ''''], 'horizontalAlignment', 'center"
+	"');\ntext(0.99, 0.03, '{\\bf\\fontsize{12}SAFE}', 'hor', 'right', 'ver', 'bottom', 'texmode', 'on');"
+	IconUnits		"normalized"
+	Array {
+	  Type			  "Simulink.MaskParameter"
+	  Dimension		  2
+	  Object {
+	    $ObjectID		    25
+	    Type		    "popup"
+	    Array {
+	      Type		      "Cell"
+	      Dimension		      4
+	      Cell		      "ensures"
+	      Cell		      "requires"
+	      Cell		      "assert"
+	      Cell		      "observer"
+	      PropName		      "TypeOptions"
+	    }
+	    Name		    "AnnotationType"
+	    Prompt		    "Type of annotation (pre/post...)"
+	    Value		    "ensures"
+	    Callback		    "paramStr = get_param(gcb, 'MaskValues');\nif strcmp(paramStr{1}(1),'o')\nset_param(gcb,'MaskVisibi"
+	    "lities',{'on';'on'});\nparamStr{2} = 'ellipsoid';\nset_param(gcb,'MaskValues',paramStr);\nelse\nset_param(gcb,'Ma"
+	    "skVisibilities',{'on';'off'});\nend\nclear paramStr;\n"
+	  }
+	  Object {
+	    $ObjectID		    26
+	    Type		    "edit"
+	    Name		    "ObserverType"
+	    Prompt		    "Observer type"
+	    Value		    "[]"
+	    Evaluate		    "off"
+	    Visible		    "off"
+	    Callback		    "paramStr = get_param(gcb, 'MaskValues');\nif strcmp(paramStr{1}(1),'o')\nset_param(gcb,'MaskVisibi"
+	    "lities',{'on';'on'});\nparamStr{2} = 'ellipsoid';\nset_param(gcb,'MaskValues',paramStr);\nelse\nset_param(gcb,'Ma"
+	    "skVisibilities',{'on';'off'});\nend\nclear paramStr;\n"
+	  }
+	  PropName		  "Parameters"
+	}
+      }
+      System {
+	Name			"prop3"
+	Location		[521, 14, 1930, 1090]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"80"
+	Block {
+	  BlockType		  Inport
+	  Name			  "Sys_Start"
+	  SID			  "73"
+	  Position		  [330, 237, 360, 253]
+	  ZOrder		  1
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Sys_Stop"
+	  SID			  "75"
+	  Position		  [330, 327, 360, 343]
+	  ZOrder		  3
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Cancel"
+	  SID			  "77"
+	  Position		  [90, 212, 120, 228]
+	  ZOrder		  5
+	  Port			  "3"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Max_Conf_Stop_Duration"
+	  SID			  "79"
+	  Position		  [90, 272, 120, 288]
+	  ZOrder		  7
+	  Port			  "4"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "System_On"
+	  SID			  "81"
+	  Position		  [330, 397, 360, 413]
+	  ZOrder		  9
+	  Port			  "5"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Req_Confirm_Stop"
+	  SID			  "83"
+	  Position		  [330, 482, 360, 498]
+	  ZOrder		  11
+	  Port			  "6"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Cancel_term"
+	  SID			  "78"
+	  Position		  [160, 210, 180, 230]
+	  ZOrder		  6
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator"
+	  SID			  "87"
+	  Ports			  [1, 1]
+	  Position		  [425, 229, 455, 261]
+	  ZOrder		  20
+	  Operator		  "NOT"
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator1"
+	  SID			  "88"
+	  Ports			  [2, 1]
+	  Position		  [535, 257, 565, 288]
+	  ZOrder		  21
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator10"
+	  SID			  "99"
+	  Ports			  [2, 1]
+	  Position		  [850, 632, 880, 663]
+	  ZOrder		  31
+	  Operator		  "OR"
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator12"
+	  SID			  "105"
+	  Ports			  [1, 1]
+	  Position		  [480, 614, 510, 646]
+	  ZOrder		  37
+	  Operator		  "NOT"
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator2"
+	  SID			  "89"
+	  Ports			  [1, 1]
+	  Position		  [605, 259, 635, 291]
+	  ZOrder		  23
+	  Operator		  "NOT"
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator3"
+	  SID			  "90"
+	  Ports			  [2, 1]
+	  Position		  [605, 396, 635, 429]
+	  ZOrder		  24
+	  Operator		  "OR"
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator4"
+	  SID			  "91"
+	  Ports			  [2, 1]
+	  Position		  [695, 327, 725, 358]
+	  ZOrder		  25
+	  Operator		  "OR"
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator5"
+	  SID			  "93"
+	  Ports			  [1, 1]
+	  Position		  [510, 389, 540, 421]
+	  ZOrder		  26
+	  Operator		  "NOT"
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator6"
+	  SID			  "103"
+	  Ports			  [2, 1]
+	  Position		  [605, 607, 635, 638]
+	  ZOrder		  35
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator7"
+	  SID			  "96"
+	  Ports			  [2, 1]
+	  Position		  [535, 562, 565, 593]
+	  ZOrder		  28
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator8"
+	  SID			  "97"
+	  Ports			  [1, 1]
+	  Position		  [700, 609, 730, 641]
+	  ZOrder		  29
+	  Operator		  "NOT"
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator9"
+	  SID			  "106"
+	  Ports			  [2, 1]
+	  Position		  [985, 452, 1015, 483]
+	  ZOrder		  38
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Max_Conf_Stop_Duration_term"
+	  SID			  "80"
+	  Position		  [160, 270, 180, 290]
+	  ZOrder		  8
+	}
+	Block {
+	  BlockType		  Memory
+	  Name			  "Memory"
+	  SID			  "102"
+	  Position		  [425, 535, 455, 565]
+	  ZOrder		  34
+	}
+	Block {
+	  BlockType		  Memory
+	  Name			  "Memory1"
+	  SID			  "104"
+	  Position		  [425, 615, 455, 645]
+	  ZOrder		  36
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "prop3"
+	  SID			  "85"
+	  Position		  [1140, 457, 1170, 473]
+	  ZOrder		  13
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  ZOrder		  3
+	  SrcBlock		  "Cancel"
+	  SrcPort		  1
+	  DstBlock		  "Cancel_term"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  4
+	  SrcBlock		  "Max_Conf_Stop_Duration"
+	  SrcPort		  1
+	  DstBlock		  "Max_Conf_Stop_Duration_term"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  20
+	  SrcBlock		  "System_On"
+	  SrcPort		  1
+	  Points		  [24, 0]
+	  Branch {
+	    ZOrder		    41
+	    Points		    [0, 145]
+	    DstBlock		    "Memory"
+	    DstPort		    1
+	  }
+	  Branch {
+	    ZOrder		    40
+	    DstBlock		    "Logical\nOperator5"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  ZOrder		  9
+	  SrcBlock		  "Logical\nOperator"
+	  SrcPort		  1
+	  Points		  [36, 0; 0, 20]
+	  DstBlock		  "Logical\nOperator1"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  10
+	  SrcBlock		  "Logical\nOperator1"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator2"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  11
+	  SrcBlock		  "Logical\nOperator2"
+	  SrcPort		  1
+	  Points		  [27, 0; 0, 60]
+	  DstBlock		  "Logical\nOperator4"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  12
+	  SrcBlock		  "Logical\nOperator3"
+	  SrcPort		  1
+	  Points		  [23, 0; 0, -65]
+	  DstBlock		  "Logical\nOperator4"
+	  DstPort		  2
+	}
+	Line {
+	  ZOrder		  57
+	  SrcBlock		  "Logical\nOperator4"
+	  SrcPort		  1
+	  Points		  [240, 0]
+	  DstBlock		  "Logical\nOperator9"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  19
+	  SrcBlock		  "Logical\nOperator5"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator3"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  15
+	  SrcBlock		  "Sys_Start"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  18
+	  SrcBlock		  "Sys_Stop"
+	  SrcPort		  1
+	  Points		  [39, 0]
+	  Branch {
+	    ZOrder		    43
+	    Points		    [0, 250]
+	    DstBlock		    "Logical\nOperator7"
+	    DstPort		    2
+	  }
+	  Branch {
+	    ZOrder		    42
+	    Points		    [90, 0; 0, -55]
+	    DstBlock		    "Logical\nOperator1"
+	    DstPort		    2
+	  }
+	}
+	Line {
+	  ZOrder		  39
+	  SrcBlock		  "Memory"
+	  SrcPort		  1
+	  Points		  [36, 0; 0, 20]
+	  DstBlock		  "Logical\nOperator7"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  45
+	  SrcBlock		  "Logical\nOperator7"
+	  SrcPort		  1
+	  Points		  [17, 0; 0, 35]
+	  DstBlock		  "Logical\nOperator6"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  28
+	  SrcBlock		  "Logical\nOperator8"
+	  SrcPort		  1
+	  Points		  [55, 0; 0, 15]
+	  DstBlock		  "Logical\nOperator10"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  58
+	  SrcBlock		  "Logical\nOperator10"
+	  SrcPort		  1
+	  Points		  [45, 0; 0, -175]
+	  DstBlock		  "Logical\nOperator9"
+	  DstPort		  2
+	}
+	Line {
+	  ZOrder		  50
+	  SrcBlock		  "Memory1"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator12"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  51
+	  SrcBlock		  "Logical\nOperator12"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator6"
+	  DstPort		  2
+	}
+	Line {
+	  ZOrder		  52
+	  SrcBlock		  "Logical\nOperator6"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator8"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  21
+	  SrcBlock		  "Req_Confirm_Stop"
+	  SrcPort		  1
+	  Points		  [15, 0]
+	  Branch {
+	    ZOrder		    49
+	    Points		    [193, 0; 0, -8]
+	    Branch {
+	      ZOrder		      55
+	      Points		      [231, 0; 0, 173]
+	      DstBlock		      "Logical\nOperator10"
+	      DstPort		      2
+	    }
+	    Branch {
+	      ZOrder		      54
+	      Points		      [0, -62]
+	      DstBlock		      "Logical\nOperator3"
+	      DstPort		      2
+	    }
+	  }
+	  Branch {
+	    ZOrder		    47
+	    Points		    [0, 140]
+	    DstBlock		    "Memory1"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  ZOrder		  59
+	  SrcBlock		  "Logical\nOperator9"
+	  SrcPort		  1
+	  Points		  [53, 0; 0, -5]
+	  DstBlock		  "prop3"
+	  DstPort		  1
+	}
+	Annotation {
+	  SID			  "94"
+	  Name			  "	prop3 = if not(OP_CMD_IN_System_Start) &&  OP_CMD_IN_System_Stop  then ((not tLM_MODE_OUT_System_On) || "
+	  "tLM_MODE_OUT_Request_Confirm_Stop) else true; \n\n--property system_stop_implies_not_system_on \n	prop5 = if tLM_MO"
+	  "DE_OUT_System_On_1 && (OP_CMD_IN_System_Stop) && not tLM_MODE_OUT_Request_Confirm_Stop_1  then tLM_MODE_OUT_Request"
+	  "_Confirm_Stop else true;\n	"
+	  Position		  [286, 725, 1143, 787]
+	  InternalMargins	  [0, 0, 0, 0]
+	  FixedHeight		  off
+	  FixedWidth		  off
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  ZOrder		  -1
+	}
+      }
+    }
+    Block {
+      BlockType		      Terminator
+      Name		      "prop3_term"
+      SID		      "86"
+      Position		      [975, 405, 995, 425]
+      ZOrder		      16
+      ForegroundColor	      "red"
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "sys_start_implies_sys_on"
+      SID		      "9"
+      Ports		      [5, 1]
+      Position		      [785, -1, 935, 61]
+      ZOrder		      9
+      ForegroundColor	      "green"
+      BackgroundColor	      "green"
+      TreatAsAtomicUnit	      on
+      RequestExecContextInheritance off
+      Variant		      off
+      Object {
+	$PropName		"MaskObject"
+	$ObjectID		27
+	$ClassName		"Simulink.Mask"
+	Type			"Observer"
+	Description		"Set an observer for the system.\nThe annotation type parameter sets the type of observer:\n- requires :"
+	" pre-condition\n- ensures : post-condition\n- assert : an assertion\n- observer : the observer computes a special typ"
+	"e of properties"
+	Display			"color('black')\ntext(0.5, 0.5, ['Property: ''' get_param(gcb,'name') ''''], 'horizontalAlignment', 'center"
+	"');\ntext(0.99, 0.03, '{\\bf\\fontsize{12}SAFE}', 'hor', 'right', 'ver', 'bottom', 'texmode', 'on');"
+	IconUnits		"normalized"
+	Array {
+	  Type			  "Simulink.MaskParameter"
+	  Dimension		  2
+	  Object {
+	    $ObjectID		    28
+	    Type		    "popup"
+	    Array {
+	      Type		      "Cell"
+	      Dimension		      4
+	      Cell		      "ensures"
+	      Cell		      "requires"
+	      Cell		      "assert"
+	      Cell		      "observer"
+	      PropName		      "TypeOptions"
+	    }
+	    Name		    "AnnotationType"
+	    Prompt		    "Type of annotation (pre/post...)"
+	    Value		    "ensures"
+	    Callback		    "paramStr = get_param(gcb, 'MaskValues');\nif strcmp(paramStr{1}(1),'o')\nset_param(gcb,'MaskVisibi"
+	    "lities',{'on';'on'});\nparamStr{2} = 'ellipsoid';\nset_param(gcb,'MaskValues',paramStr);\nelse\nset_param(gcb,'Ma"
+	    "skVisibilities',{'on';'off'});\nend\nclear paramStr;\n"
+	  }
+	  Object {
+	    $ObjectID		    29
+	    Type		    "edit"
+	    Name		    "ObserverType"
+	    Prompt		    "Observer type"
+	    Value		    "[]"
+	    Evaluate		    "off"
+	    Visible		    "off"
+	    Callback		    "paramStr = get_param(gcb, 'MaskValues');\nif strcmp(paramStr{1}(1),'o')\nset_param(gcb,'MaskVisibi"
+	    "lities',{'on';'on'});\nparamStr{2} = 'ellipsoid';\nset_param(gcb,'MaskValues',paramStr);\nelse\nset_param(gcb,'Ma"
+	    "skVisibilities',{'on';'off'});\nend\nclear paramStr;\n"
+	  }
+	  PropName		  "Parameters"
+	}
+      }
+      System {
+	Name			"sys_start_implies_sys_on"
+	Location		[521, 14, 1930, 1090]
+	Open			off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  Inport
+	  Name			  "In1"
+	  SID			  "10"
+	  Position		  [320, 262, 350, 278]
+	  ZOrder		  1
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "In2"
+	  SID			  "12"
+	  Position		  [90, 152, 120, 168]
+	  ZOrder		  3
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "In3"
+	  SID			  "14"
+	  Position		  [90, 212, 120, 228]
+	  ZOrder		  5
+	  Port			  "3"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "In4"
+	  SID			  "16"
+	  Position		  [90, 272, 120, 288]
+	  ZOrder		  7
+	  Port			  "4"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "Out1"
+	  SID			  "18"
+	  Position		  [320, 342, 350, 358]
+	  ZOrder		  9
+	  Port			  "5"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "In2_term"
+	  SID			  "13"
+	  Position		  [160, 150, 180, 170]
+	  ZOrder		  4
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "In3_term"
+	  SID			  "15"
+	  Position		  [160, 210, 180, 230]
+	  ZOrder		  6
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "In4_term"
+	  SID			  "17"
+	  Position		  [160, 270, 180, 290]
+	  ZOrder		  8
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator"
+	  SID			  "22"
+	  Ports			  [1, 1]
+	  Position		  [390, 254, 420, 286]
+	  ZOrder		  12
+	  Operator		  "NOT"
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Logic
+	  Name			  "Logical\nOperator1"
+	  SID			  "23"
+	  Ports			  [2, 1]
+	  Position		  [465, 281, 495, 314]
+	  ZOrder		  13
+	  Operator		  "OR"
+	  AllPortsSameDT	  off
+	  OutDataTypeStr	  "boolean"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "sys_start_implies_sys_on"
+	  SID			  "20"
+	  Position		  [590, 287, 620, 303]
+	  ZOrder		  11
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  ZOrder		  6
+	  SrcBlock		  "In1"
+	  SrcPort		  1
+	  DstBlock		  "Logical\nOperator"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  2
+	  SrcBlock		  "In2"
+	  SrcPort		  1
+	  DstBlock		  "In2_term"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  3
+	  SrcBlock		  "In3"
+	  SrcPort		  1
+	  DstBlock		  "In3_term"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  4
+	  SrcBlock		  "In4"
+	  SrcPort		  1
+	  DstBlock		  "In4_term"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  8
+	  SrcBlock		  "Out1"
+	  SrcPort		  1
+	  Points		  [86, 0; 0, -45]
+	  DstBlock		  "Logical\nOperator1"
+	  DstPort		  2
+	}
+	Line {
+	  ZOrder		  7
+	  SrcBlock		  "Logical\nOperator"
+	  SrcPort		  1
+	  Points		  [18, 0; 0, 20]
+	  DstBlock		  "Logical\nOperator1"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  9
+	  SrcBlock		  "Logical\nOperator1"
+	  SrcPort		  1
+	  Points		  [38, 0; 0, -5]
+	  DstBlock		  "sys_start_implies_sys_on"
+	  DstPort		  1
+	}
+	Annotation {
+	  SID			  "24"
+	  Name			  "--property system_start_implies_system_on \n	prop1 = if (OP_CMD_IN_System_Start) then  tLM_MODE_OUT_Syste"
+	  "m_On else true;"
+	  Position		  [307, 387, 711, 413]
+	  InternalMargins	  [0, 0, 0, 0]
+	  FixedHeight		  off
+	  FixedWidth		  off
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  ZOrder		  -1
+	}
+      }
+    }
+    Block {
+      BlockType		      Terminator
+      Name		      "sys_start_implies_sys_on_term"
+      SID		      "21"
+      Position		      [975, 55, 995, 75]
+      ZOrder		      10
+      ForegroundColor	      "red"
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "System_On"
+      SID		      "6"
+      Position		      [705, 63, 735, 77]
+      ZOrder		      6
+      IconDisplay	      "Port number"
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "Req_Confirm_Stop"
+      SID		      "7"
+      Position		      [725, 163, 755, 177]
+      ZOrder		      7
+      Port		      "2"
+      IconDisplay	      "Port number"
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "Log_Msg_ID"
+      SID		      "8"
+      Position		      [725, 263, 755, 277]
+      ZOrder		      8
+      Port		      "3"
+      IconDisplay	      "Port number"
+    }
+    Line {
+      ZOrder		      8
+      SrcBlock		      "Sys_Start"
+      SrcPort		      1
+      Points		      [0, 0]
+      Branch {
+	ZOrder			90
+	Points			[0, -49; 574, 0]
+	Branch {
+	  ZOrder		  52
+	  Points		  [0, 94]
+	  Branch {
+	    ZOrder		    38
+	    DstBlock		    "not_system_start_implies_system_off"
+	    DstPort		    1
+	  }
+	  Branch {
+	    ZOrder		    41
+	    Points		    [0, 290]
+	    DstBlock		    "prop3"
+	    DstPort		    1
+	  }
+	}
+	Branch {
+	  ZOrder		  9
+	  Points		  [83, 0; 0, 4]
+	  DstBlock		  "sys_start_implies_sys_on"
+	  DstPort		  1
+	}
+      }
+      Branch {
+	ZOrder			1
+	DstBlock		"Top_Level_Mode_Sub_System"
+	DstPort			1
+      }
+    }
+    Line {
+      ZOrder		      10
+      SrcBlock		      "Sys_Stop"
+      SrcPort		      1
+      Points		      [0, 0]
+      Branch {
+	ZOrder			95
+	Points			[0, -116]
+	Branch {
+	  ZOrder		  11
+	  Points		  [647, 0; 0, 6]
+	  DstBlock		  "sys_start_implies_sys_on"
+	  DstPort		  2
+	}
+	Branch {
+	  ZOrder		  20
+	  Points		  [0, -1; 570, 0; 0, 97]
+	  DstBlock		  "not_system_start_implies_system_off"
+	  DstPort		  2
+	}
+      }
+      Branch {
+	ZOrder			51
+	Points			[55, 0]
+	Branch {
+	  ZOrder		  37
+	  DstBlock		  "Top_Level_Mode_Sub_System"
+	  DstPort		  2
+	}
+	Branch {
+	  ZOrder		  42
+	  Points		  [0, 270]
+	  DstBlock		  "prop3"
+	  DstPort		  2
+	}
+      }
+    }
+    Line {
+      ZOrder		      12
+      SrcBlock		      "Cancel"
+      SrcPort		      1
+      Points		      [28, 0]
+      Branch {
+	ZOrder			94
+	Points			[7, 0]
+	Branch {
+	  ZOrder		  13
+	  Points		  [0, -207; 574, 0; 0, 32]
+	  DstBlock		  "sys_start_implies_sys_on"
+	  DstPort		  3
+	}
+	Branch {
+	  ZOrder		  50
+	  Points		  [26, 0]
+	  Branch {
+	    ZOrder		    36
+	    DstBlock		    "Top_Level_Mode_Sub_System"
+	    DstPort		    3
+	  }
+	  Branch {
+	    ZOrder		    43
+	    Points		    [0, 205]
+	    DstBlock		    "prop3"
+	    DstPort		    3
+	  }
+	}
+      }
+      Branch {
+	ZOrder			21
+	Points			[0, -207; 521, 0; 0, 122]
+	DstBlock		"not_system_start_implies_system_off"
+	DstPort			3
+      }
+    }
+    Line {
+      ZOrder		      14
+      SrcBlock		      "Max_Conf_Stop_Duration"
+      SrcPort		      1
+      Points		      [0, 0]
+      Branch {
+	ZOrder			92
+	Points			[0, -296; 542, 0]
+	Branch {
+	  ZOrder		  15
+	  Points		  [76, 0; 0, 56]
+	  DstBlock		  "sys_start_implies_sys_on"
+	  DstPort		  4
+	}
+	Branch {
+	  ZOrder		  22
+	  Points		  [0, 146]
+	  DstBlock		  "not_system_start_implies_system_off"
+	  DstPort		  4
+	}
+      }
+      Branch {
+	ZOrder			49
+	Points			[57, 0]
+	Branch {
+	  ZOrder		  35
+	  DstBlock		  "Top_Level_Mode_Sub_System"
+	  DstPort		  4
+	}
+	Branch {
+	  ZOrder		  44
+	  Points		  [0, 140]
+	  DstBlock		  "prop3"
+	  DstPort		  4
+	}
+      }
+    }
+    Line {
+      ZOrder		      16
+      SrcBlock		      "Top_Level_Mode_Sub_System"
+      SrcPort		      1
+      Points		      [0, 0]
+      Branch {
+	ZOrder			48
+	Points			[19, 0]
+	Branch {
+	  ZOrder		  34
+	  DstBlock		  "System_On"
+	  DstPort		  1
+	}
+	Branch {
+	  ZOrder		  45
+	  Points		  [0, 360]
+	  DstBlock		  "prop3"
+	  DstPort		  5
+	}
+      }
+      Branch {
+	ZOrder			17
+	Points			[0, -20]
+	DstBlock		"sys_start_implies_sys_on"
+	DstPort			5
+      }
+      Branch {
+	ZOrder			23
+	Points			[0, 70]
+	DstBlock		"not_system_start_implies_system_off"
+	DstPort			5
+      }
+    }
+    Line {
+      ZOrder		      24
+      SrcBlock		      "Top_Level_Mode_Sub_System"
+      SrcPort		      2
+      Points		      [0, 0]
+      Branch {
+	ZOrder			6
+	DstBlock		"Req_Confirm_Stop"
+	DstPort			1
+      }
+      Branch {
+	ZOrder			25
+	Points			[0, -20]
+	DstBlock		"not_system_start_implies_system_off"
+	DstPort			6
+      }
+      Branch {
+	ZOrder			46
+	Points			[0, 270]
+	DstBlock		"prop3"
+	DstPort			6
+      }
+    }
+    Line {
+      ZOrder		      7
+      SrcBlock		      "Top_Level_Mode_Sub_System"
+      SrcPort		      3
+      DstBlock		      "Log_Msg_ID"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      18
+      SrcBlock		      "sys_start_implies_sys_on"
+      SrcPort		      1
+      Points		      [15, 0; 0, 35]
+      DstBlock		      "sys_start_implies_sys_on_term"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      26
+      SrcBlock		      "not_system_start_implies_system_off"
+      SrcPort		      1
+      Points		      [18, 0; 0, 80]
+      DstBlock		      "not_system_start_implies_system_off_term"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      47
+      SrcBlock		      "prop3"
+      SrcPort		      1
+      DstBlock		      "prop3_term"
+      DstPort		      1
+    }
+  }
+}
+#Finite State Machines
+#
+#   Stateflow 80000009
+#
+#
+Stateflow {
+  machine {
+    id			    1
+    name		    "GPCA_Top_Level_Mode"
+    created		    "13-Jul-2016 12:11:18"
+    isLibrary		    0
+    firstTarget		    39
+    sfVersion		    80000009
+  }
+  chart {
+    id			    2
+    name		    "Top_Level_Mode_Sub_System"
+    windowPosition	    [49 18 1551 882]
+    viewLimits		    [311.132 1069.799 17.807 374.474]
+    zoomFactor		    0.889
+    screen		    [1 1 1366 768 1.333333333333333]
+    treeNode		    [0 3 0 0]
+    firstTransition	    34
+    viewObj		    2
+    machine		    1
+    ssIdHighWaterMark	    4089
+    decomposition	    CLUSTER_CHART
+    firstData		    25
+    chartFileNumber	    2
+    userSpecifiedStateTransitionExecutionOrder 1
+    disableImplicitCasting  1
+  }
+  state {
+    id			    3
+    labelString		    "TOP_Level_Mode\nentry: tLM_MODE_OUT_System_On=1;\nduring: tLM_MODE_OUT_System_On=1;\nexit: tLM_M"
+    "ODE_OUT_System_On=1;"
+    position		    [871.269 69.8204 763.4472 311.5695]
+    fontSize		    14
+    arrowSize		    6.783
+    chart		    2
+    treeNode		    [2 4 0 7]
+    firstTransition	    12
+    visible		    0
+    subviewer		    2
+    subviewS {
+      x1		      20.569
+      y1		      20.25
+      pos		      [37 39 598.981 252.132]
+    }
+    ssIdNumber		    4024
+    type		    OR_STATE
+    decomposition	    CLUSTER_STATE
+  }
+  state {
+    id			    4
+    labelString		    "Confirm_Stop"
+    position		    [898.6167 169.8243 699.34 205.158]
+    fontSize		    14
+    arrowSize		    6.783
+    chart		    2
+    treeNode		    [3 5 0 0]
+    firstTransition	    13
+    visible		    0
+    subviewer		    2
+    subviewS {
+      x1		      20.25
+      y1		      20.25
+      pos		      [39 39 757.991 221.705]
+    }
+    ssIdNumber		    4050
+    type		    OR_STATE
+    decomposition	    CLUSTER_STATE
+  }
+  state {
+    id			    5
+    labelString		    "OFF\nentry:tLM_MODE_OUT_Request_Confirm_Stop=0;\nconfirmStopTimer=0;"
+    position		    [1304.549 222.5592 286.5193 102.854]
+    fontSize		    12
+    arrowSize		    6.783
+    chart		    2
+    treeNode		    [4 0 0 6]
+    visible		    0
+    subviewer		    2
+    ssIdNumber		    4054
+    type		    OR_STATE
+    decomposition	    CLUSTER_STATE
+  }
+  state {
+    id			    6
+    labelString		    "ON\nentry: tLM_MODE_OUT_Request_Confirm_Stop=1;\nconfirmStopTimer++;\nduring :confirmStopTimer++;"
+    position		    [910.5071 223.7436 317.5795 100.4853]
+    fontSize		    12
+    arrowSize		    6.783
+    chart		    2
+    treeNode		    [4 0 5 0]
+    visible		    0
+    subviewer		    2
+    ssIdNumber		    4055
+    type		    OR_STATE
+    decomposition	    SET_STATE
+  }
+  state {
+    id			    7
+    labelString		    "NOT_ON\nentry: tLM_MODE_OUT_System_On=0;\nduring: tLM_MODE_OUT_System_On=0;\nexit: tLM_MODE_OUT_"
+    "System_On=0;"
+    position		    [20.8178 127.1403 345.6703 162.6797]
+    fontSize		    14
+    chart		    2
+    treeNode		    [2 0 3 8]
+    visible		    0
+    subviewer		    2
+    ssIdNumber		    4034
+    type		    OR_STATE
+    decomposition	    CLUSTER_STATE
+  }
+  state {
+    id			    8
+    labelString		    "The confirmation to stop the system\nis abstracted here as !System_Start"
+    position		    [297.51 473.0635 192.9375 30]
+    fontSize		    12
+    chart		    2
+    treeNode		    [2 0 7 9]
+    superState		    GROUPED
+    isNoteBox		    1
+    visible		    0
+    subviewer		    2
+    ssIdNumber		    4081
+    type		    GROUP_STATE
+    decomposition	    CLUSTER_STATE
+  }
+  state {
+    id			    9
+    labelString		    "returnVal = Step_Scaling_Factor(inputVal,step_size)"
+    position		    [890.3653 500.5826 337.7213 75.9405]
+    fontSize		    10
+    chart		    2
+    treeNode		    [2 0 8 10]
+    firstTransition	    21
+    firstJunction	    20
+    visible		    0
+    subviewer		    2
+    ssIdNumber		    4070
+    type		    FUNC_STATE
+    decomposition	    CLUSTER_STATE
+    firstData		    17
+  }
+  state {
+    id			    10
+    labelString		    "writeLog(logEvent)"
+    position		    [542.4133 503.9162 306.5468 69.2733]
+    fontSize		    10
+    chart		    2
+    treeNode		    [2 0 9 11]
+    firstTransition	    24
+    firstJunction	    23
+    visible		    0
+    subviewer		    2
+    ssIdNumber		    4072
+    type		    FUNC_STATE
+    decomposition	    CLUSTER_STATE
+    firstData		    22
+  }
+  state {
+    id			    11
+    labelString		    "step scaling factor returns the scaled time depending upon the step size.\nIf counter has to tim"
+    "eout after 100 seconds and if the step size is 0.1 second\nthe new timeout value = 100/0.1 = 1000 steps.\ndefault "
+    "will be one step = 1 second."
+    position		    [1135.419 587.0784 338.5781 50]
+    fontSize		    10
+    chart		    2
+    treeNode		    [2 0 10 0]
+    superState		    GROUPED
+    isNoteBox		    1
+    visible		    0
+    subviewer		    2
+    ssIdNumber		    4073
+    type		    GROUP_STATE
+    decomposition	    CLUSTER_STATE
+  }
+  transition {
+    id			    12
+    labelString		    ""
+    labelPosition	    [1374.778 153.639 0 0]
+    fontSize		    12
+    arrowSize		    6.783
+    src {
+      intersection	      [0 0 1 0 1374.7777 144.2368 0 0]
+    }
+    dst {
+      id		      4
+      intersection	      [1 0 -1 0.6809 1374.7777 169.8243 0 0]
+    }
+    midPoint		    [1374.7777 153.639]
+    chart		    2
+    linkNode		    [3 0 0]
+    dataLimits		    [1372.743 1376.813 144.237 169.824]
+    subviewer		    2
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    4056
+  }
+  transition {
+    id			    13
+    labelPosition	    [1437.867 206.189 8.433 16.842]
+    fontSize		    6
+    arrowSize		    6.783
+    src {
+      intersection	      [0 0 1 0 1437.8667 197.818 0 0]
+    }
+    dst {
+      id		      5
+      intersection	      [1 0 -1 0.4653 1437.8667 222.5592 0 0]
+    }
+    midPoint		    [1437.8667 206.1885]
+    chart		    2
+    linkNode		    [4 0 14]
+    visible		    0
+    dataLimits		    [1435.832 1439.902 197.818 222.559]
+    subviewer		    2
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    2
+    ssIdNumber		    4051
+  }
+  transition {
+    id			    14
+    labelString		    "[OP_CMD_IN_System_Stop]"
+    labelPosition	    [977.758 204.047 156.25 17]
+    fontSize		    6
+    arrowSize		    6.783
+    src {
+      intersection	      [0 0 1 0 1064.2857 197.919 0 0]
+    }
+    dst {
+      id		      6
+      intersection	      [1 0 -1 0.4842 1064.2857 223.7436 0 0]
+    }
+    midPoint		    [1064.2857 207.4398]
+    chart		    2
+    linkNode		    [4 13 15]
+    dataLimits		    [1062.251 1066.321 197.919 223.744]
+    subviewer		    2
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    4057
+  }
+  transition {
+    id			    15
+    labelString		    "[OP_CMD_IN_Cancel || confirmStopTimer > Step_Scaling_Factor(CONST_IN_Max_Confirm_Stop_Duration,s"
+    "tep_size)]"
+    labelPosition	    [1114.708 213.404 320.344 9]
+    fontSize		    6
+    arrowSize		    6.783
+    src {
+      id		      6
+      intersection	      [2 1 0 0.133 1228.0866 237.1081 0 -15.9477]
+    }
+    dst {
+      id		      5
+      intersection	      [4 -1 0 0.8585 1304.549 237.1081 0 15.9477]
+    }
+    midPoint		    [1262.9263 237.1081]
+    chart		    2
+    linkNode		    [4 14 16]
+    visible		    0
+    dataLimits		    [1228.087 1304.549 235.073 239.143]
+    stampAngle		    NaN
+    subviewer		    2
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    2
+    ssIdNumber		    4053
+  }
+  transition {
+    id			    16
+    labelString		    "[OP_CMD_IN_System_Stop]"
+    labelPosition	    [1225.005 248.961 156.25 17]
+    fontSize		    6
+    arrowSize		    6.783
+    src {
+      id		      5
+      intersection	      [4 -1 0 0.7897 1304.549 244.1931 0 -4.0901]
+    }
+    dst {
+      id		      6
+      intersection	      [2 1 0 0.2035 1228.0866 244.1931 0 4.0901]
+    }
+    midPoint		    [1269.7093 244.1931]
+    chart		    2
+    linkNode		    [4 15 0]
+    visible		    0
+    dataLimits		    [1228.087 1304.549 242.158 246.228]
+    stampAngle		    NaN
+    subviewer		    2
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    4052
+  }
+  data {
+    id			    17
+    ssIdNumber		    4068
+    name		    "inputVal"
+    linkNode		    [9 0 18]
+    scope		    FUNCTION_INPUT_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "double"
+  }
+  data {
+    id			    18
+    ssIdNumber		    4069
+    name		    "returnVal"
+    linkNode		    [9 17 19]
+    scope		    FUNCTION_OUTPUT_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "double"
+  }
+  data {
+    id			    19
+    ssIdNumber		    4088
+    name		    "step_size"
+    linkNode		    [9 18 0]
+    scope		    FUNCTION_INPUT_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "double"
+  }
+  junction {
+    id			    20
+    position		    [1054.5367 557.0755 6.9495]
+    arrowSize		    7.942
+    chart		    2
+    linkNode		    [9 0 0]
+    visible		    0
+    subviewer		    2
+    ssIdNumber		    4067
+    type		    CONNECTIVE_JUNCTION
+  }
+  transition {
+    id			    21
+    labelString		    "{returnVal=inputVal/step_size;}"
+    labelPosition	    [927.576 525.886 150.5 16]
+    fontSize		    10
+    arrowSize		    7.942
+    src {
+      intersection	      [0 1 0 0 925.3218 557.0755 0 0]
+    }
+    dst {
+      id		      20
+      intersection	      [4 -1 -0 0 1047.5872 557.0755 0 0]
+    }
+    midPoint		    [982.5908 557.0755]
+    chart		    2
+    linkNode		    [9 0 0]
+    visible		    0
+    dataLimits		    [925.322 1047.587 554.693 559.458]
+    subviewer		    2
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    4064
+  }
+  data {
+    id			    22
+    ssIdNumber		    4071
+    name		    "logEvent"
+    linkNode		    [10 0 0]
+    scope		    FUNCTION_INPUT_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_UINT8_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "uint8"
+  }
+  junction {
+    id			    23
+    position		    [719.7994 555.2956 6.9495]
+    arrowSize		    7.942
+    chart		    2
+    linkNode		    [10 0 0]
+    visible		    0
+    subviewer		    2
+    ssIdNumber		    4066
+    type		    CONNECTIVE_JUNCTION
+  }
+  transition {
+    id			    24
+    labelString		    "{tLM_MODE_OUT_Log_Message_ID=logEvent;}"
+    labelPosition	    [592.839 524.106 218.98 14]
+    fontSize		    10
+    arrowSize		    7.942
+    src {
+      intersection	      [0 1 0 0 590.5845 555.2956 0 0]
+    }
+    dst {
+      id		      23
+      intersection	      [4 -1 -0 0 712.8499 555.2956 0 0]
+    }
+    midPoint		    [647.8535 555.2956]
+    chart		    2
+    linkNode		    [10 0 0]
+    visible		    0
+    dataLimits		    [590.585 712.85 552.913 557.678]
+    subviewer		    2
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    4065
+  }
+  data {
+    id			    25
+    ssIdNumber		    4078
+    name		    "tLM_MODE_OUT_System_On"
+    linkNode		    [2 0 26]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_BOOLEAN_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      frame		      SF_FRAME_NO
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "boolean"
+  }
+  data {
+    id			    26
+    ssIdNumber		    4079
+    name		    "tLM_MODE_OUT_Request_Confirm_Stop"
+    linkNode		    [2 25 27]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_BOOLEAN_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      frame		      SF_FRAME_NO
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "boolean"
+  }
+  data {
+    id			    27
+    ssIdNumber		    4047
+    name		    "OP_CMD_IN_System_Start"
+    linkNode		    [2 26 28]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	primitive		SF_BOOLEAN_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      frame		      SF_FRAME_INHERITED
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "boolean"
+  }
+  data {
+    id			    28
+    ssIdNumber		    4048
+    name		    "OP_CMD_IN_System_Stop"
+    linkNode		    [2 27 29]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	primitive		SF_BOOLEAN_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      frame		      SF_FRAME_INHERITED
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "boolean"
+  }
+  data {
+    id			    29
+    ssIdNumber		    4075
+    name		    "OP_CMD_IN_Cancel"
+    linkNode		    [2 28 30]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	primitive		SF_BOOLEAN_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      frame		      SF_FRAME_INHERITED
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "boolean"
+  }
+  data {
+    id			    30
+    ssIdNumber		    4074
+    name		    "CONST_IN_Max_Confirm_Stop_Duration"
+    linkNode		    [2 29 31]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      frame		      SF_FRAME_INHERITED
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "double"
+  }
+  data {
+    id			    31
+    ssIdNumber		    4076
+    name		    "step_size"
+    linkNode		    [2 30 32]
+    scope		    PARAMETER_DATA
+    machine		    1
+    props {
+      array {
+	size			"-1"
+      }
+      type {
+	method			SF_INHERITED_TYPE
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      frame		      SF_FRAME_INHERITED
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "Inherit: Same as Simulink"
+  }
+  data {
+    id			    32
+    ssIdNumber		    4077
+    name		    "tLM_MODE_OUT_Log_Message_ID"
+    linkNode		    [2 31 33]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_UINT8_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      frame		      SF_FRAME_NO
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "uint8"
+  }
+  data {
+    id			    33
+    ssIdNumber		    4080
+    name		    "confirmStopTimer"
+    linkNode		    [2 32 0]
+    scope		    LOCAL_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_DOUBLE_TYPE
+	isSigned		1
+	wordLength		"16"
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "double"
+  }
+  transition {
+    id			    34
+    labelString		    "[OP_CMD_IN_System_Start]"
+    labelPosition	    [1253.652 31.464 156.75 17]
+    fontSize		    12
+    arrowSize		    6.783
+    src {
+      intersection	      [0 0 1 0 1234.4648 35.3345 0 0]
+    }
+    dst {
+      id		      3
+      intersection	      [1 0 -1 0.4757 1234.4648 69.8204 0 0]
+    }
+    midPoint		    [1234.4648 49.186]
+    chart		    2
+    linkNode		    [2 0 35]
+    dataLimits		    [1232.43 1236.5 35.334 69.82]
+    subviewer		    2
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    4040
+  }
+  transition {
+    id			    35
+    labelPosition	    [182.53 110.774 7.361 14.366]
+    fontSize		    12
+    src {
+      intersection	      [0 0 1 0 182.5305 97.1402 0 0]
+    }
+    dst {
+      id		      7
+      intersection	      [1 0 -1 0.4678 182.5305 127.1403 0 0]
+    }
+    midPoint		    [182.5305 110.7737]
+    chart		    2
+    linkNode		    [2 34 36]
+    dataLimits		    [180.13 184.93 97.14 127.14]
+    subviewer		    2
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    2
+    ssIdNumber		    4038
+  }
+  transition {
+    id			    36
+    labelString		    "[OP_CMD_IN_System_Start]{writeLog(1);}"
+    labelPosition	    [450.038 124.731 190.887 14]
+    fontSize		    10
+    arrowSize		    6.783
+    src {
+      id		      7
+      intersection	      [2 1 0 0.1308 366.4881 148.4268 0 -1.8026]
+    }
+    dst {
+      id		      3
+      intersection	      [4 -1 0 0.7477 871.269 148.4268 0 1.8026]
+    }
+    midPoint		    [615.4871 148.4268]
+    chart		    2
+    linkNode		    [2 35 37]
+    dataLimits		    [366.488 871.269 146.392 150.462]
+    stampAngle		    NaN
+    subviewer		    2
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    4042
+  }
+  transition {
+    id			    37
+    labelString		    "[!OP_CMD_IN_System_Start]{writeLog(2);}"
+    labelPosition	    [445.35 251.807 193.664 14]
+    fontSize		    10
+    src {
+      id		      6
+      intersection	      [4 -1 0 0.8383 910.5071 239.996 0 -32.3801]
+    }
+    dst {
+      id		      7
+      intersection	      [2 1 0 0.6937 366.4881 239.996 0 47.8996]
+    }
+    midPoint		    [642.4976 239.996]
+    chart		    2
+    linkNode		    [2 36 0]
+    dataLimits		    [366.488 910.507 237.596 242.396]
+    subviewer		    2
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    4039
+  }
+  instance {
+    id			    38
+    name		    "Top_Level_Mode_Sub_System"
+    machine		    1
+    chart		    2
+  }
+  target {
+    id			    39
+    name		    "sfun"
+    description		    "Default Simulink S-Function Target."
+    machine		    1
+    linkNode		    [1 0 0]
+  }
+}

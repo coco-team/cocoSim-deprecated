@@ -168,26 +168,6 @@ if ~strcmp(new_file_name, '')
     model_full_path = fullfile(model_path, file_name);
 end
 
-% TODO Check if the model has CoCoSpec
-% 1. generate one SLX model without cocospec(e.g. tmp_model.slx)
-% 2. generate cocospec
-% 3. generate lustre from tmp_model.slx
-% 4. link cocospec with lustre
-
-% all_blks =  find_system(file_name,'FindAll','On','SearchDepth',1,'BlockType','SubSystem');
-% blk_names=get(all_blks,'Name');
-% cocospec_blk = 0;
-% for idx=1:numel(all_blks)
-%     name_blk = blk_names{idx};
-%     % check if a subsystem starts with CoCoSpec
-%     if regexp(name_blk, '^CoCoSpec')
-%         cocospec_blk = 1;
-%         display_msg('Found CoCoSpec Contract', Constants.INFO, 'cocoSim', '');
-%         hndl = getSimulinkBlockHandle([file_name '/' name_blk]);
-%         tmp_blk = fullfile([model_path '/' file_name '_no_cocospec.slx']);
-%     end
-% end
-
 % Definition of the output files names
 output_dir = fullfile(model_path, strcat('lustre_files/src_', file_name));
 % TODO: Add message if the folder already exists to ask the user if he
@@ -359,7 +339,7 @@ for idx_subsys=numel(inter_blk):-1:1
 end
 
 
-%%%%%%%%%%%%%%%%% Printing %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%% Lustre Code Printing %%%%%%%%%%%%%%%%%%%%%%
 
 % Open file for writing
 fid = fopen(nom_lustre_file, 'a');
@@ -502,10 +482,8 @@ elseif C_GEN
     end
 end
 
+
 %%%%%%%%%%%%% Verification %%%%%%%%%%%%%%%
-
-
-% Verify properties if they exists
 smt_file = '';
 if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
     if not (strcmp(SOLVER, 'Z') || strcmp(SOLVER,'K') || strcmp(SOLVER, 'J'))
@@ -536,14 +514,14 @@ if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
     elseif strcmp(SOLVER, 'K')
         display_msg('Running Kind2', Constants.INFO, 'Verification', '');
         try
-            kind2(nom_lustre_file, property_node_names, property_file_base_name, inter_blk);
+            kind2(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace);
         catch ME
             display_msg(ME.message, Constants.ERROR, 'Verification', '');
         end
     elseif strcmp(SOLVER, 'J')
         display_msg('Running JKind', Constants.INFO, 'Verification', '');
         try
-            jkind(nom_lustre_file, property_node_names, property_file_base_name, inter_blk);
+            jkind(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace);
         catch ME
             display_msg(ME.message, Constants.ERROR, 'Verification', '');
         end

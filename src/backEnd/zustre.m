@@ -109,6 +109,7 @@ config;
 						if found
 							try
 								% Creation of the simulation configuration
+                    
 								IO_struct = create_configuration(IO_struct, file, property_node_names{idx_prop}, mat_full_file, idx_prop);
 								config_created = true;
 							catch ERR
@@ -121,22 +122,21 @@ config;
 									% Create the annotation with the links to setup and launch the simulation
 									createAnnotation(lustre_file_name, property_node_names{idx_prop}, IO_struct, mat_full_file, path);
 								catch ERR
-									msg = ['Verification: FAILURE to create the Simulink CEX replay annotation\n' getReport(ERR)];
-									display_msg(msg, Constants.INFO, 'Zustre property checking', '');
-									config_created = false;
+									msg = [' FAILURE to create the Simulink CEX replay annotation\n' getReport(ERR)];
+									display_msg(msg, Constants.INFO, 'Zustre', '');
 								end
 							end
 						end
 					end
 				end
 			else
-				msg = ['Zustre: FAILURE to launch for property: ' property_node_names{idx_prop}.prop_name '\n' zustre_out];
-				display_msg(msg, Constants.INFO, 'Zustre property checking', '');
+				msg = ['FAILURE to launch for property: ' property_node_names{idx_prop}.prop_name '\n' zustre_out];
+				display_msg(msg, Constants.INFO, 'Zustre', '');
 			end
 		end
 	else
-		msg = 'Running Zustre: Impossible to find Zustre';
-		display_msg(msg, Constants.INFO, 'Zustre property checking', '');
+		msg = 'Impossible to find Zustre';
+		display_msg(msg, Constants.INFO, 'Zustre', '');
     end
 end
 
@@ -434,7 +434,7 @@ end
 
 % Add an annotation to display the Counter example replay/config
 function createAnnotation(lustre_file_name, property_node_names, IO_struct, config_mat_full_file, path)
-
+    
 	% Load cocoSim_path variable
 	load 'tmp_data'
 
@@ -458,6 +458,7 @@ function createAnnotation(lustre_file_name, property_node_names, IO_struct, conf
 	list_title = strrep(list_title, '[Title]', 'Actions');
 	
 	% Define clear, load and replay actions
+
 	actions = createActions(lustre_file_name, property_node_names, config_mat_full_file, IO_struct, cocoSim_path);
 	list_title_html = strrep(list_title, '[List_Content]', actions);
     html_text = [html_text list_title_html];
