@@ -682,7 +682,7 @@ for idx_block=1:nblk
 		block_type = inter_blk{idx_block}.type{1};
 		error_msg = ['Block backend not implemented for block type: ' block_type];
 		error_msg = [error_msg '\n' inter_blk{idx_block}.origin_name{1}];
-		display_msg(error_msg, 3, 'write_code', '');
+		display_msg(error_msg, 2, 'write_code', '');
 
 	end
 

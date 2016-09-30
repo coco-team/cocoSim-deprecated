@@ -1,3 +1,23 @@
+% CoCoSim: A framework for formal analysis of Simulink models
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This file is part of cocoSim.
+% Copyright (C) 2014-2015  Carnegie Mellon University
+% Original contribution from ONERA
+%
+%    cocoSim  is free software: you can redistribute it
+%    and/or modify it under the terms of the GNU General Public License as
+%    published by the Free Software Foundation, either version 3 of the
+%    License, or (at your option) any later version.
+%
+%    cocoSim compiler + verifier is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 function [valid, sf2lus_failed,lustrec_failed, lustrec_binary_failed, sim_failed, lus_file_path]=validate_model(model_full_path,cocoSim_path, show_models,L)
 bdclose('all')
 if ~exist('show_models', 'var')
@@ -72,7 +92,7 @@ nb_steps = stop_time/simulation_step +1;
 IMAX = 100; %IMAX for randi the max born for random number
 
 try
-    fprintf('start translating model "%s" to lustre automaton\n',file_name);
+    fprintf('Start compiling model "%s" to Lustre\n',file_name);
 %     lus_file_path= '/home/hamza/Documents/coco_team/regression-test/simulink/unit_test/not_valid_models/lustre_files/src_math_int_2_test/math_int_2_test.lus';
     lus_file_path=cocoSim(model_full_path);
     chart_name = file_name;
@@ -80,7 +100,7 @@ try
     [lus_file_dir, lus_file_name, ~] = fileparts(lus_file_path);
     cd(lus_file_dir);
 catch ME
-    fprintf('sf2lus failed for model "%s" :\n%s\n%s',file_name,ME.identifier,ME.message);
+    fprintf('Compilation Failed for model "%s" :\n%s\n%s',file_name,ME.identifier,ME.message);
     cellfun(@disp, ME.cause);
     fprintf('\n');
     disp(ME.stack(1));

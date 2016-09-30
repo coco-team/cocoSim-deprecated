@@ -64,7 +64,7 @@ function jkind(lustre_file_name, property_node_names, property_file_base_name, m
             end
         else
             msg = 'Running JKind: Impossible to find JKind and/or Z3';
-            display_msg(msg, Constants.ERROR, 'Kind2', '');
+            display_msg(msg, Constants.ERROR, 'JKind', '');
         end
     end
 end
@@ -92,7 +92,7 @@ function [status] = display_cex(cex, prop, model, date_value, lustre_file_name, 
            config_created = true;
        catch ERR
            msg = ['JKind: FAILURE to create the Simulink simulation configuration\n' getReport(ERR)];
-           display_msg(msg, Constants.INFO, 'Zustre property checking', '');
+           display_msg(msg, Constants.INFO, 'JKind', '');
            config_created = false;
        end
        if config_created
@@ -100,8 +100,8 @@ function [status] = display_cex(cex, prop, model, date_value, lustre_file_name, 
                % Create the annotation with the links to setup and launch the simulation
                createAnnotation(lustre_file_name, prop, IO_struct, mat_full_file, path);
            catch ERR
-               msg = ['Jkind: FAILURE to create the Simulink CEX replay annotation\n' getReport(ERR)];
-               display_msg(msg, Constants.INFO, 'Jkind property checking', '');
+               msg = ['JKind: FAILURE to create the Simulink CEX replay annotation\n' getReport(ERR)];
+               display_msg(msg, Constants.INFO, 'JKind', '');
            end
        end
    end

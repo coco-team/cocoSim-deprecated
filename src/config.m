@@ -24,11 +24,17 @@
     [file_path, ~, ~] = fileparts(mfilename('fullpath'));
     coco_sim_path = fileparts(file_path);
     if ismac
-        solvers_path = fullfile(coco_sim_path, 'tools/Verifiers/osx/bin/');
+        solvers_path = fullfile(coco_sim_path, 'tools/verifiers/osx/bin/');
+         JKIND =fullfile(coco_sim_path,'tools/verifiers/jkind/jkind');
     elseif isunix
-        solvers_path = fullfile(coco_sim_path, 'tools/Verifiers/linux_binaries/bin/');
+        solvers_path = fullfile(coco_sim_path, 'tools/verifiers/linux/bin/');
+         JKIND =fullfile(solvers_path,'tools/verifiers/jkind/jkind');
+    elseif ispc
+         warndlg('Only JKind can be used', 'CoCoSim backend configuration') 
+        solvers_path = fullfile(coco_sim_path, 'tools/verifiers/'); 
+         JKIND =fullfile(solvers_path,'jkind/jkind');
     else
-        errordlg('OS not supported yet','CoCoSim Configuration');
+        errordlg('OS not supported yet','CoCoSim backend configuration');
     end
  end
  LUSTREC = fullfile(solvers_path,'lustrec');
@@ -36,4 +42,4 @@
  Z3 = fullfile(solvers_path,'z3');
  KIND2 = fullfile(solvers_path,'kind2');
  SEAHORN = 'PATH';
- JKIND =fullfile(solvers_path,'jkind/jkind');
+
