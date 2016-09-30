@@ -284,6 +284,11 @@ for idx_subsys=numel(inter_blk):-1:1
         chartArray = m.find('-isa','Stateflow.Chart');
         chart = chartArray(strcmp(chartArray.get('Path'),inter_blk{idx_subsys}{1}.origin_name));
         [ block_string,external_nodes_i,~, ~] = chart2lus( chart, 0, xml_trace,file_name );
+        if ~ strcmp(SOLVER, 'Z')
+            msg = 'Currently only Zustre can be used to verify Stateflow models';
+            display_msg(msg, Constants.ERROR, 'cocoSim', '');
+            return
+        end
         nodes_string = [nodes_string block_string];
         extern_Stateflow_nodes_fun = [extern_Stateflow_nodes_fun, external_nodes_i];
         %%%%% Standard Simulink blocks code generation %%%%%%%%%%%%%%%

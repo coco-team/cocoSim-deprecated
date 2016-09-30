@@ -1,3 +1,23 @@
+% CoCoSim: A framework for formal analysis of Simulink models
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This file is part of cocoSim.
+% Copyright (C) 2014-2015  Carnegie Mellon University
+% Original contribution from ONERA
+%
+%    cocoSim  is free software: you can redistribute it
+%    and/or modify it under the terms of the GNU General Public License as
+%    published by the Free Software Foundation, either version 3 of the
+%    License, or (at your option) any later version.
+%
+%    cocoSim compiler + verifier is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 function sl_customization(cm)
 %% Register custom menu function.
   cm.addCustomMenuFcn('Simulink:ToolsMenu', @getMyMenuItems);
@@ -14,7 +34,8 @@ end
   schema.statustip = 'Modular Analysis Engine';
   schema.autoDisableWhen = 'Busy';
   
-  schema.childrenFcns = {@getVerify,@getValidate, @getCheckBlocks, @viewContract @getProps, ...
+  schema.childrenFcns = {@getVerify,@getValidate,...
+      @getCheckBlocks, @viewContract @getProps, ...
                         @getPP,  @getCompiler};
  end
  
@@ -35,7 +56,7 @@ end
  end
  function schema = getValidate(callbackInfo)     
   schema = sl_action_schema;
-  schema.label = 'Translation Validation'; 
+  schema.label = 'Compiler Validation (Experimental)'; 
   schema.callback = @validateCallBack;
  end
 
@@ -155,7 +176,7 @@ function schema = viewContract(callbackInfo)
 
  function schema = getCompiler(callbackInfo)     
   schema = sl_container_schema;
-  schema.label = 'Compile';    
+  schema.label = 'Compile (Experimental)';    
   %schema.userdata = 'two';	
   schema.childrenFcns = {@getRust, @getC};
  end 
@@ -204,7 +225,7 @@ function schema = viewContract(callbackInfo)
  
  function schema = getVerify(callbackInfo)
   schema = sl_container_schema;
-  schema.label = 'Verify';
+  schema.label = 'Verify using ...';
   schema.statustip = 'Verify the current model with CoCoSim';
   schema.autoDisableWhen = 'Busy';
   

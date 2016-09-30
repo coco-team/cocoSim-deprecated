@@ -15,6 +15,7 @@
 %
 %    You should have received a copy of the GNU General Public License
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function start_cocosim() 
 warning ('off','all');
 [cocoSim_path, function_name, ext] = fileparts(mfilename('fullpath'));
 disp('--------------------------')
@@ -44,3 +45,4 @@ addpath(fullfile(cocoSim_path, '.'));
 sl_refresh_customizations;
 clear;
 disp('... CoCoSim is Ready');
+end

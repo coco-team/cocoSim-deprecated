@@ -152,8 +152,12 @@ function observer = create_observer_block(parent_system, output_names, observer_
 		inport = add_block('built-in/Inport', inport_name, 'Position', pos(1, idx_in, 'Inport'));
 		terminator_name = [observer_path '/' get_param(inports{idx_in}, 'Name') '_term'];
 		terminator = add_block('built-in/Terminator', terminator_name, 'Position', pos(1, idx_in, 'Terminator'));
-		add_line(observer_path, [get_param(inports{idx_in}, 'Name') '/1'], [get_param(inports{idx_in}, 'Name') '_term/1']);
-		add_line(parent_system, [get_param(inports{idx_in}, 'Name') '/1'], [observer_name '/' num2str(idx_in)])
+		add_line(observer_path, [get_param(inports{idx_in}, 'Name') '/1'],...
+            [get_param(inports{idx_in}, 'Name') '_term/1'],...
+            'autorouting','on');
+		add_line(parent_system, [get_param(inports{idx_in}, 'Name') '/1'],...
+            [observer_name '/' num2str(idx_in)],...
+            'autorouting','on')
 	end
 
 	% Add observer inports from Outport blocks
@@ -164,11 +168,14 @@ function observer = create_observer_block(parent_system, output_names, observer_
 		inport = add_block('built-in/Inport', outport_full_name, 'Position', pos(1, numel(inports) + idx_out, 'Inport'));
 		terminator_name = [observer_path '/' outport_name '_term'];
 		terminator = add_block('built-in/Terminator', terminator_name, 'Position', pos(1, numel(inports) + idx_out, 'Terminator'));
-		add_line(observer_path, [outport_name '/1'], [outport_name '_term/1']);
+		add_line(observer_path, [outport_name '/1'],...
+            [outport_name '_term/1'], 'autorouting','on');
 		% Preceding block to the outport
 		pc = get_param(output_names{idx_out}, 'PortConnectivity');
 		pre_name = get_param(pc.SrcBlock, 'Name');
-		add_line(parent_system, [pre_name '/' num2str(pc.SrcPort + 1)], [observer_name '/' num2str(numel(inports) + idx_out)])
+		add_line(parent_system, [pre_name '/' num2str(pc.SrcPort + 1)],...
+            [observer_name '/' num2str(numel(inports) + idx_out)],...
+            'autorouting','on')
 	end
 
 	% Add observer outport
@@ -180,7 +187,7 @@ function observer = create_observer_block(parent_system, output_names, observer_
 	term_pos = [(obs_pos(3) + 40) (obs_pos(2) + 20) (obs_pos(3) + 60) (obs_pos(2) + 40)];
 	obs_term = add_block('built-in/Terminator', obs_term_name, 'Position', term_pos);
 	set_param(obs_term_name, 'ForegroundColor', 'red');
-	add_line(parent_system, [observer_name '/1'], [observer_name '_term/1']);
+	add_line(parent_system, [observer_name '/1'], [observer_name '_term/1'], 'autorouting','on');
 end
 
 %% Get the Position value according to the type of block
