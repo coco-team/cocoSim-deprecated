@@ -19,7 +19,7 @@
 %    You should have received a copy of the GNU General Public License
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function nom_lustre_file=cocoSim(model_full_path, const_files, default_Ts, trace, dfexport)
+function [nom_lustre_file, sf2lus_Time, nb_actions]=cocoSim(model_full_path, const_files, default_Ts, trace, dfexport)
 
 % Checking the number of arguments
 if ~exist('trace', 'var')
@@ -42,7 +42,7 @@ end
 
 % Get start time
 t_start = now;
-
+sf2lus_start = tic;
 % Retrieving of the path containing the cocoSim file
 [cocoSim_path, function_name, ext] = fileparts(mfilename('fullpath'));
 % Retrieving of the path containing the model for which we generate the code
@@ -69,7 +69,7 @@ catch
     RUST_GEN = 0;
     C_GEN = 0;
 end
-
+nb_actions = 0;
 
 config_msg = ['CoCoSim Configuration, Change this configuration in src/config.m\n'];
 config_msg = [config_msg '--------------------------------------------------\n'];
@@ -283,8 +283,8 @@ for idx_subsys=numel(inter_blk):-1:1
         m = rt.find('-isa', 'Simulink.BlockDiagram');
         chartArray = m.find('-isa','Stateflow.Chart');
         chart = chartArray(strcmp(chartArray.get('Path'),inter_blk{idx_subsys}{1}.origin_name));
-        [ block_string,external_nodes_i,~, ~] = chart2lus( chart, 0, xml_trace,file_name );
-        if ~ strcmp(SOLVER, 'Z')
+        [ block_string,external_nodes_i,nb_actions, ~] = chart2lus( chart, 0, xml_trace,file_name );
+        if ~strcmp(SOLVER, 'Z') && ~strcmp(SOLVER, 'NONE')
             msg = 'Currently only Zustre can be used to verify Stateflow models';
             display_msg(msg, Constants.ERROR, 'cocoSim', '');
             return
@@ -301,7 +301,7 @@ for idx_subsys=numel(inter_blk):-1:1
                 m = rt.find('-isa', 'Simulink.BlockDiagram');
                 chartArray = m.find('-isa','Stateflow.Chart');
                 chart = chartArray(strcmp(chartArray.Path,inter_blk{idx_subsys}{1}.origin_name));
-                [ block_string,external_nodes_i,~, ~] = chart2lus( chart, 0, xml_trace,file_name );
+                [ block_string,external_nodes_i,nb_actions, ~] = chart2lus( chart, 0, xml_trace,file_name );
                 nodes_string = [nodes_string block_string];
                 extern_Stateflow_nodes_fun = [extern_Stateflow_nodes_fun, external_nodes_i];
             end
@@ -561,6 +561,7 @@ end
 
 t_end = now;
 t_compute = t_end - t_start;
+sf2lus_Time = toc(sf2lus_start);
 display_msg(['Total computation time: ' datestr(t_compute, 'HH:MM:SS.FFF')], Constants.INFO, 'Time', '');
 
 end
