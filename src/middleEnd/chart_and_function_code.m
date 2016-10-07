@@ -87,7 +87,18 @@ else
     isfunction_without_output = false;
 end
 
-
+%Matlab functions (not yet supported)
+matlab_functions = chart_or_fun.find('-isa','Stateflow.EMFunction');
+for i=1:numel(matlab_functions)
+    if Debug
+        fprintf('Start generating code for Matlab function : %s in chart : %s\n',matlab_functions(i).Name, chart_or_fun.Name);
+    end
+    [nodes_string_i,...
+        external_nodes_i, ...
+        global_nodes_struct] = write_sf_Matlab_function_node(chart_or_fun,data, matlab_functions(i), variables_struct, global_nodes_struct)
+    nodes_string = [nodes_string nodes_string_i '\n'];
+    external_nodes = [external_nodes, external_nodes_i];
+end
 %the order of the following generation is important. We start with
 %transitions actions, then state action because state action can call
 %sometimes transitions actions. After that the state node that calls state

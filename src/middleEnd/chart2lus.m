@@ -39,6 +39,8 @@ for i=1:numel(functions)
     data_fcts = [data_fcts; functions(i).find('-isa', 'Stateflow.Data')];
     
 end
+
+
 if Debug
     fprintf('Start generating code for chart : %s\n',get_full_name(chart));
 end

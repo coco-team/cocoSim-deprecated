@@ -216,10 +216,11 @@ for i=1:n
                 end
                 break;
             elseif ~strcmp(char(tokens{i}),'true') && ~strcmp(char(tokens{i}),'false')
-                [isfunction, without_output] = isFunction_without_ouputs(chart, char(tokens{i}));
-                if isfunction
+                [isfunction, without_output] = isSFFunction_without_ouputs(chart, char(tokens{i}));
+                ismfunction = isMFunction(chart,char(tokens{i}));
+                if isfunction || ismfunction
                     node_index = find(strcmp({global_nodes_struct.Name},tokens{i}));
-                    if without_output
+                    if without_output || ismfunction
                         if ~isempty(node_index)
                             node_struct2 = global_nodes_struct(node_index);
                             ind = strfind(right_expression,',');
@@ -250,7 +251,7 @@ for i=1:n
                         end
                     end
                 else
-                    error('function %s not in nodes struct or not supported yet',char(tokens{i}))
+                    error('function %s not in nodes struct or not supported yet',char(tokens{i}));
                 end
             end
         end
@@ -261,7 +262,7 @@ if ~isempty(strfind(right_expression,'='))
 end
 end
 
-function [isfunction, without_output] = isFunction_without_ouputs(chart, fun_name)
+function [isfunction, without_output] = isSFFunction_without_ouputs(chart, fun_name)
 functions = chart.find('-isa','Stateflow.Function');
 Data_indice = find(strcmp(functions.get('Name'),fun_name));
 if ~isempty(Data_indice)
@@ -277,6 +278,11 @@ end
 
 end
 
+function ismfunction = isMFunction(chart,fun_name)
+mfunctions = chart.find('-isa','Stateflow.EMFunction');
+Data_indice = find(strcmp(mfunctions.get('Name'),fun_name),1);
+ismfunction = ~isempty(Data_indice);
+end
 function [state, child] = in_operator(chart, states_names)
 % we assume that states_names(1) is a unique name in the chart
 if find(strcmp(chart.getCommonProperties,{'Chart'}),1)
