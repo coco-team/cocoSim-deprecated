@@ -1,267 +1,181 @@
 Model {
   Name			  "GPCA_Alarm"
-  Version		  8.7
-  MdlSubVersion		  1
-  SavedCharacterEncoding  "UTF-8"
+  Version		  8.5
+  MdlSubVersion		  0
+  SavedCharacterEncoding  "ISO-8859-1"
   GraphicalInterface {
     NumRootInports	    43
     Inport {
       Name		      "In1"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In2"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In3"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In4"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In5"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In6"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In7"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In8"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In9"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In10"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In11"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In12"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In13"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In14"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In15"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In16"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In17"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In18"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In19"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In20"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In21"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In22"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In23"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In24"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In25"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In26"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In27"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In28"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In29"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In30"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In31"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In32"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In33"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In34"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In35"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In36"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In37"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In38"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In39"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In40"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In41"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In42"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In43"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     NumRootOutports	    5
     Outport {
@@ -269,45 +183,49 @@ Model {
       BusObject		      ""
       BusOutputAsStruct	      "off"
       SignalName	      "ALARM_OUT_Is_Audio_Disabled"
-      UnitExpr		      "inherit"
     }
     Outport {
       Name		      "Out2"
       BusObject		      ""
       BusOutputAsStruct	      "off"
       SignalName	      "ALARM_OUT_Visual_Notification_Message"
-      UnitExpr		      "inherit"
     }
     Outport {
       Name		      "Out3"
       BusObject		      ""
       BusOutputAsStruct	      "off"
       SignalName	      "ALARM_OUT_Audio_Notification_Command"
-      UnitExpr		      "inherit"
     }
     Outport {
       Name		      "Out4"
       BusObject		      ""
       BusOutputAsStruct	      "off"
       SignalName	      "ALARM_OUT_Highest_Level_Alarm"
-      UnitExpr		      "inherit"
     }
     Outport {
       Name		      "Out5"
       BusObject		      ""
       BusOutputAsStruct	      "off"
       SignalName	      "ALARM_OUT_Log_Message_ID"
-      UnitExpr		      "inherit"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.26"
+    ComputedModelVersion    "1.28"
     NumModelReferences	    0
     NumTestPointedSignals   0
-    NumProvidedFunctions    0
-    NumRequiredFunctions    0
+  }
+  slprops.hdlmdlprops {
+    $PropName		    "HDLParams"
+    $ObjectID		    1
+    Array {
+      Type		      "Cell"
+      Dimension		      2
+      Cell		      "HDLSubsystem"
+      Cell		      "GPCA_Alarm"
+      PropName		      "mdlProps"
+    }
   }
   ScopeRefreshTime	  0.035000
-  OverrideScopeRefreshTime on
+  OverrideScopeRefreshTime off
   DisableAllScopes	  off
   DataTypeOverride	  "UseLocalSettings"
   DataTypeOverrideAppliesTo "AllNumericTypes"
@@ -315,20 +233,19 @@ Model {
   MinMaxOverflowArchiveMode "Overwrite"
   FPTRunName		  "Run 1"
   MaxMDLFileLineLength	  120
-  LastSavedArchitecture	  "glnxa64"
   Object {
     $PropName		    "BdWindowsInfo"
-    $ObjectID		    1
+    $ObjectID		    2
     $ClassName		    "Simulink.BDWindowsInfo"
     Object {
       $PropName		      "WindowsInfo"
-      $ObjectID		      2
+      $ObjectID		      3
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [65.0, 24.0, 1571.0, 930.0]
+      Location		      [461.0, 23.0, 1280.0, 773.0]
       Object {
 	$PropName		"ModelBrowserInfo"
-	$ObjectID		3
+	$ObjectID		4
 	$ClassName		"Simulink.ModelBrowserInfo"
 	Visible			[0]
 	DockPosition		"Left"
@@ -338,20 +255,20 @@ Model {
       }
       Object {
 	$PropName		"ExplorerBarInfo"
-	$ObjectID		4
+	$ObjectID		5
 	$ClassName		"Simulink.ExplorerBarInfo"
 	Visible			[1]
       }
       Object {
 	$PropName		"EditorsInfo"
-	$ObjectID		5
+	$ObjectID		6
 	$ClassName		"Simulink.EditorInfo"
 	IsActive		[1]
-	ViewObjType		"StateflowState"
-	LoadSaveID		"1:4039"
-	Extents			[1517.0, 737.0]
-	ZoomFactor		[1.2626262626262625]
-	Offset			[231.07500000000027, -11.922000000000025]
+	ViewObjType		"SimulinkTopLevel"
+	LoadSaveID		"0"
+	Extents			[1246.0, 603.0]
+	ZoomFactor		[0.49229452054794515]
+	Offset			[-793.00260869565227, -20.438260869565216]
       }
     }
   }
@@ -359,11 +276,11 @@ Model {
   Creator		  "bourbouh"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "hamza"
+  LastModifiedBy	  "Teme"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Jul 29 11:22:07 2016"
-  RTWModifiedTimeStamp	  391692112
-  ModelVersionFormat	  "1.%<AutoIncrement:26>"
+  LastModifiedDate	  "Fri Sep 30 12:54:13 2016"
+  RTWModifiedTimeStamp	  397140848
+  ModelVersionFormat	  "1.%<AutoIncrement:28>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -371,10 +288,6 @@ Model {
   WideLines		  off
   ShowLineDimensions	  off
   ShowPortDataTypes	  off
-  ShowEditTimeErrors	  on
-  ShowEditTimeWarnings	  off
-  ShowEditTimeAdvisorChecks off
-  ShowPortUnits		  off
   ShowDesignRanges	  off
   ShowLoopsOnError	  on
   IgnoreBidirectionalLines off
@@ -383,10 +296,8 @@ Model {
   ShowSignalResolutionIcons on
   ShowViewerIcons	  on
   SortedOrder		  off
-  VariantCondition	  off
   ExecutionContextIcon	  off
   ShowLinearizationAnnotations on
-  ShowVisualizeInsertedRTB on
   ShowMarkup		  on
   BlockNameDataTip	  off
   BlockParametersDataTip  off
@@ -394,7 +305,6 @@ Model {
   ToolBar		  on
   StatusBar		  on
   BrowserShowLibraryLinks off
-  FunctionConnectors	  off
   BrowserLookUnderMasks	  off
   SimulationMode	  "normal"
   PauseTimes		  "5"
@@ -411,7 +321,7 @@ Model {
   TryForcingSFcnDF	  off
   Object {
     $PropName		    "DataLoggingOverride"
-    $ObjectID		    6
+    $ObjectID		    7
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
     model_		    "GPCA_Alarm"
     overrideMode_	    [0.0]
@@ -428,6 +338,27 @@ Model {
       PropName		      "logAsSpecifiedByModelsSSIDs_"
     }
   }
+  RecordCoverage	  off
+  CovPath		  "/"
+  CovSaveName		  "covdata"
+  CovMetricSettings	  "dw"
+  CovNameIncrementing	  off
+  CovHtmlReporting	  on
+  CovForceBlockReductionOff on
+  CovEnableCumulative	  on
+  covSaveCumulativeToWorkspaceVar on
+  CovSaveSingleToWorkspaceVar on
+  CovCumulativeVarName	  "covCumulativeData"
+  CovCumulativeReport	  off
+  CovReportOnPause	  on
+  CovModelRefEnable	  "Off"
+  CovExternalEMLEnable	  off
+  CovSFcnEnable		  on
+  CovBoundaryAbsTol	  0.000010
+  CovBoundaryRelTol	  0.010000
+  CovUseTimeInterval	  off
+  CovStartTime		  0
+  CovStopTime		  0
   ExtModeBatchMode	  off
   ExtModeEnableFloating	  on
   ExtModeTrigType	  "manual"
@@ -455,14 +386,14 @@ Model {
     Type		    "Handle"
     Dimension		    1
     Simulink.ConfigSet {
-      $ObjectID		      7
-      Version		      "1.16.2"
+      $ObjectID		      8
+      Version		      "1.15.0"
       Array {
 	Type			"Handle"
 	Dimension		10
 	Simulink.SolverCC {
-	  $ObjectID		  8
-	  Version		  "1.16.2"
+	  $ObjectID		  9
+	  Version		  "1.15.0"
 	  StartTime		  "0.0"
 	  StopTime		  "10.0"
 	  AbsTol		  "auto"
@@ -482,15 +413,13 @@ Model {
 	  SolverMode		  "Auto"
 	  EnableConcurrentExecution off
 	  ConcurrentTasks	  off
-	  Solver		  "VariableStepAuto"
-	  SolverName		  "VariableStepAuto"
+	  Solver		  "ode45"
+	  SolverName		  "ode45"
 	  SolverJacobianMethodControl "auto"
 	  ShapePreserveControl	  "DisableAll"
 	  ZeroCrossControl	  "UseLocalSettings"
 	  ZeroCrossAlgorithm	  "Nonadaptive"
 	  AlgebraicLoopSolver	  "TrustRegion"
-	  SolverInfoToggleStatus  off
-	  IsAutoAppliedInSIP	  off
 	  SolverResetMethod	  "Fast"
 	  PositivePriorityOrder	  off
 	  AutoInsertRateTranBlk	  off
@@ -498,8 +427,8 @@ Model {
 	  InsertRTBMode		  "Whenever possible"
 	}
 	Simulink.DataIOCC {
-	  $ObjectID		  9
-	  Version		  "1.16.2"
+	  $ObjectID		  10
+	  Version		  "1.15.0"
 	  Decimation		  "1"
 	  ExternalInput		  "[t, u]"
 	  FinalStateName	  "xFinal"
@@ -518,8 +447,6 @@ Model {
 	  DSMLogging		  on
 	  InspectSignalLogs	  off
 	  VisualizeSimOutput	  on
-	  StreamToWorkspace	  off
-	  StreamVariableName	  "streamout"
 	  SaveTime		  on
 	  ReturnWorkspaceOutputs  off
 	  StateSaveName		  "xout"
@@ -531,13 +458,10 @@ Model {
 	  OutputTimes		  "[]"
 	  ReturnWorkspaceOutputsName "out"
 	  Refine		  "1"
-	  LoggingToFile		  off
-	  LoggingFileName	  "out.mat"
-	  LoggingIntervals	  "[-inf, inf]"
 	}
 	Simulink.OptimizationCC {
-	  $ObjectID		  10
-	  Version		  "1.16.2"
+	  $ObjectID		  11
+	  Version		  "1.15.0"
 	  Array {
 	    Type		    "Cell"
 	    Dimension		    8
@@ -554,7 +478,7 @@ Model {
 	  BlockReduction	  on
 	  BooleanDataType	  on
 	  ConditionallyExecuteInputs on
-	  DefaultParameterBehavior "Tunable"
+	  InlineParams		  off
 	  UseDivisionForNetSlopeComputation "off"
 	  UseFloatMulNetSlope	  off
 	  DefaultUnderspecifiedDataType	"double"
@@ -593,8 +517,8 @@ Model {
 	  AccelVerboseBuild	  off
 	}
 	Simulink.DebuggingCC {
-	  $ObjectID		  11
-	  Version		  "1.16.2"
+	  $ObjectID		  12
+	  Version		  "1.15.0"
 	  RTPrefix		  "error"
 	  ConsistencyChecking	  "none"
 	  ArrayBoundsChecking	  "none"
@@ -621,6 +545,7 @@ Model {
 	  IgnoredZcDiagnostic	  "warning"
 	  SolverPrmCheckMsg	  "none"
 	  InheritedTsInSrcMsg	  "warning"
+	  DiscreteInheritContinuousMsg "warning"
 	  MultiTaskDSMMsg	  "error"
 	  MultiTaskCondExecSysMsg "error"
 	  MultiTaskRateTransMsg	  "error"
@@ -653,7 +578,6 @@ Model {
 	  BusObjectLabelMismatch  "warning"
 	  RootOutportRequireBusObject "warning"
 	  AssertControl		  "UseLocalSettings"
-	  AllowSymbolicDim	  on
 	  ModelReferenceIOMsg	  "none"
 	  ModelReferenceMultiInstanceNormalModeStructChecksumCheck "error"
 	  ModelReferenceVersionMismatchMessage "none"
@@ -669,9 +593,6 @@ Model {
 	  StrictBusMsg		  "ErrorLevel1"
 	  BusNameAdapt		  "WarnAndRepair"
 	  NonBusSignalsTreatedAsBus "none"
-	  SymbolicDimMinMaxWarning "warning"
-	  LossOfSymbolicDimsSimulationWarning "warning"
-	  LossOfSymbolicDimsCodeGenerationWarning "error"
 	  BlockIODiagnostic	  "none"
 	  SFUnusedDataAndEventsDiag "warning"
 	  SFUnexpectedBacktrackingDiag "warning"
@@ -683,13 +604,10 @@ Model {
 	  SFTransitionActionBeforeConditionDiag	"warning"
 	  SFOutputUsedAsStateInMooreChartDiag "error"
 	  IntegerSaturationMsg	  "warning"
-	  AllowedUnitSystems	  "all"
-	  UnitsInconsistencyMsg	  "warning"
-	  AllowAutomaticUnitConversions	on
 	}
 	Simulink.HardwareCC {
-	  $ObjectID		  12
-	  Version		  "1.16.2"
+	  $ObjectID		  13
+	  Version		  "1.15.0"
 	  ProdBitPerChar	  8
 	  ProdBitPerShort	  16
 	  ProdBitPerInt		  32
@@ -708,32 +626,29 @@ Model {
 	  ProdHWDeviceType	  "Intel->x86-64 (Windows64)"
 	  TargetBitPerChar	  8
 	  TargetBitPerShort	  16
-	  TargetBitPerInt	  32
+	  TargetBitPerInt	  16
 	  TargetBitPerLong	  32
 	  TargetBitPerLongLong	  64
 	  TargetBitPerFloat	  32
 	  TargetBitPerDouble	  64
-	  TargetBitPerPointer	  32
+	  TargetBitPerPointer	  16
 	  TargetLargestAtomicInteger "Char"
 	  TargetLargestAtomicFloat "None"
-	  TargetShiftRightIntArith on
+	  TargetShiftRightIntArith off
 	  TargetLongLongMode	  off
-	  TargetIntDivRoundTo	  "Undefined"
+	  TargetIntDivRoundTo	  "Zero"
 	  TargetEndianess	  "Unspecified"
-	  TargetWordSize	  32
+	  TargetWordSize	  8
 	  TargetPreprocMaxBitsSint 32
 	  TargetPreprocMaxBitsUint 32
-	  TargetHWDeviceType	  "Specified"
+	  TargetHWDeviceType	  "Intel->8051 Compatible"
 	  TargetUnknown		  off
-	  ProdEqTarget		  on
-	  UseEmbeddedCoderFeatures on
-	  UseSimulinkCoderFeatures on
+	  ProdEqTarget		  off
 	}
 	Simulink.ModelReferenceCC {
-	  $ObjectID		  13
-	  Version		  "1.16.2"
+	  $ObjectID		  14
+	  Version		  "1.15.0"
 	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
-	  EnableRefExpFcnMdlSchedulingChecks on
 	  CheckModelReferenceTargetMessage "error"
 	  EnableParallelModelReferenceBuilds off
 	  ParallelModelReferenceErrorOnInvalidPool on
@@ -746,8 +661,9 @@ Model {
 	  SupportModelReferenceSimTargetCustomCode off
 	}
 	Simulink.SFSimCC {
-	  $ObjectID		  14
-	  Version		  "1.16.2"
+	  $ObjectID		  15
+	  Version		  "1.15.0"
+	  SFSimOverflowDetection  on
 	  SFSimEcho		  on
 	  SimCtrlC		  on
 	  SimIntegrity		  on
@@ -758,8 +674,8 @@ Model {
 	}
 	Simulink.RTWCC {
 	  $BackupClass		  "Simulink.RTWCC"
-	  $ObjectID		  15
-	  Version		  "1.16.2"
+	  $ObjectID		  16
+	  Version		  "1.15.0"
 	  Array {
 	    Type		    "Cell"
 	    Dimension		    15
@@ -781,12 +697,12 @@ Model {
 	    PropName		    "DisabledProps"
 	  }
 	  SystemTargetFile	  "grt.tlc"
-	  HardwareBoard		  "None"
 	  TLCOptions		  ""
 	  GenCodeOnly		  off
 	  MakeCommand		  "make_rtw"
 	  GenerateMakefile	  on
 	  PackageGeneratedCodeAndArtifacts off
+	  PackageName		  ""
 	  TemplateMakefile	  "grt_default_tmf"
 	  PostCodeGenCommand	  ""
 	  Description		  ""
@@ -800,6 +716,13 @@ Model {
 	  TLCAssert		  off
 	  RTWUseLocalCustomCode	  off
 	  RTWUseSimCustomCode	  off
+	  CustomSourceCode	  ""
+	  CustomHeaderCode	  ""
+	  CustomInclude		  ""
+	  CustomSource		  ""
+	  CustomLibrary		  ""
+	  CustomInitializer	  ""
+	  CustomTerminator	  ""
 	  Toolchain		  "Automatically locate an installed toolchain"
 	  BuildConfiguration	  "Faster Builds"
 	  IncludeHyperlinkInReport off
@@ -830,8 +753,8 @@ Model {
 	    Type		    "Handle"
 	    Dimension		    2
 	    Simulink.CodeAppCC {
-	      $ObjectID		      16
-	      Version		      "1.16.2"
+	      $ObjectID		      17
+	      Version		      "1.15.0"
 	      Array {
 		Type			"Cell"
 		Dimension		23
@@ -901,8 +824,8 @@ Model {
 	    }
 	    Simulink.GRTTargetCC {
 	      $BackupClass	      "Simulink.TargetCC"
-	      $ObjectID		      17
-	      Version		      "1.16.2"
+	      $ObjectID		      18
+	      Version		      "1.15.0"
 	      Array {
 		Type			"Cell"
 		Dimension		13
@@ -923,6 +846,7 @@ Model {
 	      }
 	      TargetFcnLib	      "ansi_tfl_table_tmw.mat"
 	      TargetLibSuffix	      ""
+	      TargetPreCompLibLocation ""
 	      GenFloatMathFcnCalls    "NOT IN USE"
 	      TargetLangStandard      "C89/C90 (ANSI)"
 	      CodeReplacementLibrary  "None"
@@ -965,7 +889,6 @@ Model {
 	      AutosarCompliant	      off
 	      GRTInterface	      off
 	      GenerateAllocFcn	      off
-	      UseToolchainInfoCompliant	on
 	      GenerateSharedConstants on
 	      UseMalloc		      off
 	      ExtMode		      off
@@ -986,8 +909,8 @@ Model {
 	  }
 	}
 	SlCovCC.ConfigComp {
-	  $ObjectID		  18
-	  Version		  "1.16.2"
+	  $ObjectID		  19
+	  Version		  "1.15.0"
 	  Description		  "Simulink Coverage Configuration Component"
 	  Name			  "Simulink Coverage"
 	  CovEnable		  off
@@ -1019,8 +942,8 @@ Model {
 	  CovStopTime		  0
 	}
 	hdlcoderui.hdlcc {
-	  $ObjectID		  19
-	  Version		  "1.16.2"
+	  $ObjectID		  20
+	  Version		  "1.15.0"
 	  Description		  "HDL Coder custom configuration component"
 	  Name			  "HDL Coder"
 	  Array {
@@ -1034,18 +957,18 @@ Model {
 	PropName		"Components"
       }
       Name		      "Configuration"
-      CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition     [ 65, 0, 1024, 768 ] 
+      CurrentDlgPage	      "Hardware Implementation"
+      ConfigPrmDlgPosition     [ 130, 68, 1210, 730 ] 
     }
     PropName		    "ConfigurationSets"
   }
   Simulink.ConfigSet {
     $PropName		    "ActiveConfigurationSet"
-    $ObjectID		    7
+    $ObjectID		    8
   }
   Object {
     $PropName		    "DataTransfer"
-    $ObjectID		    20
+    $ObjectID		    21
     $ClassName		    "Simulink.GlobalDataTransfer"
     DefaultTransitionBetweenSyncTasks "Ensure deterministic transfer (maximum delay)"
     DefaultTransitionBetweenAsyncTasks "Ensure data integrity only"
@@ -1088,7 +1011,7 @@ Model {
   MaskDefaults {
     SelfModifiable	    "off"
     IconFrame		    "on"
-    IconOpaque		    "opaque"
+    IconOpaque		    "on"
     RunInitForIconRedraw    "off"
     IconRotate		    "none"
     PortRotate		    "default"
@@ -1120,7 +1043,6 @@ Model {
       OutDataTypeStr	      "Inherit: auto"
       LockScale		      off
       BusOutputAsStruct	      off
-      Unit		      "inherit"
       PortDimensions	      "-1"
       VarSizeSig	      "Inherit"
       SampleTime	      "-1"
@@ -1138,7 +1060,6 @@ Model {
       OutDataTypeStr	      "Inherit: auto"
       LockScale		      off
       BusOutputAsStruct	      off
-      Unit		      "inherit"
       PortDimensions	      "-1"
       VarSizeSig	      "Inherit"
       SampleTime	      "-1"
@@ -1153,6 +1074,8 @@ Model {
       FunctionName	      "system"
       SFunctionModules	      "''"
       PortCounts	      "[]"
+      SFunctionDeploymentMode off
+      EnableBusSupport	      off
     }
     Block {
       BlockType		      SubSystem
@@ -1181,8 +1104,8 @@ Model {
       Opaque		      off
       MaskHideContents	      off
       SFBlockType	      "NONE"
+      Variant		      off
       GeneratePreprocessorConditionals off
-      TreatAsGroupedWhenPropagatingVariantConditions on
       ContentPreviewEnabled   off
       IsWebBlock	      off
     }
@@ -1192,8 +1115,8 @@ Model {
   }
   System {
     Name		    "GPCA_Alarm"
-    Location		    [49, 18, 1600, 900]
-    Open		    off
+    Location		    [461, 23, 1741, 796]
+    Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
     ScreenColor		    "white"
@@ -1204,14 +1127,14 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "60"
+    ZoomFactor		    "49"
     ReportName		    "simulink-default.rpt"
     SIDHighWatermark	    "49"
     Block {
       BlockType		      Inport
       Name		      "In1"
       SID		      "2"
-      Position		      [-20, 53, 10, 67]
+      Position		      [20, 53, 50, 67]
       ZOrder		      218
       IconDisplay	      "Port number"
     }
@@ -1219,7 +1142,7 @@ Model {
       BlockType		      Inport
       Name		      "In2"
       SID		      "3"
-      Position		      [30, 78, 60, 92]
+      Position		      [70, 78, 100, 92]
       ZOrder		      219
       Port		      "2"
       IconDisplay	      "Port number"
@@ -1228,7 +1151,7 @@ Model {
       BlockType		      Inport
       Name		      "In3"
       SID		      "4"
-      Position		      [-20, 103, 10, 117]
+      Position		      [20, 103, 50, 117]
       ZOrder		      220
       Port		      "3"
       IconDisplay	      "Port number"
@@ -1237,7 +1160,7 @@ Model {
       BlockType		      Inport
       Name		      "In4"
       SID		      "5"
-      Position		      [30, 128, 60, 142]
+      Position		      [70, 128, 100, 142]
       ZOrder		      221
       Port		      "4"
       IconDisplay	      "Port number"
@@ -1246,7 +1169,7 @@ Model {
       BlockType		      Inport
       Name		      "In5"
       SID		      "6"
-      Position		      [-20, 153, 10, 167]
+      Position		      [20, 153, 50, 167]
       ZOrder		      222
       Port		      "5"
       IconDisplay	      "Port number"
@@ -1255,7 +1178,7 @@ Model {
       BlockType		      Inport
       Name		      "In6"
       SID		      "7"
-      Position		      [30, 178, 60, 192]
+      Position		      [70, 178, 100, 192]
       ZOrder		      223
       Port		      "6"
       IconDisplay	      "Port number"
@@ -1264,7 +1187,7 @@ Model {
       BlockType		      Inport
       Name		      "In7"
       SID		      "8"
-      Position		      [-20, 203, 10, 217]
+      Position		      [20, 203, 50, 217]
       ZOrder		      224
       Port		      "7"
       IconDisplay	      "Port number"
@@ -1273,7 +1196,7 @@ Model {
       BlockType		      Inport
       Name		      "In8"
       SID		      "9"
-      Position		      [30, 228, 60, 242]
+      Position		      [70, 228, 100, 242]
       ZOrder		      225
       Port		      "8"
       IconDisplay	      "Port number"
@@ -1282,7 +1205,7 @@ Model {
       BlockType		      Inport
       Name		      "In9"
       SID		      "10"
-      Position		      [-20, 253, 10, 267]
+      Position		      [20, 253, 50, 267]
       ZOrder		      226
       Port		      "9"
       IconDisplay	      "Port number"
@@ -1291,7 +1214,7 @@ Model {
       BlockType		      Inport
       Name		      "In10"
       SID		      "11"
-      Position		      [30, 278, 60, 292]
+      Position		      [70, 278, 100, 292]
       ZOrder		      227
       Port		      "10"
       IconDisplay	      "Port number"
@@ -1300,7 +1223,7 @@ Model {
       BlockType		      Inport
       Name		      "In11"
       SID		      "12"
-      Position		      [-20, 303, 10, 317]
+      Position		      [20, 303, 50, 317]
       ZOrder		      228
       Port		      "11"
       IconDisplay	      "Port number"
@@ -1309,7 +1232,7 @@ Model {
       BlockType		      Inport
       Name		      "In12"
       SID		      "13"
-      Position		      [30, 328, 60, 342]
+      Position		      [70, 328, 100, 342]
       ZOrder		      229
       Port		      "12"
       IconDisplay	      "Port number"
@@ -1318,7 +1241,7 @@ Model {
       BlockType		      Inport
       Name		      "In13"
       SID		      "14"
-      Position		      [-20, 353, 10, 367]
+      Position		      [20, 353, 50, 367]
       ZOrder		      230
       Port		      "13"
       IconDisplay	      "Port number"
@@ -1327,7 +1250,7 @@ Model {
       BlockType		      Inport
       Name		      "In14"
       SID		      "15"
-      Position		      [30, 378, 60, 392]
+      Position		      [70, 378, 100, 392]
       ZOrder		      231
       Port		      "14"
       IconDisplay	      "Port number"
@@ -1336,7 +1259,7 @@ Model {
       BlockType		      Inport
       Name		      "In15"
       SID		      "16"
-      Position		      [-20, 403, 10, 417]
+      Position		      [20, 403, 50, 417]
       ZOrder		      232
       Port		      "15"
       IconDisplay	      "Port number"
@@ -1345,7 +1268,7 @@ Model {
       BlockType		      Inport
       Name		      "In16"
       SID		      "17"
-      Position		      [30, 428, 60, 442]
+      Position		      [70, 428, 100, 442]
       ZOrder		      233
       Port		      "16"
       IconDisplay	      "Port number"
@@ -1354,7 +1277,7 @@ Model {
       BlockType		      Inport
       Name		      "In17"
       SID		      "18"
-      Position		      [-20, 453, 10, 467]
+      Position		      [20, 453, 50, 467]
       ZOrder		      234
       Port		      "17"
       IconDisplay	      "Port number"
@@ -1363,7 +1286,7 @@ Model {
       BlockType		      Inport
       Name		      "In18"
       SID		      "19"
-      Position		      [30, 478, 60, 492]
+      Position		      [70, 478, 100, 492]
       ZOrder		      235
       Port		      "18"
       IconDisplay	      "Port number"
@@ -1372,7 +1295,7 @@ Model {
       BlockType		      Inport
       Name		      "In19"
       SID		      "20"
-      Position		      [-20, 503, 10, 517]
+      Position		      [20, 503, 50, 517]
       ZOrder		      236
       Port		      "19"
       IconDisplay	      "Port number"
@@ -1381,7 +1304,7 @@ Model {
       BlockType		      Inport
       Name		      "In20"
       SID		      "21"
-      Position		      [30, 528, 60, 542]
+      Position		      [70, 528, 100, 542]
       ZOrder		      237
       Port		      "20"
       IconDisplay	      "Port number"
@@ -1390,7 +1313,7 @@ Model {
       BlockType		      Inport
       Name		      "In21"
       SID		      "22"
-      Position		      [-20, 553, 10, 567]
+      Position		      [20, 553, 50, 567]
       ZOrder		      238
       Port		      "21"
       IconDisplay	      "Port number"
@@ -1399,7 +1322,7 @@ Model {
       BlockType		      Inport
       Name		      "In22"
       SID		      "23"
-      Position		      [30, 578, 60, 592]
+      Position		      [70, 578, 100, 592]
       ZOrder		      239
       Port		      "22"
       IconDisplay	      "Port number"
@@ -1408,7 +1331,7 @@ Model {
       BlockType		      Inport
       Name		      "In23"
       SID		      "24"
-      Position		      [-20, 603, 10, 617]
+      Position		      [20, 603, 50, 617]
       ZOrder		      240
       Port		      "23"
       IconDisplay	      "Port number"
@@ -1417,7 +1340,7 @@ Model {
       BlockType		      Inport
       Name		      "In24"
       SID		      "25"
-      Position		      [30, 628, 60, 642]
+      Position		      [70, 628, 100, 642]
       ZOrder		      241
       Port		      "24"
       IconDisplay	      "Port number"
@@ -1426,7 +1349,7 @@ Model {
       BlockType		      Inport
       Name		      "In25"
       SID		      "26"
-      Position		      [-20, 653, 10, 667]
+      Position		      [20, 653, 50, 667]
       ZOrder		      242
       Port		      "25"
       IconDisplay	      "Port number"
@@ -1435,7 +1358,7 @@ Model {
       BlockType		      Inport
       Name		      "In26"
       SID		      "27"
-      Position		      [30, 678, 60, 692]
+      Position		      [70, 678, 100, 692]
       ZOrder		      243
       Port		      "26"
       IconDisplay	      "Port number"
@@ -1444,7 +1367,7 @@ Model {
       BlockType		      Inport
       Name		      "In27"
       SID		      "28"
-      Position		      [-20, 703, 10, 717]
+      Position		      [20, 703, 50, 717]
       ZOrder		      244
       Port		      "27"
       IconDisplay	      "Port number"
@@ -1453,7 +1376,7 @@ Model {
       BlockType		      Inport
       Name		      "In28"
       SID		      "29"
-      Position		      [30, 728, 60, 742]
+      Position		      [70, 728, 100, 742]
       ZOrder		      245
       Port		      "28"
       IconDisplay	      "Port number"
@@ -1462,7 +1385,7 @@ Model {
       BlockType		      Inport
       Name		      "In29"
       SID		      "30"
-      Position		      [-20, 753, 10, 767]
+      Position		      [20, 753, 50, 767]
       ZOrder		      246
       Port		      "29"
       IconDisplay	      "Port number"
@@ -1471,7 +1394,7 @@ Model {
       BlockType		      Inport
       Name		      "In30"
       SID		      "31"
-      Position		      [30, 778, 60, 792]
+      Position		      [70, 778, 100, 792]
       ZOrder		      247
       Port		      "30"
       IconDisplay	      "Port number"
@@ -1480,7 +1403,7 @@ Model {
       BlockType		      Inport
       Name		      "In31"
       SID		      "32"
-      Position		      [-20, 803, 10, 817]
+      Position		      [20, 803, 50, 817]
       ZOrder		      248
       Port		      "31"
       IconDisplay	      "Port number"
@@ -1489,7 +1412,7 @@ Model {
       BlockType		      Inport
       Name		      "In32"
       SID		      "33"
-      Position		      [30, 828, 60, 842]
+      Position		      [70, 828, 100, 842]
       ZOrder		      249
       Port		      "32"
       IconDisplay	      "Port number"
@@ -1498,7 +1421,7 @@ Model {
       BlockType		      Inport
       Name		      "In33"
       SID		      "34"
-      Position		      [-20, 853, 10, 867]
+      Position		      [20, 853, 50, 867]
       ZOrder		      250
       Port		      "33"
       IconDisplay	      "Port number"
@@ -1507,7 +1430,7 @@ Model {
       BlockType		      Inport
       Name		      "In34"
       SID		      "35"
-      Position		      [30, 878, 60, 892]
+      Position		      [70, 878, 100, 892]
       ZOrder		      251
       Port		      "34"
       IconDisplay	      "Port number"
@@ -1516,7 +1439,7 @@ Model {
       BlockType		      Inport
       Name		      "In35"
       SID		      "36"
-      Position		      [-20, 903, 10, 917]
+      Position		      [20, 903, 50, 917]
       ZOrder		      252
       Port		      "35"
       IconDisplay	      "Port number"
@@ -1525,7 +1448,7 @@ Model {
       BlockType		      Inport
       Name		      "In36"
       SID		      "37"
-      Position		      [30, 928, 60, 942]
+      Position		      [70, 928, 100, 942]
       ZOrder		      253
       Port		      "36"
       IconDisplay	      "Port number"
@@ -1534,7 +1457,7 @@ Model {
       BlockType		      Inport
       Name		      "In37"
       SID		      "38"
-      Position		      [-20, 953, 10, 967]
+      Position		      [20, 953, 50, 967]
       ZOrder		      254
       Port		      "37"
       IconDisplay	      "Port number"
@@ -1543,7 +1466,7 @@ Model {
       BlockType		      Inport
       Name		      "In38"
       SID		      "39"
-      Position		      [30, 978, 60, 992]
+      Position		      [70, 978, 100, 992]
       ZOrder		      255
       Port		      "38"
       IconDisplay	      "Port number"
@@ -1552,7 +1475,7 @@ Model {
       BlockType		      Inport
       Name		      "In39"
       SID		      "40"
-      Position		      [-20, 1003, 10, 1017]
+      Position		      [20, 1003, 50, 1017]
       ZOrder		      256
       Port		      "39"
       IconDisplay	      "Port number"
@@ -1561,7 +1484,7 @@ Model {
       BlockType		      Inport
       Name		      "In40"
       SID		      "41"
-      Position		      [30, 1028, 60, 1042]
+      Position		      [70, 1028, 100, 1042]
       ZOrder		      257
       Port		      "40"
       IconDisplay	      "Port number"
@@ -1570,7 +1493,7 @@ Model {
       BlockType		      Inport
       Name		      "In41"
       SID		      "42"
-      Position		      [-20, 1053, 10, 1067]
+      Position		      [20, 1053, 50, 1067]
       ZOrder		      258
       Port		      "41"
       IconDisplay	      "Port number"
@@ -1579,7 +1502,7 @@ Model {
       BlockType		      Inport
       Name		      "In42"
       SID		      "43"
-      Position		      [30, 1078, 60, 1092]
+      Position		      [70, 1078, 100, 1092]
       ZOrder		      259
       Port		      "42"
       IconDisplay	      "Port number"
@@ -1588,7 +1511,7 @@ Model {
       BlockType		      Inport
       Name		      "In43"
       SID		      "44"
-      Position		      [-20, 1103, 10, 1117]
+      Position		      [20, 1103, 50, 1117]
       ZOrder		      260
       Port		      "43"
       IconDisplay	      "Port number"
@@ -1598,7 +1521,7 @@ Model {
       Name		      "Alarm  Sub-System"
       SID		      "1"
       Ports		      [43, 5]
-      Position		      [425, 8, 735, 1162]
+      Position		      [465, 8, 775, 1162]
       ZOrder		      46
       LibraryVersion	      "1.251"
       FontName		      "Arial Narrow"
@@ -1608,10 +1531,9 @@ Model {
       TreatAsAtomicUnit	      on
       RequestExecContextInheritance off
       SFBlockType	      "Chart"
-      Variant		      off
       System {
 	Name			"Alarm  Sub-System"
-	Location		[65, 24, 1636, 954]
+	Location		[65, 24, 1345, 797]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -2031,7 +1953,6 @@ Model {
 	  FunctionName		  "sf_sfun"
 	  Parameters		  "step_size"
 	  PortCounts		  "[43 6]"
-	  SFunctionDeploymentMode off
 	  EnableBusSupport	  on
 	  Port {
 	    PortNumber		    2
@@ -2481,7 +2402,7 @@ Model {
       BlockType		      Outport
       Name		      "Out1"
       SID		      "45"
-      Position		      [855, 118, 885, 132]
+      Position		      [895, 118, 925, 132]
       ZOrder		      261
       IconDisplay	      "Port number"
     }
@@ -2489,7 +2410,7 @@ Model {
       BlockType		      Outport
       Name		      "Out2"
       SID		      "46"
-      Position		      [855, 348, 885, 362]
+      Position		      [895, 348, 925, 362]
       ZOrder		      262
       Port		      "2"
       IconDisplay	      "Port number"
@@ -2498,7 +2419,7 @@ Model {
       BlockType		      Outport
       Name		      "Out3"
       SID		      "47"
-      Position		      [855, 578, 885, 592]
+      Position		      [895, 578, 925, 592]
       ZOrder		      263
       Port		      "3"
       IconDisplay	      "Port number"
@@ -2507,7 +2428,7 @@ Model {
       BlockType		      Outport
       Name		      "Out4"
       SID		      "48"
-      Position		      [855, 808, 885, 822]
+      Position		      [895, 808, 925, 822]
       ZOrder		      264
       Port		      "4"
       IconDisplay	      "Port number"
@@ -2516,7 +2437,7 @@ Model {
       BlockType		      Outport
       Name		      "Out5"
       SID		      "49"
-      Position		      [855, 1038, 885, 1052]
+      Position		      [895, 1038, 925, 1052]
       ZOrder		      265
       Port		      "5"
       IconDisplay	      "Port number"
@@ -2861,7 +2782,7 @@ Model {
 }
 #Finite State Machines
 #
-#   Stateflow 80000009
+#   Stateflow 80000005
 #
 #
 Stateflow {
@@ -2871,7 +2792,7 @@ Stateflow {
     created		    "13-Jul-2016 12:14:10"
     isLibrary		    0
     firstTarget		    304
-    sfVersion		    80000009
+    sfVersion		    80000005
   }
   chart {
     id			    2
@@ -3229,7 +3150,7 @@ Stateflow {
       panLimits		      [231.075 1432.539 -11.922 571.782]
       x1		      40
       y1		      235.12
-      zoomFactor	      1.056
+      zoomFactor	      0.792
       pos		      [55 0 1308.023 698.253]
     }
     ssIdNumber		    4039
@@ -7838,9 +7759,6 @@ Stateflow {
 	isSigned		1
 	wordLength		"16"
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -7893,9 +7811,6 @@ Stateflow {
 	isSigned		1
 	wordLength		"16"
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -7912,9 +7827,6 @@ Stateflow {
 	isSigned		1
 	wordLength		"16"
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -7930,9 +7842,6 @@ Stateflow {
 	primitive		SF_DOUBLE_TYPE
 	isSigned		1
 	wordLength		"16"
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "double"
@@ -7987,9 +7896,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -8010,9 +7916,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -8030,9 +7933,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -8048,9 +7948,6 @@ Stateflow {
 	primitive		SF_BOOLEAN_TYPE
 	isSigned		1
 	wordLength		"16"
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "boolean"
@@ -8069,9 +7966,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -8089,9 +7983,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -8109,9 +8000,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -8129,9 +8017,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -8149,9 +8034,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -8167,9 +8049,6 @@ Stateflow {
 	primitive		SF_UINT8_TYPE
 	isSigned		1
 	wordLength		"16"
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "uint8"
@@ -8188,9 +8067,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -8208,9 +8084,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -8228,9 +8101,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -8248,9 +8118,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -8268,9 +8135,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -8288,9 +8152,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -8308,9 +8169,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -8328,9 +8186,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -8346,9 +8201,6 @@ Stateflow {
 	primitive		SF_UINT8_TYPE
 	isSigned		1
 	wordLength		"16"
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "uint8"
@@ -8366,9 +8218,6 @@ Stateflow {
 	isSigned		1
 	wordLength		"16"
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -8385,9 +8234,6 @@ Stateflow {
 	isSigned		1
 	wordLength		"16"
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -8403,9 +8249,6 @@ Stateflow {
 	primitive		SF_UINT8_TYPE
 	isSigned		1
 	wordLength		"16"
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "uint8"
@@ -8424,9 +8267,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -8444,9 +8284,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -8464,9 +8301,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -8482,9 +8316,6 @@ Stateflow {
 	primitive		SF_UINT8_TYPE
 	isSigned		1
 	wordLength		"16"
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "uint8"
@@ -8503,9 +8334,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -8523,9 +8351,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -8543,9 +8368,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -8563,9 +8385,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -8583,9 +8402,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -8603,9 +8419,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -8623,9 +8436,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -8643,9 +8453,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -8663,9 +8470,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -8683,9 +8487,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -8703,9 +8504,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -8723,9 +8521,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -8743,9 +8538,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -8763,9 +8555,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -8783,9 +8572,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -8803,9 +8589,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -8823,9 +8606,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -8843,9 +8623,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -8863,9 +8640,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -8883,9 +8657,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -8906,9 +8677,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -8929,9 +8697,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -8952,9 +8717,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -8971,9 +8733,6 @@ Stateflow {
 	isSigned		1
 	wordLength		"16"
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -8989,9 +8748,6 @@ Stateflow {
 	primitive		SF_UINT8_TYPE
 	isSigned		1
 	wordLength		"16"
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "uint8"
@@ -9013,9 +8769,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -9036,9 +8789,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -9059,9 +8809,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -9079,9 +8826,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
   }
@@ -9097,9 +8841,6 @@ Stateflow {
 	primitive		SF_UINT8_TYPE
 	isSigned		1
 	wordLength		"16"
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "uint8"
@@ -9121,9 +8862,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -9140,9 +8878,6 @@ Stateflow {
 	isSigned		1
 	wordLength		"16"
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
   }
@@ -9158,9 +8893,6 @@ Stateflow {
 	primitive		SF_UINT8_TYPE
 	isSigned		1
 	wordLength		"16"
-      }
-      unit {
-	name			"inherit"
       }
     }
     dataType		    "uint8"
@@ -9183,9 +8915,6 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "Inherit: Same as Simulink"
   }

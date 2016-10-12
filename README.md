@@ -6,7 +6,9 @@ CoCoSim is an automated analysis framework for Simulink and Stateflow models. Co
 
 ## CoCoSim ToolBox ##
 
-Download the [CoCoSim ToolBox](https://www.dropbox.com/s/qn7h4er27rdl3qu/CoCoSim.zip?dl=1)
+The CoCoSim toolbox contains linux and osx binariers for the backend solvers.
+Download the [CoCoSim ToolBox](https://www.dropbox.com/s/0fbb1jcrhqfsr30/cocosim-v0.1.tar.gz?dl=1)
+
 
 ## Installation ##
 
