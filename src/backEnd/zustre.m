@@ -35,9 +35,9 @@
 %		time_steps: the number of time steps recorded for the counter example
 
 % TODO: return status, modularisation of the tool
-function zustre(lustre_file_name, property_node_names, property_file_base_name, model_inter_blk, xml_trace, is_SF, smt_file)
+function Query_time=zustre(lustre_file_name, property_node_names, property_file_base_name, model_inter_blk, xml_trace, is_SF, smt_file)
 
-config;
+    config;
     SOLVER = evalin('base','SOLVER');
 
 	[path file ext] = fileparts(lustre_file_name);
@@ -61,8 +61,8 @@ config;
             disp(zustre_out)
             disp('   -- ZUSTRE_OUT --')
 			if status == 0
-				[answer, cex, cocospec] = check_zustre_result(zustre_out, property_node_names{idx_prop}.prop_name, property_file_base_name);
-		
+				[answer, cex, cocospec, Query_time] = check_zustre_result(zustre_out, property_node_names{idx_prop}.prop_name, property_file_base_name);
+                if strcmp(Query_time,'None'), Query_time=-1; end
                 % Change the observer block display according to answer
 				display = sprintf('color(''black'')\n');
 				display = [display sprintf('text(0.5, 0.5, [''Property: '''''' get_param(gcb,''name'') ''''''''], ''horizontalAlignment'', ''center'');\n')];
@@ -141,7 +141,7 @@ config;
 end
 
 % Parse the XML output of Zustre and return the status of the result (SAFE, CEX, UNKNOWN)
-function [answer, cex, cocospec] = check_zustre_result(zustre_out, property_node_name, property_file_base_name)
+function [answer, cex, cocospec, Query_time] = check_zustre_result(zustre_out, property_node_name, property_file_base_name)
 	answer = '';
 	cex = '';
     cocospec = '';
@@ -149,7 +149,7 @@ function [answer, cex, cocospec] = check_zustre_result(zustre_out, property_node
 	fid = fopen(prop_file_name, 'w');
 	fprintf(fid, zustre_out);
 	fclose(fid);
-
+    Query_time = 0;
 	s = dir(prop_file_name);
 	if s.bytes ~= 0
 		xml_doc = xmlread(prop_file_name);
@@ -157,6 +157,14 @@ function [answer, cex, cocospec] = check_zustre_result(zustre_out, property_node
 		for idx=0:(xml_properties.getLength-1)
     		prop = xml_properties.item(idx);
     		answer = prop.getElementsByTagName('Answer').item(0).getTextContent;
+            Query_time_i = prop.getElementsByTagName('Query').item(0).getTextContent;
+            if strcmp(Query_time_i,'None')
+                Query_time_i=-1; 
+            else
+                Query_time_i = str2num(Query_time_i);
+
+            end
+            Query_time = Query_time + Query_time_i;
     		msg = ['Zustre result for property node [' property_node_name ']: ' char(answer)];
     		display_msg(msg, Constants.INFO, 'Zustre property checking', '');
 			if strcmp(answer, 'CEX')
@@ -549,7 +557,7 @@ function actions = createActions(lustre_file_name, property_node_names, config_m
     
 	% Clear action
 	code_clear = sprintf('%s;\n', 'clear');
-	matlab_code = [matlab_code code_clear];
+	%matlab_code = [matlab_code code_clear];
 
 	action = createAction('Clear workspace', code_clear, cocoSim_path);
 	actions = [actions action];

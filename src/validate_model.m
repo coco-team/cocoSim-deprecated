@@ -18,7 +18,7 @@
 %    You should have received a copy of the GNU General Public License
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function [valid, sf2lus_time, validation_compute, nb_actions, lus_file_path]=validate_model(model_full_path,cocoSim_path, show_models,L)
+function [valid, sf2lus_time, validation_compute, nb_actions, lus_file_path, Query_time]=validate_model(model_full_path,cocoSim_path, show_models,L)
 bdclose('all')
 if ~exist('show_models', 'var')
     show_models = 0;
@@ -29,7 +29,7 @@ end
 addpath(fullfile(cocoSim_path,'src/'));
 addpath(fullfile(cocoSim_path,'src/utils/'));
 config;
-assignin('base', 'SOLVER', 'NONE');
+assignin('base', 'SOLVER', 'Z');
 assignin('base', 'RUST_GEN', 0);
 assignin('base', 'C_GEN', 0);
 
@@ -93,7 +93,7 @@ IMAX = 100; %IMAX for randi the max born for random number
 try
     fprintf('Start compiling model "%s" to Lustre\n',file_name);
 %     lus_file_path= '/home/hamza/Documents/coco_team/regression-test/simulink/unit_test/not_valid_models/lustre_files/src_math_int_2_test/math_int_2_test.lus';
-    [lus_file_path, sf2lus_time, nb_actions]=cocoSim(model_full_path);
+    [lus_file_path, sf2lus_time, nb_actions, Query_time]=cocoSim(model_full_path);
     chart_name = file_name;
     configSet = copy(getActiveConfigSet(file_name));
     [lus_file_dir, lus_file_name, ~] = fileparts(lus_file_path);

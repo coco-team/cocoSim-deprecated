@@ -147,7 +147,7 @@ classdef XML_Trace < handle
             cex_var_name = '';
             if numel(regexp(var_name,expr,'match')) == 0;
                 c = strsplit(var_name, '.');
-                cex_var_name = c{2};
+                cex_var_name = c{end};
             end
 			nodes = obj.traceRootNode.getElementsByTagName('Node');
 			for idx_node=0:nodes.getLength-1

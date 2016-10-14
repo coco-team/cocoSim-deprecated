@@ -19,7 +19,7 @@
 %    You should have received a copy of the GNU General Public License
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function [nom_lustre_file, sf2lus_Time, nb_actions]=cocoSim(model_full_path, const_files, default_Ts, trace, dfexport)
+function [nom_lustre_file, sf2lus_Time, nb_actions, Query_time]=cocoSim(model_full_path, const_files, default_Ts, trace, dfexport)
 
 % Checking the number of arguments
 if ~exist('trace', 'var')
@@ -490,6 +490,7 @@ end
 
 %%%%%%%%%%%%% Verification %%%%%%%%%%%%%%%
 smt_file = '';
+Query_time = 0;
 if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
     if not (strcmp(SOLVER, 'Z') || strcmp(SOLVER,'K') || strcmp(SOLVER, 'J'))
         display_msg('Available solvers are Z for Zustre and K for Kind2', Constants.WARNING, 'cocoSim', '');
@@ -512,7 +513,7 @@ if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
     if strcmp(SOLVER, 'Z')
         display_msg('Running Zustre', Constants.INFO, 'Verification', '');
         try
-            zustre(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace, is_SF, smt_file);
+            Query_time = zustre(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace, is_SF, smt_file);
         catch ME
             display_msg(ME.message, Constants.ERROR, 'Verification', '');
         end
