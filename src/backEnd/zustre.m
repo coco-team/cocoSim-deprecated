@@ -41,19 +41,25 @@ function Query_time=zustre(lustre_file_name, property_node_names, property_file_
     SOLVER = evalin('base','SOLVER');
 
 	[path file ext] = fileparts(lustre_file_name);
-
+    Query_time.nb_properties_nodes = 0;
+    Query_time.nb_properties_safe = 0;
+    Query_time.nb_properties_unsafe = 0;
+    Query_time.nb_properties_timeout = 0;
+    Query_time.time_safe = 0;
+    Query_time.time_unsafe = 0;
 	if exist(ZUSTRE,'file')
 		% Create a date time value to be used for files post-fixing
 % 		date_value = datestr(now, 'ddmmyyyyHHMMSS');
 		for idx_prop=1:numel(property_node_names)
+            Query_time.nb_properties_nodes = Query_time.nb_properties_nodes +1;
             if exist(smt_file, 'file')
-                command = sprintf('%s "%s" --node %s --xml --cg --s-func %s --timeout 600', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name, smt_file);
+                command = sprintf('%s "%s" --node %s --xml --cg --s-func %s --timeout 1000', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name, smt_file);
             elseif strcmp(SOLVER, 'E')
-                command = sprintf('%s "%s" --node %s --xml --eldarica %s --timeout 600 ', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name, smt_file);
+                command = sprintf('%s "%s" --node %s --xml --eldarica %s --timeout 1000 ', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name, smt_file);
             elseif is_SF
-                 command = sprintf('%s "%s" --node %s --xml  --timeout 60 --save --stateflow', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name);
+                 command = sprintf('%s "%s" --node %s --xml  --timeout 1000 --save --stateflow', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name);
             else
-                command = sprintf('%s "%s" --node %s --xml --cg --timeout 60 --save ', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name);
+                command = sprintf('%s "%s" --node %s --xml --cg --timeout 1000 --save ', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name);
             end
             disp(['ZUSTRE_COMMAND ' command])
             [status, zustre_out] = system(command);
@@ -61,8 +67,7 @@ function Query_time=zustre(lustre_file_name, property_node_names, property_file_
             disp(zustre_out)
             disp('   -- ZUSTRE_OUT --')
 			if status == 0
-				[answer, cex, cocospec, Query_time] = check_zustre_result(zustre_out, property_node_names{idx_prop}.prop_name, property_file_base_name);
-                if strcmp(Query_time,'None'), Query_time=-1; end
+				[answer, cex, cocospec, Query_time_t] = check_zustre_result(zustre_out, property_node_names{idx_prop}.prop_name, property_file_base_name);
                 % Change the observer block display according to answer
 				display = sprintf('color(''black'')\n');
 				display = [display sprintf('text(0.5, 0.5, [''Property: '''''' get_param(gcb,''name'') ''''''''], ''horizontalAlignment'', ''center'');\n')];
@@ -76,15 +81,20 @@ function Query_time=zustre(lustre_file_name, property_node_names, property_file_
 					set_param(property_node_names{idx_prop}.origin_block_name, 'BackgroundColor', 'green');
 					set_param(property_node_names{idx_prop}.origin_block_name, 'ForegroundColor', 'green');
                     assignin('base', [file '_COCOSPEC'], cocospec); % assign a cocospec file
+                    Query_time.nb_properties_safe = Query_time.nb_properties_safe +1;
+                    Query_time.time_safe = Query_time.time_safe + Query_time_t;
                 elseif strcmp(answer, 'TIMEOUT')
 					set_param(property_node_names{idx_prop}.origin_block_name, 'BackgroundColor', 'gray');
 					set_param(property_node_names{idx_prop}.origin_block_name, 'ForegroundColor', 'gray');
+                    Query_time.nb_properties_timeout = Query_time.nb_properties_timeout +1;
 				elseif strcmp(answer, 'UNKNOWN')
 					set_param(property_node_names{idx_prop}.origin_block_name, 'BackgroundColor', 'yellow');
 					set_param(property_node_names{idx_prop}.origin_block_name, 'ForegroundColor', 'yellow');
 				else
 					set_param(property_node_names{idx_prop}.origin_block_name, 'BackgroundColor', 'red');
 					set_param(property_node_names{idx_prop}.origin_block_name, 'ForegroundColor', 'red');
+                    Query_time.nb_properties_unsafe = Query_time.nb_properties_unsafe +1;
+                    Query_time.time_unsafe = Query_time.time_unsafe + Query_time_t;
 					if strcmp(answer, 'CEX') && ~strcmp(cex, '')
 						% Init mat file name
 						mat_file_name = ['config_' property_node_names{idx_prop}.prop_name '.mat'];
@@ -162,7 +172,6 @@ function [answer, cex, cocospec, Query_time] = check_zustre_result(zustre_out, p
                 Query_time_i=-1; 
             else
                 Query_time_i = str2num(Query_time_i);
-
             end
             Query_time = Query_time + Query_time_i;
     		msg = ['Zustre result for property node [' property_node_name ']: ' char(answer)];

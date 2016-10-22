@@ -469,6 +469,7 @@ display_msg(msg, Constants.INFO, 'Traceability', '');
 % Generated files informations
 msg = sprintf('Lustre code generated in file: %s', nom_lustre_file);
 display_msg(msg, Constants.INFO, 'Generation result', '');
+sf2lus_Time = toc(sf2lus_start);
 
 %%%%%%%%%%%%% Code Generation %%%%%%%%%%%%%
 if RUST_GEN
@@ -562,7 +563,6 @@ end
 
 t_end = now;
 t_compute = t_end - t_start;
-sf2lus_Time = toc(sf2lus_start);
 display_msg(['Total computation time: ' datestr(t_compute, 'HH:MM:SS.FFF')], Constants.INFO, 'Time', '');
 
 end
