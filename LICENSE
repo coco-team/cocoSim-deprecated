@@ -1,12 +1,45 @@
-cocoSim is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+CoCoSim Automated Analysis Framework
+Copyright (c) 2016 Carnegie Mellon University.
+All Rights Reserved.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
 
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+1. Redistributions of source code must retain the above copyright
+notice, this list of conditions and the following acknowledgments and
+disclaimers.
+
+2. Redistributions in binary form must reproduce the
+above copyright notice, this list of conditions and the following
+acknowledgments and disclaimers in the documentation and/or other
+materials provided with the distribution.
+
+3. Products derived from this software may not include “Carnegie
+Mellon University,”  in the name of such derived product,
+nor shall “Carnegie Mellon University,” be used to
+endorse or promote products derived from this software without prior
+written permission.
+
+
+ACKNOWLEDGMENTS AND DISCLAIMERS:
+
+Copyright 2016 Carnegie Mellon University
+
+This material is based upon work funded and supported by
+NASA NRA Contract No. NNX14AI09G and NSF Award No. 1422705.
+
+Any opinions, findings and conclusions or recommendations expressed in
+this material are those of the author(s) and do not necessarily
+reflect the views of NASA nor NSF.
+
+NO WARRANTY. THIS CARNEGIE MELLON UNIVERSITY AND SOFTWARE ENGINEERING
+INSTITUTE MATERIAL IS FURNISHED ON AN “AS-IS” BASIS. CARNEGIE MELLON
+UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER EXPRESSED OR
+IMPLIED, AS TO ANY MATTER INCLUDING, BUT NOT LIMITED TO, WARRANTY OF
+FITNESS FOR PURPOSE OR MERCHANTABILITY, EXCLUSIVITY, OR RESULTS
+OBTAINED FROM USE OF THE MATERIAL. CARNEGIE MELLON UNIVERSITY DOES NOT
+MAKE ANY WARRANTY OF ANY KIND WITH RESPECT TO FREEDOM FROM PATENT,
+TRADEMARK, OR COPYRIGHT INFRINGEMENT.
+
+
