@@ -1,9 +1,14 @@
-function [variables, outputs] = add_variables(extern_nodes_header_return,firstAction, variables_struct, isOutput, global_node)
+function [variables, outputs] = add_variables(extern_nodes_header_return,firstAction, variables_struct, isOutput, global_node, variables_struct_old)
     if ~exist('global_node','var')
         global_node = false;
     end
     if ~exist('isOutput','var')
         isOutput = false;
+    end
+    to_start_from = true;
+    if ~exist('variables_struct_old','var')
+        variables_struct_old = variables_struct;
+        to_start_from = false;
     end
     variables = '';
     outputs = '';
@@ -30,6 +35,8 @@ function [variables, outputs] = add_variables(extern_nodes_header_return,firstAc
         vars = {};
         if global_node
             start = 1;
+        elseif to_start_from
+            start = variables_struct_old(data_index).index + 1;
         else
             start = 2;
         end

@@ -181,7 +181,10 @@ for i=1:N %N:-1:1
             fprintf('Start generating automaton code of state: "%s" with unique name :"%s"\n',states(i).Name, get_full_name(states(i)));
         end
         try
-            [state_node, global_nodes_struct, ext_nodes] = write_state_node(chart_or_fun, data, states(i), isStateflowFunction, variables_struct, global_nodes_struct);
+            state_node_obj = write_state_node(chart_or_fun, data, states(i), isStateflowFunction, variables_struct, global_nodes_struct);
+            state_node = state_node_obj.state_node;
+            global_nodes_struct = state_node_obj.global_nodes_struct;
+            ext_nodes = state_node_obj.external_nodes;
         catch ME
             msg = sprintf('write_state_node level for chart : "%s" and state name : "%s"',chart_or_fun.Name, get_full_name(states(i)));
             causeException = MException('MATLAB:myCode:action',msg);
@@ -197,7 +200,10 @@ if Debug
     fprintf('Start generating automaton code of chart: "%s"\n',chart_or_fun.Name);
 end
 try
-    [state_node, global_nodes_struct, ext_nodes] = write_state_node(chart_or_fun, data, chart_or_fun, isStateflowFunction, variables_struct, global_nodes_struct);
+    state_node_obj= write_state_node(chart_or_fun, data, chart_or_fun, isStateflowFunction, variables_struct, global_nodes_struct);
+    state_node = state_node_obj.state_node;
+    global_nodes_struct = state_node_obj.global_nodes_struct;
+    ext_nodes = state_node_obj.external_nodes;
 catch ME
     msg = sprintf('write_state_node level for chart : "%s" ',chart_or_fun.Name);
     causeException = MException('MATLAB:myCode:stateNode',msg);

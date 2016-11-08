@@ -20,6 +20,7 @@
 
 function [valid, sf2lus_time, validation_compute, nb_actions, lus_file_path, Query_time]=validate_model(model_full_path,cocoSim_path, show_models,L)
 bdclose('all')
+open(model_full_path);
 if ~exist('show_models', 'var')
     show_models = 0;
 end
@@ -29,7 +30,7 @@ end
 addpath(fullfile(cocoSim_path,'src/'));
 addpath(fullfile(cocoSim_path,'src/utils/'));
 config;
-assignin('base', 'SOLVER', 'Z');
+assignin('base', 'SOLVER', 'NONE');
 assignin('base', 'RUST_GEN', 0);
 assignin('base', 'C_GEN', 0);
 
