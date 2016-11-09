@@ -20,8 +20,6 @@ CoCoSim can be installed and use as follows:
 * [Zustre](https://github.com/lememta/zustre) 
 * (Optional) [JKind](https://github.com/agacek/jkind) -- Best for Windows OS users
 * (Optional) [Kind2](http://kind2-mc.github.io/kind2/)
-* (Optional) [SeaHorn](http://seahorn.github.io/) -- Experimental
-* (Optional) [Eldarica](https://github.com/uuverifiers/eldarica) -- Exerimental
 * Python2.7
 
 ### Configuration ###
@@ -48,9 +46,10 @@ CoCoSim can be installed and use as follows:
 ### Example ###
 
 1. To test a safe property: `open test/properties/property_2_test.mdl`
-2. Under the `Tools` menu choose `Verify with CoCoSim` and then `Zustre` (or JKind if you are under Windows OS).
+2. Under the `Tools` menu choose `Verify with ...` and then `Zustre` (or JKind if you are under Windows OS).
 
-2. To test an unsafe property (which also provide a counterexample): `open test/properties/property_3_unsafe_test.mdl`
+2. To test an unsafe property (which also provide a counterexample):
+   `open test/properties/property_3_unsafe_test.mdl`
 
 More information about CoCoSim can be found [here](https://github.com/coco-team/cocoSim/wiki/CoCoSim)
 
