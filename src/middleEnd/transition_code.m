@@ -1,3 +1,8 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This file is part of CoCoSim.
+% Copyright (C) 2014-2016  Carnegie Mellon University
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %this function help to creat a full path of transitions in case of
 %junctions.
 function [code, output_updated, variables_struct_new, node_struct] = transition_code(chart, data, Parentstate, transitions, first_cond_should_be_printed, variables_struct, node_struct, global_nodes_struct, old_variables_struct)

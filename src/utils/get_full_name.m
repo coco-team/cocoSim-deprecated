@@ -1,3 +1,8 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This file is part of CoCoSim.
+% Copyright (C) 2014-2016  Carnegie Mellon University
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 function [ object_full_name ] = get_full_name( object,isChart )
 %GET_FULL_NAME Summary of this function goes here
 %   Detailed explanation goes here

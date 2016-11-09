@@ -1,3 +1,8 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This file is part of CoCoSim.
+% Copyright (C) 2014-2016  Carnegie Mellon University
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % This function implement Tim Wang's algorithm description as provided in the NASA 2013 Summer report by Dieumegard, Feron, Garoche, Kahsai, Wang, Tailliar
 
 function [new_block] = ztransform(container, block_name)

@@ -1,22 +1,6 @@
-
-% CoCoSim: A framework for formal analysis of Simulink models
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % This file is part of cocoSim.
-% Copyright (C) 2014-2015  Carnegie Mellon University
-% Original contribution from ONERA
-%
-%    cocoSim  is free software: you can redistribute it
-%    and/or modify it under the terms of the GNU General Public License as
-%    published by the Free Software Foundation, either version 3 of the
-%    License, or (at your option) any later version.
-%
-%    cocoSim compiler + verifier is distributed in the hope that it will be useful,
-%    but WITHOUT ANY WARRANTY; without even the implied warranty of
-%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-%    GNU General Public License for more details.
-%
-%    You should have received a copy of the GNU General Public License
+% Copyright (C) 2014-2016  Carnegie Mellon University
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function [nom_lustre_file, sf2lus_Time, nb_actions]=cocoSim(model_full_path, const_files, default_Ts, trace, dfexport)
@@ -532,26 +516,9 @@ if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
         end
     end
 else
-%     OldPwd = pwd;
-%     cd(output_dir);
-%     command = sprintf('lustrec -horn %s',nom_lustre_file);
-%     [status, lustre_out] = system(command);
-%     cd(OldPwd);
-%     if status
-%         msq = sprintf('lustrec failed for model "%s" :\n%s',file_name,lustre_out);
-%         display_msg(msq, Constants.ERROR, 'lustrec -horn', '');
-%     end
 end
 
 %%%%%%%%%%%% Cleaning and end of operations %%%%%%%%%%
-
-% Close all systems inclusing the referenced ones (only if no modification
-% have been done in the verification phase
-% if numel(property_node_names) == 0
-%     for idx_model=1:numel(models)
-%         close_system(models{idx_model});
-%     end
-% end
 
 % Temporary files cleaning
 display_msg('Cleaning temporary files', Constants.INFO, 'cocoSim', '');
@@ -568,7 +535,7 @@ end
 
 function display_help_message()
 msg = [ ' -----------------------------------------------------  \n'];
-msg = [msg '  CoCoSim: A framework for the formal analysis of Simulink models\n'];
+msg = [msg '  CoCoSim: Automated Analysis Framework for Simulink/Stateflow\n'];
 msg = [msg '   \n Usage:\n'];
 msg = [msg '    >> cocoSim(MODEL_PATH, [MAT_CONSTANTS_FILES], [TIME_STEP], [TRACE])\n'];
 msg = [msg '\n'];
@@ -592,25 +559,9 @@ end
 
 
 function launch_display_msg(model_full_path)
-msg = {};
-msg = ['Welcome to the CocoSim verification framework\n'];
-msg = [msg 'cocoSim is free software: you can redistribute it\n'];
-msg = [msg 'and/or modify it under the terms of the GNU General Public License as \n'];
-msg = [msg 'published by the Free Software Foundation, either version 3 of\n'];
-msg = [msg 'the License, or (at your option) any later version.\n'];
-msg = [msg '\n'];
-msg = [msg 'cocoSim is distributed in the hope that it will be\n'];
-msg = [msg 'useful, but WITHOUT ANY WARRANTY; without even the implied warranty of\n'];
-msg = [msg 'MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU\n'];
-msg = [msg 'General Public License for more details.\n'];
-msg = [msg '\n'];
-msg = [msg 'You should have received a copy of the GNU General Public License.'];
-
+msg = {'Welcome to the CocoSim Automated Analysis Framework'};
 display_msg(msg, Constants.INFO, 'cocoSim', '');
-
-msg = '';
 msg = sprintf('Generating Lustre code ... : %s', model_full_path);
-
 display_msg(msg, Constants.INFO, 'cocoSim', '');
 end
 

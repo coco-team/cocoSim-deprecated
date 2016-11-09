@@ -1,3 +1,8 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This file is part of CoCoSim.
+% Copyright (C) 2014-2016  Carnegie Mellon University
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 function [state_node, global_nodes_struct, external_nodes] = write_state_node(chart,data, state, isFunction, variables_struct, global_nodes_struct,xml_trace)
     % construct automaton node of every state with sub-states.
     isChart = strcmp(get_full_name(chart),get_full_name(state));
