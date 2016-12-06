@@ -16,13 +16,6 @@
 %    You should have received a copy of the GNU General Public License
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% Function block
-%
-% Outputs the content of the Fcn fun_expr value to a .m file to be used
-% with Matlab. The backend will then print a call to a new node and print a
-% node containing the link to the .m file in an annotation:
-% --!MATLAB_Code ''<block_name>.m'''
-%
 %% Generation scheme
 % We take the example of a Fcn block with an input as a vector of 2
 % elements of type double
@@ -32,7 +25,7 @@
 %  node blockname (u: real^2)
 %  returns (out: real)
 %  let
-%    --!MATLAB_Code 'block_name.m'
+%    out  = Fun_label;
 %  tel
 %
 %%% The additional variables definition
@@ -48,8 +41,8 @@
 %
 %% Code
 %
-function [output_string ext_node ext_matlab_function add_vars] = write_function_block(unbloc, inter_blk, fun_expr, xml_trace)
-
+function [output_string, ext_node, add_vars,external_math_functions] = write_function_block(unbloc, inter_blk, fun_expr, xml_trace)
+external_math_functions = [];
 output_string = '';
 ext_node = '';
 add_vars = '';
@@ -129,13 +122,60 @@ end
 % Write external node
 ext_node = sprintf('node %s (', node_call_name);
 ext_node = app_sprintf(ext_node, 'u: %s)\n', in_var_print_dt);
-ext_node = app_sprintf(ext_node, 'returns (out: %s)\n', out_var_print_dt);
+ext_node = app_sprintf(ext_node, 'returns (out: %s);\n', out_var_print_dt);
 
-comment_string = sprintf('\t--!MATLAB_Code ''%s.m''', node_call_name);
-ext_node = app_sprintf(ext_node, 'let\n%s\ntel\n', comment_string);
+expression = '(\n|\.{3}|/\*(\s*\w*\W*\s*)*\*/)';
+replace = '';
+label_mod = regexprep(fun_expr,expression,replace);
+expression = 'u\((\d*)\)';
+replace = 'u\[$1\]';
+label_mod = regexprep(label_mod,expression,replace);
+%in lustre arrays start with 0 as in C,
+for i=1:numel(list_in)
+    expression = strcat('u\[',num2str(i),'\]');
+    replace = strcat('u\[',num2str(i-1),'\]');
+    label_mod = regexprep(label_mod,expression,replace);
+end
+expression = '={2}';
+replace = '=';
+label_mod = regexprep(label_mod,expression,replace);
 
-ext_matlab_function.name = [node_call_name '.m'];
-body = sprintf('function [out] = %s (u)\n\tout = %s;\nend', node_call_name, fun_expr);
-ext_matlab_function.body = body;
+expression = '\|\|';
+replace = 'or';
+label_mod = regexprep(label_mod,expression,replace);
+expression = '&&';
+replace = 'and';
+label_mod = regexprep(label_mod,expression,replace);
+expression = '(!)([^=]\w*)';
+replace = ' not $2';
+label_mod = regexprep(label_mod,expression,replace);
+
+expression = '(^|[^a-zA-Z_\[\.])(\d+)((?=$)|[^a-zA-Z_\.\]])';
+replace = '$1$2.0$3';
+label_mod = regexprep(label_mod,expression,replace);
+expression = 'power\(';
+replace = 'pow\(';
+label_mod = regexprep(label_mod,expression,replace);
+if ~isempty(strfind(fun_expr,'acos')) || ~isempty(strfind(fun_expr,'acosh')) || ~isempty(strfind(fun_expr,'asin')) || ~isempty(strfind(fun_expr,'asinh')) ...
+                    || ~isempty(strfind(fun_expr,'atan')) || ~isempty(strfind(fun_expr,'atan2')) || ~isempty(strfind(fun_expr,'atanh')) || ~isempty(strfind(fun_expr,'cos'))...
+                    || ~isempty(strfind(fun_expr,'cosh')) || ~isempty(strfind(fun_expr,'ceil')) || ~isempty(strfind(fun_expr,'erf')) || ~isempty(strfind(fun_expr,'cbrt'))...
+                    || ~isempty(strfind(fun_expr,'fabs')) || ~isempty(strfind(fun_expr,'pow')) || ~isempty(strfind(fun_expr,'sin')) || ~isempty(strfind(fun_expr,'sinh'))...
+                    || ~isempty(strfind(fun_expr,'sqrt'))
+                external_math_functions = [external_math_functions, struct('Name','lustre_math_fun','Type','function')];
+end
+if ~isempty(strfind(fun_expr,'&&')) || ~isempty(strfind(fun_expr,'||')) || ~isempty(strfind(fun_expr,'!'))...
+        || ~isempty(strfind(fun_expr,'==')) || ~isempty(strfind(fun_expr,'!=')) || ~isempty(strfind(fun_expr,'>')) || ~isempty(strfind(fun_expr,'<'))
+    
+    ext_node = app_sprintf(ext_node, 'var expr:bool;\n');
+    code = ['expr = ', label_mod, ';\n\tout = if expr then 1.0 else 0.0;'];
+else
+    code = ['out = ', label_mod, ';'];
+end
+% comment_string = sprintf('\t--!MATLAB_Code ''%s.m''', node_call_name);
+ext_node = app_sprintf(ext_node, 'let\n\t%s\ntel\n', code);
+
+
+
+
 
 end

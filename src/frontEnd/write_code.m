@@ -15,7 +15,7 @@
 %
 %    You should have received a copy of the GNU General Public License
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [output_string, extern_s_functions_string, extern_functions, properties_nodes, additional_variables, property_node_names, extern_matlab_functions, c_code] = ... 
+function [output_string, extern_s_functions_string, extern_functions, properties_nodes, additional_variables, property_node_names, extern_matlab_functions, c_code,external_math_functions] = ... 
     write_code(nblk, inter_blk, blks, main_blks, main_blk, nom_lustre_file, idx_subsys, print_node, trace, xml_trace)
 
 output_string = '';
@@ -30,12 +30,21 @@ c_code = '';
 pre_annot = '';
 post_annot = '';
 property_node_names = {};
+external_math_functions = [];
 
 for idx_block=1:nblk
+%     display(inter_blk{idx_block}.type)
 	block_string = '';
 	extern_funs = {};
 	var_str = '';
-
+    is_Chart = false;
+    if strcmp(inter_blk{idx_block}.type, 'SubSystem')
+        sf_sub = get_param(inter_blk{idx_block}.annotation, 'SFBlockType');
+        if strcmp(sf_sub, 'Chart')
+            is_Chart = true;
+        end
+    end
+%     display(inter_blk{idx_block}.type);
 	%%%%%%%%%%% Gain %%%%%%%%%%%%%%%%%%%%%%
 	if strcmp(inter_blk{idx_block}.type, 'Gain')
 		K = evalin('base', get_param(blks{idx_block}, 'Gain'));
@@ -105,7 +114,10 @@ for idx_block=1:nblk
 	elseif strcmp(inter_blk{idx_block}.type, 'DiscreteIntegrator')
 
 		K = evalin('base', get_param(blks{idx_block}, 'gainval'));
-		T = evalin('base', inter_blk{idx_block}.sample_time);
+        T = evalin('base', get_param(blks{idx_block}, 'SampleTime'));
+        if strcmp(T,'-1')
+            T = evalin('base', inter_blk{idx_block}.sample_time);
+        end
 		% The initial condition is defined unsing an external constant block
 		if strcmp(get_param(inter_blk{idx_block}.origin_name, 'InitialConditionSource'), 'external')
 			vinit = '';
@@ -114,7 +126,7 @@ for idx_block=1:nblk
 		end
 		external_reset =  get_param(blks{idx_block}, 'ExternalReset');
 
-		block_string = write_discreteintegrator(inter_blk{idx_block}, K, external_reset, T, vinit, inter_blk);
+		[block_string, var_str] = write_discreteintegrator(inter_blk{idx_block}, K, external_reset, T, vinit, inter_blk);
 
 	%%%%%%%%%%%%%%%% Sum %%%%%%%%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'Sum')
@@ -145,7 +157,9 @@ for idx_block=1:nblk
 
 		mode = get_param(blks{idx_block}, 'Mode');
 		dim = get_param(blks{idx_block}, 'ConcatenateDimension');
-
+%         display(inter_blk{idx_block})
+%         display(mode)
+%         display(dim)
 		block_string = write_concatenate(inter_blk{idx_block}, mode, dim, inter_blk);
 		
 	%%%%%%%%%%%%%%%%%%% MultiPortSwitch %%%%%%%%%%%%%
@@ -174,21 +188,18 @@ for idx_block=1:nblk
 		dss_D = evalin('base', get_param(blks{idx_block}, 'D'));
 		X0 = evalin('base', get_param(blks{idx_block}, 'X0'));
 
-		[block_string var_str] = write_dss(inter_blk{idx_block}, dss_A, dss_B, dss_C,dss_D, X0, inter_blk, xml_trace);
+		[block_string, var_str] = write_dss(inter_blk{idx_block}, dss_A, dss_B, dss_C,dss_D, X0, inter_blk, xml_trace);
 
 	%%%%%%%%%%%%%%%% Function %%%%%%%%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'Fcn')
         
 		fun_expr = get_param(blks{idx_block},'Expr');
 
-		[block_string ext_node ext_matlab_function var_str] = write_function_block(inter_blk{idx_block}, inter_blk, fun_expr, xml_trace);
-
-		extern_matlab_functions{numel(extern_matlab_functions)+1} = ext_matlab_function;
-		extern_s_functions_string = [extern_s_functions_string ext_node];
-		
+		[block_string, ext_node, var_str, external_math_functions_i] = write_function_block(inter_blk{idx_block}, inter_blk, fun_expr, xml_trace);
+		extern_s_functions_string = [extern_s_functions_string, ext_node];
+		 external_math_functions = [external_math_functions, external_math_functions_i];
 	%%%%%%%%%%%%% Saturation %%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'Saturate')
-        
 		sat_min = get_param(blks{idx_block},'LowerLimit');
 		sat_max = get_param(blks{idx_block},'UpperLimit');
 		rndmeth = get_param(blks{idx_block}, 'RndMeth');
@@ -219,13 +230,20 @@ for idx_block=1:nblk
 	        
 	%%%%%%%%%%%%% UnitDelay %%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'UnitDelay')
-        
+%         display(inter_blk{idx_block})
 		init = get_param(blks{idx_block}, 'X0');
         init = evalin('base', init);
 		Ts = get_param(blks{idx_block}, 'SampleTime');
 
 		block_string = write_unitdelay(inter_blk{idx_block}, init, Ts, inter_blk);
 		
+    %%%%%%%%%%%%% Delay %%%%%%%%%%%%%
+	elseif strcmp(inter_blk{idx_block}.type, 'Delay')
+        
+		init = get_param(blks{idx_block}, 'X0');
+        init = evalin('base', init);
+        delay_length = get_param(blks{idx_block}, 'DelayLength');
+		block_string = write_delay(inter_blk{idx_block}, init, delay_length, inter_blk);
 	%%%%%%%%%%%%% Memory %%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type,'Memory')
         
@@ -239,7 +257,7 @@ for idx_block=1:nblk
 
 		Kvalue = evalin('base', get_param(blks{idx_block}, 'Value'));
 
-      block_string = write_constant(nom_lustre_file, inter_blk{idx_block}, inter_blk, Kvalue);
+      [block_string,var_str] = write_constant(nom_lustre_file, inter_blk{idx_block}, inter_blk, Kvalue);
 		
 	%%%%%%%%%%% DataTypeConversion %%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'DataTypeConversion')
@@ -256,7 +274,7 @@ for idx_block=1:nblk
 
 		tag_value = get_param(blks{idx_block}, 'GotoTag');
 		   
-      [block_string var_str] = write_goto_from(inter_blk{idx_block}, inter_blk, tag_value, xml_trace);
+      [block_string, var_str] = write_goto_from(inter_blk{idx_block}, inter_blk, tag_value, xml_trace);
 		
 	%%%%%%%%%%%%% Merge %%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'Merge')
@@ -305,7 +323,7 @@ for idx_block=1:nblk
 	%%%%%%%%%%%%% DotProduct %%%%%%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'DotProduct')
 
-		[block_string var_str] = write_dotproduct(inter_blk{idx_block}, inter_blk, xml_trace);
+		[block_string, var_str] = write_dotproduct(inter_blk{idx_block}, inter_blk, xml_trace);
 		
 	%%%%%%%%%%%%% Maths function & Sqrt %%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'Math') || strcmp(inter_blk{idx_block}.type, 'Sqrt')
@@ -480,7 +498,7 @@ for idx_block=1:nblk
 	%%%%%%%%%%%%%%%%% SubSystem %%%%%%%%%%%%%%%%%%%%%%%%
 	% Print SubSystem as a node call only if it is not the first of the list (aka the current SubSystem)
 
-    elseif (strcmp(inter_blk{idx_block}.type, 'SubSystem') || strcmp(inter_blk{idx_block}.type, 'ModelReference')) && not(idx_block == 1)
+    elseif (strcmp(inter_blk{idx_block}.type, 'SubSystem') || strcmp(inter_blk{idx_block}.type, 'ModelReference')) && (not(idx_block == 1) || is_Chart)
            
 		mask = get_param(blks{idx_block}, 'Mask');
 
@@ -530,7 +548,6 @@ for idx_block=1:nblk
                     [block_string, var_str] = write_compareto(inter_blk{idx_block}, inter_blk, relop, const, outdtstr, xml_trace);
 
                 else
-                    
 					error_msg = ['Unhandled masked block: ' inter_blk{idx_block}.origin_name{1}];
 					error_msg = [error_msg '\nMask type: ' inter_blk{idx_block}.mask_type];
 					display_msg(error_msg, Constants.ERROR, 'write_code', '');
@@ -543,16 +560,16 @@ for idx_block=1:nblk
 				annot_type = get_param(blks{idx_block}, 'AnnotationType');
 				observer_type = get_param(blks{idx_block}, 'ObserverType');
                 try
-                    [property_node extern_funs property_name] = write_property(inter_blk{idx_block}, ...
+                    [property_node, ext_node, extern_funs, property_name,external_math_functions_i] = write_property(inter_blk{idx_block}, ...
                         inter_blk, main_blk, main_blks, nom_lustre_file, print_node, trace, annot_type, observer_type, xml_trace);
                 
                      properties_nodes = [properties_nodes property_node];
-            
+                     extern_s_functions_string = [extern_s_functions_string, ext_node];
                      nb = numel(property_node_names)+1;
                      property_node_names{nb}.prop_name = property_name;
 				     property_node_names{nb}.origin_block_name = inter_blk{idx_block}.origin_name{1};
 				     property_node_names{nb}.annotation = inter_blk{idx_block}.annotation;
-                     
+                     external_math_functions = [external_math_functions, external_math_functions_i];
                 catch ME
                     disp(ME.message)
                    if strcmp(ME.identifier, 'MATLAB:badsubscript')
@@ -576,6 +593,8 @@ for idx_block=1:nblk
 
 				block_string = write_crossproduct(inter_blk{idx_block}, inter_blk);
 				                
+            elseif strcmp(inter_blk{idx_block}.mask_type, 'Create 3x3 Matrix')
+                block_string = write_3x3_Matrix(inter_blk{idx_block}, inter_blk);
 			else
 				error_msg = ['Unhandled masked block: ' inter_blk{idx_block}.origin_name{1}];
 				error_msg = [error_msg '\nMask type: ' inter_blk{idx_block}.mask_type];
@@ -585,8 +604,9 @@ for idx_block=1:nblk
 		%%%%%%%%%%%%%%%%%% Classical SubSystem %%%%%%%%%%%%
 		elseif inter_blk{idx_block}.num_output ~= 0
             
-			[block_string var_str] = write_subsystem(inter_blk{idx_block}, inter_blk, main_blk, xml_trace);
-    
+            [block_string, var_str] = write_subsystem(inter_blk{idx_block}, inter_blk, main_blk, xml_trace);
+%             display(inter_blk{idx_block}.origin_name{1});
+%             display(block_string);
 		end
 
 	%%%%%%%%%%%%%%%%%% Outport %%%%%%%%%%%%%%%%%%%
@@ -615,7 +635,13 @@ for idx_block=1:nblk
 		data = evalin('base', get_param(blks{idx_block}, 'VariableName'));
 
 		block_string = write_fromworkspace(inter_blk{idx_block}, inter_blk, data);
-		
+        
+	%%%%%%%%%%%%%%%%%% SignalConversion %%%%%%%%%%%%%%%%%
+	elseif strcmp(inter_blk{idx_block}.type, 'SignalConversion')
+        block_string = write_SignalConversion(inter_blk{idx_block}, inter_blk);
+		error_msg = [' SignalConversion block could be not well translated.\n'];
+        display_msg(error_msg, Constants.WARNING, 'write_code', '');
+
 	%%%%%%%%%%%%%%%%%% Lookup %%%%%%%%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'Lookup')
 
@@ -656,7 +682,7 @@ for idx_block=1:nblk
 		block_type = inter_blk{idx_block}.type{1};
 		error_msg = ['Block backend not implemented for block type: ' block_type];
 		error_msg = [error_msg '\n' inter_blk{idx_block}.origin_name{1}];
-		display_msg(error_msg, 3, 'write_code', '');
+		display_msg(error_msg, 2, 'write_code', '');
 
 	end
 

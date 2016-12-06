@@ -86,19 +86,16 @@ function conversion = compute_conversion(block)
 
 	%%%%%%%%%%%%% Discrete intgrator %%%%%%%%%%%%%
 	elseif strcmp(block.type, 'DiscreteIntegrator')
-		%K = eval(get_param(blks{idx_block}, 'gainval'));
-		%T = eval(block.sample_time);
-		conversion{1} = 'double';
+		conversion{1} = block.outports_dt{1};
 		external_reset = get_param(block.origin_name, 'ExternalReset');
 		ic_source = get_param(block.origin_name, 'InitialConditionSource');
-		
 		if ~strcmp(external_reset, 'none') && strcmp(ic_source, 'external')
-			conversion{2} = 'boolean';
-			conversion{3} = 'double';
+			conversion{2} = block.inports_dt{2};
+			conversion{3} = block.inports_dt{3};
 		elseif ~strcmp(external_reset, 'none')
-			conversion{2} = 'boolean';
+			conversion{2} = block.inports_dt{2};
 		elseif strcmp(ic_source, 'external')
-			conversion{2} = 'double';
+			conversion{2} = block.inports_dt{2};
 		end
 
 	%%%%%%%%%%%%%%%% SUM %%%%%%%%%%%%%%%%%%%
@@ -131,7 +128,7 @@ function conversion = compute_conversion(block)
 	elseif strcmp(block.type,'Fcn')
 		%fun_expr= get_param(blks{idx_block},'Expr');
 		for idx_in=1:numel(block.inports_dt)
-			conversion{idx_in} = 'no';
+			conversion{idx_in} = 'double';
 		end
 		
 	%%%%%%%%%%%%% Saturation %%%%%%%%%%%%%
@@ -218,8 +215,14 @@ function conversion = compute_conversion(block)
   
 	%%%%%%%%%%%%% Maths function %%%%%%%%%%%%%
 	elseif strcmp(block.type,'Math')
+        math_op = get_param(block.origin_name, 'Operator');
+        if strcmp(math_op, 'sqrt') || strcmp(math_op, 'rSqrt') || strcmp(math_op, 'signedSqrt')
+            dt = 'double';
+        else
+            dt = block.outports_dt{1};
+        end
 		for idx_in=1:numel(block.inports_dt)
-			conversion{idx_in} = block.outports_dt{1};
+			conversion{idx_in} =dt;
 		end
 
 	%%%%%%%%%%%% Sqrt %%%%%%%%%%%%%%%%%%%
@@ -311,6 +314,10 @@ function conversion = compute_conversion(block)
 					conversion{1} = block.outports_dt{1};
 					conversion{2} = block.outports_dt{1};
              
+                elseif strcmp(block.mask_type,'Create 3x3 Matrix') 
+                    for idx_in=1:numel(block.inports_dt)
+                        conversion{idx_in} = block.outports_dt{1};
+                    end
             else
                 msg = ['Data type conversion mechanism not supported for block: ' block.mask_type];
                 display_msg(msg, Constants.ERROR, 'blocks_dt_conversion', '');
@@ -383,8 +390,8 @@ function conversion = compute_conversion(block)
 
 	%%%%%%%%%%%%%%%% TriggerPort %%%%%%%%%%%%
 	elseif strcmp(block.type, 'TriggerPort')
-
-	%%%%%%%%%%%%%%%% EnablePort %%%%%%%%%%%%
+ 
+    %%%%%%%%%%%%%%%% EnablePort %%%%%%%%%%%%
 	elseif strcmp(block.type, 'EnablePort')
 
 	%%%%%%%%%%%%%%%% BusSelector %%%%%%%%%%%%%%%%%%
@@ -401,11 +408,17 @@ function conversion = compute_conversion(block)
 	elseif strcmp(block.type, 'BusAssignment')
 		for idx=1:block.num_input
 			conversion{idx} = 'no';
+        end
+        
+    %%%%%%%%%%%%% SignalConversion %%%%%%%%%%%%%
+	elseif strcmp(block.type,'SignalConversion') 
+		for idx_in=1:numel(block.inports_dt)
+			conversion{idx_in} = block.outports_dt{1};
 		end
-
 	%%%%%%%%%%%%%%%%%% Blocks with nothing specific to do %%%%%%%%%%%%%%%%%%%
 	elseif strcmp(block.type, 'Inport') || strcmp(block.type, 'ToWorkspace') || strcmp(block.type, 'Terminator') || strcmp(block.type, 'Scope') || strcmp(block.type, 'From') || strcmp(block.type, 'FromWorkspace')
-
+    
+    
 	else
 		msg = ['Data type conversion mechanism not supported for block: ' block.type{1}];
 		display_msg(msg, Constants.WARNING, 'blocks_dt_conversion', '');

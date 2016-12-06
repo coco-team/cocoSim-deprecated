@@ -1,0 +1,4222 @@
+Model {
+  Name			  "DA1"
+  Version		  8.7
+  MdlSubVersion		  1
+  SavedCharacterEncoding  "UTF-8"
+  GraphicalInterface {
+    NumRootInports	    13
+    Inport {
+      Name		      "GroundTrack_OrbitalPosition"
+      BusObject		      ""
+      OutputFunctionCall      "off"
+      UnitExpr		      "inherit"
+    }
+    Inport {
+      Name		      "GroundTrack_OrbitalVelocity"
+      BusObject		      ""
+      OutputFunctionCall      "off"
+      UnitExpr		      "inherit"
+    }
+    Inport {
+      Name		      "dockVisibility_status"
+      BusObject		      ""
+      OutputFunctionCall      "off"
+      UnitExpr		      "inherit"
+    }
+    Inport {
+      Name		      "opticsAvailability_status"
+      BusObject		      ""
+      OutputFunctionCall      "off"
+      UnitExpr		      "inherit"
+    }
+    Inport {
+      Name		      "sunlight_status"
+      BusObject		      ""
+      OutputFunctionCall      "off"
+      UnitExpr		      "inherit"
+    }
+    Inport {
+      Name		      "GPS_satelliteVisibility_status"
+      BusObject		      ""
+      OutputFunctionCall      "off"
+      UnitExpr		      "inherit"
+    }
+    Inport {
+      Name		      "GPS_receiverAvailability_status"
+      BusObject		      ""
+      OutputFunctionCall      "off"
+      UnitExpr		      "inherit"
+    }
+    Inport {
+      Name		      "StarPlanetTracker_planetVisibility"
+      BusObject		      ""
+      OutputFunctionCall      "off"
+      UnitExpr		      "inherit"
+    }
+    Inport {
+      Name		      "StarPlanetTracker_starVisibility"
+      BusObject		      ""
+      OutputFunctionCall      "off"
+      UnitExpr		      "inherit"
+    }
+    Inport {
+      Name		      "InertialNavigation_time"
+      BusObject		      ""
+      OutputFunctionCall      "off"
+      UnitExpr		      "inherit"
+    }
+    Inport {
+      Name		      "GroundTrack_Time"
+      BusObject		      ""
+      OutputFunctionCall      "off"
+      UnitExpr		      "inherit"
+    }
+    Inport {
+      Name		      "RealTimeClock_time"
+      BusObject		      ""
+      OutputFunctionCall      "off"
+      UnitExpr		      "inherit"
+    }
+    Inport {
+      Name		      "StageTransition"
+      BusObject		      ""
+      OutputFunctionCall      "off"
+      UnitExpr		      "inherit"
+    }
+    NumRootOutports	    9
+    Outport {
+      Name		      "CaptureApproachComplete"
+      BusObject		      ""
+      BusOutputAsStruct	      "off"
+      UnitExpr		      "inherit"
+    }
+    Outport {
+      Name		      "DockingApproachComplete"
+      BusObject		      ""
+      BusOutputAsStruct	      "off"
+      UnitExpr		      "inherit"
+    }
+    Outport {
+      Name		      "AttemptingToDock"
+      BusObject		      ""
+      BusOutputAsStruct	      "off"
+      UnitExpr		      "inherit"
+    }
+    Outport {
+      Name		      "LatchCaptureComplete"
+      BusObject		      ""
+      BusOutputAsStruct	      "off"
+      UnitExpr		      "inherit"
+    }
+    Outport {
+      Name		      "ApproachOrbitComplete"
+      BusObject		      ""
+      BusOutputAsStruct	      "off"
+      UnitExpr		      "inherit"
+    }
+    Outport {
+      Name		      "FarApproachComplete"
+      BusObject		      ""
+      BusOutputAsStruct	      "off"
+      UnitExpr		      "inherit"
+    }
+    Outport {
+      Name		      "ProximityOperationsComplete"
+      BusObject		      ""
+      BusOutputAsStruct	      "off"
+      UnitExpr		      "inherit"
+    }
+    Outport {
+      Name		      "FailedApproach"
+      BusObject		      ""
+      BusOutputAsStruct	      "off"
+      UnitExpr		      "inherit"
+    }
+    Outport {
+      Name		      "JointMission"
+      BusObject		      ""
+      BusOutputAsStruct	      "off"
+      UnitExpr		      "inherit"
+    }
+    ParameterArgumentNames  ""
+    ComputedModelVersion    "1.492"
+    NumModelReferences	    0
+    NumTestPointedSignals   0
+    NumProvidedFunctions    0
+    NumRequiredFunctions    0
+  }
+  ScopeRefreshTime	  0.035000
+  OverrideScopeRefreshTime off
+  DisableAllScopes	  off
+  DataTypeOverride	  "UseLocalSettings"
+  DataTypeOverrideAppliesTo "AllNumericTypes"
+  MinMaxOverflowLogging	  "UseLocalSettings"
+  MinMaxOverflowArchiveMode "Overwrite"
+  FPTRunName		  "Run 1"
+  MaxMDLFileLineLength	  120
+  LastSavedArchitecture	  "glnxa64"
+  Object {
+    $PropName		    "BdWindowsInfo"
+    $ObjectID		    1
+    $ClassName		    "Simulink.BDWindowsInfo"
+    Object {
+      $PropName		      "WindowsInfo"
+      $ObjectID		      2
+      $ClassName	      "Simulink.WindowInfo"
+      IsActive		      [1]
+      Location		      [49.0, 18.0, 1551.0, 898.0]
+      Object {
+	$PropName		"ModelBrowserInfo"
+	$ObjectID		3
+	$ClassName		"Simulink.ModelBrowserInfo"
+	Visible			[1]
+	DockPosition		"Left"
+	Width			[50]
+	Height			[50]
+	Filter			[9]
+      }
+      Object {
+	$PropName		"ExplorerBarInfo"
+	$ObjectID		4
+	$ClassName		"Simulink.ExplorerBarInfo"
+	Visible			[1]
+      }
+      Object {
+	$PropName		"EditorsInfo"
+	$ObjectID		5
+	$ClassName		"Simulink.EditorInfo"
+	IsActive		[1]
+	ViewObjType		"StateflowChart"
+	LoadSaveID		"14"
+	Extents			[1324.0, 767.0]
+	ZoomFactor		[0.49472982543848681]
+	Offset			[-125.52299999999991, 447.172]
+      }
+    }
+  }
+  Created		  "Wed Jul 26 11:30:34 2006"
+  Creator		  "mwwhalen"
+  UpdateHistory		  "UpdateHistoryNever"
+  ModifiedByFormat	  "%<Auto>"
+  LastModifiedBy	  "bourbouh"
+  ModifiedDateFormat	  "%<Auto>"
+  LastModifiedDate	  "Sat Jul 16 23:47:45 2016"
+  RTWModifiedTimeStamp	  390613663
+  ModelVersionFormat	  "1.%<AutoIncrement:492>"
+  ConfigurationManager	  "none"
+  SampleTimeColors	  off
+  SampleTimeAnnotations	  off
+  LibraryLinkDisplay	  "none"
+  WideLines		  off
+  ShowLineDimensions	  off
+  ShowPortDataTypes	  off
+  ShowEditTimeErrors	  on
+  ShowEditTimeWarnings	  off
+  ShowEditTimeAdvisorChecks off
+  ShowPortUnits		  off
+  ShowDesignRanges	  off
+  ShowLoopsOnError	  on
+  IgnoreBidirectionalLines off
+  ShowStorageClass	  off
+  ShowTestPointIcons	  on
+  ShowSignalResolutionIcons on
+  ShowViewerIcons	  on
+  SortedOrder		  off
+  VariantCondition	  off
+  ExecutionContextIcon	  off
+  ShowLinearizationAnnotations on
+  ShowVisualizeInsertedRTB on
+  ShowMarkup		  on
+  BlockNameDataTip	  on
+  BlockParametersDataTip  on
+  BlockDescriptionStringDataTip	on
+  ToolBar		  on
+  StatusBar		  on
+  BrowserShowLibraryLinks off
+  FunctionConnectors	  off
+  BrowserLookUnderMasks	  off
+  SimulationMode	  "normal"
+  PauseTimes		  "5"
+  NumberOfSteps		  1
+  SnapshotBufferSize	  10
+  SnapshotInterval	  10
+  NumberOfLastSnapshots	  0
+  LinearizationMsg	  "none"
+  Profile		  off
+  ParamWorkspaceSource	  "MATLABWorkspace"
+  AccelSystemTargetFile	  "accel.tlc"
+  AccelTemplateMakefile	  "accel_default_tmf"
+  AccelMakeCommand	  "make_rtw"
+  TryForcingSFcnDF	  off
+  Object {
+    $PropName		    "DataLoggingOverride"
+    $ObjectID		    6
+    $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
+    model_		    "DA1"
+    Array {
+      Type		      "Cell"
+      Dimension		      1
+      Cell		      "DA1"
+      PropName		      "logAsSpecifiedByModels_"
+    }
+    Array {
+      Type		      "Cell"
+      Dimension		      1
+      Cell		      ""
+      PropName		      "logAsSpecifiedByModelsSSIDs_"
+    }
+  }
+  ExtModeBatchMode	  off
+  ExtModeEnableFloating	  on
+  ExtModeTrigType	  "manual"
+  ExtModeTrigMode	  "normal"
+  ExtModeTrigPort	  "1"
+  ExtModeTrigElement	  "any"
+  ExtModeTrigDuration	  1000
+  ExtModeTrigDurationFloating "auto"
+  ExtModeTrigHoldOff	  0
+  ExtModeTrigDelay	  0
+  ExtModeTrigDirection	  "rising"
+  ExtModeTrigLevel	  0
+  ExtModeArchiveMode	  "off"
+  ExtModeAutoIncOneShot	  off
+  ExtModeIncDirWhenArm	  off
+  ExtModeAddSuffixToVar	  off
+  ExtModeWriteAllDataToWs off
+  ExtModeArmWhenConnect	  on
+  ExtModeSkipDownloadWhenConnect off
+  ExtModeLogAll		  on
+  ExtModeAutoUpdateStatusClock on
+  ShowModelReferenceBlockVersion off
+  ShowModelReferenceBlockIO off
+  Array {
+    Type		    "Handle"
+    Dimension		    1
+    Simulink.ConfigSet {
+      $ObjectID		      7
+      Version		      "1.16.2"
+      Array {
+	Type			"Handle"
+	Dimension		9
+	Simulink.SolverCC {
+	  $ObjectID		  8
+	  Version		  "1.16.2"
+	  StartTime		  "0.0"
+	  StopTime		  "300"
+	  AbsTol		  "auto"
+	  FixedStep		  "auto"
+	  InitialStep		  "auto"
+	  MaxNumMinSteps	  "-1"
+	  MaxOrder		  5
+	  ZcThreshold		  "auto"
+	  ConsecutiveZCsStepRelTol "10*128*eps"
+	  MaxConsecutiveZCs	  "1000"
+	  ExtrapolationOrder	  4
+	  NumberNewtonIterations  1
+	  MaxStep		  "auto"
+	  MinStep		  "auto"
+	  MaxConsecutiveMinStep	  "1"
+	  RelTol		  "1e-3"
+	  SolverMode		  "Auto"
+	  EnableConcurrentExecution off
+	  ConcurrentTasks	  off
+	  Solver		  "ode45"
+	  SolverName		  "ode45"
+	  SolverJacobianMethodControl "auto"
+	  ShapePreserveControl	  "DisableAll"
+	  ZeroCrossControl	  "UseLocalSettings"
+	  ZeroCrossAlgorithm	  "Nonadaptive"
+	  AlgebraicLoopSolver	  "TrustRegion"
+	  SolverInfoToggleStatus  off
+	  IsAutoAppliedInSIP	  off
+	  SolverResetMethod	  "Fast"
+	  PositivePriorityOrder	  off
+	  AutoInsertRateTranBlk	  off
+	  SampleTimeConstraint	  "Unconstrained"
+	  InsertRTBMode		  "Whenever possible"
+	}
+	Simulink.DataIOCC {
+	  $ObjectID		  9
+	  Version		  "1.16.2"
+	  Decimation		  "1"
+	  ExternalInput		  "[t,u]"
+	  FinalStateName	  "xFinal"
+	  InitialState		  "xInitial"
+	  LimitDataPoints	  on
+	  MaxDataPoints		  "1000"
+	  LoadExternalInput	  off
+	  LoadInitialState	  off
+	  SaveFinalState	  off
+	  SaveCompleteFinalSimState off
+	  SaveFormat		  "Array"
+	  SignalLoggingSaveFormat "ModelDataLogs"
+	  SaveOutput		  on
+	  SaveState		  off
+	  SignalLogging		  on
+	  DSMLogging		  on
+	  InspectSignalLogs	  off
+	  VisualizeSimOutput	  on
+	  StreamToWorkspace	  off
+	  StreamVariableName	  "streamout"
+	  SaveTime		  on
+	  ReturnWorkspaceOutputs  off
+	  StateSaveName		  "xout"
+	  TimeSaveName		  "tout"
+	  OutputSaveName	  "yout"
+	  SignalLoggingName	  "logsout"
+	  DSMLoggingName	  "dsmout"
+	  OutputOption		  "RefineOutputTimes"
+	  OutputTimes		  "[]"
+	  ReturnWorkspaceOutputsName "out"
+	  Refine		  "1"
+	  LoggingToFile		  off
+	  LoggingFileName	  "out.mat"
+	  LoggingIntervals	  "[-inf, inf]"
+	}
+	Simulink.OptimizationCC {
+	  $ObjectID		  10
+	  Version		  "1.16.2"
+	  Array {
+	    Type		    "Cell"
+	    Dimension		    4
+	    Cell		    "ZeroExternalMemoryAtStartup"
+	    Cell		    "ZeroInternalMemoryAtStartup"
+	    Cell		    "NoFixptDivByZeroProtection"
+	    Cell		    "OptimizeModelRefInitCode"
+	    PropName		    "DisabledProps"
+	  }
+	  BlockReduction	  on
+	  BooleanDataType	  on
+	  ConditionallyExecuteInputs on
+	  DefaultParameterBehavior "Tunable"
+	  UseDivisionForNetSlopeComputation "off"
+	  UseFloatMulNetSlope	  off
+	  DefaultUnderspecifiedDataType	"double"
+	  UseSpecifiedMinMax	  off
+	  InlineInvariantSignals  off
+	  OptimizeBlockIOStorage  on
+	  BufferReuse		  on
+	  EnhancedBackFolding	  off
+	  CachingGlobalReferences off
+	  GlobalBufferReuse	  on
+	  StrengthReduction	  off
+	  ExpressionFolding	  on
+	  BooleansAsBitfields	  off
+	  BitfieldContainerType	  "uint_T"
+	  EnableMemcpy		  on
+	  MemcpyThreshold	  64
+	  PassReuseOutputArgsAs	  "Structure reference"
+	  PassReuseOutputArgsThreshold 12
+	  ExpressionDepthLimit	  2147483647
+	  LocalBlockOutputs	  on
+	  RollThreshold		  5
+	  StateBitsets		  off
+	  DataBitsets		  off
+	  ActiveStateOutputEnumStorageType "Native Integer"
+	  ZeroExternalMemoryAtStartup on
+	  ZeroInternalMemoryAtStartup on
+	  InitFltsAndDblsToZero	  on
+	  NoFixptDivByZeroProtection off
+	  EfficientFloat2IntCast  off
+	  EfficientMapNaN2IntZero on
+	  OptimizeModelRefInitCode off
+	  LifeSpan		  "inf"
+	  MaxStackSize		  "Inherit from target"
+	  BufferReusableBoundary  on
+	  SimCompilerOptimization "off"
+	  AccelVerboseBuild	  off
+	}
+	Simulink.DebuggingCC {
+	  $ObjectID		  11
+	  Version		  "1.16.2"
+	  RTPrefix		  "error"
+	  ConsistencyChecking	  "none"
+	  ArrayBoundsChecking	  "none"
+	  SignalInfNanChecking	  "none"
+	  SignalRangeChecking	  "none"
+	  ReadBeforeWriteMsg	  "UseLocalSettings"
+	  WriteAfterWriteMsg	  "UseLocalSettings"
+	  WriteAfterReadMsg	  "UseLocalSettings"
+	  AlgebraicLoopMsg	  "warning"
+	  ArtificialAlgebraicLoopMsg "warning"
+	  SaveWithDisabledLinksMsg "warning"
+	  SaveWithParameterizedLinksMsg	"none"
+	  CheckSSInitialOutputMsg on
+	  UnderspecifiedInitializationDetection	"Classic"
+	  MergeDetectMultiDrivingBlocksExec "none"
+	  CheckExecutionContextPreStartOutputMsg off
+	  CheckExecutionContextRuntimeOutputMsg	off
+	  SignalResolutionControl "TryResolveAllWithWarning"
+	  BlockPriorityViolationMsg "warning"
+	  MinStepSizeMsg	  "warning"
+	  TimeAdjustmentMsg	  "none"
+	  MaxConsecutiveZCsMsg	  "error"
+	  MaskedZcDiagnostic	  "warning"
+	  IgnoredZcDiagnostic	  "warning"
+	  SolverPrmCheckMsg	  "warning"
+	  InheritedTsInSrcMsg	  "warning"
+	  MultiTaskDSMMsg	  "warning"
+	  MultiTaskCondExecSysMsg "none"
+	  MultiTaskRateTransMsg	  "error"
+	  SingleTaskRateTransMsg  "none"
+	  TasksWithSamePriorityMsg "warning"
+	  SigSpecEnsureSampleTimeMsg "warning"
+	  CheckMatrixSingularityMsg "none"
+	  IntegerOverflowMsg	  "warning"
+	  Int32ToFloatConvMsg	  "warning"
+	  ParameterDowncastMsg	  "error"
+	  ParameterOverflowMsg	  "error"
+	  ParameterUnderflowMsg	  "none"
+	  ParameterPrecisionLossMsg "warning"
+	  ParameterTunabilityLossMsg "warning"
+	  FixptConstUnderflowMsg  "none"
+	  FixptConstOverflowMsg	  "none"
+	  FixptConstPrecisionLossMsg "none"
+	  UnderSpecifiedDataTypeMsg "none"
+	  UnnecessaryDatatypeConvMsg "none"
+	  VectorMatrixConversionMsg "none"
+	  InvalidFcnCallConnMsg	  "error"
+	  FcnCallInpInsideContextMsg "UseLocalSettings"
+	  SignalLabelMismatchMsg  "none"
+	  UnconnectedInputMsg	  "warning"
+	  UnconnectedOutputMsg	  "warning"
+	  UnconnectedLineMsg	  "warning"
+	  SFcnCompatibilityMsg	  "none"
+	  FrameProcessingCompatibilityMsg "error"
+	  UniqueDataStoreMsg	  "none"
+	  BusObjectLabelMismatch  "warning"
+	  RootOutportRequireBusObject "warning"
+	  AssertControl		  "UseLocalSettings"
+	  AllowSymbolicDim	  on
+	  ModelReferenceIOMsg	  "none"
+	  ModelReferenceMultiInstanceNormalModeStructChecksumCheck "error"
+	  ModelReferenceVersionMismatchMessage "none"
+	  ModelReferenceIOMismatchMessage "none"
+	  UnknownTsInhSupMsg	  "warning"
+	  ModelReferenceDataLoggingMessage "warning"
+	  ModelReferenceSymbolNameMessage "warning"
+	  ModelReferenceExtraNoncontSigs "error"
+	  StateNameClashWarn	  "warning"
+	  SimStateInterfaceChecksumMismatchMsg "warning"
+	  SimStateOlderReleaseMsg "error"
+	  InitInArrayFormatMsg	  "warning"
+	  StrictBusMsg		  "None"
+	  BusNameAdapt		  "WarnAndRepair"
+	  NonBusSignalsTreatedAsBus "none"
+	  SymbolicDimMinMaxWarning "warning"
+	  LossOfSymbolicDimsSimulationWarning "warning"
+	  LossOfSymbolicDimsCodeGenerationWarning "error"
+	  BlockIODiagnostic	  "none"
+	  SFUnusedDataAndEventsDiag "warning"
+	  SFUnexpectedBacktrackingDiag "warning"
+	  SFInvalidInputDataAccessInChartInitDiag "warning"
+	  SFNoUnconditionalDefaultTransitionDiag "warning"
+	  SFTransitionOutsideNaturalParentDiag "warning"
+	  SFUnconditionalTransitionShadowingDiag "warning"
+	  SFUndirectedBroadcastEventsDiag "warning"
+	  SFTransitionActionBeforeConditionDiag	"warning"
+	  SFOutputUsedAsStateInMooreChartDiag "error"
+	  IntegerSaturationMsg	  "warning"
+	  AllowedUnitSystems	  "all"
+	  UnitsInconsistencyMsg	  "warning"
+	  AllowAutomaticUnitConversions	on
+	}
+	Simulink.HardwareCC {
+	  $ObjectID		  12
+	  Version		  "1.16.2"
+	  ProdBitPerChar	  8
+	  ProdBitPerShort	  16
+	  ProdBitPerInt		  32
+	  ProdBitPerLong	  32
+	  ProdBitPerLongLong	  64
+	  ProdBitPerFloat	  32
+	  ProdBitPerDouble	  64
+	  ProdBitPerPointer	  32
+	  ProdLargestAtomicInteger "Char"
+	  ProdLargestAtomicFloat  "None"
+	  ProdIntDivRoundTo	  "Undefined"
+	  ProdEndianess		  "Unspecified"
+	  ProdWordSize		  32
+	  ProdShiftRightIntArith  on
+	  ProdLongLongMode	  off
+	  ProdHWDeviceType	  "32-bit Generic"
+	  TargetBitPerChar	  8
+	  TargetBitPerShort	  16
+	  TargetBitPerInt	  32
+	  TargetBitPerLong	  32
+	  TargetBitPerLongLong	  64
+	  TargetBitPerFloat	  32
+	  TargetBitPerDouble	  64
+	  TargetBitPerPointer	  32
+	  TargetLargestAtomicInteger "Char"
+	  TargetLargestAtomicFloat "None"
+	  TargetShiftRightIntArith on
+	  TargetLongLongMode	  off
+	  TargetIntDivRoundTo	  "Undefined"
+	  TargetEndianess	  "Unspecified"
+	  TargetWordSize	  32
+	  TargetPreprocMaxBitsSint 32
+	  TargetPreprocMaxBitsUint 32
+	  TargetHWDeviceType	  "Specified"
+	  TargetUnknown		  off
+	  ProdEqTarget		  on
+	  UseEmbeddedCoderFeatures on
+	  UseSimulinkCoderFeatures on
+	}
+	Simulink.ModelReferenceCC {
+	  $ObjectID		  13
+	  Version		  "1.16.2"
+	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
+	  EnableRefExpFcnMdlSchedulingChecks on
+	  CheckModelReferenceTargetMessage "error"
+	  EnableParallelModelReferenceBuilds off
+	  ParallelModelReferenceErrorOnInvalidPool on
+	  ParallelModelReferenceMATLABWorkerInit "None"
+	  ModelReferenceNumInstancesAllowed "Multi"
+	  PropagateVarSize	  "Infer from blocks in model"
+	  ModelReferencePassRootInputsByReference on
+	  ModelReferenceMinAlgLoopOccurrences off
+	  PropagateSignalLabelsOutOfModel off
+	  SupportModelReferenceSimTargetCustomCode off
+	}
+	Simulink.SFSimCC {
+	  $ObjectID		  14
+	  Version		  "1.16.2"
+	  SFSimEcho		  on
+	  SimCtrlC		  on
+	  SimIntegrity		  on
+	  SimUseLocalCustomCode	  off
+	  SimParseCustomCode	  off
+	  SimBuildMode		  "sf_incremental_build"
+	  SimGenImportedTypeDefs  off
+	}
+	Simulink.RTWCC {
+	  $BackupClass		  "Simulink.RTWCC"
+	  $ObjectID		  15
+	  Version		  "1.16.2"
+	  Array {
+	    Type		    "Cell"
+	    Dimension		    1
+	    Cell		    "IncludeHyperlinkInReport"
+	    PropName		    "DisabledProps"
+	  }
+	  SystemTargetFile	  "grt.tlc"
+	  HardwareBoard		  "None"
+	  TLCOptions		  ""
+	  GenCodeOnly		  off
+	  MakeCommand		  "make_rtw"
+	  GenerateMakefile	  on
+	  PackageGeneratedCodeAndArtifacts off
+	  TemplateMakefile	  "grt_default_tmf"
+	  PostCodeGenCommand	  ""
+	  Description		  ""
+	  GenerateReport	  off
+	  SaveLog		  off
+	  RTWVerbose		  on
+	  RetainRTWFile		  off
+	  ProfileTLC		  off
+	  TLCDebug		  off
+	  TLCCoverage		  off
+	  TLCAssert		  off
+	  RTWUseLocalCustomCode	  off
+	  RTWUseSimCustomCode	  off
+	  Toolchain		  "Automatically locate an installed toolchain"
+	  BuildConfiguration	  "Faster Builds"
+	  IncludeHyperlinkInReport off
+	  LaunchReport		  off
+	  PortableWordSizes	  off
+	  CreateSILPILBlock	  "None"
+	  CodeExecutionProfiling  off
+	  CodeExecutionProfileVariable "executionProfile"
+	  CodeProfilingSaveOptions "SummaryOnly"
+	  CodeProfilingInstrumentation off
+	  SILDebugging		  off
+	  TargetLang		  "C"
+	  IncludeBusHierarchyInRTWFileBlockHierarchyMap	off
+	  GenerateTraceInfo	  off
+	  GenerateTraceReport	  off
+	  GenerateTraceReportSl	  off
+	  GenerateTraceReportSf	  off
+	  GenerateTraceReportEml  off
+	  GenerateWebview	  off
+	  GenerateCodeMetricsReport off
+	  GenerateCodeReplacementReport	off
+	  GenerateMissedCodeReplacementReport off
+	  RTWCompilerOptimization "off"
+	  RTWCustomCompilerOptimizations ""
+	  CheckMdlBeforeBuild	  "Off"
+	  SharedConstantsCachingThreshold 1024
+	  Array {
+	    Type		    "Handle"
+	    Dimension		    2
+	    Simulink.CodeAppCC {
+	      $ObjectID		      16
+	      Version		      "1.16.2"
+	      Array {
+		Type			"Cell"
+		Dimension		9
+		Cell			"IgnoreCustomStorageClasses"
+		Cell			"InsertBlockDesc"
+		Cell			"SFDataObjDesc"
+		Cell			"SimulinkDataObjDesc"
+		Cell			"DefineNamingRule"
+		Cell			"SignalNamingRule"
+		Cell			"ParamNamingRule"
+		Cell			"InlinedPrmAccess"
+		Cell			"CustomSymbolStr"
+		PropName		"DisabledProps"
+	      }
+	      ForceParamTrailComments off
+	      GenerateComments	      on
+	      CommentStyle	      "Auto"
+	      IgnoreCustomStorageClasses on
+	      IgnoreTestpoints	      off
+	      IncHierarchyInIds	      off
+	      MaxIdLength	      31
+	      PreserveName	      off
+	      PreserveNameWithParent  off
+	      ShowEliminatedStatement off
+	      OperatorAnnotations     off
+	      IncAutoGenComments      off
+	      SimulinkDataObjDesc     off
+	      SFDataObjDesc	      off
+	      MATLABFcnDesc	      off
+	      IncDataTypeInIds	      off
+	      MangleLength	      1
+	      CustomSymbolStrGlobalVar "$R$N$M"
+	      CustomSymbolStrType     "$N$R$M_T"
+	      CustomSymbolStrField    "$N$M"
+	      CustomSymbolStrFcn      "$R$N$M$F"
+	      CustomSymbolStrFcnArg   "rt$I$N$M"
+	      CustomSymbolStrBlkIO    "rtb_$N$M"
+	      CustomSymbolStrTmpVar   "$N$M"
+	      CustomSymbolStrMacro    "$R$N$M"
+	      CustomSymbolStrUtil     "$N$C"
+	      DefineNamingRule	      "None"
+	      ParamNamingRule	      "None"
+	      SignalNamingRule	      "None"
+	      InsertBlockDesc	      off
+	      InsertPolySpaceComments off
+	      SimulinkBlockComments   on
+	      MATLABSourceComments    off
+	      EnableCustomComments    off
+	      InternalIdentifier      "Shortened"
+	      InlinedPrmAccess	      "Literals"
+	      ReqsInCode	      off
+	      UseSimReservedNames     off
+	    }
+	    Simulink.GRTTargetCC {
+	      $BackupClass	      "Simulink.TargetCC"
+	      $ObjectID		      17
+	      Version		      "1.16.2"
+	      Array {
+		Type			"Cell"
+		Dimension		10
+		Cell			"IncludeMdlTerminateFcn"
+		Cell			"GenerateAllocFcn"
+		Cell			"SuppressErrorStatus"
+		Cell			"ERTCustomFileBanners"
+		Cell			"GenerateSampleERTMain"
+		Cell			"SupportContinuousTime"
+		Cell			"PurelyIntegerCode"
+		Cell			"SupportNonInlinedSFcns"
+		Cell			"SupportComplex"
+		Cell			"SupportAbsoluteTime"
+		PropName		"DisabledProps"
+	      }
+	      TargetFcnLib	      "ansi_tfl_tmw.mat"
+	      TargetLibSuffix	      ""
+	      GenFloatMathFcnCalls    "NOT IN USE"
+	      TargetLangStandard      "C89/C90 (ANSI)"
+	      CodeReplacementLibrary  "None"
+	      UtilityFuncGeneration   "Auto"
+	      ERTMultiwordTypeDef     "System defined"
+	      ERTMultiwordLength      256
+	      MultiwordLength	      2048
+	      GenerateFullHeader      on
+	      InferredTypesCompatibility off
+	      GenerateSampleERTMain   off
+	      GenerateTestInterfaces  off
+	      ModelReferenceCompliant on
+	      ParMdlRefBuildCompliant on
+	      CompOptLevelCompliant   on
+	      ConcurrentExecutionCompliant on
+	      IncludeMdlTerminateFcn  on
+	      GeneratePreprocessorConditionals "Disable all"
+	      CombineOutputUpdateFcns off
+	      CombineSignalStateStructs	off
+	      SuppressErrorStatus     off
+	      ERTFirstTimeCompliant   off
+	      IncludeFileDelimiter    "Auto"
+	      ERTCustomFileBanners    off
+	      SupportAbsoluteTime     on
+	      LogVarNameModifier      "rt_"
+	      MatFileLogging	      on
+	      MultiInstanceERTCode    off
+	      CodeInterfacePackaging  "Nonreusable function"
+	      SupportNonFinite	      on
+	      SupportComplex	      on
+	      PurelyIntegerCode	      off
+	      SupportContinuousTime   on
+	      SupportNonInlinedSFcns  on
+	      SupportVariableSizeSignals off
+	      ParenthesesLevel	      "Nominal"
+	      CastingMode	      "Nominal"
+	      MATLABClassNameForMDSCustomization "Simulink.SoftwareTarget.GRTCustomization"
+	      ModelStepFunctionPrototypeControlCompliant off
+	      CPPClassGenCompliant    on
+	      AutosarCompliant	      off
+	      GRTInterface	      on
+	      GenerateAllocFcn	      off
+	      UseToolchainInfoCompliant	on
+	      GenerateSharedConstants on
+	      UseMalloc		      off
+	      ExtMode		      off
+	      ExtModeStaticAlloc      off
+	      ExtModeTesting	      off
+	      ExtModeStaticAllocSize  1000000
+	      ExtModeTransport	      0
+	      ExtModeMexFile	      "ext_comm"
+	      ExtModeIntrfLevel	      "Level1"
+	      RTWCAPISignals	      off
+	      RTWCAPIParams	      off
+	      RTWCAPIStates	      off
+	      RTWCAPIRootIO	      off
+	      GenerateASAP2	      off
+	      MultiInstanceErrorCode  "Error"
+	    }
+	    PropName		    "Components"
+	  }
+	}
+	SlCovCC.ConfigComp {
+	  $ObjectID		  18
+	  Version		  "1.16.2"
+	  Description		  "Simulink Coverage Configuration Component"
+	  Name			  "Simulink Coverage"
+	  CovEnable		  off
+	  CovScope		  "EntireSystem"
+	  CovIncludeTopModel	  on
+	  RecordCoverage	  off
+	  CovPath		  "/"
+	  CovSaveName		  "covdata"
+	  CovMetricSettings	  "dw"
+	  CovNameIncrementing	  off
+	  CovHtmlReporting	  on
+	  CovForceBlockReductionOff on
+	  CovEnableCumulative	  on
+	  CovSaveCumulativeToWorkspaceVar on
+	  CovSaveSingleToWorkspaceVar on
+	  CovCumulativeVarName	  "covCumulativeData"
+	  CovCumulativeReport	  off
+	  CovSaveOutputData	  on
+	  CovOutputDir		  "slcov_output/$ModelName$"
+	  CovDataFileName	  "$ModelName$_cvdata"
+	  CovReportOnPause	  on
+	  CovModelRefEnable	  "Off"
+	  CovExternalEMLEnable	  off
+	  CovSFcnEnable		  on
+	  CovBoundaryAbsTol	  1e-05
+	  CovBoundaryRelTol	  0.01
+	  CovUseTimeInterval	  off
+	  CovStartTime		  0
+	  CovStopTime		  0
+	}
+	PropName		"Components"
+      }
+      Name		      "Configuration"
+      CurrentDlgPage	      "Data Import//Export"
+      ConfigPrmDlgPosition     [ 840, 485, 1720, 1115 ] 
+    }
+    PropName		    "ConfigurationSets"
+  }
+  Simulink.ConfigSet {
+    $PropName		    "ActiveConfigurationSet"
+    $ObjectID		    7
+  }
+  Object {
+    $PropName		    "DataTransfer"
+    $ObjectID		    19
+    $ClassName		    "Simulink.GlobalDataTransfer"
+    DefaultTransitionBetweenSyncTasks "Ensure deterministic transfer (maximum delay)"
+    DefaultTransitionBetweenAsyncTasks "Ensure data integrity only"
+    DefaultTransitionBetweenContTasks "Ensure deterministic transfer (minimum delay)"
+    DefaultExtrapolationMethodBetweenContTasks "None"
+    AutoInsertRateTranBlk   [0]
+  }
+  ExplicitPartitioning	  off
+  BlockDefaults {
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    NamePlacement	    "normal"
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+    ShowName		    on
+    BlockRotation	    0
+    BlockMirror		    off
+  }
+  AnnotationDefaults {
+    HorizontalAlignment	    "center"
+    VerticalAlignment	    "middle"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+    UseDisplayTextAsClickCallback off
+  }
+  LineDefaults {
+    FontName		    "Helvetica"
+    FontSize		    9
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  MaskDefaults {
+    SelfModifiable	    "off"
+    IconFrame		    "on"
+    IconOpaque		    "opaque"
+    RunInitForIconRedraw    "off"
+    IconRotate		    "none"
+    PortRotate		    "default"
+    IconUnits		    "autoscale"
+  }
+  MaskParameterDefaults {
+    Evaluate		    "on"
+    Tunable		    "on"
+    NeverSave		    "off"
+    Internal		    "off"
+    ReadOnly		    "off"
+    Enabled		    "on"
+    Visible		    "on"
+    ToolTip		    "on"
+  }
+  BlockParameterDefaults {
+    Block {
+      BlockType		      Demux
+      Outputs		      "4"
+      DisplayOption	      "none"
+      BusSelectionMode	      off
+    }
+    Block {
+      BlockType		      Inport
+      Port		      "1"
+      OutputFunctionCall      off
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      LockScale		      off
+      BusOutputAsStruct	      off
+      Unit		      "inherit"
+      PortDimensions	      "-1"
+      VarSizeSig	      "Inherit"
+      SampleTime	      "-1"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      LatchByDelayingOutsideSignal off
+      LatchInputForFeedbackSignals off
+      Interpolate	      on
+    }
+    Block {
+      BlockType		      Outport
+      Port		      "1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      LockScale		      off
+      BusOutputAsStruct	      off
+      Unit		      "inherit"
+      PortDimensions	      "-1"
+      VarSizeSig	      "Inherit"
+      SampleTime	      "-1"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      SourceOfInitialOutputValue "Dialog"
+      OutputWhenDisabled      "held"
+      InitialOutput	      "[]"
+    }
+    Block {
+      BlockType		      S-Function
+      FunctionName	      "system"
+      SFunctionModules	      "''"
+      PortCounts	      "[]"
+    }
+    Block {
+      BlockType		      SubSystem
+      ShowPortLabels	      "FromPortIcon"
+      Permissions	      "ReadWrite"
+      PermitHierarchicalResolution "All"
+      TreatAsAtomicUnit	      off
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      CheckFcnCallInpInsideContextMsg off
+      SystemSampleTime	      "-1"
+      RTWSystemCode	      "Auto"
+      RTWFcnNameOpts	      "Auto"
+      RTWFileNameOpts	      "Auto"
+      FunctionInterfaceSpec   "void_void"
+      FunctionWithSeparateData off
+      RTWMemSecFuncInitTerm   "Inherit from model"
+      RTWMemSecFuncExecute    "Inherit from model"
+      RTWMemSecDataConstants  "Inherit from model"
+      RTWMemSecDataInternal   "Inherit from model"
+      RTWMemSecDataParameters "Inherit from model"
+      SimViewingDevice	      off
+      DataTypeOverride	      "UseLocalSettings"
+      DataTypeOverrideAppliesTo	"AllNumericTypes"
+      MinMaxOverflowLogging   "UseLocalSettings"
+      Opaque		      off
+      MaskHideContents	      off
+      SFBlockType	      "NONE"
+      GeneratePreprocessorConditionals off
+      TreatAsGroupedWhenPropagatingVariantConditions on
+      ContentPreviewEnabled   off
+      IsWebBlock	      off
+    }
+    Block {
+      BlockType		      Terminator
+    }
+  }
+  System {
+    Name		    "DA1"
+    Location		    [49, 18, 1600, 916]
+    Open		    off
+    ModelBrowserVisibility  on
+    ModelBrowserWidth	    212
+    ScreenColor		    "white"
+    PaperOrientation	    "landscape"
+    PaperPositionMode	    "auto"
+    PaperType		    "usletter"
+    PaperUnits		    "inches"
+    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+    TiledPageScale	    1
+    ShowPageBoundaries	    off
+    ZoomFactor		    "80"
+    ReportName		    "simulink-default.rpt"
+    SIDHighWatermark	    "26"
+    Block {
+      BlockType		      Inport
+      Name		      "GroundTrack_OrbitalPosition"
+      SID		      "1"
+      Position		      [285, 68, 315, 82]
+      ZOrder		      -1
+      IconDisplay	      "Port number"
+    }
+    Block {
+      BlockType		      Inport
+      Name		      "GroundTrack_OrbitalVelocity"
+      SID		      "2"
+      Position		      [285, 133, 315, 147]
+      ZOrder		      -2
+      Port		      "2"
+      IconDisplay	      "Port number"
+    }
+    Block {
+      BlockType		      Inport
+      Name		      "dockVisibility_status"
+      SID		      "3"
+      Position		      [285, 198, 315, 212]
+      ZOrder		      -3
+      Port		      "3"
+      IconDisplay	      "Port number"
+    }
+    Block {
+      BlockType		      Inport
+      Name		      "opticsAvailability_status"
+      SID		      "4"
+      Position		      [285, 263, 315, 277]
+      ZOrder		      -4
+      Port		      "4"
+      IconDisplay	      "Port number"
+    }
+    Block {
+      BlockType		      Inport
+      Name		      "sunlight_status"
+      SID		      "5"
+      Position		      [285, 328, 315, 342]
+      ZOrder		      -5
+      Port		      "5"
+      IconDisplay	      "Port number"
+    }
+    Block {
+      BlockType		      Inport
+      Name		      "GPS_satelliteVisibility_status"
+      SID		      "6"
+      Position		      [280, 393, 310, 407]
+      ZOrder		      -6
+      Port		      "6"
+      IconDisplay	      "Port number"
+    }
+    Block {
+      BlockType		      Inport
+      Name		      "GPS_receiverAvailability_status"
+      SID		      "7"
+      Position		      [280, 458, 310, 472]
+      ZOrder		      -7
+      Port		      "7"
+      IconDisplay	      "Port number"
+    }
+    Block {
+      BlockType		      Inport
+      Name		      "StarPlanetTracker_planetVisibility"
+      SID		      "8"
+      Position		      [280, 523, 310, 537]
+      ZOrder		      -8
+      Port		      "8"
+      IconDisplay	      "Port number"
+    }
+    Block {
+      BlockType		      Inport
+      Name		      "StarPlanetTracker_starVisibility"
+      SID		      "9"
+      Position		      [280, 588, 310, 602]
+      ZOrder		      -9
+      Port		      "9"
+      IconDisplay	      "Port number"
+    }
+    Block {
+      BlockType		      Inport
+      Name		      "InertialNavigation_time"
+      SID		      "10"
+      Position		      [280, 653, 310, 667]
+      ZOrder		      -10
+      Port		      "10"
+      IconDisplay	      "Port number"
+    }
+    Block {
+      BlockType		      Inport
+      Name		      "GroundTrack_Time"
+      SID		      "11"
+      Position		      [280, 718, 310, 732]
+      ZOrder		      -11
+      Port		      "11"
+      IconDisplay	      "Port number"
+    }
+    Block {
+      BlockType		      Inport
+      Name		      "RealTimeClock_time"
+      SID		      "12"
+      Position		      [275, 783, 305, 797]
+      ZOrder		      -12
+      Port		      "12"
+      IconDisplay	      "Port number"
+    }
+    Block {
+      BlockType		      Inport
+      Name		      "StageTransition"
+      SID		      "13"
+      Position		      [275, 848, 305, 862]
+      ZOrder		      -13
+      Port		      "13"
+      IconDisplay	      "Port number"
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "Chart"
+      SID		      "14"
+      Ports		      [13, 9]
+      Position		      [545, 29, 1010, 901]
+      ZOrder		      -14
+      ErrorFcn		      "Stateflow.Translate.translate"
+      PermitHierarchicalResolution "ExplicitOnly"
+      TreatAsAtomicUnit	      on
+      RequestExecContextInheritance off
+      SFBlockType	      "Chart"
+      Variant		      off
+      System {
+	Name			"Chart"
+	Location		[49, 18, 1600, 916]
+	Open			on
+	ModelBrowserVisibility	on
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	SIDHighWatermark	"37"
+	Block {
+	  BlockType		  Inport
+	  Name			  "GroundTrack_OrbitalPosition"
+	  SID			  "14::1"
+	  Position		  [20, 101, 40, 119]
+	  ZOrder		  -1
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "GroundTrack_OrbitalVelocity"
+	  SID			  "14::2"
+	  Position		  [20, 136, 40, 154]
+	  ZOrder		  -2
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "dockVisibility_status"
+	  SID			  "14::3"
+	  Position		  [20, 171, 40, 189]
+	  ZOrder		  -3
+	  Port			  "3"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "opticsAvailability_status"
+	  SID			  "14::4"
+	  Position		  [20, 206, 40, 224]
+	  ZOrder		  -4
+	  Port			  "4"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "sunlight_status"
+	  SID			  "14::5"
+	  Position		  [20, 246, 40, 264]
+	  ZOrder		  -5
+	  Port			  "5"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "GPS_satelliteVisibility_status"
+	  SID			  "14::6"
+	  Position		  [20, 281, 40, 299]
+	  ZOrder		  -6
+	  Port			  "6"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "GPS_receiverAvailability_status"
+	  SID			  "14::7"
+	  Position		  [20, 316, 40, 334]
+	  ZOrder		  -7
+	  Port			  "7"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "StarPlanetTracker_planetVisibility"
+	  SID			  "14::8"
+	  Position		  [20, 351, 40, 369]
+	  ZOrder		  -8
+	  Port			  "8"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "StarPlanetTracker_starVisibility"
+	  SID			  "14::9"
+	  Position		  [20, 386, 40, 404]
+	  ZOrder		  -9
+	  Port			  "9"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "InertialNavigation_time"
+	  SID			  "14::10"
+	  Position		  [20, 426, 40, 444]
+	  ZOrder		  -10
+	  Port			  "10"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "GroundTrack_Time"
+	  SID			  "14::11"
+	  Position		  [20, 461, 40, 479]
+	  ZOrder		  -11
+	  Port			  "11"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "RealTimeClock_time"
+	  SID			  "14::12"
+	  Position		  [20, 496, 40, 514]
+	  ZOrder		  -12
+	  Port			  "12"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "StageTransition"
+	  SID			  "14::13"
+	  Position		  [20, 531, 40, 549]
+	  ZOrder		  -13
+	  Port			  "13"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Demux
+	  Name			  " Demux "
+	  SID			  "14::36"
+	  Ports			  [1, 1]
+	  Position		  [270, 460, 320, 500]
+	  ZOrder		  5
+	  Outputs		  "1"
+	}
+	Block {
+	  BlockType		  S-Function
+	  Name			  " SFunction "
+	  SID			  "14::35"
+	  Tag			  "Stateflow S-Function DA1 1"
+	  Ports			  [13, 10]
+	  Position		  [180, 90, 230, 370]
+	  ZOrder		  4
+	  FunctionName		  "sf_sfun"
+	  PortCounts		  "[13 10]"
+	  SFunctionDeploymentMode off
+	  EnableBusSupport	  off
+	  Port {
+	    PortNumber		    2
+	    Name		    "CaptureApproachComplete"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    3
+	    Name		    "DockingApproachComplete"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    4
+	    Name		    "AttemptingToDock"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    5
+	    Name		    "LatchCaptureComplete"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    6
+	    Name		    "ApproachOrbitComplete"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    7
+	    Name		    "FarApproachComplete"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    8
+	    Name		    "ProximityOperationsComplete"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    9
+	    Name		    "FailedApproach"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    10
+	    Name		    "JointMission"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  " Terminator "
+	  SID			  "14::37"
+	  Position		  [460, 471, 480, 489]
+	  ZOrder		  6
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "CaptureApproachComplete"
+	  SID			  "14::23"
+	  Position		  [460, 101, 480, 119]
+	  ZOrder		  -17
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "DockingApproachComplete"
+	  SID			  "14::17"
+	  Position		  [460, 136, 480, 154]
+	  ZOrder		  -18
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "AttemptingToDock"
+	  SID			  "14::30"
+	  Position		  [460, 171, 480, 189]
+	  ZOrder		  -19
+	  Port			  "3"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "LatchCaptureComplete"
+	  SID			  "14::29"
+	  Position		  [460, 206, 480, 224]
+	  ZOrder		  -20
+	  Port			  "4"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "ApproachOrbitComplete"
+	  SID			  "14::22"
+	  Position		  [460, 246, 480, 264]
+	  ZOrder		  -22
+	  Port			  "5"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "FarApproachComplete"
+	  SID			  "14::25"
+	  Position		  [460, 281, 480, 299]
+	  ZOrder		  -23
+	  Port			  "6"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "ProximityOperationsComplete"
+	  SID			  "14::26"
+	  Position		  [460, 316, 480, 334]
+	  ZOrder		  -24
+	  Port			  "7"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "FailedApproach"
+	  SID			  "14::27"
+	  Position		  [460, 351, 480, 369]
+	  ZOrder		  -25
+	  Port			  "8"
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "JointMission"
+	  SID			  "14::28"
+	  Position		  [460, 386, 480, 404]
+	  ZOrder		  -26
+	  Port			  "9"
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  ZOrder		  104
+	  SrcBlock		  "GroundTrack_OrbitalPosition"
+	  SrcPort		  1
+	  DstBlock		  " SFunction "
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  105
+	  SrcBlock		  "GroundTrack_OrbitalVelocity"
+	  SrcPort		  1
+	  DstBlock		  " SFunction "
+	  DstPort		  2
+	}
+	Line {
+	  ZOrder		  106
+	  SrcBlock		  "dockVisibility_status"
+	  SrcPort		  1
+	  DstBlock		  " SFunction "
+	  DstPort		  3
+	}
+	Line {
+	  ZOrder		  107
+	  SrcBlock		  "opticsAvailability_status"
+	  SrcPort		  1
+	  DstBlock		  " SFunction "
+	  DstPort		  4
+	}
+	Line {
+	  ZOrder		  108
+	  SrcBlock		  "sunlight_status"
+	  SrcPort		  1
+	  DstBlock		  " SFunction "
+	  DstPort		  5
+	}
+	Line {
+	  ZOrder		  109
+	  SrcBlock		  "GPS_satelliteVisibility_status"
+	  SrcPort		  1
+	  DstBlock		  " SFunction "
+	  DstPort		  6
+	}
+	Line {
+	  ZOrder		  110
+	  SrcBlock		  "GPS_receiverAvailability_status"
+	  SrcPort		  1
+	  DstBlock		  " SFunction "
+	  DstPort		  7
+	}
+	Line {
+	  ZOrder		  111
+	  SrcBlock		  "StarPlanetTracker_planetVisibility"
+	  SrcPort		  1
+	  DstBlock		  " SFunction "
+	  DstPort		  8
+	}
+	Line {
+	  ZOrder		  112
+	  SrcBlock		  "StarPlanetTracker_starVisibility"
+	  SrcPort		  1
+	  DstBlock		  " SFunction "
+	  DstPort		  9
+	}
+	Line {
+	  ZOrder		  113
+	  SrcBlock		  "InertialNavigation_time"
+	  SrcPort		  1
+	  DstBlock		  " SFunction "
+	  DstPort		  10
+	}
+	Line {
+	  ZOrder		  114
+	  SrcBlock		  "GroundTrack_Time"
+	  SrcPort		  1
+	  DstBlock		  " SFunction "
+	  DstPort		  11
+	}
+	Line {
+	  ZOrder		  115
+	  SrcBlock		  "RealTimeClock_time"
+	  SrcPort		  1
+	  DstBlock		  " SFunction "
+	  DstPort		  12
+	}
+	Line {
+	  ZOrder		  116
+	  SrcBlock		  "StageTransition"
+	  SrcPort		  1
+	  DstBlock		  " SFunction "
+	  DstPort		  13
+	}
+	Line {
+	  Name			  "CaptureApproachComplete"
+	  ZOrder		  117
+	  Labels		  [0, 0]
+	  SrcBlock		  " SFunction "
+	  SrcPort		  2
+	  DstBlock		  "CaptureApproachComplete"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "DockingApproachComplete"
+	  ZOrder		  118
+	  Labels		  [0, 0]
+	  SrcBlock		  " SFunction "
+	  SrcPort		  3
+	  DstBlock		  "DockingApproachComplete"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "AttemptingToDock"
+	  ZOrder		  119
+	  Labels		  [0, 0]
+	  SrcBlock		  " SFunction "
+	  SrcPort		  4
+	  DstBlock		  "AttemptingToDock"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "LatchCaptureComplete"
+	  ZOrder		  120
+	  Labels		  [0, 0]
+	  SrcBlock		  " SFunction "
+	  SrcPort		  5
+	  DstBlock		  "LatchCaptureComplete"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "ApproachOrbitComplete"
+	  ZOrder		  121
+	  Labels		  [0, 0]
+	  SrcBlock		  " SFunction "
+	  SrcPort		  6
+	  DstBlock		  "ApproachOrbitComplete"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "FarApproachComplete"
+	  ZOrder		  122
+	  Labels		  [0, 0]
+	  SrcBlock		  " SFunction "
+	  SrcPort		  7
+	  DstBlock		  "FarApproachComplete"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "ProximityOperationsComplete"
+	  ZOrder		  123
+	  Labels		  [0, 0]
+	  SrcBlock		  " SFunction "
+	  SrcPort		  8
+	  DstBlock		  "ProximityOperationsComplete"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "FailedApproach"
+	  ZOrder		  124
+	  Labels		  [0, 0]
+	  SrcBlock		  " SFunction "
+	  SrcPort		  9
+	  DstBlock		  "FailedApproach"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "JointMission"
+	  ZOrder		  125
+	  Labels		  [0, 0]
+	  SrcBlock		  " SFunction "
+	  SrcPort		  10
+	  DstBlock		  "JointMission"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  126
+	  SrcBlock		  " Demux "
+	  SrcPort		  1
+	  DstBlock		  " Terminator "
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  127
+	  SrcBlock		  " SFunction "
+	  SrcPort		  1
+	  DstBlock		  " Demux "
+	  DstPort		  1
+	}
+      }
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "CaptureApproachComplete"
+      SID		      "16"
+      Position		      [1110, 58, 1140, 72]
+      ZOrder		      -15
+      IconDisplay	      "Port number"
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "DockingApproachComplete"
+      SID		      "15"
+      Position		      [1110, 138, 1140, 152]
+      ZOrder		      -16
+      Port		      "2"
+      IconDisplay	      "Port number"
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "AttemptingToDock"
+      SID		      "17"
+      Position		      [1110, 218, 1140, 232]
+      ZOrder		      -17
+      Port		      "3"
+      IconDisplay	      "Port number"
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "LatchCaptureComplete"
+      SID		      "18"
+      Position		      [1110, 298, 1140, 312]
+      ZOrder		      -18
+      Port		      "4"
+      IconDisplay	      "Port number"
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "ApproachOrbitComplete"
+      SID		      "21"
+      Position		      [1110, 458, 1140, 472]
+      ZOrder		      -20
+      Port		      "5"
+      IconDisplay	      "Port number"
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "FarApproachComplete"
+      SID		      "22"
+      Position		      [1110, 538, 1140, 552]
+      ZOrder		      -21
+      Port		      "6"
+      IconDisplay	      "Port number"
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "ProximityOperationsComplete"
+      SID		      "23"
+      Position		      [1110, 618, 1140, 632]
+      ZOrder		      -22
+      Port		      "7"
+      IconDisplay	      "Port number"
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "FailedApproach"
+      SID		      "24"
+      Position		      [1110, 698, 1140, 712]
+      ZOrder		      -23
+      Port		      "8"
+      IconDisplay	      "Port number"
+    }
+    Block {
+      BlockType		      Outport
+      Name		      "JointMission"
+      SID		      "25"
+      Position		      [1110, 778, 1140, 792]
+      ZOrder		      -24
+      Port		      "9"
+      IconDisplay	      "Port number"
+    }
+    Line {
+      ZOrder		      1
+      SrcBlock		      "GroundTrack_OrbitalVelocity"
+      SrcPort		      1
+      DstBlock		      "Chart"
+      DstPort		      2
+    }
+    Line {
+      ZOrder		      2
+      SrcBlock		      "dockVisibility_status"
+      SrcPort		      1
+      DstBlock		      "Chart"
+      DstPort		      3
+    }
+    Line {
+      ZOrder		      3
+      SrcBlock		      "opticsAvailability_status"
+      SrcPort		      1
+      DstBlock		      "Chart"
+      DstPort		      4
+    }
+    Line {
+      ZOrder		      4
+      SrcBlock		      "sunlight_status"
+      SrcPort		      1
+      DstBlock		      "Chart"
+      DstPort		      5
+    }
+    Line {
+      ZOrder		      5
+      SrcBlock		      "GPS_satelliteVisibility_status"
+      SrcPort		      1
+      DstBlock		      "Chart"
+      DstPort		      6
+    }
+    Line {
+      ZOrder		      6
+      SrcBlock		      "StarPlanetTracker_planetVisibility"
+      SrcPort		      1
+      DstBlock		      "Chart"
+      DstPort		      8
+    }
+    Line {
+      ZOrder		      7
+      SrcBlock		      "StarPlanetTracker_starVisibility"
+      SrcPort		      1
+      DstBlock		      "Chart"
+      DstPort		      9
+    }
+    Line {
+      ZOrder		      8
+      SrcBlock		      "InertialNavigation_time"
+      SrcPort		      1
+      DstBlock		      "Chart"
+      DstPort		      10
+    }
+    Line {
+      ZOrder		      9
+      SrcBlock		      "GroundTrack_Time"
+      SrcPort		      1
+      DstBlock		      "Chart"
+      DstPort		      11
+    }
+    Line {
+      ZOrder		      10
+      SrcBlock		      "RealTimeClock_time"
+      SrcPort		      1
+      DstBlock		      "Chart"
+      DstPort		      12
+    }
+    Line {
+      ZOrder		      11
+      SrcBlock		      "GroundTrack_OrbitalPosition"
+      SrcPort		      1
+      DstBlock		      "Chart"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      12
+      SrcBlock		      "StageTransition"
+      SrcPort		      1
+      DstBlock		      "Chart"
+      DstPort		      13
+    }
+    Line {
+      ZOrder		      13
+      SrcBlock		      "GPS_receiverAvailability_status"
+      SrcPort		      1
+      DstBlock		      "Chart"
+      DstPort		      7
+    }
+    Line {
+      ZOrder		      14
+      SrcBlock		      "Chart"
+      SrcPort		      2
+      Points		      [0, -35]
+      DstBlock		      "DockingApproachComplete"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      15
+      SrcBlock		      "Chart"
+      SrcPort		      1
+      Points		      [0, -20]
+      DstBlock		      "CaptureApproachComplete"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      16
+      SrcBlock		      "Chart"
+      SrcPort		      3
+      Points		      [0, -50]
+      DstBlock		      "AttemptingToDock"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      17
+      SrcBlock		      "Chart"
+      SrcPort		      4
+      Points		      [0, -65]
+      DstBlock		      "LatchCaptureComplete"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      19
+      SrcBlock		      "Chart"
+      SrcPort		      5
+      DstBlock		      "ApproachOrbitComplete"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      20
+      SrcBlock		      "Chart"
+      SrcPort		      6
+      Points		      [0, -15]
+      DstBlock		      "FarApproachComplete"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      21
+      SrcBlock		      "Chart"
+      SrcPort		      7
+      Points		      [0, -30]
+      DstBlock		      "ProximityOperationsComplete"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      22
+      SrcBlock		      "Chart"
+      SrcPort		      8
+      Points		      [0, -45]
+      DstBlock		      "FailedApproach"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      23
+      SrcBlock		      "Chart"
+      SrcPort		      9
+      Points		      [0, -60]
+      DstBlock		      "JointMission"
+      DstPort		      1
+    }
+  }
+}
+#Finite State Machines
+#
+#   Stateflow 80000009
+#
+#
+Stateflow {
+  machine {
+    id			    1
+    name		    "DA1"
+    created		    "26-Jul-2006 11:31:47"
+    isLibrary		    0
+    firstTarget		    111
+    sfVersion		    80000009
+  }
+  chart {
+    id			    2
+    name		    "Chart"
+    windowPosition	    [18.75 -446.25 1535 1065]
+    viewLimits		    [-125.523 2550.685 447.172 2108.685]
+    zoomFactor		    2.695
+    screen		    [1 1 1600 900 1.333333333333333]
+    treeNode		    [0 20 0 0]
+    viewObj		    2
+    visible		    1
+    machine		    1
+    subviewS {
+      x1		      145.373
+      y1		      1284.886
+      zoomFactor	      1.25
+    }
+    ssIdHighWaterMark	    283
+    decomposition	    SET_CHART
+    firstData		    68
+    updateMethod	    DISCRETE
+    sampleTime		    "1"
+    chartFileNumber	    1
+    disableImplicitCasting  1
+    supportVariableSizing   0
+  }
+  state {
+    id			    3
+    labelString		    "FarApproach"
+    position		    [367.5884 875.8159 203.409 61.4549]
+    fontSize		    24
+    arrowSize		    21.442
+    chart		    2
+    treeNode		    [20 0 14 24]
+    visible		    0
+    subviewer		    2
+    ssIdNumber		    62
+    type		    OR_STATE
+    decomposition	    CLUSTER_STATE
+  }
+  state {
+    id			    4
+    labelString		    "ClosedButUnmated /\nentry : latch_status = CLOSEDBUTUNMATED"
+    position		    [1184.1499 715.3227 442.2682 58.6717]
+    fontSize		    18.969
+    arrowSize		    7.674
+    chart		    2
+    treeNode		    [26 0 19 0]
+    visible		    0
+    subviewer		    23
+    ssIdNumber		    31
+    type		    OR_STATE
+    decomposition	    CLUSTER_STATE
+  }
+  state {
+    id			    5
+    labelString		    "JointStabilize"
+    position		    [1111.0003 1377.3114 225.3782 61.6623]
+    fontSize		    23.771
+    arrowSize		    23.771
+    chart		    2
+    treeNode		    [20 0 8 23]
+    subviewer		    2
+    ssIdNumber		    42
+    type		    OR_STATE
+    decomposition	    CLUSTER_STATE
+  }
+  state {
+    id			    6
+    labelString		    "Start /"
+    position		    [248.8886 227.1217 121.7696 54.972]
+    fontSize		    24
+    arrowSize		    25.836
+    chart		    2
+    treeNode		    [20 0 0 11]
+    visible		    0
+    subviewer		    2
+    ssIdNumber		    67
+    type		    OR_STATE
+    decomposition	    CLUSTER_STATE
+  }
+  state {
+    id			    7
+    labelString		    "Docked\nentry:LatchCaptureComplete = 1;"
+    position		    [792.0349 714.5917 321.7871 63.4099]
+    fontSize		    20
+    arrowSize		    20
+    chart		    2
+    treeNode		    [25 0 9 0]
+    visible		    0
+    subviewer		    23
+    ssIdNumber		    36
+    type		    OR_STATE
+    decomposition	    CLUSTER_STATE
+  }
+  state {
+    id			    8
+    labelString		    "DockingApproach"
+    position		    [636.1284 1345.2021 203.409 61.4549]
+    fontSize		    24
+    arrowSize		    21.442
+    chart		    2
+    treeNode		    [20 0 21 5]
+    subviewer		    2
+    ssIdNumber		    281
+    type		    OR_STATE
+    decomposition	    CLUSTER_STATE
+  }
+  state {
+    id			    9
+    labelString		    "LatchFailed"
+    position		    [262.7176 653.7114 135.9495 42.1369]
+    fontSize		    20
+    arrowSize		    20
+    chart		    2
+    treeNode		    [25 0 17 7]
+    visible		    0
+    subviewer		    23
+    ssIdNumber		    35
+    type		    OR_STATE
+    decomposition	    CLUSTER_STATE
+  }
+  state {
+    id			    10
+    labelString		    "CheckLatchOpen /\nentry : LatchCapture_timer = 0;"
+    position		    [232.9577 322.4328 427.9278 98.852]
+    fontSize		    20
+    arrowSize		    20
+    chart		    2
+    treeNode		    [25 0 0 17]
+    visible		    0
+    subviewer		    23
+    ssIdNumber		    32
+    type		    OR_STATE
+    decomposition	    CLUSTER_STATE
+  }
+  state {
+    id			    11
+    labelString		    "CollisionAvoidanceManuever/\nexit:\nApproachOrbitComplete=0;\nProximityOperationsComplete=0;\nFa"
+    "rApproachComplete=0;\nCaptureApproachComplete= 0;"
+    position		    [800.5419 326.2612 467.714 194.2305]
+    fontSize		    24
+    arrowSize		    25.836
+    chart		    2
+    treeNode		    [20 0 6 13]
+    visible		    0
+    subviewer		    2
+    ssIdNumber		    65
+    type		    OR_STATE
+    decomposition	    CLUSTER_STATE
+  }
+  state {
+    id			    12
+    labelString		    "Open /\nentry : latch_status = OPEN"
+    position		    [1714.555 355.2101 258.4894 61.8454]
+    fontSize		    18.969
+    arrowSize		    7.674
+    chart		    2
+    treeNode		    [26 0 22 18]
+    visible		    0
+    subviewer		    23
+    ssIdNumber		    40
+    type		    OR_STATE
+    decomposition	    CLUSTER_STATE
+  }
+  state {
+    id			    13
+    labelString		    "ApproachOrbit"
+    position		    [201.9609 424.1642 250.9473 48.9889]
+    fontSize		    24
+    arrowSize		    25.836
+    chart		    2
+    treeNode		    [20 0 11 15]
+    visible		    0
+    subviewer		    2
+    ssIdNumber		    66
+    type		    OR_STATE
+    decomposition	    CLUSTER_STATE
+  }
+  state {
+    id			    14
+    labelString		    "Disengage"
+    position		    [948.409 767.8723 241.9634 83.971]
+    fontSize		    23.771
+    arrowSize		    23.771
+    chart		    2
+    treeNode		    [20 0 15 3]
+    visible		    0
+    subviewer		    2
+    ssIdNumber		    43
+    type		    OR_STATE
+    decomposition	    CLUSTER_STATE
+  }
+  state {
+    id			    15
+    labelString		    "ProximityOperations"
+    position		    [208.6916 642.9798 271.4841 55.6574]
+    fontSize		    24
+    arrowSize		    25.836
+    chart		    2
+    treeNode		    [20 0 13 14]
+    visible		    0
+    subviewer		    2
+    ssIdNumber		    64
+    type		    OR_STATE
+    decomposition	    CLUSTER_STATE
+  }
+  state {
+    id			    16
+    labelString		    "JointMission /\nentry: JointMission=1;"
+    position		    [1272.6821 1052.037 270.524 77.3956]
+    fontSize		    24
+    arrowSize		    25.836
+    chart		    2
+    treeNode		    [20 0 24 21]
+    visible		    0
+    subviewer		    2
+    ssIdNumber		    63
+    type		    OR_STATE
+    decomposition	    SET_STATE
+  }
+  state {
+    id			    17
+    labelString		    "CheckLatchMated"
+    position		    [877.3304 352.9113 201.2674 43.5769]
+    fontSize		    20
+    arrowSize		    20
+    chart		    2
+    treeNode		    [25 0 10 9]
+    visible		    0
+    subviewer		    23
+    ssIdNumber		    34
+    type		    OR_STATE
+    decomposition	    CLUSTER_STATE
+  }
+  state {
+    id			    18
+    labelString		    "Closing /\nentry : latch_status = INDETERMINATE"
+    position		    [1220.3922 395.4049 382.6091 58.9154]
+    fontSize		    18.969
+    arrowSize		    7.674
+    chart		    2
+    treeNode		    [26 0 12 19]
+    visible		    0
+    subviewer		    23
+    ssIdNumber		    41
+    type		    OR_STATE
+    decomposition	    CLUSTER_STATE
+  }
+  state {
+    id			    19
+    labelString		    "Mated /\nentry : latch_status = MATED"
+    position		    [1476.1861 528.5696 291.1543 55.798]
+    fontSize		    18.969
+    arrowSize		    7.674
+    chart		    2
+    treeNode		    [26 0 18 4]
+    visible		    0
+    subviewer		    23
+    ssIdNumber		    33
+    type		    OR_STATE
+    decomposition	    CLUSTER_STATE
+  }
+  state {
+    id			    20
+    labelString		    "MissionPhaseStates"
+    position		    [36.2853 122.8748 1559.9167 1746.5]
+    fontSize		    32
+    chart		    2
+    treeNode		    [2 6 0 0]
+    firstTransition	    27
+    subviewer		    2
+    subviewS {
+      x1		      -50
+      y1		      -50
+      pos		      [0 0 3305.625 4321.875]
+    }
+    ssIdNumber		    44
+    type		    AND_STATE
+    decomposition	    CLUSTER_STATE
+    executionOrder	    1
+  }
+  state {
+    id			    21
+    labelString		    "CaptureApproach"
+    position		    [516.2274 1086.8002 203.409 61.4549]
+    fontSize		    24
+    arrowSize		    21.442
+    chart		    2
+    treeNode		    [20 0 16 8]
+    visible		    0
+    subviewer		    2
+    ssIdNumber		    280
+    type		    OR_STATE
+    decomposition	    CLUSTER_STATE
+  }
+  state {
+    id			    22
+    labelString		    "Opening /\nentry : latch_status = INDETERMINATE"
+    position		    [1491.1818 211.9797 378.399 64.1284]
+    fontSize		    18.969
+    arrowSize		    7.674
+    chart		    2
+    treeNode		    [26 0 0 12]
+    visible		    0
+    subviewer		    23
+    ssIdNumber		    39
+    type		    OR_STATE
+    decomposition	    CLUSTER_STATE
+  }
+  state {
+    id			    23
+    labelString		    "LatchCapture"
+    position		    [524.2558 1623.7329 518.9587 141.875]
+    fontSize		    24
+    arrowSize		    23.771
+    chart		    2
+    treeNode		    [20 25 5 0]
+    firstTransition	    47
+    superState		    SUBCHART
+    subviewer		    2
+    subviewS {
+      panLimits		      [-24 3127.215 -24 2177.201]
+      x1		      43.003
+      y1		      40.303
+      zoomFactor	      2.667
+      pos		      [51 57 2105.573 810]
+      fontSize		      24
+    }
+    ssIdNumber		    29
+    type		    OR_STATE
+    decomposition	    SET_STATE
+  }
+  state {
+    id			    24
+    labelString		    "FailedApproach /\nentry: FailedApproach=1;"
+    position		    [1263.4112 893.8196 295.4473 77.2622]
+    fontSize		    24
+    chart		    2
+    treeNode		    [20 0 3 16]
+    visible		    0
+    subviewer		    2
+    ssIdNumber		    38
+    type		    OR_STATE
+    decomposition	    CLUSTER_STATE
+  }
+  state {
+    id			    25
+    labelString		    "LatchCaptureCheck /\nentry:AttemptingToDock = 1;\nduring:LatchCapture_timer = min(LatchCapture_t"
+    "imer + 1,LatchCapture_timer_upper_limit+1/*9*/);\nexit : AttemptingToDock = 0;"
+    position		    [173.5079 150.6462 962.3556 649.9053]
+    fontSize		    20
+    arrowSize		    7.691
+    chart		    2
+    treeNode		    [23 10 0 26]
+    firstTransition	    50
+    firstJunction	    49
+    visible		    0
+    subviewer		    23
+    ssIdNumber		    30
+    type		    AND_STATE
+    decomposition	    CLUSTER_STATE
+    executionOrder	    1
+  }
+  state {
+    id			    26
+    labelString		    "latch"
+    position		    [1158.3449 158.3286 948.983 641.2205]
+    fontSize		    24
+    arrowSize		    7.691
+    chart		    2
+    treeNode		    [23 22 25 0]
+    firstTransition	    58
+    firstJunction	    57
+    visible		    0
+    subviewer		    23
+    ssIdNumber		    37
+    type		    AND_STATE
+    decomposition	    CLUSTER_STATE
+    executionOrder	    2
+  }
+  transition {
+    id			    27
+    labelPosition	    [194.827 280.491 8.523 15.531]
+    fontSize		    11.886
+    arrowSize		    25.836
+    src {
+      intersection	      [0 1 0 0 183.4687 271.0595 0 0]
+    }
+    dst {
+      id		      6
+      intersection	      [4 -1 0 0.2007 248.8886 271.0608 0 0]
+    }
+    midPoint		    [203.8409 271.0602]
+    chart		    2
+    linkNode		    [20 0 28]
+    dataLimits		    [183.469 248.889 263.31 278.812]
+    subviewer		    2
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    138
+  }
+  transition {
+    id			    28
+    labelString		    "[StageTransition == 0\n/*Approach*/]"
+    labelPosition	    [85.955 312.057 227.807 55.911]
+    fontSize		    24
+    arrowSize		    25.836
+    src {
+      id		      6
+      intersection	      [3 -0 1 0.3089 333.0436 282.0937 0 -1.4844]
+    }
+    dst {
+      id		      13
+      intersection	      [1 0 -1 0.5224 333.0436 424.1642 0 1.4844]
+    }
+    midPoint		    [333.0436 342.4575]
+    chart		    2
+    linkNode		    [20 27 29]
+    dataLimits		    [325.293 340.794 282.094 424.164]
+    subviewer		    2
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    175
+  }
+  transition {
+    id			    29
+    labelString		    "[StageTransition == 6]\n/*isSafeToApproach*/"
+    labelPosition	    [551.44 339.708 234.781 55.911]
+    fontSize		    24
+    arrowSize		    25.836
+    src {
+      id		      11
+      intersection	      [4 -1 0 0.3485 800.5419 452.7933 0 0.3113]
+    }
+    dst {
+      id		      13
+      intersection	      [2 1 -0 0.5844 452.9082 452.7933 0 -0.3113]
+    }
+    midPoint		    [632.9278 452.7933]
+    chart		    2
+    linkNode		    [20 28 30]
+    dataLimits		    [452.908 800.542 445.042 460.544]
+    stampAngle		    -1
+    subviewer		    2
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    2
+    ssIdNumber		    93
+  }
+  transition {
+    id			    30
+    labelString		    "[StageTransition == 1]\n{ApproachOrbitComplete=0;}\n/*FailedProximityApproach*/"
+    labelPosition	    [52.666 509.89 304.518 83.09]
+    fontSize		    24
+    arrowSize		    25.836
+    src {
+      id		      15
+      intersection	      [1 0 -1 0.5336 353.5582 642.9798 0 26.1302]
+    }
+    dst {
+      id		      13
+      intersection	      [3 -0 1 0.3959 353.5582 473.1531 0 -26.1302]
+    }
+    midPoint		    [353.5648 568.1345]
+    chart		    2
+    linkNode		    [20 29 31]
+    dataLimits		    [345.807 361.309 473.153 642.98]
+    stampAngle		    -1
+    subviewer		    2
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    140
+  }
+  transition {
+    id			    31
+    labelString		    "[StageTransition == 2]\n{ApproachOrbitComplete=1}\n /*isInSameOrbit*/"
+    labelPosition	    [434.926 504.078 297.544 83.09]
+    fontSize		    24
+    arrowSize		    25.836
+    src {
+      id		      13
+      intersection	      [3 0 1 0.1538 414.3247 473.1531 0 -86.8901]
+    }
+    dst {
+      id		      15
+      intersection	      [1 0 -1 0.8278 433.4207 642.9798 0 105.9861]
+    }
+    midPoint		    [424.495 547.9868]
+    chart		    2
+    linkNode		    [20 30 32]
+    dataLimits		    [414.325 441.172 473.153 642.98]
+    stampAngle		    -1
+    subviewer		    2
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    176
+  }
+  transition {
+    id			    32
+    labelString		    "[StageTransition == 5]\n/*FailedFarApproach*/"
+    labelPosition	    [559.969 669.439 234.781 55.911]
+    fontSize		    24
+    arrowSize		    25.836
+    src {
+      id		      3
+      intersection	      [2 1 0 0.5034 570.9974 906.7523 0 -9.6217]
+    }
+    dst {
+      id		      11
+      intersection	      [3 0 1 0.8933 850.447 520.4917 0 -20.875]
+    }
+    midPoint		    [768.9998 738.7438]
+    chart		    2
+    linkNode		    [20 31 33]
+    dataLimits		    [570.997 858.198 520.492 906.752]
+    stampAngle		    -1
+    subviewer		    2
+    slide {
+      sticky		      BOTH_STICK
+      midPointSticky	      1
+    }
+    executionOrder	    1
+    ssIdNumber		    174
+  }
+  transition {
+    id			    33
+    labelPosition	    [843.576 764.437 8.523 15.531]
+    fontSize		    12
+    arrowSize		    25.836
+    src {
+      id		      21
+      intersection	      [1 0 -1 0.4569 609.1643 1086.8002 0 -110.4721]
+    }
+    dst {
+      id		      11
+      intersection	      [3 0 1 0.6504 964.0778 520.4917 0 -163.5359]
+    }
+    midPoint		    [798.187 806.2017]
+    chart		    2
+    linkNode		    [20 32 34]
+    dataLimits		    [609.164 971.829 520.492 1086.8]
+    stampAngle		    NaN
+    subviewer		    2
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    2
+    ssIdNumber		    282
+  }
+  transition {
+    id			    34
+    labelString		    "[StageTransition == 7]\n/*isDisengaged*/"
+    labelPosition	    [1013.446 692.122 234.781 55.911]
+    fontSize		    23.771
+    arrowSize		    25.836
+    src {
+      id		      14
+      intersection	      [1 0 -1 0.1753 990.82 767.8723 0 -175.2292]
+    }
+    dst {
+      id		      11
+      intersection	      [3 0 1 0.4496 1057.9717 520.4917 0 -94.8648]
+    }
+    midPoint		    [1027.8838 652.5112]
+    chart		    2
+    linkNode		    [20 33 35]
+    dataLimits		    [990.82 1065.723 520.492 767.872]
+    stampAngle		    -1
+    subviewer		    2
+    slide {
+      sticky		      BOTH_STICK
+      midPointSticky	      1
+    }
+    executionOrder	    1
+    ssIdNumber		    136
+  }
+  transition {
+    id			    35
+    labelString		    "[StageTransition == 8]\n/*FailedApproach*/"
+    labelPosition	    [1300.245 611.099 234.781 55.911]
+    fontSize		    24
+    src {
+      id		      11
+      intersection	      [3 0 1 0.0761 1232.6629 520.4917 0 30.2199]
+    }
+    dst {
+      id		      24
+      intersection	      [1 0 -1 0.3583 1369.27 893.8196 0 52.3661]
+    }
+    midPoint		    [1307.6106 710.7532]
+    chart		    2
+    linkNode		    [20 34 36]
+    dataLimits		    [1232.663 1371.67 520.492 893.82]
+    stampAngle		    -1
+    subviewer		    2
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    173
+  }
+  transition {
+    id			    36
+    labelString		    "[StageTransition == 3]\n{ProximityOperationsComplete=1}\n/*isInSight*/"
+    labelPosition	    [131.654 765.485 356.433 83.09]
+    fontSize		    24
+    arrowSize		    21.442
+    src {
+      id		      15
+      intersection	      [3 0 1 0.2298 417.7967 698.6372 0 51.4962]
+    }
+    dst {
+      id		      3
+      intersection	      [1 0 -1 0.8101 532.3725 875.8159 0 63.0796]
+    }
+    midPoint		    [478.8184 779.2916]
+    chart		    2
+    linkNode		    [20 35 37]
+    dataLimits		    [417.797 538.805 698.637 875.816]
+    stampAngle		    -1
+    subviewer		    2
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    2
+    ssIdNumber		    172
+  }
+  transition {
+    id			    37
+    labelString		    "[ StageTransition == 9]\n/*LatchLost*/"
+    labelPosition	    [1031.624 989.103 241.754 55.911]
+    fontSize		    23.771
+    arrowSize		    23.771
+    src {
+      id		      5
+      intersection	      [1 0 -1 0.2489 1167.0969 1377.3114 0 -6.7019]
+    }
+    dst {
+      id		      14
+      intersection	      [3 0 1 0.8668 980.6386 851.8433 0 11.7019]
+    }
+    midPoint		    [1066.609 1116.0424]
+    chart		    2
+    linkNode		    [20 36 38]
+    dataLimits		    [973.507 1167.097 851.843 1377.311]
+    stampAngle		    -1
+    subviewer		    2
+    slide {
+      sticky		      BOTH_STICK
+      midPointSticky	      1
+    }
+    executionOrder	    1
+    ssIdNumber		    135
+  }
+  transition {
+    id			    38
+    labelString		    "[StageTransition == 4]\n{FarApproachComplete=1}\n/*InProximity*/"
+    labelPosition	    [142.959 1018.387 280.497 83.09]
+    fontSize		    24
+    arrowSize		    21.442
+    src {
+      id		      3
+      intersection	      [3 0 1 0.6628 436.1779 937.2708 0 30.5872]
+    }
+    dst {
+      id		      21
+      intersection	      [4 -1 0 0.6986 516.2274 1105.3202 0 -27.5872]
+    }
+    midPoint		    [443.1582 1048.9859]
+    chart		    2
+    linkNode		    [20 37 39]
+    dataLimits		    [435.17 516.227 937.271 1111.753]
+    stampAngle		    -1
+    subviewer		    2
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    2
+    ssIdNumber		    142
+  }
+  transition {
+    id			    39
+    labelString		    "[StageTransition == 10]\n/*JointMission*/"
+    labelPosition	    [1338.125 1315.087 247.953 55.911]
+    fontSize		    24
+    arrowSize		    25.836
+    src {
+      id		      5
+      intersection	      [1 0 -1 0.9335 1321.3908 1377.3114 0 48.7087]
+    }
+    dst {
+      id		      16
+      intersection	      [3 0 1 0.6184 1375.9252 1129.4326 0 -103.2431]
+    }
+    midPoint		    [1350.4352 1261.8076]
+    chart		    2
+    linkNode		    [20 38 40]
+    dataLimits		    [1321.391 1383.676 1129.433 1377.311]
+    stampAngle		    -1
+    subviewer		    2
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    2
+    ssIdNumber		    178
+  }
+  transition {
+    id			    40
+    labelString		    "/*DockingApproachFailed*/"
+    labelPosition	    [279.89 1259.831 283.596 28.732]
+    fontSize		    24
+    arrowSize		    21.442
+    src {
+      id		      8
+      intersection	      [4 -1 0 0.5255 636.1284 1374.3639 0 -209.8784]
+    }
+    dst {
+      id		      21
+      intersection	      [3 0 1 0.7762 561.7467 1148.2551 0 37.216]
+    }
+    midPoint		    [568.1074 1296.3494]
+    chart		    2
+    linkNode		    [20 39 41]
+    dataLimits		    [555.314 636.128 1148.255 1374.364]
+    stampAngle		    -1
+    subviewer		    2
+    slide {
+      sticky		      BOTH_STICK
+      midPointSticky	      1
+    }
+    executionOrder	    2
+    ssIdNumber		    180
+  }
+  transition {
+    id			    41
+    labelString		    "[StageTransition==5]\n{CaptureApproachComplete = 1}"
+    labelPosition	    [676.51 1210.367 342.485 55.911]
+    fontSize		    24
+    arrowSize		    21.442
+    src {
+      id		      21
+      intersection	      [3 0 1 0.536 610.6012 1148.2551 0 12.3344]
+    }
+    dst {
+      id		      8
+      intersection	      [1 0 -1 0.5315 744.2326 1345.2021 0 -4.8344]
+    }
+    midPoint		    [681.7717 1239.1449]
+    chart		    2
+    linkNode		    [20 40 42]
+    dataLimits		    [610.601 750.665 1148.255 1345.202]
+    stampAngle		    -1
+    subviewer		    2
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    190
+  }
+  transition {
+    id			    42
+    labelString		    "/*LatchFailed*/"
+    labelPosition	    [553.121 1592.935 80.585 15.531]
+    fontSize		    12
+    arrowSize		    21.442
+    src {
+      id		      23
+      intersection	      [4 -1 0 0.6586 534.342 1672.1704 2 0]
+    }
+    dst {
+      id		      8
+      intersection	      [3 0 1 0.9031 655.8472 1406.657 0 0]
+    }
+    midPoint		    [564.2078 1580.1952]
+    chart		    2
+    linkNode		    [20 41 43]
+    dataLimits		    [525.476 662.28 1406.657 1672.17]
+    stampAngle		    NaN
+    subviewer		    2
+    type		    SUB
+    subLink		    [46 47 0]
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    4294967295
+    ssIdNumber		    283
+  }
+  transition {
+    id			    43
+    labelString		    "[StageTransition == 6]\n{DockingApproachComplete = 1}"
+    labelPosition	    [728.09 1488.618 344.81 55.911]
+    fontSize		    24
+    arrowSize		    23.771
+    src {
+      id		      8
+      intersection	      [3 0 1 0.3908 760.0384 1406.657 0 -43.7731]
+    }
+    dst {
+      id		      23
+      intersection	      [1 0 -1 0.372 717.3084 1623.7329 0 43.7731]
+    }
+    midPoint		    [746.8402 1506.8702]
+    chart		    2
+    linkNode		    [20 42 44]
+    dataLimits		    [710.177 760.038 1406.657 1623.733]
+    stampAngle		    -1
+    subviewer		    2
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    189
+  }
+  transition {
+    id			    44
+    labelString		    "/*Docked*/"
+    labelPosition	    [1216.181 1743.829 113.129 28.732]
+    fontSize		    24
+    arrowSize		    23.771
+    src {
+      id		      23
+      intersection	      [3 0 1 0.7421 658.0952 1755.5217 2 -17.3861]
+    }
+    dst {
+      id		      5
+      intersection	      [3 0 1 0.3767 1251.4785 1438.9737 0 134.9063]
+    }
+    midPoint		    [1179.627 1766.9649]
+    chart		    2
+    linkNode		    [20 43 45]
+    dataLimits		    [658.095 1258.61 1438.974 1859.121]
+    stampAngle		    -1
+    subviewer		    2
+    type		    SUB
+    subLink		    [45 48 0]
+    slide {
+      sticky		      BOTH_STICK
+      midPointSticky	      1
+    }
+    ssIdNumber		    186
+  }
+  transition {
+    id			    45
+    labelString		    "/*Docked*/"
+    labelPosition	    [120.046 215.153 59.664 15.531]
+    fontSize		    12
+    arrowSize		    23.771
+    src {
+      id		      7
+      intersection	      [4 -1 0 2.7523 455.2536 603.4776 0 -17.3861]
+    }
+    dst {
+      id		      5
+      intersection	      [3 0 1 0.2236 1285.9736 1429.4078 0 134.9063]
+    }
+    midPoint		    [4.3478 13.5623]
+    chart		    2
+    linkNode		    [20 44 46]
+    visible		    0
+    dataLimits		    [0 1293.105 0 1460.717]
+    subviewer		    2
+    type		    SUPER
+    firstSubWire	    48
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    97
+  }
+  transition {
+    id			    46
+    labelString		    "/*LatchFailed*/"
+    labelPosition	    [102.394 0 80.873 15.876]
+    fontSize		    12
+    arrowSize		    20
+    src {
+      id		      9
+      intersection	      [4 -1 0 1.798 211.7176 620.0847 0 -114.6956]
+    }
+    dst {
+      id		      8
+      intersection	      [3 0 1 0.9031 655.8472 1406.657 0 0]
+    }
+    midPoint		    [4.3478 13.5623]
+    chart		    2
+    linkNode		    [20 45 0]
+    visible		    0
+    dataLimits		    [0 1072 0 639.564]
+    subviewer		    2
+    type		    SUPER
+    firstSubWire	    47
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    103
+  }
+  transition {
+    id			    47
+    labelString		    "/*LatchFailed*/"
+    labelPosition	    [60.139 767.153 123.202 22.52]
+    fontSize		    20
+    arrowSize		    6.725
+    src {
+      id		      9
+      intersection	      [4 -1 0 0.4453 262.7176 677.0847 0 -114.6956]
+    }
+    dst {
+      id		      23
+      intersection	      [4 1 0 0.6649 40.9821 328.4581 1 -94.4092]
+    }
+    midPoint		    [152.688 491.4103]
+    chart		    2
+    linkNode		    [23 0 48]
+    visible		    0
+    dataLimits		    [51 262.718 320.945 677.085]
+    stampAngle		    -1
+    subviewer		    23
+    type		    SUB
+    subLink		    [46 0 42]
+    slide {
+      sticky		      BOTH_STICK
+      midPointSticky	      1
+    }
+    executionOrder	    1
+    ssIdNumber		    137
+  }
+  transition {
+    id			    48
+    labelString		    "/*Docked*/"
+    labelPosition	    [500.465 774.914 115.056 29.244]
+    fontSize		    24
+    arrowSize		    6.725
+    src {
+      id		      7
+      intersection	      [4 -1 0 0.4911 792.0349 746.861 0 -17.3861]
+    }
+    dst {
+      id		      23
+      intersection	      [3 0 -1 0.7421 594.0273 877.0179 1 134.9063]
+    }
+    midPoint		    [658.3003 781.7506]
+    chart		    2
+    linkNode		    [23 47 0]
+    visible		    0
+    dataLimits		    [586.514 792.035 746.861 867]
+    stampAngle		    -1
+    subviewer		    23
+    type		    SUB
+    subLink		    [45 0 44]
+    slide {
+      sticky		      BOTH_STICK
+      midPointSticky	      1
+    }
+    executionOrder	    1
+    ssIdNumber		    134
+  }
+  junction {
+    id			    49
+    position		    [482.679 598.8235 5.2987]
+    arrowSize		    20
+    chart		    2
+    linkNode		    [25 0 0]
+    visible		    0
+    subviewer		    23
+    ssIdNumber		    195
+    type		    CONNECTIVE_JUNCTION
+  }
+  transition {
+    id			    50
+    labelPosition	    [211.53 383.98 7.504 14.204]
+    fontSize		    9.084
+    arrowSize		    20
+    src {
+      intersection	      [0 0 0 0 196.1562 349.1764 0 0]
+    }
+    dst {
+      id		      10
+      intersection	      [4 -1 0 0.4797 232.9577 373.8655 0 0]
+    }
+    midPoint		    [203.727 365.2719]
+    chart		    2
+    linkNode		    [25 0 51]
+    visible		    0
+    dataLimits		    [196.156 232.958 349.176 379.866]
+    subviewer		    23
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    115
+  }
+  transition {
+    id			    51
+    labelString		    "[latch_status == OPEN]"
+    labelPosition	    [664.031 342.514 213.438 24.231]
+    fontSize		    20
+    arrowSize		    20
+    src {
+      id		      10
+      intersection	      [2 1 0 0.5137 660.8855 373.2094 0 -9.1875]
+    }
+    dst {
+      id		      17
+      intersection	      [4 -1 0 0.5342 877.3304 373.2094 0 9.1875]
+    }
+    midPoint		    [763.1615 373.2094]
+    chart		    2
+    linkNode		    [25 50 52]
+    visible		    0
+    dataLimits		    [660.886 877.33 367.209 379.209]
+    stampAngle		    -1
+    subviewer		    23
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    116
+  }
+  transition {
+    id			    52
+    labelString		    "[latch_status == MATED]"
+    labelPosition	    [913.118 550.096 224.277 24.231]
+    fontSize		    20
+    arrowSize		    20
+    src {
+      id		      17
+      intersection	      [3 0 1 0.2625 1025.7651 396.4882 0 -47.801]
+    }
+    dst {
+      id		      7
+      intersection	      [1 0 -1 0.6194 991.3498 714.5917 0 13.3857]
+    }
+    midPoint		    [892.3437 562.7812]
+    chart		    2
+    linkNode		    [25 51 53]
+    visible		    0
+    dataLimits		    [891.159 1025.765 396.488 714.592]
+    stampAngle		    -1
+    subviewer		    23
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+      midPointSticky	      1
+    }
+    executionOrder	    1
+    ssIdNumber		    119
+  }
+  transition {
+    id			    53
+    labelString		    "[LatchCapture_timer == LatchCapture_timer_upper_limit/*9*/]"
+    labelPosition	    [452.542 457.091 547.769 24.231]
+    fontSize		    20
+    arrowSize		    20
+    src {
+      id		      17
+      intersection	      [3 0 1 0.9335 890.7147 396.4882 0 -10.6303]
+    }
+    dst {
+      id		      49
+      intersection	      [1 0.6264 -0.7795 0 485.9981 594.6932 0 -15.0001]
+    }
+    midPoint		    [718.5906 501.7947]
+    chart		    2
+    linkNode		    [25 52 54]
+    visible		    0
+    dataLimits		    [485.998 890.715 396.488 594.693]
+    stampAngle		    0.4201
+    subviewer		    23
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+      arcL		      -13.3843
+    }
+    executionOrder	    3
+    ssIdNumber		    117
+  }
+  transition {
+    id			    54
+    labelString		    "[latch_status == CLOSEDBUTUNMATED]"
+    labelPosition	    [501.709 625.138 373.517 24.231]
+    fontSize		    20
+    arrowSize		    20
+    src {
+      id		      17
+      intersection	      [3 0 1 0.9119 895.0621 396.4882 0 -31.6276]
+    }
+    dst {
+      id		      49
+      intersection	      [2 0.9715 0.2369 0 487.8267 600.0788 0 15.75]
+    }
+    midPoint		    [746.1079 575.8196]
+    chart		    2
+    linkNode		    [25 53 55]
+    visible		    0
+    dataLimits		    [487.827 895.062 396.488 614.43]
+    stampAngle		    -0.7129
+    subviewer		    23
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+      arcL		      -17.7321
+      arcClockDir	      COUNTER_CLOCKWISE
+      midPointSticky	      1
+    }
+    executionOrder	    2
+    ssIdNumber		    118
+  }
+  transition {
+    id			    55
+    labelString		    "[LatchCapture_timer == LatchCapture_timer_upper_limit/*9*/]"
+    labelPosition	    [287.708 514.498 547.769 24.231]
+    fontSize		    20
+    arrowSize		    20
+    src {
+      id		      10
+      intersection	      [3 0 1 0.8917 279.3034 421.2848 0 20.9403]
+    }
+    dst {
+      id		      9
+      intersection	      [1 0 -1 0.122 279.3034 653.7114 0 -13.3427]
+    }
+    midPoint		    [279.3034 531.8991]
+    chart		    2
+    linkNode		    [25 54 56]
+    visible		    0
+    dataLimits		    [273.303 285.303 421.285 653.711]
+    stampAngle		    -1
+    subviewer		    23
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    2
+    ssIdNumber		    120
+  }
+  transition {
+    id			    56
+    labelPosition	    [449.411 676.839 12.506 24.231]
+    fontSize		    20
+    arrowSize		    20
+    src {
+      id		      49
+      intersection	      [3 -0.638 0.7701 0 479.2984 602.904 0 0]
+    }
+    dst {
+      id		      9
+      intersection	      [2 1 0 0.4828 398.6671 674.0551 0 0]
+    }
+    midPoint		    [452.8196 650.6803]
+    chart		    2
+    linkNode		    [25 55 0]
+    visible		    0
+    dataLimits		    [398.667 479.298 602.904 680.055]
+    stampAngle		    0.3002
+    subviewer		    23
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+      arcL		      20.3432
+    }
+    executionOrder	    1
+    ssIdNumber		    121
+  }
+  junction {
+    id			    57
+    position		    [2011.8826 661.4113 6.7152]
+    arrowSize		    7.674
+    chart		    2
+    linkNode		    [26 0 0]
+    visible		    0
+    subviewer		    23
+    ssIdNumber		    199
+    type		    CONNECTIVE_JUNCTION
+  }
+  transition {
+    id			    58
+    labelPosition	    [1513.991 214.825 12.506 23.396]
+    fontSize		    18.969
+    arrowSize		    7.674
+    src {
+      intersection	      [0 0 0 0 1417 193.5 0 0]
+    }
+    dst {
+      id		      22
+      intersection	      [1 0 -1 0.0616 1514.5 211.9797 0 0]
+    }
+    midPoint		    [1480.5629 188.541]
+    chart		    2
+    linkNode		    [26 0 59]
+    visible		    0
+    dataLimits		    [1417 1516.802 188.544 211.98]
+    subviewer		    23
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    124
+  }
+  transition {
+    id			    59
+    labelPosition	    [2015.42 464.613 12.506 23.396]
+    fontSize		    18.969
+    arrowSize		    7.674
+    src {
+      id		      57
+      intersection	      [1 0.2237 -0.9747 0 2013.3847 654.8662 0 0]
+    }
+    dst {
+      id		      22
+      intersection	      [2 1 0 0.4369 1869.5808 240 0 0]
+    }
+    midPoint		    [2009.7678 382.8413]
+    chart		    2
+    linkNode		    [26 58 60]
+    visible		    0
+    dataLimits		    [1869.581 2032.879 237.698 654.866]
+    stampAngle		    5.7038
+    subviewer		    23
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+      arcL		      -36.1081
+      arcClockDir	      COUNTER_CLOCKWISE
+      midPointSticky	      1
+    }
+    executionOrder	    1
+    ssIdNumber		    126
+  }
+  transition {
+    id			    60
+    labelString		    "/*closeLatch*/"
+    labelPosition	    [1342.526 311.136 118.391 23.396]
+    fontSize		    18.969
+    arrowSize		    7.674
+    src {
+      id		      22
+      intersection	      [3 0 1 0.9368 1515.0784 276.1081 0 -23.8966]
+    }
+    dst {
+      id		      18
+      intersection	      [1 0 -1 0.5264 1421.785 395.4049 0 -69.3968]
+    }
+    midPoint		    [1465.3914 333.9141]
+    chart		    2
+    linkNode		    [26 59 61]
+    visible		    0
+    dataLimits		    [1419.483 1515.078 276.108 395.405]
+    stampAngle		    -1
+    subviewer		    23
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    2
+    ssIdNumber		    127
+  }
+  transition {
+    id			    61
+    labelString		    "/*open*/"
+    labelPosition	    [1754.512 286.831 68.367 23.396]
+    fontSize		    18.969
+    arrowSize		    7.674
+    src {
+      id		      22
+      intersection	      [3 0 1 0.4865 1685.5 276.1081 0 158.2997]
+    }
+    dst {
+      id		      12
+      intersection	      [1 0 -1 0.8196 1926.4129 355.2101 0 82.6132]
+    }
+    midPoint		    [1813.8074 311.3989]
+    chart		    2
+    linkNode		    [26 60 62]
+    visible		    0
+    dataLimits		    [1685.5 1928.715 276.108 355.21]
+    stampAngle		    -1
+    subviewer		    23
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    128
+  }
+  transition {
+    id			    62
+    labelString		    "/*closeLatch*/"
+    labelPosition	    [1647.886 439.265 118.391 23.396]
+    fontSize		    18.969
+    arrowSize		    7.674
+    src {
+      id		      12
+      intersection	      [3 0 1 0.9335 1731.7445 417.0555 0 -41.1293]
+    }
+    dst {
+      id		      18
+      intersection	      [2 1 0 0.399 1603.0013 418.9135 0 25.6195]
+    }
+    midPoint		    [1684.1646 432.428]
+    chart		    2
+    linkNode		    [26 61 63]
+    visible		    0
+    dataLimits		    [1603.001 1731.745 416.611 433.197]
+    stampAngle		    -1
+    subviewer		    23
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    130
+  }
+  transition {
+    id			    63
+    labelString		    "/*closedButUnmated*/"
+    labelPosition	    [1269.436 672.213 185.091 23.396]
+    fontSize		    18.969
+    arrowSize		    7.674
+    src {
+      id		      18
+      intersection	      [3 0 1 0.8947 1260.662 454.3203 0 81.1875]
+    }
+    dst {
+      id		      4
+      intersection	      [1 0 -1 0.173 1260.662 715.3227 0 -80.4375]
+    }
+    midPoint		    [1260.662 586.4084]
+    chart		    2
+    linkNode		    [26 62 64]
+    visible		    0
+    dataLimits		    [1258.36 1262.964 454.32 715.323]
+    stampAngle		    -1
+    subviewer		    23
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    3
+    ssIdNumber		    132
+  }
+  transition {
+    id			    64
+    labelString		    "/*mated*/"
+    labelPosition	    [1560.829 501.446 78.372 23.396]
+    fontSize		    18.969
+    arrowSize		    7.674
+    src {
+      id		      18
+      intersection	      [3 0 1 0.2431 1509.9828 454.3203 0 93.0185]
+    }
+    dst {
+      id		      19
+      intersection	      [1 0 -1 0.6712 1671.5999 528.5696 0 68.5986]
+    }
+    midPoint		    [1596.0582 487.8479]
+    chart		    2
+    linkNode		    [26 63 65]
+    visible		    0
+    dataLimits		    [1509.983 1673.902 454.32 528.57]
+    stampAngle		    -1
+    subviewer		    23
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+    }
+    executionOrder	    1
+    ssIdNumber		    133
+  }
+  transition {
+    id			    65
+    labelString		    "/*openLatch*/"
+    labelPosition	    [1637.881 642.367 115.056 23.396]
+    fontSize		    18.969
+    arrowSize		    7.674
+    src {
+      id		      18
+      intersection	      [3 0 1 0.7298 1323.7605 454.3203 0 0]
+    }
+    dst {
+      id		      57
+      intersection	      [4 -0.9983 0.0589 0 2005.179 661.8065 0 0]
+    }
+    midPoint		    [1497.198 627]
+    chart		    2
+    linkNode		    [26 64 66]
+    visible		    0
+    dataLimits		    [1323.76 2005.179 454.32 679.645]
+    stampAngle		    0.5278
+    subviewer		    23
+    slide {
+      sticky		      BOTH_STICK
+      arcL		      -15.7189
+      midPointSticky	      1
+    }
+    executionOrder	    2
+    ssIdNumber		    131
+  }
+  transition {
+    id			    66
+    labelString		    "/*openLatch*/"
+    labelPosition	    [1832.907 546.984 115.056 23.396]
+    fontSize		    18.969
+    arrowSize		    7.674
+    src {
+      id		      19
+      intersection	      [2 1 0 0.653 1767.3403 565.0058 0 0]
+    }
+    dst {
+      id		      57
+      intersection	      [4 -0.9441 -0.3296 0 2005.5427 659.1977 0 0]
+    }
+    midPoint		    [1889.4303 602.8315]
+    chart		    2
+    linkNode		    [26 65 67]
+    visible		    0
+    dataLimits		    [1767.34 2005.543 565.006 659.198]
+    stampAngle		    -0.0307
+    subviewer		    23
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+      arcL		      -15.9234
+    }
+    executionOrder	    1
+    ssIdNumber		    123
+  }
+  transition {
+    id			    67
+    labelPosition	    [1772.074 736.322 12.506 23.396]
+    fontSize		    18.969
+    arrowSize		    7.674
+    src {
+      id		      4
+      intersection	      [2 1 0 0.6512 1626.4181 753.5299 0 0]
+    }
+    dst {
+      id		      57
+      intersection	      [4 -0.9813 0.1923 0 2005.2928 662.7025 0 0]
+    }
+    midPoint		    [1820.9111 715.6952]
+    chart		    2
+    linkNode		    [26 66 0]
+    visible		    0
+    dataLimits		    [1626.418 2005.293 661.919 753.53]
+    stampAngle		    0.0546
+    subviewer		    23
+    drawStyle		    SMART
+    slide {
+      sticky		      BOTH_STICK
+      arcL		      55.3024
+    }
+    executionOrder	    1
+    ssIdNumber		    122
+  }
+  data {
+    id			    68
+    ssIdNumber		    201
+    name		    "INDETERMINATE"
+    linkNode		    [2 0 69]
+    scope		    CONSTANT_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_INT8_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "int8"
+  }
+  data {
+    id			    69
+    ssIdNumber		    202
+    name		    "OPEN"
+    linkNode		    [2 68 70]
+    scope		    CONSTANT_DATA
+    machine		    1
+    props {
+      initialValue	      "1"
+      type {
+	primitive		SF_INT8_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "int8"
+  }
+  data {
+    id			    70
+    ssIdNumber		    203
+    name		    "CLOSEDBUTUNMATED"
+    linkNode		    [2 69 71]
+    scope		    CONSTANT_DATA
+    machine		    1
+    props {
+      initialValue	      "2"
+      type {
+	primitive		SF_INT8_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "int8"
+  }
+  data {
+    id			    71
+    ssIdNumber		    204
+    name		    "MATED"
+    linkNode		    [2 70 72]
+    scope		    CONSTANT_DATA
+    machine		    1
+    props {
+      initialValue	      "3"
+      type {
+	primitive		SF_INT8_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "int8"
+  }
+  data {
+    id			    72
+    ssIdNumber		    205
+    name		    "EXIST"
+    linkNode		    [2 71 73]
+    scope		    CONSTANT_DATA
+    machine		    1
+    props {
+      initialValue	      "1"
+      type {
+	primitive		SF_BOOLEAN_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "boolean"
+  }
+  data {
+    id			    73
+    ssIdNumber		    206
+    name		    "AVAILABLE"
+    linkNode		    [2 72 74]
+    scope		    CONSTANT_DATA
+    machine		    1
+    props {
+      initialValue	      "1"
+      type {
+	primitive		SF_BOOLEAN_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "boolean"
+  }
+  data {
+    id			    74
+    ssIdNumber		    207
+    name		    "EXPIRED"
+    linkNode		    [2 73 75]
+    scope		    CONSTANT_DATA
+    machine		    1
+    props {
+      initialValue	      "1"
+      type {
+	primitive		SF_BOOLEAN_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "boolean"
+  }
+  data {
+    id			    75
+    ssIdNumber		    212
+    name		    "NONE"
+    linkNode		    [2 74 76]
+    scope		    CONSTANT_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_INT8_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "int8"
+  }
+  data {
+    id			    76
+    ssIdNumber		    213
+    name		    "POOR"
+    linkNode		    [2 75 77]
+    scope		    CONSTANT_DATA
+    machine		    1
+    props {
+      initialValue	      "1"
+      type {
+	primitive		SF_INT8_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "int8"
+  }
+  data {
+    id			    77
+    ssIdNumber		    214
+    name		    "GOOD"
+    linkNode		    [2 76 78]
+    scope		    CONSTANT_DATA
+    machine		    1
+    props {
+      initialValue	      "2"
+      type {
+	primitive		SF_INT8_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "int8"
+  }
+  data {
+    id			    78
+    ssIdNumber		    218
+    name		    "GroundTrack_OrbitalPosition"
+    linkNode		    [2 77 79]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_INT8_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "int8"
+  }
+  data {
+    id			    79
+    ssIdNumber		    221
+    name		    "GroundTrack_OrbitalVelocity"
+    linkNode		    [2 78 80]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_INT8_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "int8"
+  }
+  data {
+    id			    80
+    ssIdNumber		    235
+    name		    "dockVisibility_status"
+    linkNode		    [2 79 81]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_INT8_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "int8"
+  }
+  data {
+    id			    81
+    ssIdNumber		    236
+    name		    "opticsAvailability_status"
+    linkNode		    [2 80 82]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_BOOLEAN_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "boolean"
+  }
+  data {
+    id			    82
+    ssIdNumber		    237
+    name		    "sunlight_status"
+    linkNode		    [2 81 83]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_BOOLEAN_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "boolean"
+  }
+  data {
+    id			    83
+    ssIdNumber		    238
+    name		    "GPS_satelliteVisibility_status"
+    linkNode		    [2 82 84]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_INT8_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "int8"
+  }
+  data {
+    id			    84
+    ssIdNumber		    239
+    name		    "GPS_receiverAvailability_status"
+    linkNode		    [2 83 85]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_BOOLEAN_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "boolean"
+  }
+  data {
+    id			    85
+    ssIdNumber		    240
+    name		    "StarPlanetTracker_planetVisibility"
+    linkNode		    [2 84 86]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_INT8_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "int8"
+  }
+  data {
+    id			    86
+    ssIdNumber		    241
+    name		    "StarPlanetTracker_starVisibility"
+    linkNode		    [2 85 87]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_INT8_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "int8"
+  }
+  data {
+    id			    87
+    ssIdNumber		    242
+    name		    "InertialNavigation_time"
+    linkNode		    [2 86 88]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_BOOLEAN_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "boolean"
+  }
+  data {
+    id			    88
+    ssIdNumber		    243
+    name		    "GroundTrack_Time"
+    linkNode		    [2 87 89]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_INT8_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "int8"
+  }
+  data {
+    id			    89
+    ssIdNumber		    244
+    name		    "latch_status"
+    linkNode		    [2 88 90]
+    scope		    LOCAL_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_INT8_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "int8"
+  }
+  data {
+    id			    90
+    ssIdNumber		    245
+    name		    "LatchCapture_timer"
+    linkNode		    [2 89 91]
+    scope		    LOCAL_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_INT8_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "int8"
+  }
+  data {
+    id			    91
+    ssIdNumber		    250
+    name		    "RealTimeClock_time"
+    linkNode		    [2 90 92]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_INT8_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "int8"
+  }
+  data {
+    id			    92
+    ssIdNumber		    251
+    name		    "BRIGHT"
+    linkNode		    [2 91 93]
+    scope		    CONSTANT_DATA
+    machine		    1
+    props {
+      initialValue	      "1"
+      type {
+	primitive		SF_BOOLEAN_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "boolean"
+  }
+  data {
+    id			    93
+    ssIdNumber		    252
+    name		    "StageTransition"
+    linkNode		    [2 92 94]
+    scope		    INPUT_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_INT8_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "int8"
+  }
+  data {
+    id			    94
+    ssIdNumber		    253
+    name		    "CaptureApproach_timer_upper_limit"
+    linkNode		    [2 93 95]
+    scope		    CONSTANT_DATA
+    machine		    1
+    props {
+      initialValue	      "11"
+      type {
+	primitive		SF_INT8_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "int8"
+  }
+  data {
+    id			    95
+    ssIdNumber		    254
+    name		    "CaptureApproachComplete"
+    linkNode		    [2 94 96]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_BOOLEAN_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      frame		      SF_FRAME_NO
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "boolean"
+  }
+  data {
+    id			    96
+    ssIdNumber		    255
+    name		    "DockingApproachComplete"
+    linkNode		    [2 95 97]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_BOOLEAN_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      frame		      SF_FRAME_NO
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "boolean"
+  }
+  data {
+    id			    97
+    ssIdNumber		    256
+    name		    "AttemptingToDock"
+    linkNode		    [2 96 98]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_BOOLEAN_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      frame		      SF_FRAME_NO
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "boolean"
+  }
+  data {
+    id			    98
+    ssIdNumber		    257
+    name		    "LatchCaptureComplete"
+    linkNode		    [2 97 99]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_BOOLEAN_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      frame		      SF_FRAME_NO
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "boolean"
+  }
+  data {
+    id			    99
+    ssIdNumber		    259
+    name		    "ApproachOrbitComplete"
+    linkNode		    [2 98 100]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_BOOLEAN_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      frame		      SF_FRAME_NO
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "boolean"
+  }
+  data {
+    id			    100
+    ssIdNumber		    260
+    name		    "FarApproachComplete"
+    linkNode		    [2 99 101]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_BOOLEAN_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      frame		      SF_FRAME_NO
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "boolean"
+  }
+  data {
+    id			    101
+    ssIdNumber		    261
+    name		    "ProximityOperationsComplete"
+    linkNode		    [2 100 102]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_BOOLEAN_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      frame		      SF_FRAME_NO
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "boolean"
+  }
+  data {
+    id			    102
+    ssIdNumber		    262
+    name		    "FailedApproach"
+    linkNode		    [2 101 103]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_BOOLEAN_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      frame		      SF_FRAME_NO
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "boolean"
+  }
+  data {
+    id			    103
+    ssIdNumber		    263
+    name		    "JointMission"
+    linkNode		    [2 102 104]
+    scope		    OUTPUT_DATA
+    machine		    1
+    props {
+      type {
+	primitive		SF_BOOLEAN_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      frame		      SF_FRAME_NO
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "boolean"
+  }
+  data {
+    id			    104
+    ssIdNumber		    264
+    name		    "StarPlanetTracker_timer_upper_limit"
+    linkNode		    [2 103 105]
+    scope		    CONSTANT_DATA
+    machine		    1
+    props {
+      initialValue	      "6"
+      type {
+	primitive		SF_INT8_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "int8"
+  }
+  data {
+    id			    105
+    ssIdNumber		    265
+    name		    "InertialNavigation_timer_upper_limit"
+    linkNode		    [2 104 106]
+    scope		    CONSTANT_DATA
+    machine		    1
+    props {
+      initialValue	      "6"
+      type {
+	primitive		SF_INT8_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "int8"
+  }
+  data {
+    id			    106
+    ssIdNumber		    266
+    name		    "GPS_timer_upper_limit"
+    linkNode		    [2 105 107]
+    scope		    CONSTANT_DATA
+    machine		    1
+    props {
+      initialValue	      "6"
+      type {
+	primitive		SF_INT8_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "int8"
+  }
+  data {
+    id			    107
+    ssIdNumber		    267
+    name		    "DockingApproach_timer_upper_limit"
+    linkNode		    [2 106 108]
+    scope		    CONSTANT_DATA
+    machine		    1
+    props {
+      initialValue	      "9"
+      type {
+	primitive		SF_INT8_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "int8"
+  }
+  data {
+    id			    108
+    ssIdNumber		    268
+    name		    "dockingSensor_timer_upper_limit"
+    linkNode		    [2 107 109]
+    scope		    CONSTANT_DATA
+    machine		    1
+    props {
+      initialValue	      "6"
+      type {
+	primitive		SF_INT8_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "int8"
+  }
+  data {
+    id			    109
+    ssIdNumber		    269
+    name		    "LatchCapture_timer_upper_limit"
+    linkNode		    [2 108 0]
+    scope		    CONSTANT_DATA
+    machine		    1
+    props {
+      initialValue	      "8"
+      type {
+	primitive		SF_INT8_TYPE
+	fixpt {
+	  scalingMode		  SF_FIXPT_BINARY_POINT
+	}
+      }
+      unit {
+	name			"inherit"
+      }
+    }
+    dataType		    "int8"
+  }
+  instance {
+    id			    110
+    name		    "Chart"
+    machine		    1
+    chart		    2
+  }
+  target {
+    id			    111
+    name		    "sfun"
+    codeFlags		    ""
+    machine		    1
+    linkNode		    [1 0 0]
+  }
+}

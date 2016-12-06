@@ -46,7 +46,7 @@
 %
 %% Code
 %
-function [property_node extern_functions node_call_name] = write_property(block, inter_blk, main_blk, main_blks, nom_lustre_file, print_node, trace, annot_type, observer_type, xml_trace)
+function [property_node,extern_s_functions_string, extern_functions, node_call_name, external_math_functions] = write_property(block, inter_blk, main_blk, main_blks, nom_lustre_file, print_node, trace, annot_type, observer_type, xml_trace)
 
 
 property_node = '';
@@ -247,7 +247,6 @@ if numel(unused_outports_variables) ~= 0
     unused_vars_str = Utils.concat_delim(unused_outports_variables, ';\n\t');
     header = app_sprintf(header, '\t%s;\n', unused_vars_str);
 end
-
 %cpt = 1;
 %for idx_add_inputs=1:numel(obs_inputs_outputs_idxs)
 %	str = '';
@@ -276,11 +275,13 @@ properties_nodes = '';
 additional_variables = '';
 
 
-[let_tel_code_string extern_s_functions_string extern_functions properties_nodes additional_variables] = ...
+[let_tel_code_string extern_s_functions_string extern_functions properties_nodes additional_variables external_math_functions] = ...
     write_code(obs_nblk, obs_inter_blk, obs_blks, main_blks, ...
     main_blk, nom_lustre_file, obs_idx_subsys, false, trace, xml_trace);
  
 header = app_sprintf(header, additional_variables);
+header = app_sprintf(header, '\t%s;\n', 'i_virtual_local : real');
+let_tel_code_string = app_sprintf(let_tel_code_string, '\t%s;\n', 'i_virtual_local= 0.0 -> 1.0');
 
 property_node = app_sprintf(header, 'let\n%s%s', assertions, let_tel_code_string);
 

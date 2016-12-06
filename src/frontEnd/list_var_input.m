@@ -32,8 +32,8 @@ for idx_output=1:inter_blk.num_output
 		output_dt = 'bool';
 	else
 		output_dt = Utils.get_lustre_dt(inter_blk.outports_dt{idx_output});
-	end
-	[is_bus bus] = BusUtils.is_bus(output_dt);
+    end
+	[is_bus bus] = BusUtils.is_bus(inter_blk.outports_dt{idx_output});
 	if is_bus && strcmp(inter_blk.type, 'Inport') && strcmp(get_param(inter_blk.annotation, 'BusOutputAsStruct'), 'off')
 		str_out = '';
 		cpt_elem_dim = 1;
@@ -55,7 +55,7 @@ for idx_output=1:inter_blk.num_output
 	else
 		if inter_blk.out_cpx_sig(idx_output)
 			output_dt = ['complex_' output_dt];
-		end
+        end
 		for idx_dim_out=1:inter_blk.dstport_size(idx_output)
 			list_out_var{idx_dim_out} = [block_name '_' num2str(idx_output) '_' num2str(idx_dim_out)];
 			list_out{idx_dim_out} = [list_out_var{idx_dim_out} ' : ' output_dt];

@@ -139,10 +139,45 @@ classdef XML_Trace < handle
 					end
 				end
 			end
-		end
+        end
 
+        function block_name = get_block_name_from_variable_sf(obj, node_name, subsys_origin_name, var_name)
+            block_name = '';
+            expr = '\w*(_c|_x)$';
+            cex_var_name = '';
+            if numel(regexp(var_name,expr,'match')) == 0;
+                c = strsplit(var_name, '.');
+                cex_var_name = c{2};
+            end
+			nodes = obj.traceRootNode.getElementsByTagName('Node');
+			for idx_node=0:nodes.getLength-1
+				block_name_node = nodes.item(idx_node).getAttribute('block_name');
+				if strcmp(block_name_node, subsys_origin_name)
+					inputs = nodes.item(idx_node).getElementsByTagName('Input');
+					for idx_input=0:inputs.getLength-1
+						input = inputs.item(idx_input);
+						if strcmp(input.getAttribute('variable'), cex_var_name)
+							block = input.getElementsByTagName('block_name');
+							block_name = char(block.item(0).getFirstChild.getData);
+							return;
+						end
+					end
+					outputs = nodes.item(idx_node).getElementsByTagName('Output');
+					for idx_output=0:outputs.getLength-1
+						output = outputs.item(idx_output);
+						if strcmp(output.getAttribute('variable'), cex_var_name)
+							block = output.getElementsByTagName('block_name');
+							block_name = char(block.item(0).getFirstChild.getData);
+							return;
+						end
+					end
+				end
+			end
+        end
+        
 		function block_name = get_block_name_from_variable(obj, subsys_origin_name, var_name)
-			block_name = '';
+
+            block_name = '';
 			nodes = obj.traceRootNode.getElementsByTagName('Node');
 			for idx_node=0:nodes.getLength-1
 				block_name_node = nodes.item(idx_node).getAttribute('block_name');
@@ -167,6 +202,8 @@ classdef XML_Trace < handle
 					end
 				end
 			end
-		end
+        end
+        
+    
 	end
 end

@@ -45,10 +45,10 @@
 %
 %% Code
 %
-function [output_string] = write_constant(nom_lustre_file, unbloc, inter_blk, Kvalue)
+function [output_string, var_str] = write_constant(nom_lustre_file, unbloc, inter_blk, Kvalue)
 
 output_string = '';
-
+var_str = '';
 [list_out] = list_var_sortie(unbloc);
 
 [is_bus bus] = BusUtils.is_bus(unbloc.outports_dt{1});
@@ -102,5 +102,11 @@ else
 		end
 	end
 end
-
+blk_type = get_param(unbloc.post{1}, 'BlockType');
+if strcmp(blk_type,'Merge')
+    annotation = regexprep(num2str(unbloc.post{1}),'\.','_');
+    name = strcat('Merge_',annotation,'_input',num2str(unbloc.dstport{1}),'_hasChanged');
+    var_str = [var_str '\t' name ': bool;\n'];
+    output_string = app_sprintf(output_string, '\t%s = true;\n', name);
+end
 end

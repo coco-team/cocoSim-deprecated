@@ -41,6 +41,26 @@ output_string = '';
 
 sat_max = evalin('base', sat_max);
 sat_min = evalin('base', sat_min);
+[n,m] = size(sat_max);
+ind = 1;
+for i=1:n
+    for j=1:m
+        sat(ind) = sat_max(i,j);
+        ind = ind+1;
+    end
+end
+sat_max = sat;
+sat = [];
+[n,m] = size(sat_min);
+ind = 1;
+for i=1:n
+    for j=1:m
+        sat(ind) = sat_min(i,j);
+        ind = ind+1;
+    end
+end
+sat_min = sat;
+
 dim_sat_max = numel(sat_max);
 dim_sat_min = numel(sat_min);
 

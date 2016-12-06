@@ -132,7 +132,7 @@ if strcmp(multiplication, 'Element-wise(.*)')
 					str = [str '(' one ' / '  list_in{1} ')'];
 				else
 					str = [str list_in{1}];
-				end
+                end
 				for idx=2:numel(list_in)
 					if strcmp(inputs(1), '/')
 						str = [str ' * (' one ' / ' list_in{idx} ')'];
@@ -230,7 +230,24 @@ if strcmp(multiplication, 'Element-wise(.*)')
 				end
 			end
 		end
-	else
+    else
+        srcport_size = unbloc.srcport_size;
+        if max(srcport_size) >1
+            ind_size =  1;
+            ind_input = 0;
+            while ind_size<= numel(srcport_size)
+                ind_input = ind_input + srcport_size(ind_size);
+                if srcport_size(ind_size) == 1
+                    scalar = list_in{ind_input};
+                    for i=2:max(srcport_size)
+                        l{i-1} = scalar;
+                    end
+                    list_in = [list_in(1:ind_input) l list_in(ind_input+1:end)];
+                    break;
+                end
+                ind_size = ind_size + 1;
+            end
+        end
 		for idx_output=1:numel(list_out)
 			if is_complex
 				str = '';
@@ -250,8 +267,8 @@ if strcmp(multiplication, 'Element-wise(.*)')
 						end
 					end
 				end
-			else
-				str = '';
+            else
+                str = '';
 				for idx_input=idx_output:unbloc.dstport_size:numel(list_in)
 					if (idx_input <= unbloc.dstport_size)
 						if strcmp(inputs(1), '/')
@@ -286,7 +303,7 @@ else
 			list_in2 = list_in((in1_dim_r*in1_dim_c + 1):end);
 			for idx_row=1:in1_dim_r
 				for idx_col=1:in2_dim_c
-					out_idx = idx_col + ((idx_row-1) * in1_dim_c);
+					out_idx = idx_col + ((idx_row-1) * in2_dim_c);
 					product_str = '';
 					if is_complex
 						for idx_iter=1:in1_dim_c
@@ -309,7 +326,7 @@ else
 							in2_idx = idx_col + (idx_iter-1) * in2_dim_c;
 							product_str = sprintf('%s%s * %s', product_str, list_in1{in1_idx}, list_in2{in2_idx});
 						end
-					end
+                    end
 					output_string = [output_string sprintf('\t%s = %s;\n', list_out{out_idx}, product_str)];
 				end
 			end

@@ -33,10 +33,10 @@ function [inter_blk, blks, complex_structs] = mk_internalRep(file_name, dfexport
         if idx_model ~= numel(models)
             for idx_sub=1:numel(subsystems)
                 ref = get_param(subsystems{idx_sub}, 'ModelNameDialog');
-                [ref_path ref_name ref_ext] = fileparts(ref);
+                [~, ref_name, ~] = fileparts(ref);
                 if strcmp(ref_name, models{idx_model})
                     origin_name = subsystems{idx_sub};
-                    [found, first_dim, second_dim] = Utils.get_block_position(inter_blk, origin_name);
+                    [~, first_dim, second_dim] = Utils.get_block_position(inter_blk, origin_name);
                     for idx_first=1:numel(first_dim)
                         for idx_second=1:numel(second_dim)
                             inter_blk{first_dim{idx_first}}{second_dim{idx_second}}.ref_name = {models{idx_model}};
@@ -52,7 +52,7 @@ function [inter_blk, blks, complex_structs] = mk_internalRep(file_name, dfexport
             end
         end
 
-        [tmp_inter_blk tmp_blks] = blocks_interconnection_complet(models{idx_model}, mat_files, default_Ts, [],[], 0, referencing_sub_struct);
+        [tmp_inter_blk, tmp_blks] = blocks_interconnection_complet(models{idx_model}, mat_files, default_Ts, [],[], 0, referencing_sub_struct);
 
         inter_blk = cat(2, inter_blk, tmp_inter_blk);
         blks = cat(2, blks, tmp_blks);

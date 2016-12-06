@@ -19,7 +19,7 @@
 % TODO: Add summary of the function with parameters
 
 function [node_header,let_tel_code_string, extern_s_functions_string, extern_functions, properties_nodes,...
-    property_node_names, extern_matlab_functions, c_code] = blocks2lustre(model_name, nom_lustre_file, ...
+    property_node_names, extern_matlab_functions, c_code, external_math_functions] = blocks2lustre(model_name, nom_lustre_file, ...
 myblk, main_blks, mat_files, idx_subsys, trace, xml_trace)
 
 % Returned values
@@ -114,17 +114,19 @@ end
 [is_reset var_name] = Utils.is_reset(inter_blk);
 if is_reset
 	if is_foriter
-		node_header = [node_header ' '];
+		node_header = [node_header '  '];
 	end
-	node_header = app_sprintf(node_header, '%s: bool;', var_name);
+	node_header = app_sprintf(node_header, '%s: bool; ', var_name);
 	nbin = nbin + 1;
 end
 
 if nbin == 1
 	node_header = app_sprintf(node_header, 'i_virtual : real');
+else
+    node_header = node_header(1:end-2); % remove the last ; for JKIND
 end
 
-node_header = node_header(1:end-2);
+
 node_header = app_sprintf(node_header, ')\nreturns (');
 
 list_output = '';
@@ -166,6 +168,7 @@ node_header = app_sprintf(node_header, '); \n');
 
 cpt_var=1;
 cptn=1;
+
 for idx_block=newinit:nblk
 	list_output = '';
 	noutput = inter_blk{idx_block}.num_output;
@@ -187,18 +190,24 @@ for idx_block=newinit:nblk
 		end
 	end
 end
-
+if idx_subsys==1 
+    if cpt_var == 1
+        node_header = app_sprintf(node_header, 'var\n\t%s;\n', 'i_virtual_local : real');
+    else
+        node_header = app_sprintf(node_header, '\t%s;\n', 'i_virtual_local : real');
+    end
+end
 %%%%%%%%%%%%%%%% Retrieve nodes code
 
-[let_tel_code_string, extern_s_functions_string, extern_functions, properties_nodes, additional_variables, property_node_names, extern_matlab_functions, c_code] = ...
+[let_tel_code_string, extern_s_functions_string, extern_functions, properties_nodes, additional_variables, property_node_names, extern_matlab_functions, c_code, external_math_functions] = ...
     write_code(nblk, inter_blk, blks, main_blks, myblk, nom_lustre_file, idx_subsys, false, trace, xml_trace);
-
-
+if idx_subsys==1
+let_tel_code_string = app_sprintf(let_tel_code_string, '\t%s;\n', 'i_virtual_local= 0.0 -> 1.0');
+end
 % Add additional variables (ex in the MinMax block backend)
 if ~strcmp(additional_variables, '')
 	node_header = app_sprintf(node_header, '%s', additional_variables);
 end
 
 node_header = app_sprintf(node_header, 'let \n');
-
 end

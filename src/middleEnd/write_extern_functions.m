@@ -66,12 +66,18 @@ functions = unique(extern_functions);
 included_trigo = false;
 included_complex_arith_int = false;
 included_complex_arith_real = false;
+included_lustrec_math = false;
 for idx_fun=1:numel(functions)
 	fun = functions{idx_fun};
 	str = '';
 	fun_kind = get_function_kind(fun);
 	fun_split = regexp(fun, ' ', 'split');
-	if strcmp(fun_kind, 'trigoh')
+    if strcmp(fun_kind, 'lustrec_math')
+        if ~included_lustrec_math
+        str_include = [str_include '#open <math>\n'];
+        end
+        included_lustrec_math  = true;
+    elseif strcmp(fun_kind, 'trigoh')
 		% Trigonometric functions: sinh, cosh, tanh, asinh, acosh, atanh
 		dt = 'real';
 		if numel(fun_split) == 2
@@ -97,7 +103,7 @@ for idx_fun=1:numel(functions)
 			% Write include and write external trigo functions nodes
 			out_trigo_file = fullfile(output_dir, 'trigo_utils.lus');
 			[exec_path, m_fil_name, ext] = fileparts(mfilename('fullpath'));
-			pp_path = [exec_path filesep '..' filesep 'utils' filesep 'generate-tables.py'];
+			pp_path = [fileparts(exec_path) filesep 'utils' filesep 'generate-tables.py'];
 			command = ['python ' pp_path];
 			[status res] = system(command);
 			fid = fopen(out_trigo_file, 'w');
@@ -112,7 +118,8 @@ for idx_fun=1:numel(functions)
 			% Write_ include and write external complex arithmetic nodes
 			out_complex_arith_file = fullfile(output_dir, 'complex_arith_int.lus');
 			[file_path, m_fil_name, ext] = fileparts(mfilename('fullpath'));
-			content = fileread([file_path filesep '..' filesep 'templates' filesep 'complex_arith_int.lus']);
+            path = fullfile(fileparts(file_path),'backEnd', 'templates' , 'complex_arith_int.lus');
+			content = fileread(path);
 			fid = fopen(out_complex_arith_file, 'w');
 			fprintf(fid, content);
 			fclose(fid);
@@ -122,8 +129,9 @@ for idx_fun=1:numel(functions)
 		elseif ~included_complex_arith_real && strcmp(fun, 'complex_arith_real')
 			% Write_ include and write external complex arithmetic nodes
 			out_complex_arith_file = fullfile(output_dir, 'complex_arith_real.lus');
-			[file_path, m_fil_name, ext] = fileparts(mfilename('fullpath'));
-			content = fileread([file_path filesep '..' filesep 'templates' filesep 'complex_arith_real.lus']);
+			[file_path, ~, ~] = fileparts(mfilename('fullpath'));
+            path = fullfile(fileparts(file_path),'backEnd', 'templates' , 'complex_arith_real.lus');
+			content = fileread(path);
 			fid = fopen(out_complex_arith_file, 'w');
 			fprintf(fid, content);
 			fclose(fid);
@@ -239,14 +247,17 @@ function [res] = get_function_kind(fun)
 	else
 		fun_name = 'none';
 	end
-	
-	if strcmp(fun_name, 'sin') || strcmp(fun_name, 'cos') || strcmp(fun_name, 'tan') || strcmp(fun_name, 'asin') || strcmp(fun_name, 'acos') || strcmp(fun_name, 'atan') || strcmp(fun_name, 'atan2') || strcmp(fun_name, 'sincos')
+	if strcmp(fun_name, 'sin') || strcmp(fun_name, 'cos') || strcmp(fun_name, 'asin') || strcmp(fun_name, 'acos') || strcmp(fun_name, 'atan') || strcmp(fun_name, 'atan2') ...
+            || strcmp(fun_name, 'sinh') || strcmp(fun_name, 'cosh') || strcmp(fun_name, 'asinh') || strcmp(fun_name, 'acosh') || strcmp(fun_name, 'atanh') ...
+            || strcmp(fun_name, 'pow') || strcmp(fun_name, 'sqrt') || strcmp(fun_name, 'rSqrt')
+        res = 'lustrec_math';
+    elseif  strcmp(fun_name, 'tan') || strcmp(fun_name, 'sincos')
 		res = 'trigo';
-	elseif strcmp(fun_name, 'sinh') || strcmp(fun_name, 'cosh') || strcmp(fun_name, 'tanh') || strcmp(fun_name, 'asinh') || strcmp(fun_name, 'acosh') || strcmp(fun_name, 'atanh')
+	elseif  strcmp(fun_name, 'tanh') 
 		res = 'trigoh';
 	elseif strncmp(fun_name, 'bitwise_', 8)
 		res = 'bitwise';
-	elseif strcmp(fun_name, 'exp') || strcmp(fun_name, 'log') || strcmp(fun_name, 'log10') || strcmp(fun_name, 'sqrt') || strcmp(fun_name, 'rSqrt') || strcmp(fun_name, 'signedSqrt') || strcmp(fun_name, 'ArrayPowerBase10') || strcmp(fun_name, 'rem') || strcmp(fun_name, 'modulo') || strcmp(fun_name, 'pow') || strcmp(fun_name, 'pow_complex')
+	elseif strcmp(fun_name, 'exp') || strcmp(fun_name, 'log') || strcmp(fun_name, 'log10')   || strcmp(fun_name, 'signedSqrt') || strcmp(fun_name, 'ArrayPowerBase10') || strcmp(fun_name, 'rem') || strcmp(fun_name, 'modulo') || strcmp(fun_name, 'pow_complex')
 		res = 'math';
 	elseif strcmp(fun_name, 'complex_arith_int') || strcmp(fun_name, 'complex_arith_real')
 		res = 'complex_arith';
