@@ -5,27 +5,23 @@
 
 
 % Configuration file for the backend solvers
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% This file is part of CoCoSim.
-% Copyright (C) 2014-2016  Carnegie Mellon University
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
+
 if ~exist('solvers_path', 'var')
     [file_path, ~, ~] = fileparts(mfilename('fullpath'));
-    coco_sim_path = fileparts(file_path);
+    cocosim_path = fileparts(file_path);
     if ismac
-        solvers_path = fullfile(coco_sim_path, 'tools/verifiers/osx/bin/');
-        JKIND =fullfile(coco_sim_path,'tools/verifiers/jkind/jkind');
-        Z3Library_path = fullfile(coco_sim_path, 'tools/verifiers/osx/lib/libz3.so');
+        solvers_path = fullfile(cocosim_path, 'tools/verifiers/osx/bin/');
+        JKIND =fullfile(cocosim_path,'tools/verifiers/jkind/jkind');
+        Z3Library_path = fullfile(cocosim_path, 'tools/verifiers/osx/lib/libz3.so');
     elseif isunix
-        solvers_path = fullfile(coco_sim_path, 'tools/verifiers/linux/bin/');
-        JKIND =fullfile(coco_sim_path,'tools/verifiers/jkind/jkind');
-        Z3Library_path = fullfile(coco_sim_path, 'tools/verifiers/linux/lib/libz3.so');
+        solvers_path = fullfile(cocosim_path, 'tools/verifiers/linux/bin/');
+        JKIND =fullfile(cocosim_path,'tools/verifiers/jkind/jkind');
+        Z3Library_path = fullfile(cocosim_path, 'tools/verifiers/linux/lib/libz3.so');
     elseif ispc
 %         warndlg('Only JKind can be used', 'CoCoSim backend configuration')
-        solvers_path = fullfile(coco_sim_path, 'tools\verifiers\');
+        solvers_path = fullfile(cocosim_path, 'tools\verifiers\');
         JKIND =fullfile(solvers_path,'jkind\jkind.bat');
-        Z3Library_path = fullfile(coco_sim_path, 'tools\verifiers\Z3\bin\libz3.dll');
+        Z3Library_path = fullfile(cocosim_path, 'tools\verifiers\Z3\bin\libz3.dll');
     else
         errordlg('OS not supported yet','CoCoSim backend configuration');
     end

@@ -16,7 +16,7 @@ end
  function schema = getcocoSim(callbackInfo)
   schema = sl_container_schema;
   schema.label = 'CoCoSim';
-  schema.statustip = 'Modular Analysis Engine';
+  schema.statustip = 'Automated Analysis Framework';
   schema.autoDisableWhen = 'Busy';
   
   schema.childrenFcns = {@getVerify,@getValidate,...
@@ -210,7 +210,7 @@ function schema = viewContract(callbackInfo)
  
  function schema = getVerify(callbackInfo)
   schema = sl_container_schema;
-  schema.label = 'Verify';
+  schema.label = 'Verify using ...';
   schema.statustip = 'Verify the current model with CoCoSim';
   schema.autoDisableWhen = 'Busy';
   
@@ -227,7 +227,9 @@ end
  function zustreCallback(callbackInfo)
   try
       clear;
+  
       [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
+
       assignin('base', 'SOLVER', 'Z');
       assignin('base', 'RUST_GEN', 0);
       assignin('base', 'C_GEN', 0);

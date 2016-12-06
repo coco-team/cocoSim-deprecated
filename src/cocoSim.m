@@ -33,14 +33,11 @@ sf2lus_start = tic;
 [model_path, file_name, ext] = fileparts(model_full_path);
 
 
-
 addpath(fullfile(cocoSim_path, 'backEnd'));
 addpath(fullfile(cocoSim_path, 'middleEnd'));
 addpath(fullfile(cocoSim_path, 'frontEnd'));
 addpath(fullfile(cocoSim_path, 'utils'));
 addpath(fullfile(cocoSim_path, '.'));
-
-launch_display_msg(model_full_path);
 
 addpath(cocoSim_path);
 config;
@@ -64,8 +61,6 @@ config_msg = [config_msg '|  KIND2:  ' KIND2 '\n'];
 config_msg = [config_msg '|  LUSTREC:' LUSTREC '\n'];
 config_msg = [config_msg '|  SEAHORN:' SEAHORN '\n'];
 config_msg = [config_msg '|  Z3: ' Z3 '\n'];
-% config_msg = [config_msg '|  RUST_GEN: ' int2str(RUST_GEN) '\n'];
-% config_msg = [config_msg '|  C_GEN: ' int2str(C_GEN) '\n'];
 config_msg = [config_msg '--------------------------------------------------\n'];
 display_msg(config_msg, Constants.INFO, 'cocoSim', '');
 
@@ -75,23 +70,6 @@ display_msg(msg, Constants.INFO, 'cocoSim', '');
 
 % add path the directory where the model is
 addpath(model_path);
-
-% Loading of the system
-% bdclose('all');
-% if you want to keep the current model open try this solution. it doesn't
-% work if there is parameters in the mode that should be loaded to the
-% workspace
-
-% code_on=sprintf('%s([], [], [], ''compile'')', file_name);
-% evalin('base',code_on);
-% try
-% bdclose('all');
-% catch
-%     %this catch used to avoid the error coming from closing a compiling
-%     %model
-% end
-% code_on=sprintf('%s([], [], [], ''term'')', file_name);
-% evalin('base',code_on);
 
 load_system(char(model_full_path));
 
@@ -558,12 +536,13 @@ end
 
 
 
-function launch_display_msg(model_full_path)
-msg = {'Welcome to the CocoSim Automated Analysis Framework'};
-display_msg(msg, Constants.INFO, 'cocoSim', '');
-msg = sprintf('Generating Lustre code ... : %s', model_full_path);
-display_msg(msg, Constants.INFO, 'cocoSim', '');
-end
+% function welcome_msg(model_full_path)
+% disp('here');
+% msg = {'Welcome to the CoCoSim Automated Analysis Framework'};
+% display_msg(msg, Constants.INFO, 'cocoSim', '');
+% msg = sprintf('Generating Lustre code ... : %s', model_full_path);
+% display_msg(msg, Constants.INFO, 'cocoSim', '');
+% end
 
 function initialize_files(lustre_file)
 % Create lustre file

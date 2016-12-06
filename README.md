@@ -12,7 +12,7 @@ Download the [CoCoSim ToolBox](https://www.dropbox.com/s/0fbb1jcrhqfsr30/cocosim
 
 ## Installation ##
 
-CoCoSim can be installed and use as follows:
+CoCoSim can be installed and used as follows:
 
 ### Dependencies ###
 
@@ -28,11 +28,11 @@ CoCoSim can be installed and use as follows:
 + Place the different solvers (Zustre, Kind2, JKind) under ```cocosim/tools/verifiers/```.
 + Set the configuration for the backend solvers in `src/config.m`:
 
-* `ZUSTRE`: Path to [Zustre](https://github.com/coco-team/zustre) binary.
-* `KIND2`: Path to [Kind2](https://github.com/kind2-mc/kind2) binary.
-* `LUSTREC`: Path to [LustreC](https://github.com/coco-team/lustrec) binary.
-* `Z3`: Path to Z3 binary. If you install Zustre, Z3 can be found in `ZUSTRE_PATH/build/run/bin/z3`.
-* `JKIND`: Path to [JKind](https://github.com/agacek/jkind).
+** `ZUSTRE`: Path to [Zustre](https://github.com/coco-team/zustre) binary.
+** `KIND2`: Path to [Kind2](https://github.com/kind2-mc/kind2) binary.
+** `LUSTREC`: Path to [LustreC](https://github.com/coco-team/lustrec) binary.
+** `Z3`: Path to Z3 binary. If you install Zustre, Z3 can be found in `ZUSTRE_PATH/build/run/bin/z3`.
+** `JKIND`: Path to [JKind](https://github.com/agacek/jkind).
 
 
 ### Launching ###
@@ -63,6 +63,6 @@ More information about CoCoSim can be found [here](https://github.com/coco-team/
 
 ##Contributors##
 
-* Arnaud Dieumegard (Fabruary - August 2015)
 * Hamza BOURBOUH (July - September 2016)
+* Arnaud Dieumegard (Fabruary - August 2015)
 * An earlier version of the internal compiler of CoCoSim was developed by Claire Pagetti, Thomas Loquen and Eric Noulard at ONERA (France). 
