@@ -1,21 +1,6 @@
-% CoCoSim: A framework for formal analysis of Simulink models
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% This file is part of cocoSim.
-% Copyright (C) 2014-2015  Carnegie Mellon University
-% Original contribution from ONERA
-%
-%    cocoSim  is free software: you can redistribute it
-%    and/or modify it under the terms of the GNU General Public License as
-%    published by the Free Software Foundation, either version 3 of the
-%    License, or (at your option) any later version.
-%
-%    cocoSim compiler + verifier is distributed in the hope that it will be useful,
-%    but WITHOUT ANY WARRANTY; without even the implied warranty of
-%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-%    GNU General Public License for more details.
-%
-%    You should have received a copy of the GNU General Public License
+% This file is part of CoCoSim.
+% Copyright (C) 2014-2016  Carnegie Mellon University
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function sl_customization(cm)
@@ -31,7 +16,7 @@ end
  function schema = getcocoSim(callbackInfo)
   schema = sl_container_schema;
   schema.label = 'CoCoSim';
-  schema.statustip = 'Modular Analysis Engine';
+  schema.statustip = 'Automated Analysis Framework';
   schema.autoDisableWhen = 'Busy';
   
   schema.childrenFcns = {@getVerify,@getValidate,...
@@ -242,7 +227,9 @@ end
  function zustreCallback(callbackInfo)
   try
       clear;
+  
       [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
+
       assignin('base', 'SOLVER', 'Z');
       assignin('base', 'RUST_GEN', 0);
       assignin('base', 'C_GEN', 0);

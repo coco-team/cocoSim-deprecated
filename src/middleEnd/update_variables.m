@@ -1,3 +1,8 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This file is part of CoCoSim.
+% Copyright (C) 2014-2016  Carnegie Mellon University
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 function [result, external_nodes, function_call, node_struct] = update_variables(chart, data,right_variables,variable_to_be_updated,action_updated, variables_struct, isAction, node_struct, global_nodes_struct)
 if ~exist('isAction','var')
     isAction = false;

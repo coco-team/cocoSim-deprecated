@@ -24,14 +24,14 @@ CoCoSim can be installed and used as follows:
 
 ### Configuration 
 
-+ Place the different solvers (Zustre, Kind2, JKind) under ```cocosim/tools/verifiers/```.
-+ Set the configuration for the backend solvers in `src/config.m`:
+* Place the different solvers (Zustre, Kind2, JKind) under ```cocosim/tools/verifiers/```.
+* Set the configuration for the backend solvers in `src/config.m`:
+** `ZUSTRE`: Path to [Zustre](https://github.com/coco-team/zustre) binary.
+**  `KIND2`: Path to [Kind2](https://github.com/kind2-mc/kind2) binary.
+** `LUSTREC`: Path to [LustreC](https://github.com/coco-team/lustrec) binary.
+** `Z3`: Path to Z3 binary. If you install Zustre, Z3 can be found in `ZUSTRE_PATH/build/run/bin/z3`.
+** `JKIND`: Path to [JKind](https://github.com/agacek/jkind).
 
-++`ZUSTRE`: Path to [Zustre](https://github.com/coco-team/zustre) binary.
-++ `KIND2`: Path to [Kind2](https://github.com/kind2-mc/kind2) binary.
-++ `LUSTREC`: Path to [LustreC](https://github.com/coco-team/lustrec) binary.
-++ `Z3`: Path to Z3 binary. If you install Zustre, Z3 can be found in `ZUSTRE_PATH/build/run/bin/z3`.
-+ +`JKIND`: Path to [JKind](https://github.com/agacek/jkind).
 
 ### Launching 
 

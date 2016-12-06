@@ -1,3 +1,8 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This file is part of CoCoSim.
+% Copyright (C) 2014-2016  Carnegie Mellon University
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 function [transition_actions, nb_transition_actions, external_nodes, global_nodes_struct] = write_Transition_actions(chart, data, transition, variables_struct, isFunction, global_nodes_struct)
     %generates transition actions and condition actions for every
     %transition

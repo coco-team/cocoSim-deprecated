@@ -1,3 +1,8 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This file is part of CoCoSim.
+% Copyright (C) 2014-2016  Carnegie Mellon University
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 function [action_code, external_nodes, variables_struct_output, node_struct] = write_action(chart, data, action, token, isFunction, variables_struct,node_struct, global_nodes_struct, isOutput)
     if~exist('isFunction','var')
         isFunction = false;
