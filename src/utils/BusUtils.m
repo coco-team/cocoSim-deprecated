@@ -19,7 +19,7 @@ classdef BusUtils
 		end
 	end
 
-	function [res bus] = is_bus(bus_name)
+	function [res, bus] = is_bus(bus_name)
 		res = false;
 		bus = '';
 		if ~exist('bus_struct', 'var')

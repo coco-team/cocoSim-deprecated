@@ -225,20 +225,11 @@ function schema = getZustre(callbackInfo)
 end 
 
  function zustreCallback(callbackInfo)
-  try
       clear;
-  
-      [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
-
       assignin('base', 'SOLVER', 'Z');
       assignin('base', 'RUST_GEN', 0);
       assignin('base', 'C_GEN', 0);
-      simulink_name = get_param(gcs,'FileName');%gcs;
-      cocoSim(simulink_name);
-  catch ME
-      disp(ME.message)
-      disp('run the command in the top level of the model')
-  end
+      runCoCoSim;
  end
  
 
@@ -249,20 +240,13 @@ function schema = getKind(callbackInfo)
 end 
 
 function kindCallback(callbackInfo)
-  try
       clear;
       [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
       assignin('base', 'SOLVER', 'K');
       assignin('base', 'RUST_GEN', 0);
       assignin('base', 'C_GEN', 0);
-      simulink_name = get_param(gcs,'FileName');%gcs;
-      cocoSim(simulink_name);
-  catch ME
-      disp(ME.message)
-      disp('run the command in the top level of the model')
-  end
+      runCoCoSim;
 end
- 
  
 function schema = getJKind(callbackInfo)     
   schema = sl_action_schema;
@@ -271,20 +255,41 @@ function schema = getJKind(callbackInfo)
 end 
 
 function jkindCallback(callbackInfo)
-  try
       clear;
       [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
       assignin('base', 'SOLVER', 'J');
       assignin('base', 'RUST_GEN', 0);
       assignin('base', 'C_GEN', 0);
-      simulink_name = get_param(gcs,'FileName');%gcs;
-      cocoSim(simulink_name);
-  catch ME
-      disp(ME.message)
-      disp('run the command in the top level of the model')
-  end
+      runCoCoSim;
 end
  
+function runCoCoSim
+  [path, name, ext] = fileparts(mfilename('fullpath'));
+  addpath(fullfile(path, 'utils'));
+  try
+      simulink_name = get_param(gcs,'FileName');
+      cocoSim(simulink_name); % run cocosim 
+  catch ME
+      disp(ME.identifier)
+      if strcmp(ME.identifier, 'MATLAB:badsubscript') 
+          msg = ['Activate debug message by running cocosim_debug=true', ...
+              ' to get more information where the model in failing'];
+          e_msg = sprintf('Error Msg: %s \n Action:\n\t %s', ME.message, msg);
+          display_msg(e_msg, Constants.ERROR, 'cocoSim', '');
+      elseif strcmp(ME.identifier,'MATLAB:MException:MultipleErrors')
+          msg = 'Make sure that the model can be run (i.e. most probably missing constants)';
+          e_msg = sprintf('Error Msg: %s \n Action:\n\t %s', ME.message, msg);
+          display_msg(e_msg, Constants.ERROR, 'cocoSim', '');
+      elseif strcmp(ME.identifier, 'Simulink:Commands:ParamUnknown')
+          msg = 'Run CoCoSim on the most top block of the model';
+          e_msg = sprintf('Error Msg: %s \n Action:\n\t %s', ME.message, msg);
+          display_msg(e_msg, Constants.ERROR, 'cocoSim', '');
+      else
+          disp(ME.message)
+      end
+      
+  end
+end
 %  function schema = getSeaHorn(callbackInfo)
 %   schema = sl_action_schema;
 %   schema.label = 'SeaHorn';
