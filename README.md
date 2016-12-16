@@ -9,7 +9,6 @@ CoCoSim is an automated analysis framework for Simulink and Stateflow models. Co
 The CoCoSim toolbox contains linux and osx binariers for the backend solvers.
 Download the [CoCoSim ToolBox](https://www.dropbox.com/s/0fbb1jcrhqfsr30/cocosim-v0.1.tar.gz?dl=1)
 
-
 ## Installation 
 
 CoCoSim can be installed and used as follows:
@@ -27,7 +26,7 @@ CoCoSim can be installed and used as follows:
 * Place the different solvers (Zustre, Kind2, JKind) under ```cocosim/tools/verifiers/```.
 * Set the configuration for the backend solvers in `src/config.m`:
  * `ZUSTRE`: Path to [Zustre](https://github.com/coco-team/zustre) binary.
- *  `KIND2`: Path to [Kind2](https://github.com/kind2-mc/kind2) binary.
+ * `KIND2`: Path to [Kind2](https://github.com/kind2-mc/kind2) binary.
  * `LUSTREC`: Path to [LustreC](https://github.com/coco-team/lustrec) binary.
  * `Z3`: Path to Z3 binary. If you install Zustre, Z3 can be found in `ZUSTRE_PATH/build/run/bin/z3`.
  * `JKIND`: Path to [JKind](https://github.com/agacek/jkind).
@@ -39,14 +38,14 @@ CoCoSim can be installed and used as follows:
 + Navigate to `cocosim/`
 + Just run the file ```start_cocosim```
 + Make sure to have one of the backround solvers installed (e.g. Zustre, Kind2 and or JKind)
-+ You can now open your Simulink model, e.g. ```open test/properties/property_3_test.mdl```
++ You can now open your Simulink model, e.g. ```open test/properties/safe_1.mdl```
 
 ### Example 
 
-1. To test a safe property: `open test/properties/property_2_test.mdl`
+1. To test a safe property: `open test/properties/safe_1.mdl`
 2. Under the `Tools` menu choose `Verify with ...` and then `Zustre` (or JKind if you are under Windows OS).
 3. To test an unsafe property (which also provide a counterexample):
-   `open test/properties/property_3_unsafe_test.mdl`
+   `open test/properties/unsafe_1.mdl`
 
 More information about CoCoSim can be found [here](https://github.com/coco-team/cocoSim/wiki/CoCoSim)
 
@@ -58,8 +57,14 @@ More information about CoCoSim can be found [here](https://github.com/coco-team/
 
 * Lead Developer: [Temesghen Kahsai](http://www.lememta.info/)
 
-## Contributors
+## Current Contributors
 
-* Hamza BOURBOUH (July - September 2016)
+* Hamza Bourbouh 
+* Claire Pagetti (Onera - France)
+* Eric Noulard (Onera - France)
+* Thomas Loquen (Onera - France)
+
+## Past Contributors
+
 * Arnaud Dieumegard (Fabruary - August 2015)
-* An earlier version of the internal compiler of CoCoSim was developed by Claire Pagetti, Thomas Loquen and Eric Noulard at ONERA (France). 
+
