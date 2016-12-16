@@ -115,7 +115,6 @@ end
 
 
 node_header = app_sprintf(node_header, ')\nreturns (');
-
 list_output = '';
 list_outputs = '';
 list_output_names = '';
@@ -145,6 +144,7 @@ for idx_block=1:nblk
 		clear list_output
 	end
 end
+
 list_output = Utils.concat_delim(list_outputs, ';\n\t');
 node_header = app_sprintf(node_header, list_output);
 
@@ -185,11 +185,11 @@ if idx_subsys==1
     end
 end
 %%%%%%%%%%%%%%%% Retrieve nodes code
-
 [let_tel_code_string, extern_s_functions_string, extern_functions, properties_nodes, additional_variables, property_node_names, extern_matlab_functions, c_code, external_math_functions] = ...
     write_code(nblk, inter_blk, blks, main_blks, myblk, nom_lustre_file, idx_subsys, false, trace, xml_trace);
+
 if idx_subsys==1
-let_tel_code_string = app_sprintf(let_tel_code_string, '\t%s;\n', 'i_virtual_local= 0.0 -> 1.0');
+   let_tel_code_string = app_sprintf(let_tel_code_string, '\t%s;\n', 'i_virtual_local= 0.0 -> 1.0');
 end
 % Add additional variables (ex in the MinMax block backend)
 if ~strcmp(additional_variables, '')

@@ -598,6 +598,7 @@ classdef Utils
             root = sfroot;
             chart = root.find('-isa', 'Stateflow.EMChart', '-and', 'Path', char(block.origin_name));
             
+            
             % Get the MATLAB function script
             script = chart.Script;
             newline = sprintf('\n');

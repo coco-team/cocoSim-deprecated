@@ -37,4 +37,5 @@ ZUSTRE = fullfile(solvers_path,'zustre');
 Z3 = fullfile(solvers_path,'z3');
 KIND2 = fullfile(solvers_path,'kind2');
 SEAHORN = 'PATH';
+cocosim_version = 'v0.1';
 
