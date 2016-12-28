@@ -48,6 +48,8 @@
 %
 function [output_string, var_str] = write_subsystem(unbloc, inter_blk, main_blk, xml_trace)
 
+
+
 output_string = '';
 var_str = '';
 
@@ -369,6 +371,7 @@ else
         output_string = app_sprintf(output_string, '\t%s = %s;\n', name, condition_str);
     end
 end
+
 
 end
 

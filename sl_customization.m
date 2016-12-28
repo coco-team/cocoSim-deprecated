@@ -110,7 +110,7 @@ end
 
 function schema = viewContract(callbackInfo)     
   schema = sl_action_schema;
-  schema.label = 'View generated CoCoSpec'; 
+  schema.label = 'View generated CoCoSpec (Experimental)'; 
   schema.callback = @viewContractCallback;
  end
  
@@ -144,7 +144,7 @@ function schema = viewContract(callbackInfo)
  
  function schema = getProps(callbackInfo)     
   schema = sl_action_schema;
-  schema.label = 'Create CoCoSpec'; 
+  schema.label = 'Create Property'; 
   schema.callback = @synchObsCallback;
  end
  
@@ -193,17 +193,11 @@ function schema = viewContract(callbackInfo)
  end
 
  function cCallback(callbackInfo)
-  try 
-      [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
+      clear; 
       assignin('base', 'SOLVER', 'NONE');
       assignin('base', 'RUST_GEN', 0);
       assignin('base', 'C_GEN', 1);
-      simulink_name = get_param(gcs,'FileName');%gcs;
-      cocoSim(simulink_name);
-  catch ME
-      disp(ME.message)
-      disp('run the command in the top level of the model')
-  end
+      runCoCoSim;
  end
  
  %% Run cocoSim
