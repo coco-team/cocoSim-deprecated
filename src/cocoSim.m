@@ -59,6 +59,7 @@ config_msg = [config_msg '|  ZUSTRE: ' ZUSTRE '\n'];
 config_msg = [config_msg '|  JKIND:  ' JKIND '\n'];
 config_msg = [config_msg '|  KIND2:  ' KIND2 '\n'];
 config_msg = [config_msg '|  LUSTREC:' LUSTREC '\n'];
+config_msg = [config_msg '|  LUSTREC Include Dir:' include_dir '\n'];
 config_msg = [config_msg '|  SEAHORN:' SEAHORN '\n'];
 config_msg = [config_msg '|  Z3: ' Z3 '\n'];
 config_msg = [config_msg '--------------------------------------------------\n'];
@@ -455,6 +456,22 @@ elseif C_GEN
     end
 end
 
+%%%%%%%%%%%%% Compilation to C or Rust %%%%%%%%%%%%%
+if RUST_GEN
+    display_msg('Generating Rust Code', Constants.INFO, 'Rust Compilation', '');
+    try
+        (nom_lustre_file);
+    catch ME
+        display_msg(ME.message, Constants.ERROR, 'Rust Compilation', '');
+    end
+elseif C_GEN
+    display_msg('Generating C Code', Constants.INFO, 'C Compilation', '');
+    try
+        lustrec(nom_lustre_file);
+    catch ME
+        display_msg(ME.message, Constants.ERROR, 'C Compilation', '');
+    end
+end
 
 %%%%%%%%%%%%% Verification %%%%%%%%%%%%%%%
 smt_file = '';
@@ -499,7 +516,6 @@ if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
             display_msg(ME.message, Constants.ERROR, 'Verification', '');
         end
     end
-else
 end
 
 %%%%%%%%%%%% Cleaning and end of operations %%%%%%%%%%

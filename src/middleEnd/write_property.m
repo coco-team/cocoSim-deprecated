@@ -33,8 +33,11 @@
 %
 %% Code
 %
-function [property_node,extern_s_functions_string, extern_functions, node_call_name, external_math_functions] = write_property(block, inter_blk, main_blk, main_blks, nom_lustre_file, print_node, trace, annot_type, observer_type, xml_trace)
+function [property_node,extern_s_functions_string, extern_functions, node_call_name, external_math_functions] = ...
+write_property(block, inter_blk, main_blk, main_blks, nom_lustre_file, print_node, trace, annot_type, observer_type, xml_trace)
 
+disp(annot_type)
+disp('TEME')
 
 property_node = '';
 extern_functions = '';
@@ -57,8 +60,9 @@ if numel(full_observer_name{1}(1:end-1)) == 1
 	parent_subsystem = main_blk{idx_parent_subsystem};
 	[model_path, parent_node_name, ext] = fileparts(nom_lustre_file);
 else
+    
 	idx_parent_subsystem = get_subsys_index(main_blk, Utils.concat_delim(full_observer_name{1}(1:end-1), '/'));
-	parent_subsystem = main_blk{idx_parent_subsystem};
+    parent_subsystem = main_blk{idx_parent_subsystem};
 	full_parent_name = regexp(parent_subsystem{1}.name, '/', 'split');
 	parent_node_name = Utils.concat_delim(full_parent_name{1}, '_');
 end
@@ -147,6 +151,7 @@ for idx_in=1:numel(block.pre)
 %		obs_inputs_outputs_dt{cpt_not_in} = Utils.get_lustre_dt(block.inports_dt{idx_in});
 	end
 end
+
 
 % Add potentially missing outport of the observed subsystem
 unused_outports_variables = '';
@@ -261,11 +266,10 @@ extern_functions = '';
 properties_nodes = '';
 additional_variables = '';
 
-
 [let_tel_code_string extern_s_functions_string extern_functions properties_nodes additional_variables external_math_functions] = ...
     write_code(obs_nblk, obs_inter_blk, obs_blks, main_blks, ...
     main_blk, nom_lustre_file, obs_idx_subsys, false, trace, xml_trace);
- 
+
 header = app_sprintf(header, additional_variables);
 header = app_sprintf(header, '\t%s;\n', 'i_virtual_local : real');
 let_tel_code_string = app_sprintf(let_tel_code_string, '\t%s;\n', 'i_virtual_local= 0.0 -> 1.0');
@@ -315,7 +319,7 @@ function [main_sub_idx] = get_subsys_index(inter_blk, origin_name)
 			main_sub_idx = idx;
 			return
 		end
-	end
+    end
 end
 
 function [res_idx] = get_block_index(blks, name)

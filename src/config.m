@@ -13,10 +13,12 @@ if ~exist('solvers_path', 'var')
         solvers_path = fullfile(cocosim_path, 'tools/verifiers/osx/bin/');
         JKIND =fullfile(cocosim_path,'tools/verifiers/jkind/jkind');
         Z3Library_path = fullfile(cocosim_path, 'tools/verifiers/osx/lib/libz3.so');
+        include_dir = fullfile(cocosim_path, 'tools/verifiers/osx/include/lustrec');
     elseif isunix
         solvers_path = fullfile(cocosim_path, 'tools/verifiers/linux/bin/');
         JKIND =fullfile(cocosim_path,'tools/verifiers/jkind/jkind');
         Z3Library_path = fullfile(cocosim_path, 'tools/verifiers/linux/lib/libz3.so');
+        include_dir = fullfile(cocosim_path, 'tools/verifiers/linux/include/lustrec');
     elseif ispc
 %         warndlg('Only JKind can be used', 'CoCoSim backend configuration')
         solvers_path = fullfile(cocosim_path, 'tools\verifiers\');
@@ -38,4 +40,5 @@ Z3 = fullfile(solvers_path,'z3');
 KIND2 = fullfile(solvers_path,'kind2');
 SEAHORN = 'PATH';
 cocosim_version = 'v0.1';
+
 

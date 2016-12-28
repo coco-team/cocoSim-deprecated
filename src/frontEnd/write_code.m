@@ -534,7 +534,7 @@ for idx_block=1:nblk
 
 				end
 
-			%%%%%%%%%%%%%%%%%% Observer %%%%%%%%%%%%%%%%%
+			%%%%%%%%%%%%%%%%%% Observer Property %%%%%%%%%%%%%%%%%
 			elseif Constants.is_property(inter_blk{idx_block}.mask_type)
           
 				annot_type = get_param(blks{idx_block}, 'AnnotationType');
@@ -585,7 +585,8 @@ for idx_block=1:nblk
 		elseif inter_blk{idx_block}.num_output ~= 0
 
             [block_string, var_str] = write_subsystem(inter_blk{idx_block}, inter_blk, main_blk, xml_trace);
-		end
+		
+        end
 
 	%%%%%%%%%%%%%%%%%% Outport %%%%%%%%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'Outport')
