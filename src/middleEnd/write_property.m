@@ -227,8 +227,9 @@ for idx_block=2:obs_nblk
 end
 
 
-% Get assertions
-assertions = convert_assertions(obs_inter_blk, list_in, list_in_outport, xml_trace);
+% Get cocospec
+assertions = convert_cocospec(obs_inter_blk, list_in, list_in_outport, xml_trace);
+
 
 % Add the additional variables for the output of the call to the observed system
 inputs_str = Utils.concat_delim(list_in_outport_parent_call_declaration, ';\n\t');

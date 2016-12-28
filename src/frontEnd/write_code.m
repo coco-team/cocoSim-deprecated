@@ -538,7 +538,9 @@ for idx_block=1:nblk
 			elseif Constants.is_property(inter_blk{idx_block}.mask_type)
           
 				annot_type = get_param(blks{idx_block}, 'AnnotationType');
-				observer_type = get_param(blks{idx_block}, 'ObserverType');
+                annotations = find_system(blks{idx_block},'FindAll','on','Type','annotation');
+				disp(annotations)
+                observer_type = get_param(blks{idx_block}, 'ObserverType');
                 try
                     [property_node, ext_node, extern_funs, property_name,external_math_functions_i] = write_property(inter_blk{idx_block}, ...
                         inter_blk, main_blk, main_blks, nom_lustre_file, print_node, trace, annot_type, observer_type, xml_trace);
