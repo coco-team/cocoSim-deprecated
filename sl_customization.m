@@ -29,6 +29,7 @@ function schema = getCheckBlocks(callbackInfo)
     schema.label = 'Check unsupported blocks'; 
     schema.callback = @checkBlocksCallBack;
 end
+
  function checkBlocksCallBack(callbackInfo)
      try
          model_full_path = get_param(gcs,'FileName');
@@ -39,6 +40,7 @@ end
          disp('run the command in the top level of the model')
      end
  end
+ 
  function schema = getValidate(callbackInfo)     
   schema = sl_action_schema;
   schema.label = 'Compiler Validation (Experimental)'; 
@@ -74,9 +76,11 @@ end
          disp('run the command in the top level of the model')
      end
  end
- function schema = getPP(callbackInfo)     
+ 
+ % Function to pre-process and simplify the Simulink model
+ function schema = getPP(callbackInfo) 
   schema = sl_action_schema;
-  schema.label = 'CoCoSim Pre-Processor'; 
+  schema.label = 'Simplifier'; 
   schema.callback = @ppCallBack;
  end
  

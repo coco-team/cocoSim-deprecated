@@ -10,7 +10,7 @@ else
         expr = strcat(expr,'|',tags{i});
     end
 end
-system(['sed -Ei '''' "/' expr '/d" "' file_name '"']);
+system(['LANG=C && sed -Ei '''' "/' expr '/d" "' file_name '"']);
 
 end
 
