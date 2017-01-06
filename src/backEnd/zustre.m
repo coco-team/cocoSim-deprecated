@@ -42,11 +42,9 @@ config;
             else
                 command = sprintf('%s "%s" --node %s --xml --cg --timeout 60 --save ', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name);
             end
-            disp(['ZUSTRE_COMMAND ' command])
+            display_msg(['ZUSTRE_COMMAND ' command], Constants.DEBUG, 'write_code', '');
             [status, zustre_out] = system(command);
-            disp('   -- ZUSTRE_OUT --')
-            disp(zustre_out)
-            disp('   -- ZUSTRE_OUT --')
+            display_msg(zustre_out, Constants.DEBUG, 'write_code', '');
 			if status == 0
 				[answer, cex, cocospec] = check_zustre_result(zustre_out, property_node_names{idx_prop}.prop_name, property_file_base_name);
 		
@@ -72,6 +70,7 @@ config;
 				else
 					set_param(property_node_names{idx_prop}.origin_block_name, 'BackgroundColor', 'red');
 					set_param(property_node_names{idx_prop}.origin_block_name, 'ForegroundColor', 'red');
+              
 					if strcmp(answer, 'CEX') && ~strcmp(cex, '')
 						% Init mat file name
 						mat_file_name = ['config_' property_node_names{idx_prop}.prop_name '.mat'];
@@ -118,12 +117,12 @@ config;
 				end
 			else
 				msg = ['FAILURE to launch for property: ' property_node_names{idx_prop}.prop_name '\n' zustre_out];
-				display_msg(msg, Constants.INFO, 'Zustre', '');
+				display_msg(msg, Constants.ERROR, 'Zustre', '');
 			end
 		end
 	else
 		msg = 'Impossible to find Zustre';
-		display_msg(msg, Constants.INFO, 'Zustre', '');
+		display_msg(msg, Constants.ERROR, 'Zustre', '');
     end
 end
 

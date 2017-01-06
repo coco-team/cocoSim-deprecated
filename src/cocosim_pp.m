@@ -22,7 +22,6 @@ evalin('base','global verif;');
 % Get the model file info
 [model_path, model, ext] = fileparts(file_name);
 disp(model_path)
-disp('Teme')
 
 if nargin > 2
     if strcmp(varargin{1},'verif')
@@ -55,20 +54,18 @@ delete(strcat(model,'_PP',ext));
 addpath(fullfile(pp_path, 'pp', 'lib', 'common'));
 addpath(fullfile(pp_path, 'pp', 'lib', 'blocks'));
 addpath(fullfile(pp_path, 'pp', 'lib', 'math'));
+addpath(fullfile(pp_path, 'utils'));
 % Creating a cache copy to process
 
 original_file = [model_path filesep model ext];
-disp(['Copying ' model ])
+display_msg(['Copying ' model ], Constants.INFO, 'simplifier', '');
 new_model_name = [model '_p' ext];
-disp(new_model_name)
 new_model = strcat(model,'_p');
-disp(new_model)
 
-disp(file_name)
 copyfile(file_name, strcat(new_model, ext));
-disp(['Loading ' new_model_name '...'])
+display_msg(['Loading ' new_model_name ], Constants.INFO, 'simplifier', '');
 load_system(new_model);
-disp('Loading library...')
+display_msg('Loading library', Constants.INFO, 'simplifier', '');
 load_system('gal_lib.slx');
 
 % Load the constant file if specified
@@ -78,7 +75,7 @@ if nargin > 1
         % Add the constants of the model to the workspace
         [cst_path, cst_name, cst_ext] = fileparts(constant_file);
         %cst_file_name = strrep(constant_file,'.m','');
-        disp(['Loading constants into workspace ' cst_name '...'])
+        display_msg(['Loading constants into workspace ' cst_name], Constants.INFO, 'simplifier', '');
         evalin('base', cst_name);
         fprintf('Done\n\n');
     end
@@ -87,7 +84,7 @@ end
 % evalin('base','default_constants');
 
 % Looking for GAL non-supported blocks
-fprintf('Looking for CoCoSim non-supported blocks...\n\n')
+display_msg('Looking for CoCoSim non-supported blocks', Constants.INFO, 'simplifier', '');
 
 % Processing Goto/From pattern
 goto_process(new_model);
@@ -155,15 +152,13 @@ saturation_dynamic_process(new_model);
 % Processing Dead Zone Dynamic blocks
 deadzone_dynamic_process(new_model);
 
-
-
 % Replace variables by their value if it is a scalar value
 replace_variables(new_model);
 
 % Configure any subsystem to be treated as Atomic
 ssys_list = find_system(new_model,'BlockType','SubSystem');
 if not(isempty(ssys_list))
-    disp('Processing Subsystem blocks...')
+    display_msg('Processing Subsystem blocks', Constants.INFO, 'simplifier', ''); 
     for i=1:length(ssys_list)
         %disp(ssys_list{i})
         set_param(ssys_list{i},'TreatAsAtomicUnit','on');   
@@ -172,39 +167,43 @@ if not(isempty(ssys_list))
 end
 
 % Set Inport data type to double if not defined
-disp('Processing Inport blocks...')
+display_msg('Processing Inport blocks', Constants.INFO, 'simplifier', ''); 
+   
 inport_list = find_system(new_model,'BlockType','Inport');
 if isempty(inport_list)
-    fprintf(2,'The model has no inport\n')
+    display_msg('Model has no inport', Constants.WARNING, 'simplifier', '');
 else
     for i=1:length(inport_list)        
         data_type = get_param(inport_list{i},'OutDataTypeStr');
         if strcmp(data_type,'Inherit: auto')
             set_param(inport_list{i},'OutDataTypeStr','double')
             block_name = get_param(inport_list{i},'Name');
-            disp(['The data type of input "' block_name ...
-                '" has been automatically set to "double"'])
+            msg = ['The data type of input "' block_name ...
+                '" has been automatically set to "double"'];
+            display_msg(msg, Constants.WARNING, 'simplifier', '');
         end
     end
 end
-fprintf('Done\n\n');
 
 % Check if there is an output in the main block
-disp('Checking output blocks...')
+display_msg('Checking output blocks', Constants.INFO, 'simplifier', ''); 
+
 outport_list = find_system(new_model,'SearchDepth','1','BlockType','Outport');
 if isempty(outport_list)
-    fprintf(2,'The model has no outport\n')
+    %fprintf(2,'The model has no outport\n')
+    display_msg('Model has no outport', Constants.WARNING, 'simplifier', '');
 else
-    disp('The system has an output');
+     display_msg('Model has outport', Constants.INFO, 'simplifier', '');
 end
-fprintf('Done\n\n');
+
 
 % Exporting the model to the mdl CoCoSim compatible file format
-disp('Saving pre-processed model ...')
+
+display_msg('Saving simplified model', Constants.INFO, 'simplifier', '');
 new_file = fullfile(model_path, strcat(model,'_PP.slx'));
+disp(['Simplified model path: ' new_file])
 save_system(new_model, new_file);
 % save_system(new_model,new_file,'ExportToVersion','R2008b');
-
 % remove files
 if exist([new_model ext], 'file')
    delete([new_model ext]);
@@ -219,5 +218,6 @@ remove_line_tags(new_file,tags);
 % Clean the workspace
 evalin('base','clear all');
 
-fprintf('... Done with Pre-Processing ...\n\n')
+
+display_msg('Done with the simplification', Constants.INFO, 'simplifier', '');
 end

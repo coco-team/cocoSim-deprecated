@@ -224,25 +224,30 @@ for idx_subsys=numel(inter_blk):-1:1
                 
     elseif is_matlab_function
         display_msg('Found Embedded Matlab', Constants.INFO, 'cocoSim', '');
-
-        [fun_name, chart] = Utils.get_MATLAB_function_name(inter_blk{idx_subsys}{1});
-
-        [mat_fun_node] = write_matlab_function_node(inter_blk{idx_subsys}{1}, inter_blk, inter_blk{idx_subsys}, fun_name, chart, xml_trace);
-        extern_nodes_string = [extern_nodes_string mat_fun_node];
+        try
+            [fun_name, chart] = Utils.get_MATLAB_function_name(inter_blk{idx_subsys}{1});
+            [mat_fun_node] = write_matlab_function_node(inter_blk{idx_subsys}{1}, inter_blk, inter_blk{idx_subsys}, fun_name, chart, xml_trace);
+            
+            extern_nodes_string = [extern_nodes_string mat_fun_node];
+            %
+            
+            % Add Matlab function code to an m file
+            blk_path_elems = regexp(inter_blk{idx_subsys}{1}.name{1}, '/', 'split');
+            node_call_name = Utils.concat_delim(blk_path_elems, '_');
+            disp(node_call_name)
+            fun_file = fullfile(output_dir, strcat([node_call_name '_' fun_name], '.m'));
+            lines = regexp(chart.Script, sprintf('\n'), 'split');
+            lines{1} = regexprep(lines{1}, ['= ' fun_name '('], ['= ' node_call_name '_' fun_name '(']);
+            script = Utils.concat_delim(lines, sprintf('\n'));
+            fid = fopen(fun_file, 'w');
+            fprintf(fid, '%s', script);
+            fclose(fid);
+            display_msg('Successfully done processing Embedded Matlab', Constants.INFO, 'cocoSim', '');
+        catch ME
+            disp(ME.message)
+            display_msg('Unable to process Embedded Matlab', Constants.ERROR, 'cocoSim', '');
+        end
         
-        
-        % Add Matlab function code to an m file
-        blk_path_elems = regexp(inter_blk{idx_subsys}{1}.name{1}, '/', 'split');
-        node_call_name = Utils.concat_delim(blk_path_elems, '_');
-        disp(node_call_name)
-        fun_file = fullfile(output_dir, strcat([node_call_name '_' fun_name], '.m'));
-        lines = regexp(chart.Script, sprintf('\n'), 'split');
-        lines{1} = regexprep(lines{1}, ['= ' fun_name '('], ['= ' node_call_name '_' fun_name '(']);
-        script = Utils.concat_delim(lines, sprintf('\n'));
-        fid = fopen(fun_file, 'w');
-        fprintf(fid, '%s', script);
-        fclose(fid);
-        display_msg('Done with Embedded Matlab', Constants.INFO, 'cocoSim', '');
         
     elseif is_Chart
         display_msg('Found Stateflow', Constants.INFO, 'cocoSim', '');
@@ -276,6 +281,7 @@ for idx_subsys=numel(inter_blk):-1:1
             end
         end
     
+        
         [node_header, let_tel_code, extern_s_functions_string, extern_funs, properties_nodes, property_node_name, extern_matlab_funs, c_code, external_nodes_i] = ...
             blocks2lustre(file_name, nom_lustre_file, inter_blk, blks, mat_files, idx_subsys, trace, xml_trace);
         
@@ -289,7 +295,7 @@ for idx_subsys=numel(inter_blk):-1:1
         
         for idx_ext_mat=1:numel(extern_matlab_funs)
             extern_matlab_functions{numel(extern_matlab_functions)+1} = extern_matlab_funs{idx_ext_mat};
-        end
+        end 
         
         properties_nodes_string = [properties_nodes_string properties_nodes];
         if numel(property_node_name) > 0
@@ -439,23 +445,6 @@ display_msg(msg, Constants.INFO, 'Traceability', '');
 msg = sprintf('Lustre code generated in file: %s', nom_lustre_file);
 display_msg(msg, Constants.INFO, 'Generation result', '');
 
-%%%%%%%%%%%%% Code Generation %%%%%%%%%%%%%
-if RUST_GEN
-    display_msg('Generating Rust Code', Constants.INFO, 'Code Generation', '');
-    try
-        rust(nom_lustre_file);
-    catch ME
-        display_msg(ME.message, Constants.ERROR, 'Verification', '');
-    end
-elseif C_GEN
-    display_msg('Generating C Code', Constants.INFO, 'Code Generation', '');
-    try
-        lustrec(nom_lustre_file);
-    catch ME
-        display_msg(ME.message, Constants.ERROR, 'Verification', '');
-    end
-end
-
 %%%%%%%%%%%%% Compilation to C or Rust %%%%%%%%%%%%%
 if RUST_GEN
     display_msg('Generating Rust Code', Constants.INFO, 'Rust Compilation', '');
@@ -472,6 +461,7 @@ elseif C_GEN
         display_msg(ME.message, Constants.ERROR, 'C Compilation', '');
     end
 end
+
 
 %%%%%%%%%%%%% Verification %%%%%%%%%%%%%%%
 smt_file = '';
@@ -516,6 +506,8 @@ if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
             display_msg(ME.message, Constants.ERROR, 'Verification', '');
         end
     end
+else
+    display_msg('No property to prove', Constants.INFO, 'Verification', '');
 end
 
 %%%%%%%%%%%% Cleaning and end of operations %%%%%%%%%%
