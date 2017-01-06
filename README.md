@@ -1,29 +1,29 @@
-# CoCoSim 
+# CoCoSim
 
 CoCoSim is an automated analysis framework for Simulink and Stateflow models. CoCoSim is currently under development. We welcome any feedback and bug report.
 
 [![ScreenCast of CoCoSim](http://i.imgur.com/itLte0X.png)](https://youtu.be/iqwVCiU46Y4)
 
-## CoCoSim ToolBox 
+## CoCoSim ToolBox
 
 The CoCoSim toolbox contains linux and osx binariers for the backend solvers.
-Download the [CoCoSim ToolBox](https://www.dropbox.com/s/5rl6uf3mzhiaa69/cocosim-v0.1.tar.gz?dl=1)
+Download the [CoCoSim ToolBox](https://github.com/coco-team/cocoSim/releases/v0.1/cocosim.v.0.1.tar.gz)
 
 
 
-## Installation 
+## Installation
 
 CoCoSim can be installed and used as follows:
 
-### Dependencies 
+### Dependencies
 
 * MATLAB(c) version **R2014b** or newer
-* [Zustre](https://github.com/lememta/zustre) 
+* [Zustre](https://github.com/lememta/zustre)
 * (Optional) [JKind](https://github.com/agacek/jkind) -- Best for Windows OS users
 * (Optional) [Kind2](http://kind2-mc.github.io/kind2/)
 * Python2.7
 
-### Configuration 
+### Configuration
 
 * Place the different solvers (Zustre, Kind2, JKind) under ```cocosim/tools/verifiers/```.
 * Set the configuration for the backend solvers in `src/config.m`:
@@ -34,15 +34,15 @@ CoCoSim can be installed and used as follows:
  * `JKIND`: Path to [JKind](https://github.com/agacek/jkind).
 
 
-### Launching 
+### Launching
 
-+ Launch Matlab(c) 
++ Launch Matlab(c)
 + Navigate to `cocosim/`
 + Just run the file ```start_cocosim```
 + Make sure to have one of the backround solvers installed (e.g. Zustre, Kind2 and or JKind)
 + You can now open your Simulink model, e.g. ```open test/properties/property_3_test.mdl```
 
-### Example 
+### Example
 
 1. To test a safe property: `open test/properties/property_2_test.mdl`
 2. Under the `Tools` menu choose `Verify with ...` and then `Zustre` (or JKind if you are under Windows OS).
@@ -63,4 +63,4 @@ More information about CoCoSim can be found [here](https://github.com/coco-team/
 
 * Hamza BOURBOUH (July - September 2016)
 * Arnaud Dieumegard (Fabruary - August 2015)
-* An earlier version of the internal compiler of CoCoSim was developed by Claire Pagetti, Thomas Loquen and Eric Noulard at ONERA (France). 
+* An earlier version of the internal compiler of CoCoSim was developed by Claire Pagetti, Thomas Loquen and Eric Noulard at ONERA (France).
