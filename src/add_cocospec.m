@@ -5,7 +5,7 @@ function insert_observer( model_full_path )
 	disp('              +----------------------------------------------------------+');
 	disp('              |    Welcome to the CoCoSpec block insertion tool          |');
 	disp('              +----------------------------------------------------------+');
-    disp('              |    Currently Only Guarantees (Properties) are supported  |');
+        disp('              |    Currently Only Guarantees (Properties) are supported  |');
 	disp('              +----------------------------------------------------------+');
 	disp('              |       Use <Ctrl + C> to quit this tool at any time       |') 
 	disp('              +----------------------------------------------------------+');
@@ -31,7 +31,7 @@ function insert_observer( model_full_path )
 
 	input_ok = false;
 	while ~input_ok
-		[subsys_nb try_again] = handle_user_input('Number ? ');
+		[subsys_nb try_again] = handle_user_input('Subsystem Id ? ');
 		if ~try_again
 			if subsys_nb > 0 && subsys_nb <= numel(subsys)
 				input_ok = true;
@@ -40,7 +40,7 @@ function insert_observer( model_full_path )
 				input_ok = true;
 				disp('CoCoSpec block planned to be added at the root of the model');
 			else
-				disp('There is no such SubSystem number, please try again');
+				disp('There is no such SubSystem id, please try again');
 			end
 		end
 	end
@@ -54,43 +54,52 @@ function insert_observer( model_full_path )
 
 	% Get the list of outports
 	outports = find_system(subsystem_name, 'SearchDepth', 1, 'Type', 'Block', 'BlockType', 'Outport');
-	% Display the list of available outports for thie Subsystem
-	disp('Available outputs:')
-	for idx=1:numel(outports)
+	
+        if numel(outports) > 0
+            % Display the list of available outports for thie Subsystem
+            disp('Available outputs:')
+            for idx=1:numel(outports)
 		port_name = get_param(outports(idx), 'Name');
 		outport_str = [num2str(idx) ': '];
 		outport_str = [outport_str port_name{1} ' '];
 		disp(sprintf('\t%s', outport_str));
-	end
+            end
 
-	% Manage user input for the selection of the outports to connect on the observer input
-	disp('Please input the number of the output to be plugged-in to the new CoCoSpec block');
-	disp('In order to select multiple blocks please input the numbers separated by a space')
-	input_ok = false;
-	while ~input_ok
-		[ports_nb try_again] = handle_user_input('Number ? ');
+            % Manage user input for the selection of the outports to connect on the observer input
+            disp('Please input the number of the output to be plugged-in to the new CoCoSpec block');
+            disp('In order to select multiple blocks please input the numbers separated by a space')
+            input_ok = false;
+            while ~input_ok && numel(outports) > 0 
+		[ports_nb try_again] = handle_user_input('Port(s) Number(s) ? ');
 		if ~try_again
-			inputs_all_ok = true;
-			for idx_out=1:numel(ports_nb)
-				if ~(ports_nb(idx_out) > 0 && ports_nb(idx_out) <= numel(outports))
-					inputs_all_ok = false;
-				end
-			end
-			if inputs_all_ok
-				input_ok = true;
-				output_summary = '';
-				for idx_out=1:numel(ports_nb)
-					port_name = get_param(outports(ports_nb(idx_out)), 'Name');
-					port_full_name = getfullname(outports(ports_nb(idx_out)));
-					port_full_name = [port_full_name{1} '/' port_name{1}];
-					outputs_names{idx_out} = port_full_name;
-					output_summary = [output_summary port_name{1} ' '];
-				end
-			else
-				disp('There is a mistake in your input, please try again');
-			end
-		end
-	end
+                    inputs_all_ok = true;
+                    for idx_out=1:numel(ports_nb)
+                        if ~(ports_nb(idx_out) > 0 && ports_nb(idx_out) <= numel(outports))
+                            inputs_all_ok = false;
+                        end
+                    end
+                    if inputs_all_ok
+                        input_ok = true;
+                        output_summary = '';
+                        for idx_out=1:numel(ports_nb)
+                            port_name = get_param(outports(ports_nb(idx_out)), 'Name');
+                            port_full_name = getfullname(outports(ports_nb(idx_out)));
+                            port_full_name = [port_full_name{1} '/' port_name{1}];
+                            outputs_names{idx_out} = port_full_name;
+                            output_summary = [output_summary port_name{1} ' '];
+                        end
+                    else
+                        disp('There is a mistake in your input, please try again');
+                    end
+  end
+            end
+            
+        else
+            disp('No available outputs.')
+            outputs_names=[];
+            output_summary=[];
+
+        end
 
 	disp('Please provide the name for the CoCoSpec block');
 	observer_name = input('CoCoSpec name ? ', 's');
