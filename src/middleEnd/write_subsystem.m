@@ -66,7 +66,12 @@ end
 if ~strcmp(unbloc.type, 'ModelReference')
     sf_sub = get_param(unbloc.annotation, 'SFBlockType');
     if strcmp(sf_sub, 'MATLAB Function')
+        fun_name = 'EM_Function';
+        try
         [fun_name, chart] = Utils.get_MATLAB_function_name(unbloc);
+        catch ME
+            display_msg('Failed to get Matlab function name', Constants.ERROR, 'write_subsystem', '');
+        end
         node_call_name = [node_call_name '_' fun_name];
         
         [in_decl_str, lst_in_vars_call, in_var_print_dt, in_add_vars] = get_inputs_data(node_call_name, unbloc, list_in, xml_trace);

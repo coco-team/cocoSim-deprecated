@@ -371,7 +371,6 @@ for idx_block=1:nblk
     
    %% It needs major revision %%
 	elseif strcmp(inter_blk{idx_block}.type, 'S-Function')
-        
 		function_name = get_param(blks{idx_block}, 'FunctionName');
         % get port connectivity
         props = get_param(blks{idx_block}, 'portconnectivity');
@@ -591,7 +590,7 @@ for idx_block=1:nblk
 
 		%%%%%%%%%%%%%%%%%% Classical SubSystem %%%%%%%%%%%%
 		elseif inter_blk{idx_block}.num_output ~= 0
-
+            display_msg('Classical Susbsystem', Constants.DEBUG, 'write_code', '');
             [block_string, var_str] = write_subsystem(inter_blk{idx_block}, inter_blk, main_blk, xml_trace);
 		
         end
