@@ -120,11 +120,17 @@ for idx_block=1:nblk
 		% Remove '|' character from the list of signs parameter value
 		signs = get_param(blks{idx_block}, 'listofsigns');
 		list_signs = [];
-		for sign_iter=1:numel(signs)
+                % check the case where signs is a integer (ie. the number of plus)
+                [nb_plus, was_uint] = str2num(['uint16(' signs ')']);
+                if was_uint && nb_plus > 0
+                    list_signs=repmat('+',1,nb_plus);                    
+                else % the is a classical ++-- string
+                    for sign_iter=1:numel(signs)
 			if not(strcmp(signs(sign_iter), '|'))
-				list_signs = [list_signs signs(sign_iter)];
-			end
-		end
+                            list_signs = [list_signs signs(sign_iter)];
+                        end
+                    end
+                end
 		
 		collapse_mode = get_param(blks{idx_block}, 'CollapseMode');
 		collapse_dim = str2num(get_param(blks{idx_block}, 'CollapseDim'));
