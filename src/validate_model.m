@@ -3,7 +3,12 @@
 % Copyright (C) 2014-2016  Carnegie Mellon University
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function [valid, sf2lus_time, validation_compute, nb_actions, lus_file_path]=validate_model(model_full_path,cocoSim_path, show_models,L)
+%function [valid, sf2lus_time, validation_compute, nb_actions, lus_file_path]=validate_model(model_full_path,cocoSim_path, show_models)
+% function [valid, sf2lus_time, validation_compute, nb_actions, lus_file_path]=validate_model(model_full_path,cocoSim_path, show_models)
+
+function [valid,  validation_compute,lustrec_failed, ...
+          lustrec_binary_failed, sim_failed, lus_file_path] = validate_model(model_full_path,cocoSim_path, show_models)
+
 bdclose('all')
 if ~exist('show_models', 'var')
     show_models = 0;

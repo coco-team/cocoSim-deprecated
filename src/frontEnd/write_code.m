@@ -101,10 +101,7 @@ for idx_block=1:nblk
 	elseif strcmp(inter_blk{idx_block}.type, 'DiscreteIntegrator')
 
 		K = evalin('base', get_param(blks{idx_block}, 'gainval'));
-        T = evalin('base', get_param(blks{idx_block}, 'SampleTime'));
-        if strcmp(T,'-1')
-            T = evalin('base', inter_blk{idx_block}.sample_time);
-        end
+		T = evalin('base', inter_blk{idx_block}.sample_time);
 		% The initial condition is defined unsing an external constant block
 		if strcmp(get_param(inter_blk{idx_block}.origin_name, 'InitialConditionSource'), 'external')
 			vinit = '';
@@ -113,12 +110,46 @@ for idx_block=1:nblk
 		end
 		external_reset =  get_param(blks{idx_block}, 'ExternalReset');
 
-		[block_string, var_str] = write_discreteintegrator(inter_blk{idx_block}, K, external_reset, T, vinit, inter_blk);
+       
+        limited_int=get_param(blks{idx_block},'LimitOutput');
+        if strcmp(limited_int,'on')
+            sat_int.on=1;
+            sat_int.min=eval(get_param(blks{idx_block},'LowerSaturationLimit'));
+            sat_int.max=eval(get_param(blks{idx_block},'UpperSaturationLimit'));
+        else
+            sat_int.on=0;
+        end
+         if sat_int.on==1
+                 [list_in] = list_var_entree(inter_blk{idx_block},inter_blk);
+                 [list_out]=list_var_sortie(inter_blk{idx_block});
+                 list_var={};
+                 for ki=1:numel(list_out)
+      
+                     list_var{numel(list_var)+1}=strcat(list_out{ki},'_v');
+                 end
+
+                 sat_int.list_var=list_var;
+         end
+         
+        block_string = write_discreteintegrator(inter_blk{idx_block}, K, external_reset,...
+            T, vinit, inter_blk,sat_int);
 
 	%%%%%%%%%%%%%%%% Sum %%%%%%%%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'Sum')
 		% Remove '|' character from the list of signs parameter value
 		signs = get_param(blks{idx_block}, 'listofsigns');
+        
+            %Test if 'listof signs' is a scalar, i.e. signs==2 => signs='++'
+            is_scalar= str2num(signs);
+            if ~isempty(is_scalar)
+                new_signs='';
+                for num_add=1:is_scalar
+                    new_signs=[new_signs '+'];
+                end
+                signs=new_signs;
+            end
+
+        
 		list_signs = [];
 		for sign_iter=1:numel(signs)
 			if not(strcmp(signs(sign_iter), '|'))
@@ -472,7 +503,26 @@ for idx_block=1:nblk
 		show_port = get_param(blks{idx_block}, 'ShowOutputPort');
 		if strcmp(show_port, 'on')
 			block_string = write_enableport(inter_blk{idx_block}, inter_blk);
-		end
+        end
+
+%     	%%%%%%%%%%% ROUNDING %%%%%%%%%%%%%%%%%
+%     elseif strcmp(inter_blk{idx_block}.type, 'Rounding')
+%         
+%                 operation = get_param(blks{idx_block}, 'Operator');
+%                  block_string = write_rounding(inter_blk{idx_block}, inter_blk, operation);
+%   
+%                  %%%%%%%%% Combinatory logic %%%%%%%%%%%%%%%%%%%%%%%%
+%     elseif strcmp(inter_blk{idx_block}.type, 'CombinatorialLogic')
+%         
+%         truth_table=get_param(blks{idx_block}, 'TruthTable');
+%         
+%         [block_string] = write_CmbLogic(inter_blk{idx_block}, inter_blk, truth_table);
+%         
+%         %%%%%%%%%lookup table %%%%%%%%%%%%%%%%%%%%%%%%
+%     elseif strcmp(inter_blk{idx_block}.type, 'Lookup')
+%         
+% %UNFINISHED WORK CHECK write_function
+%         [block_string] = write_lookup(inter_blk{idx_block}, inter_blk);
 
 	%%%%%%%%%%%%%%%%% SubSystem %%%%%%%%%%%%%%%%%%%%%%%%
 	% Print SubSystem as a node call only if it is not the first of the list (aka the current SubSystem)

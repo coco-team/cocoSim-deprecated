@@ -53,6 +53,7 @@ end
       model_full_path = get_param(gcs,'FileName');%gcs;
       [valid, cocoSim_failed,lustrec_failed, ...
           lustrec_binary_failed, sim_failed, lus_file_path]=validate_model(model_full_path,cocoSim_path,1);
+
       open(model_full_path);
       msg = '';
       if valid
@@ -60,7 +61,7 @@ end
       elseif cocoSim_failed
           msg = 'INVALID';
       end
-      h = msgbox(msg,'CoCoSim Translation Validation');
+%       h = msgbox(msg,'CoCoSim Translation Validation');
       if lustrec_failed
           open(lus_file_path)
       elseif lustrec_binary_failed

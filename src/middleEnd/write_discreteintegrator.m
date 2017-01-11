@@ -21,43 +21,37 @@
 %
 %%% If the block has 3 inputs (value to integrate (Input_1), reset (Input_2), initial condition( Input_3))
 %
-%  Output_1_1 = Input_3_1 -> if Input_2_1 then Input_3_1 else (K{1} * T) * pre(Input_1_1) + pre(Output_1_1);
-%  Output_1_2 = Input_3_2 -> if Input_2_2 then Input_3_2 else (K{2} * T) * pre(Input_1_2) + pre(Output_1_2);
-%  Output_1_3 = Input_3_3 -> if Input_2_3 then Input_3_3 else (K{3} * T) * pre(Input_1_3) + pre(Output_1_3);
+%  Output_1_1 = Input_3_1 -> if Input_2_1 then Input_3_1 else (K{1} * T) + pre(Input_1_1);
+%  Output_1_2 = Input_3_2 -> if Input_2_2 then Input_3_2 else (K{2} * T) + pre(Input_1_2);
+%  Output_1_3 = Input_3_3 -> if Input_2_3 then Input_3_3 else (K{3} * T) + pre(Input_1_3);
 %
 %%% If the block has 2 inputs (value to integrate (Input_1), reset (Input_2))
 %
-%  Output_1_1 = vinit{1} -> if Input_2_1 then vinit{1} else (K{1} * T) * pre(Input_1_1) + pre(Output_1_1);
-%  Output_1_2 = vinit{2} -> if Input_2_2 then vinit{2} else (K{2} * T) * pre(Input_1_2) + pre(Output_1_2);
-%  Output_1_3 = vinit{3} -> if Input_2_3 then vinit{3} else (K{3} * T) * pre(Input_1_3) + pre(Output_1_3);
+%  Output_1_1 = vinit{1} -> if Input_2_1 then vinit{1} else (K{1} * T) + pre(Input_1_1);
+%  Output_1_2 = vinit{2} -> if Input_2_2 then vinit{2} else (K{2} * T) + pre(Input_1_2);
+%  Output_1_3 = vinit{3} -> if Input_2_3 then vinit{3} else (K{3} * T) + pre(Input_1_3);
 %
 %%% If the block has 2 inputs (value to integrate (Input_1), initial condition (Input_2))
 %
-%  Output_1_1 = Input_2_1 -> (K{1} * T) * pre(Input_1_1) + pre(Output_1_1);
-%  Output_1_2 = Input_2_2 -> (K{2} * T) * pre(Input_1_2) + pre(Output_1_2);
-%  Output_1_3 = Input_2_3 -> (K{3} * T) * pre(Input_1_3) + pre(Output_1_3);
+%  Output_1_1 = Input_2_1 -> (K{1} * T) + pre(Input_1_1);
+%  Output_1_2 = Input_2_2 -> (K{2} * T) + pre(Input_1_2);
+%  Output_1_3 = Input_2_3 -> (K{3} * T) + pre(Input_1_3);
 %
 %%% If the block has one input (value to integrate (Input_1))
 %
-%  Output_1_1 = vinit{1} -> (K{1} * T) * pre(Input_1_1) + pre(Output_1_1);
-%  Output_1_2 = vinit{2} -> (K{2} * T) * pre(Input_1_2) + pre(Output_1_2);
-%  Output_1_3 = vinit{3} -> (K{3} * T) * pre(Input_1_3) + pre(Output_1_3);
+%  Output_1_1 = vinit{1} -> (K{1} * T) + pre(Input_1_1);
+%  Output_1_2 = vinit{2} -> (K{2} * T) + pre(Input_1_2);
+%  Output_1_3 = vinit{3} -> (K{3} * T) + pre(Input_1_3);
 %
-%%%The External reset parameter lets you determine the attribute 
-%of the reset signal that triggers the reset. 
-%The trigger options include:rising, falling, either, level, 
-%sampled level
 %% Code
 %
-function [output_string, var_str] = write_discreteintegrator(unbloc, K, external_reset, T, vinit, inter_blk)
+function [output_string] = write_discreteintegrator(unbloc, K, external_reset, T, vinit, inter_blk,sat_int)
 
 output_string = '';
 
-
-cst_type = unbloc.outports_dt{1};
 [list_out] = list_var_sortie(unbloc);
-[list_const] = Utils.list_cst(K, cst_type);
-[list_T] = Utils.list_cst(T, cst_type);
+[list_const] = Utils.list_cst(K, 'double');
+[list_T] = Utils.list_cst(T, 'double');
 [list_in] = list_var_entree(unbloc, inter_blk);
 
 [dim_r dim_c] = Utils.get_port_dims_simple(unbloc.outports_dim, 1);
@@ -79,24 +73,67 @@ if numel(list_const) == 1 && unbloc.dstport_size ~= 1
 end
 
 % Expand vinit if necessary
-if ~strcmp(vinit, '')
-	[list_init] = Utils.list_cst(vinit, cst_type);
-	if numel(list_init) == 1 && unbloc.dstport_size ~= 1
-		value = list_init{1, 1};
-		for idx_row=1:dim_r
-			for idx_col=1:dim_c
-				value_idx = idx_col + ((idx_row-1) * dim_c);
-				list_init{value_idx} = value;
-			end
-		end
-	end
+
+if ~strcmp(vinit, '') && ~strcmp(class(vinit),'cell') % If vinit non-empty and is not a cell
+    [list_init] = Utils.list_cst(vinit, 'double');
+    if numel(list_init) == 1 && unbloc.dstport_size ~= 1
+        value = list_init{1, 1};
+        for idx_row=1:dim_r
+            for idx_col=1:dim_c
+                value_idx = idx_col + ((idx_row-1) * dim_c);
+                list_init{value_idx} = value;
+            end
+        end
+    end
+    
+elseif iscell(vinit) % if vinit is a cell issued from an external condition (function block for examle)
+    list_input='';
+    list_input_init='';
+   
+    
+    num_bloc_pre=num_block(inter_blk,unbloc.prename{2});
+    
+    for k2=1:inter_blk{num_bloc_pre}.num_input %test on input number
+        
+        if k2 > 1
+            list_input=strcat(list_input,{', '});
+            
+        end
+        
+        [a b]=regexp (inter_blk{num_bloc_pre}.prename{k2}, '/', 'split');
+        num_out_pre=inter_blk{num_bloc_pre}.srcport{k2}+1; % numerotation starts at 0 !!
+        
+        [li_index]=list_var_entree_prelude(inter_blk{num_bloc_pre});
+        
+        
+        cpt=num_block(inter_blk, inter_blk{num_bloc_pre}.prename{k2});
+        
+        for k3=1:inter_blk{num_bloc_pre}.srcport_size(k2)
+            if k3 > 1
+                list_input=strcat(list_input,{', '});
+            end
+            num_pre_block=num_block(inter_blk,inter_blk{num_bloc_pre}.prename{k2});
+            
+            list_input=strcat(list_input,{' '}, strcat(a{1}{end},'_',li_index{k3} ));
+        end
+        
+        
+        
+        if k3 < unbloc.srcport_size(k2)
+            list_input=strcat(list_input,{', '});
+        end
+        
+    end
+    
+    vinit=strcat(nommage(inter_blk{num_bloc_pre}.name{1}),'(',list_input,')');% in this case vinit is a cell
+    list_init=vinit;
+
 end
 
 out_dt = Utils.get_lustre_dt(unbloc.outports_dt{1});
-in_dt = Utils.get_lustre_dt(unbloc.inports_dt{1});
 needs_convert = false;
 convert_fun = '';
-if ~strcmp('real', out_dt) &&  ~(strcmp('int', in_dt) || strcmp('bool', in_dt))
+if ~strcmp('real', out_dt)
 	convert_fun = get_param(unbloc.annotation, 'RndMeth');
 	needs_convert = true;
 	if exist('tmp_dt_conv.mat', 'file') == 2
@@ -112,11 +149,7 @@ if ~strcmp('real', out_dt) &&  ~(strcmp('int', in_dt) || strcmp('bool', in_dt))
 		save('tmp_dt_conv.mat', 'rounding');
 	end
 end
-if strcmp('real', out_dt) &&  (strcmp('int', in_dt) || strcmp('bool', in_dt))
-    msg = sprintf('The block %s has input of type %s but output of type %s \n', char(unbloc.origin_name),in_dt,char(list_out{1}),out_dt);
-    msg = [msg sprintf('Be sure to change inputs to %s\n',out_dt)];
-    display_msg(msg, Constants.ERROR, 'write_discreteintegrator', '');
-end
+
 nb_elem_first = dim_r * dim_c;
 
 if strcmp(unbloc.outports_dt{1}, 'double') || strcmp(unbloc.outports_dt{1}, 'simple') || strncmp(unbloc.outports_dt{1}, 'sfix', 4) || strncmp(unbloc.outports_dt{1}, 'ufix', 4)
@@ -124,170 +157,186 @@ if strcmp(unbloc.outports_dt{1}, 'double') || strcmp(unbloc.outports_dt{1}, 'sim
 else
 	conv_int = true;
 end
-var_str = [];
+
 if ~strcmp(external_reset, 'none') && strcmp(vinit, '')
-	% 3 inputs to the block
-	for idx_row=1:dim_r
-		for idx_col=1:dim_c
-			in_out_idx = idx_col + ((idx_row - 1) * dim_c);
-			prestate = ['pre ' list_in{in_out_idx}];
-            preOut = ['pre ' list_out{in_out_idx}];
-			cstate = sprintf('(%s * %s)*(%s) + %s', list_const{in_out_idx}, list_T{1}, prestate,preOut);
-
-			[in2_dim_r, in2_dim_c] = Utils.get_port_dims_simple(unbloc.inports_dim, 2);
-
-			nb_elem_second = in2_dim_r * in2_dim_c;
-			shift_third_input = nb_elem_first + nb_elem_second;
-
-			reset_cond = '';
-			if is_reset
-				reset_cond = sprintf('if %s then %s else ', reset_var_name, list_in{in_out_idx + shift_third_input});
-            end
-            %new code : add Reset Trigger Types (see description above)
-            cond_var = list_in{in_out_idx + nb_elem_first};
-            expression = get_trigger_conditions(unbloc,external_reset, cond_var);
-            var_name = strcat(Utils.name_format(Utils.naming_alone(unbloc.origin_name{1})),'_Reset_Trigger',num2str(idx_row),'_', num2str(idx_col));
-            output_string = app_sprintf(output_string, '\t%s = %s;\n', var_name,expression);
-            var_str = [var_str, sprintf('\t%s: bool;\n',var_name)];
+    % 3 inputs to the block
+    for idx_row=1:dim_r
+        for idx_col=1:dim_c
+            in_out_idx = idx_col + ((idx_row - 1) * dim_c);
+            prestate = ['pre ' list_in{in_out_idx}];
+            cstate = [sprintf('(%s * %s * %s)', list_const{in_out_idx}, list_T{1}, prestate)];
             
-			out_str = sprintf('%s%s -> ', reset_cond, list_in{in_out_idx + shift_third_input});
-			out_str = app_sprintf(out_str, 'if %s ', var_name);
-			out_str = app_sprintf(out_str, 'then %s ', list_in{in_out_idx + shift_third_input});
-			out_str = app_sprintf(out_str, 'else %s', cstate);
-			if needs_convert
-				output_string = app_sprintf(output_string, '\t%s = %s(%s);\n', list_out{in_out_idx}, convert_fun, out_str);
-			else
-				output_string = app_sprintf(output_string, '\t%s = %s;\n', list_out{in_out_idx}, out_str);
-			end
-		end
-	end
+            [in2_dim_r in2_dim_c] = Utils.get_port_dims_simple(unbloc.inports_dim, 2);
+            
+            nb_elem_second = in2_dim_r * in2_dim_c;
+            shift_third_input = nb_elem_first + nb_elem_second;
+            
+            reset_cond = '';
+            if is_reset
+                reset_cond = sprintf('if (%s and (true -> (not pre %s)))\n \t\t then %s \n\t\t else ', reset_var_name, reset_var_name, list_in{in_out_idx + shift_third_input});
+            end
+            
+            out_str = sprintf('%s%s -> ', reset_cond, list_in{in_out_idx + shift_third_input});
+            out_str = app_sprintf(out_str, 'if %s ', list_in{in_out_idx + nb_elem_first});
+            out_str = app_sprintf(out_str, 'then %s ', list_in{in_out_idx + shift_third_input});
+            out_str = app_sprintf(out_str, 'else %s', cstate);
+            if needs_convert
+               
+                if sat_int.on==1
+                     output_string = app_sprintf(output_string, '\t%s = %s(%s);\n', sat_int.list_var{in_out_idx}, convert_fun, out_str);  
+                    output_string = app_sprintf(output_string,'\t%s = ',list_out{in_out_idx});
+                    output_string = app_sprintf(output_string,'\tif %s >= %f then %f \n',sat_int.list_var{in_out_idx},sat_int.max,sat_int.max);
+                    output_string = app_sprintf(output_string,'\telse if %s <= %f then %f \n',sat_int.list_var{in_out_idx},sat_int.min,sat_int.min );
+                    output_string = app_sprintf(output_string,'\telse %s ;\n\n',sat_int.list_var{in_out_idx});
+                else
+                   output_string = app_sprintf(output_string, '\t%s = %s(%s);\n', list_out{in_out_idx}, convert_fun, out_str);  
+                end
+            else
+                
+                if sat_int.on==1
+                    output_string = app_sprintf(output_string, '\t%s = %s;\n', sat_int.list_var{in_out_idx}, out_str);
+                    output_string = app_sprintf(output_string,'\t%s = ',list_out{in_out_idx});
+                    output_string = app_sprintf(output_string,'\tif %s >= %f then %f \n',sat_int.list_var{in_out_idx},sat_int.max,sat_int.max);
+                    output_string = app_sprintf(output_string,'\telse if %s <= %f then %f \n',sat_int.list_var{in_out_idx},sat_int.min,sat_int.min );
+                    output_string = app_sprintf(output_string,'\telse %s ;\n\n',sat_int.list_var{in_out_idx});
+                else
+                    output_string = app_sprintf(output_string, '\t%s = %s;\n', list_out{in_out_idx}, out_str);
+                end
+            end
+        end
+    end
 elseif ~strcmp(external_reset, 'none')
-	% 2 inputs and the second input is the reset
-	for idx_row=1:dim_r
-		for idx_col=1:dim_c
-			in_out_idx = idx_col + ((idx_row - 1) * dim_c);
+    % 2 inputs and the second input is the reset
+    for idx_row=1:dim_r
+        for idx_col=1:dim_c
+            in_out_idx = idx_col + ((idx_row - 1) * dim_c);
             prestate = ['pre ' list_in{in_out_idx}];
-            preOut = ['pre ' list_out{in_out_idx}];
-			cstate = sprintf('(%s * %s)*(%s) + %s', list_const{in_out_idx}, list_T{1}, prestate,preOut);
-
-			reset_cond = '';
-			if is_reset
-				reset_cond = sprintf('if %s then %s else ', reset_var_name, list_init{in_out_idx});
-            end
-            %new code : add Reset Trigger Types (see description above)
-            cond_var = list_in{in_out_idx + nb_elem_first};
-            expression = get_trigger_conditions(unbloc, external_reset,cond_var);
-            var_name = strcat(Utils.name_format(Utils.naming_alone(unbloc.origin_name{1})),'_Reset_Trigger',num2str(idx_row),'_', num2str(idx_col));
-            output_string = app_sprintf(output_string, '\t%s = %s;\n', var_name,expression);
-            var_str = [var_str, sprintf('\t%s: bool;\n',var_name)];
+            cstate = [sprintf('(%s * %s * %s)', list_const{in_out_idx}, list_T{1}, prestate)];
             
-			out_str = sprintf('%s%s -> ', reset_cond, list_init{in_out_idx});
-			out_str = app_sprintf(out_str, 'if %s ', var_name);
-			out_str = app_sprintf(out_str, 'then %s ', list_init{in_out_idx});
-			out_str = app_sprintf(out_str, 'else %s', cstate);
-			if needs_convert
-				output_string = app_sprintf(output_string, '\t%s = %s(%s);\n', list_out{in_out_idx}, convert_fun, out_str);
-			else
-				output_string = app_sprintf(output_string, '\t%s = %s;\n', list_out{in_out_idx}, out_str);
-			end
-		end
-	end
+            reset_cond = '';
+            if is_reset
+                reset_cond = sprintf('if (%s and (true -> (not pre %s)))\n\t\t then %s\n\t\t else ', reset_var_name, reset_var_name, list_init{in_out_idx});
+            end
+            
+            out_str = sprintf('%s%s -> ', reset_cond, list_init{in_out_idx});
+            out_str = app_sprintf(out_str, 'if %s ', list_in{in_out_idx + nb_elem_first});
+            out_str = app_sprintf(out_str, 'then %s ', list_init{in_out_idx});
+            out_str = app_sprintf(out_str, 'else %s', cstate);
+            if needs_convert
+               
+                if sat_int.on==1
+                     output_string = app_sprintf(output_string, '\t%s = %s(%s);\n', sat_int.list_var{in_out_idx}, convert_fun, out_str);
+                    output_string = app_sprintf(output_string,'\t%s = ',list_out{in_out_idx});
+                    output_string = app_sprintf(output_string,'\tif %s >= %f then %f \n',sat_int.list_var{in_out_idx},sat_int.max,sat_int.max);
+                    output_string = app_sprintf(output_string,'\telse if %s <= %f then %f \n',sat_int.list_var{in_out_idx},sat_int.min,sat_int.min );
+                    output_string = app_sprintf(output_string,'\telse %s ;\n\n',sat_int.list_var{in_out_idx});
+                else
+                   output_string = app_sprintf(output_string, '\t%s = %s(%s);\n', list_out{in_out_idx}, convert_fun, out_str); 
+                end
+            else
+            
+                if sat_int.on==1
+                        output_string = app_sprintf(output_string, '\t%s = %s;\n', sat_int.list_var{in_out_idx}, out_str);
+                    output_string = app_sprintf(output_string,'\t%s = ',list_out{in_out_idx});
+                    output_string = app_sprintf(output_string,'\tif %s >= %f then %f \n',sat_int.list_var{in_out_idx},sat_int.max,sat_int.max);
+                    output_string = app_sprintf(output_string,'\telse if %s <= %f then %f \n',sat_int.list_var{in_out_idx},sat_int.min,sat_int.min );
+                    output_string = app_sprintf(output_string,'\telse %s ;\n\n',sat_int.list_var{in_out_idx});
+                else
+                        output_string = app_sprintf(output_string, '\t%s = %s;\n', list_out{in_out_idx}, out_str);
+                end
+            end
+        end
+    end
 elseif strcmp(vinit, '')
-	% 2 inputs and the second input is the IC
-	for idx_row=1:dim_r
-		for idx_col=1:dim_c
-			in_out_idx = idx_col + ((idx_row - 1) * dim_c);
+    % 2 inputs and the second input is the IC
+    for idx_row=1:dim_r
+        for idx_col=1:dim_c
+            in_out_idx = idx_col + ((idx_row - 1) * dim_c);
             prestate = ['pre ' list_in{in_out_idx}];
-            preOut = ['pre ' list_out{in_out_idx}];
-			cstate = sprintf('(%s * %s)*(%s) + %s', list_const{in_out_idx}, list_T{1}, prestate,preOut);
-
-			reset_cond = '';
-			if is_reset
-				reset_cond = sprintf('if %s then %s else ', reset_var_name, list_in{in_out_idx + nb_elem_first});
-			end
-
-			out_str = sprintf('%s%s -> ', reset_cond, list_in{in_out_idx + nb_elem_first});
-			out_str = app_sprintf(out_str, '%s', cstate);
-			if needs_convert
-				output_string = app_sprintf(output_string, '\t%s = %s(%s);\n', list_out{in_out_idx}, convert_fun, out_str);
-			else
-				output_string = app_sprintf(output_string, '\t%s = %s;\n', list_out{in_out_idx}, out_str);
-			end
-		end
-	end
+            cstate = [sprintf('(%s * %s * %s)', list_const{in_out_idx}, list_T{1}, prestate)];
+            
+            reset_cond = '';
+            if is_reset
+                reset_cond = sprintf('if (%s and (true -> (not pre %s)))\n\t\t then %s\n\t\t else (', reset_var_name,reset_var_name, list_in{in_out_idx + nb_elem_first});
+            end
+            
+            out_str = sprintf('%s%s -> ', reset_cond, list_in{in_out_idx + nb_elem_first});
+            out_str = app_sprintf(out_str, '%s', cstate);
+            if needs_convert
+               
+                if sat_int.on==1
+                     output_string = app_sprintf(output_string, '\t%s = %s(%s+ pre %s);\n', sat_int.list_var{in_out_idx}, convert_fun, out_str, list_out{in_out_idx});
+                    output_string = app_sprintf(output_string,'\t%s = ',list_out{in_out_idx});
+                    output_string = app_sprintf(output_string,'\tif %s >= %f then %f \n',sat_int.list_var{in_out_idx},sat_int.max,sat_int.max);
+                    output_string = app_sprintf(output_string,'\telse if %s <= %f then %f \n',sat_int.list_var{in_out_idx},sat_int.min,sat_int.min );
+                    output_string = app_sprintf(output_string,'\telse %s ;\n\n',sat_int.list_var{in_out_idx});
+                else
+                     output_string = app_sprintf(output_string, '\t%s = %s(%s+ pre %s);\n', list_out{in_out_idx}, convert_fun, out_str, list_out{in_out_idx});
+                end
+            else
+               
+                if sat_int.on==1
+                     output_string = app_sprintf(output_string, '\t%s = %s + pre %s;\n', sat_int.list_var{in_out_idx}, out_str, list_out{in_out_idx});
+                    output_string = app_sprintf(output_string,'\t%s = ',list_out{in_out_idx});
+                    output_string = app_sprintf(output_string,'\tif %s >= %f then %f \n',sat_int.list_var{in_out_idx},sat_int.max,sat_int.max);
+                    output_string = app_sprintf(output_string,'\telse if %s <= %f then %f \n',sat_int.list_var{in_out_idx},sat_int.min,sat_int.min );
+                    output_string = app_sprintf(output_string,'\telse %s ;\n\n',sat_int.list_var{in_out_idx});
+                    
+                else
+                  output_string = app_sprintf(output_string, '\t%s = %s + pre %s', list_out{in_out_idx}, out_str, list_out{in_out_idx});  
+             if is_reset
+                 output_string = app_sprintf(output_string, ');\n');  
+             else
+                 output_string = app_sprintf(output_string, ';\n'); 
+             end
+                end
+            end
+        end
+    end
 else
-	% 1 input
-	for idx_row=1:dim_r
-		for idx_col=1:dim_c
-			in_out_idx = idx_col + ((idx_row - 1) * dim_c);
+    % 1 input
+    for idx_row=1:dim_r
+        for idx_col=1:dim_c
+            in_out_idx = idx_col + ((idx_row - 1) * dim_c);
             prestate = ['pre ' list_in{in_out_idx}];
-            preOut = ['pre ' list_out{in_out_idx}];
-			cstate = sprintf('(%s * %s)*(%s) + %s', list_const{in_out_idx}, list_T{1}, prestate,preOut);
-
-			reset_cond = '';
-			if is_reset
-				reset_cond = sprintf('if %s then %s else ', reset_var_name, list_init{in_out_idx});
-			end
-
-			out_str = sprintf('%s%s -> ', reset_cond, list_init{in_out_idx});
-			out_str = app_sprintf(out_str, '%s', cstate);
-			if needs_convert
-				output_string = app_sprintf(output_string, '\t%s = %s(%s);\n', list_out{in_out_idx}, convert_fun, out_str);
-			else
-				output_string = app_sprintf(output_string, '\t%s = %s;\n', list_out{in_out_idx}, out_str);
-			end
-		end
-	end
-end
-
-end
-function [expression] = get_trigger_conditions(unbloc, external_reset,cond_var)
-trigger_dt = Utils.get_lustre_dt(unbloc.inports_dt{2});
-expression = '';
-if strcmp(trigger_dt, 'bool')
-        if strcmp(external_reset, 'rising')
-            expression = sprintf('false -> (not(pre %s) and %s)', cond_var, cond_var);
-        elseif strcmp(external_reset, 'falling')
-            expression = sprintf('false -> (pre(%s) and not(%s))', cond_var, cond_var);
-        elseif strcmp(external_reset, 'either')
-            expression = sprintf('false -> (not(pre(%s) = %s))', cond_var, cond_var);
-        elseif strcmp(external_reset, 'level')
-            expression = sprintf('false -> %s or (not(pre(%s) = %s))', cond_var, cond_var, cond_var);
-        elseif strcmp(external_reset, 'sampled level')
-            expression = cond_var;
-        else
-            msg = sprintf('%s trigger not supported\n', external_reset);
-            display_msg(msg, Constants.ERROR, 'write_discreteintegrator', '');
+            cstate = [sprintf('(%s * %s * %s)', list_const{in_out_idx}, list_T{1}, prestate)];
+            
+            reset_cond = '';
+            if is_reset
+                reset_cond = sprintf('if (%s and (true -> (not pre %s)))\n\t\t then %s \n\t\t else ', reset_var_name,reset_var_name, list_init{in_out_idx});
+            end
+            
+            out_str = sprintf('%s%s -> ', reset_cond, list_init{in_out_idx});
+            out_str = app_sprintf(out_str, '%s', cstate);
+            if needs_convert
+                
+                if sat_int.on==1
+                    output_string = app_sprintf(output_string, '\t%s = %s(%s+ pre %s);\n', sat_int.list_var{in_out_idx}, convert_fun, out_str, list_out{in_out_idx});
+                    output_string = app_sprintf(output_string,'\t%s = ',list_out{in_out_idx});
+                    output_string = app_sprintf(output_string,'\tif %s >= %f then %f \n',sat_int.list_var{in_out_idx},sat_int.max,sat_int.max);
+                    output_string = app_sprintf(output_string,'\telse if %s <= %f then %f \n',sat_int.list_var{in_out_idx},sat_int.min,sat_int.min );
+                    output_string = app_sprintf(output_string,'\telse %s ;\n\n',lsat_int.list_var{in_out_idx});
+                else
+                    output_string = app_sprintf(output_string, '\t%s = %s(%s+ pre %s);\n', list_out{in_out_idx}, convert_fun, out_str, list_out{in_out_idx});
+                end
+            else
+                
+               % output_string = app_sprintf(output_string, '\t%s = %s+ pre %s;\n', list_out{in_out_idx}, out_str, list_out{in_out_idx});
+                
+                if sat_int.on==1
+                    output_string = app_sprintf(output_string, '\t%s = %s+ pre %s;\n', sat_int.list_var{in_out_idx}, out_str, list_out{in_out_idx});
+                    output_string = app_sprintf(output_string,'\t%s = ',list_out{in_out_idx});
+                    output_string = app_sprintf(output_string,'\tif %s >= %f then %f \n',sat_int.list_var{in_out_idx},sat_int.max,sat_int.max);
+                    output_string = app_sprintf(output_string,'\telse if %s <= %f then %f \n',sat_int.list_var{in_out_idx},sat_int.min,sat_int.min );
+                    output_string = app_sprintf(output_string,'\telse %s ;\n\n',sat_int.list_var{in_out_idx});
+                    
+                else
+                    output_string = app_sprintf(output_string, '\t%s = %s+ pre %s;\n', list_out{in_out_idx}, out_str, list_out{in_out_idx});
+                end
+            end
         end
-elseif strcmp(trigger_dt, 'int')
-        if strcmp(external_reset, 'rising')
-            expression = sprintf('false -> (pre(%s) <= 0 and %s > 0)', cond_var, cond_var);
-        elseif strcmp(external_reset, 'falling')
-            expression = sprintf('false -> (pre(%s) > 0 and %s <= 0)', cond_var, cond_var);
-        elseif strcmp(external_reset, 'either')
-            expression = sprintf('false -> ((pre(%s) > 0 and %s <= 0) or (pre(%s) <= 0 and %s > 0))', cond_var, cond_var,cond_var,cond_var);
-        elseif strcmp(external_reset, 'level')
-            expression = sprintf('false -> %s>0 or (not((pre(%s) > 0 and %s <= 0) or (pre(%s) <= 0 and %s > 0)))', cond_var,cond_var,cond_var, cond_var, cond_var);
-        elseif strcmp(external_reset, 'sampled level')
-            expression = sprintf('false -> (%s > 0)', cond_var);
-        else
-            msg = sprintf('%s trigger not supported\n', external_reset);
-            display_msg(msg, Constants.ERROR, 'write_discreteintegrator', '');
-        end
-else
-        if strcmp(external_reset, 'rising')
-            expression = sprintf('false -> (pre(%s) <= 0.0 and %s > 0.0)', cond_var, cond_var);
-        elseif strcmp(external_reset, 'falling')
-            expression = sprintf('false -> (pre(%s) > 0.0 and %s <= 0.0)', cond_var, cond_var);
-        elseif strcmp(external_reset, 'either')
-            expression = sprintf('false -> ((pre(%s) > 0.0 and %s <= 0.0) or (pre(%s) <= 0.0 and %s > 0.0))', cond_var, cond_var,cond_var,cond_var);
-        elseif strcmp(external_reset, 'level')
-            expression = sprintf('false -> %s>0.0 or (not((pre(%s) > 0.0 and %s <= 0.0) or (pre(%s) <= 0.0 and %s > 0.0)))', cond_var,cond_var,cond_var, cond_var, cond_var);
-        elseif strcmp(external_reset, 'sampled level')
-            expression = sprintf('false -> (%s > 0.0)', cond_var);
-        else
-            msg = sprintf('%s trigger not supported\n', external_reset);
-            display_msg(msg, Constants.ERROR, 'write_discreteintegrator', '');
-        end
+    end
 end
+
 end
+
