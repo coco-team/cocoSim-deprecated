@@ -30,6 +30,6 @@ if exist(SEAHORN,'file')
     end
 else
     msg = 'Running SEAHORN: Impossible to find SEAHORN';
-    display_msg(msg, Constants.ERROR, 'Rust', '');
+    display_msg(msg, Constants.ERROR, 'SeaHorn', '');
 end
 end
