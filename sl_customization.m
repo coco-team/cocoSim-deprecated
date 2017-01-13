@@ -52,7 +52,8 @@ end
       [cocoSim_path, ~, ~] = fileparts(mfilename('fullpath'));
       model_full_path = get_param(gcs,'FileName');%gcs;
       [valid, cocoSim_failed,lustrec_failed, ...
-          lustrec_binary_failed, sim_failed, lus_file_path]=validate_model(model_full_path,cocoSim_path,1);
+          lustrec_binary_failed, sim_failed, lus_file_path, ...
+          ~, ~]=validate_model(model_full_path,cocoSim_path,1);
 
       open(model_full_path);
       msg = '';
@@ -65,9 +66,9 @@ end
       if lustrec_failed
           open(lus_file_path)
       elseif lustrec_binary_failed
-          display('Lustre binary generation failed');
+          display('LustreC binary generation failed');
       elseif sim_failed
-          display('running Simulation has failed');
+          display('Simulation has failed');
       else
           open(lus_file_path)
       end

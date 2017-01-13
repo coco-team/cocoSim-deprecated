@@ -438,18 +438,18 @@ display_msg('End of code generation', Constants.INFO, 'cocoSim', '');
 
 % Write traceability informations
 xml_trace.write();
-msg = sprintf('Traceability data generated in file: %s', trace_file_name);
+msg = sprintf(' %s', trace_file_name);
 display_msg(msg, Constants.INFO, 'Traceability', '');
 
 % Generated files informations
-msg = sprintf('Lustre code generated in file: %s', nom_lustre_file);
-display_msg(msg, Constants.INFO, 'Generation result', '');
+msg = sprintf(' %s', nom_lustre_file);
+display_msg(msg, Constants.INFO, 'Lustre Code', '');
 
 %%%%%%%%%%%%% Compilation to C or Rust %%%%%%%%%%%%%
 if RUST_GEN
     display_msg('Generating Rust Code', Constants.INFO, 'Rust Compilation', '');
     try
-        (nom_lustre_file);
+        rust(nom_lustre_file);
     catch ME
         display_msg(ME.message, Constants.ERROR, 'Rust Compilation', '');
     end
