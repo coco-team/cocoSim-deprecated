@@ -1,22 +1,6 @@
-
-% CoCoSim: A framework for formal analysis of Simulink models
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % This file is part of cocoSim.
-% Copyright (C) 2014-2015  Carnegie Mellon University
-% Original contribution from ONERA
-%
-%    cocoSim  is free software: you can redistribute it
-%    and/or modify it under the terms of the GNU General Public License as
-%    published by the Free Software Foundation, either version 3 of the
-%    License, or (at your option) any later version.
-%
-%    cocoSim compiler + verifier is distributed in the hope that it will be useful,
-%    but WITHOUT ANY WARRANTY; without even the implied warranty of
-%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-%    GNU General Public License for more details.
-%
-%    You should have received a copy of the GNU General Public License
+% Copyright (C) 2014-2016  Carnegie Mellon University
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function [nom_lustre_file, sf2lus_Time, nb_actions, Query_time]=cocoSim(model_full_path, const_files, default_Ts, trace, dfexport)
@@ -49,14 +33,11 @@ sf2lus_start = tic;
 [model_path, file_name, ext] = fileparts(model_full_path);
 
 
-
 addpath(fullfile(cocoSim_path, 'backEnd'));
 addpath(fullfile(cocoSim_path, 'middleEnd'));
 addpath(fullfile(cocoSim_path, 'frontEnd'));
 addpath(fullfile(cocoSim_path, 'utils'));
 addpath(fullfile(cocoSim_path, '.'));
-
-launch_display_msg(model_full_path);
 
 addpath(cocoSim_path);
 config;
@@ -78,10 +59,9 @@ config_msg = [config_msg '|  ZUSTRE: ' ZUSTRE '\n'];
 config_msg = [config_msg '|  JKIND:  ' JKIND '\n'];
 config_msg = [config_msg '|  KIND2:  ' KIND2 '\n'];
 config_msg = [config_msg '|  LUSTREC:' LUSTREC '\n'];
+config_msg = [config_msg '|  LUSTREC Include Dir:' include_dir '\n'];
 config_msg = [config_msg '|  SEAHORN:' SEAHORN '\n'];
 config_msg = [config_msg '|  Z3: ' Z3 '\n'];
-% config_msg = [config_msg '|  RUST_GEN: ' int2str(RUST_GEN) '\n'];
-% config_msg = [config_msg '|  C_GEN: ' int2str(C_GEN) '\n'];
 config_msg = [config_msg '--------------------------------------------------\n'];
 display_msg(config_msg, Constants.INFO, 'cocoSim', '');
 
@@ -91,23 +71,6 @@ display_msg(msg, Constants.INFO, 'cocoSim', '');
 
 % add path the directory where the model is
 addpath(model_path);
-
-% Loading of the system
-% bdclose('all');
-% if you want to keep the current model open try this solution. it doesn't
-% work if there is parameters in the mode that should be loaded to the
-% workspace
-
-% code_on=sprintf('%s([], [], [], ''compile'')', file_name);
-% evalin('base',code_on);
-% try
-% bdclose('all');
-% catch
-%     %this catch used to avoid the error coming from closing a compiling
-%     %model
-% end
-% code_on=sprintf('%s([], [], [], ''term'')', file_name);
-% evalin('base',code_on);
 
 load_system(char(model_full_path));
 
@@ -151,6 +114,7 @@ end
 
 % Retrieving of the Bus structure
 bus_struct = BusUtils.get_bus_struct();
+
 
 % Save current path, model path and cocoSim path informations to temporary file
 origin_path = pwd;
@@ -198,9 +162,11 @@ xml_trace.init();
 % Print buses declarations
 bus_decl = write_buses(bus_struct);
 
+
 %%%%%%%%%%%%%%% Retrieving nodes code %%%%%%%%%%%%%%%
 
-let_tel_code = '';
+display_msg('Lustre generation', Constants.INFO, 'cocoSim', '');
+
 extern_nodes_string = '';
 extern_Stateflow_nodes_fun = [];
 extern_functions = {};
@@ -208,17 +174,18 @@ extern_functions = {};
 cpt_extern_functions = 1;
 extern_matlab_functions = {};
 properties_nodes_string = '';
-properties_nodes = '';
 property_node_names = {};
 
 nodes_string = '';
-node_header = '';
 cocospec = [];
 print_spec = false;
 is_SF = false;
 
-display_msg('Code printing', Constants.INFO, 'cocoSim', '');
 for idx_subsys=numel(inter_blk):-1:1
+    msg = sprintf('Compiling %s:%s', inter_blk{idx_subsys}{1}.origin_name{1}, ...
+        inter_blk{idx_subsys}{1}.type{1});
+    display_msg(msg, Constants.DEBUG, 'cocoSim', '');
+	
     %%%%%%% Matlab functions and CoCoSpec code generation %%%%%%%%%%%%%%%
     is_matlab_function = false;
     is_cocospec = false;
@@ -235,7 +202,6 @@ for idx_subsys=numel(inter_blk):-1:1
             is_SF = true;
         end
     end
-    
     if is_cocospec
         display_msg('CoCoSpec Found', Constants.INFO, 'cocoSim', '');
         [contract_name, chart] = Utils.get_MATLAB_function_name(inter_blk{idx_subsys}{1});
@@ -255,29 +221,36 @@ for idx_subsys=numel(inter_blk):-1:1
         else
             print_spec = true;
         end
-        
-        %fprintf('%s', cocospec);
-        
+                
     elseif is_matlab_function
-        display_msg('Dealing with Embedded Matlab', Constants.INFO, 'cocoSim', '');
-        [fun_name, chart] = Utils.get_MATLAB_function_name(inter_blk{idx_subsys}{1});
-        [mat_fun_node] = write_matlab_function_node(inter_blk{idx_subsys}{1}, inter_blk, inter_blk{idx_subsys}, fun_name, chart, xml_trace);
-        extern_nodes_string = [extern_nodes_string mat_fun_node];
+        display_msg('Found Embedded Matlab', Constants.INFO, 'cocoSim', '');
+        try
+            [fun_name, chart] = Utils.get_MATLAB_function_name(inter_blk{idx_subsys}{1});
+            [mat_fun_node] = write_matlab_function_node(inter_blk{idx_subsys}{1}, inter_blk, inter_blk{idx_subsys}, fun_name, chart, xml_trace);
+            
+            extern_nodes_string = [extern_nodes_string mat_fun_node];
+            %
+            
+            % Add Matlab function code to an m file
+            blk_path_elems = regexp(inter_blk{idx_subsys}{1}.name{1}, '/', 'split');
+            node_call_name = Utils.concat_delim(blk_path_elems, '_');
+            disp(node_call_name)
+            fun_file = fullfile(output_dir, strcat([node_call_name '_' fun_name], '.m'));
+            lines = regexp(chart.Script, sprintf('\n'), 'split');
+            lines{1} = regexprep(lines{1}, ['= ' fun_name '('], ['= ' node_call_name '_' fun_name '(']);
+            script = Utils.concat_delim(lines, sprintf('\n'));
+            fid = fopen(fun_file, 'w');
+            fprintf(fid, '%s', script);
+            fclose(fid);
+            display_msg('Successfully done processing Embedded Matlab', Constants.INFO, 'cocoSim', '');
+        catch ME
+            disp(ME.message)
+            display_msg('Unable to process Embedded Matlab', Constants.ERROR, 'cocoSim', '');
+        end
         
-        
-        % Add Matlab function code to an m file
-        blk_path_elems = regexp(inter_blk{idx_subsys}{1}.name{1}, '/', 'split');
-        node_call_name = Utils.concat_delim(blk_path_elems, '_');
-        fun_file = fullfile(output_dir, strcat([node_call_name '_' fun_name], '.m'));
-        lines = regexp(chart.Script, sprintf('\n'), 'split');
-        lines{1} = regexprep(lines{1}, ['= ' fun_name '('], ['= ' node_call_name '_' fun_name '(']);
-        script = Utils.concat_delim(lines, sprintf('\n'));
-        fid = fopen(fun_file, 'w');
-        fprintf(fid, '%s', script);
-        fclose(fid);
-        display_msg('Done with Embedded Matlab', Constants.INFO, 'cocoSim', '');
         
     elseif is_Chart
+        display_msg('Found Stateflow', Constants.INFO, 'cocoSim', '');
         load_system(char(inter_blk{idx_subsys}{1}.origin_name));
         rt = sfroot;
         m = rt.find('-isa', 'Simulink.BlockDiagram');
@@ -291,8 +264,9 @@ for idx_subsys=numel(inter_blk):-1:1
         end
         nodes_string = [nodes_string block_string];
         extern_Stateflow_nodes_fun = [extern_Stateflow_nodes_fun, external_nodes_i];
-        %%%%% Standard Simulink blocks code generation %%%%%%%%%%%%%%%
+       %%%%% Standard Simulink blocks code generation %%%%%%%%%%%%%%%
     elseif (idx_subsys == 1 || ~Constants.is_property(inter_blk{idx_subsys}{1}.mask_type)) && inter_blk{idx_subsys}{1}.num_output ~= 0
+        
         if strcmp(inter_blk{idx_subsys}{1}.type, 'SubSystem')
             sf_sub = get_param(inter_blk{idx_subsys}{1}.annotation, 'SFBlockType');
             if idx_subsys == 1 && strcmp(sf_sub, 'Chart')
@@ -306,6 +280,8 @@ for idx_subsys=numel(inter_blk):-1:1
                 extern_Stateflow_nodes_fun = [extern_Stateflow_nodes_fun, external_nodes_i];
             end
         end
+    
+        
         [node_header, let_tel_code, extern_s_functions_string, extern_funs, properties_nodes, property_node_name, extern_matlab_funs, c_code, external_nodes_i] = ...
             blocks2lustre(file_name, nom_lustre_file, inter_blk, blks, mat_files, idx_subsys, trace, xml_trace);
         
@@ -319,7 +295,7 @@ for idx_subsys=numel(inter_blk):-1:1
         
         for idx_ext_mat=1:numel(extern_matlab_funs)
             extern_matlab_functions{numel(extern_matlab_functions)+1} = extern_matlab_funs{idx_ext_mat};
-        end
+        end 
         
         properties_nodes_string = [properties_nodes_string properties_nodes];
         if numel(property_node_name) > 0
@@ -364,8 +340,7 @@ functions_names(:) = {''};
 j = 1;
 for i=1:n
     fun = extern_Stateflow_nodes_fun(i);
-    if isempty(find(strcmp(functions_names,fun.Name),1))
-        
+    if isempty(find(strcmp(functions_names,fun.Name),1))  
         functions_names{j} = fun.Name;
         j=j+1;
         if strcmp(fun.Name,'lustre_math_fun')
@@ -463,28 +438,30 @@ display_msg('End of code generation', Constants.INFO, 'cocoSim', '');
 
 % Write traceability informations
 xml_trace.write();
-msg = sprintf('Traceability data generated in file: %s', trace_file_name);
+msg = sprintf(' %s', trace_file_name);
 display_msg(msg, Constants.INFO, 'Traceability', '');
 
 % Generated files informations
-msg = sprintf('Lustre code generated in file: %s', nom_lustre_file);
-display_msg(msg, Constants.INFO, 'Generation result', '');
-sf2lus_Time = toc(sf2lus_start);
 
-%%%%%%%%%%%%% Code Generation %%%%%%%%%%%%%
+sf2lus_Time = toc(sf2lus_start);
+msg = sprintf(' %s', nom_lustre_file);
+display_msg(msg, Constants.INFO, 'Lustre Code', '');
+
+
+%%%%%%%%%%%%% Compilation to C or Rust %%%%%%%%%%%%%
 if RUST_GEN
-    display_msg('Generating Rust Code', Constants.INFO, 'Code Generation', '');
+    display_msg('Generating Rust Code', Constants.INFO, 'Rust Compilation', '');
     try
         rust(nom_lustre_file);
     catch ME
-        display_msg(ME.message, Constants.ERROR, 'Verification', '');
+        display_msg(ME.message, Constants.ERROR, 'Rust Compilation', '');
     end
 elseif C_GEN
-    display_msg('Generating C Code', Constants.INFO, 'Code Generation', '');
+    display_msg('Generating C Code', Constants.INFO, 'C Compilation', '');
     try
         lustrec(nom_lustre_file);
     catch ME
-        display_msg(ME.message, Constants.ERROR, 'Verification', '');
+        display_msg(ME.message, Constants.ERROR, 'C Compilation', '');
     end
 end
 
@@ -534,26 +511,10 @@ if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
         end
     end
 else
-%     OldPwd = pwd;
-%     cd(output_dir);
-%     command = sprintf('lustrec -horn %s',nom_lustre_file);
-%     [status, lustre_out] = system(command);
-%     cd(OldPwd);
-%     if status
-%         msq = sprintf('lustrec failed for model "%s" :\n%s',file_name,lustre_out);
-%         display_msg(msq, Constants.ERROR, 'lustrec -horn', '');
-%     end
+    display_msg('No property to prove', Constants.INFO, 'Verification', '');
 end
 
 %%%%%%%%%%%% Cleaning and end of operations %%%%%%%%%%
-
-% Close all systems inclusing the referenced ones (only if no modification
-% have been done in the verification phase
-% if numel(property_node_names) == 0
-%     for idx_model=1:numel(models)
-%         close_system(models{idx_model});
-%     end
-% end
 
 % Temporary files cleaning
 display_msg('Cleaning temporary files', Constants.INFO, 'cocoSim', '');
@@ -569,7 +530,7 @@ end
 
 function display_help_message()
 msg = [ ' -----------------------------------------------------  \n'];
-msg = [msg '  CoCoSim: A framework for the formal analysis of Simulink models\n'];
+msg = [msg '  CoCoSim: Automated Analysis Framework for Simulink/Stateflow\n'];
 msg = [msg '   \n Usage:\n'];
 msg = [msg '    >> cocoSim(MODEL_PATH, [MAT_CONSTANTS_FILES], [TIME_STEP], [TRACE])\n'];
 msg = [msg '\n'];
@@ -592,33 +553,18 @@ end
 
 
 
-function launch_display_msg(model_full_path)
-msg = {};
-msg = ['Welcome to the CocoSim verification framework\n'];
-msg = [msg 'cocoSim is free software: you can redistribute it\n'];
-msg = [msg 'and/or modify it under the terms of the GNU General Public License as \n'];
-msg = [msg 'published by the Free Software Foundation, either version 3 of\n'];
-msg = [msg 'the License, or (at your option) any later version.\n'];
-msg = [msg '\n'];
-msg = [msg 'cocoSim is distributed in the hope that it will be\n'];
-msg = [msg 'useful, but WITHOUT ANY WARRANTY; without even the implied warranty of\n'];
-msg = [msg 'MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU\n'];
-msg = [msg 'General Public License for more details.\n'];
-msg = [msg '\n'];
-msg = [msg 'You should have received a copy of the GNU General Public License.'];
-
-display_msg(msg, Constants.INFO, 'cocoSim', '');
-
-msg = '';
-msg = sprintf('Generating Lustre code ... : %s', model_full_path);
-
-display_msg(msg, Constants.INFO, 'cocoSim', '');
-end
+% function welcome_msg(model_full_path)
+% disp('here');
+% msg = {'Welcome to the CoCoSim Automated Analysis Framework'};
+% display_msg(msg, Constants.INFO, 'cocoSim', '');
+% msg = sprintf('Generating Lustre code ... : %s', model_full_path);
+% display_msg(msg, Constants.INFO, 'cocoSim', '');
+% end
 
 function initialize_files(lustre_file)
 % Create lustre file
 fid = fopen(lustre_file, 'w');
-fprintf(fid, '-- This file has been generated by cocoSim\n\n');
+fprintf(fid, '-- This file has been generated by CoCoSim\n\n');
 fclose(fid);
 end
 

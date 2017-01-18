@@ -1,3 +1,8 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This file is part of CoCoSim.
+% Copyright (C) 2014-2016  Carnegie Mellon University
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 function [event, condition, condition_action, transition_action, node_struct, external_nodes, additional_outputs, add_vars] = split_transition(chart, data, transition, variables_struct, node_struct)
 transition_label = transition.LabelString;
 external_nodes = [];

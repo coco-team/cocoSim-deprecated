@@ -1,3 +1,8 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This file is part of CoCoSim.
+% Copyright (C) 2014-2016  Carnegie Mellon University
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 function [global_node, global_nodes_struct] = write_global_node(chart, data, global_node_param,global_node_return,variables_to_initialize, isFunction,isfunction_without_output, variables_struct, global_nodes_struct, xml_trace, file_name )
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here

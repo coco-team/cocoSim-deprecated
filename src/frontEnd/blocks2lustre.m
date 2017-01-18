@@ -1,19 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% This file is part of cocoSim.
-% Copyright (C) 2014-2015  Carnegie Mellon University
-% Original contribution from ONERA
-%
-%    cocoSim  is free software: you can redistribute it 
-%    and/or modify it under the terms of the GNU General Public License as 
-%    published by the Free Software Foundation, either version 3 of the 
-%    License, or (at your option) any later version.
-%
-%    cocoSim compiler + verifier is distributed in the hope that it will be useful,
-%    but WITHOUT ANY WARRANTY; without even the implied warranty of
-%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-%    GNU General Public License for more details.
-%
-%    You should have received a copy of the GNU General Public License
+% This file is part of CoCoSim.
+% Copyright (C) 2014-2016  Carnegie Mellon University
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % TODO: Add summary of the function with parameters
@@ -128,7 +115,6 @@ end
 
 
 node_header = app_sprintf(node_header, ')\nreturns (');
-
 list_output = '';
 list_outputs = '';
 list_output_names = '';
@@ -158,6 +144,7 @@ for idx_block=1:nblk
 		clear list_output
 	end
 end
+
 list_output = Utils.concat_delim(list_outputs, ';\n\t');
 node_header = app_sprintf(node_header, list_output);
 
@@ -198,11 +185,11 @@ if idx_subsys==1
     end
 end
 %%%%%%%%%%%%%%%% Retrieve nodes code
-
 [let_tel_code_string, extern_s_functions_string, extern_functions, properties_nodes, additional_variables, property_node_names, extern_matlab_functions, c_code, external_math_functions] = ...
     write_code(nblk, inter_blk, blks, main_blks, myblk, nom_lustre_file, idx_subsys, false, trace, xml_trace);
+
 if idx_subsys==1
-let_tel_code_string = app_sprintf(let_tel_code_string, '\t%s;\n', 'i_virtual_local= 0.0 -> 1.0');
+   let_tel_code_string = app_sprintf(let_tel_code_string, '\t%s;\n', 'i_virtual_local= 0.0 -> 1.0');
 end
 % Add additional variables (ex in the MinMax block backend)
 if ~strcmp(additional_variables, '')

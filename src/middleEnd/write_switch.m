@@ -1,19 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% This file is part of cocoSim.
-% Copyright (C) 2014-2015  Carnegie Mellon University
-% Original contribution from ONERA
-%
-%    cocoSim  is free software: you can redistribute it 
-%    and/or modify it under the terms of the GNU General Public License as 
-%    published by the Free Software Foundation, either version 3 of the 
-%    License, or (at your option) any later version.
-%
-%    cocoSim compiler + verifier is distributed in the hope that it will be useful,
-%    but WITHOUT ANY WARRANTY; without even the implied warranty of
-%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-%    GNU General Public License for more details.
-%
-%    You should have received a copy of the GNU General Public License
+% This file is part of CoCoSim.
+% Copyright (C) 2014-2016  Carnegie Mellon University
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Switch block
@@ -22,7 +9,7 @@
 % second input, the threshold parameter and the criteria parameter.
 %
 %% Generation scheme
-% We use the example of a swithc block with two elements vector as data inputs.
+% We use the example of a switch block with two elements vector as data inputs.
 % Note: There is division involved in this block, the character / is used
 % for alternatives in the generation
 %
@@ -81,6 +68,7 @@ output_string = '';
 [list_in] = list_var_entree(unbloc, inter_blk);
 
 cond_dt = Utils.get_lustre_dt(unbloc.inports_dt{2});
+
 if ~strcmp(criteria, 'u2 ~= 0')
 	if islogical(threshold) && strcmp(cond_dt, 'bool')
 		% If both condition input and threshold are booleans
@@ -127,7 +115,10 @@ else
 end
 
 % Check if the data input are buses
-[is_bus bus] = BusUtils.is_bus(unbloc.outports_dt);
+% [is_bus bus] = BusUtils.is_bus(unbloc.outports_dt);
+% [is_bus, bus] = BusUtils.is_bus(unbloc.inports_dt);
+% disp(is_bus)
+% disp(bus)
 
 % Get the size of the condition input (second one) and the variables for the conditions
 [dim_r_sec, dim_c_sec] = Utils.get_port_dims_simple(unbloc.inports_dim, 2);
@@ -156,6 +147,8 @@ end
 size_in = unbloc.dstport_size;
 size_cond = numel(list_in_cond);
 
+is_bus_switch = false;
+
 if numel(list_in_cond) == 1
 	% Write the condition
 	if bool_mode
@@ -164,7 +157,7 @@ if numel(list_in_cond) == 1
 		else
 			if_cond = sprintf('(if %s then %s else %s)%s%s', list_in_cond{1}, one, zero, op, list_threshold{1});
 		end
-	else
+    else
 		if strcmp(criteria, 'u2 ~= 0')
 			if_cond = ['not(' list_in_cond{1} op zero ')'];
 		else
@@ -180,26 +173,52 @@ if numel(list_in_cond) == 1
 		else_branch = ['(' else_branch ')'];
 		lhs_str = ['(' lhs_str ')'];
 	end
-	output_string = app_sprintf(output_string, '\t%s = if %s then %s else %s;\n', lhs_str, if_cond, then_branch, else_branch);
+	output_string = app_sprintf(output_string, '\t%s = if %s then %s else %s;\n',...
+                                lhs_str, if_cond, then_branch, else_branch);
 else
+    % TODO: bus_if, bus_then and bus_then are necessary for the case
+    % in which the input is coming from a bus (see switch_bus_test in unit test)
+    bus_if = '';
+    bus_then = '';
+    bus_else = '';
 	for idx_cond=1:numel(list_in_cond)
 		if bool_mode
 			if strcmp(criteria, 'u2 ~= 0')
 				if_cond = list_in_cond{idx_cond};
-			else
+            else
 				if_cond = sprintf('(if %s then %s else %s)%s%s', list_in_cond{idx_cond}, one, zero, op, list_threshold{idx_cond});
 			end
-		else
+        else
 			if strcmp(criteria, 'u2 ~= 0')
 				if_cond = ['not(' list_in_cond{idx_cond} op zero ')'];
 			else
 				if_cond = [list_in_cond{idx_cond} op list_threshold{idx_cond}];
 			end
-		end
+        end
 		then_branch = list_in{idx_cond};
-		else_branch = list_in{size_in+size_cond+idx_cond};
-		output_string = app_sprintf(output_string, '\t%s = if %s then %s else %s;\n', list_out{idx_cond}, if_cond, then_branch, else_branch);
-	end
+        else_branch = '';
+        try
+		   else_branch = list_in{size_in+size_cond+idx_cond};
+           output_string = app_sprintf(output_string, '\t%s = if %s then %s else %s;\n', ...
+                                       list_out{idx_cond},if_cond, then_branch, else_branch);
+        catch ME
+            %TODO:this is a case when the if condition is coming from a bus (not well tested)
+            if strcmp(ME.identifier, 'MATLAB:badsubscript')
+                output_string = '';
+                is_bus_switch = true;
+                break;
+            end
+        end
+        bus_if = if_cond;
+        bus_then = then_branch;
+		bus_else = else_branch;     
+    end
 end
+if is_bus_switch 
+    for idx_cond=1:numel(list_in_cond)
+        output_string = app_sprintf(output_string, '\t%s = if %s then %s else %s;\n', ...
+                                            list_out{idx_cond},bus_if, bus_then, bus_else);
+    end
 
+end
 end

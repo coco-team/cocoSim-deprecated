@@ -1,21 +1,6 @@
-% CoCoSim: A framework for formal analysis of Simulink models
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% This file is part of cocoSim.
-% Copyright (C) 2014-2015  Carnegie Mellon University
-% Original contribution from ONERA
-%
-%    cocoSim  is free software: you can redistribute it
-%    and/or modify it under the terms of the GNU General Public License as
-%    published by the Free Software Foundation, either version 3 of the
-%    License, or (at your option) any later version.
-%
-%    cocoSim compiler + verifier is distributed in the hope that it will be useful,
-%    but WITHOUT ANY WARRANTY; without even the implied warranty of
-%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-%    GNU General Public License for more details.
-%
-%    You should have received a copy of the GNU General Public License
+% This file is part of CoCoSim.
+% Copyright (C) 2014-2016  Carnegie Mellon University
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function sl_customization(cm)
@@ -31,11 +16,11 @@ end
  function schema = getcocoSim(callbackInfo)
   schema = sl_container_schema;
   schema.label = 'CoCoSim';
-  schema.statustip = 'Modular Analysis Engine';
+  schema.statustip = 'Automated Analysis Framework';
   schema.autoDisableWhen = 'Busy';
   
   schema.childrenFcns = {@getVerify,@getValidate,...
-      @getCheckBlocks, @viewContract @getProps, ...
+      @getCheckBlocks, @viewContract, @getProps, ...
                         @getPP,  @getCompiler};
  end
  
@@ -44,6 +29,7 @@ function schema = getCheckBlocks(callbackInfo)
     schema.label = 'Check unsupported blocks'; 
     schema.callback = @checkBlocksCallBack;
 end
+
  function checkBlocksCallBack(callbackInfo)
      try
          model_full_path = get_param(gcs,'FileName');
@@ -54,6 +40,7 @@ end
          disp('run the command in the top level of the model')
      end
  end
+ 
  function schema = getValidate(callbackInfo)     
   schema = sl_action_schema;
   schema.label = 'Compiler Validation (Experimental)'; 
@@ -64,7 +51,10 @@ end
      try
       [cocoSim_path, ~, ~] = fileparts(mfilename('fullpath'));
       model_full_path = get_param(gcs,'FileName');%gcs;
-      [valid, sf2lus_time, validation_compute, ~, lus_file_path]=validate_model(model_full_path,cocoSim_path,1);
+
+[valid, validation_compute,lustrec_failed, ...
+          lustrec_binary_failed, sim_failed, lus_file_path, ...
+          sf2lus_time, ~, ~] = validate_model(model_full_path,cocoSim_path,1);
       open(model_full_path);
       msg = '';
       if valid
@@ -72,10 +62,14 @@ end
       elseif sf2lus_time==-1
           msg = 'INVALID';
       end
-      h = msgbox(msg,'CoCoSim Translation Validation');
-      if validation_compute==-1
-          display('running Simulation has failed');
-      elseif ~valid
+%       h = msgbox(msg,'CoCoSim Translation Validation');
+      if lustrec_failed
+          open(lus_file_path)
+      elseif lustrec_binary_failed
+          display('LustreC binary generation failed');
+      elseif sim_failed
+          display('Simulation has failed');
+      else
           open(lus_file_path)
       end
       
@@ -84,9 +78,11 @@ end
          disp('run the command in the top level of the model')
      end
  end
- function schema = getPP(callbackInfo)     
+ 
+ % Function to pre-process and simplify the Simulink model
+ function schema = getPP(callbackInfo) 
   schema = sl_action_schema;
-  schema.label = 'CoCoSim Pre-Processor'; 
+  schema.label = 'Simplifier'; 
   schema.callback = @ppCallBack;
  end
  
@@ -120,7 +116,7 @@ end
 
 function schema = viewContract(callbackInfo)     
   schema = sl_action_schema;
-  schema.label = 'View generated CoCoSpec'; 
+  schema.label = 'View generated CoCoSpec (Experimental)'; 
   schema.callback = @viewContractCallback;
  end
  
@@ -154,7 +150,7 @@ function schema = viewContract(callbackInfo)
  
  function schema = getProps(callbackInfo)     
   schema = sl_action_schema;
-  schema.label = 'Create CoCoSpec'; 
+  schema.label = 'Create Property'; 
   schema.callback = @synchObsCallback;
  end
  
@@ -203,17 +199,11 @@ function schema = viewContract(callbackInfo)
  end
 
  function cCallback(callbackInfo)
-  try 
-      [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
+      clear; 
       assignin('base', 'SOLVER', 'NONE');
       assignin('base', 'RUST_GEN', 0);
       assignin('base', 'C_GEN', 1);
-      simulink_name = get_param(gcs,'FileName');%gcs;
-      cocoSim(simulink_name);
-  catch ME
-      disp(ME.message)
-      disp('run the command in the top level of the model')
-  end
+      runCoCoSim;
  end
  
  %% Run cocoSim
@@ -235,18 +225,11 @@ function schema = getZustre(callbackInfo)
 end 
 
  function zustreCallback(callbackInfo)
-  try
       clear;
-      [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
       assignin('base', 'SOLVER', 'Z');
       assignin('base', 'RUST_GEN', 0);
       assignin('base', 'C_GEN', 0);
-      simulink_name = get_param(gcs,'FileName');%gcs;
-      cocoSim(simulink_name);
-  catch ME
-      disp(ME.message)
-      disp('run the command in the top level of the model')
-  end
+      runCoCoSim;
  end
  
 
@@ -257,20 +240,13 @@ function schema = getKind(callbackInfo)
 end 
 
 function kindCallback(callbackInfo)
-  try
       clear;
       [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
       assignin('base', 'SOLVER', 'K');
       assignin('base', 'RUST_GEN', 0);
       assignin('base', 'C_GEN', 0);
-      simulink_name = get_param(gcs,'FileName');%gcs;
-      cocoSim(simulink_name);
-  catch ME
-      disp(ME.message)
-      disp('run the command in the top level of the model')
-  end
+      runCoCoSim;
 end
- 
  
 function schema = getJKind(callbackInfo)     
   schema = sl_action_schema;
@@ -279,20 +255,41 @@ function schema = getJKind(callbackInfo)
 end 
 
 function jkindCallback(callbackInfo)
-  try
       clear;
       [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
       assignin('base', 'SOLVER', 'J');
       assignin('base', 'RUST_GEN', 0);
       assignin('base', 'C_GEN', 0);
-      simulink_name = get_param(gcs,'FileName');%gcs;
-      cocoSim(simulink_name);
-  catch ME
-      disp(ME.message)
-      disp('run the command in the top level of the model')
-  end
+      runCoCoSim;
 end
  
+function runCoCoSim
+  [path, name, ext] = fileparts(mfilename('fullpath'));
+  addpath(fullfile(path, 'utils'));
+  try
+      simulink_name = get_param(gcs,'FileName');
+      cocoSim(simulink_name); % run cocosim 
+  catch ME
+      disp(ME.identifier)
+      if strcmp(ME.identifier, 'MATLAB:badsubscript') 
+          msg = ['Activate debug message by running cocosim_debug=true', ...
+              ' to get more information where the model in failing'];
+          e_msg = sprintf('Error Msg: %s \n Action:\n\t %s', ME.message, msg);
+          display_msg(e_msg, Constants.ERROR, 'cocoSim', '');
+      elseif strcmp(ME.identifier,'MATLAB:MException:MultipleErrors')
+          msg = 'Make sure that the model can be run (i.e. most probably missing constants)';
+          e_msg = sprintf('Error Msg: %s \n Action:\n\t %s', ME.message, msg);
+          display_msg(e_msg, Constants.ERROR, 'cocoSim', '');
+      elseif strcmp(ME.identifier, 'Simulink:Commands:ParamUnknown')
+          msg = 'Run CoCoSim on the most top block of the model';
+          e_msg = sprintf('Error Msg: %s \n Action:\n\t %s', ME.message, msg);
+          display_msg(e_msg, Constants.ERROR, 'cocoSim', '');
+      else
+          disp(ME.message)
+      end
+      
+  end
+end
 %  function schema = getSeaHorn(callbackInfo)
 %   schema = sl_action_schema;
 %   schema.label = 'SeaHorn';

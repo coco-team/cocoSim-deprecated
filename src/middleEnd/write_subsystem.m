@@ -1,19 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% This file is part of cocoSim.
-% Copyright (C) 2014-2015  Carnegie Mellon University
-% Original contribution from ONERA
-%
-%    cocoSim  is free software: you can redistribute it
-%    and/or modify it under the terms of the GNU General Public License as
-%    published by the Free Software Foundation, either version 3 of the
-%    License, or (at your option) any later version.
-%
-%    cocoSim compiler + verifier is distributed in the hope that it will be useful,
-%    but WITHOUT ANY WARRANTY; without even the implied warranty of
-%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-%    GNU General Public License for more details.
-%
-%    You should have received a copy of the GNU General Public License
+% This file is part of CoCoSim.
+% Copyright (C) 2014-2016  Carnegie Mellon University
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% SubSystem block
@@ -61,6 +48,8 @@
 %
 function [output_string, var_str] = write_subsystem(unbloc, inter_blk, main_blk, xml_trace)
 
+
+
 output_string = '';
 var_str = '';
 
@@ -77,7 +66,12 @@ end
 if ~strcmp(unbloc.type, 'ModelReference')
     sf_sub = get_param(unbloc.annotation, 'SFBlockType');
     if strcmp(sf_sub, 'MATLAB Function')
+        fun_name = 'EM_Function';
+        try
         [fun_name, chart] = Utils.get_MATLAB_function_name(unbloc);
+        catch ME
+            display_msg('Failed to get Matlab function name', Constants.ERROR, 'write_subsystem', '');
+        end
         node_call_name = [node_call_name '_' fun_name];
         
         [in_decl_str, lst_in_vars_call, in_var_print_dt, in_add_vars] = get_inputs_data(node_call_name, unbloc, list_in, xml_trace);
@@ -382,6 +376,7 @@ else
         output_string = app_sprintf(output_string, '\t%s = %s;\n', name, condition_str);
     end
 end
+
 
 end
 

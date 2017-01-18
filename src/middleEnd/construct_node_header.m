@@ -1,3 +1,8 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This file is part of CoCoSim.
+% Copyright (C) 2014-2016  Carnegie Mellon University
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 function [extern_nodes_header_param, extern_nodes_header_return] = construct_node_header(extern_nodes_header_param_struct,extern_nodes_header_return_struct, token, xml_trace)
     variables_param = {};
     variables_return = {};

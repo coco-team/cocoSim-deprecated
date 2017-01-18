@@ -1,3 +1,7 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This file is part of CoCoSim.
+% Copyright (C) 2014-2016  Carnegie Mellon University
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 classdef write_state_node < handle
     properties
 		state_node;
@@ -13,7 +17,7 @@ classdef write_state_node < handle
             initial_point = ['state POINT',get_full_name(state), ':\n' transitions_code '\tlet\n\n' '\t\t' Point_action_code '\n\n\ttel'];
             automaton = [initial_point, '\n\n', states_code];
             action_code = ['\t automaton ',lower(get_full_name(state)), '\n\n\t', automaton];
-            
+
             comment = strcat('--***************************************************State :',get_full_name(state),' Automaton***************************************************\n\n');
             outputs =  node_struct.Outputs;
             inputs = node_struct.Parameters;

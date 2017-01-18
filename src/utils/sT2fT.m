@@ -1,3 +1,8 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This file is part of CoCoSim.
+% Copyright (C) 2014-2016  Carnegie Mellon University
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 function [ Lustre_type, initial_value ] = sT2fT( stateflow_Type, data_name )
     if strcmp(stateflow_Type, 'real') || strcmp(stateflow_Type, 'int') || strcmp(stateflow_Type, 'bool')
         Lustre_type = simulink_dt;

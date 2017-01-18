@@ -1,19 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% This file is part of cocoSim.
-% Copyright (C) 2014-2015  Carnegie Mellon University
-% Original contribution from ONERA
-%
-%    cocoSim  is free software: you can redistribute it 
-%    and/or modify it under the terms of the GNU General Public License as 
-%    published by the Free Software Foundation, either version 3 of the 
-%    License, or (at your option) any later version.
-%
-%    cocoSim compiler + verifier is distributed in the hope that it will be useful,
-%    but WITHOUT ANY WARRANTY; without even the implied warranty of
-%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-%    GNU General Public License for more details.
-%
-%    You should have received a copy of the GNU General Public License
+% This file is part of CoCoSim.
+% Copyright (C) 2014-2016  Carnegie Mellon University
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -21,13 +8,14 @@ function rust(lustre_file_name)
 
 [path file ext] = fileparts(lustre_file_name);
 config;
-new_dir = [path file '_rust'];
+new_dir = [path '_rust'];
   if ~exist(new_dir, 'dir')
       mkdir(new_dir);
   end
 if exist(KIND2,'file')
     date_value = datestr(now, 'ddmmyyyyHHMMSS');
-    command = sprintf('%s --compile true --z3_bin %s -xml --output_dir %s --check_implem false %s', KIND2, Z3, new_dir, lustre_file_name);
+    command = sprintf('%s --compile true --z3_bin %s --output_dir %s --check_implem false %s', KIND2, Z3, new_dir, lustre_file_name);
+     display_msg(['KIND2_COMMAND ' command], Constants.DEBUG, 'write_code', '');
     [status, rust_out] = system(command);
     if isempty(strfind(rust_out, 'Success'))
         display_msg('Error Generating Rust code', Constants.ERROR, 'Rust Generation', '');

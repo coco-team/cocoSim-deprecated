@@ -1,19 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% This file is part of cocoSim.
-% Copyright (C) 2014-2015  Carnegie Mellon University
-% Original contribution from ONERA
-%
-%    cocoSim  is free software: you can redistribute it 
-%    and/or modify it under the terms of the GNU General Public License as 
-%    published by the Free Software Foundation, either version 3 of the 
-%    License, or (at your option) any later version.
-%
-%    cocoSim compiler + verifier is distributed in the hope that it will be useful,
-%    but WITHOUT ANY WARRANTY; without even the implied warranty of
-%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-%    GNU General Public License for more details.
-%
-%    You should have received a copy of the GNU General Public License
+% This file is part of CoCoSim.
+% Copyright (C) 2014-2016  Carnegie Mellon University
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Displays a message differently according to its type
@@ -41,7 +28,7 @@ elseif type == 3
 elseif type == 4
 	final_message = '(Debug)';
 elseif type == 5
-    final_messgae = '(Result)';
+    final_message = '(Result)';
 end
 
 if not(strcmp(from_str, ''))
@@ -57,11 +44,18 @@ str = regexp(str, '\\n', 'split');
 % disp([final_message ' ' str{1}]);
 
 msg = [final_message ' ' str{1} '\n'];
+try
+   cocosim_debug = evalin('base','cocosim_debug');
+catch
+    cocosim_debug  = false;
+end
 
 if type == 1
     cprintf('black', msg);
 elseif type == 3
     cprintf('red', msg)
+elseif (type == 4 && cocosim_debug)
+    cprintf([1,0.5,0], msg)
 elseif type == 2
     cprintf('cyan', msg)
 elseif type == 5

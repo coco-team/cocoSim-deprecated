@@ -20,7 +20,6 @@ function res_assertions = convert_assertions(obs_inter_blk, list_in, list_in_out
 		strings = regexp(att_format_string, '\n', 'split');
 		for idx=1:numel(strings{1})
 			annot = strings{1}(idx);
-            
 			if ~strcmp(annot, '') && strncmp(annot, 'assume ', 7) && strcmp(annot{1}(end), ';')
                 
 				assertion = annot{1}(8:(end -1));
@@ -31,7 +30,8 @@ function res_assertions = convert_assertions(obs_inter_blk, list_in, list_in_out
 
 	% Get SubSystem annotations
 	annots = find_system(obs_inter_blk{1}.annotation, 'FindAll', 'on', 'LookUnderMasks', 'all', 'Type', 'Annotation');
-	for idx_annot=1:numel(annots)
+
+    for idx_annot=1:numel(annots)
 		value = get_param(annots(idx_annot), 'Name');
 		strings = regexp(value, '\n', 'split');
 		for idx=1:numel(strings)

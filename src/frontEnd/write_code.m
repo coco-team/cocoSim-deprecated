@@ -1,20 +1,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% This file is part of cocoSim.
-% Copyright (C) 2014-2015  Carnegie Mellon University
-% Original contribution from ONERA
-%
-%    cocoSim  is free software: you can redistribute it 
-%    and/or modify it under the terms of the GNU General Public License as 
-%    published by the Free Software Foundation, either version 3 of the 
-%    License, or (at your option) any later version.
-%
-%    cocoSim compiler + verifier is distributed in the hope that it will be useful,
-%    but WITHOUT ANY WARRANTY; without even the implied warranty of
-%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-%    GNU General Public License for more details.
-%
-%    You should have received a copy of the GNU General Public License
+% This file is part of CoCoSim.
+% Copyright (C) 2014-2016  Carnegie Mellon University
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 function [output_string, extern_s_functions_string, extern_functions, properties_nodes, additional_variables, property_node_names, extern_matlab_functions, c_code,external_math_functions] = ... 
     write_code(nblk, inter_blk, blks, main_blks, main_blk, nom_lustre_file, idx_subsys, print_node, trace, xml_trace)
 
@@ -33,7 +21,9 @@ property_node_names = {};
 external_math_functions = [];
 
 for idx_block=1:nblk
-%     display(inter_blk{idx_block}.type)
+    msg = sprintf('Processing %s:%s', inter_blk{idx_block}.name{1}, inter_blk{idx_block}.type{1});
+    display_msg(msg, Constants.DEBUG, 'write_code', '');
+
 	block_string = '';
 	extern_funs = {};
 	var_str = '';
@@ -44,7 +34,7 @@ for idx_block=1:nblk
             is_Chart = true;
         end
     end
-%     display(inter_blk{idx_block}.type);
+
 	%%%%%%%%%%% Gain %%%%%%%%%%%%%%%%%%%%%%
 	if strcmp(inter_blk{idx_block}.type, 'Gain')
 		K = evalin('base', get_param(blks{idx_block}, 'Gain'));
@@ -53,15 +43,12 @@ for idx_block=1:nblk
 		block_string = write_gain(nom_lustre_file, inter_blk{idx_block}, K, multiplication, inter_blk);
 		
 	%%%%%%%%% Abs %%%%%%%%%%%%%%%%%%%%%%%%
-	elseif strcmp(inter_blk{idx_block}.type, 'Abs')
-		
+	elseif strcmp(inter_blk{idx_block}.type, 'Abs')	
 		[block_string extern_funs] = write_abs(inter_blk{idx_block}, inter_blk);
 
 	%%%%%%%%%%%%% Logic %%%%%%%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'Logic')
-
 		operator = get_param(blks{idx_block}, 'Operator');
-
 		block_string = write_logic(inter_blk{idx_block}, operator, inter_blk);
 		
 	%%%%%%%%%%% Product %%%%%%%%%%%%%%%%%%%%
@@ -109,15 +96,12 @@ for idx_block=1:nblk
 		end
 
 		block_string = write_switch(inter_blk{idx_block}, inter_blk, criteria, threshold);
-		
+
 	%%%%%%%%%%%%% DiscreteIntegrator %%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'DiscreteIntegrator')
 
 		K = evalin('base', get_param(blks{idx_block}, 'gainval'));
-        T = evalin('base', get_param(blks{idx_block}, 'SampleTime'));
-        if strcmp(T,'-1')
-            T = evalin('base', inter_blk{idx_block}.sample_time);
-        end
+		T = evalin('base', inter_blk{idx_block}.sample_time);
 		% The initial condition is defined unsing an external constant block
 		if strcmp(get_param(inter_blk{idx_block}.origin_name, 'InitialConditionSource'), 'external')
 			vinit = '';
@@ -126,12 +110,46 @@ for idx_block=1:nblk
 		end
 		external_reset =  get_param(blks{idx_block}, 'ExternalReset');
 
-		[block_string, var_str] = write_discreteintegrator(inter_blk{idx_block}, K, external_reset, T, vinit, inter_blk);
+       
+        limited_int=get_param(blks{idx_block},'LimitOutput');
+        if strcmp(limited_int,'on')
+            sat_int.on=1;
+            sat_int.min=eval(get_param(blks{idx_block},'LowerSaturationLimit'));
+            sat_int.max=eval(get_param(blks{idx_block},'UpperSaturationLimit'));
+        else
+            sat_int.on=0;
+        end
+         if sat_int.on==1
+                 [list_in] = list_var_entree(inter_blk{idx_block},inter_blk);
+                 [list_out]=list_var_sortie(inter_blk{idx_block});
+                 list_var={};
+                 for ki=1:numel(list_out)
+      
+                     list_var{numel(list_var)+1}=strcat(list_out{ki},'_v');
+                 end
+
+                 sat_int.list_var=list_var;
+         end
+         
+        block_string = write_discreteintegrator(inter_blk{idx_block}, K, external_reset,...
+            T, vinit, inter_blk,sat_int);
 
 	%%%%%%%%%%%%%%%% Sum %%%%%%%%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'Sum')
 		% Remove '|' character from the list of signs parameter value
 		signs = get_param(blks{idx_block}, 'listofsigns');
+        
+            %Test if 'listof signs' is a scalar, i.e. signs==2 => signs='++'
+            is_scalar= str2num(signs);
+            if ~isempty(is_scalar)
+                new_signs='';
+                for num_add=1:is_scalar
+                    new_signs=[new_signs '+'];
+                end
+                signs=new_signs;
+            end
+
+        
 		list_signs = [];
 		for sign_iter=1:numel(signs)
 			if not(strcmp(signs(sign_iter), '|'))
@@ -157,9 +175,6 @@ for idx_block=1:nblk
 
 		mode = get_param(blks{idx_block}, 'Mode');
 		dim = get_param(blks{idx_block}, 'ConcatenateDimension');
-%         display(inter_blk{idx_block})
-%         display(mode)
-%         display(dim)
 		block_string = write_concatenate(inter_blk{idx_block}, mode, dim, inter_blk);
 		
 	%%%%%%%%%%%%%%%%%%% MultiPortSwitch %%%%%%%%%%%%%
@@ -198,7 +213,8 @@ for idx_block=1:nblk
 		[block_string, ext_node, var_str, external_math_functions_i] = write_function_block(inter_blk{idx_block}, inter_blk, fun_expr, xml_trace);
 		extern_s_functions_string = [extern_s_functions_string, ext_node];
 		 external_math_functions = [external_math_functions, external_math_functions_i];
-	%%%%%%%%%%%%% Saturation %%%%%%%%%%%%%
+	
+         %%%%%%%%%%%%% Saturation %%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'Saturate')
 		sat_min = get_param(blks{idx_block},'LowerLimit');
 		sat_max = get_param(blks{idx_block},'UpperLimit');
@@ -230,7 +246,6 @@ for idx_block=1:nblk
 	        
 	%%%%%%%%%%%%% UnitDelay %%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'UnitDelay')
-%         display(inter_blk{idx_block})
 		init = get_param(blks{idx_block}, 'X0');
         init = evalin('base', init);
 		Ts = get_param(blks{idx_block}, 'SampleTime');
@@ -238,26 +253,22 @@ for idx_block=1:nblk
 		block_string = write_unitdelay(inter_blk{idx_block}, init, Ts, inter_blk);
 		
     %%%%%%%%%%%%% Delay %%%%%%%%%%%%%
-	elseif strcmp(inter_blk{idx_block}.type, 'Delay')
-        
+	elseif strcmp(inter_blk{idx_block}.type, 'Delay')      
 		init = get_param(blks{idx_block}, 'X0');
         init = evalin('base', init);
         delay_length = get_param(blks{idx_block}, 'DelayLength');
 		block_string = write_delay(inter_blk{idx_block}, init, delay_length, inter_blk);
-	%%%%%%%%%%%%% Memory %%%%%%%%%%%%%
+	
+    %%%%%%%%%%%%% Memory %%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type,'Memory')
-        
-		init = get_param(blks{idx_block}, 'X0');
-      init = evalin('base', init);
-
+	   init = get_param(blks{idx_block}, 'X0');
+       init = evalin('base', init);
 		block_string = write_memory(inter_blk{idx_block}, init, inter_blk);
 	
 	%%%%%%%%%%%%% Bloc constant %%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'Constant')
-
 		Kvalue = evalin('base', get_param(blks{idx_block}, 'Value'));
-
-      [block_string,var_str] = write_constant(nom_lustre_file, inter_blk{idx_block}, inter_blk, Kvalue);
+       [block_string,var_str] = write_constant(nom_lustre_file, inter_blk{idx_block}, inter_blk, Kvalue);
 		
 	%%%%%%%%%%% DataTypeConversion %%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'DataTypeConversion')
@@ -345,7 +356,7 @@ for idx_block=1:nblk
 		before = get_param(blks{idx_block},'Before');
 		after = get_param(blks{idx_block},'After');
         
-		%write_step(nom_lustre_file,inter_blk{idx_block},math_op);  
+		write_step(nom_lustre_file,inter_blk{idx_block},math_op);  
 
 	%%%%%%%%%%%%% Bitwise Operator %%%%%%%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'Bitwise Operator')
@@ -385,7 +396,6 @@ for idx_block=1:nblk
     
    %% It needs major revision %%
 	elseif strcmp(inter_blk{idx_block}.type, 'S-Function')
-        
 		function_name = get_param(blks{idx_block}, 'FunctionName');
         % get port connectivity
         props = get_param(blks{idx_block}, 'portconnectivity');
@@ -493,7 +503,26 @@ for idx_block=1:nblk
 		show_port = get_param(blks{idx_block}, 'ShowOutputPort');
 		if strcmp(show_port, 'on')
 			block_string = write_enableport(inter_blk{idx_block}, inter_blk);
-		end
+        end
+
+%     	%%%%%%%%%%% ROUNDING %%%%%%%%%%%%%%%%%
+%     elseif strcmp(inter_blk{idx_block}.type, 'Rounding')
+%         
+%                 operation = get_param(blks{idx_block}, 'Operator');
+%                  block_string = write_rounding(inter_blk{idx_block}, inter_blk, operation);
+%   
+%                  %%%%%%%%% Combinatory logic %%%%%%%%%%%%%%%%%%%%%%%%
+%     elseif strcmp(inter_blk{idx_block}.type, 'CombinatorialLogic')
+%         
+%         truth_table=get_param(blks{idx_block}, 'TruthTable');
+%         
+%         [block_string] = write_CmbLogic(inter_blk{idx_block}, inter_blk, truth_table);
+%         
+%         %%%%%%%%%lookup table %%%%%%%%%%%%%%%%%%%%%%%%
+%     elseif strcmp(inter_blk{idx_block}.type, 'Lookup')
+%         
+% %UNFINISHED WORK CHECK write_function
+%         [block_string] = write_lookup(inter_blk{idx_block}, inter_blk);
 
 	%%%%%%%%%%%%%%%%% SubSystem %%%%%%%%%%%%%%%%%%%%%%%%
 	% Print SubSystem as a node call only if it is not the first of the list (aka the current SubSystem)
@@ -554,11 +583,13 @@ for idx_block=1:nblk
 
 				end
 
-			%%%%%%%%%%%%%%%%%% Observer %%%%%%%%%%%%%%%%%
+			%%%%%%%%%%%%%%%%%% Observer Property %%%%%%%%%%%%%%%%%
 			elseif Constants.is_property(inter_blk{idx_block}.mask_type)
           
 				annot_type = get_param(blks{idx_block}, 'AnnotationType');
-				observer_type = get_param(blks{idx_block}, 'ObserverType');
+                annotations = find_system(blks{idx_block},'FindAll','on','Type','annotation');
+				disp(annotations)
+                observer_type = get_param(blks{idx_block}, 'ObserverType');
                 try
                     [property_node, ext_node, extern_funs, property_name,external_math_functions_i] = write_property(inter_blk{idx_block}, ...
                         inter_blk, main_blk, main_blks, nom_lustre_file, print_node, trace, annot_type, observer_type, xml_trace);
@@ -603,11 +634,10 @@ for idx_block=1:nblk
 
 		%%%%%%%%%%%%%%%%%% Classical SubSystem %%%%%%%%%%%%
 		elseif inter_blk{idx_block}.num_output ~= 0
-            
+            display_msg('Classical Susbsystem', Constants.DEBUG, 'write_code', '');
             [block_string, var_str] = write_subsystem(inter_blk{idx_block}, inter_blk, main_blk, xml_trace);
-%             display(inter_blk{idx_block}.origin_name{1});
-%             display(block_string);
-		end
+		
+        end
 
 	%%%%%%%%%%%%%%%%%% Outport %%%%%%%%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'Outport')
@@ -680,7 +710,7 @@ for idx_block=1:nblk
 	elseif ~strcmp(inter_blk{idx_block}.type, 'Inport') && ~((strcmp(inter_blk{idx_block}.type, 'SubSystem') || strcmp(inter_blk{idx_block}.type, 'ModelReference')) && idx_block == 1)
 
 		block_type = inter_blk{idx_block}.type{1};
-		error_msg = ['Block backend not implemented for block type: ' block_type];
+		error_msg = ['Block compilation not implemented for block type: ' block_type];
 		error_msg = [error_msg '\n' inter_blk{idx_block}.origin_name{1}];
 		display_msg(error_msg, 2, 'write_code', '');
 

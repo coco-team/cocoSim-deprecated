@@ -1,19 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% This file is part of cocoSim.
-% Copyright (C) 2014-2015  Carnegie Mellon University
-% Original contribution from ONERA
-%
-%    cocoSim  is free software: you can redistribute it 
-%    and/or modify it under the terms of the GNU General Public License as 
-%    published by the Free Software Foundation, either version 3 of the 
-%    License, or (at your option) any later version.
-%
-%    cocoSim compiler + verifier is distributed in the hope that it will be useful,
-%    but WITHOUT ANY WARRANTY; without even the implied warranty of
-%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-%    GNU General Public License for more details.
-%
-%    You should have received a copy of the GNU General Public License
+% This file is part of CoCoSim.
+% Copyright (C) 2014-2016  Carnegie Mellon University
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Write extern functions
@@ -74,7 +61,7 @@ for idx_fun=1:numel(functions)
 	fun_split = regexp(fun, ' ', 'split');
     if strcmp(fun_kind, 'lustrec_math')
         if ~included_lustrec_math
-        str_include = [str_include '#open <math>\n'];
+            str_include = [str_include '#open <math>\n'];
         end
         included_lustrec_math  = true;
     elseif strcmp(fun_kind, 'trigoh')
@@ -110,7 +97,10 @@ for idx_fun=1:numel(functions)
 			fprintf(fid, res);
 			fclose(fid);
 			str = '';
-			str_include = [str_include 'include "trigo_utils.lus"\n'];
+            %TODO: currently lustrec is not supporting include
+			%str_include = [str_include 'include "trigo_utils.lus"\n'];
+            trig_functions = sprintf('-- Trigonometric functions using interpolation\n\n %s\n\n -- End trig function', res);
+            str_include = [str_include trig_functions];
 			included_trigo = true;
 		end
 	elseif strncmp(fun_kind, 'complex_arith', 13)

@@ -1,19 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% This file is part of cocoSim.
-% Copyright (C) 2014-2015  Carnegie Mellon University
-% Original contribution from ONERA
-%
-%    cocoSim  is free software: you can redistribute it 
-%    and/or modify it under the terms of the GNU General Public License as 
-%    published by the Free Software Foundation, either version 3 of the 
-%    License, or (at your option) any later version.
-%
-%    cocoSim compiler + verifier is distributed in the hope that it will be useful,
-%    but WITHOUT ANY WARRANTY; without even the implied warranty of
-%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-%    GNU General Public License for more details.
-%
-%    You should have received a copy of the GNU General Public License
+% This file is part of CoCoSim.
+% Copyright (C) 2014-2016  Carnegie Mellon University
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Property block
@@ -46,9 +33,8 @@
 %
 %% Code
 %
-function [property_node,extern_s_functions_string, extern_functions, node_call_name, external_math_functions] = write_property(block, inter_blk, main_blk, main_blks, nom_lustre_file, print_node, trace, annot_type, observer_type, xml_trace)
-
-
+function [property_node,extern_s_functions_string, extern_functions, node_call_name, external_math_functions] = ...
+write_property(block, inter_blk, main_blk, main_blks, nom_lustre_file, print_node, trace, annot_type, observer_type, xml_trace)
 property_node = '';
 extern_functions = '';
 xml_trace_node = '';
@@ -70,8 +56,9 @@ if numel(full_observer_name{1}(1:end-1)) == 1
 	parent_subsystem = main_blk{idx_parent_subsystem};
 	[model_path, parent_node_name, ext] = fileparts(nom_lustre_file);
 else
+    
 	idx_parent_subsystem = get_subsys_index(main_blk, Utils.concat_delim(full_observer_name{1}(1:end-1), '/'));
-	parent_subsystem = main_blk{idx_parent_subsystem};
+    parent_subsystem = main_blk{idx_parent_subsystem};
 	full_parent_name = regexp(parent_subsystem{1}.name, '/', 'split');
 	parent_node_name = Utils.concat_delim(full_parent_name{1}, '_');
 end
@@ -161,6 +148,7 @@ for idx_in=1:numel(block.pre)
 	end
 end
 
+
 % Add potentially missing outport of the observed subsystem
 unused_outports_variables = '';
 for idx_parent_blocks=1:numel(parent_subsystem)
@@ -235,8 +223,9 @@ for idx_block=2:obs_nblk
 end
 
 
-% Get assertions
-assertions = convert_assertions(obs_inter_blk, list_in, list_in_outport, xml_trace);
+% Get cocospec
+assertions = convert_cocospec(obs_inter_blk, list_in, list_in_outport, xml_trace);
+
 
 % Add the additional variables for the output of the call to the observed system
 inputs_str = Utils.concat_delim(list_in_outport_parent_call_declaration, ';\n\t');
@@ -274,11 +263,10 @@ extern_functions = '';
 properties_nodes = '';
 additional_variables = '';
 
-
 [let_tel_code_string extern_s_functions_string extern_functions properties_nodes additional_variables external_math_functions] = ...
     write_code(obs_nblk, obs_inter_blk, obs_blks, main_blks, ...
     main_blk, nom_lustre_file, obs_idx_subsys, false, trace, xml_trace);
- 
+
 header = app_sprintf(header, additional_variables);
 header = app_sprintf(header, '\t%s;\n', 'i_virtual_local : real');
 let_tel_code_string = app_sprintf(let_tel_code_string, '\t%s;\n', 'i_virtual_local= 0.0 -> 1.0');
@@ -328,7 +316,7 @@ function [main_sub_idx] = get_subsys_index(inter_blk, origin_name)
 			main_sub_idx = idx;
 			return
 		end
-	end
+    end
 end
 
 function [res_idx] = get_block_index(blks, name)

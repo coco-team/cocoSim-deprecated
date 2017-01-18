@@ -1,3 +1,8 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This file is part of CoCoSim.
+% Copyright (C) 2014-2016  Carnegie Mellon University
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 function [state_actions, nb_state_actions, external_nodes, global_nodes_struct] = write_state_actions(chart, data, state,variables_struct, global_nodes_struct)
 %generate for a state A actions A_en, A_du and A_ex (entry, during and
 %exit actions)

@@ -1,24 +1,12 @@
-% CoCoSim: A framework for formal analysis of Simulink models
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% This file is part of cocoSim.
-% Copyright (C) 2014-2015  Carnegie Mellon University
-% Original contribution from ONERA
-%
-%    cocoSim  is free software: you can redistribute it
-%    and/or modify it under the terms of the GNU General Public License as
-%    published by the Free Software Foundation, either version 3 of the
-%    License, or (at your option) any later version.
-%
-%    cocoSim compiler + verifier is distributed in the hope that it will be useful,
-%    but WITHOUT ANY WARRANTY; without even the implied warranty of
-%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-%    GNU General Public License for more details.
-%
-%    You should have received a copy of the GNU General Public License
+% This file is part of CoCoSim.
+% Copyright (C) 2014-2016  Carnegie Mellon University
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function [valid, sf2lus_time, validation_compute, nb_actions, lus_file_path, Query_time]=validate_model(model_full_path,cocoSim_path, show_models,L)
+
+function [valid, validation_compute,lustrec_failed, ...
+          lustrec_binary_failed, sim_failed, lus_file_path, ...
+          sf2lus_time, nb_actions, Query_time] = validate_model(model_full_path,cocoSim_path, show_models,L)
 bdclose('all')
 open(model_full_path);
 if ~exist('show_models', 'var')
@@ -92,7 +80,7 @@ nb_steps = stop_time/simulation_step +1;
 IMAX = 100; %IMAX for randi the max born for random number
 
 try
-    fprintf('Start compiling model "%s" to Lustre\n',file_name);
+    fprintf('Compiling model "%s" to Lustre\n',file_name);
 %     lus_file_path= '/home/hamza/Documents/coco_team/regression-test/simulink/unit_test/not_valid_models/lustre_files/src_math_int_2_test/math_int_2_test.lus';
     [lus_file_path, sf2lus_time, nb_actions, Query_time]=cocoSim(model_full_path);
     chart_name = file_name;
@@ -100,7 +88,8 @@ try
     [lus_file_dir, lus_file_name, ~] = fileparts(lus_file_path);
     cd(lus_file_dir);
 catch ME
-    fprintf('Compilation Failed for model "%s" :\n%s\n%s',file_name,ME.identifier,ME.message);
+    msg = sprintf('Compilation Failed for model "%s" :\n%s\n%s',file_name,ME.identifier,ME.message);
+    display_msg(msg, Constants.ERROR, 'validation', '');
     cellfun(@disp, ME.cause);
     fprintf('\n');
     disp(ME.stack(1));
@@ -108,16 +97,16 @@ catch ME
     bdclose('all')
     sf2lus_time = -1;
     L.error('cocoSim',[file_name, '\n' getReport(ME,'extended')]);
-%     rethrow(ME)
-
     return
 end
 validation_start = tic;
 command = sprintf('%s -node %s %s',LUSTREC,Utils.name_format(chart_name), lus_file_path);
-fprintf('LUSTREC_COMMAND : %s\n',command);
+msg = sprintf('LUSTREC_COMMAND : %s\n',command);
+display_msg(msg, Constants.INFO, 'validation', '');
 [status, lustre_out] = system(command);
 if status
-    fprintf('lustrec failed for model "%s" :\n%s',file_name,lustre_out);
+    msg = sprintf('lustrec failed for model "%s" :\n%s',file_name,lustre_out);
+    display_msg(msg, Constants.INFO, 'validation', '');
     lustrec_failed = 1;
     close_system(model_full_path,0);
     bdclose('all')
@@ -125,27 +114,28 @@ if status
     return
 else
     
-    fprintf('start compiling model "%s"\n',file_name);
+    msg = sprintf('start compiling model "%s"\n',file_name);
+    display_msg(msg, Constants.INFO, 'validation', '');
     makefile_name = fullfile(lus_file_dir,strcat(file_name,'.makefile'));
     command = sprintf('make -f %s', makefile_name);
-    fprintf('MAKE_LUSTREC_COMMAND : %s\n',command);
+    msg = sprintf('MAKE_LUSTREC_COMMAND : %s\n',command);
+    display_msg(msg, Constants.INFO, 'validation', '');
     [status, make_out] = system(command);
-    if status
-        
-        fprintf('compile lustre file failed for model "%s" :\n%s',file_name,make_out);
+    if status        
+        err = printf('Compilation failed for model "%s" :\n%s',file_name,make_out);
+        display_msg(err, Constants.ERROR, 'validation', '');
         close_system(model_full_path,0);
         bdclose('all')
         command = sprintf('rm %s.makefile %s.c %s.h %s.o %s.lusic  %s_main.* %s_alloc.h %s_sfun.mexa64',...
             file_name, file_name,file_name,file_name,file_name,file_name,file_name,file_name);
         system(command);
-        command = sprintf('rm *.o input_values outputs_values ');
+        command = sprintf('!rm *.o input_values outputs_values ');
         system(command);
-        command = sprintf('rm -r slprj');
+        command = sprintf('!rm -r slprj');
         system(command);
         cd(OldPwd);
         return
     else
-        
         input_struct.time = (0:simulation_step:stop_time)';
         input_struct.signals = [];
         number_of_inputs = 0;
@@ -212,25 +202,26 @@ else
         command  = sprintf('./%s  < input_values > outputs_values',lustre_binary);
         [status, binary_out] =system(command);
         if status
-            fprintf('lustrec binary failed for model "%s" :\n%s',file_name,binary_out);
+            err = sprintf('lustrec binary failed for model "%s" :\n%s',file_name,binary_out);
+            display_msg(err, Constants.ERROR, 'validation', '');
             lustrec_binary_failed = 1;
             close_system(model_full_path,0);
             bdclose('all')
-            command = sprintf('rm %s.makefile %s.c %s.h %s.o %s.lusic  %s_main.* %s_alloc.h %s_sfun.mexa64 %s',...
+            command = sprintf('!rm %s.makefile %s.c %s.h %s.o %s.lusic  %s_main.* %s_alloc.h %s_sfun.mexa64 %s',...
                 file_name, file_name,file_name,file_name,file_name,file_name,file_name,file_name,lustre_binary);
             system(command);
-            command = sprintf('rm *.o input_values outputs_values ');
+            command = sprintf('!rm *.o input_values outputs_values ');
             system(command);
-            command = sprintf('rm -r slprj');
+            command = sprintf('!rm -r slprj');
             system(command);
             cd(OldPwd);
             return
         else
-            fprintf('start simulating model "%s"\n',file_name);
+            msg = sprintf('Simulating model "%s"\n',file_name);
+            display_msg(msg, Constants.INFO, 'validation', '');
             try
                 set_param(configSet, 'Solver', 'FixedStepDiscrete');
                 set_param(configSet, 'FixedStep', '1.0');
-                
                 set_param(configSet, 'StartTime', '0.0');
                 set_param(configSet, 'StopTime',  '100.0');
                 set_param(configSet, 'SaveFormat', 'Structure');
@@ -297,7 +288,8 @@ else
                                     break
                                 end
                             else
-                                warning('strang behavour of output %s',outputs_array{numberOfOutputs*i+k});
+                                warn = sprintf('strange behavour of output %s',outputs_array{numberOfOutputs*i+k});
+                                display_msg(warn, Constants.WARNING, 'validation', '');
                                 valid = 0;
                                 break;
                             end
@@ -376,7 +368,7 @@ else
                     fprintf('difference between outputs %s is :%2.10f\n',diff_name, diff);
                 else
                     msg = sprintf('Translation for model "%s" is valid \n',file_name);
-                    display_msg(msg, Constants.RESULT, 'Translation Validation', '');
+                    display_msg(msg, Constants.RESULT, 'validation', '');
                 end
                 
                 %uncommetn these two lines if you want to remove input and
@@ -391,7 +383,7 @@ else
                 cd(OldPwd);
             catch ME
                 msg = sprintf('simulation failed for model "%s" :\n%s\n%s\n%s',file_name,ME.identifier,ME.message, getReport(ME,'extended'));
-                display_msg(msg, Constants.ERROR, 'Translation Validation', '');
+                display_msg(msg, Constants.ERROR, 'validation', '');
                 sim_failed = 1;
                 valid = 0;
                 close_system(model_full_path,0);
@@ -405,12 +397,15 @@ else
         end
     end
 end
-fprintf('Inputs struct given to the simulation are in the workspace under name : input_struct\n');
-fprintf('Inputs given to lustre binary can be found in : %s\n',fullfile(lus_file_dir,'input_values'));
-fprintf('Outputs struct of the simulation are in the workspace under name : yout_signals\n');
-fprintf('Outputs generated by lustre binary can be found in : %s\n',fullfile(lus_file_dir,'outputs_values'));
-% close_system(model_full_path,0);
-% bdclose('all')
+
+f_msg = ['\n Simulation Input (workspace) input_struct \n'];
+f_msg = [f_msg 'Simulation Output (workspace) : yout_signals \n'];
+f_msg = [f_msg 'LustreC binary Input ' fullfile(lus_file_dir,'input_values') '\n'];
+f_msg = [f_msg 'LustreC binary Output ' fullfile(lus_file_dir,'outputs_values') '\n'];
+ display_msg(f_msg, Constants.RESULT, 'validation', '');
+close_system(model_full_path,0);
+bdclose('all')
+
 cd(OldPwd);
 if sim_failed==1
     validation_compute = -1;

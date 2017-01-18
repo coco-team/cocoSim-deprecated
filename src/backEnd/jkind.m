@@ -1,19 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% This file is part of cocoSim.
-% Copyright (C) 2014-2015  Carnegie Mellon University
-% Original contribution from ONERA
-%
-%    cocoSim  is free software: you can redistribute it 
-%    and/or modify it under the terms of the GNU General Public License as 
-%    published by the Free Software Foundation, either version 3 of the 
-%    License, or (at your option) any later version.
-%
-%    cocoSim compiler + verifier is distributed in the hope that it will be useful,
-%    but WITHOUT ANY WARRANTY; without even the implied warranty of
-%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-%    GNU General Public License for more details.
-%
-%    You should have received a copy of the GNU General Public License
+% This file is part of CoCoSim.
+% Copyright (C) 2014-2016  Carnegie Mellon University
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -24,7 +11,7 @@ function jkind(lustre_file_name, property_node_names, property_file_base_name, m
     for idx_prop=1:numel(property_node_names)
         if exist(JKIND,'file')
             date_value = datestr(now, 'ddmmyyyyHHMMSS');
-            command = sprintf('%s --xml_to_stdout -main %s %s', JKIND, property_node_names{idx_prop}.prop_name, lustre_file_name);
+            command = sprintf('%s --xml_to_stdout -solver z3 -main %s %s', JKIND, property_node_names{idx_prop}.prop_name, lustre_file_name);
             disp(['JKIND_COMMAND ' command])
             [status, jkind_out] = system(command);
             disp('   -- JKIND_OUT --')

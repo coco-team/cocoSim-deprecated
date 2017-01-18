@@ -1,19 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% This file is part of cocoSim.
-% Copyright (C) 2014-2015  Carnegie Mellon University
-% Original contribution from ONERA
-%
-%    cocoSim  is free software: you can redistribute it 
-%    and/or modify it under the terms of the GNU General Public License as 
-%    published by the Free Software Foundation, either version 3 of the 
-%    License, or (at your option) any later version.
-%
-%    cocoSim compiler + verifier is distributed in the hope that it will be useful,
-%    but WITHOUT ANY WARRANTY; without even the implied warranty of
-%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-%    GNU General Public License for more details.
-%
-%    You should have received a copy of the GNU General Public License
+% This file is part of CoCoSim.
+% Copyright (C) 2014-2016  Carnegie Mellon University
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% S-Function block
@@ -47,10 +34,14 @@ output_string = '';
 load 'tmp_data'
 legacy_file_name = fullfile(model_path, strcat(function_name, '.c'));
 
+display_msg(['Legacy File Name ' legacy_file_name], Constants.DEBUG, 'write_extern_s_function', '');
+            
 % check if the legacy code is there
 
-tmp_name = (regexp(legacy_file_name, '_', 'split'));
-c_main_file = fullfile(model_path, tmp_name{2});
+tmp_name = (regexp(function_name, '_', 'split'));
+
+c_main_file = fullfile(model_path, strcat(tmp_name{2}, '.c'));
+display_msg(['C Main File ' c_main_file], Constants.DEBUG, 'write_extern_s_function', '');
 % store the name without the extension for lustre
 tmp2_name = (regexp(function_name, '_', 'split'));
 lustre_annot_name = tmp2_name{2};
