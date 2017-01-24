@@ -131,9 +131,9 @@ else
         command = sprintf('rm %s.makefile %s.c %s.h %s.o %s.lusic  %s_main.* %s_alloc.h %s_sfun.mexa64',...
             file_name, file_name,file_name,file_name,file_name,file_name,file_name,file_name);
         system(command);
-        command = sprintf('!rm *.o input_values outputs_values ');
+        command = sprintf('rm *.o input_values outputs_values ');
         system(command);
-        command = sprintf('!rm -r slprj');
+        command = sprintf('rm -r slprj');
         system(command);
         cd(OldPwd);
         return
@@ -239,7 +239,7 @@ else
                     set_param(configSet, 'ExternalInput', 'input_struct');
                     hws = get_param(file_name, 'modelworkspace');
                     hws.assignin('input_struct',eval('input_struct'));
-                    assignin('base','input_struct',input_struct)
+                    assignin('base','input_struct',input_struct);
                     if show_models
                         open(file_name)
                     end
@@ -252,7 +252,7 @@ else
                 end
                 yout = get(simOut,'yout');
                 yout_signals = yout.signals;
-                assignin('base','yout_signals',yout_signals)
+                assignin('base','yout_signals',yout_signals);
                 numberOfOutputs = numel(yout_signals);
                 outputs_array = importdata('outputs_values','\n');
                 valid = true;
