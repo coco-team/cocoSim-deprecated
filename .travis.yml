@@ -65,7 +65,7 @@ before_install:
   - rm -rf MOxUnit;
   - git clone https://github.com/MOxUnit/MOxUnit.git
   # Install MOxUnit, which adds itself to the startup path
-  - make -C MOxUnit install
+  #- make -C MOxUnit install
   # Install MOcov, which adds itself to the startup path
   #- if [ "$COVERAGE" = "true" ]; then
   #      rm -rf MOcov;
