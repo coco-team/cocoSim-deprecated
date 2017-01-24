@@ -59,18 +59,23 @@ before_install:
   # ---------------------------------------------------------------------------
   # ---------------------------------------------------------------------------
   # Go up one level and retrieve MOxUnit from its repository
-  # - cd ..;
-   # ls -alh;
+  - cd ..;
+    ls -alh;
   # Remove directory if it is already there from previous build
-  # - rm -rf MOxUnit;
-  # - git clone https://github.com/MOxUnit/MOxUnit.git
+   - rm -rf MOxUnit;
+   - git clone https://github.com/MOxUnit/MOxUnit.git
   # Install MOxUnit, which adds itself to the startup path
-  #- make -C MOxUnit install
+  - make -C MOxUnit install
   # Install MOcov, which adds itself to the startup path
-  #- if [ "$COVERAGE" = "true" ]; then
-  #      rm -rf MOcov;
-  #      git clone https://github.com/MOcov/MOcov.git;
-  #      make -C MOcov install;
-  #  fi;
+  - if [ "$COVERAGE" = "true" ]; then
+        rm -rf MOcov;
+        git clone https://github.com/MOcov/MOcov.git;
+        make -C MOcov install;
+    fi;
   # Go back to the repository directory
-  # - cd ${REPOPATH}
+   - cd ${REPOPATH}
+
+   ###############################################################################
+ script:
+  - echo " Check for regression testing result "
+  - ls
