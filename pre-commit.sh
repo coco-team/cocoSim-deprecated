@@ -18,7 +18,6 @@ python sanity/sanity_check.py
 # store the last exit code in a variable
 RESULT=$?
 
-echo $RESULT
 
 # unstash the unstashed changes
 git stash pop -q
