@@ -17,7 +17,7 @@ for reg in all_reg:
     filetime = datetime.fromtimestamp(path.getctime(reg))
     if filetime > today:
         print ":) Good Job!!! You run regression today"
-        print reg
+        print "Winner result + " + reg
         exit(0)
 else:
     exit(1)
