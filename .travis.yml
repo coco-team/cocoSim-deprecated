@@ -57,13 +57,12 @@ before_install:
     which gcc;
     gcc --version;
   # ---------------------------------------------------------------------------
-  # ---------------------------------------------------------------------------
   # Go up one level and retrieve MOxUnit from its repository
   - cd ..;
     ls -alh;
   # Remove directory if it is already there from previous build
-   - rm -rf MOxUnit;
-   - git clone https://github.com/MOxUnit/MOxUnit.git
+  - rm -rf MOxUnit;
+  - git clone https://github.com/MOxUnit/MOxUnit.git
   # Install MOxUnit, which adds itself to the startup path
   - make -C MOxUnit install
   # Install MOcov, which adds itself to the startup path
@@ -73,9 +72,32 @@ before_install:
         make -C MOcov install;
     fi;
   # Go back to the repository directory
-   - cd ${REPOPATH}
+  - cd ${REPOPATH}
 
-   ###############################################################################
- script:
-  - echo " Check for regression testing result "
+###############################################################################
+install:
+  # Ensure external packages folder exists and is empty
+  - echo "Install"
+
+###############################################################################
+before_script:
+ - echo "before script"
+
+###############################################################################
+script:
+  - echo "Check for regression test result"
   - ls
+
+###############################################################################
+after_script:
+  # Check where we ended up and what's going on where we are
+  - pwd
+  - ls -alh
+
+###############################################################################
+after_success:
+  -  echo "After sucess"
+
+###############################################################################
+# Enable archiving of artifacts on Shippable (does nothing on Travis)
+archive: true
