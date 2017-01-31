@@ -3,7 +3,7 @@
 % Copyright (C) 2014-2016  Carnegie Mellon University
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function [variables, outputs] = add_variables(extern_nodes_header_return, firstAction, variables_struct, isOutput, global_node)
+function [variables, outputs] = add_variables(extern_nodes_header_return, firstAction, variables_struct, isOutput, global_node,variables_struct_old)
     if ~exist('global_node','var')
         global_node = false;
     end
