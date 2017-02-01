@@ -3,14 +3,12 @@
 % Copyright (C) 2014-2016  Carnegie Mellon University
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%function [valid, sf2lus_time, validation_compute, nb_actions, lus_file_path]=validate_model(model_full_path,cocoSim_path, show_models)
-% function [valid, sf2lus_time, validation_compute, nb_actions, lus_file_path]=validate_model(model_full_path,cocoSim_path, show_models)
 
 function [valid, validation_compute,lustrec_failed, ...
           lustrec_binary_failed, sim_failed, lus_file_path, ...
-          sf2lus_time, nb_actions] = validate_model(model_full_path,cocoSim_path, show_models)
-
+          sf2lus_time, nb_actions, Query_time] = validate_model(model_full_path,cocoSim_path, show_models,L)
 bdclose('all')
+open(model_full_path);
 if ~exist('show_models', 'var')
     show_models = 0;
 end
@@ -84,7 +82,7 @@ IMAX = 100; %IMAX for randi the max born for random number
 try
     fprintf('Compiling model "%s" to Lustre\n',file_name);
 %     lus_file_path= '/home/hamza/Documents/coco_team/regression-test/simulink/unit_test/not_valid_models/lustre_files/src_math_int_2_test/math_int_2_test.lus';
-    [lus_file_path, sf2lus_time, nb_actions]=cocoSim(model_full_path);
+    [lus_file_path, sf2lus_time, nb_actions, Query_time]=cocoSim(model_full_path);
     chart_name = file_name;
     configSet = copy(getActiveConfigSet(file_name));
     [lus_file_dir, lus_file_name, ~] = fileparts(lus_file_path);
@@ -399,6 +397,7 @@ else
         end
     end
 end
+
 f_msg = ['\n Simulation Input (workspace) input_struct \n'];
 f_msg = [f_msg 'Simulation Output (workspace) : yout_signals \n'];
 f_msg = [f_msg 'LustreC binary Input ' fullfile(lus_file_dir,'input_values') '\n'];
@@ -406,6 +405,7 @@ f_msg = [f_msg 'LustreC binary Output ' fullfile(lus_file_dir,'outputs_values') 
  display_msg(f_msg, Constants.RESULT, 'validation', '');
 close_system(model_full_path,0);
 bdclose('all')
+
 cd(OldPwd);
 if sim_failed==1
     validation_compute = -1;

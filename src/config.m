@@ -28,7 +28,7 @@ if ~exist('solvers_path', 'var')
         errordlg('OS not supported yet','CoCoSim backend configuration');
     end
     OldLibPath = getenv('LD_LIBRARY_PATH');
-    if isempty(strfind(OldLibPath,'libz3.so'))
+    if isempty(strfind(OldLibPath,'libz3.so')) || ~isempty(strfind(OldLibPath,'::'))
         setenv('LD_LIBRARY_PATH',Z3Library_path);
         %to keep the old LD_LIBRARY_PATH use the following (it does not work)
         %setenv('LD_LIBRARY_PATH',[getenv('LD_LIBRARY_PATH')  Z3Library_path ':']);

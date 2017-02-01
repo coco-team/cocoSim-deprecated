@@ -35,14 +35,20 @@ for k=1:count
     for i=1:n
         model_full_path = fullfile(tool_path, char(models_name{i}));
         try
-        [valid_i, sf2lus_failed_i,lustrec_failed_i, lustrec_binary_failed_i, sim_failed_i, lus_file_path]=validate_model(char(model_full_path),cocoSim_path,show_models,L);
+        [valid_i, validation_compute,lustrec_failed_i, ...
+          lustrec_binary_failed_i, sim_failed_i, lus_file_path, ...
+          sf2lus_time, ~, ~] = validate_model(char(model_full_path),cocoSim_path,show_models,L)
         catch ME
             warning('%s\n',ME.message);
             L.error('validate_model',getReport(ME,'extended'));
             continue;
         end
         valid(i) = valid_i;
-        sf2lus_failed(i) = sf2lus_failed_i;
+        if sf2lus_time==-1
+            sf2lus_failed(i) = 1;
+        else
+            sf2lus_failed(i) = 0;
+        end
         lustrec_failed(i) = lustrec_failed_i;
         lustrec_binary_failed(i) = lustrec_binary_failed_i;
         sim_failed(i) = sim_failed_i;
