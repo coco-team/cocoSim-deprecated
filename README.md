@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/coco-team/cocoSim.svg?branch=master)](https://travis-ci.org/coco-team/cocoSim)
+
 # CoCoSim
 
 CoCoSim is an automated analysis framework for Simulink and Stateflow models. CoCoSim is currently under development. We welcome any feedback and bug report.

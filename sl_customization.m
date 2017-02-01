@@ -52,7 +52,9 @@ end
       [cocoSim_path, ~, ~] = fileparts(mfilename('fullpath'));
       model_full_path = get_param(gcs,'FileName');%gcs;
       [valid, cocoSim_failed,lustrec_failed, ...
-          lustrec_binary_failed, sim_failed, lus_file_path]=validate_model(model_full_path,cocoSim_path,1);
+          lustrec_binary_failed, sim_failed, lus_file_path, ...
+          ~, ~]=validate_model(model_full_path,cocoSim_path,1);
+
       open(model_full_path);
       msg = '';
       if valid
@@ -60,13 +62,13 @@ end
       elseif cocoSim_failed
           msg = 'INVALID';
       end
-      h = msgbox(msg,'CoCoSim Translation Validation');
+%       h = msgbox(msg,'CoCoSim Translation Validation');
       if lustrec_failed
           open(lus_file_path)
       elseif lustrec_binary_failed
-          display('Lustre binary generation failed');
+          display('LustreC binary generation failed');
       elseif sim_failed
-          display('running Simulation has failed');
+          display('Simulation has failed');
       else
           open(lus_file_path)
       end
@@ -127,7 +129,8 @@ function schema = viewContract(callbackInfo)
          disp(['CONTRACT LOCATION ' char(CONTRACT)])
          if isunix
              try
-               cmd = sprintf('open -a Emacs %s', char(CONTRACT));
+               %cmd = sprintf('open -a Emacs %s', char(CONTRACT));
+               open(CONTRACT)
                disp(cmd)
                [status, out] = system(cmd);
              catch ME
@@ -156,8 +159,7 @@ function schema = viewContract(callbackInfo)
   try 
       [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
       simulink_name = gcs;
-      add_cocospec(simulink_name);
-      
+      add_cocospec(simulink_name);   
   catch ME
       disp(ME.message)
   end

@@ -1,18 +1,20 @@
-function insert_observer( model_full_path )
-%INSERT_OBSERVER Inserts an observer block in the selected subsystem 
-% plugged on all the inputs of the selected subsystem and on the selected
-% outputs
-	disp('              +----------------------------------------------------------+');
-	disp('              |    Welcome to the CoCoSpec block insertion tool          |');
-	disp('              +----------------------------------------------------------+');
-    disp('              |    Currently Only Guarantees (Properties) are supported  |');
-	disp('              +----------------------------------------------------------+');
-	disp('              |       Use <Ctrl + C> to quit this tool at any time       |') 
-	disp('              +----------------------------------------------------------+');
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This file is part of cocoSim.
+% Copyright (C) 2014-2016  Carnegie Mellon University
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+function add_cocospec( model_full_path )
+    mainFrame = com.mathworks.mde.desk.MLDesktop.getInstance.getMainFrame;
+    mainFrame.toFront;
+	disp('              +-----------------------------------------------------------------------+');
+	disp('              |    Welcome to the CoCoSim Property stub creator block insertion tool  |        |');
+	disp('              +-----------------------------------------------------------------------+');
+	disp('              |       Use <Ctrl + C> to quit this tool at any time                    |') 
+	disp('              +-----------------------------------------------------------------------+');
+
+    
 	% Load the system
 	disp(['Loading system: ' model_full_path]);
-	open_system(char(model_full_path));
 	[model_path, file_name, ext] = fileparts(model_full_path);
 
 	% Display the list of all the subsystems of the model for the user to pick
@@ -98,13 +100,14 @@ function insert_observer( model_full_path )
 	observer = create_observer_block(subsystem_name, outputs_names, observer_name);
 
 	disp('           +----------------------------------------------------------+');
-	disp('                                  Summary');
+	disp('           |                       Summary                             |');
 	disp('           +----------------------------------------------------------+');
 	disp(['SubSystem: ' subsystem_name]);
 	disp(['Outputs: ' output_summary]);
 	disp('+----------------------------------------------------------+');
 
 	%close_system(char(model_full_path));
+    open_system(char(model_full_path));
 end
 
 %% Ensure user input is correct or returns false for res

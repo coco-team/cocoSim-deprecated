@@ -34,10 +34,14 @@ output_string = '';
 load 'tmp_data'
 legacy_file_name = fullfile(model_path, strcat(function_name, '.c'));
 
+display_msg(['Legacy File Name ' legacy_file_name], Constants.DEBUG, 'write_extern_s_function', '');
+            
 % check if the legacy code is there
 
-tmp_name = (regexp(legacy_file_name, '_', 'split'));
-c_main_file = fullfile(model_path, tmp_name{2});
+tmp_name = (regexp(function_name, '_', 'split'));
+
+c_main_file = fullfile(model_path, strcat(tmp_name{2}, '.c'));
+display_msg(['C Main File ' c_main_file], Constants.DEBUG, 'write_extern_s_function', '');
 % store the name without the extension for lustre
 tmp2_name = (regexp(function_name, '_', 'split'));
 lustre_annot_name = tmp2_name{2};

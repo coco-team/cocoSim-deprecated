@@ -157,7 +157,7 @@ function [answer, cex, cocospec] = check_zustre_result(zustre_out, property_node
 					display_msg(msg, Constants.WARNING, 'Zustre property checking', '');
                 end
             elseif strcmp(answer, 'SAFE')
-%                 cocospec = prop.getElementsByTagName('contractFile').item(0).getTextContent;
+                 cocospec = prop.getElementsByTagName('contractFile').item(0).getTextContent;
 			end
 		end
 	end

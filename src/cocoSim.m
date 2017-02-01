@@ -113,6 +113,7 @@ elseif strcmp(class(const_files), 'char')
 end
 
 % Retrieving of the Bus structure
+display_msg('Getting bus struct', Constants.INFO, 'cocoSim', '');
 bus_struct = BusUtils.get_bus_struct();
 
 
@@ -124,7 +125,7 @@ end
 save 'tmp_data' origin_path model_path cocoSim_path bus_struct
 
 % Pre-process model
-display_msg('Pre-processing of the model', Constants.INFO, 'cocoSim', '');
+display_msg('Pre-processing', Constants.INFO, 'cocoSim', '');
 [new_file_name] = preprocess_model(file_name, cocoSim_path, ext);
 
 if ~strcmp(new_file_name, '')
@@ -145,17 +146,15 @@ property_file_base_name = fullfile(output_dir, strcat(file_name, '.property'));
 % TODO: Ask the user for file overriding
 initialize_files(nom_lustre_file);
 
-display_msg('Internal representation building', Constants.INFO, 'cocoSim', '');
-
+display_msg('Building internal format', Constants.INFO, 'cocoSim', '');
 %%%%%%% Load all the systems including the referenced ones %%%%
 [models, subsystems] = find_mdlrefs(file_name);
-% fprintf('models : %s',models)
-% fprintf('subsytems %s',subsystems)
-%%%%%% Internal representation building %%%%%%
 
+%%%%%% Internal representation building %%%%%%
 [inter_blk, blks, complex_structs]= mk_internalRep(file_name, dfexport, models, subsystems, mat_files, default_Ts);
 
 % Creation of the traceability XML node
+display_msg('Start tracebility', Constants.INFO, 'cocoSim', '');
 xml_trace = XML_Trace(model_full_path, trace_file_name);
 xml_trace.init();
 
@@ -229,9 +228,6 @@ for idx_subsys=numel(inter_blk):-1:1
             [mat_fun_node] = write_matlab_function_node(inter_blk{idx_subsys}{1}, inter_blk, inter_blk{idx_subsys}, fun_name, chart, xml_trace);
             
             extern_nodes_string = [extern_nodes_string mat_fun_node];
-            %
-            
-            % Add Matlab function code to an m file
             blk_path_elems = regexp(inter_blk{idx_subsys}{1}.name{1}, '/', 'split');
             node_call_name = Utils.concat_delim(blk_path_elems, '_');
             disp(node_call_name)
@@ -438,18 +434,18 @@ display_msg('End of code generation', Constants.INFO, 'cocoSim', '');
 
 % Write traceability informations
 xml_trace.write();
-msg = sprintf('Traceability data generated in file: %s', trace_file_name);
+msg = sprintf(' %s', trace_file_name);
 display_msg(msg, Constants.INFO, 'Traceability', '');
 
 % Generated files informations
-msg = sprintf('Lustre code generated in file: %s', nom_lustre_file);
-display_msg(msg, Constants.INFO, 'Generation result', '');
+msg = sprintf(' %s', nom_lustre_file);
+display_msg(msg, Constants.INFO, 'Lustre Code', '');
 
 %%%%%%%%%%%%% Compilation to C or Rust %%%%%%%%%%%%%
 if RUST_GEN
     display_msg('Generating Rust Code', Constants.INFO, 'Rust Compilation', '');
     try
-        (nom_lustre_file);
+        rust(nom_lustre_file);
     catch ME
         display_msg(ME.message, Constants.ERROR, 'Rust Compilation', '');
     end
