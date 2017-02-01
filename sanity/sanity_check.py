@@ -20,4 +20,8 @@ for reg in all_reg:
         print "Winner result + " + reg
         exit(0)
 else:
+    print ":( You need to run regression tests"
+    print "1. Checkout https://github.com/coco-team/regression-test"
+    print "2. Configure scripts/test_all.m"
+    print "3. Run test_all"
     exit(1)
