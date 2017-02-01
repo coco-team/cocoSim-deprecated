@@ -142,7 +142,7 @@ function unsupported_blocks( model )
             content = sprintf('open_system(''%s'',''tab'')\n',unsupported{idx});
             action = strrep(action, '[Matlab_code]', content);
             actions = [actions action];
-			fprintf('--%s',title);
+			fprintf('--%s\n',title);
         end
         disp(' ');
         delete(find_system(name, 'FindAll', 'on', 'type', 'annotation',...
