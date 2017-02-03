@@ -121,38 +121,26 @@ function schema = viewContract(callbackInfo)
  end
  
   function viewContractCallback(callbackInfo)
-  try 
-      model_full_path = get_param(gcs,'FileName')
-      [model_path, file_name, ~] = fileparts(model_full_path);
-      coco_fname = fullfile(model_path, 'lustre_files',strcat('src_',file_name),strcat(file_name,'.lus.matlab.emf'))
-      Output_url = generate_Simulink_with_cocospec(model_full_path, coco_fname);
-      open(Output_url);
-%       simulink_name = gcs;
-%       contract_name = [simulink_name '_COCOSPEC'];
-%       try
-%          CONTRACT = evalin('base', contract_name);
-%          disp(['CONTRACT LOCATION ' char(CONTRACT)])
-%          if isunix
-%              try
-%                %cmd = sprintf('open -a Emacs %s', char(CONTRACT));
-%                open(CONTRACT)
-%                disp(cmd)
-%                [status, out] = system(cmd);
-%              catch ME
-%                  cocoSimDialog(CONTRACT);
-%              end
-%          else
-%              cocoSimDialog(CONTRACT);
-%          end
-%       catch ME
-%           disp(ME.message)
-%           msg = sprintf('No CoCoSpec Contract for %s \n Verify the model with Zustre', simulink_name);
-%           warndlg(msg,'CoCoSim: Warning');
-%       end
-  catch ME
-      disp(ME.message)
-  end
-  end
+     model_full_path = get_param(gcs,'FileName');
+%       [model_path, file_name, ~] = fileparts(model_full_path);
+%       coco_fname = fullfile(model_path, 'lustre_files',strcat('src_',file_name),strcat(file_name,'.lus.matlab.emf'))
+%       
+      simulink_name = gcs;
+      contract_name = [simulink_name '_COCOSPEC'];
+      emf_name = [simulink_name '_EMF'];
+      try
+         CONTRACT = evalin('base', contract_name);
+         EMF = evalin('base', emf_name);
+         disp(['CONTRACT LOCATION ' char(CONTRACT)])
+          Output_url = view_cocospec(model_full_path, char(EMF));
+          open(Output_url);
+         
+      catch ME
+          disp(ME.message)
+          msg = sprintf('No CoCoSpec Contract for %s \n Verify the model with Zustre', simulink_name);
+          warndlg(msg,'CoCoSim: Warning');
+      end
+    end
  
  function schema = getProps(callbackInfo)     
   schema = sl_action_schema;

@@ -5,8 +5,6 @@
 
 
 % Configuration file for the backend solvers
-
-<<<<<<< Updated upstream
 if ~exist('solvers_path', 'var')
     [file_path, ~, ~] = fileparts(mfilename('fullpath'));
     cocosim_path = fileparts(file_path);
@@ -43,12 +41,3 @@ SEAHORN = 'PATH';
 cocosim_version = 'v0.1';
 
 
-=======
-%
- LUSTREC = 'PATH';
- ZUSTRE = 'PATH';
- Z3 = 'PATH';
- KIND2 = 'PATH';
- SEAHORN = 'PATH';
- JKIND = '/Users/Teme/Documents/GitHub/cocoSim/tools/verifiers/osx/bin/jkind/jkind';
->>>>>>> Stashed changes

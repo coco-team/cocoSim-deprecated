@@ -1,6 +1,4 @@
-function Output_url = generate_Simulink_with_cocospec(Simulink_fname, coco_fname)
-addpath('jsonlab-1.5');
-
+function Output_url = view_cocospec(Simulink_fname, coco_fname)
 
 filetext = fileread(coco_fname);
 filetext = regexprep(filetext,'__','');

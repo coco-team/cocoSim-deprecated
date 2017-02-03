@@ -37,6 +37,7 @@ addpath(fullfile(cocoSim_path, 'backEnd'));
 addpath(fullfile(cocoSim_path, 'middleEnd'));
 addpath(fullfile(cocoSim_path, 'frontEnd'));
 addpath(fullfile(cocoSim_path, 'utils'));
+addpath(fullfile(cocoSim_path, 'utils', 'jsonlab-1.5'));
 addpath(fullfile(cocoSim_path, '.'));
 
 addpath(cocoSim_path);

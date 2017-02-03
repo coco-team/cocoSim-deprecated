@@ -60,6 +60,7 @@ config;
 					set_param(property_node_names{idx_prop}.origin_block_name, 'BackgroundColor', 'green');
 					set_param(property_node_names{idx_prop}.origin_block_name, 'ForegroundColor', 'green');
                     assignin('base', [file '_COCOSPEC'], cocospec); % assign a cocospec file
+                    assignin('base', [file '_EMF'], emf); % assign a emf file
                 elseif strcmp(answer, 'TIMEOUT')
 					set_param(property_node_names{idx_prop}.origin_block_name, 'BackgroundColor', 'gray');
 					set_param(property_node_names{idx_prop}.origin_block_name, 'ForegroundColor', 'gray');
