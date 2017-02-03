@@ -1,9 +1,26 @@
-function Output_url = view_cocospec(Simulink_fname, coco_fname)
+function Output_path = view_cocospec(Simulink_fname, coco_fname)
+%Output_url = view_cocospec(Simulink_fname, coco_fname)
+%this function takes this arguments :
+% Simulink_fname : the name of Simulink model 
+% coco_fname : the Json that contains information about the Simulink model
+% cocospec
+% it returns the path of the new Simulink model that has cocospec of the
+% associated model.
+
+%here we are trying to deal with variables names that starts with "__" as
+%the parser has a bad behavior dealing with them, in addition some blocks
+%in Simulink does not accept such names.
 
 filetext = fileread(coco_fname);
 filetext = regexprep(filetext,'__','');
+
+%parse the data
 data = parse_json(filetext);
+
+%normaly the coco_fname is written like model1.lus.matlab.emf, such names
+%are nut good for Simulink, so we take only the first part
 name = regexp(coco_fname,'\.','split');
+% we add a Postfix to differentiate it with the original Simulink model
 name = strcat(name{1},'_with_cocospec');
 
 
@@ -17,38 +34,59 @@ if exist(name,'file') == 4
     % delete the file
     delete([name,'.mdl']);
 end
+
+%we load the original model
 load_system(Simulink_fname);
+%we save it as the output model
 save_system(Simulink_fname,strcat(name,'.mdl'));
+
+%change the solver of the new model
 configSet = getActiveConfigSet(name);
 set_param(configSet, 'Solver', 'FixedStepDiscrete');
 set_param(configSet, 'FixedStep', '1.0');
+
+%this is related with the position of the blocks inside the COCOSPEC
+%subsytem
 y2= 100;
 for node = fieldnames(data)'
+    %for having a good order of blocks
     position  = get_param(strcat(name,'/',node{1}),'Position');
     x = position(1);
     y = position(2)+150;
+    
+    %Adding the cocospec subsystem related with the Simulink subsystem
+    %"node{1}"
     add_block('simulink/Ports & Subsystems/Subsystem', strcat(name,'/',node{1},'_coco'),...
         'Position',[(x+100) y (x+150) (y+50)]);
     
-    % create outputs and inputs of this block
+    % create outputs and inputs of cocospec block
+    
+    %we plot the invariant of the block
     add_block('simulink/Commonly Used Blocks/Scope',...
         strcat(name,'/',node{1},'_scope'),...
         'Position',[(x+200) y (x+250) (y+50)]);
     
+    %we link the Scope with cocospec block
     SrcBlkH = get_param(strcat(name,'/',node{1},'_coco'),'PortHandles');
     DstBlkH = get_param(strcat(name,'/',node{1},'_scope'), 'PortHandles');
     add_line(name, SrcBlkH.Outport(1), DstBlkH.Inport(1), 'autorouting', 'on');
     
     
-    %Go inside strcat(name,'/',node{1},'_coco') subsytem to create STEP, UNITDELAY
-    %and EMF if founded
+    %Go inside cocospec subsytem to create the invariant
+    
+    %we broke the line between In1 and Out1 that were created automatically
+    %when we created Cocospec Subsytem
     SrcBlkH = get_param(strcat(name,'/',node{1},'_coco','/In1'),'PortHandles');
     DstBlkH = get_param(strcat(name,'/',node{1},'_coco','/Out1'), 'PortHandles');
     delete_line(strcat(name,'/',node{1},'_coco'), SrcBlkH.Outport(1), DstBlkH.Inport(1));
+    
+    %change the name of output from Out1 to the output of the cocospec
+    %invariant in Json file
     blk_outputs = data.(node{1}).outputs;
     set_param(strcat(name,'/',node{1},'_coco','/Out1'),'Name',blk_outputs{1},...
         'Position',[(x+100) y2 (x+150) (y2+50)]);
     
+    %we create a From block for this output
     add_block('simulink/Signal Routing/From',...
         strcat(name,'/',node{1},'_coco','/',blk_outputs{1},'_input'),...
         'GotoTag',blk_outputs{1},...
@@ -58,12 +96,14 @@ for node = fieldnames(data)'
     DstBlkH = get_param(strcat(name,'/',node{1},'_coco','/',blk_outputs{1}), 'PortHandles');
     add_line(strcat(name,'/',node{1},'_coco'), SrcBlkH.Outport(1), DstBlkH.Inport(1), 'autorouting', 'on');
     
+    %change the name of the first input of Cocospec subsys (as it was
+    %created automatically)
     y2 = y2 + 150;
     blk_inputs = data.(node{1}).inputs;
     var_name = adapt_name(blk_inputs{1});
     set_param(strcat(name,'/',node{1},'_coco','/In1'),'Name',blk_inputs{1}, 'Position',[x y2 (x+50) (y2+50)]);
     
-    
+    %we create a GoTo block for this input
     add_block('simulink/Signal Routing/Goto',...
         strcat(name,'/',node{1},'_coco','/',var_name,'_output'),...
         'GotoTag',var_name,...
@@ -73,6 +113,8 @@ for node = fieldnames(data)'
     DstBlkH = get_param(strcat(name,'/',node{1},'_coco','/',var_name,'_output'), 'PortHandles');
     add_line(strcat(name,'/',node{1},'_coco'), SrcBlkH.Outport(1), DstBlkH.Inport(1), 'autorouting', 'on');
     
+    
+    %create the other inputs if existed whith there GoTo Block.
     for index=2:numel(blk_inputs)
         y2 = y2 + 150;
         var_name = adapt_name(blk_inputs{index});
@@ -91,7 +133,7 @@ for node = fieldnames(data)'
     end
     
     
-    %link between the system and its cocospec bloc
+    %link between the original system and its cocospec bloc
     SrcBlkH = get_param(strcat(name,'/',node{1}),'PortHandles');
     DstBlkH = get_param(strcat(name,'/',node{1},'_coco'), 'PortHandles');
     port_index = 1;
@@ -116,11 +158,14 @@ for node = fieldnames(data)'
         port_index = port_index + 1;
     end
     
+    
+    %deal with the invariant expressions for the cocospec Subsys, 
     blk_exprs = data.(node{1}).exprs;
     for var = flip(fieldnames(blk_exprs)')
         
         switch blk_exprs.(var{1}).expr
-            case 'STEP'
+            case 'STEP' % this ascociated with "False -> True" expression
+                
                 y2 = y2 + 150;
                 var_name = adapt_name(var{1});
                 disp(var_name)
@@ -146,7 +191,8 @@ for node = fieldnames(data)'
                 SrcBlkH = get_param(strcat(name,'/',node{1},'_coco','/STEP_',var_name),'PortHandles');
                 DstBlkH = get_param(strcat(name,'/',node{1},'_coco','/',var_name,'_output'), 'PortHandles');
                 add_line(strcat(name,'/',node{1},'_coco'), SrcBlkH.Outport(1), DstBlkH.Inport(1), 'autorouting', 'on');
-            case 'UNITDELAY'
+                
+            case 'UNITDELAY' %This ascociated with " False -> pre Y" expression
                 y2 = y2 + 150;
                 var_name = adapt_name(var{1});
                 add_block('simulink/Signal Routing/From',...
@@ -173,7 +219,7 @@ for node = fieldnames(data)'
                 DstBlkH = get_param(strcat(name,'/',node{1},'_coco','/',var_name,'_output'), 'PortHandles');
                 add_line(strcat(name,'/',node{1},'_coco'), SrcBlkH.Outport(1), DstBlkH.Inport(1), 'autorouting', 'on');
                 
-            otherwise
+            otherwise % this case is ascociated with matlab expression like "if (u(1)); y && u(2); else; y || u(3);end"
                 y2 = y2 + 150;
                 var_name = adapt_name(var{1});
                 
@@ -228,7 +274,7 @@ end
 
 
 save_system(name,strcat(name,'.mdl'));
-Output_url = name;
+Output_path = name;
 open(name)
 end
 
