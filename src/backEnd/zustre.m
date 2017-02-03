@@ -40,13 +40,13 @@ config;
             elseif is_SF
                  command = sprintf('%s "%s" --node %s --xml  --timeout 60 --save --stateflow', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name);
             else
-                command = sprintf('%s "%s" --node %s --xml --cg --timeout 60 --save ', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name);
+                command = sprintf('%s "%s" --node %s --xml --cg --matlab --timeout 60 --save ', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name);
             end
             display_msg(['ZUSTRE_COMMAND ' command], Constants.DEBUG, 'write_code', '');
             [status, zustre_out] = system(command);
             display_msg(zustre_out, Constants.DEBUG, 'write_code', '');
 			if status == 0
-				[answer, cex, cocospec] = check_zustre_result(zustre_out, property_node_names{idx_prop}.prop_name, property_file_base_name);
+				[answer, cex, cocospec, emf] = check_zustre_result(zustre_out, property_node_names{idx_prop}.prop_name, property_file_base_name);
 		
                 % Change the observer block display according to answer
 				display = sprintf('color(''black'')\n');
@@ -56,7 +56,6 @@ config;
 				display = [display '}'', ''hor'', ''right'', ''ver'', ''bottom'', ''texmode'', ''on'');'];
 				obs_mask = Simulink.Mask.get(property_node_names{idx_prop}.annotation);
 				obs_mask.Display = sprintf('%s',display);
-                disp(cocospec)
 				if strcmp(answer, 'SAFE')
 					set_param(property_node_names{idx_prop}.origin_block_name, 'BackgroundColor', 'green');
 					set_param(property_node_names{idx_prop}.origin_block_name, 'ForegroundColor', 'green');
@@ -127,10 +126,11 @@ config;
 end
 
 % Parse the XML output of Zustre and return the status of the result (SAFE, CEX, UNKNOWN)
-function [answer, cex, cocospec] = check_zustre_result(zustre_out, property_node_name, property_file_base_name)
+function [answer, cex, cocospec, emf] = check_zustre_result(zustre_out, property_node_name, property_file_base_name)
 	answer = '';
 	cex = '';
     cocospec = '';
+    emf = '';
 	prop_file_name = [property_file_base_name '_' property_node_name '.xml'];
 	fid = fopen(prop_file_name, 'w');
 	fprintf(fid, zustre_out);
@@ -158,6 +158,7 @@ function [answer, cex, cocospec] = check_zustre_result(zustre_out, property_node
                 end
             elseif strcmp(answer, 'SAFE')
                  cocospec = prop.getElementsByTagName('contractFile').item(0).getTextContent;
+                 emf = prop.getElementsByTagName('emfFile').item(0).getTextContent;
 			end
 		end
 	end

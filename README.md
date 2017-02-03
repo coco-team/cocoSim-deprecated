@@ -64,6 +64,7 @@ More information about CoCoSim can be found [here](https://github.com/coco-team/
 ## Current Contributors
 
 * Hamza Bourbouh
+* Pierre-Loic Garoche (Onera - France)
 * Claire Pagetti (Onera - France)
 * Eric Noulard (Onera - France)
 * Thomas Loquen (Onera - France)
