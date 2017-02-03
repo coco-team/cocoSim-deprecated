@@ -3,7 +3,7 @@
 % Copyright (C) 2014-2016  Carnegie Mellon University
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function [nom_lustre_file, sf2lus_Time, nb_actions]=cocoSim(model_full_path, const_files, default_Ts, trace, dfexport)
+function [nom_lustre_file, sf2lus_Time, nb_actions, Query_time]=cocoSim(model_full_path, const_files, default_Ts, trace, dfexport)
 
 % Checking the number of arguments
 if ~exist('trace', 'var')
@@ -439,8 +439,11 @@ msg = sprintf(' %s', trace_file_name);
 display_msg(msg, Constants.INFO, 'Traceability', '');
 
 % Generated files informations
+
+sf2lus_Time = toc(sf2lus_start);
 msg = sprintf(' %s', nom_lustre_file);
 display_msg(msg, Constants.INFO, 'Lustre Code', '');
+
 
 %%%%%%%%%%%%% Compilation to C or Rust %%%%%%%%%%%%%
 if RUST_GEN
@@ -462,6 +465,7 @@ end
 
 %%%%%%%%%%%%% Verification %%%%%%%%%%%%%%%
 smt_file = '';
+Query_time = 0;
 if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
     if not (strcmp(SOLVER, 'Z') || strcmp(SOLVER,'K') || strcmp(SOLVER, 'J'))
         display_msg('Available solvers are Z for Zustre and K for Kind2', Constants.WARNING, 'cocoSim', '');
@@ -484,7 +488,7 @@ if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
     if strcmp(SOLVER, 'Z')
         display_msg('Running Zustre', Constants.INFO, 'Verification', '');
         try
-            zustre(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace, is_SF, smt_file);
+            Query_time = zustre(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace, is_SF, smt_file);
         catch ME
             display_msg(ME.message, Constants.ERROR, 'Verification', '');
         end
@@ -517,7 +521,6 @@ end
 
 t_end = now;
 t_compute = t_end - t_start;
-sf2lus_Time = toc(sf2lus_start);
 display_msg(['Total computation time: ' datestr(t_compute, 'HH:MM:SS.FFF')], Constants.INFO, 'Time', '');
 
 end

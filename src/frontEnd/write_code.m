@@ -101,7 +101,9 @@ for idx_block=1:nblk
 	elseif strcmp(inter_blk{idx_block}.type, 'DiscreteIntegrator')
 
 		K = evalin('base', get_param(blks{idx_block}, 'gainval'));
-		T = evalin('base', inter_blk{idx_block}.sample_time);
+% 		T = evalin('base', inter_blk{idx_block}.sample_time);
+%         disp(T)
+        T = get_param(blks{idx_block}, 'CompiledSampleTime');
 		% The initial condition is defined unsing an external constant block
 		if strcmp(get_param(inter_blk{idx_block}.origin_name, 'InitialConditionSource'), 'external')
 			vinit = '';

@@ -51,15 +51,15 @@ end
      try
       [cocoSim_path, ~, ~] = fileparts(mfilename('fullpath'));
       model_full_path = get_param(gcs,'FileName');%gcs;
-      [valid, cocoSim_failed,lustrec_failed, ...
-          lustrec_binary_failed, sim_failed, lus_file_path, ...
-          ~, ~]=validate_model(model_full_path,cocoSim_path,1);
 
+[valid, validation_compute,lustrec_failed, ...
+          lustrec_binary_failed, sim_failed, lus_file_path, ...
+          sf2lus_time, ~, ~] = validate_model(model_full_path,cocoSim_path,1);
       open(model_full_path);
       msg = '';
       if valid
           msg = 'VALID';
-      elseif cocoSim_failed
+      elseif sf2lus_time==-1
           msg = 'INVALID';
       end
 %       h = msgbox(msg,'CoCoSim Translation Validation');

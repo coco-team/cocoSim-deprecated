@@ -11,11 +11,19 @@ current_date = time.strftime("%d-%m-%Y")
 current_path = os.path.dirname(os.path.abspath(__file__))
 all_reg = glob.glob(current_path + os.sep + 'regression_result_*')
 
+today = datetime.now()  - timedelta(days=2)
 for reg in all_reg:
-    date_file = (reg.split('regression_result_')[1]).split('@')
-    today = datetime.now()  - timedelta(days=2)
     filetime = datetime.fromtimestamp(path.getctime(reg))
+    #print reg
     if filetime > today:
+	all_reg2 = glob.glob(current_path + os.sep + 'regression_result_not_valid_models*')
+	for reg2 in all_reg2:
+		filetime = datetime.fromtimestamp(path.getctime(reg2))
+		if filetime > today:
+		    print ":( You need to fix these models"
+	            with open(reg2, 'r') as fin:
+    		    	print fin.read()
+		    exit(1)
         print ":) Good Job!!! You run regression today"
         print "Winner result + " + reg
         exit(0)

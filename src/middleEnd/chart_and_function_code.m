@@ -92,7 +92,18 @@ else
     isfunction_without_output = false;
 end
 
-
+%Matlab functions (not yet supported)
+matlab_functions = chart_or_fun.find('-isa','Stateflow.EMFunction');
+for i=1:numel(matlab_functions)
+    if Debug
+        fprintf('Start generating code for Matlab function : %s in chart : %s\n',matlab_functions(i).Name, chart_or_fun.Name);
+    end
+    [nodes_string_i,...
+        external_nodes_i, ...
+        global_nodes_struct] = write_sf_Matlab_function_node(chart_or_fun,data, matlab_functions(i), variables_struct, global_nodes_struct)
+    nodes_string = [nodes_string nodes_string_i '\n'];
+    external_nodes = [external_nodes, external_nodes_i];
+end
 %the order of the following generation is important. We start with
 %transitions actions, then state action because state action can call
 %sometimes transitions actions. After that the state node that calls state
@@ -175,7 +186,10 @@ for i=1:N %N:-1:1
             fprintf('Start generating automaton code of state: "%s" with unique name :"%s"\n',states(i).Name, get_full_name(states(i)));
         end
         try
-            [state_node, global_nodes_struct, ext_nodes] = write_state_node(chart_or_fun, data, states(i), isStateflowFunction, variables_struct, global_nodes_struct);
+            state_node_obj = write_state_node(chart_or_fun, data, states(i), isStateflowFunction, variables_struct, global_nodes_struct);
+            state_node = state_node_obj.state_node;
+            global_nodes_struct = state_node_obj.global_nodes_struct;
+            ext_nodes = state_node_obj.external_nodes;
         catch ME
             msg = sprintf('write_state_node level for chart : "%s" and state name : "%s"',chart_or_fun.Name, get_full_name(states(i)));
             causeException = MException('MATLAB:myCode:action',msg);
@@ -191,7 +205,10 @@ if Debug
     fprintf('Start generating automaton code of chart: "%s"\n',chart_or_fun.Name);
 end
 try
-    [state_node, global_nodes_struct, ext_nodes] = write_state_node(chart_or_fun, data, chart_or_fun, isStateflowFunction, variables_struct, global_nodes_struct);
+    state_node_obj= write_state_node(chart_or_fun, data, chart_or_fun, isStateflowFunction, variables_struct, global_nodes_struct);
+    state_node = state_node_obj.state_node;
+    global_nodes_struct = state_node_obj.global_nodes_struct;
+    ext_nodes = state_node_obj.external_nodes;
 catch ME
     msg = sprintf('write_state_node level for chart : "%s" ',chart_or_fun.Name);
     causeException = MException('MATLAB:myCode:stateNode',msg);
