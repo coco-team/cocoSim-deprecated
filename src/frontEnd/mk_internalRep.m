@@ -80,7 +80,7 @@ function [inter_blk, blks, complex_structs] = mk_internalRep(file_name, dfexport
     end
 
     % Flatten NotAtomic SubSystems in a Top-Down way
-    display_msg('Flattening of virtual SubSytems', Constants.INFO, 'cocoSim', '');
+    display_msg('Flattening of virtual SubSystems', Constants.INFO, 'cocoSim', '');
     [inter_blk, blks] = flatten_subsystems(inter_blk, blks);
 
     % Write df fomat version of the model
@@ -90,7 +90,7 @@ function [inter_blk, blks, complex_structs] = mk_internalRep(file_name, dfexport
     end
 
     % New pass on the model to find the necessary data type conversions
-    display_msg('Internal representation browsing for implicit data type conversions detection', Constants.INFO, 'cocoSim', '');
+    display_msg('Browsing for implicit data type conversions detection', Constants.INFO, 'cocoSim', '');
     [inter_blk, blks] = blocks_dt_conversions(file_name, inter_blk, blks);
 
 

@@ -129,7 +129,8 @@ function schema = viewContract(callbackInfo)
          disp(['CONTRACT LOCATION ' char(CONTRACT)])
          if isunix
              try
-               cmd = sprintf('open -a Emacs %s', char(CONTRACT));
+               %cmd = sprintf('open -a Emacs %s', char(CONTRACT));
+               open(CONTRACT)
                disp(cmd)
                [status, out] = system(cmd);
              catch ME
@@ -158,8 +159,7 @@ function schema = viewContract(callbackInfo)
   try 
       [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
       simulink_name = gcs;
-      add_cocospec(simulink_name);
-      
+      add_cocospec(simulink_name);   
   catch ME
       disp(ME.message)
   end
