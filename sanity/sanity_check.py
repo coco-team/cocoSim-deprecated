@@ -14,7 +14,7 @@ all_reg = glob.glob(current_path + os.sep + 'regression_result_*')
 today = datetime.now()  - timedelta(days=2)
 for reg in all_reg:
     filetime = datetime.fromtimestamp(path.getctime(reg))
-    print filetime
+    #print reg
     if filetime > today:
 	all_reg2 = glob.glob(current_path + os.sep + 'regression_result_not_valid_models*')
 	for reg2 in all_reg2:

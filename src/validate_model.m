@@ -35,6 +35,7 @@ lustrec_failed=0;
 lustrec_binary_failed=0;
 sim_failed=0;
 valid = 0;
+validation_compute = 0;
 lus_file_path  = '';
 load_system(model_full_path);
 
