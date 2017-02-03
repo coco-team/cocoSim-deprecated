@@ -103,7 +103,7 @@ catch ME
     return
 end
 validation_start = tic;
-command = sprintf('%s -node %s %s',LUSTREC,Utils.name_format(chart_name), lus_file_path);
+command = sprintf('%s -I %s -node %s %s',LUSTREC,LUCTREC_INCLUDE_DIR, Utils.name_format(chart_name), lus_file_path);
 msg = sprintf('LUSTREC_COMMAND : %s\n',command);
 display_msg(msg, Constants.INFO, 'validation', '');
 [status, lustre_out] = system(command);
