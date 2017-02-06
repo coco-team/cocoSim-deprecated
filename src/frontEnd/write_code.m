@@ -610,13 +610,13 @@ for idx_block=1:nblk
 				     property_node_names{nb}.annotation = inter_blk{idx_block}.annotation;
                      external_math_functions = [external_math_functions, external_math_functions_i];
                 catch ME
-                    disp(ME.message)
+%                     disp(ME.getReport())
                    if strcmp(ME.identifier, 'MATLAB:badsubscript')
                        msg= 'Bad encoding of the property. Make sure to link the main input of the model into the observer';
                        display_msg(msg, Constants.ERROR, 'cocoSim', '');
                    
                    else
-                     display_msg(ME.message, Constants.ERROR, 'cocoSim', '');
+                     display_msg(ME.getReport(), Constants.ERROR, 'cocoSim', '');
                    end
                 end
 

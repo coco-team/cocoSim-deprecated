@@ -241,7 +241,7 @@ for idx_subsys=numel(inter_blk):-1:1
             fclose(fid);
             display_msg('Successfully done processing Embedded Matlab', Constants.INFO, 'cocoSim', '');
         catch ME
-            disp(ME.message)
+            disp(ME.getReport())
             display_msg('Unable to process Embedded Matlab', Constants.ERROR, 'cocoSim', '');
         end
         
@@ -451,14 +451,14 @@ if RUST_GEN
     try
         rust(nom_lustre_file);
     catch ME
-        display_msg(ME.message, Constants.ERROR, 'Rust Compilation', '');
+        display_msg(ME.getReport(), Constants.ERROR, 'Rust Compilation', '');
     end
 elseif C_GEN
     display_msg('Generating C Code', Constants.INFO, 'C Compilation', '');
     try
         lustrec(nom_lustre_file);
     catch ME
-        display_msg(ME.message, Constants.ERROR, 'C Compilation', '');
+        display_msg(ME.getReport(), Constants.ERROR, 'C Compilation', '');
     end
 end
 
@@ -481,7 +481,7 @@ if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
                 SOLVER = 'Z';
             end
         catch ME
-            display_msg(ME.message, Constants.ERROR, 'SEAHORN', '');
+            display_msg(ME.getReport(), Constants.ERROR, 'SEAHORN', '');
         end
     end
     open(models{end});
@@ -490,21 +490,21 @@ if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
         try
             Query_time = zustre(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace, is_SF, smt_file);
         catch ME
-            display_msg(ME.message, Constants.ERROR, 'Verification', '');
+            display_msg(ME.getReport(), Constants.ERROR, 'Verification', '');
         end
     elseif strcmp(SOLVER, 'K')
         display_msg('Running Kind2', Constants.INFO, 'Verification', '');
         try
             kind2(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace);
         catch ME
-            display_msg(ME.message, Constants.ERROR, 'Verification', '');
+            display_msg(ME.getReport(), Constants.ERROR, 'Verification', '');
         end
     elseif strcmp(SOLVER, 'J')
         display_msg('Running JKind', Constants.INFO, 'Verification', '');
         try
             jkind(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace);
         catch ME
-            display_msg(ME.message, Constants.ERROR, 'Verification', '');
+            display_msg(ME.getReport(), Constants.ERROR, 'Verification', '');
         end
     end
 else

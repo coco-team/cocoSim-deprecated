@@ -317,6 +317,12 @@ function [main_sub_idx] = get_subsys_index(inter_blk, origin_name)
 			return
 		end
     end
+    if main_sub_idx==0
+            msg = sprintf('Make sure that the subsystem %s is atomic\n', origin_name);
+            warndlg(msg,'CoCoSim: Warning');
+            display_msg(msg, Constants.ERROR, 'write_property', '');
+    end
+            
 end
 
 function [res_idx] = get_block_index(blks, name)
