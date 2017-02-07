@@ -129,13 +129,18 @@ function schema = viewContract(callbackInfo)
          CONTRACT = evalin('base', contract_name);
          EMF = evalin('base', emf_name);
          disp(['CONTRACT LOCATION ' char(CONTRACT)])
-         Output_url = view_cocospec(model_full_path, char(EMF));
-         open(Output_url);
+        
          
       catch ME
           disp(ME.getReport())
           msg = sprintf('No CoCoSpec Contract for %s \n Verify the model with Zustre', simulink_name);
           warndlg(msg,'CoCoSim: Warning');
+      end
+      try
+          Output_url = view_cocospec(model_full_path, char(EMF));
+          open(Output_url);
+      catch ME
+          disp(ME.getReport())
       end
     end
  

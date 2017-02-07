@@ -43,6 +43,7 @@ try
     %we load the original model
     load_system(Simulink_fname);
     %we save it as the output model
+    close_system(new_name,0)
     save_system(Simulink_fname,new_name);
     
     load_system(new_name);
@@ -63,18 +64,22 @@ try
     
     for node = fieldnames(data)'
         simulink_block_name = get_Simulink_block_from_lustre_node_name(xml_nodes,node{1},base_name,new_model_name);
+        if strcmp(simulink_block_name,base_name{1})
+            continue;
+        end
+        parent_block_name = fileparts(simulink_block_name);
         %for having a good order of blocks
         try
             position  = get_param(simulink_block_name,'Position');
         catch ME
-            msg = sprintf('Make sure that there is a block called %s in your model\n', simulink_block_name);
+            msg = sprintf('There is no block called %s in your model\n', simulink_block_name);
             msg = [msg, sprintf('if the block %s exists, make sure it is atomic', simulink_block_name)];
             warndlg(msg,'CoCoSim: Warning');
             display(msg);
-            break;
+            continue;
         end
         x = position(1);
-        y = position(2)+150;
+        y = position(2)+250;
         
         %Adding the cocospec subsystem related with the Simulink subsystem
         %"simulink_block_name"
@@ -92,7 +97,7 @@ try
         %we link the Scope with cocospec block
         SrcBlkH = get_param(strcat(simulink_block_name,'_cocospec'),'PortHandles');
         DstBlkH = get_param(strcat(simulink_block_name,'_scope'), 'PortHandles');
-        add_line(new_model_name, SrcBlkH.Outport(1), DstBlkH.Inport(1), 'autorouting', 'on');
+        add_line(parent_block_name, SrcBlkH.Outport(1), DstBlkH.Inport(1), 'autorouting', 'on');
         
         
         %Go inside cocospec subsytem to create the invariant
@@ -138,7 +143,7 @@ try
         
         
         input_block_name = get_input_block_name_from_variable(xRoot, node{1}, var_name, base_name,new_model_name);
-        link_block_with_its_cocospec( input_block_name, simulink_block_name, new_model_name, 1);
+        link_block_with_its_cocospec( input_block_name, simulink_block_name, parent_block_name, 1);
         
         %create the other inputs if existed whith there GoTo Block.
         for index=2:numel(blk_inputs)
@@ -158,7 +163,7 @@ try
             
             %link between the original system and its cocospec bloc
             input_block_name = get_input_block_name_from_variable(xRoot, node{1}, var_name, base_name,new_model_name);
-            link_block_with_its_cocospec( input_block_name, simulink_block_name, new_model_name, index);
+            link_block_with_its_cocospec( input_block_name, simulink_block_name, parent_block_name, index);
             
         end
         
@@ -282,7 +287,7 @@ try
     %     open(new_name)
 catch ME
     display_msg(ME.getReport(), Constants.ERROR, 'VIEW_COCOSPEC', '');
-    rethrow(ME);
+%     rethrow(ME);
 end
 end
 
@@ -316,7 +321,7 @@ end
 
 
 
-function link_block_with_its_cocospec( input_block_name, simulink_block_name, new_model_name, index)
+function link_block_with_its_cocospec( input_block_name, simulink_block_name, parent_block_name, index)
 
 SrcBlkH = get_param(simulink_block_name,'PortHandles');
 DstBlkH = get_param(strcat(simulink_block_name,'_cocospec'), 'PortHandles');
@@ -326,9 +331,9 @@ if strcmp(inport_or_outport,'Inport')
     inport_handle = SrcBlkH.Inport(str2num(Port_number));
     l = get_param(inport_handle,'line');
     SrcPortHandle = get_param(l ,'SrcPortHandle');
-    add_line(new_model_name, SrcPortHandle, DstBlkH.Inport(index), 'autorouting', 'on');
+    add_line(parent_block_name, SrcPortHandle, DstBlkH.Inport(index), 'autorouting', 'on');
 elseif strcmp(inport_or_outport,'Outport')
     inport_handle = SrcBlkH.Outport(str2num(Port_number));
-    add_line(new_model_name, inport_handle, DstBlkH.Inport(index), 'autorouting', 'on');
+    add_line(parent_block_name, inport_handle, DstBlkH.Inport(index), 'autorouting', 'on');
 end
 end
