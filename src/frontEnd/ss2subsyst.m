@@ -56,7 +56,8 @@ for i = 1:n
     pos = [x y+offset*i x+w y+offset*i+h];
     name = strcat(new_block, '/', delay(i));
     add_block('built-in/UnitDelay', name, 'Position', pos);
-    set_param(name, 'Sample Time', '-1');
+    set_param(name, 'SampleTime', '-1');
+    y = y + 50;
 end
 
 % Adding (n+1)(n+m) Gain blocks
@@ -84,6 +85,7 @@ for i = 1:n+l
         else
             set_param(name, 'Gain', num2str(D(i-n,j)));
         end
+        y = y + 50;
     end
 end
 
@@ -95,6 +97,7 @@ for i = 1:n+l
     add_block ('built-in/Sum', sum{i}, 'Position', pos);
     plus = strrep(blanks(n+m), ' ', '+');
     set_param(sum{i}, 'Inputs', plus);
+    y = y + 50;
 end
 
 % Adding m Inports
@@ -108,6 +111,7 @@ for i = 1:l
     pos = [x+offset*(n+m+2) y+offset*i x+offset*(n+m+2)+w y+offset*i+h];
     outport{i} = strcat(new_block, '/Outport', num2str(i));
     add_block('built-in/Outport', outport{i}, 'Position', pos);
+    y = y + 50;
 end
 
 % Connecting blocks
