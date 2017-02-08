@@ -374,15 +374,14 @@ else
                     display_msg(msg, Constants.RESULT, 'validation', '');
                 end
                 
-                %uncommetn these two lines if you want to remove input and
-                %outputs of the lustre binary
+                %uncommetn these lines if you want to remove unused files
 %                 command = sprintf('rm  input_values outputs_values ');
 %                 system(command);
-                command = sprintf('rm *.o %s.makefile %s.c %s.h %s.o %s.lusic  %s_main.* %s_alloc.h %s_sfun.mexa64 %s',...
-                    file_name, file_name,file_name,file_name,file_name,file_name,file_name,file_name,lustre_binary);
-                system(command);
-                command = sprintf('rm -r slprj');
-                system(command);
+%                 command = sprintf('rm *.o %s.makefile %s.c %s.h %s.o %s.lusic  %s_main.* %s_alloc.h %s_sfun.mexa64 %s',...
+%                     file_name, file_name,file_name,file_name,file_name,file_name,file_name,file_name,lustre_binary);
+%                 system(command);
+%                 command = sprintf('rm -r slprj');
+%                 system(command);
                 cd(OldPwd);
             catch ME
                 msg = sprintf('simulation failed for model "%s" :\n%s\n%s\n%s',file_name,ME.identifier,ME.message, getReport(ME,'extended'));
