@@ -224,7 +224,7 @@ else
             display_msg(msg, Constants.INFO, 'validation', '');
             try
                 set_param(configSet, 'Solver', 'FixedStepDiscrete');
-%                 set_param(configSet, 'FixedStep', '1.0');
+                set_param(configSet, 'FixedStep', '1.0');
                 set_param(configSet, 'StartTime', '0.0');
                 set_param(configSet, 'StopTime',  '100.0');
                 set_param(configSet, 'SaveFormat', 'Structure');
