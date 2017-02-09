@@ -265,7 +265,6 @@ function runCoCoSim
       simulink_name = get_param(gcs,'FileName');
       cocoSim(simulink_name); % run cocosim 
   catch ME
-      disp(ME.identifier)
       if strcmp(ME.identifier, 'MATLAB:badsubscript') 
           msg = ['Activate debug message by running cocosim_debug=true', ...
               ' to get more information where the model in failing'];
@@ -273,8 +272,9 @@ function runCoCoSim
           display_msg(e_msg, Constants.ERROR, 'cocoSim', '');
       elseif strcmp(ME.identifier,'MATLAB:MException:MultipleErrors')
           msg = 'Make sure that the model can be run (i.e. most probably missing constants)';
-          e_msg = sprintf('Error Msg: %s \n Action:\n\t %s', ME.getReport(), msg);
-          display_msg(e_msg, Constants.ERROR, 'cocoSim', '');
+          d_msg = sprintf('Error Msg: %s', ME.getReport());
+          display_msg(d_msg, Constants.DEBUG, 'cocoSim', '');
+          display_msg(msg, Constants.ERROR, 'cocoSim', '');
       elseif strcmp(ME.identifier, 'Simulink:Commands:ParamUnknown')
           msg = 'Run CoCoSim on the most top block of the model';
           e_msg = sprintf('Error Msg: %s \n Action:\n\t %s', ME.getReport(), msg);

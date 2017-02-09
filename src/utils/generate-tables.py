@@ -1,5 +1,6 @@
 import math;
 import decimal;
+import sys
 
 def trunc(f):
   if f == 0:
@@ -10,10 +11,10 @@ def trunc(f):
   slen = len('%.*f' % (20, d))
   return str(d)[:slen]
 
-# min, max: values; lower, upper: domain 
+# min, max: values; lower, upper: domain
 def interpolate(minV, maxV, lower, upper, varname):
   fact = (maxV-minV) / (upper-lower);
-  return "" + trunc(minV) + " + (" + trunc(fact) + " * (" + varname +  " - " + trunc(lower) + "))"; 
+  return "" + trunc(minV) + " + (" + trunc(fact) + " * (" + varname +  " - " + trunc(lower) + "))";
 
 
 def ite(ifCond, thenExpr, elseExpr):
@@ -30,7 +31,7 @@ def iteBlock(dom, code, varname):
     if (i<max-1):
       block = "\n      " + block;
 
-  return block; 
+  return block;
 
 
 def itpBlock(dom, vals, lastElseExpr, varname):
@@ -63,12 +64,12 @@ def interval(minD, maxD, precision):
     dom.append(dval);
     # print dval;
     dval += step;
-  
-  return dom;	
+
+  return dom;
 
 
-# generates an interval with exponentially 
-# decreasing resolution (2^) from minD to 
+# generates an interval with exponentially
+# decreasing resolution (2^) from minD to
 # maxD around center.
 #def intervalExponential(minD, maxD, center):
 
@@ -100,7 +101,7 @@ def tanLookupNode(precision):
   return funcNode("__tan", "x:real", code, "out", "real");
 
 def asinLookupNode(precision):
-  dom = toRadians( interval(0, 90, precision) );  
+  dom = toRadians( interval(0, 90, precision) );
   val = [];
   for i in range(0, precision):
     dom[i] = math.sin(dom[i]);
@@ -138,10 +139,10 @@ def acosNode():
 
 
 def atanLookupNode(precision):
-  precision -= 1;	
-  dom = toRadians( interval(0, 360, precision) );  
+  precision -= 1;
+  dom = toRadians( interval(0, 360, precision) );
   dom.append(math.pi*512.0)
-  precision += 1;	
+  precision += 1;
   val = [];
   for i in range(0, precision):
     val.append( math.atan(dom[i]) );
@@ -160,29 +161,50 @@ def atan2Node():
   x_less_0 = ite("y>=0.0", "atan(y/x) + " + trunc(math.pi), "atan(y/x) - " + trunc(math.pi));
   y_leq_0 = ite("y<0.0", trunc(math.pi/-2.0), trunc(math.atan2(0,0)) );
   x_eq_0 = ite("y>0.0", trunc(math.pi/2.0), "\n    " + y_leq_0);
-  
+
   code = ite("x<0.0", "\n      " + x_less_0, "\n    " + x_eq_0)
   code = ite("x>0.0", "atan(y/x)", "\n    " + code);
 
   return funcNode("atan2", "y:real; x:real", code, "out", "real");
-    
+
+
+def cos():
+  print "Cos"
+
+
+def sin():
+  print "Sin"
+
+
+def tan():
+  print "Tan"
+
+
+def parseArgs(argv):
+    import argparse as arg
+    p = arg.ArgumentParser (description='\t Generate Math functions')
+    p.add_argument ('--trig', help='Trig function', dest='trig', nargs="*", required=False, default = [])
+    pars = p.parse_args(argv)
+    return pars
 
 if __name__ == "__main__":
-  print sinLookupNode(11);
-  print sinNode();
-  print cosNode();
-  print asinLookupNode(11);
-  print asinNode();
-  print acosNode();
-  print atanLookupNode(11);
-  print atanNode();
-  print atan2Node();
-  print tanLookupNode(11);
-  print tanNode();
+  args = parseArgs(sys.argv[1:])
+  for t in args.trig:
+    try:
+      if t=="cos": print cos()
+      if t=="sin": print sin()
+      if t=="tan": print tan()
+    except Exception as e:
+      print e
 
-
-  
-
-
-
-
+  # print sinLookupNode(11);
+  # print sinNode();
+  # print cosNode();
+  # print asinLookupNode(11);
+  # print asinNode();
+  # print acosNode();
+  # print atanLookupNode(11);
+  # print atanNode();
+  # print atan2Node();
+  # print tanLookupNode(11);
+  # print tanNode();
