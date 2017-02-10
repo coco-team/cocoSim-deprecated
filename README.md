@@ -2,7 +2,7 @@
 
 # CoCoSim
 
-CoCoSim is an automated analysis and code generatation framework for
+CoCoSim is an automated analysis and code generation framework for
 Simulink and Stateflow models. Specifically, CoCoSim can be used to
 verify automatically user-supplied safety requirements. Moreover,
 CoCoSim can be used to generate C and/or Rust code. CoCoSim uses
@@ -63,19 +63,17 @@ More information about CoCoSim can be found [here](https://github.com/coco-team/
 
 ## Developers
 
-* Lead Developer: [Temesghen Kahsai](http://www.lememta.info/)
+* Lead Developer:
+** [Temesghen Kahsai](http://www.lememta.info/)
+* Current Contributors
+** Hamza Bourbouh (SGT - USA)
+** Pierre-Loic Garoche (Onera - France)
+** Claire Pagetti (Onera - France)
+** Eric Noulard (Onera - France)
+** Thomas Loquen (Onera - France)
 
-## Current Contributors
-
-* Hamza Bourbouh (SGT - USA)
-* Pierre-Loic Garoche (Onera - France)
-* Claire Pagetti (Onera - France)
-* Eric Noulard (Onera - France)
-* Thomas Loquen (Onera - France)
-
-## Past Contributors
-
-* Arnaud Dieumegard (Fabruary - August 2015)
+* Past Contributors
+** Arnaud Dieumegard (Fabruary - August 2015)
 
 
 ## Acknowledgments and Disclaimers
