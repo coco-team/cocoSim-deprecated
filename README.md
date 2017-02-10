@@ -64,16 +64,17 @@ More information about CoCoSim can be found [here](https://github.com/coco-team/
 ## Developers
 
 * Lead Developer:
-** [Temesghen Kahsai](http://www.lememta.info/)
+++ [Temesghen Kahsai](http://www.lememta.info/)
+
 * Current Contributors
-** Hamza Bourbouh (SGT - USA)
-** Pierre-Loic Garoche (Onera - France)
-** Claire Pagetti (Onera - France)
-** Eric Noulard (Onera - France)
-** Thomas Loquen (Onera - France)
+++ Hamza Bourbouh (SGT - USA)
+++ Pierre-Loic Garoche (Onera - France)
+++ Claire Pagetti (Onera - France)
+++ Eric Noulard (Onera - France)
+++ Thomas Loquen (Onera - France)
 
 * Past Contributors
-** Arnaud Dieumegard (Fabruary - August 2015)
+++ Arnaud Dieumegard (Fabruary - August 2015)
 
 
 ## Acknowledgments and Disclaimers
