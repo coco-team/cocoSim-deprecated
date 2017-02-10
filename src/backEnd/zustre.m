@@ -153,10 +153,9 @@ s = dir(prop_file_name);
 if s.bytes ~= 0
     try
         xml_doc = xmlread(prop_file_name);
-    catch
-        display_msg('Zustre has failed', Constants.ERROR, 'Zustre', '');
-        ME = MException('MyComponent:parseError','Zustre has failed');
-        throw(ME);
+    catch ME
+        display_msg(ME.getReport(), Constants.DEBUG, 'Zustre', '');
+        rethrow(ME);
     end
     xml_properties = xml_doc.getElementsByTagName('Property');
     for idx=0:(xml_properties.getLength-1)

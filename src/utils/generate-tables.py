@@ -169,16 +169,35 @@ def atan2Node():
 
 
 def cos():
-  print "Cos"
+  print sinLookupNode(11);
+  print sinNode();
+  print cosNode();
+  return 
 
 
 def sin():
-  print "Sin"
+  print sinLookupNode(11);
+  print sinNode();
 
 
 def tan():
-  print "Tan"
+  print tanLookupNode(11);
+  print tanNode();
 
+def acos():
+  print asinLookupNode(11);
+  print asinNode();
+  print acosNode();
+
+
+def asin():
+  print asinLookupNode(11);
+  print asinNode();
+
+
+def atan():
+  print atanLookupNode(11);
+  print atanNode();
 
 def parseArgs(argv):
     import argparse as arg
@@ -191,9 +210,12 @@ if __name__ == "__main__":
   args = parseArgs(sys.argv[1:])
   for t in args.trig:
     try:
-      if t=="cos": print cos()
-      if t=="sin": print sin()
-      if t=="tan": print tan()
+      if t=="cos": cos()
+      if t=="sin": sin()
+      if t=="tan": tan()
+      if t=="asin": asin()
+      if t=="acos": acos()
+      if t=="atan": atan()
     except Exception as e:
       print e
 

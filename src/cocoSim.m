@@ -489,7 +489,8 @@ if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
         try
             Query_time = zustre(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace, is_SF, smt_file);
         catch ME
-            display_msg(ME.getReport(), Constants.ERROR, 'Verification', '');
+            display_msg('Zustre has failed', Constants.ERROR, 'Verification', '');
+            display_msg(ME.getReport(), Constants.DEBUG, 'Verification', '');
         end
     elseif strcmp(SOLVER, 'K')
         display_msg('Running Kind2', Constants.INFO, 'Verification', '');
