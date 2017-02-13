@@ -351,7 +351,8 @@ end
 % Saves the simulation input values to an external mat file to ease replay
 % TODO: This function structure should be improved
 function IO_struct = create_configuration(IO_struct, file, prop_node_name, mat_file, idx_prop)
-configSet = copy(getActiveConfigSet(file));
+% configSet = copy(getActiveConfigSet(file));
+configSet = Simulink.ConfigSet;
 set_param(configSet, 'Solver', 'FixedStepDiscrete');
 set_param(configSet, 'FixedStep', '1.0');
 set_param(configSet, 'SaveState', 'on');
