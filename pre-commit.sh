@@ -8,7 +8,7 @@
 # to skip the tests, run with the --no-verify argument
 #       i.e. - $ 'git commit --no-verify'
 
-echo "CoCoSim Pre Commit checks ... (you better have run the regression tests)"
+echo "CoCoSim Pre Commit checks ..."
 # stash any unstaged changes
 git stash -q --keep-index
 
