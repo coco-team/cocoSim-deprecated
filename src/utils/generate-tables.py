@@ -199,6 +199,12 @@ def atan():
   print atanLookupNode(11);
   print atanNode();
 
+def atan2():
+  print atanLookupNode(11);
+  print atanNode();
+  print atan2Node();
+
+
 def parseArgs(argv):
     import argparse as arg
     p = arg.ArgumentParser (description='\t Generate Math functions')
@@ -216,6 +222,7 @@ if __name__ == "__main__":
       if t=="asin": asin()
       if t=="acos": acos()
       if t=="atan": atan()
+      if t=="atan2": atan2()
     except Exception as e:
       print e
 

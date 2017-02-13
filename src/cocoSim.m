@@ -9,9 +9,7 @@ function [nom_lustre_file, sf2lus_Time, nb_actions, Query_time]=cocoSim(model_fu
 if ~exist('trace', 'var')
     trace = false;
 end
-if ~exist('default_Ts', 'var')
-    default_Ts = 0.1;
-end
+
 if ~exist('const_files', 'var')
     const_files = {};
 end
@@ -32,7 +30,14 @@ sf2lus_start = tic;
 % Retrieving of the path containing the model for which we generate the code
 [model_path, file_name, ext] = fileparts(model_full_path);
 
-
+if ~exist('default_Ts', 'var')
+    try
+        ts = Simulink.BlockDiagram.getSampleTimes(file_name);
+        default_Ts = ts(1).Value(1);
+    catch
+        default_Ts = 0.1;
+    end
+end
 addpath(fullfile(cocoSim_path, 'backEnd'));
 addpath(fullfile(cocoSim_path, 'middleEnd'));
 addpath(fullfile(cocoSim_path, 'frontEnd'));
