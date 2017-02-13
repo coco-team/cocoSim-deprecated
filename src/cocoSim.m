@@ -3,6 +3,8 @@
 % Copyright (C) 2014-2016  Carnegie Mellon University
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Main file for CoCoSim
+
 function [nom_lustre_file, sf2lus_Time, nb_actions, Query_time]=cocoSim(model_full_path, const_files, default_Ts, trace, dfexport)
 
 % Checking the number of arguments
@@ -28,7 +30,7 @@ end
 t_start = now;
 sf2lus_start = tic;
 % Retrieving of the path containing the cocoSim file
-[cocoSim_path, function_name, ext] = fileparts(mfilename('fullpath'));
+[cocoSim_path, ~, ~] = fileparts(mfilename('fullpath'));
 % Retrieving of the path containing the model for which we generate the code
 [model_path, file_name, ext] = fileparts(model_full_path);
 
@@ -69,7 +71,7 @@ display_msg(config_msg, Constants.INFO, 'cocoSim', '');
 msg = ['Loading model: ' model_full_path];
 display_msg(msg, Constants.INFO, 'cocoSim', '');
 
-% add path the directory where the model is
+% add path the model directory
 addpath(model_path);
 
 load_system(char(model_full_path));
@@ -116,7 +118,6 @@ end
 display_msg('Getting bus struct', Constants.INFO, 'cocoSim', '');
 bus_struct = BusUtils.get_bus_struct();
 
-
 % Save current path, model path and cocoSim path informations to temporary file
 origin_path = pwd;
 if strcmp(model_path, '')
@@ -135,15 +136,11 @@ end
 
 % Definition of the output files names
 output_dir = fullfile(model_path, strcat('lustre_files/src_', file_name));
-% TODO: Add message if the folder already exists to ask the user if he
-% really wants to override the existing folder
-[status, message, message_id] = mkdir(output_dir);
 nom_lustre_file = fullfile(output_dir, strcat(file_name, '.lus'));
-
+[status, message, message_id] = mkdir(output_dir);
 trace_file_name = fullfile(output_dir, strcat(file_name, '.cocosim.trace.xml'));
 property_file_base_name = fullfile(output_dir, strcat(file_name, '.property'));
 
-% TODO: Ask the user for file overriding
 initialize_files(nom_lustre_file);
 
 display_msg('Building internal format', Constants.INFO, 'cocoSim', '');
@@ -151,16 +148,18 @@ display_msg('Building internal format', Constants.INFO, 'cocoSim', '');
 [models, subsystems] = find_mdlrefs(file_name);
 
 %%%%%% Internal representation building %%%%%%
-[inter_blk, blks, complex_structs]= mk_internalRep(file_name, dfexport, models, subsystems, mat_files, default_Ts);
+[inter_blk, blks, complex_structs]= mk_internalRep(file_name, ...
+    dfexport, models, ...
+    subsystems, mat_files, ...
+    default_Ts);
 
-% Creation of the traceability XML node
+% Create traceability informations in XML format
 display_msg('Start tracebility', Constants.INFO, 'cocoSim', '');
 xml_trace = XML_Trace(model_full_path, trace_file_name);
 xml_trace.init();
 
-% Print buses declarations
+% Print bus declarations
 bus_decl = write_buses(bus_struct);
-
 
 %%%%%%%%%%%%%%% Retrieving nodes code %%%%%%%%%%%%%%%
 
@@ -513,81 +512,68 @@ end
 
 %%%%%%%%%%%% Cleaning and end of operations %%%%%%%%%%
 
-% Temporary files cleaning
-display_msg('Cleaning temporary files', Constants.INFO, 'cocoSim', '');
-if exist(strcat(origin_path,'/tmp_data.mat'), 'file') == 2
-    delete(strcat(origin_path,'/tmp_data.mat'));
-end
+    % Temporary files cleaning
+    display_msg('Cleaning temporary files', Constants.INFO, 'cocoSim', '');
+    if exist(strcat(origin_path,'/tmp_data.mat'), 'file') == 2
+        delete(strcat(origin_path,'/tmp_data.mat'));
+    end
 
-t_end = now;
-t_compute = t_end - t_start;
-display_msg(['Total computation time: ' datestr(t_compute, 'HH:MM:SS.FFF')], Constants.INFO, 'Time', '');
+    t_end = now;
+    t_compute = t_end - t_start;
+    display_msg(['Total computation time: ' datestr(t_compute, 'HH:MM:SS.FFF')], Constants.INFO, 'Time', '');
 
 end
 
 function display_help_message()
-msg = [ ' -----------------------------------------------------  \n'];
-msg = [msg '  CoCoSim: Automated Analysis Framework for Simulink/Stateflow\n'];
-msg = [msg '   \n Usage:\n'];
-msg = [msg '    >> cocoSim(MODEL_PATH, [MAT_CONSTANTS_FILES], [TIME_STEP], [TRACE])\n'];
-msg = [msg '\n'];
-msg = [msg '      MODEL_PATH: a string containing the path to the model\n'];
-msg = [msg '        e.g. ''cocoSim test/properties/property_2_test.mdl\''\n'];
-msg = [msg '      MAT_CONSTANT_FILES: an optional list of strings containing the\n'];
-msg = [msg '      path to the mat files containing the simulation constants\n'];
-msg = [msg '        e.g. {''../../constants1.mat'',''../../constants2.mat''}\n'];
-msg = [msg '        default: {}\n'];
-msg = [msg '      TIME_STEP: an optional numeric value for the simulation time step\n'];
-msg = [msg '        e.g. 0.1\n'];
-msg = [msg '        default: 0.1\n'];
-msg = [msg '      TRACE: a optional boolean value stating if we need to print the \n'];
-msg = [msg '      traceability informations\n'];
-msg = [msg '        e.g. true\n'];
-msg = [msg '        default: false\n'];
-msg = [msg  '  -----------------------------------------------------  \n'];
-cprintf('blue', msg);
+    msg = [ ' -----------------------------------------------------  \n'];
+    msg = [msg '  CoCoSim: Automated Analysis Framework for Simulink/Stateflow\n'];
+    msg = [msg '   \n Usage:\n'];
+    msg = [msg '    >> cocoSim(MODEL_PATH, [MAT_CONSTANTS_FILES], [TIME_STEP], [TRACE])\n'];
+    msg = [msg '\n'];
+    msg = [msg '      MODEL_PATH: a string containing the path to the model\n'];
+    msg = [msg '        e.g. ''cocoSim test/properties/property_2_test.mdl\''\n'];
+    msg = [msg '      MAT_CONSTANT_FILES: an optional list of strings containing the\n'];
+    msg = [msg '      path to the mat files containing the simulation constants\n'];
+    msg = [msg '        e.g. {''../../constants1.mat'',''../../constants2.mat''}\n'];
+    msg = [msg '        default: {}\n'];
+    msg = [msg '      TIME_STEP: an optional numeric value for the simulation time step\n'];
+    msg = [msg '        e.g. 0.1\n'];
+    msg = [msg '        default: 0.1\n'];
+    msg = [msg '      TRACE: a optional boolean value stating if we need to print the \n'];
+    msg = [msg '      traceability informations\n'];
+    msg = [msg '        e.g. true\n'];
+    msg = [msg '        default: false\n'];
+    msg = [msg  '  -----------------------------------------------------  \n'];
+    cprintf('blue', msg);
 end
 
 
-
-% function welcome_msg(model_full_path)
-% disp('here');
-% msg = {'Welcome to the CoCoSim Automated Analysis Framework'};
-% display_msg(msg, Constants.INFO, 'cocoSim', '');
-% msg = sprintf('Generating Lustre code ... : %s', model_full_path);
-% display_msg(msg, Constants.INFO, 'cocoSim', '');
-% end
-
 function initialize_files(lustre_file)
-% Create lustre file
-fid = fopen(lustre_file, 'w');
-fprintf(fid, '-- This file has been generated by CoCoSim\n\n');
-fclose(fid);
+  % Create lustre file
+  fid = fopen(lustre_file, 'w');
+  fprintf(fid, '-- This file has been generated by CoCoSim\n\n');
+  fclose(fid);
 end
 
 function [str] = print_int_to_real()
-% str = ['node int_to_real (In : int)\n'];
-% str = [str 'returns (Out : real)\n'];
-% str = [str 'let\n\tOut = 0.0;\ntel'];
-% str = sprintf('%s\n', str);
-str = '#open <conv>\n';
+  str = '#open <conv>\n';
 end
 
 function [nodes] = print_dt_conversion_nodes(rounding)
-load 'tmp_dt_conv'
-nodes = '';
-elems = regexp(rounding, ' ', 'split');
-if numel(elems) > 0
-    elems = unique(elems);
-    nodes = '-- Conversion nodes';
-    for idx_round=1:numel(elems)
-        % Print rounding node
-        str = ['\nnode ' elems{idx_round} '(In : real)\n'];
-        str = [str 'returns (Out : int)\n'];
-        str = [str 'let\n\tOut = real_to_int(In);\ntel'];
-        str = sprintf('%s\n', str);
-        nodes = [nodes str];
+    load 'tmp_dt_conv'
+    nodes = '';
+    elems = regexp(rounding, ' ', 'split');
+    if numel(elems) > 0
+        elems = unique(elems);
+        nodes = '-- Conversion nodes';
+        for idx_round=1:numel(elems)
+            % Print rounding node
+            str = ['\nnode ' elems{idx_round} '(In : real)\n'];
+            str = [str 'returns (Out : int)\n'];
+            str = [str 'let\n\tOut = real_to_int(In);\ntel'];
+            str = sprintf('%s\n', str);
+            nodes = [nodes str];
+        end
     end
-end
-nodes = sprintf('%s', nodes);
+    nodes = sprintf('%s', nodes);
 end
