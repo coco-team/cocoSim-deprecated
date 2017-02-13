@@ -51,10 +51,10 @@ end
      try
       [cocoSim_path, ~, ~] = fileparts(mfilename('fullpath'));
       model_full_path = get_param(gcs,'FileName');%gcs;
-
+      L = log4m.getLogger(fullfile(fileparts(model_full_path),'logfile.txt'));
 [valid, validation_compute,lustrec_failed, ...
           lustrec_binary_failed, sim_failed, lus_file_path, ...
-          sf2lus_time, ~, ~] = validate_model(model_full_path,cocoSim_path,1);
+          sf2lus_time, ~, ~] = validate_model(model_full_path,cocoSim_path,1,L,1);
       open(model_full_path);
       msg = '';
       if valid
@@ -69,12 +69,12 @@ end
           display('LustreC binary generation failed');
       elseif sim_failed
           display('Simulation has failed');
-      else
-          open(lus_file_path)
+%       else
+%           open(lus_file_path)
       end
       
      catch ME
-         disp(ME.getReport())
+         display_msg(ME.getReport(), Constants.DEBUG,'Validate_model','');
          disp('run the command in the top level of the model')
      end
  end

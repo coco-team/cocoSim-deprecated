@@ -6,7 +6,7 @@
 
 function [valid, validation_compute,lustrec_failed, ...
           lustrec_binary_failed, sim_failed, lus_file_path, ...
-          sf2lus_time, nb_actions, Query_time] = validate_model(model_full_path,cocoSim_path, show_models,L)
+          sf2lus_time, nb_actions, Query_time] = validate_model(model_full_path,cocoSim_path, show_models,L,FixedStep_is_defined)
 bdclose('all')
 
 if ~exist('show_models', 'var')
@@ -16,6 +16,9 @@ elseif show_models
 end
 if ~exist('cocoSim_path', 'var')
     cocoSim_path = pwd;
+end
+if ~exist('FixedStep_is_defined', 'var')
+    FixedStep_is_defined = 0;
 end
 addpath(fullfile(cocoSim_path,'src/'));
 addpath(fullfile(cocoSim_path,'src/utils/'));
@@ -74,11 +77,25 @@ code_on=sprintf('%s([], [], [], ''term'')', file_name);
 evalin('base',code_on);
 
 numberOfInports = numel(inports);
-% stop_time = 0;
-% simulation_step = 1;
-% nb_steps = 1;
+% set_param(getActiveConfigSet(file_name), 'Solver', 'FixedStepDiscrete');
 stop_time = 100;
-simulation_step = 1;
+try
+    ts = Simulink.BlockDiagram.getSampleTimes(file_name);
+    min = 1;
+    for t=ts
+        if t.Value(1)<min
+            min = t.Value(1);
+        end
+    end
+    if ~FixedStep_is_defined || min==0 || isnan(min) || min==Inf
+        simulation_step = 1;
+    else
+       simulation_step = min;
+    end
+    
+catch
+    simulation_step = 1;
+end
 nb_steps = stop_time/simulation_step +1;
 IMAX = 100; %IMAX for randi the max born for random number
 
@@ -91,11 +108,10 @@ try
     [lus_file_dir, lus_file_name, ~] = fileparts(lus_file_path);
     cd(lus_file_dir);
 catch ME
-    msg = sprintf('Compilation Failed for model "%s" :\n%s\n%s',file_name,ME.identifier,ME.message);
+    msg = sprintf('Translation Failed for model "%s" :\n%s\n%s',file_name,ME.identifier,ME.message);
     display_msg(msg, Constants.ERROR, 'validation', '');
-    cellfun(@disp, ME.cause);
-    fprintf('\n');
-    disp(ME.stack(1));
+    display_msg(ME.getReport(), Constants.DEBUG, 'validation', '');
+
     close_system(model_full_path,0);
     bdclose('all')
     sf2lus_time = -1;
@@ -224,7 +240,7 @@ else
             display_msg(msg, Constants.INFO, 'validation', '');
             try
                 set_param(configSet, 'Solver', 'FixedStepDiscrete');
-                set_param(configSet, 'FixedStep', '1.0');
+                set_param(configSet, 'FixedStep', num2str(simulation_step));
                 set_param(configSet, 'StartTime', '0.0');
                 set_param(configSet, 'StopTime',  '100.0');
                 set_param(configSet, 'SaveFormat', 'Structure');
@@ -253,6 +269,7 @@ else
                 end
                 yout = get(simOut,'yout');
                 yout_signals = yout.signals;
+                assignin('base','yout',yout);
                 assignin('base','yout_signals',yout_signals);
                 numberOfOutputs = numel(yout_signals);
                 outputs_array = importdata('outputs_values','\n');
@@ -307,14 +324,16 @@ else
                 end
                 if ~valid
                     fprintf('translation for model "%s" is not valid \n',file_name);
-                    fprintf('Sometimes is just inputs order is not the same in lustre.\n');
-                    fprintf('Please Verify the order in your lustre file \n');
-                    fprintf('If the order of inports is not the same as in your model,\nplease fix it in your model to match lustre generation');
-                    fprintf('The right order of inputs in your model is described in this counter example\n');
+%                     fprintf('Sometimes is just inputs order is not the same in lustre.\n');
+%                     fprintf('Please Verify the order in your lustre file \n');
+%                     fprintf('If the order of inports is not the same as in your model,\nplease fix it in your model to match lustre generation');
+%                     fprintf('The right order of inputs in your model is described in this counter example\n');
                     
                     fprintf('Here is the counter example:\n');
                     index_out = 0;
                     for i=0:error_index-1
+                        fprintf('*****step : %d**********\n',i+1);
+                        fprintf('*****inputs: \n');
                         for j=1:numberOfInports
                             dim = input_struct.signals(j).dimensions;
                             if numel(dim)==1
@@ -333,6 +352,7 @@ else
                                 end
                             end
                         end
+                        fprintf('*****outputs: \n');
                         for k=1:numberOfOutputs
                             dim = yout_signals(k).dimensions;
                             if numel(dim)==2
@@ -384,7 +404,7 @@ else
 %                 system(command);
                 cd(OldPwd);
             catch ME
-                msg = sprintf('simulation failed for model "%s" :\n%s\n%s\n%s',file_name,ME.identifier,ME.message, getReport(ME,'extended'));
+                msg = sprintf('simulation failed for model "%s" :\n%s\n%s',file_name,ME.identifier,ME.message);
                 display_msg(msg, Constants.ERROR, 'validation', '');
                 sim_failed = 1;
                 valid = 0;

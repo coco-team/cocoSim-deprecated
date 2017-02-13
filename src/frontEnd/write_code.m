@@ -99,11 +99,32 @@ for idx_block=1:nblk
 
 	%%%%%%%%%%%%% DiscreteIntegrator %%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'DiscreteIntegrator')
-
+        %Gain
 		K = evalin('base', get_param(blks{idx_block}, 'gainval'));
-% 		T = evalin('base', inter_blk{idx_block}.sample_time);
-%         disp(T)
-        T = get_param(blks{idx_block}, 'CompiledSampleTime');
+        
+        
+        
+        %Method
+        method = get_param(blks{idx_block},'IntegratorMethod');
+        if strcmp(method,'Integration: Forward Euler')
+            %Sample Time
+            msg = sprintf('Make sure that the sample time of block %s is the same as the sample time of the simulation'...
+                , char(inter_blk{idx_block}.origin_name));
+            display_msg(msg,Constants.WARNING,'DiscreteIntegrator','');
+            try
+                T = get_param(blks{idx_block}, 'CompiledSampleTime');
+                T = T(1);
+            catch
+                T = evalin('base', inter_blk{idx_block}.sample_time);
+            end
+        elseif strcmp(method,'Accumulation: Forward Euler')
+            T = 1;
+        else
+            msg = sprintf('method : %s is not supported yet in block %s',char(method), char(inter_blk{idx_block}.origin_name));
+            display_msg(msg,Constants.ERROR,'DiscreteIntegrator','');
+%             return;
+        end
+        
 		% The initial condition is defined unsing an external constant block
 		if strcmp(get_param(inter_blk{idx_block}.origin_name, 'InitialConditionSource'), 'external')
 			vinit = '';
@@ -133,7 +154,7 @@ for idx_block=1:nblk
                  sat_int.list_var=list_var;
          end
          
-        block_string = write_discreteintegrator(inter_blk{idx_block}, K, external_reset,...
+        [block_string, var_str] = write_discreteintegrator(inter_blk{idx_block}, K, external_reset,...
             T, vinit, inter_blk,sat_int);
 
 	%%%%%%%%%%%%%%%% Sum %%%%%%%%%%%%%%%%%%%
