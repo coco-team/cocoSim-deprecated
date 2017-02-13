@@ -104,7 +104,7 @@ try
 %     lus_file_path= '/home/hamza/Documents/coco_team/regression-test/simulink/unit_test/not_valid_models/lustre_files/src_math_int_2_test/math_int_2_test.lus';
     [lus_file_path, sf2lus_time, nb_actions, Query_time]=cocoSim(model_full_path);
     chart_name = file_name;
-    configSet = copy(getActiveConfigSet(file_name));
+    
     [lus_file_dir, lus_file_name, ~] = fileparts(lus_file_path);
     cd(lus_file_dir);
 catch ME
@@ -239,6 +239,7 @@ else
             msg = sprintf('Simulating model "%s"\n',file_name);
             display_msg(msg, Constants.INFO, 'validation', '');
             try
+                configSet = Simulink.ConfigSet;%copy(getActiveConfigSet(file_name));
                 set_param(configSet, 'Solver', 'FixedStepDiscrete');
                 set_param(configSet, 'FixedStep', num2str(simulation_step));
                 set_param(configSet, 'StartTime', '0.0');
