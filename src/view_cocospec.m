@@ -12,7 +12,13 @@ function Output_path = view_cocospec(Simulink_fname, coco_fname)
 %in Simulink does not accept such names.
 % bdclose('all')
 try
-    filetext = fileread(coco_fname);
+    try
+        filetext = fileread(coco_fname);
+    catch ME
+        display_msg('No Contract file', Constants.ERROR, 'Zustre ', '');
+        Output_path = '';
+        rethrow(ME);
+    end
     filetext = regexprep(filetext,'__','');
     %parse the data
     data = parse_json(filetext);
@@ -26,7 +32,7 @@ try
     % we add a Postfix to differentiate it with the original Simulink model
     new_model_name = strcat(base_name{1},'_with_cocospec');
     new_name = fullfile(output_dir,strcat(new_model_name,'.mdl'));
-%     display(new_name)
+    %     display(new_name)
     display_msg(['Cocospec path: ' new_name ], Constants.INFO, 'view_cocospec', '');
     
     % Check if the file already exists and delete it if it does
@@ -286,8 +292,9 @@ try
     Output_path = new_name;
     %     open(new_name)
 catch ME
-    display_msg(ME.getReport(), Constants.ERROR, 'VIEW_COCOSPEC', '');
-%     rethrow(ME);
+    display_msg(ME.message, Constants.ERROR, 'VIEW_COCOSPEC', '');
+    display_msg(ME.getReport(), Constants.DEBUG, 'VIEW_COCOSPEC', '');
+    rethrow(ME);
 end
 end
 

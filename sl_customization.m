@@ -36,7 +36,7 @@ end
          unsupported_blocks( model_full_path );
          open(model_full_path);
      catch ME
-         disp(ME.getReport())
+         display_msg(ME.getReport(),Constants.DEBUG,'getCheckBlocks','');
          disp('run the command in the top level of the model')
      end
  end
@@ -94,7 +94,7 @@ end
       pp_model = cocosim_pp(simulink_name);
       load_system(char(pp_model));
      catch ME
-         disp(ME.getReport())
+         display_msg(ME.getReport(),Constants.DEBUG,'getPP','');
          disp('run the command in the top level of the model')
      end
  end
@@ -132,7 +132,7 @@ function schema = viewContract(callbackInfo)
         
          
       catch ME
-          disp(ME.getReport())
+          display_msg(ME.getReport(),Constants.DEBUG,'viewContract','');
           msg = sprintf('No CoCoSpec Contract for %s \n Verify the model with Zustre', simulink_name);
           warndlg(msg,'CoCoSim: Warning');
       end
@@ -140,7 +140,7 @@ function schema = viewContract(callbackInfo)
           Output_url = view_cocospec(model_full_path, char(EMF));
           open(Output_url);
       catch ME
-          disp(ME.getReport())
+          display_msg(ME.getReport(),Constants.DEBUG,'viewContract','');
       end
     end
  
@@ -156,7 +156,7 @@ function schema = viewContract(callbackInfo)
       simulink_name = gcs;
       add_cocospec(simulink_name);   
   catch ME
-      disp(ME.getReport())
+      display_msg(ME.getReport(),Constants.DEBUG,'getProps','');
   end
  end
 
@@ -182,7 +182,7 @@ function schema = viewContract(callbackInfo)
       simulink_name = get_param(gcs,'FileName');%gcs;
       cocoSim(simulink_name);
   catch ME
-      disp(ME.getReport())
+      display_msg(ME.getReport(),Constants.DEBUG,'getRust','');
       disp('run the command in the top level of the model')
   end
  end
@@ -268,8 +268,9 @@ function runCoCoSim
       if strcmp(ME.identifier, 'MATLAB:badsubscript') 
           msg = ['Activate debug message by running cocosim_debug=true', ...
               ' to get more information where the model in failing'];
-          e_msg = sprintf('Error Msg: %s \n Action:\n\t %s', ME.getReport(), msg);
+          e_msg = sprintf('Error Msg: %s \n Action:\n\t %s', ME.message, msg);
           display_msg(e_msg, Constants.ERROR, 'cocoSim', '');
+          display_msg(ME.getReport(),Constants.DEBUG,'cocoSim','');
       elseif strcmp(ME.identifier,'MATLAB:MException:MultipleErrors')
           msg = 'Make sure that the model can be run (i.e. most probably missing constants)';
           d_msg = sprintf('Error Msg: %s', ME.getReport());
@@ -277,10 +278,11 @@ function runCoCoSim
           display_msg(msg, Constants.ERROR, 'cocoSim', '');
       elseif strcmp(ME.identifier, 'Simulink:Commands:ParamUnknown')
           msg = 'Run CoCoSim on the most top block of the model';
-          e_msg = sprintf('Error Msg: %s \n Action:\n\t %s', ME.getReport(), msg);
+          e_msg = sprintf('Error Msg: %s \n Action:\n\t %s', ME.message, msg);
           display_msg(e_msg, Constants.ERROR, 'cocoSim', '');
+          display_msg(ME.getReport(),Constants.DEBUG,'cocoSim','');
       else
-          disp(ME.getReport())
+          display_msg(ME.getReport(),Constants.DEBUG,'cocoSim','');
       end
       
   end
