@@ -182,8 +182,12 @@ if s.bytes ~= 0
                 display_msg(msg, Constants.WARNING, 'Zustre property checking', '');
             end
         elseif strcmp(answer, 'SAFE')
-            cocospec = prop.getElementsByTagName('contractFile').item(0).getTextContent;
-            emf = prop.getElementsByTagName('emfFile').item(0).getTextContent;
+            try
+              cocospec = prop.getElementsByTagName('contractFile').item(0).getTextContent;
+              emf = prop.getElementsByTagName('emfFile').item(0).getTextContent;
+            catch
+                display_msg('No Contract file', Constants.WARNING, 'Zustre ', '');
+            end
         end
     end
 end
