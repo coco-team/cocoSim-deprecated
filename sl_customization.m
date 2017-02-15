@@ -48,35 +48,36 @@ end
  end
 
  function validateCallBack(callbackInfo)
-     try
-      [cocoSim_path, ~, ~] = fileparts(mfilename('fullpath'));
-      model_full_path = get_param(gcs,'FileName');%gcs;
-      L = log4m.getLogger(fullfile(fileparts(model_full_path),'logfile.txt'));
-[valid, validation_compute,lustrec_failed, ...
-          lustrec_binary_failed, sim_failed, lus_file_path, ...
-          sf2lus_time, ~, ~] = validate_model(model_full_path,cocoSim_path,1,L,1);
-      open(model_full_path);
-      msg = '';
-      if valid
-          msg = 'VALID';
-      elseif sf2lus_time==-1
-          msg = 'INVALID';
-      end
-%       h = msgbox(msg,'CoCoSim Translation Validation');
-      if lustrec_failed
-          open(lus_file_path)
-      elseif lustrec_binary_failed
-          display('LustreC binary generation failed');
-      elseif sim_failed
-          display('Simulation has failed');
-%       else
-%           open(lus_file_path)
-      end
-      
-     catch ME
-         display_msg(ME.getReport(), Constants.DEBUG,'Validate_model','');
-         disp('run the command in the top level of the model')
+ try
+     [cocoSim_path, ~, ~] = fileparts(mfilename('fullpath'));
+     model_full_path = get_param(gcs,'FileName');%gcs;
+     L = log4m.getLogger(fullfile(fileparts(model_full_path),'logfile.txt'));
+     [valid, validation_compute,lustrec_failed, ...
+         lustrec_binary_failed, sim_failed, lus_file_path, ...
+         sf2lus_time, ~, ~] = validate_model(model_full_path,cocoSim_path,1,L,1);
+     open(model_full_path);
+     msg = '';
+     if valid
+         msg = 'VALID';
+     elseif sf2lus_time==-1
+         msg = 'INVALID';
      end
+     %       h = msgbox(msg,'CoCoSim Translation Validation');
+     if lustrec_failed
+         open(lus_file_path)
+     elseif lustrec_binary_failed
+         display('LustreC binary generation failed');
+     elseif sim_failed
+         display('Simulation has failed');
+         %       else
+         %           open(lus_file_path)
+     end
+     
+ catch ME
+     display_msg(ME.getReport(), Constants.DEBUG,'Validate_model','');
+     display_msg(ME.message, Constants.ERROR,'Validate_model','');
+     disp('run the command in the top level of the model')
+ end
  end
  
  % Function to pre-process and simplify the Simulink model
@@ -282,6 +283,7 @@ function runCoCoSim
           display_msg(e_msg, Constants.ERROR, 'cocoSim', '');
           display_msg(ME.getReport(),Constants.DEBUG,'cocoSim','');
       else
+          display_msg(ME.message,Constants.ERROR,'cocoSim','');
           display_msg(ME.getReport(),Constants.DEBUG,'cocoSim','');
       end
       

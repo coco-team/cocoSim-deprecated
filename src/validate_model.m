@@ -98,7 +98,6 @@ try
 catch
     simulation_step = 1;
 end
-display(simulation_step)
 nb_steps = stop_time/simulation_step +1;
 IMAX = 100; %IMAX for randi the max born for random number
 

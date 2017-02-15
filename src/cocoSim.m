@@ -244,8 +244,8 @@ for idx_subsys=numel(inter_blk):-1:1
             fclose(fid);
             display_msg('Successfully done processing Embedded Matlab', Constants.INFO, 'cocoSim', '');
         catch ME
-            disp(ME.getReport())
-            display_msg('Unable to process Embedded Matlab', Constants.ERROR, 'cocoSim', '');
+            display_msg(ME.getReport(), Constants.DEBUG, 'cocoSim', '');
+            display_msg(['Unable to process Embedded Matlab :' ME.message], Constants.ERROR, 'cocoSim', '');
         end
         
         
@@ -339,7 +339,6 @@ for i=1:n
     if strcmp(fun.Name,'trigo')
             extern_functions{cpt_extern_functions} = fun.Type;
             cpt_extern_functions = cpt_extern_functions + 1;
-            display(extern_functions{cpt_extern_functions-1})
     elseif isempty(find(strcmp(functions_names,fun.Name),1))  
         functions_names{j} = fun.Name;
         j=j+1;
@@ -461,14 +460,16 @@ if RUST_GEN
     try
         rust(nom_lustre_file);
     catch ME
-        display_msg(ME.getReport(), Constants.ERROR, 'Rust Compilation', '');
+        display_msg(ME.getReport(), Constants.DEBUG, 'Rust Compilation', '');
+        display_msg(ME.message, Constants.ERROR, 'Rust Compilation', '');
     end
 elseif C_GEN
     display_msg('Generating C Code', Constants.INFO, 'C Compilation', '');
     try
         lustrec(nom_lustre_file);
     catch ME
-        display_msg(ME.getReport(), Constants.ERROR, 'C Compilation', '');
+        display_msg(ME.message, Constants.ERROR, 'C Compilation', '');
+        display_msg(ME.getReport(), Constants.DEBUG, 'C Compilation', '');
     end
 end
 
@@ -491,7 +492,8 @@ if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
                 SOLVER = 'Z';
             end
         catch ME
-            display_msg(ME.getReport(), Constants.ERROR, 'SEAHORN', '');
+            display_msg(ME.message, Constants.ERROR, 'SEAHORN', '');
+            display_msg(ME.getReport(), Constants.DEBUG, 'SEAHORN', '');
         end
     end
     open(models{end});
@@ -500,7 +502,7 @@ if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
         try
             Query_time = zustre(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace, is_SF, smt_file);
         catch ME
-            display_msg('Zustre has failed', Constants.ERROR, 'Verification', '');
+            display_msg(['Zustre has failed :' ME.message], Constants.ERROR, 'Verification', '');
             display_msg(ME.getReport(), Constants.DEBUG, 'Verification', '');
         end
     elseif strcmp(SOLVER, 'K')
@@ -508,14 +510,16 @@ if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
         try
             kind2(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace);
         catch ME
-            display_msg(ME.getReport(), Constants.ERROR, 'Verification', '');
+            display_msg(ME.message, Constants.ERROR, 'Verification', '');
+            display_msg(ME.getReport(), Constants.DEBUG, 'Verification', '');
         end
     elseif strcmp(SOLVER, 'J')
         display_msg('Running JKind', Constants.INFO, 'Verification', '');
         try
             jkind(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace);
         catch ME
-            display_msg(ME.getReport(), Constants.ERROR, 'Verification', '');
+            display_msg(ME.message, Constants.ERROR, 'Verification', '');
+            display_msg(ME.getReport(), Constants.DEBUG, 'Verification', '');
         end
     end
 else
