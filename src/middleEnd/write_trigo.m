@@ -53,26 +53,26 @@ if ~unbloc.out_cpx_sig(1)
 	if strcmp(op_trigo, 'atan2')
 		for idx_dim=1:numel(list_out)
 			in_str = [list_in{idx_dim} ', ' list_in{idx_dim + dim}];
-			output_string = app_sprintf(output_string,'\t%s = %s(%s);\n', list_out{idx_dim}, op_trigo, in_str);
+			output_string = app_sprintf(output_string,'\t%s = z%s(%s);\n', list_out{idx_dim}, op_trigo, in_str);
 		end
 		extern_funs{1} = [op_trigo ' real'];
 	elseif strcmp(op_trigo, 'sincos')
 		for idx_dim=1:numel(list_in)
-			output_string = app_sprintf(output_string,'\t%s = sin(%s);\n', list_out{idx_dim}, list_in{idx_dim});
-			output_string = app_sprintf(output_string,'\t%s = cos(%s);\n', list_out{idx_dim + dim}, list_in{idx_dim});
+			output_string = app_sprintf(output_string,'\t%s = zsin(%s);\n', list_out{idx_dim}, list_in{idx_dim});
+			output_string = app_sprintf(output_string,'\t%s = zcos(%s);\n', list_out{idx_dim + dim}, list_in{idx_dim});
 		end
 		extern_funs{1} = 'cos real';
 		extern_funs{2} = 'sin real';
 	else
 		for idx_dim=1:numel(list_out)
-			output_string = app_sprintf(output_string,'\t%s = %s(%s);\n', list_out{idx_dim}, op_trigo, list_in{idx_dim});
+			output_string = app_sprintf(output_string,'\t%s = z%s(%s);\n', list_out{idx_dim}, op_trigo, list_in{idx_dim});
 		end
 		extern_funs{1} = [op_trigo ' real'];
 	end
 else
 	if strcmp(op_trigo, 'cos + jsin')
 		for idx_dim=1:numel(list_in)
-			output_string = app_sprintf(output_string,'\t%s = complex_real{ r = cos(%s); i = sin(%s)};\n', list_out{idx_dim}, list_in{idx_dim}, list_in{idx_dim});
+			output_string = app_sprintf(output_string,'\t%s = complex_real{ r = zcos(%s); i = zsin(%s)};\n', list_out{idx_dim}, list_in{idx_dim}, list_in{idx_dim});
 		end
 		extern_funs{1} = 'cos real';
 		extern_funs{2} = 'sin real';

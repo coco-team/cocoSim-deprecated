@@ -114,28 +114,28 @@ def sinNode():
   dom = toRadians( interval(0, 360, 5) );
   val = ["__sin(x)", "__sin(" + trunc(math.pi) + "-x)", "-(__sin(x - "+ trunc(math.pi)+"))", "-(__sin(" + trunc(math.pi*2.0) + " - x)) ", "-1.0"];
   code = iteBlock(dom, val, "x")
-  return funcNode("sin", "x:real", code, "out", "real");
+  return funcNode("zsin", "x:real", code, "out", "real");
 
 def tanNode():
   dom = toRadians( interval(0, 360, 5) );
   val = ["__tan(x)", "-(__tan(" + trunc(math.pi) + "-x))", "__tan(x - "+ trunc(math.pi)+")", "-(__tan(" + trunc(math.pi*2.0) + " - x)) ", "-1.0"];
   code = iteBlock(dom, val, "x")
-  return funcNode("tan", "x:real", code, "out", "real");
+  return funcNode("ztan", "x:real", code, "out", "real");
 
 def cosNode():
   dom = [0.0, math.pi/2.0*3.0, math.pi*2.0];
-  val = ["sin(" + trunc(math.pi/2.0) + " + x)", "sin(x - " + trunc(math.pi/2.0*3.0) + ")", "-1.0"];
+  val = ["zsin(" + trunc(math.pi/2.0) + " + x)", "zsin(x - " + trunc(math.pi/2.0*3.0) + ")", "-1.0"];
   code = iteBlock(dom, val, "x")
-  return funcNode("cos", "x:real", code, "out", "real");
+  return funcNode("zcos", "x:real", code, "out", "real");
 
 def asinNode():
   dom = [-1.0, 0.0, 1.0];
   val = ["-(__asin(-x))", "__asin(x)", "-1.0"];
   code = iteBlock(dom, val, "x")
-  return funcNode("asin", "x:real", code, "out", "real");
+  return funcNode("zasin", "x:real", code, "out", "real");
 
 def acosNode():
-  return funcNode("acos", "x:real", "" + trunc(math.pi/2.0) + "-asin(x)" , "out", "real");
+  return funcNode("zacos", "x:real", "" + trunc(math.pi/2.0) + "-zasin(x)" , "out", "real");
 
 
 def atanLookupNode(precision):
@@ -152,20 +152,20 @@ def atanLookupNode(precision):
 
 def atanNode():
   code = ite("x>=0.0", "__atan(x)", "-(__atan(-x))");
-  return funcNode("atan", "x:real", code, "out", "real");
+  return funcNode("zatan", "x:real", code, "out", "real");
 
 
 # FH: maybe the divisions here are problematic?
 #
 def atan2Node():
-  x_less_0 = ite("y>=0.0", "atan(y/x) + " + trunc(math.pi), "atan(y/x) - " + trunc(math.pi));
+  x_less_0 = ite("y>=0.0", "zatan(y/x) + " + trunc(math.pi), "zatan(y/x) - " + trunc(math.pi));
   y_leq_0 = ite("y<0.0", trunc(math.pi/-2.0), trunc(math.atan2(0,0)) );
   x_eq_0 = ite("y>0.0", trunc(math.pi/2.0), "\n    " + y_leq_0);
 
   code = ite("x<0.0", "\n      " + x_less_0, "\n    " + x_eq_0)
-  code = ite("x>0.0", "atan(y/x)", "\n    " + code);
+  code = ite("x>0.0", "zatan(y/x)", "\n    " + code);
 
-  return funcNode("atan2", "y:real; x:real", code, "out", "real");
+  return funcNode("zatan2", "y:real; x:real", code, "out", "real");
 
 
 def cos():
