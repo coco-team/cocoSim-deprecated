@@ -150,10 +150,46 @@ label_mod = regexprep(label_mod,expression,replace);
 expression = 'power\(';
 replace = 'pow\(';
 label_mod = regexprep(label_mod,expression,replace);
-if ~isempty(strfind(fun_expr,'acos')) || ~isempty(strfind(fun_expr,'acosh')) || ~isempty(strfind(fun_expr,'asin')) || ~isempty(strfind(fun_expr,'asinh')) ...
-        || ~isempty(strfind(fun_expr,'atan')) || ~isempty(strfind(fun_expr,'atan2')) || ~isempty(strfind(fun_expr,'atanh')) || ~isempty(strfind(fun_expr,'cos'))...
-        || ~isempty(strfind(fun_expr,'cosh')) || ~isempty(strfind(fun_expr,'ceil')) || ~isempty(strfind(fun_expr,'erf')) || ~isempty(strfind(fun_expr,'cbrt'))...
-        || ~isempty(strfind(fun_expr,'fabs')) || ~isempty(strfind(fun_expr,'pow')) || ~isempty(strfind(fun_expr,'sin')) || ~isempty(strfind(fun_expr,'sinh'))...
+if ~isempty(strfind(fun_expr,'acos'))
+    external_math_functions = [external_math_functions, struct('Name','trigo','Type','acos real')];
+    label_mod = regexprep(label_mod,'(\W)(acos)(\W)','$1zacos$3'); 
+    
+end
+if  ~isempty(strfind(fun_expr,'asin'))
+    external_math_functions = [external_math_functions, struct('Name','trigo','Type','asin real')];
+    label_mod = regexprep(label_mod,'(\W)(asin)(\W)','$1zasin$3'); 
+    
+end
+if ~isempty(strfind(fun_expr,'atan'))
+    external_math_functions = [external_math_functions, struct('Name','trigo','Type','atan real')];
+    label_mod = regexprep(label_mod,'(\W)(atan)(\W)','$1zatan$3'); 
+    
+end
+if ~isempty(strfind(fun_expr,'atan2'))
+    external_math_functions = [external_math_functions, struct('Name','trigo','Type','atan2 real')];
+    label_mod = regexprep(label_mod,'(\W)(atan2)(\W)','$1zatan2$3'); 
+    
+elseif ~isempty(strfind(fun_expr,'cos')) 
+    external_math_functions = [external_math_functions, struct('Name','trigo','Type','cos real')];
+    label_mod = regexprep(label_mod,'(\W)(cos)(\W)','$1zcos$3'); 
+    
+end
+if ~isempty(strfind(fun_expr,'sin'))
+    external_math_functions = [external_math_functions, struct('Name','trigo','Type','sin real')];
+    label_mod = regexprep(label_mod,'(\W|^)(sin)(\W)','$1zsin$3'); 
+    
+end
+if ~isempty(strfind(fun_expr,'tan'))
+    external_math_functions = [external_math_functions, struct('Name','trigo','Type','tan real')];
+    label_mod = regexprep(label_mod,'(\W)(tan)(\W)','$1ztan$3'); 
+    
+               
+end
+if  ~isempty(strfind(fun_expr,'acosh')) ||  ~isempty(strfind(fun_expr,'asinh')) ...
+        || ~isempty(strfind(fun_expr,'atanh')) || ~isempty(strfind(fun_expr,'cosh')) ...
+        || ~isempty(strfind(fun_expr,'ceil')) || ~isempty(strfind(fun_expr,'erf')) ...
+        || ~isempty(strfind(fun_expr,'cbrt')) || ~isempty(strfind(fun_expr,'fabs'))...
+        || ~isempty(strfind(fun_expr,'pow')) || ~isempty(strfind(fun_expr,'sinh'))...
         || ~isempty(strfind(fun_expr,'sqrt'))
     external_math_functions = [external_math_functions, struct('Name','lustre_math_fun','Type','function')];
 end

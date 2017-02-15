@@ -105,9 +105,10 @@ try
     fprintf('Compiling model "%s" to Lustre\n',file_name);
 %     lus_file_path= '/home/hamza/Documents/coco_team/regression-test/simulink/unit_test/not_valid_models/lustre_files/src_math_int_2_test/math_int_2_test.lus';
     [lus_file_path, sf2lus_time, nb_actions, Query_time]=cocoSim(model_full_path);
-    chart_name = file_name;
     
     [lus_file_dir, lus_file_name, ~] = fileparts(lus_file_path);
+    file_name = lus_file_name;
+    chart_name = lus_file_name;
     cd(lus_file_dir);
 catch ME
     msg = sprintf('Translation Failed for model "%s" :\n%s\n%s',file_name,ME.identifier,ME.message);
@@ -117,8 +118,8 @@ catch ME
     close_system(model_full_path,0);
     bdclose('all')
     sf2lus_time = -1;
-    L.error('cocoSim',[file_name, '\n' getReport(ME,'extended')]);
-    return
+    L.error('validation',[file_name, '\n' getReport(ME,'extended')]);
+    rethrow(ME);
 end
 validation_start = tic;
 command = sprintf('%s -I %s -node %s %s',LUSTREC,LUCTREC_INCLUDE_DIR, Utils.name_format(chart_name), lus_file_path);
