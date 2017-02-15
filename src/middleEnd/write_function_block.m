@@ -147,9 +147,19 @@ label_mod = regexprep(label_mod,expression,replace);
 expression = '(^|[^a-zA-Z0-9_\[\.]+)(\d+)((?=$)|[^0-9a-zA-Z_\.\]])';
 replace = '$1$2.0$3';
 label_mod = regexprep(label_mod,expression,replace);
+
 expression = 'power\(';
 replace = 'pow\(';
 label_mod = regexprep(label_mod,expression,replace);
+
+expression = '(sgn\()(\w+)(\))';
+replace = '(if $2 > 0.0 then 1.0 else if $2 < 0.0 then -1.0 else 0.0)';
+label_mod = regexprep(label_mod,expression,replace);
+
+expression = '(abs\()(\w+)(\))';
+replace = '(if $2 > 0.0 then $2 else -$2 )';
+label_mod = regexprep(label_mod,expression,replace);
+
 if ~isempty(strfind(fun_expr,'acos'))
     external_math_functions = [external_math_functions, struct('Name','trigo','Type','acos real')];
     label_mod = regexprep(label_mod,'(\W)(acos)(\W)','$1zacos$3'); 
@@ -182,8 +192,6 @@ end
 if ~isempty(strfind(fun_expr,'tan'))
     external_math_functions = [external_math_functions, struct('Name','trigo','Type','tan real')];
     label_mod = regexprep(label_mod,'(\W)(tan)(\W)','$1ztan$3'); 
-    
-               
 end
 if  ~isempty(strfind(fun_expr,'acosh')) ||  ~isempty(strfind(fun_expr,'asinh')) ...
         || ~isempty(strfind(fun_expr,'atanh')) || ~isempty(strfind(fun_expr,'cosh')) ...
