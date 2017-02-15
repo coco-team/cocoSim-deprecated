@@ -325,11 +325,7 @@ end
 % Open file for writing
 fid = fopen(nom_lustre_file, 'a');
 
-[str_include, extern_functions_string] = write_extern_functions(extern_functions, output_dir);
-% Write include for external functions
-if ~strcmp(str_include, '')
-    fprintf(fid, str_include);
-end
+
 
 % add external nodes called from action like min, max and matlab functions
 % or int_to_real and real_to_int
@@ -343,7 +339,10 @@ for i=1:n
     if isempty(find(strcmp(functions_names,fun.Name),1))  
         functions_names{j} = fun.Name;
         j=j+1;
-        if strcmp(fun.Name,'lustre_math_fun')
+        if strcmp(fun.Name,'trigo')
+            extern_functions{cpt_extern_functions} = fun.Type;
+            cpt_extern_functions = cpt_extern_functions + 1;
+        elseif strcmp(fun.Name,'lustre_math_fun')
             extern_Stateflow_nodes_fun_string = ['#open <math>\n', extern_Stateflow_nodes_fun_string];
             
         elseif strcmp(fun.Name,'lustre_conv_fun')
@@ -357,6 +356,13 @@ for i=1:n
         end
     end
 end
+
+[str_include, extern_functions_string] = write_extern_functions(extern_functions, output_dir);
+% Write include for external functions
+if ~strcmp(str_include, '')
+    fprintf(fid, str_include);
+end
+
 if ~strcmp(extern_Stateflow_nodes_fun_string, '')
     fprintf(fid, '-- External Stateflow functions\n');
     fprintf(fid, extern_Stateflow_nodes_fun_string);
