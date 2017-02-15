@@ -741,6 +741,19 @@ classdef Utils
                 end
             end
         end
+        
+        
+        
+        function name = var_naming(unbloc, postfix)
+            
+            block_full_name = regexp(unbloc.name, '/', 'split');
+            if unbloc.name_level >= numel(block_full_name{1})
+                block_name = Utils.concat_delim(block_full_name{1}, '_');
+            else
+                block_name = Utils.concat_delim(block_full_name{1}(end - unbloc.name_level : end), '_');
+            end
+            name = [block_name '_' postfix];
+        end
     end
     
     

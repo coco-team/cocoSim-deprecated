@@ -207,7 +207,8 @@ for idx_row=1:dim_r
         if ~strcmp(external_reset, 'none')
             cond_var = list_in{in_out_idx + nb_elem_first};
             expression = get_trigger_conditions(unbloc,external_reset, cond_var);
-            var_name = strcat(Utils.name_format(Utils.naming_alone(unbloc.origin_name{1})),'_Reset_Trigger',num2str(idx_row),'_', num2str(idx_col));
+            var_name = Utils.var_naming(unbloc, strcat('_Reset_Trigger',num2str(idx_row),'_', num2str(idx_col)));
+%             var_name = strcat(Utils.name_format(Utils.naming_alone(unbloc.origin_name{1})),'_Reset_Trigger',num2str(idx_row),'_', num2str(idx_col));
             output_string = app_sprintf(output_string, '\t%s = %s;\n', var_name,expression);
             var_str = [var_str, sprintf('\t%s: bool;\n',var_name)];
             
@@ -286,3 +287,4 @@ else
     end
 end
 end
+

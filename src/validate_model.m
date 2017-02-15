@@ -83,8 +83,10 @@ try
     ts = Simulink.BlockDiagram.getSampleTimes(file_name);
     min = 1;
     for t=ts
-        if t.Value(1)<min
-            min = t.Value(1);
+        tv = t.Value(1);
+        if ~(isnan(tv) || tv==Inf)
+            min = gcd(min*10,tv*10)/10;
+            
         end
     end
     if ~FixedStep_is_defined || min==0 || isnan(min) || min==Inf
@@ -96,6 +98,7 @@ try
 catch
     simulation_step = 1;
 end
+display(simulation_step)
 nb_steps = stop_time/simulation_step +1;
 IMAX = 100; %IMAX for randi the max born for random number
 
