@@ -336,13 +336,14 @@ functions_names(:) = {''};
 j = 1;
 for i=1:n
     fun = extern_Stateflow_nodes_fun(i);
-    if isempty(find(strcmp(functions_names,fun.Name),1))  
-        functions_names{j} = fun.Name;
-        j=j+1;
-        if strcmp(fun.Name,'trigo')
+    if strcmp(fun.Name,'trigo')
             extern_functions{cpt_extern_functions} = fun.Type;
             cpt_extern_functions = cpt_extern_functions + 1;
-        elseif strcmp(fun.Name,'lustre_math_fun')
+            display(extern_functions{cpt_extern_functions-1})
+    elseif isempty(find(strcmp(functions_names,fun.Name),1))  
+        functions_names{j} = fun.Name;
+        j=j+1;
+        if strcmp(fun.Name,'lustre_math_fun')
             extern_Stateflow_nodes_fun_string = ['#open <math>\n', extern_Stateflow_nodes_fun_string];
             
         elseif strcmp(fun.Name,'lustre_conv_fun')

@@ -184,6 +184,7 @@ def tan():
   print tanLookupNode(11);
   print tanNode();
 
+
 def acos():
   print asinLookupNode(11);
   print asinNode();
@@ -205,6 +206,21 @@ def atan2():
   print atan2Node();
 
 
+def acos():
+  print asinLookupNode(11);
+  print asinNode();
+  print acosNode();
+
+
+def asin():
+  print asinLookupNode(11);
+  print asinNode();
+
+
+def atan():
+  print atanLookupNode(11);
+  print atanNode();
+
 def parseArgs(argv):
     import argparse as arg
     p = arg.ArgumentParser (description='\t Generate Math functions')
@@ -213,27 +229,27 @@ def parseArgs(argv):
     return pars
 
 if __name__ == "__main__":
-  args = parseArgs(sys.argv[1:])
-  for t in args.trig:
-    try:
-      if t=="cos": cos()
-      if t=="sin": sin()
-      if t=="tan": tan()
-      if t=="asin": asin()
-      if t=="acos": acos()
-      if t=="atan": atan()
-      if t=="atan2": atan2()
-    except Exception as e:
-      print e
+  #args = parseArgs(sys.argv[1:])
+  #for t in args.trig:
+  #  try:
+  #    if t=="cos": cos()
+  #    if t=="sin": sin()
+  #    if t=="tan": tan()
+  #    if t=="asin": asin()
+  #    if t=="acos": acos()
+  #    if t=="atan": atan()
+  #    if t=="atan2": atan2()
+  #  except Exception as e:
+  #    print e
 
-  # print sinLookupNode(11);
-  # print sinNode();
-  # print cosNode();
-  # print asinLookupNode(11);
-  # print asinNode();
-  # print acosNode();
-  # print atanLookupNode(11);
-  # print atanNode();
-  # print atan2Node();
-  # print tanLookupNode(11);
-  # print tanNode();
+  print sinLookupNode(11);
+  print sinNode();
+  print cosNode();
+  print asinLookupNode(11);
+  print asinNode();
+  print acosNode();
+  print atanLookupNode(11);
+  print atanNode();
+  print atan2Node();
+  print tanLookupNode(11);
+  print tanNode();

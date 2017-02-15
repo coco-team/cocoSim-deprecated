@@ -56,6 +56,7 @@ included_complex_arith_real = false;
 included_lustrec_math = false;
 for idx_fun=1:numel(functions)
     fun = functions{idx_fun};
+    display(fun)
     str = '';
     fun_kind = get_function_kind(fun);
     fun_split = regexp(fun, ' ', 'split');
@@ -90,7 +91,8 @@ for idx_fun=1:numel(functions)
             % Write include and write external trigo functions nodes
             out_trigo_file = fullfile(output_dir, 'trigo_utils.lus');
             [exec_path, m_fil_name, ext] = fileparts(mfilename('fullpath'));
-            pp_path = [fileparts(exec_path) filesep 'utils' filesep 'generate-tables.py --trig ' fun];
+            pp_path = [fileparts(exec_path) filesep 'utils' filesep 'generate-tables.py '];
+%             pp_path = [fileparts(exec_path) filesep 'utils' filesep 'generate-tables.py --trig ' fun];
             command = ['python ' pp_path];
             [status res] = system(command);
             fid = fopen(out_trigo_file, 'w');
