@@ -62,15 +62,12 @@ end
      elseif sf2lus_time==-1
          msg = 'INVALID';
      end
-     %       h = msgbox(msg,'CoCoSim Translation Validation');
      if lustrec_failed
          open(lus_file_path)
      elseif lustrec_binary_failed
          display('LustreC binary generation failed');
      elseif sim_failed
          display('Simulation has failed');
-         %       else
-         %           open(lus_file_path)
      end
      
  catch ME
