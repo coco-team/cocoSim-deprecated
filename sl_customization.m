@@ -55,7 +55,8 @@ end
      [valid, validation_compute,lustrec_failed, ...
          lustrec_binary_failed, sim_failed, lus_file_path, ...
          sf2lus_time, ~, ~] = validate_model(model_full_path,cocoSim_path,1,L,1);
-     open(model_full_path);
+     [~, file_name, ~] = fileparts(lus_file_path);
+     open(file_name);
      msg = '';
      if valid
          msg = 'VALID';
@@ -93,6 +94,7 @@ end
       load_system(char(pp_model));
      catch ME
          display_msg(ME.getReport(),Constants.DEBUG,'getPP','');
+         display_msg(ME.message,Constants.ERROR,'getPP','');
          disp('run the command in the top level of the model')
      end
  end

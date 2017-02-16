@@ -356,12 +356,16 @@ elseif unbloc.foriter
                 % Add traceability for additional variables
                 xml_trace.add_Variable(tmp_list_out_str, unbloc.origin_name, 1, 1, true);
             end
+            
             output_string = app_sprintf(output_string, '\t%s = %s(%s%s);\n', tmp_list_out_str, node_call_name, list_in_str, add_inputs);
         else
             output_string = app_sprintf(output_string, '\t%s = %s(%s%s);\n', list_out_str, node_call_name, list_in_str, add_inputs);
         end
     end
 else
+    if isempty(list_in_str)
+        list_in_str = '0.0';
+    end
     output_string = app_sprintf(output_string, '\t%s = %s(%s);\n', list_out_str, node_call_name, list_in_str);
     blk_type = get_param(unbloc.post{1}, 'BlockType');
     if strcmp(blk_type,'Merge')

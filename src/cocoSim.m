@@ -6,7 +6,7 @@
 % Main file for CoCoSim
 
 function [nom_lustre_file, sf2lus_Time, nb_actions, Query_time]=cocoSim(model_full_path, const_files, default_Ts, trace, dfexport)
-
+bdclose('all')
 % Checking the number of arguments
 if ~exist('trace', 'var')
     trace = false;
@@ -30,7 +30,7 @@ sf2lus_start = tic;
 % Retrieving of the path containing the cocoSim file
 [cocoSim_path, ~, ~] = fileparts(mfilename('fullpath'));
 % Retrieving of the path containing the model for which we generate the code
-[model_path, file_name, ext] = fileparts(model_full_path);
+[model_path, file_name, ~] = fileparts(model_full_path);
 
 if ~exist('default_Ts', 'var')
     try
@@ -85,13 +85,13 @@ load_system(char(model_full_path));
 const_files_bak = const_files;
 try
     const_files = evalin('base', const_files);
-catch ERR
+catch 
     const_files = const_files_bak;
 end
 
 mat_files = {};
 % Are we dealing with a list of files provided by the user or just a simple file
-if strcmp(class(const_files), 'cell')
+if iscell(const_files)
     for i=1:numel(const_files)
         if strcmp(const_files{i}(end-1:end), '.m')
             evalin('base', ['run ' const_files{i} ';']);
@@ -105,7 +105,7 @@ if strcmp(class(const_files), 'cell')
             mat_files{numel(mat_files) + 1} = const_files{i};
         end
     end
-elseif strcmp(class(const_files), 'char')
+elseif ischar(const_files)
     if strcmp(const_files(end-1:end), '.m')
         evalin('base', ['run ' const_files ';']);
     else
@@ -132,17 +132,17 @@ save 'tmp_data' origin_path model_path cocoSim_path bus_struct
 
 % Pre-process model
 display_msg('Pre-processing', Constants.INFO, 'cocoSim', '');
-[new_file_name] = preprocess_model(file_name, cocoSim_path, ext);
+new_file_name = cocosim_pp(model_full_path);
 
 if ~strcmp(new_file_name, '')
-    file_name = new_file_name;
-    model_full_path = fullfile(model_path, file_name);
+    model_full_path = new_file_name;
+    [model_path, file_name, ~] = fileparts(model_full_path);
 end
 
 % Definition of the output files names
 output_dir = fullfile(model_path, strcat('lustre_files/src_', file_name));
 nom_lustre_file = fullfile(output_dir, strcat(file_name, '.lus'));
-[status, message, message_id] = mkdir(output_dir);
+mkdir(output_dir);
 trace_file_name = fullfile(output_dir, strcat(file_name, '.cocosim.trace.xml'));
 property_file_base_name = fullfile(output_dir, strcat(file_name, '.property'));
 
