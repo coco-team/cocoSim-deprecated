@@ -184,6 +184,20 @@ def tan():
   print tanLookupNode(11);
   print tanNode();
 
+def acos():
+  print asinLookupNode(11);
+  print asinNode();
+  print acosNode();
+
+
+def asin():
+  print asinLookupNode(11);
+  print asinNode();
+
+
+def atan():
+  print atanLookupNode(11);
+  print atanNode();
 
 def acos():
   print asinLookupNode(11);
@@ -253,3 +267,4 @@ if __name__ == "__main__":
   print atan2Node();
   print tanLookupNode(11);
   print tanNode();
+

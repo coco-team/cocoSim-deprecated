@@ -213,7 +213,7 @@ display_msg('Saving simplified model', Constants.INFO, 'simplifier', '');
 disp(['Simplified model path: ' new_file])
 save_system(new_model,new_file,'OverwriteIfChangedOnDisk',true);
 % save_system(new_model,new_file,'ExportToVersion','R2008b');
-
+close_system(file_name,0)
 
 % Remove Real-time Workshop (or Simulink Coder) comments
 tags = {'RTWSystemCode','MinAlgLoopOccurrences',...

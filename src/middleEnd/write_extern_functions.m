@@ -100,7 +100,6 @@ for idx_fun=1:numel(functions)
             %TODO: currently lustrec is not supporting include
             %str_include = [str_include 'include "trigo_utils.lus"\n'];
             str = sprintf('-- Trigonometric functions using interpolation\n\n %s\n\n -- End trig function', res);
-%             str_include = [str_include trig_functions];
             included_trigo = true;
         end
     elseif strncmp(fun_kind, 'complex_arith', 13)
