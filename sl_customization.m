@@ -96,6 +96,7 @@ end
       load_system(char(pp_model));
      catch ME
          display_msg(ME.getReport(),Constants.DEBUG,'getPP','');
+         display_msg(ME.message,Constants.ERROR,'getPP','');
          disp('run the command in the top level of the model')
      end
  end

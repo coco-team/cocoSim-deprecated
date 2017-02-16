@@ -132,11 +132,11 @@ save 'tmp_data' origin_path model_path cocoSim_path bus_struct
 
 % Pre-process model
 display_msg('Pre-processing', Constants.INFO, 'cocoSim', '');
-[new_file_name] = preprocess_model(file_name, cocoSim_path, ext);
+new_file_name = cocosim_pp(model_full_path);
 
 if ~strcmp(new_file_name, '')
-    file_name = new_file_name;
-    model_full_path = fullfile(model_path, file_name);
+    model_full_path = new_file_name;
+    [model_path, file_name, ~] = fileparts(model_full_path);
 end
 
 % Definition of the output files names

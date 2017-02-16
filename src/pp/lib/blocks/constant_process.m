@@ -8,6 +8,7 @@ constant_list = find_system(model,'BlockType','Constant');
 if not(isempty(constant_list))
     disp('Processing Constant blocks...')
     for i=1:length(constant_list)
+        disp(constant_list{i})
         constant_block_process(constant_list{i});
     end
     fprintf('Done\n\n');
@@ -30,23 +31,30 @@ value = get_param(init_block,'Value');
 % Obtaining a tree from the matlab expression
 try
     tree = parse_math(value);
-catch error
-    fprintf(2,'%s%s%s\n%s\n',...
-        'error occured while parsing the expression : "',gain,...
-        '" of block :',init_block);
-    if not(strcmp('Python:BadMatlabVersion',error.identifier))
-        fprintf(2,'the block must be processed manually\n');
+catch 
+    try
+        value = evalin('base',value);
+        tree = parse_math(value);
+        set_param(init_block,'Value',tree)
+    catch error
+        
+        fprintf(2,'%s%s%s\n%s\n',...
+            'error occured while parsing the expression : "',value,...
+            '" of block :',init_block);
+        if not(strcmp('Python:BadMatlabVersion',error.identifier))
+            fprintf(2,'the block must be processed manually\n');
+        end
+        err = 1;
+        tree = 'err'; % To go threw the next if test
+        fprintf(2,error.message);
     end
-    err = 1;
-    tree = 'err'; % To go threw the next if test
-    fprintf(2,error.message);
 end
 
 % If the value contains a complex expression and needs processing
 if isa(tree,'cell')
     new_block = strcat(init_block,'_p');
     % Creating a block from the expression
-    success = expression_process(value,new_block,'GAL_in');
+    success = expression_process(value,new_block);
     if not(success)
         fprintf(2,'The block %s has to be handled manually\n',init_block);
     else
