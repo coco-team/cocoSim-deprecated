@@ -77,7 +77,7 @@ if nargin > 1
         %cst_file_name = strrep(constant_file,'.m','');
         display_msg(['Loading constants into workspace ' cst_name], Constants.INFO, 'simplifier', '');
         evalin('base', cst_name);
-        fprintf('Done\n\n');
+        display_msg('Done\n\n', Constants.INFO, 'simplifier', '');
     end
 end
 % Load Pre-GAL default_constants file
@@ -168,7 +168,7 @@ if not(isempty(ssys_list))
         %disp(ssys_list{i})
         set_param(ssys_list{i},'TreatAsAtomicUnit','on');   
     end
-    fprintf('Done\n\n');
+    display_msg('Done\n\n', Constants.INFO, 'simplifier', ''); 
 end
 
 % Set Inport data type to double if not defined
@@ -200,7 +200,6 @@ display_msg('Checking output blocks', Constants.INFO, 'simplifier', '');
 
 outport_list = find_system(new_model,'SearchDepth','1','BlockType','Outport');
 if isempty(outport_list)
-    %fprintf(2,'The model has no outport\n')
     display_msg('Model has no outport', Constants.WARNING, 'simplifier', '');
 else
      display_msg('Model has outport', Constants.INFO, 'simplifier', '');
@@ -210,7 +209,8 @@ end
 % Exporting the model to the mdl CoCoSim compatible file format
 
 display_msg('Saving simplified model', Constants.INFO, 'simplifier', '');
-disp(['Simplified model path: ' new_file])
+display_msg(['Simplified model path: ' new_file], Constants.INFO, 'simplifier', '');
+
 save_system(new_model,new_file,'OverwriteIfChangedOnDisk',true);
 % save_system(new_model,new_file,'ExportToVersion','R2008b');
 close_system(file_name,0)

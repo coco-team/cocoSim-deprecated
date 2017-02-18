@@ -6,12 +6,12 @@ function [] = clock_process(model)
 % Processing Clock blocks
 clock_list = find_system(model,'BlockType','Clock');
 if not(isempty(clock_list))
-    disp('Processing Clock blocks...')
+    display_msg('Processing Clock blocks...', Constants.INFO, 'clock_process', ''); 
     for i=1:length(clock_list)
-        disp(clock_list{i})
+        display_msg(clock_list{i}, Constants.INFO, 'clock_process', ''); 
         replace_one_block(clock_list{i},'gal_lib/clock');
     end
-    fprintf('Done\n\n');
+    display_msg('Done\n\n', Constants.INFO, 'clock_process', ''); 
 end
 end
 

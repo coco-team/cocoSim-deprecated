@@ -169,7 +169,7 @@ if s.bytes ~= 0
         end
         Query_time = Query_time + Query_time_i;
         msg = ['Zustre result for property node [' property_node_name ']: ' char(answer)];
-        display_msg(msg, Constants.INFO, 'Zustre property checking', '');
+        display_msg(msg, Constants.RESULT, 'Zustre property checking', '');
         if strcmp(answer, 'CEX')
             xml_cex = '';
             xml_cex = xml_doc.getElementsByTagName('Counterexample');

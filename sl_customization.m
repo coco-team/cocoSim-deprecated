@@ -266,7 +266,8 @@ function runCoCoSim
   addpath(fullfile(path, 'utils'));
   try
       simulink_name = get_param(gcs,'FileName');
-      cocoSim(simulink_name); % run cocosim 
+      cocosim_window(simulink_name);
+%       cocoSim(simulink_name); % run cocosim 
   catch ME
       if strcmp(ME.identifier, 'MATLAB:badsubscript') 
           msg = ['Activate debug message by running cocosim_debug=true', ...

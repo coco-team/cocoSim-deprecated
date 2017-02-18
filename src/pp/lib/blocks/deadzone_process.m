@@ -6,9 +6,9 @@ function [] = deadzone_process(model)
 % Processing Deadzone blocks
 deadzone_list = find_system(model,'BlockType','DeadZone');
 if not(isempty(deadzone_list))
-    disp('Processing Deadzone blocks...')
+    display_msg('Processing Deadzone blocks...', Constants.INFO, 'deadzone_process', '');
     for i=1:length(deadzone_list)
-        disp(deadzone_list{i})
+        display_msg(deadzone_list{i}, Constants.INFO, 'deadzone_process', '');
         lower_value = get_param(deadzone_list{i},'LowerValue');
         upper_value = get_param(deadzone_list{i},'UpperValue');
         replace_one_block(deadzone_list{i},'gal_lib/deadzone');
@@ -17,7 +17,7 @@ if not(isempty(deadzone_list))
         set_param(strcat(deadzone_list{i},'/upper_value'),...
             'Value',upper_value);
     end
-    fprintf('Done\n\n');
+    display_msg('Done\n\n', Constants.INFO, 'deadzone_process', ''); 
 end
 end
 

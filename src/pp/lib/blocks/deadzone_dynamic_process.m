@@ -6,12 +6,12 @@ function [] = deadzone_dynamic_process(model)
 % Processing Dead Zone Dynamic blocks
 deadzone_dyn_list = find_system(model,'MaskType','Dead Zone Dynamic');
 if not(isempty(deadzone_dyn_list))
-    disp('Processing Dead Zone Dynamic blocks...')
+    display_msg('Processing Dead Zone Dynamic blocks...', Constants.INFO, 'deadzone_dynamic_process', ''); 
     for i=1:length(deadzone_dyn_list)
-        disp(deadzone_dyn_list{i})
+        display_msg(deadzone_dyn_list{i}, Constants.INFO, 'deadzone_dynamic_process', ''); 
         replace_one_block(deadzone_dyn_list{i},'gal_lib/deadzone_dyn');   
     end
-    fprintf('Done\n\n');
+    display_msg('Done\n\n', Constants.INFO, 'deadzone_dynamic_process', ''); 
 end
 end
 

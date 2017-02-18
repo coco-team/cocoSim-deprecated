@@ -7,9 +7,9 @@ function [] = discrete_integrator_process(model)
 discrete_intr_list = find_system(model,'BlockType',...
     'DiscreteIntegrator');
 if not(isempty(discrete_intr_list))
-    disp('Processing Discrete Integrator blocks...')
+    display_msg('Processing Discrete Integrator blocks...', Constants.INFO, 'discrete_integrator_process', ''); 
     for i=1:length(discrete_intr_list)
-        disp(discrete_intr_list{i})
+        display_msg(discrete_intr_list{i}, Constants.INFO, 'discrete_integrator_process', ''); 
         sample_tmp = get_param(discrete_intr_list{i},'SampleTime');
         ICS = get_param(discrete_intr_list{i},'InitialConditionSource');
         ER = get_param(discrete_intr_list{i},'ExternalReset');
@@ -54,7 +54,7 @@ if not(isempty(discrete_intr_list))
         set_param(strcat(discrete_intr_list{i},'/UnitDelay'),...
             'SampleTime',sample_tmp);
     end
-    fprintf('Done\n\n');
+    display_msg('Done\n\n', Constants.INFO, 'discrete_integrator_process', ''); 
 end
 end
 
