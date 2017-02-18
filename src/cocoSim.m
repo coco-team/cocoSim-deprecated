@@ -449,13 +449,13 @@ display_msg('End of code generation', Constants.INFO, 'cocoSim', '');
 % Write traceability informations
 xml_trace.write();
 msg = sprintf(' %s', trace_file_name);
-display_msg(msg, Constants.INFO, 'Traceability', '');
+display_msg(msg, Constants.RESULT, 'Traceability', '');
 
 % Generated files informations
 
 sf2lus_Time = toc(sf2lus_start);
 msg = sprintf(' %s', nom_lustre_file);
-display_msg(msg, Constants.INFO, 'Lustre Code', '');
+display_msg(msg, Constants.RESULT, 'Lustre Code', '');
 
 
 %%%%%%%%%%%%% Compilation to C or Rust %%%%%%%%%%%%%
@@ -529,7 +529,7 @@ if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
         end
     end
 else
-    display_msg('No property to prove', Constants.INFO, 'Verification', '');
+    display_msg('No property to prove', Constants.RESULT, 'Verification', '');
 end
 
 %%%%%%%%%%%% Cleaning and end of operations %%%%%%%%%%
@@ -542,7 +542,7 @@ end
 
 t_end = now;
 t_compute = t_end - t_start;
-display_msg(['Total computation time: ' datestr(t_compute, 'HH:MM:SS.FFF')], Constants.INFO, 'Time', '');
+display_msg(['Total computation time: ' datestr(t_compute, 'HH:MM:SS.FFF')], Constants.RESULT, 'Time', '');
 update_status('Done');
 end
 

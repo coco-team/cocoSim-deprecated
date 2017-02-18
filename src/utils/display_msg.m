@@ -65,6 +65,7 @@ if tgroup_found && isa(tgroup,'matlab.ui.container.TabGroup')
     string = [old_str; splited_msg'];
     tgroup.Children(type).Children(1).String = string;
     tgroup.Children(type).Children(1).Value = numel(string);
+    tgroup.SelectedTab = tgroup.Children(type);
     drawnow limitrate
 else
     if type == 1
