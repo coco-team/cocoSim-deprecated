@@ -23,7 +23,7 @@ if nargin < 1
     return
 end
 
-
+update_status('Configuration');
 % Get start time
 t_start = now;
 sf2lus_start = tic;
@@ -73,7 +73,7 @@ config_msg = [config_msg '|  Z3: ' Z3 '\n'];
 config_msg = [config_msg '--------------------------------------------------\n'];
 display_msg(config_msg, Constants.INFO, 'cocoSim', '');
 
-
+update_status('Loading model');
 msg = ['Loading model: ' model_full_path];
 display_msg(msg, Constants.INFO, 'cocoSim', '');
 
@@ -83,10 +83,11 @@ addpath(model_path);
 load_system(char(model_full_path));
 
 % Load all intialisation values and constants
+update_status('Loading constants');
 const_files_bak = const_files;
 try
     const_files = evalin('base', const_files);
-catch 
+catch
     const_files = const_files_bak;
 end
 
@@ -132,6 +133,7 @@ end
 save 'tmp_data' origin_path model_path cocoSim_path bus_struct
 
 % Pre-process model
+update_status('Pre-processing');
 display_msg('Pre-processing', Constants.INFO, 'cocoSim', '');
 new_file_name = cocosim_pp(model_full_path);
 
@@ -149,6 +151,7 @@ property_file_base_name = fullfile(output_dir, strcat(file_name, '.property'));
 
 initialize_files(nom_lustre_file);
 
+update_status('Building internal format');
 display_msg('Building internal format', Constants.INFO, 'cocoSim', '');
 %%%%%%% Load all the systems including the referenced ones %%%%
 [models, subsystems] = find_mdlrefs(file_name);
@@ -168,7 +171,7 @@ xml_trace.init();
 bus_decl = write_buses(bus_struct);
 
 %%%%%%%%%%%%%%% Retrieving nodes code %%%%%%%%%%%%%%%
-
+update_status('Lustre generation');
 display_msg('Lustre generation', Constants.INFO, 'cocoSim', '');
 
 extern_nodes_string = '';
@@ -189,7 +192,7 @@ for idx_subsys=numel(inter_blk):-1:1
     msg = sprintf('Compiling %s:%s', inter_blk{idx_subsys}{1}.origin_name{1}, ...
         inter_blk{idx_subsys}{1}.type{1});
     display_msg(msg, Constants.DEBUG, 'cocoSim', '');
-	
+    
     %%%%%%% Matlab functions and CoCoSpec code generation %%%%%%%%%%%%%%%
     is_matlab_function = false;
     is_cocospec = false;
@@ -225,7 +228,7 @@ for idx_subsys=numel(inter_blk):-1:1
         else
             print_spec = true;
         end
-                
+        
     elseif is_matlab_function
         display_msg('Found Embedded Matlab', Constants.INFO, 'cocoSim', '');
         try
@@ -265,7 +268,7 @@ for idx_subsys=numel(inter_blk):-1:1
         end
         nodes_string = [nodes_string block_string];
         extern_Stateflow_nodes_fun = [extern_Stateflow_nodes_fun, external_nodes_i];
-       %%%%% Standard Simulink blocks code generation %%%%%%%%%%%%%%%
+        %%%%% Standard Simulink blocks code generation %%%%%%%%%%%%%%%
     elseif (idx_subsys == 1 || ~Constants.is_property(inter_blk{idx_subsys}{1}.mask_type)) && inter_blk{idx_subsys}{1}.num_output ~= 0
         
         if strcmp(inter_blk{idx_subsys}{1}.type, 'SubSystem')
@@ -281,7 +284,7 @@ for idx_subsys=numel(inter_blk):-1:1
                 extern_Stateflow_nodes_fun = [extern_Stateflow_nodes_fun, external_nodes_i];
             end
         end
-    
+        
         
         [node_header, let_tel_code, extern_s_functions_string, extern_funs, properties_nodes, property_node_name, extern_matlab_funs, c_code, external_nodes_i] = ...
             blocks2lustre(file_name, nom_lustre_file, inter_blk, blks, mat_files, idx_subsys, trace, xml_trace);
@@ -296,7 +299,7 @@ for idx_subsys=numel(inter_blk):-1:1
         
         for idx_ext_mat=1:numel(extern_matlab_funs)
             extern_matlab_functions{numel(extern_matlab_functions)+1} = extern_matlab_funs{idx_ext_mat};
-        end 
+        end
         
         properties_nodes_string = [properties_nodes_string properties_nodes];
         if numel(property_node_name) > 0
@@ -338,9 +341,9 @@ j = 1;
 for i=1:n
     fun = extern_Stateflow_nodes_fun(i);
     if strcmp(fun.Name,'trigo')
-            extern_functions{cpt_extern_functions} = fun.Type;
-            cpt_extern_functions = cpt_extern_functions + 1;
-    elseif isempty(find(strcmp(functions_names,fun.Name),1))  
+        extern_functions{cpt_extern_functions} = fun.Type;
+        cpt_extern_functions = cpt_extern_functions + 1;
+    elseif isempty(find(strcmp(functions_names,fun.Name),1))
         functions_names{j} = fun.Name;
         j=j+1;
         if strcmp(fun.Name,'lustre_math_fun')
@@ -350,7 +353,7 @@ for i=1:n
             extern_Stateflow_nodes_fun_string = ['#open <conv>\n', extern_Stateflow_nodes_fun_string];
             
         elseif strcmp(fun.Name,'after')
-            extern_Stateflow_nodes_fun_string = [extern_Stateflow_nodes_fun_string temporal_operators(fun)];    
+            extern_Stateflow_nodes_fun_string = [extern_Stateflow_nodes_fun_string temporal_operators(fun)];
             
         else
             extern_Stateflow_nodes_fun_string = [extern_Stateflow_nodes_fun_string math_functions(fun)];
@@ -456,6 +459,7 @@ display_msg(msg, Constants.INFO, 'Lustre Code', '');
 
 
 %%%%%%%%%%%%% Compilation to C or Rust %%%%%%%%%%%%%
+update_status('Compilation');
 if RUST_GEN
     display_msg('Generating Rust Code', Constants.INFO, 'Rust Compilation', '');
     try
@@ -476,6 +480,7 @@ end
 
 
 %%%%%%%%%%%%% Verification %%%%%%%%%%%%%%%
+update_status('Verification');
 smt_file = '';
 Query_time = 0;
 if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
@@ -529,68 +534,77 @@ end
 
 %%%%%%%%%%%% Cleaning and end of operations %%%%%%%%%%
 
-    % Temporary files cleaning
-    display_msg('Cleaning temporary files', Constants.INFO, 'cocoSim', '');
-    if exist(strcat(origin_path,'/tmp_data.mat'), 'file') == 2
-        delete(strcat(origin_path,'/tmp_data.mat'));
-    end
+% Temporary files cleaning
+display_msg('Cleaning temporary files', Constants.INFO, 'cocoSim', '');
+if exist(strcat(origin_path,'/tmp_data.mat'), 'file') == 2
+    delete(strcat(origin_path,'/tmp_data.mat'));
+end
 
-    t_end = now;
-    t_compute = t_end - t_start;
-    display_msg(['Total computation time: ' datestr(t_compute, 'HH:MM:SS.FFF')], Constants.INFO, 'Time', '');
-
+t_end = now;
+t_compute = t_end - t_start;
+display_msg(['Total computation time: ' datestr(t_compute, 'HH:MM:SS.FFF')], Constants.INFO, 'Time', '');
+update_status('Done');
 end
 
 function display_help_message()
-    msg = [ ' -----------------------------------------------------  \n'];
-    msg = [msg '  CoCoSim: Automated Analysis Framework for Simulink/Stateflow\n'];
-    msg = [msg '   \n Usage:\n'];
-    msg = [msg '    >> cocoSim(MODEL_PATH, [MAT_CONSTANTS_FILES], [TIME_STEP], [TRACE])\n'];
-    msg = [msg '\n'];
-    msg = [msg '      MODEL_PATH: a string containing the path to the model\n'];
-    msg = [msg '        e.g. ''cocoSim test/properties/property_2_test.mdl\''\n'];
-    msg = [msg '      MAT_CONSTANT_FILES: an optional list of strings containing the\n'];
-    msg = [msg '      path to the mat files containing the simulation constants\n'];
-    msg = [msg '        e.g. {''../../constants1.mat'',''../../constants2.mat''}\n'];
-    msg = [msg '        default: {}\n'];
-    msg = [msg '      TIME_STEP: an optional numeric value for the simulation time step\n'];
-    msg = [msg '        e.g. 0.1\n'];
-    msg = [msg '        default: 0.1\n'];
-    msg = [msg '      TRACE: a optional boolean value stating if we need to print the \n'];
-    msg = [msg '      traceability informations\n'];
-    msg = [msg '        e.g. true\n'];
-    msg = [msg '        default: false\n'];
-    msg = [msg  '  -----------------------------------------------------  \n'];
-    cprintf('blue', msg);
+msg = [ ' -----------------------------------------------------  \n'];
+msg = [msg '  CoCoSim: Automated Analysis Framework for Simulink/Stateflow\n'];
+msg = [msg '   \n Usage:\n'];
+msg = [msg '    >> cocoSim(MODEL_PATH, [MAT_CONSTANTS_FILES], [TIME_STEP], [TRACE])\n'];
+msg = [msg '\n'];
+msg = [msg '      MODEL_PATH: a string containing the path to the model\n'];
+msg = [msg '        e.g. ''cocoSim test/properties/property_2_test.mdl\''\n'];
+msg = [msg '      MAT_CONSTANT_FILES: an optional list of strings containing the\n'];
+msg = [msg '      path to the mat files containing the simulation constants\n'];
+msg = [msg '        e.g. {''../../constants1.mat'',''../../constants2.mat''}\n'];
+msg = [msg '        default: {}\n'];
+msg = [msg '      TIME_STEP: an optional numeric value for the simulation time step\n'];
+msg = [msg '        e.g. 0.1\n'];
+msg = [msg '        default: 0.1\n'];
+msg = [msg '      TRACE: a optional boolean value stating if we need to print the \n'];
+msg = [msg '      traceability informations\n'];
+msg = [msg '        e.g. true\n'];
+msg = [msg '        default: false\n'];
+msg = [msg  '  -----------------------------------------------------  \n'];
+cprintf('blue', msg);
 end
 
 
 function initialize_files(lustre_file)
-  % Create lustre file
-  fid = fopen(lustre_file, 'w');
-  fprintf(fid, '-- This file has been generated by CoCoSim\n\n');
-  fclose(fid);
+% Create lustre file
+fid = fopen(lustre_file, 'w');
+fprintf(fid, '-- This file has been generated by CoCoSim\n\n');
+fclose(fid);
 end
 
 function [str] = print_int_to_real()
-  str = '#open <conv>\n';
+str = '#open <conv>\n';
 end
 
 function [nodes] = print_dt_conversion_nodes(rounding)
-    load 'tmp_dt_conv'
-    nodes = '';
-    elems = regexp(rounding, ' ', 'split');
-    if numel(elems) > 0
-        elems = unique(elems);
-        nodes = '-- Conversion nodes';
-        for idx_round=1:numel(elems)
-            % Print rounding node
-            str = ['\nnode ' elems{idx_round} '(In : real)\n'];
-            str = [str 'returns (Out : int)\n'];
-            str = [str 'let\n\tOut = real_to_int(In);\ntel'];
-            str = sprintf('%s\n', str);
-            nodes = [nodes str];
-        end
+load 'tmp_dt_conv'
+nodes = '';
+elems = regexp(rounding, ' ', 'split');
+if numel(elems) > 0
+    elems = unique(elems);
+    nodes = '-- Conversion nodes';
+    for idx_round=1:numel(elems)
+        % Print rounding node
+        str = ['\nnode ' elems{idx_round} '(In : real)\n'];
+        str = [str 'returns (Out : int)\n'];
+        str = [str 'let\n\tOut = real_to_int(In);\ntel'];
+        str = sprintf('%s\n', str);
+        nodes = [nodes str];
     end
-    nodes = sprintf('%s', nodes);
+end
+nodes = sprintf('%s', nodes);
+end
+
+function update_status(status)
+try
+    h = evalin('base','cocosim_status_handle');
+    h.String = status;
+    drawnow limitrate
+catch
+end
 end

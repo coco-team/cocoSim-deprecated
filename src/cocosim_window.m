@@ -3,7 +3,7 @@ function cocosim_window(model_full_path, const_files, default_Ts, trace, dfexpor
 
 
 
-file_name = 'test_file_name';
+file_name = model_full_path;
 status = 'Preprocessing';
 %  Create and then hide the UI as it is being constructed.
 try
@@ -13,7 +13,9 @@ end
 window = figure( 'Name', 'CocoSim window', ...
     'MenuBar', 'none', ...
     'Toolbar', 'none', ...
-    'NumberTitle', 'off' );
+    'NumberTitle', 'off',...
+    'units','normalized',...
+    'outerposition',[0 0 1 1]);
 
 
 % Construct the components.
@@ -56,6 +58,7 @@ tab3.ForegroundColor = 'red';
 tab2.ForegroundColor = 'yellow';
 cocosim_display_tgroup.SelectedTab = tab1;
 
+
 info_edit = uicontrol('Parent', tab1, 'Style', 'list','HorizontalAlignment','left',...
     'String', {},'Units', 'Normalized', 'Position',[0,0,1,1], ...
     'ForegroundColor', 'black') ;
@@ -80,7 +83,8 @@ movegui(window,'center')
 window.Visible = 'on';
 
 %% call cocosim
-assignin('base','cocosim_display_tgroup',cocosim_display_tgroup);
+assignin('base','cocosim_tgroup_handle',cocosim_display_tgroup);
+assignin('base','cocosim_status_handle',t_status);
 if nargin==1
     cocoSim(model_full_path);
 elseif nargin==2
@@ -92,5 +96,8 @@ elseif nargin==4
 elseif nargin==5
     cocoSim(model_full_path, const_files, default_Ts, trace, dfexport);
 end
+
+%% clear temporal values
+% evalin('base',' clear cocosim_tgroup_handle');
 
 end

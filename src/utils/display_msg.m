@@ -45,7 +45,7 @@ str = regexp(str, '\\n', 'split');
 
 msg = [final_message ' ' str{1} '\n'];
 try
-    tgroup = evalin('base','cocosim_display_tgroup');
+    tgroup = evalin('base','cocosim_tgroup_handle');
     tgroup_found  = true;
 catch
     tgroup_found  = false;
@@ -64,7 +64,8 @@ if tgroup_found && isa(tgroup,'matlab.ui.container.TabGroup')
 %     htmlmsg = color_text(msg, color{type});
     string = [old_str; splited_msg'];
     tgroup.Children(type).Children(1).String = string;
-
+    tgroup.Children(type).Children(1).Value = numel(string);
+    drawnow limitrate
 else
     if type == 1
         cprintf('black', msg);
