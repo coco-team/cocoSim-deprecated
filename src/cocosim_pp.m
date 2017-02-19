@@ -104,7 +104,8 @@ deadzone_process(new_model);
 deadzone_dynamic_process(new_model);
 
 % Processing Discrete Integrator blocks
-discrete_integrator_process(new_model);
+%we handle it directly
+% discrete_integrator_process(new_model);
 
 % Processing Discrete State Space blocks
 discrete_state_space_process(new_model);
@@ -113,8 +114,12 @@ discrete_state_space_process(new_model);
 from_workspace_process(new_model);
 
 % Processing Function blocks
-function_process(new_model);
-
+try
+    function_process(new_model);
+catch
+    % python parser does not handle boolean expressions x>=1 ...
+    % we can handle it directly by our translation 
+end
 % Processing Gain blocks
 gain_process(new_model);
 

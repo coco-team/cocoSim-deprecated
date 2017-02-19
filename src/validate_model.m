@@ -42,7 +42,8 @@ validation_compute = 0;
 lus_file_path  = '';
 
 try
-    fprintf('Compiling model "%s" to Lustre\n',file_name);
+    f_msg = sprintf('Compiling model "%s" to Lustre\n',file_name);
+    display_msg(f_msg, Constants.RESULT, 'validation', '');
     %     lus_file_path= '/home/hamza/Documents/coco_team/regression-test/simulink/unit_test/not_valid_models/lustre_files/src_math_int_2_test/math_int_2_test.lus';
     [lus_file_path, sf2lus_time, nb_actions, Query_time]=cocoSim(model_full_path);
     
@@ -329,36 +330,38 @@ else
                     end
                 end
                 if ~valid
-                    fprintf('translation for model "%s" is not valid \n',file_name);
-                    %                     fprintf('Sometimes is just inputs order is not the same in lustre.\n');
-                    %                     fprintf('Please Verify the order in your lustre file \n');
-                    %                     fprintf('If the order of inports is not the same as in your model,\nplease fix it in your model to match lustre generation');
-                    %                     fprintf('The right order of inputs in your model is described in this counter example\n');
-                    
-                    fprintf('Here is the counter example:\n');
+                    f_msg = sprintf('translation for model "%s" is not valid \n',file_name);
+                    display_msg(f_msg, Constants.RESULT, 'validation', '');
+                    f_msg = sprintf('Here is the counter example:\n');
+                    display_msg(f_msg, Constants.RESULT, 'validation', '');
                     index_out = 0;
                     for i=0:error_index-1
-                        fprintf('*****step : %d**********\n',i+1);
-                        fprintf('*****inputs: \n');
+                        f_msg = sprintf('*****step : %d**********\n',i+1);
+                        display_msg(f_msg, Constants.RESULT, 'CEX', '');
+                        f_msg = sprintf('*****inputs: \n');
+                        display_msg(f_msg, Constants.RESULT, 'CEX', '');
                         for j=1:numberOfInports
                             dim = input_struct.signals(j).dimensions;
                             if numel(dim)==1
                                 in = input_struct.signals(j).values(i+1,:);
                                 name = input_struct.signals(j).name;
                                 for k=1:dim
-                                    fprintf('input %s_%d:%f\n',name,k,in(k));
+                                    f_msg = sprintf('input %s_%d:%f\n',name,k,in(k));
+                                    display_msg(f_msg, Constants.RESULT, 'CEX', '');
                                 end
                             else
                                 in = input_struct.signals(j).values(:,:,i+1);
                                 name = input_struct.signals(j).name;
                                 for dim1=1:dim(1)
                                     for dim2=1:dim(2)
-                                        fprintf('input %s_%d_%d:%10.10f\n',name,dim1,dim2,in(dim1, dim2));
+                                        f_msg = sprintf('input %s_%d_%d:%10.10f\n',name,dim1,dim2,in(dim1, dim2));
+                                        display_msg(f_msg, Constants.RESULT, 'CEX', '');
                                     end
                                 end
                             end
                         end
-                        fprintf('*****outputs: \n');
+                        f_msg = sprintf('*****outputs: \n');
+                        display_msg(f_msg, Constants.RESULT, 'CEX', '');
                         for k=1:numberOfOutputs
                             dim = yout_signals(k).dimensions;
                             if numel(dim)==2
@@ -384,20 +387,24 @@ else
                                     output_val = output_value{2};
                                     output_val = str2num(output_val(2:end-1));
                                     output_name1 = Utils.naming_alone(yout_signals(k).blockName);
-                                    fprintf('output %s: %10.16f\n',output_name1,yout_values(j));
-                                    fprintf('Lustre output %s: %10.16f\n',output_name,output_val);
+                                    f_msg = sprintf('output %s: %10.16f\n',output_name1,yout_values(j));
+                                    display_msg(f_msg, Constants.RESULT, 'CEX', '');
+                                    f_msg = sprintf('Lustre output %s: %10.16f\n',output_name,output_val);
+                                    display_msg(f_msg, Constants.RESULT, 'CEX', '');
                                 else
-                                    warning('strang behavour of output %s',outputs_array{numberOfOutputs*i+k});
+                                    f_msg = sprintf('strang behavour of output %s',outputs_array{numberOfOutputs*i+k});
+                                    display_msg(f_msg, Constants.WARNING, 'CEX', '');
                                     return;
                                 end
                             end
                         end
                         
                     end
-                    fprintf('difference between outputs %s is :%2.10f\n',diff_name, diff);
+                    f_msg = sprintf('difference between outputs %s is :%2.10f\n',diff_name, diff);
+                    display_msg(f_msg, Constants.RESULT, 'CEX', '');
                 else
                     msg = sprintf('Translation for model "%s" is valid \n',file_name);
-                    display_msg(msg, Constants.RESULT, 'validation', '');
+                    display_msg(msg, Constants.RESULT, 'CEX', '');
                 end
                 
                 %uncommetn these lines if you want to remove unused files

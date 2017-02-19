@@ -39,11 +39,11 @@ if not(strcmp(err_code, ''))
     final_message = [final_message '(code: ' err_code ')'];
 end
 
-str = regexp(str, '\\n', 'split');
+str_sp = regexp(str, '\\n', 'split');
 
 % disp([final_message ' ' str{1}]);
 
-msg = [final_message ' ' str{1} '\n'];
+msg = [final_message ' ' str_sp{1} '\n'];
 try
     tgroup = evalin('base','cocosim_tgroup_handle');
     tgroup_found  = true;
@@ -58,14 +58,14 @@ catch
 end
 % color = {'black','cyan','red','[1,0.5,0]','blue'};
 if tgroup_found && isa(tgroup,'matlab.ui.container.TabGroup')
-    
+    msg = [final_message ' ' str '\n'];
     old_str = tgroup.Children(type).Children(1).String;
     splited_msg = regexp(msg,'\\n','split');
-%     htmlmsg = color_text(msg, color{type});
+    %     htmlmsg = color_text(msg, color{type});
     string = [old_str; splited_msg'];
     tgroup.Children(type).Children(1).String = string;
     tgroup.Children(type).Children(1).Value = numel(string);
-    tgroup.SelectedTab = tgroup.Children(type);
+    if (type~=4 || cocosim_debug), tgroup.SelectedTab = tgroup.Children(type); end
     drawnow limitrate
 else
     if type == 1
@@ -79,12 +79,13 @@ else
     elseif type == 5
         cprintf('*blue', msg)
     end
-end
-for idx_str=2:numel(str)
-    if ~strcmp(str{idx_str}, '')
-        disp(sprintf('\t %s',str{idx_str}));
+    for idx_str=2:numel(str_sp)
+        if ~strcmp(str_sp{idx_str}, '')
+            disp(sprintf('\t %s',str_sp{idx_str}));
+        end
     end
 end
+
 
 % if type == 3
 % 	warning off backtrace
