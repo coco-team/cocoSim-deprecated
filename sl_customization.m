@@ -36,7 +36,7 @@ end
          unsupported_blocks( model_full_path );
          open(model_full_path);
      catch ME
-         disp(ME.message)
+         display_msg(ME.getReport(),Constants.DEBUG,'getCheckBlocks','');
          disp('run the command in the top level of the model')
      end
  end
@@ -48,35 +48,34 @@ end
  end
 
  function validateCallBack(callbackInfo)
-     try
-      [cocoSim_path, ~, ~] = fileparts(mfilename('fullpath'));
-      model_full_path = get_param(gcs,'FileName');%gcs;
-      [valid, cocoSim_failed,lustrec_failed, ...
-          lustrec_binary_failed, sim_failed, lus_file_path, ...
-          ~, ~]=validate_model(model_full_path,cocoSim_path,1);
-
-      open(model_full_path);
-      msg = '';
-      if valid
-          msg = 'VALID';
-      elseif cocoSim_failed
-          msg = 'INVALID';
-      end
-%       h = msgbox(msg,'CoCoSim Translation Validation');
-      if lustrec_failed
-          open(lus_file_path)
-      elseif lustrec_binary_failed
-          display('LustreC binary generation failed');
-      elseif sim_failed
-          display('Simulation has failed');
-      else
-          open(lus_file_path)
-      end
-      
-     catch ME
-         disp(ME.message)
-         disp('run the command in the top level of the model')
+ try
+     [cocoSim_path, ~, ~] = fileparts(mfilename('fullpath'));
+     model_full_path = get_param(gcs,'FileName');%gcs;
+     L = log4m.getLogger(fullfile(fileparts(model_full_path),'logfile.txt'));
+     [valid, validation_compute,lustrec_failed, ...
+         lustrec_binary_failed, sim_failed, lus_file_path, ...
+         sf2lus_time, ~, ~] = validate_model(model_full_path,cocoSim_path,1,L,1);
+     [~, file_name, ~] = fileparts(lus_file_path);
+     open(file_name);
+     msg = '';
+     if valid
+         msg = 'VALID';
+     elseif sf2lus_time==-1
+         msg = 'INVALID';
      end
+     if lustrec_failed
+         open(lus_file_path)
+     elseif lustrec_binary_failed
+         display('LustreC binary generation failed');
+     elseif sim_failed
+         display('Simulation has failed');
+     end
+     
+ catch ME
+     display_msg(ME.getReport(), Constants.DEBUG,'Validate_model','');
+     display_msg(ME.message, Constants.ERROR,'Validate_model','');
+     disp('run the command in the top level of the model')
+ end
  end
  
  % Function to pre-process and simplify the Simulink model
@@ -94,7 +93,8 @@ end
       pp_model = cocosim_pp(simulink_name);
       load_system(char(pp_model));
      catch ME
-         disp(ME.message)
+         display_msg(ME.getReport(),Constants.DEBUG,'getPP','');
+         display_msg(ME.message,Constants.ERROR,'getPP','');
          disp('run the command in the top level of the model')
      end
  end
@@ -121,33 +121,28 @@ function schema = viewContract(callbackInfo)
  end
  
   function viewContractCallback(callbackInfo)
-  try 
+      model_full_path = get_param(gcs,'FileName');
       simulink_name = gcs;
       contract_name = [simulink_name '_COCOSPEC'];
+      emf_name = [simulink_name '_EMF'];
       try
          CONTRACT = evalin('base', contract_name);
+         EMF = evalin('base', emf_name);
          disp(['CONTRACT LOCATION ' char(CONTRACT)])
-         if isunix
-             try
-               %cmd = sprintf('open -a Emacs %s', char(CONTRACT));
-               open(CONTRACT)
-               disp(cmd)
-               [status, out] = system(cmd);
-             catch ME
-                 cocoSimDialog(CONTRACT);
-             end
-         else
-             cocoSimDialog(CONTRACT);
-         end
+        
+         
       catch ME
-          disp(ME.message)
+          display_msg(ME.getReport(),Constants.DEBUG,'viewContract','');
           msg = sprintf('No CoCoSpec Contract for %s \n Verify the model with Zustre', simulink_name);
           warndlg(msg,'CoCoSim: Warning');
       end
-  catch ME
-      disp(ME.message)
-  end
-  end
+      try
+          Output_url = view_cocospec(model_full_path, char(EMF));
+          open(Output_url);
+      catch ME
+          display_msg(ME.getReport(),Constants.DEBUG,'viewContract','');
+      end
+    end
  
  function schema = getProps(callbackInfo)     
   schema = sl_action_schema;
@@ -161,7 +156,7 @@ function schema = viewContract(callbackInfo)
       simulink_name = gcs;
       add_cocospec(simulink_name);   
   catch ME
-      disp(ME.message)
+      display_msg(ME.getReport(),Constants.DEBUG,'getProps','');
   end
  end
 
@@ -187,7 +182,7 @@ function schema = viewContract(callbackInfo)
       simulink_name = get_param(gcs,'FileName');%gcs;
       cocoSim(simulink_name);
   catch ME
-      disp(ME.message)
+      display_msg(ME.getReport(),Constants.DEBUG,'getRust','');
       disp('run the command in the top level of the model')
   end
  end
@@ -270,22 +265,25 @@ function runCoCoSim
       simulink_name = get_param(gcs,'FileName');
       cocoSim(simulink_name); % run cocosim 
   catch ME
-      disp(ME.identifier)
       if strcmp(ME.identifier, 'MATLAB:badsubscript') 
           msg = ['Activate debug message by running cocosim_debug=true', ...
               ' to get more information where the model in failing'];
           e_msg = sprintf('Error Msg: %s \n Action:\n\t %s', ME.message, msg);
           display_msg(e_msg, Constants.ERROR, 'cocoSim', '');
+          display_msg(ME.getReport(),Constants.DEBUG,'cocoSim','');
       elseif strcmp(ME.identifier,'MATLAB:MException:MultipleErrors')
           msg = 'Make sure that the model can be run (i.e. most probably missing constants)';
-          e_msg = sprintf('Error Msg: %s \n Action:\n\t %s', ME.message, msg);
-          display_msg(e_msg, Constants.ERROR, 'cocoSim', '');
+          d_msg = sprintf('Error Msg: %s', ME.getReport());
+          display_msg(d_msg, Constants.DEBUG, 'cocoSim', '');
+          display_msg(msg, Constants.ERROR, 'cocoSim', '');
       elseif strcmp(ME.identifier, 'Simulink:Commands:ParamUnknown')
           msg = 'Run CoCoSim on the most top block of the model';
           e_msg = sprintf('Error Msg: %s \n Action:\n\t %s', ME.message, msg);
           display_msg(e_msg, Constants.ERROR, 'cocoSim', '');
+          display_msg(ME.getReport(),Constants.DEBUG,'cocoSim','');
       else
-          disp(ME.message)
+          display_msg(ME.message,Constants.ERROR,'cocoSim','');
+          display_msg(ME.getReport(),Constants.DEBUG,'cocoSim','');
       end
       
   end
@@ -310,6 +308,6 @@ end
 %       simulink_name = gcs;
 %       cocoSim(simulink_name);
 %   catch ME
-%       disp(ME.message)
+%       disp(ME.getReport())
 %   end
 %  end

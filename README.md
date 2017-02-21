@@ -48,7 +48,7 @@ CoCoSim can be installed and used as follows:
 + Make sure to have one of the backround solvers installed (e.g. Zustre, Kind2 and or JKind)
 + You can now open your Simulink model, e.g. ```open test/properties/safe_1.mdl```
 
-### Example
+## # Example
 
 1. To test a safe property: `open test/properties/safe_1.mdl`
 2. Under the `Tools` menu choose `Verify with ...` and then `Zustre` (or JKind if you are under Windows OS).

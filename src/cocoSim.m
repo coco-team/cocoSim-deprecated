@@ -3,15 +3,15 @@
 % Copyright (C) 2014-2016  Carnegie Mellon University
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function [nom_lustre_file, sf2lus_Time, nb_actions]=cocoSim(model_full_path, const_files, default_Ts, trace, dfexport)
+% Main file for CoCoSim
 
+function [nom_lustre_file, sf2lus_Time, nb_actions, Query_time]=cocoSim(model_full_path, const_files, default_Ts, trace, dfexport)
+bdclose('all')
 % Checking the number of arguments
 if ~exist('trace', 'var')
     trace = false;
 end
-if ~exist('default_Ts', 'var')
-    default_Ts = 0.1;
-end
+
 if ~exist('const_files', 'var')
     const_files = {};
 end
@@ -28,11 +28,18 @@ end
 t_start = now;
 sf2lus_start = tic;
 % Retrieving of the path containing the cocoSim file
-[cocoSim_path, function_name, ext] = fileparts(mfilename('fullpath'));
+[cocoSim_path, ~, ~] = fileparts(mfilename('fullpath'));
 % Retrieving of the path containing the model for which we generate the code
-[model_path, file_name, ext] = fileparts(model_full_path);
+[model_path, file_name, ~] = fileparts(model_full_path);
 
-
+if ~exist('default_Ts', 'var')
+    try
+        ts = Simulink.BlockDiagram.getSampleTimes(file_name);
+        default_Ts = ts(1).Value(1);
+    catch
+        default_Ts = 0.1;
+    end
+end
 addpath(fullfile(cocoSim_path, 'backEnd'));
 addpath(fullfile(cocoSim_path, 'middleEnd'));
 addpath(fullfile(cocoSim_path, 'frontEnd'));
@@ -69,7 +76,7 @@ display_msg(config_msg, Constants.INFO, 'cocoSim', '');
 msg = ['Loading model: ' model_full_path];
 display_msg(msg, Constants.INFO, 'cocoSim', '');
 
-% add path the directory where the model is
+% add path the model directory
 addpath(model_path);
 
 load_system(char(model_full_path));
@@ -78,13 +85,13 @@ load_system(char(model_full_path));
 const_files_bak = const_files;
 try
     const_files = evalin('base', const_files);
-catch ERR
+catch 
     const_files = const_files_bak;
 end
 
 mat_files = {};
 % Are we dealing with a list of files provided by the user or just a simple file
-if strcmp(class(const_files), 'cell')
+if iscell(const_files)
     for i=1:numel(const_files)
         if strcmp(const_files{i}(end-1:end), '.m')
             evalin('base', ['run ' const_files{i} ';']);
@@ -98,7 +105,7 @@ if strcmp(class(const_files), 'cell')
             mat_files{numel(mat_files) + 1} = const_files{i};
         end
     end
-elseif strcmp(class(const_files), 'char')
+elseif ischar(const_files)
     if strcmp(const_files(end-1:end), '.m')
         evalin('base', ['run ' const_files ';']);
     else
@@ -116,7 +123,6 @@ end
 display_msg('Getting bus struct', Constants.INFO, 'cocoSim', '');
 bus_struct = BusUtils.get_bus_struct();
 
-
 % Save current path, model path and cocoSim path informations to temporary file
 origin_path = pwd;
 if strcmp(model_path, '')
@@ -126,24 +132,20 @@ save 'tmp_data' origin_path model_path cocoSim_path bus_struct
 
 % Pre-process model
 display_msg('Pre-processing', Constants.INFO, 'cocoSim', '');
-[new_file_name] = preprocess_model(file_name, cocoSim_path, ext);
+new_file_name = cocosim_pp(model_full_path);
 
 if ~strcmp(new_file_name, '')
-    file_name = new_file_name;
-    model_full_path = fullfile(model_path, file_name);
+    model_full_path = new_file_name;
+    [model_path, file_name, ~] = fileparts(model_full_path);
 end
 
 % Definition of the output files names
 output_dir = fullfile(model_path, strcat('lustre_files/src_', file_name));
-% TODO: Add message if the folder already exists to ask the user if he
-% really wants to override the existing folder
-[status, message, message_id] = mkdir(output_dir);
 nom_lustre_file = fullfile(output_dir, strcat(file_name, '.lus'));
-
+mkdir(output_dir);
 trace_file_name = fullfile(output_dir, strcat(file_name, '.cocosim.trace.xml'));
 property_file_base_name = fullfile(output_dir, strcat(file_name, '.property'));
 
-% TODO: Ask the user for file overriding
 initialize_files(nom_lustre_file);
 
 display_msg('Building internal format', Constants.INFO, 'cocoSim', '');
@@ -151,16 +153,18 @@ display_msg('Building internal format', Constants.INFO, 'cocoSim', '');
 [models, subsystems] = find_mdlrefs(file_name);
 
 %%%%%% Internal representation building %%%%%%
-[inter_blk, blks, complex_structs]= mk_internalRep(file_name, dfexport, models, subsystems, mat_files, default_Ts);
+[inter_blk, blks, complex_structs]= mk_internalRep(file_name, ...
+    dfexport, models, ...
+    subsystems, mat_files, ...
+    default_Ts);
 
-% Creation of the traceability XML node
+% Create traceability informations in XML format
 display_msg('Start tracebility', Constants.INFO, 'cocoSim', '');
 xml_trace = XML_Trace(model_full_path, trace_file_name);
 xml_trace.init();
 
-% Print buses declarations
+% Print bus declarations
 bus_decl = write_buses(bus_struct);
-
 
 %%%%%%%%%%%%%%% Retrieving nodes code %%%%%%%%%%%%%%%
 
@@ -240,8 +244,8 @@ for idx_subsys=numel(inter_blk):-1:1
             fclose(fid);
             display_msg('Successfully done processing Embedded Matlab', Constants.INFO, 'cocoSim', '');
         catch ME
-            disp(ME.message)
-            display_msg('Unable to process Embedded Matlab', Constants.ERROR, 'cocoSim', '');
+            display_msg(ME.getReport(), Constants.DEBUG, 'cocoSim', '');
+            display_msg(['Unable to process Embedded Matlab :' ME.message], Constants.ERROR, 'cocoSim', '');
         end
         
         
@@ -321,11 +325,7 @@ end
 % Open file for writing
 fid = fopen(nom_lustre_file, 'a');
 
-[str_include, extern_functions_string] = write_extern_functions(extern_functions, output_dir);
-% Write include for external functions
-if ~strcmp(str_include, '')
-    fprintf(fid, str_include);
-end
+
 
 % add external nodes called from action like min, max and matlab functions
 % or int_to_real and real_to_int
@@ -336,7 +336,10 @@ functions_names(:) = {''};
 j = 1;
 for i=1:n
     fun = extern_Stateflow_nodes_fun(i);
-    if isempty(find(strcmp(functions_names,fun.Name),1))  
+    if strcmp(fun.Name,'trigo')
+            extern_functions{cpt_extern_functions} = fun.Type;
+            cpt_extern_functions = cpt_extern_functions + 1;
+    elseif isempty(find(strcmp(functions_names,fun.Name),1))  
         functions_names{j} = fun.Name;
         j=j+1;
         if strcmp(fun.Name,'lustre_math_fun')
@@ -353,6 +356,13 @@ for i=1:n
         end
     end
 end
+
+[str_include, extern_functions_string] = write_extern_functions(extern_functions, output_dir);
+% Write include for external functions
+if ~strcmp(str_include, '')
+    fprintf(fid, str_include);
+end
+
 if ~strcmp(extern_Stateflow_nodes_fun_string, '')
     fprintf(fid, '-- External Stateflow functions\n');
     fprintf(fid, extern_Stateflow_nodes_fun_string);
@@ -438,8 +448,11 @@ msg = sprintf(' %s', trace_file_name);
 display_msg(msg, Constants.INFO, 'Traceability', '');
 
 % Generated files informations
+
+sf2lus_Time = toc(sf2lus_start);
 msg = sprintf(' %s', nom_lustre_file);
 display_msg(msg, Constants.INFO, 'Lustre Code', '');
+
 
 %%%%%%%%%%%%% Compilation to C or Rust %%%%%%%%%%%%%
 if RUST_GEN
@@ -447,6 +460,7 @@ if RUST_GEN
     try
         rust(nom_lustre_file);
     catch ME
+        display_msg(ME.getReport(), Constants.DEBUG, 'Rust Compilation', '');
         display_msg(ME.message, Constants.ERROR, 'Rust Compilation', '');
     end
 elseif C_GEN
@@ -455,12 +469,14 @@ elseif C_GEN
         lustrec(nom_lustre_file);
     catch ME
         display_msg(ME.message, Constants.ERROR, 'C Compilation', '');
+        display_msg(ME.getReport(), Constants.DEBUG, 'C Compilation', '');
     end
 end
 
 
 %%%%%%%%%%%%% Verification %%%%%%%%%%%%%%%
 smt_file = '';
+Query_time = 0;
 if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
     if not (strcmp(SOLVER, 'Z') || strcmp(SOLVER,'K') || strcmp(SOLVER, 'J'))
         display_msg('Available solvers are Z for Zustre and K for Kind2', Constants.WARNING, 'cocoSim', '');
@@ -477,15 +493,17 @@ if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
             end
         catch ME
             display_msg(ME.message, Constants.ERROR, 'SEAHORN', '');
+            display_msg(ME.getReport(), Constants.DEBUG, 'SEAHORN', '');
         end
     end
     open(models{end});
     if strcmp(SOLVER, 'Z')
         display_msg('Running Zustre', Constants.INFO, 'Verification', '');
         try
-            zustre(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace, is_SF, smt_file);
+            Query_time = zustre(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace, is_SF, smt_file);
         catch ME
-            display_msg(ME.message, Constants.ERROR, 'Verification', '');
+            display_msg(['Zustre has failed :' ME.message], Constants.ERROR, 'Verification', '');
+            display_msg(ME.getReport(), Constants.DEBUG, 'Verification', '');
         end
     elseif strcmp(SOLVER, 'K')
         display_msg('Running Kind2', Constants.INFO, 'Verification', '');
@@ -493,6 +511,7 @@ if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
             kind2(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace);
         catch ME
             display_msg(ME.message, Constants.ERROR, 'Verification', '');
+            display_msg(ME.getReport(), Constants.DEBUG, 'Verification', '');
         end
     elseif strcmp(SOLVER, 'J')
         display_msg('Running JKind', Constants.INFO, 'Verification', '');
@@ -500,6 +519,7 @@ if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
             jkind(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace);
         catch ME
             display_msg(ME.message, Constants.ERROR, 'Verification', '');
+            display_msg(ME.getReport(), Constants.DEBUG, 'Verification', '');
         end
     end
 else
@@ -508,82 +528,68 @@ end
 
 %%%%%%%%%%%% Cleaning and end of operations %%%%%%%%%%
 
-% Temporary files cleaning
-display_msg('Cleaning temporary files', Constants.INFO, 'cocoSim', '');
-if exist(strcat(origin_path,'/tmp_data.mat'), 'file') == 2
-    delete(strcat(origin_path,'/tmp_data.mat'));
-end
+    % Temporary files cleaning
+    display_msg('Cleaning temporary files', Constants.INFO, 'cocoSim', '');
+    if exist(strcat(origin_path,'/tmp_data.mat'), 'file') == 2
+        delete(strcat(origin_path,'/tmp_data.mat'));
+    end
 
-t_end = now;
-t_compute = t_end - t_start;
-sf2lus_Time = toc(sf2lus_start);
-display_msg(['Total computation time: ' datestr(t_compute, 'HH:MM:SS.FFF')], Constants.INFO, 'Time', '');
+    t_end = now;
+    t_compute = t_end - t_start;
+    display_msg(['Total computation time: ' datestr(t_compute, 'HH:MM:SS.FFF')], Constants.INFO, 'Time', '');
 
 end
 
 function display_help_message()
-msg = [ ' -----------------------------------------------------  \n'];
-msg = [msg '  CoCoSim: Automated Analysis Framework for Simulink/Stateflow\n'];
-msg = [msg '   \n Usage:\n'];
-msg = [msg '    >> cocoSim(MODEL_PATH, [MAT_CONSTANTS_FILES], [TIME_STEP], [TRACE])\n'];
-msg = [msg '\n'];
-msg = [msg '      MODEL_PATH: a string containing the path to the model\n'];
-msg = [msg '        e.g. ''cocoSim test/properties/property_2_test.mdl\''\n'];
-msg = [msg '      MAT_CONSTANT_FILES: an optional list of strings containing the\n'];
-msg = [msg '      path to the mat files containing the simulation constants\n'];
-msg = [msg '        e.g. {''../../constants1.mat'',''../../constants2.mat''}\n'];
-msg = [msg '        default: {}\n'];
-msg = [msg '      TIME_STEP: an optional numeric value for the simulation time step\n'];
-msg = [msg '        e.g. 0.1\n'];
-msg = [msg '        default: 0.1\n'];
-msg = [msg '      TRACE: a optional boolean value stating if we need to print the \n'];
-msg = [msg '      traceability informations\n'];
-msg = [msg '        e.g. true\n'];
-msg = [msg '        default: false\n'];
-msg = [msg  '  -----------------------------------------------------  \n'];
-cprintf('blue', msg);
+    msg = [ ' -----------------------------------------------------  \n'];
+    msg = [msg '  CoCoSim: Automated Analysis Framework for Simulink/Stateflow\n'];
+    msg = [msg '   \n Usage:\n'];
+    msg = [msg '    >> cocoSim(MODEL_PATH, [MAT_CONSTANTS_FILES], [TIME_STEP], [TRACE])\n'];
+    msg = [msg '\n'];
+    msg = [msg '      MODEL_PATH: a string containing the path to the model\n'];
+    msg = [msg '        e.g. ''cocoSim test/properties/property_2_test.mdl\''\n'];
+    msg = [msg '      MAT_CONSTANT_FILES: an optional list of strings containing the\n'];
+    msg = [msg '      path to the mat files containing the simulation constants\n'];
+    msg = [msg '        e.g. {''../../constants1.mat'',''../../constants2.mat''}\n'];
+    msg = [msg '        default: {}\n'];
+    msg = [msg '      TIME_STEP: an optional numeric value for the simulation time step\n'];
+    msg = [msg '        e.g. 0.1\n'];
+    msg = [msg '        default: 0.1\n'];
+    msg = [msg '      TRACE: a optional boolean value stating if we need to print the \n'];
+    msg = [msg '      traceability informations\n'];
+    msg = [msg '        e.g. true\n'];
+    msg = [msg '        default: false\n'];
+    msg = [msg  '  -----------------------------------------------------  \n'];
+    cprintf('blue', msg);
 end
 
 
-
-% function welcome_msg(model_full_path)
-% disp('here');
-% msg = {'Welcome to the CoCoSim Automated Analysis Framework'};
-% display_msg(msg, Constants.INFO, 'cocoSim', '');
-% msg = sprintf('Generating Lustre code ... : %s', model_full_path);
-% display_msg(msg, Constants.INFO, 'cocoSim', '');
-% end
-
 function initialize_files(lustre_file)
-% Create lustre file
-fid = fopen(lustre_file, 'w');
-fprintf(fid, '-- This file has been generated by CoCoSim\n\n');
-fclose(fid);
+  % Create lustre file
+  fid = fopen(lustre_file, 'w');
+  fprintf(fid, '-- This file has been generated by CoCoSim\n\n');
+  fclose(fid);
 end
 
 function [str] = print_int_to_real()
-% str = ['node int_to_real (In : int)\n'];
-% str = [str 'returns (Out : real)\n'];
-% str = [str 'let\n\tOut = 0.0;\ntel'];
-% str = sprintf('%s\n', str);
-str = '#open <conv>\n';
+  str = '#open <conv>\n';
 end
 
 function [nodes] = print_dt_conversion_nodes(rounding)
-load 'tmp_dt_conv'
-nodes = '';
-elems = regexp(rounding, ' ', 'split');
-if numel(elems) > 0
-    elems = unique(elems);
-    nodes = '-- Conversion nodes';
-    for idx_round=1:numel(elems)
-        % Print rounding node
-        str = ['\nnode ' elems{idx_round} '(In : real)\n'];
-        str = [str 'returns (Out : int)\n'];
-        str = [str 'let\n\tOut = real_to_int(In);\ntel'];
-        str = sprintf('%s\n', str);
-        nodes = [nodes str];
+    load 'tmp_dt_conv'
+    nodes = '';
+    elems = regexp(rounding, ' ', 'split');
+    if numel(elems) > 0
+        elems = unique(elems);
+        nodes = '-- Conversion nodes';
+        for idx_round=1:numel(elems)
+            % Print rounding node
+            str = ['\nnode ' elems{idx_round} '(In : real)\n'];
+            str = [str 'returns (Out : int)\n'];
+            str = [str 'let\n\tOut = real_to_int(In);\ntel'];
+            str = sprintf('%s\n', str);
+            nodes = [nodes str];
+        end
     end
-end
-nodes = sprintf('%s', nodes);
+    nodes = sprintf('%s', nodes);
 end

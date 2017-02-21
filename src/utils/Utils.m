@@ -7,7 +7,7 @@ classdef Utils
     methods (Static = true)
         
         function [lc] = list_cst(K, dt)
-            [r c] = size(K);
+            [r, c] = size(K);
             dt_lus = Utils.get_lustre_dt(dt);
             
             if strcmp(dt, 'write_compareto_bool')
@@ -554,7 +554,7 @@ classdef Utils
             res = false;
             var_name = '';
             if strcmp(inter_blk{1}.type, 'SubSystem')
-                if inter_blk{1}.action_reset || inter_blk{1}.foriter_reset || inter_blk{1}.enable_reset 
+                if inter_blk{1}.action_reset || inter_blk{1}.foriter_reset || inter_blk{1}.enable_reset
                     res = true;
                 end
             end
@@ -652,7 +652,7 @@ classdef Utils
             str_out = strrep(str_out, '}', '_rbrak_');
             %hamza modification
             str_out = strrep(str_out, ',', '_comma_');
-%             str_out = strrep(str_out, '/', '_slash_');
+            %             str_out = strrep(str_out, '/', '_slash_');
             str_out = strrep(str_out, '=', '_equal_');
             
             str_out = regexprep(str_out, '/(\d+)', '/_$1');
@@ -691,6 +691,8 @@ classdef Utils
                 vector = randi(IMAX, [dim,nb_iterations],dt);
             end
 %             seuil = randi(IMAX);
+%             vector(vector>seuil) = feval(dt,0);
+%             seuil = randi(seuil);
 %             vector(vector>seuil) = feval(dt,-1);
         end
         
@@ -705,9 +707,57 @@ classdef Utils
                 vector = double(100*rand([dim, nb_iterations]));
             end
 %             seuil = randi(IMAX);
-%             vector(vector>seuil) = double(-1);
+%             vector(vector>seuil) = 0;
+        end
+        
+        
+        %this function help to get the name of Simulink block from lustre
+        %variable name, using the generated tracability by Cocosim.
+        function block_name = get_block_name_from_variable_using_xRoot(xRoot, node_name, var_name)
+            
+            block_name = '';
+            nodes = xRoot.getElementsByTagName('Node');
+            for idx_node=0:nodes.getLength-1
+                block_name_node = nodes.item(idx_node).getAttribute('node_name');
+                if strcmp(block_name_node, node_name)
+                    inputs = nodes.item(idx_node).getElementsByTagName('Input');
+                    for idx_input=0:inputs.getLength-1
+                        input = inputs.item(idx_input);
+                        if strcmp(input.getAttribute('variable'), var_name)
+                            block = input.getElementsByTagName('block_name');
+                            block_name = char(block.item(0).getFirstChild.getData);
+                            return;
+                        end
+                    end
+                    outputs = nodes.item(idx_node).getElementsByTagName('Output');
+                    for idx_output=0:outputs.getLength-1
+                        output = outputs.item(idx_output);
+                        if strcmp(output.getAttribute('variable'), var_name)
+                            block = output.getElementsByTagName('block_name');
+                            block_name = char(block.item(0).getFirstChild.getData);
+                            return;
+                        end
+                    end
+                end
+            end
+        end
+        
+        
+        
+        function name = var_naming(unbloc, postfix)
+            
+            block_full_name = regexp(unbloc.name, '/', 'split');
+            if unbloc.name_level >= numel(block_full_name{1})
+                block_name = Utils.concat_delim(block_full_name{1}, '_');
+            else
+                block_name = Utils.concat_delim(block_full_name{1}(end - unbloc.name_level : end), '_');
+            end
+            name = [block_name '_' postfix];
         end
     end
+    
+    
+    
     
 end
 
