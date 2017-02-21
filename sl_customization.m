@@ -32,7 +32,7 @@ end
 
  function checkBlocksCallBack(callbackInfo)
      try
-         model_full_path = get_param(gcs,'FileName');
+         model_full_path = get_file_name(gcs);
          unsupported_blocks( model_full_path );
          open(model_full_path);
      catch ME
@@ -50,7 +50,7 @@ end
  function validateCallBack(callbackInfo)
  try
      [cocoSim_path, ~, ~] = fileparts(mfilename('fullpath'));
-     model_full_path = get_param(gcs,'FileName');%gcs;
+     model_full_path = get_file_name(gcs) ;
      L = log4m.getLogger(fullfile(fileparts(model_full_path),'logfile.txt'));
      validate_window(model_full_path,cocoSim_path,1,L,1);
  catch ME
@@ -71,7 +71,7 @@ end
      try
       [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
       addpath(fullfile(prog_path, 'pp'));
-      simulink_name = get_param(gcs,'FileName');%gcs;
+      simulink_name = get_file_name(gcs);%gcs;
       pp_model = cocosim_pp(simulink_name);
       load_system(char(pp_model));
      catch ME
@@ -103,7 +103,7 @@ function schema = viewContract(callbackInfo)
  end
  
   function viewContractCallback(callbackInfo)
-      model_full_path = get_param(gcs,'FileName');
+      model_full_path = get_file_name(gcs);
       simulink_name = gcs;
       contract_name = [simulink_name '_COCOSPEC'];
       emf_name = [simulink_name '_EMF'];
@@ -161,7 +161,7 @@ function schema = viewContract(callbackInfo)
       assignin('base', 'SOLVER', 'NONE');
       assignin('base', 'RUST_GEN', 1);
       assignin('base', 'C_GEN', 0);
-      simulink_name = get_param(gcs,'FileName');%gcs;
+      simulink_name = get_file_name(gcs);%gcs;
       cocoSim(simulink_name);
   catch ME
       display_msg(ME.getReport(),Constants.DEBUG,'getRust','');
@@ -244,7 +244,7 @@ function runCoCoSim
   [path, name, ext] = fileparts(mfilename('fullpath'));
   addpath(fullfile(path, 'utils'));
   try
-      simulink_name = get_param(gcs,'FileName');
+      simulink_name = get_file_name(gcs);
       cocosim_window(simulink_name);
 %       cocoSim(simulink_name); % run cocosim 
   catch ME
@@ -294,3 +294,9 @@ end
 %       disp(ME.getReport())
 %   end
 %  end
+
+
+function fname = get_file_name(gcs)
+names = regexp(gcs,'/','split');
+fname = get_param(names{1},'FileName');
+end
