@@ -7,6 +7,7 @@
 
 function [nom_lustre_file, sf2lus_Time, nb_actions, Query_time]=cocoSim(model_full_path, const_files, default_Ts, trace, dfexport)
 bdclose('all')
+open(model_full_path);
 % Checking the number of arguments
 if ~exist('trace', 'var')
     trace = false;
@@ -23,7 +24,7 @@ if nargin < 1
     return
 end
 
-update_status('Configuration');
+Utils.update_status('Configuration');
 % Get start time
 t_start = now;
 sf2lus_start = tic;
@@ -73,7 +74,7 @@ config_msg = [config_msg '|  Z3: ' Z3 '\n'];
 config_msg = [config_msg '--------------------------------------------------\n'];
 display_msg(config_msg, Constants.INFO, 'cocoSim', '');
 
-update_status('Loading model');
+Utils.update_status('Loading model');
 msg = ['Loading model: ' model_full_path];
 display_msg(msg, Constants.INFO, 'cocoSim', '');
 
@@ -83,7 +84,7 @@ addpath(model_path);
 load_system(char(model_full_path));
 
 % Load all intialisation values and constants
-update_status('Loading constants');
+Utils.update_status('Loading constants');
 const_files_bak = const_files;
 try
     const_files = evalin('base', const_files);
@@ -133,13 +134,14 @@ end
 save 'tmp_data' origin_path model_path cocoSim_path bus_struct
 
 % Pre-process model
-update_status('Pre-processing');
+Utils.update_status('Pre-processing');
 display_msg('Pre-processing', Constants.INFO, 'cocoSim', '');
 new_file_name = cocosim_pp(model_full_path);
 
 if ~strcmp(new_file_name, '')
     model_full_path = new_file_name;
     [model_path, file_name, ~] = fileparts(model_full_path);
+    open(model_full_path);
 end
 
 % Definition of the output files names
@@ -151,7 +153,7 @@ property_file_base_name = fullfile(output_dir, strcat(file_name, '.property'));
 
 initialize_files(nom_lustre_file);
 
-update_status('Building internal format');
+Utils.update_status('Building internal format');
 display_msg('Building internal format', Constants.INFO, 'cocoSim', '');
 %%%%%%% Load all the systems including the referenced ones %%%%
 [models, subsystems] = find_mdlrefs(file_name);
@@ -171,7 +173,7 @@ xml_trace.init();
 bus_decl = write_buses(bus_struct);
 
 %%%%%%%%%%%%%%% Retrieving nodes code %%%%%%%%%%%%%%%
-update_status('Lustre generation');
+Utils.update_status('Lustre generation');
 display_msg('Lustre generation', Constants.INFO, 'cocoSim', '');
 
 extern_nodes_string = '';
@@ -459,7 +461,7 @@ display_msg(msg, Constants.RESULT, 'Lustre Code', '');
 
 
 %%%%%%%%%%%%% Compilation to C or Rust %%%%%%%%%%%%%
-update_status('Compilation');
+Utils.update_status('Compilation');
 if RUST_GEN
     display_msg('Generating Rust Code', Constants.INFO, 'Rust Compilation', '');
     try
@@ -480,7 +482,7 @@ end
 
 
 %%%%%%%%%%%%% Verification %%%%%%%%%%%%%%%
-update_status('Verification');
+Utils.update_status('Verification');
 smt_file = '';
 Query_time = 0;
 if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
@@ -543,7 +545,7 @@ end
 t_end = now;
 t_compute = t_end - t_start;
 display_msg(['Total computation time: ' datestr(t_compute, 'HH:MM:SS.FFF')], Constants.RESULT, 'Time', '');
-update_status('Done');
+Utils.update_status('Done');
 end
 
 function display_help_message()
@@ -600,11 +602,3 @@ end
 nodes = sprintf('%s', nodes);
 end
 
-function update_status(status)
-try
-    h = evalin('base','cocosim_status_handle');
-    h.String = status;
-    drawnow limitrate
-catch
-end
-end

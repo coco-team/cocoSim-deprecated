@@ -44,21 +44,24 @@ lus_file_path  = '';
 try
     f_msg = sprintf('Compiling model "%s" to Lustre\n',file_name);
     display_msg(f_msg, Constants.RESULT, 'validation', '');
-    %     lus_file_path= '/home/hamza/Documents/coco_team/regression-test/simulink/unit_test/not_valid_models/lustre_files/src_math_int_2_test/math_int_2_test.lus';
+    Utils.update_status('Runing CocoSim');
     [lus_file_path, sf2lus_time, nb_actions, Query_time]=cocoSim(model_full_path);
     
     [lus_file_dir, lus_file_name, ~] = fileparts(lus_file_path);
     file_name = lus_file_name;
     chart_name = lus_file_name;
     model_full_path = fullfile(model_path,strcat(file_name,ext));
+    if show_models
+        open(model_full_path);
+    end
     cd(lus_file_dir);
 catch ME
     msg = sprintf('Translation Failed for model "%s" :\n%s\n%s',file_name,ME.identifier,ME.message);
     display_msg(msg, Constants.ERROR, 'validation', '');
     display_msg(ME.getReport(), Constants.DEBUG, 'validation', '');
     
-    close_system(model_full_path,0);
-    bdclose('all')
+%     close_system(model_full_path,0);
+%     bdclose('all')
     sf2lus_time = -1;
     L.error('validation',[file_name, '\n' getReport(ME,'extended')]);
     rethrow(ME);
@@ -67,13 +70,14 @@ validation_start = tic;
 command = sprintf('%s -I %s -node %s %s',LUSTREC,LUCTREC_INCLUDE_DIR, Utils.name_format(chart_name), lus_file_path);
 msg = sprintf('LUSTREC_COMMAND : %s\n',command);
 display_msg(msg, Constants.INFO, 'validation', '');
+Utils.update_status('Runing Lustrec compiler');
 [status, lustre_out] = system(command);
 if status
     msg = sprintf('lustrec failed for model "%s" :\n%s',file_name,lustre_out);
     display_msg(msg, Constants.INFO, 'validation', '');
     lustrec_failed = 1;
-    close_system(model_full_path,0);
-    bdclose('all')
+%     close_system(model_full_path,0);
+%     bdclose('all')
     cd(OldPwd);
     return
 else
@@ -88,8 +92,8 @@ else
     if status
         err = printf('Compilation failed for model "%s" :\n%s',file_name,make_out);
         display_msg(err, Constants.ERROR, 'validation', '');
-        close_system(model_full_path,0);
-        bdclose('all')
+%         close_system(model_full_path,0);
+%         bdclose('all')
         command = sprintf('rm %s.makefile %s.c %s.h %s.o %s.lusic  %s_main.* %s_alloc.h %s_sfun.mexa64',...
             file_name, file_name,file_name,file_name,file_name,file_name,file_name,file_name);
         system(command);
@@ -100,7 +104,7 @@ else
         cd(OldPwd);
         return
     else
-        
+        Utils.update_status('Generating Lustrec outputs');
         load_system(model_full_path);
         
         rt = sfroot;
@@ -230,8 +234,8 @@ else
             err = sprintf('lustrec binary failed for model "%s" :\n%s',file_name,binary_out);
             display_msg(err, Constants.ERROR, 'validation', '');
             lustrec_binary_failed = 1;
-            close_system(model_full_path,0);
-            bdclose('all')
+%             close_system(model_full_path,0);
+%             bdclose('all')
             command = sprintf('!rm %s.makefile %s.c %s.h %s.o %s.lusic  %s_main.* %s_alloc.h %s_sfun.mexa64 %s',...
                 file_name, file_name,file_name,file_name,file_name,file_name,file_name,file_name,lustre_binary);
             system(command);
@@ -244,6 +248,7 @@ else
         else
             msg = sprintf('Simulating model "%s"\n',file_name);
             display_msg(msg, Constants.INFO, 'validation', '');
+            Utils.update_status('Simulating model');
             try
                 configSet = Simulink.ConfigSet;%copy(getActiveConfigSet(file_name));
                 set_param(configSet, 'Solver', 'FixedStepDiscrete');
@@ -274,6 +279,7 @@ else
                     end
                     simOut = sim(file_name, configSet);
                 end
+                Utils.update_status('Compare Simulink outputs and lustrec outputs');
                 yout = get(simOut,'yout');
                 yout_signals = yout.signals;
                 assignin('base','yout',yout);
@@ -330,6 +336,7 @@ else
                     end
                 end
                 if ~valid
+                    Utils.update_status('Translation is not valid');
                     f_msg = sprintf('translation for model "%s" is not valid \n',file_name);
                     display_msg(f_msg, Constants.RESULT, 'validation', '');
                     f_msg = sprintf('Here is the counter example:\n');
@@ -403,6 +410,7 @@ else
                     f_msg = sprintf('difference between outputs %s is :%2.10f\n',diff_name, diff);
                     display_msg(f_msg, Constants.RESULT, 'CEX', '');
                 else
+                    Utils.update_status('Translation is valid');
                     msg = sprintf('Translation for model "%s" is valid \n',file_name);
                     display_msg(msg, Constants.RESULT, 'CEX', '');
                 end
@@ -421,8 +429,8 @@ else
                 display_msg(msg, Constants.ERROR, 'validation', '');
                 sim_failed = 1;
                 valid = 0;
-                close_system(model_full_path,0);
-                bdclose('all')
+%                 close_system(model_full_path,0);
+%                 bdclose('all')
                 cd(OldPwd);
                 L.error('sim',[file_name, '\n' getReport(ME,'extended')]);
                 return
@@ -438,8 +446,8 @@ f_msg = [f_msg 'Simulation Output (workspace) : yout_signals \n'];
 f_msg = [f_msg 'LustreC binary Input ' fullfile(lus_file_dir,'input_values') '\n'];
 f_msg = [f_msg 'LustreC binary Output ' fullfile(lus_file_dir,'outputs_values') '\n'];
 display_msg(f_msg, Constants.RESULT, 'validation', '');
-close_system(model_full_path,0);
-bdclose('all')
+% close_system(model_full_path,0);
+% bdclose('all')
 
 cd(OldPwd);
 if sim_failed==1

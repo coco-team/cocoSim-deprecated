@@ -690,10 +690,10 @@ classdef Utils
             else
                 vector = randi(IMAX, [dim,nb_iterations],dt);
             end
-%             seuil = randi(IMAX);
-%             vector(vector>seuil) = feval(dt,0);
-%             seuil = randi(seuil);
-%             vector(vector>seuil) = feval(dt,-1);
+            %             seuil = randi(IMAX);
+            %             vector(vector>seuil) = feval(dt,0);
+            %             seuil = randi(seuil);
+            %             vector(vector>seuil) = feval(dt,-1);
         end
         
         function vector = construct_random_booleans(nb_iterations, IMAX, dim)
@@ -706,8 +706,8 @@ classdef Utils
             else
                 vector = double(100*rand([dim, nb_iterations]));
             end
-%             seuil = randi(IMAX);
-%             vector(vector>seuil) = 0;
+            %             seuil = randi(IMAX);
+            %             vector(vector>seuil) = 0;
         end
         
         
@@ -753,6 +753,15 @@ classdef Utils
                 block_name = Utils.concat_delim(block_full_name{1}(end - unbloc.name_level : end), '_');
             end
             name = [block_name '_' postfix];
+        end
+        
+        function update_status(status)
+            try
+                h = evalin('base','cocosim_status_handle');
+                h.String = status;
+                drawnow limitrate
+            catch
+            end
         end
     end
     

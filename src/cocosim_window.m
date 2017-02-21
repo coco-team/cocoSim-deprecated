@@ -5,6 +5,8 @@ function cocosim_window(model_full_path, const_files, default_Ts, trace, dfexpor
 
 file_name = model_full_path;
 status = 'Preprocessing';
+[model_path, f_name, ~] = fileparts(model_full_path);
+
 %  Create and then hide the UI as it is being constructed.
 try
     close('CocoSim window')
@@ -15,30 +17,37 @@ window = figure( 'Name', 'CocoSim window', ...
     'Toolbar', 'none', ...
     'NumberTitle', 'off',...
     'units','normalized',...
-    'outerposition',[0 0 1 1]);
+    'outerposition',[0 0.25 0.4 0.6]);
 
 
 % Construct the components.
 %% upper
+fields_nb = 3; % file_name + status + Save logs button
+space = 1/(fields_nb + 1);
+
 upper_panel = uipanel(window,'Title','',...
-    'Position',[.0 .8 1 .2]);
+    'Units', 'Normalized','Position',[.0 .6 1 .4]);
 
 t1 = uicontrol(upper_panel,'Style','text',...
     'String','file name:','HorizontalAlignment','left',...
-    'Units', 'Normalized','Position',[0.05 0.6 0.15 0.2]);
+    'Units', 'Normalized','Position',[0.05 space*3 0.15 space]);
 
 t_file_name = uicontrol(upper_panel,'Style','text',...
     'String',file_name,'HorizontalAlignment','left',...
-    'Units', 'Normalized','Position',[0.25 0.6 0.75 0.2]);
+    'Units', 'Normalized','Position',[0.25 space*3 0.75 space]);
 
 t2 = uicontrol(upper_panel,'Style','text',...
     'String','Status:','HorizontalAlignment','left',...
-    'Units', 'Normalized','Position',[0.05 0.3 0.15 0.2]);
+    'Units', 'Normalized','Position',[0.05 space*2 0.15 space]);
 
 t_status = uicontrol(upper_panel,'Style','text',...
     'String', status,'HorizontalAlignment','left',...
-    'Units', 'Normalized','Position',[0.25 0.3 0.75 0.2]);
+    'Units', 'Normalized','Position',[0.25 space*2 0.75 space]);
 
+uicontrol(upper_panel,'Style','pushbutton',...
+    'String','Save logs','HorizontalAlignment','left',...
+    'Units', 'Normalized','Position',[0.05 space*1 0.2 space],...
+    'Callback', @save_logs)
 %% down panel
 % INFO = 1;
 % WARNING = 2;
@@ -46,7 +55,7 @@ t_status = uicontrol(upper_panel,'Style','text',...
 % DEBUG = 4;
 % RESULT = 5;
 down_panel = uipanel(window,'Title','',...
-    'Position',[0 0 1 0.8]);
+    'Units', 'Normalized','Position',[0 0 1 0.6]);
 cocosim_display_tgroup = uitabgroup('Parent', down_panel);
 tab1 = uitab('Parent', cocosim_display_tgroup, 'Title', 'INFO');
 tab2 = uitab('Parent', cocosim_display_tgroup, 'Title', 'WARNING');
@@ -78,9 +87,7 @@ debug_edit = uicontrol('Parent', tab4, 'Style', 'list', 'HorizontalAlignment','l
 result_edit = uicontrol('Parent', tab5, 'Style', 'list', 'HorizontalAlignment','left',...
     'String', {},'Units', 'Normalized', 'Position',[0,0,1,1], ...
     'ForegroundColor', 'blue') ;
-%% Move the window to the center of the screen.
-movegui(window,'center')
-window.Visible = 'on';
+
 
 %% call cocosim
 assignin('base','cocosim_tgroup_handle',cocosim_display_tgroup);
@@ -97,6 +104,17 @@ elseif nargin==5
     cocoSim(model_full_path, const_files, default_Ts, trace, dfexport);
 end
 
+%% callbacks
+    function save_logs(source,callbackdata)
+        Debug_output = debug_edit.String;
+        output_file = fullfile(model_path,strcat(f_name,'_log'));
+        fid = fopen(output_file, 'w');
+        for msg_ind=1:numel(Debug_output)
+            fprintf(fid, sprintf('%s\n',Debug_output{msg_ind}));
+        end
+        % Close file
+        fclose(fid);
+    end
 %% clear temporal values
 % evalin('base',' clear cocosim_tgroup_handle');
 

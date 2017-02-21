@@ -17,16 +17,16 @@ window = figure( 'Name', 'Validation window', ...
     'Toolbar', 'none', ...
     'NumberTitle', 'off',...
     'units','normalized',...
-    'outerposition',[0 0 1 1]);
+    'outerposition',[0 0.25 0.5 0.6]);
 
 
 % Construct the components.
 %% upper
 upper_panel = uipanel(window,'Title','',...
-    'Position',[.0 .6 1 .4]);
+    'Units', 'Normalized','Position',[.0 .6 1 .4]);
 
 load_system(model_full_path);
-[~, f_name, ~] = fileparts(model_full_path);
+[model_path, f_name, ~] = fileparts(model_full_path);
 block_inports = find_system(f_name, 'SearchDepth',1, 'BlockType', 'Inport');
 inports_number = numel(block_inports);
 fields_nb = inports_number + 3; %inports +  file_name + status + Run button
@@ -70,6 +70,11 @@ uicontrol(upper_panel,'Style','pushbutton',...
     'String','Run','HorizontalAlignment','left',...
     'Units', 'Normalized','Position',[0.05 space*1 0.05 space],...
     'Callback', @call_validate)
+
+uicontrol(upper_panel,'Style','pushbutton',...
+    'String','Save logs','HorizontalAlignment','left',...
+    'Units', 'Normalized','Position',[0.15 space*1 0.2 space],...
+    'Callback', @save_logs)
 %% down panel
 % INFO = 1;
 % WARNING = 2;
@@ -77,7 +82,7 @@ uicontrol(upper_panel,'Style','pushbutton',...
 % DEBUG = 4;
 % RESULT = 5;
 down_panel = uipanel(window,'Title','',...
-    'Position',[0 0 1 0.6]);
+    'Units', 'Normalized','Position',[0 0 1 0.6]);
 cocosim_display_tgroup = uitabgroup('Parent', down_panel);
 tab1 = uitab('Parent', cocosim_display_tgroup, 'Title', 'INFO');
 tab2 = uitab('Parent', cocosim_display_tgroup, 'Title', 'WARNING');
@@ -109,14 +114,25 @@ debug_edit = uicontrol('Parent', tab4, 'Style', 'list', 'HorizontalAlignment','l
 result_edit = uicontrol('Parent', tab5, 'Style', 'list', 'HorizontalAlignment','left',...
     'String', {},'Units', 'Normalized', 'Position',[0,0,1,1], ...
     'ForegroundColor', 'blue') ;
-%% Move the window to the center of the screen.
-movegui(window,'center')
-window.Visible = 'on';
+
 
 %% call cocosim
 assignin('base','cocosim_tgroup_handle',cocosim_display_tgroup);
 assignin('base','cocosim_status_handle',t_status);
+
 nb_argin = nargin;
+
+%% callbacks
+    function save_logs(source,callbackdata)
+        Debug_output = debug_edit.String;
+        output_file = fullfile(model_path,strcat(f_name,'_log'));
+        fid = fopen(output_file, 'w');
+        for msg_ind=1:numel(Debug_output)
+            fprintf(fid, sprintf('%s\n',Debug_output{msg_ind}));
+        end
+        % Close file
+        fclose(fid);
+    end
     function call_validate(source,callbackdata)
         try
             if nb_argin==1
