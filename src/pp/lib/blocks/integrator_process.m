@@ -6,9 +6,9 @@ function [] = integrator_process(model)
 % Processing Integrator blocks
 intr_list = find_system(model,'BlockType','Integrator');
 if not(isempty(intr_list))
-    disp('Processing Integrator blocks...')
+    display_msg('Processing Integrator blocks...', Constants.INFO, 'integrator_process', ''); 
     for i=1:length(intr_list)
-        disp(intr_list{i})
+        display_msg(intr_list{i}, Constants.INFO, 'integrator_process', ''); 
         ICS = get_param(intr_list{i},'InitialConditionSource');
         ER = get_param(intr_list{i},'ExternalReset');
         % Handle internal/external initial value
@@ -33,7 +33,7 @@ if not(isempty(intr_list))
             end
         end
     end
-    fprintf('Done\n\n');
+    display_msg('Done\n\n', Constants.INFO, 'integrator_process', ''); 
 end
 end
 
@@ -46,9 +46,9 @@ function [] = integrator_process_old_version(model)
 % Processing Integrator blocks
 intr_list = find_system(model,'BlockType','Integrator');
 if not(isempty(intr_list))
-    disp('Processing Integrator blocks...')
+    display_msg('Processing Integrator blocks...', Constants.INFO, 'integrator_process', ''); 
     for i=1:length(intr_list)
-        disp(intr_list{i})
+        display_msg(intr_list{i}, Constants.INFO, 'integrator_process', ''); 
         ICS = get_param(intr_list{i},'InitialConditionSource');
         ER = get_param(intr_list{i},'ExternalReset');
         % Handle internal/external initial value

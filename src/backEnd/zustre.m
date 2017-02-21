@@ -100,7 +100,7 @@ if exist(ZUSTRE,'file')
                     catch ERR
                         found = false;
                         msg = ['Zustre: FAILURE to parse the counter example provided by Zustre: ' property_node_names{idx_prop}.prop_name '\n' getReport(ERR)];
-                        display_msg(msg, Constants.INFO, 'Zustre', '');
+                        display_msg(msg, Constants.RESULT, 'Zustre', '');
                     end
                     
                     if found
@@ -111,7 +111,7 @@ if exist(ZUSTRE,'file')
                             config_created = true;
                         catch ERR
                             msg = ['Verification: FAILURE to create the Simulink simulation configuration\n' getReport(ERR)];
-                            display_msg(msg, Constants.INFO, 'Zustre property checking', '');
+                            display_msg(msg, Constants.RESULT, 'Zustre property checking', '');
                             config_created = false;
                         end
                         if config_created
@@ -120,7 +120,7 @@ if exist(ZUSTRE,'file')
                                 createAnnotation(lustre_file_name, property_node_names{idx_prop}, IO_struct, mat_full_file, path);
                             catch ERR
                                 msg = [' FAILURE to create the Simulink CEX replay annotation\n' getReport(ERR)];
-                                display_msg(msg, Constants.INFO, 'Zustre', '');
+                                display_msg(msg, Constants.RESULT, 'Zustre', '');
                             end
                         end
                     end
@@ -168,7 +168,7 @@ if s.bytes ~= 0
         end
         Query_time = Query_time + Query_time_i;
         msg = ['Zustre result for property node [' property_node_name ']: ' char(answer)];
-        display_msg(msg, Constants.INFO, 'Zustre property checking', '');
+        display_msg(msg, Constants.RESULT, 'Zustre property checking', '');
         if strcmp(answer, 'CEX')
             xml_cex = '';
             xml_cex = xml_doc.getElementsByTagName('Counterexample');

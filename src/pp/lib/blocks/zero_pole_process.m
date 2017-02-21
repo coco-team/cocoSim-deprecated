@@ -7,14 +7,16 @@ function [] = zero_pole_process(model)
 zero_pole_list = find_system(model,'BlockType','ZeroPole');
 if not(isempty(zero_pole_list))
     % Apply the z-transform to the zero-pole block
-    disp('Processing ZeroPole defined transfer function blocks...')
+    display_msg('Processing ZeroPole defined transfer function blocks...',...
+        Constants.INFO, 'zero_pole_process', ''); 
     for i=1:length(zero_pole_list)
-        disp(zero_pole_list{i})
+        display_msg(zero_pole_list{i}, Constants.INFO, ...
+            'zero_pole_process', ''); 
         new_block_name = zero_pole_block_process(zero_pole_list{i});
         replace_one_block(zero_pole_list{i},new_block_name);
         delete_block(new_block_name)
     end
-    fprintf('Done\n\n');
+    display_msg('Done\n\n', Constants.INFO, 'zero_pole_process', ''); 
 end
 end
 

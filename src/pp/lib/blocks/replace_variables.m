@@ -27,7 +27,7 @@ function [] = block_parameter_replace(model,type,param_name)
 % Processing blocks
 block_list = find_system(model,'BlockType',type);
 if not(isempty(block_list))
-    disp(['Replacing variables in ' type ' blocks...'])
+    display_msg(['Replacing variables in ' type ' blocks...'], Constants.INFO, 'replace_variables', ''); 
     for i=1:length(block_list)
         variable = get_param(block_list{i},param_name);
         % get the actual value from the 'base' workspace
@@ -36,11 +36,11 @@ if not(isempty(block_list))
         command = strcat('length(',variable,');');
         issimple = evalin('base',command);
         if issimple == 1
-            disp(block_list{i})
+            display_msg(block_list{i}, Constants.INFO, 'replace_variables', ''); 
             set_param(block_list{i},param_name,num2str(value));
         end
     end
-    fprintf('Done\n\n');
+    display_msg('Done\n\n', Constants.INFO, 'replace_variables', ''); 
 end
 end
 

@@ -4,12 +4,12 @@ function [] = goto_process(model)
 %   model is a string containing the name of the model to search in
 goto_list = find_system(model,'BlockType','Goto');
 if not(isempty(goto_list))
-    disp('Processing Goto/From blocks...')
+    display_msg('Processing Goto/From blocks...', Constants.INFO, 'goto_process', ''); 
     for i=1:length(goto_list)
-        disp(goto_list{i})
+        display_msg(goto_list{i}, Constants.INFO, 'goto_process', ''); 
         goto_block_process(model,goto_list{i});
     end
-    fprintf('Done\n\n');
+    display_msg('Done\n\n', Constants.INFO, 'goto_process', ''); 
 end
 end
 

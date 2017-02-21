@@ -6,11 +6,11 @@ function [] = gain_process(model)
 % Processing Gain blocks
 gain_list = find_system(model,'BlockType','Gain');
 if not(isempty(gain_list))
-    disp('Processing Gains blocks...')
+    display_msg('Processing Gains blocks...', Constants.INFO, 'gain_process', ''); 
     for i=1:length(gain_list)
         gain_block_process(gain_list{i});
     end
-    fprintf('Done\n\n');
+    display_msg('Done\n\n', Constants.INFO, 'gain_process', ''); 
 end
 end
 
@@ -31,15 +31,16 @@ gain = get_param(init_block,'Gain');
 try
     tree = parse_math(gain);
 catch error
-    fprintf(2,'%s%s%s\n%s\n',...
+    msg = sprintf('%s%s%s\n%s\n',...
         'error occured while parsing the expression : "',gain,...
         '" of block :',init_block);
+    display_msg(msg, Constants.ERROR, 'gain_process', ''); 
     if not(strcmp('Python:BadMatlabVersion',error.identifier))
-        fprintf(2,'the block must be processed manually\n');
+        display_msg('the block must be processed manually\n', Constants.ERROR, 'gain_process', ''); 
     end
     err = 1;
     tree = 'err'; % To go threw the next if test
-    fprintf(2,error.message);
+    display_msg(error.message, Constants.ERROR, 'gain_process', ''); 
 end
 
 % If the gain contains a complex expression and needs processing
@@ -50,9 +51,10 @@ if isa(tree,'cell')
     gain = strcat('u*(',gain,')');
     success = expression_process(gain,new_block);
     if not(success)
-        fprintf(2,'The block %s has to be handled manually\n',init_block);
+        msg = sprintf('The block %s has to be handled manually\n',init_block);
+        display_msg(msg, Constants.ERROR, 'gain_process', ''); 
     else
-        disp(init_block)
+        display_msg('init_block', Constants.INFO, 'gain_process', ''); 
         replace_one_block(init_block,new_block);
         delete_block(new_block);
     end

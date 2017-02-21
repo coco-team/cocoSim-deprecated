@@ -8,9 +8,11 @@ Xinit = 30;
 % Processing To Workspace blocks
 to_workspace_list = find_system(model,'BlockType','ToWorkspace');
 if not(isempty(to_workspace_list))
-    disp('Processing To Workspace blocks...')
+    display_msg('Processing To Workspace blocks...', Constants.INFO,...
+        'to_workspace_process', ''); 
     for i=1:length(to_workspace_list)
-        disp(to_workspace_list{i})
+        display_msg(to_workspace_list{i}, Constants.INFO, ...
+            'to_workspace_process', ''); 
         tag = get_param(to_workspace_list{i},'VariableName');
         
         parent = get_param(to_workspace_list{i},'Parent');
@@ -35,7 +37,7 @@ if not(isempty(to_workspace_list))
             goto_block_process(model,to_workspace_list{i});
         end
     end
-    fprintf('Done\n\n');
+    display_msg('Done\n\n', Constants.INFO, 'to_workspace_process', ''); 
 end
 end
 

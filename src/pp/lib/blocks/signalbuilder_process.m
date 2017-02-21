@@ -6,14 +6,14 @@ function [] = signalbuilder_process(model)
 % Processing Signal Builder blocks
 signal_list = find_system(model,'MaskType','Sigbuilder block');
 if not(isempty(signal_list))
-    disp('Processing Signal Builder blocks...')
+    display_msg('Processing Signal Builder blocks...', Constants.INFO, 'signalbuilder_process', '');
     for i=1:length(signal_list)
-        disp(signal_list{i})
+        display_msg(signal_list{i}, Constants.INFO, 'signalbuilder_process', '');
         new_block_name = signalbuilder_block_process(signal_list{i});   
         replace_one_block(signal_list{i},new_block_name);
         delete_block(new_block_name);
     end
-    fprintf('Done\n\n');
+    display_msg('Done\n\n', Constants.INFO, 'signalbuilder_process', ''); 
 end
 end
 
