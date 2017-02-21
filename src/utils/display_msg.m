@@ -46,7 +46,11 @@ str_sp = regexp(str, '\\n', 'split');
 msg = [final_message ' ' str_sp{1} '\n'];
 try
     tgroup = evalin('base','cocosim_tgroup_handle');
-    tgroup_found  = true;
+    if (tgroup.isvalid)
+        tgroup_found  = true;
+    else
+        tgroup_found  = false;
+    end
 catch
     tgroup_found  = false;
 end
