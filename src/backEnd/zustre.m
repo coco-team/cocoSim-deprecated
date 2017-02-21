@@ -62,7 +62,6 @@ if exist(ZUSTRE,'file')
             display = [display '}'', ''hor'', ''right'', ''ver'', ''bottom'', ''texmode'', ''on'');'];
             obs_mask = Simulink.Mask.get(property_node_names{idx_prop}.annotation);
             obs_mask.Display = sprintf('%s',display);
-            disp(cocospec)
             if strcmp(answer, 'SAFE')
                 set_param(property_node_names{idx_prop}.origin_block_name, 'BackgroundColor', 'green');
                 set_param(property_node_names{idx_prop}.origin_block_name, 'ForegroundColor', 'green');
