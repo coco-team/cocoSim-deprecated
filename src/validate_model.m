@@ -6,7 +6,7 @@
 
 function [valid, validation_compute,lustrec_failed, ...
     lustrec_binary_failed, sim_failed, lus_file_path, ...
-    sf2lus_time, nb_actions, Query_time] = validate_model(model_full_path,cocoSim_path, show_models,L,FixedStep_is_defined)
+    sf2lus_time, nb_actions, Query_time] = validate_model(model_full_path,cocoSim_path, show_models, L, FixedStep_is_defined, min_max_constraints)
 bdclose('all')
 
 if ~exist('show_models', 'var')
@@ -165,26 +165,28 @@ else
         end
         nb_steps = stop_time/simulation_step +1;
         IMAX = 100; %IMAX for randi the max born for random number
+        IMIN = 0;
         input_struct.time = (0:simulation_step:stop_time)';
         input_struct.signals = [];
         number_of_inputs = 0;
         for i=1:numberOfInports
             input_struct.signals(i).name = inports(i).Name;
             dim = inports(i).Dimension;
+            if exist('min_max_constraints', 'var')
+                IMIN = min_max_constraints{i,2};
+                IMAX = min_max_constraints{i,3};
+            end
             if find(strcmp(inputEvents_names,inports(i).Name))
                 input_struct.signals(i).values = square(i*input_struct.time);
                 input_struct.signals(i).dimensions = 1;%dim;
             elseif strcmp(sT2fT(inports(i).DataType),'bool')
-                input_struct.signals(i).values = Utils.construct_random_booleans(nb_steps, IMAX, dim);
+                input_struct.signals(i).values = Utils.construct_random_booleans(nb_steps, IMIN, IMAX, dim);
                 input_struct.signals(i).dimensions = dim;
             elseif strcmp(sT2fT(inports(i).DataType),'int')
-                input_struct.signals(i).values = Utils.construct_random_integers(nb_steps, IMAX, inports(i).DataType, dim);
-                input_struct.signals(i).dimensions = dim;
-            elseif strcmp(inports(i).DataType,'single')
-                input_struct.signals(i).values = single(Utils.construct_random_doubles(nb_steps, IMAX,dim));
+                input_struct.signals(i).values = Utils.construct_random_integers(nb_steps, IMIN, IMAX, inports(i).DataType, dim);
                 input_struct.signals(i).dimensions = dim;
             else
-                input_struct.signals(i).values = Utils.construct_random_doubles(nb_steps, IMAX,dim);
+                input_struct.signals(i).values = Utils.construct_random_doubles(nb_steps, IMIN, IMAX,dim);
                 input_struct.signals(i).dimensions = dim;
             end
             if numel(dim)==1
