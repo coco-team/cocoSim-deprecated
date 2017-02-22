@@ -12,6 +12,7 @@ disp('--------------------------')
 disp('... adding cocoSim path')
 addpath(fullfile(cocoSim_path, 'src'));
 addpath(fullfile(cocoSim_path, 'src','gui'));
+addpath(fullfile(cocoSim_path, 'src','utils'));
 config;
 if strcmp(ZUSTRE, 'PATH')
     disp('Warning: Path to Zustre is NOT configured in src/config.m')

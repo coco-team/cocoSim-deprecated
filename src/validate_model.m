@@ -75,6 +75,9 @@ Utils.update_status('Runing Lustrec compiler');
 if status
     msg = sprintf('lustrec failed for model "%s" :\n%s',file_name,lustre_out);
     display_msg(msg, Constants.INFO, 'validation', '');
+    display_msg(msg, Constants.ERROR, 'validation', '');
+    display_msg(msg, Constants.DEBUG, 'validation', '');
+    display_msg(lustre_out, Constants.DEBUG, 'validation', '');
     lustrec_failed = 1;
 %     close_system(model_full_path,0);
 %     bdclose('all')
@@ -90,8 +93,10 @@ else
     display_msg(msg, Constants.INFO, 'validation', '');
     [status, make_out] = system(command);
     if status
-        err = printf('Compilation failed for model "%s" :\n%s',file_name,make_out);
+        err = printf('Compilation failed for model "%s" ',file_name);
         display_msg(err, Constants.ERROR, 'validation', '');
+        display_msg(err, Constants.DEBUG, 'validation', '');
+        display_msg(make_out, Constants.DEBUG, 'validation', '');
 %         close_system(model_full_path,0);
 %         bdclose('all')
         command = sprintf('rm %s.makefile %s.c %s.h %s.o %s.lusic  %s_main.* %s_alloc.h %s_sfun.mexa64',...
@@ -235,6 +240,7 @@ else
         if status
             err = sprintf('lustrec binary failed for model "%s" :\n%s',file_name,binary_out);
             display_msg(err, Constants.ERROR, 'validation', '');
+            display_msg(err, Constants.DEBUG, 'validation', '');
             lustrec_binary_failed = 1;
 %             close_system(model_full_path,0);
 %             bdclose('all')
@@ -429,6 +435,7 @@ else
             catch ME
                 msg = sprintf('simulation failed for model "%s" :\n%s\n%s',file_name,ME.identifier,ME.message);
                 display_msg(msg, Constants.ERROR, 'validation', '');
+                display_msg(msg, Constants.DEBUG, 'validation', '');
                 sim_failed = 1;
                 valid = 0;
 %                 close_system(model_full_path,0);
