@@ -19,9 +19,9 @@ end
   schema.statustip = 'Automated Analysis Framework';
   schema.autoDisableWhen = 'Busy';
   
-  schema.childrenFcns = {@getVerify,@getValidate,...
-      @getCheckBlocks, @viewContract, @getProps, ...
-                        @getPP,  @getCompiler};
+  schema.childrenFcns = {@getVerify,@getValidate, ...
+      @getCheckBlocks, @viewContract, @annotateContract, ...
+			@getProps, @getPP,  @getCompiler};
  end
  
 function schema = getCheckBlocks(callbackInfo)     
@@ -143,6 +143,24 @@ function schema = viewContract(callbackInfo)
           display_msg(ME.getReport(),Constants.DEBUG,'viewContract','');
       end
     end
+
+% Function to annotate the Simulink model with the generated CoCoSpec
+function schema = annotateContract(callbackInfo)     
+  schema = sl_action_schema;
+  schema.label = 'Annotate with generated CoCoSpec (Experimental)'; 
+  schema.callback = @annotateContractCallback;
+ end
+ 
+  function annotateContractCallback(callbackInfo)
+  try 
+      [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
+      simulink_name = gcs;
+      annotate_cocospec(simulink_name);
+      
+  catch ME
+      disp(ME.message)
+  end
+ end
  
  function schema = getProps(callbackInfo)     
   schema = sl_action_schema;
