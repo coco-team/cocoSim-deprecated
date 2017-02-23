@@ -62,13 +62,9 @@ catch
 end
 % color = {'black','cyan','red','[1,0.5,0]','blue'};
 if tgroup_found && isa(tgroup,'matlab.ui.container.TabGroup')
-    msg = [final_message ' ' str '\n'];
+    msg = sprintf('%s %s\n',final_message, str);
     old_str = tgroup.Children(type).Children(1).String;
-    if strfind(msg,' href')
-        splited_msg = regexp(msg,'\n','split');
-    else
-        splited_msg = regexp(msg,'\\n','split');
-    end
+    splited_msg = regexp(msg,'\n','split');
     htmlmsg = html_text(splited_msg,type);
     string = [old_str; htmlmsg'];
     tgroup.Children(type).Children(1).String = string;
