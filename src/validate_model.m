@@ -73,7 +73,7 @@ display_msg(msg, Constants.INFO, 'validation', '');
 Utils.update_status('Runing Lustrec compiler');
 [status, lustre_out] = system(command);
 if status
-    msg = sprintf('lustrec failed for model "%s" :\n%s',file_name,lustre_out);
+    msg = sprintf('lustrec failed for model "%s"',file_name);
     display_msg(msg, Constants.INFO, 'validation', '');
     display_msg(msg, Constants.ERROR, 'validation', '');
     display_msg(msg, Constants.DEBUG, 'validation', '');
@@ -238,9 +238,10 @@ else
         command  = sprintf('./%s  < input_values > outputs_values',lustre_binary);
         [status, binary_out] =system(command);
         if status
-            err = sprintf('lustrec binary failed for model "%s" :\n%s',file_name,binary_out);
+            err = sprintf('lustrec binary failed for model "%s"',file_name,binary_out);
             display_msg(err, Constants.ERROR, 'validation', '');
             display_msg(err, Constants.DEBUG, 'validation', '');
+            display_msg(binary_out, Constants.DEBUG, 'validation', '');
             lustrec_binary_failed = 1;
 %             close_system(model_full_path,0);
 %             bdclose('all')

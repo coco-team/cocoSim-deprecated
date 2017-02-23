@@ -216,15 +216,30 @@ end
 display_msg('Saving simplified model', Constants.INFO, 'simplifier', '');
 display_msg(['Simplified model path: ' new_file], Constants.INFO, 'simplifier', '');
 
-save_system(new_model,new_file,'OverwriteIfChangedOnDisk',true);
-% save_system(new_model,new_file,'ExportToVersion','R2008b');
-close_system(file_name,0)
+
+%make sure that the model compile with fixedstep solver
+try
+    save_system(new_model,new_file,'OverwriteIfChangedOnDisk',true);
+    load_system(new_file);
+    configSet = getActiveConfigSet(new_model);
+    set_param(configSet, 'Solver', 'FixedStepDiscrete');
+%     set_param(configSet, 'FixedStep', '1');% we do not need to force the
+%     sample time
+    code_on=sprintf('%s([], [], [], ''compile'')', new_model);
+    evalin('base',code_on);
+    code_on=sprintf('%s([], [], [], ''term'')', new_model);
+    evalin('base',code_on);
+catch me
+    display_msg(me.message, Constants.ERROR, 'simplifier', '');
+    display_msg(me.getReport(), Constants.DEBUG, 'simplifier', '');
+    return
+end
 
 % Remove Real-time Workshop (or Simulink Coder) comments
-tags = {'RTWSystemCode','MinAlgLoopOccurrences',...
-    'PropExecContextOutsideSubsystem','FunctionWithSeparateData',...
-    'Opaque','MaskHideContents'};
-remove_line_tags(new_file,tags);
+% tags = {'RTWSystemCode','MinAlgLoopOccurrences',...
+%     'PropExecContextOutsideSubsystem','FunctionWithSeparateData',...
+%     'Opaque','MaskHideContents'};
+% remove_line_tags(new_file,tags);
 
 % Clean the workspace
 % evalin('base','clear all');

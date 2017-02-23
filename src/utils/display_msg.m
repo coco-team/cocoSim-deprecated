@@ -64,9 +64,13 @@ end
 if tgroup_found && isa(tgroup,'matlab.ui.container.TabGroup')
     msg = [final_message ' ' str '\n'];
     old_str = tgroup.Children(type).Children(1).String;
-    splited_msg = regexp(msg,'\\n','split');
-    %     htmlmsg = color_text(msg, color{type});
-    string = [old_str; splited_msg'];
+    if strfind(msg,' href')
+        splited_msg = regexp(msg,'\n','split');
+    else
+        splited_msg = regexp(msg,'\\n','split');
+    end
+    htmlmsg = html_text(splited_msg,type);
+    string = [old_str; htmlmsg'];
     tgroup.Children(type).Children(1).String = string;
     tgroup.Children(type).Children(1).Value = numel(string);
     if (type~=4 || cocosim_debug), tgroup.SelectedTab = tgroup.Children(type); end
@@ -97,10 +101,17 @@ end
 % end
 
 end
-function htmlmsg = color_text(msg, color)
-splited_msg = regexp(msg,'\\n','split');
-htmlmsg = {};
-for i=1:numel(splited_msg)
-    htmlmsg{i} = sprintf('<HTML><BODY color="%s">%s', color, splited_msg{i});
+function htmlmsg = html_text(splited_msg, type)
+if type~=4
+    htmlmsg = splited_msg;
+else
+    htmlmsg = {};
+    for i=1:numel(splited_msg)
+        if strfind(splited_msg{i},' href')
+            htmlmsg{i} = sprintf('<HTML><BODY>%s</BODY></HTML>', splited_msg{i});
+        else
+            htmlmsg{i} = splited_msg{i};
+        end
+    end
 end
 end
