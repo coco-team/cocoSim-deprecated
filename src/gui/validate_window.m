@@ -53,7 +53,7 @@ for i=1:inports_number
     port_name = get_param(block_inports{i},'Name');
     type = get_param(block_inports{i},'OutDataTypeStr');
     field_name = strcat(port_name,' (',type,'):');
-    if strcmp(sT2fT(type),'bool')
+    if strcmp(type,'boolean')
         Min = '0';
         Max = '1';
     else
