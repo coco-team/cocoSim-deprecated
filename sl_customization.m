@@ -133,7 +133,7 @@ function synchObsCallback(callbackInfo)
 try
     [prog_path, fname, ext] = fileparts(mfilename('fullpath'));
     simulink_name = get_file_name(gcs);
-    add_cocospec(simulink_name);
+    add_property(simulink_name);
 catch ME
     display_msg(ME.getReport(),Constants.DEBUG,'getProps','');
 end
