@@ -34,19 +34,28 @@ Query_time.nb_properties_unsafe = 0;
 Query_time.nb_properties_timeout = 0;
 Query_time.time_safe = 0;
 Query_time.time_unsafe = 0;
+    try
+       timeout = evalin('base','timeout');
+    catch
+       timeout = '60';
+    end
 if exist(ZUSTRE,'file')
     % Create a date time value to be used for files post-fixing
     % 		date_value = datestr(now, 'ddmmyyyyHHMMSS');
     for idx_prop=1:numel(property_node_names)
         Query_time.nb_properties_nodes = Query_time.nb_properties_nodes +1;
         if exist(smt_file, 'file')
-            command = sprintf('%s "%s" --node %s --xml --cg --s-func %s --timeout 600', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name, smt_file);
+            command = sprintf('%s "%s" --node %s --xml --cg --s-func %s --timeout %s', ...
+                ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name, smt_file, timeout);
         elseif strcmp(SOLVER, 'E')
-            command = sprintf('%s "%s" --node %s --xml --eldarica %s --timeout 600 ', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name, smt_file);
+            command = sprintf('%s "%s" --node %s --xml --eldarica %s --timeout %s',...
+                ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name, smt_file, timeout);
         elseif is_SF
-            command = sprintf('%s "%s" --node %s --xml  --timeout 60 --save --stateflow', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name);
+            command = sprintf('%s "%s" --node %s --xml  --timeout %s --save --stateflow', ...
+                ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name, timeout);
         else
-            command = sprintf('%s "%s" --node %s --xml --cg --matlab --timeout 60 --save ', ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name);
+            command = sprintf('%s "%s" --node %s --xml --cg --matlab --timeout %s --save ',...
+                ZUSTRE, lustre_file_name, property_node_names{idx_prop}.prop_name, timeout);
         end
         display_msg(['ZUSTRE_COMMAND ' command], Constants.DEBUG, 'write_code', '');
         [status, zustre_out] = system(command);
