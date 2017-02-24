@@ -164,14 +164,21 @@ uicontrol(upper_panel,'Style','pushbutton',...
             outputs_names{idx_out} = port_full_name;
         end
         try
-            ann_str = annotations_handle.String;
-            [n, ~] = size(ann_str);
-            ann = '';
+            ann_array = annotations_handle.String;
+            [n, ~] = size(ann_array);
+            ann_str = '';
             for i=1:n
-               ann = sprintf('%s\n%s', ann, ann_str(i,:)); 
+                str = ann_array(i,:);
+                if ~strcmp(str, '') && strncmp(str, 'assume ', 7) && strcmp(str(end), ';')
+                    ann_str = sprintf('%s\n%s', ann_str, str); 
+                else
+                    msg = sprintf ('This assumptions "%s" is not well written\nRespect this form "assume exp;" "exp" can be "In1 > 0.0"',str);
+                    errordlg(msg)
+                    return;
+                end
             end
 
-            observer = create_observer_block(subs_name, outputs_names, observer_name, ann);
+            observer = create_observer_block(subs_name, outputs_names, observer_name, ann_str);
             open_system(observer, 'force');
         catch err
             errordlg(err.message);
