@@ -22,7 +22,7 @@
 %		time_steps: the number of time steps recorded for the counter example
 
 % TODO: return status, modularisation of the tool
-function Query_time=zustre(lustre_file_name, property_node_names, property_file_base_name, model_inter_blk, xml_trace, is_SF, smt_file)
+function [Query_time, properties_summary] =zustre(lustre_file_name, property_node_names, property_file_base_name, model_inter_blk, xml_trace, is_SF, smt_file)
 
 config;
 SOLVER = evalin('base','SOLVER');
@@ -34,6 +34,7 @@ Query_time.nb_properties_unsafe = 0;
 Query_time.nb_properties_timeout = 0;
 Query_time.time_safe = 0;
 Query_time.time_unsafe = 0;
+properties_summary = [];
 if exist(ZUSTRE,'file')
     % Create a date time value to be used for files post-fixing
     % 		date_value = datestr(now, 'ddmmyyyyHHMMSS');
@@ -52,8 +53,8 @@ if exist(ZUSTRE,'file')
         [status, zustre_out] = system(command);
         display_msg(zustre_out, Constants.DEBUG, 'write_code', '');
         if status == 0
-            [answer, cex, cocospec, emf,Query_time_t] = check_zustre_result(zustre_out, property_node_names{idx_prop}.prop_name, property_file_base_name);
-            
+            [answer, cex, cocospec, emf,Query_time_t, property_summary] = check_zustre_result(zustre_out, property_node_names{idx_prop}.prop_name, property_file_base_name);
+            properties_summary = [properties_summary, property_summary];
             % Change the observer block display according to answer
             display = sprintf('color(''black'')\n');
             display = [display sprintf('text(0.5, 0.5, [''Property: '''''' get_param(gcb,''name'') ''''''''], ''horizontalAlignment'', ''center'');\n')];
@@ -110,8 +111,9 @@ if exist(ZUSTRE,'file')
                             IO_struct = create_configuration(IO_struct, file, property_node_names{idx_prop}, mat_full_file, idx_prop);
                             config_created = true;
                         catch ERR
-                            msg = ['Verification: FAILURE to create the Simulink simulation configuration\n' getReport(ERR)];
+                            msg = 'Verification: FAILURE to create the Simulink simulation configuration\n' ;
                             display_msg(msg, Constants.RESULT, 'Zustre property checking', '');
+                            display_msg(getReport(ERR), Constants.DEBUG, 'Zustre property checking', '');
                             config_created = false;
                         end
                         if config_created
@@ -119,8 +121,9 @@ if exist(ZUSTRE,'file')
                                 % Create the annotation with the links to setup and launch the simulation
                                 createAnnotation(lustre_file_name, property_node_names{idx_prop}, IO_struct, mat_full_file, path);
                             catch ERR
-                                msg = [' FAILURE to create the Simulink CEX replay annotation\n' getReport(ERR)];
+                                msg = ' FAILURE to create the Simulink CEX replay annotation\n';
                                 display_msg(msg, Constants.RESULT, 'Zustre', '');
+                                display_msg(getReport(ERR), Constants.DEBUG, 'Zustre property checking', '');
                             end
                         end
                     end
@@ -138,7 +141,7 @@ end
 end
 
 % Parse the XML output of Zustre and return the status of the result (SAFE, CEX, UNKNOWN)
-function [answer, cex, cocospec, emf, Query_time] = check_zustre_result(zustre_out, property_node_name, property_file_base_name)
+function [answer, cex, cocospec, emf, Query_time, property_summary] = check_zustre_result(zustre_out, property_node_name, property_file_base_name)
 answer = '';
 cex = '';
 cocospec = '';
@@ -167,6 +170,8 @@ if s.bytes ~= 0
             Query_time_i = str2num(Query_time_i);
         end
         Query_time = Query_time + Query_time_i;
+        property_summary(idx+1).Name = property_node_name;
+        property_summary(idx+1).Answer = answer;
         msg = ['Zustre result for property node [' property_node_name ']: ' char(answer)];
         display_msg(msg, Constants.RESULT, 'Zustre property checking', '');
         if strcmp(answer, 'CEX')
@@ -188,6 +193,7 @@ if s.bytes ~= 0
                 display_msg('No Contract file', Constants.WARNING, 'Zustre ', '');
             end
         end
+        property_summary(idx+1).Emf = emf;
     end
 end
 end
@@ -492,44 +498,47 @@ annot_text = [annot_text list_title_ann];
 footer = fileread([cocoSim_path filesep 'backEnd' filesep 'templates' filesep 'footer.html']);
 annot_text = [annot_text '</body></html>'];
 html_text = [html_text footer];
-%Delete the previous CEX annotations. So the user can run the model many
-%times
-delete(find_system(file_name, 'FindAll', 'on', 'type', 'annotation',...
-    'Description', 'CEX'));
-annot = Simulink.Annotation([file_name '/Counter example annotation']);
-
-% Find correct position for the annotation
-blocks = find_system(file_name, 'SearchDepth', 1, 'FindAll', 'on', 'Type', 'Block');
-positions = get_param(blocks, 'Position');
-max_x = 0;
-min_x = 0;
-max_y = 0;
-min_y = 0;
-for idx_pos=1:numel(positions)
-    max_x = max(max_x, positions{idx_pos}(3));
-    if idx_pos == 1
-        min_x = positions{idx_pos}(3);
-        min_y = positions{idx_pos}(2);
-    else
-        min_x = min(min_x, positions{idx_pos}(3));
-        min_y = min(min_y, positions{idx_pos}(2));
-    end
-end
-annot.position = [(max_x + abs(min_x) + 150) min_y];
-annot.name = annot_text;
-annot.DropShadow = 'on';
-annot.ForegroundColor = 'white' ;
-annot.Description = 'CEX';
-annot.BackgroundColor = 'red';
-annot.InternalMargins = [5, 5, 5, 5];
-annot.Interpreter = 'rich';
-
-%save the annotation as an html file, it is more clear for the user
-% Open file for writing
 fid = fopen(html_output, 'w+');
 if ~strcmp(html_text, '')
     fprintf(fid, html_text);
 end
+
+%Delete the previous CEX annotations. So the user can run the model many
+%times
+
+%delete(find_system(file_name, 'FindAll', 'on', 'type', 'annotation',...
+%    'Description', 'CEX'));
+% annot = Simulink.Annotation([file_name '/Counter example annotation']);
+
+% % Find correct position for the annotation
+% blocks = find_system(file_name, 'SearchDepth', 1, 'FindAll', 'on', 'Type', 'Block');
+% positions = get_param(blocks, 'Position');
+% max_x = 0;
+% min_x = 0;
+% max_y = 0;
+% min_y = 0;
+% for idx_pos=1:numel(positions)
+%     max_x = max(max_x, positions{idx_pos}(3));
+%     if idx_pos == 1
+%         min_x = positions{idx_pos}(3);
+%         min_y = positions{idx_pos}(2);
+%     else
+%         min_x = min(min_x, positions{idx_pos}(3));
+%         min_y = min(min_y, positions{idx_pos}(2));
+%     end
+% end
+% annot.position = [(max_x + abs(min_x) + 150) min_y];
+% annot.name = annot_text;
+% annot.DropShadow = 'on';
+% annot.ForegroundColor = 'white' ;
+% annot.Description = 'CEX';
+% annot.BackgroundColor = 'red';
+% annot.InternalMargins = [5, 5, 5, 5];
+% annot.Interpreter = 'rich';
+
+%save the annotation as an html file, it is more clear for the user
+% Open file for writing
+
 end
 
 %% Create actions to be added to the generated Annotation as the callback code executed when the hyperlinks are clicked.
