@@ -33,9 +33,9 @@ end
 function checkBlocksCallBack(callbackInfo)
 try
     model_full_path = get_file_name(gcs);
-    unsupported_blocks( model_full_path );
-    open(model_full_path);
+    unsupported_blocks_gui( model_full_path );
 catch ME
+    display_msg(ME.message,Constants.ERROR,'getCheckBlocks','');
     display_msg(ME.getReport(),Constants.DEBUG,'getCheckBlocks','');
 end
 end
