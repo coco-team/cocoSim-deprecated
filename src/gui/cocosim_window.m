@@ -124,6 +124,8 @@ end
         end
         % Close file
         fclose(fid);
+        text = strcat('data saved in :', output_file);
+        msgbox(text);
     end
 %% clear temporal values
 % evalin('base',' clear cocosim_tgroup_handle');
