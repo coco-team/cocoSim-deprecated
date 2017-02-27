@@ -8,7 +8,7 @@ status = 'Preprocessing';
 [model_path, f_name, ~] = fileparts(model_full_path);
 
 %  Create and then hide the UI as it is being constructed.
-window_name = 'CocoSim window';
+window_name = 'CoCoSim';
 try
     close(window_name)
 catch
