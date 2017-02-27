@@ -6,8 +6,7 @@
 % Processing Function blocks
 function_list = find_system(model,'BlockType','Fcn');
 if not(isempty(function_list))
-    disp('Processing Function blocks...')
-    
+    display_msg('Processing Function blocks...', Constants.INFO, 'function_process', ''); 
     % Obtaining the input sizes  
     % Compile the model before requesting a compiled argument
     command = strcat(model,'([],[],[],''compile'');');
@@ -27,7 +26,7 @@ if not(isempty(function_list))
     % Request arguments and store them
     input_size_list = cell.empty(length(function_list),0);
     for i=1:length(function_list)
-        disp(function_list{i})
+        display_msg(function_list{i}, Constants.INFO, 'function_process', ''); 
         cports = get_param(function_list{i},'CompiledPortDimensions');
         input_size_list{i} = cports.Inport(2);
     end
@@ -38,7 +37,7 @@ if not(isempty(function_list))
 
     % Process blocks
     for i=1:length(function_list)
-        disp(function_list{i})
+        display_msg(function_list{i}, Constants.INFO, 'function_process', ''); 
         [new_block_name,success] = function_block_process(...
             function_list{i},model,input_size_list{i});
         if success
@@ -49,7 +48,7 @@ if not(isempty(function_list))
                 ' is not handled,',' it should be replaced manually');
         end
     end
-    fprintf('Done\n\n');
+    display_msg('Done\n\n', Constants.INFO, 'function_process', ''); 
 end
 
 end

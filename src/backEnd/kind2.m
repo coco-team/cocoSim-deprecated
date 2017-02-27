@@ -7,13 +7,23 @@
 function kind2(lustre_file_name, property_node_names, property_file_base_name, model_inter_blk, xml_trace)
      
     config;
-    
+    try
+       kind2_option = evalin('base','kind2_option');
+    catch
+       kind2_option  = '';
+    end
+    try
+       timeout = evalin('base','timeout');
+    catch
+       timeout = '60.0';
+    end
     for idx_prop=1:numel(property_node_names)
         if exist(KIND2,'file') && exist(Z3,'file')
             date_value = datestr(now, 'ddmmyyyyHHMMSS');
-            command = sprintf('%s --z3_bin %s -xml --lus_main %s %s', KIND2, Z3, property_node_names{idx_prop}.prop_name, lustre_file_name);
+            command = sprintf('%s --z3_bin %s -xml --timeout %s %s --lus_main %s %s',...
+                KIND2, Z3, timeout, kind2_option, property_node_names{idx_prop}.prop_name, lustre_file_name);
             display_msg(['KIND2_COMMAND ' command], Constants.DEBUG, 'write_code', '');
-            [status, kind2_out] = system(command);
+            [~, kind2_out] = system(command);
             display_msg(kind2_out, Constants.DEBUG, 'write_code', '');
             [answer, cex] = solver_result('KIND2', kind2_out, property_node_names{idx_prop}.prop_name, property_file_base_name);
             % Change the observer block display according to answer

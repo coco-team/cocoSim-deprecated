@@ -6,14 +6,14 @@ function [] = lookuptable_process(model)
 % Processing Lookup table blocks
 lookup_list = find_system(model,'BlockType','Lookup');
 if not(isempty(lookup_list))
-    disp('Processing Lookup table blocks...')
+    display_msg('Processing Lookup table blocks...', Constants.INFO, 'lookuptable_process', '');
     for i=1:length(lookup_list)
-        disp(lookup_list{i})
+        display_msg(lookup_list{i}, Constants.INFO, 'lookuptable_process', '');
         new_block_name = lookuptable_block_process(lookup_list{i});  
         replace_one_block(lookup_list{i},new_block_name);
         delete_block(new_block_name)
     end
-    fprintf('Done\n\n');
+    display_msg('Done\n\n', Constants.INFO, 'lookuptable_process', ''); 
 end
 end
 

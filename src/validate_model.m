@@ -6,7 +6,7 @@
 
 function [valid, validation_compute,lustrec_failed, ...
     lustrec_binary_failed, sim_failed, lus_file_path, ...
-    sf2lus_time, nb_actions, Query_time] = validate_model(model_full_path,cocoSim_path, show_models,L,FixedStep_is_defined)
+    sf2lus_time, nb_actions, Query_time] = validate_model(model_full_path,cocoSim_path, show_models, L, FixedStep_is_defined, min_max_constraints)
 bdclose('all')
 
 if ~exist('show_models', 'var')
@@ -42,22 +42,26 @@ validation_compute = 0;
 lus_file_path  = '';
 
 try
-    fprintf('Compiling model "%s" to Lustre\n',file_name);
-    %     lus_file_path= '/home/hamza/Documents/coco_team/regression-test/simulink/unit_test/not_valid_models/lustre_files/src_math_int_2_test/math_int_2_test.lus';
+    f_msg = sprintf('Compiling model "%s" to Lustre\n',file_name);
+    display_msg(f_msg, Constants.RESULT, 'validation', '');
+    Utils.update_status('Runing CocoSim');
     [lus_file_path, sf2lus_time, nb_actions, Query_time]=cocoSim(model_full_path);
     
     [lus_file_dir, lus_file_name, ~] = fileparts(lus_file_path);
     file_name = lus_file_name;
     chart_name = lus_file_name;
     model_full_path = fullfile(model_path,strcat(file_name,ext));
+    if show_models
+        open(model_full_path);
+    end
     cd(lus_file_dir);
 catch ME
     msg = sprintf('Translation Failed for model "%s" :\n%s\n%s',file_name,ME.identifier,ME.message);
     display_msg(msg, Constants.ERROR, 'validation', '');
     display_msg(ME.getReport(), Constants.DEBUG, 'validation', '');
     
-    close_system(model_full_path,0);
-    bdclose('all')
+%     close_system(model_full_path,0);
+%     bdclose('all')
     sf2lus_time = -1;
     L.error('validation',[file_name, '\n' getReport(ME,'extended')]);
     rethrow(ME);
@@ -66,13 +70,17 @@ validation_start = tic;
 command = sprintf('%s -I %s -node %s %s',LUSTREC,LUCTREC_INCLUDE_DIR, Utils.name_format(chart_name), lus_file_path);
 msg = sprintf('LUSTREC_COMMAND : %s\n',command);
 display_msg(msg, Constants.INFO, 'validation', '');
+Utils.update_status('Runing Lustrec compiler');
 [status, lustre_out] = system(command);
 if status
-    msg = sprintf('lustrec failed for model "%s" :\n%s',file_name,lustre_out);
+    msg = sprintf('lustrec failed for model "%s"',file_name);
     display_msg(msg, Constants.INFO, 'validation', '');
+    display_msg(msg, Constants.ERROR, 'validation', '');
+    display_msg(msg, Constants.DEBUG, 'validation', '');
+    display_msg(lustre_out, Constants.DEBUG, 'validation', '');
     lustrec_failed = 1;
-    close_system(model_full_path,0);
-    bdclose('all')
+%     close_system(model_full_path,0);
+%     bdclose('all')
     cd(OldPwd);
     return
 else
@@ -85,10 +93,12 @@ else
     display_msg(msg, Constants.INFO, 'validation', '');
     [status, make_out] = system(command);
     if status
-        err = printf('Compilation failed for model "%s" :\n%s',file_name,make_out);
+        err = printf('Compilation failed for model "%s" ',file_name);
         display_msg(err, Constants.ERROR, 'validation', '');
-        close_system(model_full_path,0);
-        bdclose('all')
+        display_msg(err, Constants.DEBUG, 'validation', '');
+        display_msg(make_out, Constants.DEBUG, 'validation', '');
+%         close_system(model_full_path,0);
+%         bdclose('all')
         command = sprintf('rm %s.makefile %s.c %s.h %s.o %s.lusic  %s_main.* %s_alloc.h %s_sfun.mexa64',...
             file_name, file_name,file_name,file_name,file_name,file_name,file_name,file_name);
         system(command);
@@ -99,7 +109,7 @@ else
         cd(OldPwd);
         return
     else
-        
+        Utils.update_status('Generating Lustrec outputs');
         load_system(model_full_path);
         
         rt = sfroot;
@@ -160,26 +170,28 @@ else
         end
         nb_steps = stop_time/simulation_step +1;
         IMAX = 100; %IMAX for randi the max born for random number
+        IMIN = 0;
         input_struct.time = (0:simulation_step:stop_time)';
         input_struct.signals = [];
         number_of_inputs = 0;
         for i=1:numberOfInports
             input_struct.signals(i).name = inports(i).Name;
             dim = inports(i).Dimension;
+            if exist('min_max_constraints', 'var')
+                IMIN = min_max_constraints{i,2};
+                IMAX = min_max_constraints{i,3};
+            end
             if find(strcmp(inputEvents_names,inports(i).Name))
                 input_struct.signals(i).values = square(i*input_struct.time);
                 input_struct.signals(i).dimensions = 1;%dim;
             elseif strcmp(sT2fT(inports(i).DataType),'bool')
-                input_struct.signals(i).values = Utils.construct_random_booleans(nb_steps, IMAX, dim);
+                input_struct.signals(i).values = Utils.construct_random_booleans(nb_steps, IMIN, IMAX, dim);
                 input_struct.signals(i).dimensions = dim;
             elseif strcmp(sT2fT(inports(i).DataType),'int')
-                input_struct.signals(i).values = Utils.construct_random_integers(nb_steps, IMAX, inports(i).DataType, dim);
-                input_struct.signals(i).dimensions = dim;
-            elseif strcmp(inports(i).DataType,'single')
-                input_struct.signals(i).values = single(Utils.construct_random_doubles(nb_steps, IMAX,dim));
+                input_struct.signals(i).values = Utils.construct_random_integers(nb_steps, IMIN, IMAX, inports(i).DataType, dim);
                 input_struct.signals(i).dimensions = dim;
             else
-                input_struct.signals(i).values = Utils.construct_random_doubles(nb_steps, IMAX,dim);
+                input_struct.signals(i).values = Utils.construct_random_doubles(nb_steps, IMIN, IMAX,dim);
                 input_struct.signals(i).dimensions = dim;
             end
             if numel(dim)==1
@@ -226,11 +238,13 @@ else
         command  = sprintf('./%s  < input_values > outputs_values',lustre_binary);
         [status, binary_out] =system(command);
         if status
-            err = sprintf('lustrec binary failed for model "%s" :\n%s',file_name,binary_out);
+            err = sprintf('lustrec binary failed for model "%s"',file_name,binary_out);
             display_msg(err, Constants.ERROR, 'validation', '');
+            display_msg(err, Constants.DEBUG, 'validation', '');
+            display_msg(binary_out, Constants.DEBUG, 'validation', '');
             lustrec_binary_failed = 1;
-            close_system(model_full_path,0);
-            bdclose('all')
+%             close_system(model_full_path,0);
+%             bdclose('all')
             command = sprintf('!rm %s.makefile %s.c %s.h %s.o %s.lusic  %s_main.* %s_alloc.h %s_sfun.mexa64 %s',...
                 file_name, file_name,file_name,file_name,file_name,file_name,file_name,file_name,lustre_binary);
             system(command);
@@ -243,6 +257,7 @@ else
         else
             msg = sprintf('Simulating model "%s"\n',file_name);
             display_msg(msg, Constants.INFO, 'validation', '');
+            Utils.update_status('Simulating model');
             try
                 configSet = Simulink.ConfigSet;%copy(getActiveConfigSet(file_name));
                 set_param(configSet, 'Solver', 'FixedStepDiscrete');
@@ -273,6 +288,7 @@ else
                     end
                     simOut = sim(file_name, configSet);
                 end
+                Utils.update_status('Compare Simulink outputs and lustrec outputs');
                 yout = get(simOut,'yout');
                 yout_signals = yout.signals;
                 assignin('base','yout',yout);
@@ -329,36 +345,39 @@ else
                     end
                 end
                 if ~valid
-                    fprintf('translation for model "%s" is not valid \n',file_name);
-                    %                     fprintf('Sometimes is just inputs order is not the same in lustre.\n');
-                    %                     fprintf('Please Verify the order in your lustre file \n');
-                    %                     fprintf('If the order of inports is not the same as in your model,\nplease fix it in your model to match lustre generation');
-                    %                     fprintf('The right order of inputs in your model is described in this counter example\n');
-                    
-                    fprintf('Here is the counter example:\n');
+                    Utils.update_status('Translation is not valid');
+                    f_msg = sprintf('translation for model "%s" is not valid \n',file_name);
+                    display_msg(f_msg, Constants.RESULT, 'validation', '');
+                    f_msg = sprintf('Here is the counter example:\n');
+                    display_msg(f_msg, Constants.RESULT, 'validation', '');
                     index_out = 0;
                     for i=0:error_index-1
-                        fprintf('*****step : %d**********\n',i+1);
-                        fprintf('*****inputs: \n');
+                        f_msg = sprintf('*****step : %d**********\n',i+1);
+                        display_msg(f_msg, Constants.RESULT, 'CEX', '');
+                        f_msg = sprintf('*****inputs: \n');
+                        display_msg(f_msg, Constants.RESULT, 'CEX', '');
                         for j=1:numberOfInports
                             dim = input_struct.signals(j).dimensions;
                             if numel(dim)==1
                                 in = input_struct.signals(j).values(i+1,:);
                                 name = input_struct.signals(j).name;
                                 for k=1:dim
-                                    fprintf('input %s_%d:%f\n',name,k,in(k));
+                                    f_msg = sprintf('input %s_%d:%f\n',name,k,in(k));
+                                    display_msg(f_msg, Constants.RESULT, 'CEX', '');
                                 end
                             else
                                 in = input_struct.signals(j).values(:,:,i+1);
                                 name = input_struct.signals(j).name;
                                 for dim1=1:dim(1)
                                     for dim2=1:dim(2)
-                                        fprintf('input %s_%d_%d:%10.10f\n',name,dim1,dim2,in(dim1, dim2));
+                                        f_msg = sprintf('input %s_%d_%d:%10.10f\n',name,dim1,dim2,in(dim1, dim2));
+                                        display_msg(f_msg, Constants.RESULT, 'CEX', '');
                                     end
                                 end
                             end
                         end
-                        fprintf('*****outputs: \n');
+                        f_msg = sprintf('*****outputs: \n');
+                        display_msg(f_msg, Constants.RESULT, 'CEX', '');
                         for k=1:numberOfOutputs
                             dim = yout_signals(k).dimensions;
                             if numel(dim)==2
@@ -384,20 +403,25 @@ else
                                     output_val = output_value{2};
                                     output_val = str2num(output_val(2:end-1));
                                     output_name1 = Utils.naming_alone(yout_signals(k).blockName);
-                                    fprintf('output %s: %10.16f\n',output_name1,yout_values(j));
-                                    fprintf('Lustre output %s: %10.16f\n',output_name,output_val);
+                                    f_msg = sprintf('output %s: %10.16f\n',output_name1,yout_values(j));
+                                    display_msg(f_msg, Constants.RESULT, 'CEX', '');
+                                    f_msg = sprintf('Lustre output %s: %10.16f\n',output_name,output_val);
+                                    display_msg(f_msg, Constants.RESULT, 'CEX', '');
                                 else
-                                    warning('strang behavour of output %s',outputs_array{numberOfOutputs*i+k});
+                                    f_msg = sprintf('strang behavour of output %s',outputs_array{numberOfOutputs*i+k});
+                                    display_msg(f_msg, Constants.WARNING, 'CEX', '');
                                     return;
                                 end
                             end
                         end
                         
                     end
-                    fprintf('difference between outputs %s is :%2.10f\n',diff_name, diff);
+                    f_msg = sprintf('difference between outputs %s is :%2.10f\n',diff_name, diff);
+                    display_msg(f_msg, Constants.RESULT, 'CEX', '');
                 else
+                    Utils.update_status('Translation is valid');
                     msg = sprintf('Translation for model "%s" is valid \n',file_name);
-                    display_msg(msg, Constants.RESULT, 'validation', '');
+                    display_msg(msg, Constants.RESULT, 'CEX', '');
                 end
                 
                 %uncommetn these lines if you want to remove unused files
@@ -412,10 +436,11 @@ else
             catch ME
                 msg = sprintf('simulation failed for model "%s" :\n%s\n%s',file_name,ME.identifier,ME.message);
                 display_msg(msg, Constants.ERROR, 'validation', '');
+                display_msg(msg, Constants.DEBUG, 'validation', '');
                 sim_failed = 1;
                 valid = 0;
-                close_system(model_full_path,0);
-                bdclose('all')
+%                 close_system(model_full_path,0);
+%                 bdclose('all')
                 cd(OldPwd);
                 L.error('sim',[file_name, '\n' getReport(ME,'extended')]);
                 return
@@ -431,8 +456,8 @@ f_msg = [f_msg 'Simulation Output (workspace) : yout_signals \n'];
 f_msg = [f_msg 'LustreC binary Input ' fullfile(lus_file_dir,'input_values') '\n'];
 f_msg = [f_msg 'LustreC binary Output ' fullfile(lus_file_dir,'outputs_values') '\n'];
 display_msg(f_msg, Constants.RESULT, 'validation', '');
-close_system(model_full_path,0);
-bdclose('all')
+% close_system(model_full_path,0);
+% bdclose('all')
 
 cd(OldPwd);
 if sim_failed==1

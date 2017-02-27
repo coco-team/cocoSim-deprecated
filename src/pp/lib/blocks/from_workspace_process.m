@@ -8,9 +8,9 @@ Xinit = -1;
 % Processing From Workspace blocks
 from_workspace_list = find_system(model,'BlockType','FromWorkspace');
 if not(isempty(from_workspace_list))
-    disp('Processing From Workspace blocks...')
+    display_msg('Processing From Workspace blocks...', Constants.INFO, 'from_workspace_process', '');
     for i=1:length(from_workspace_list)
-        disp(from_workspace_list{i})
+        display_msg(from_workspace_list{i}, Constants.INFO, 'from_workspace_process', '');
         tag = get_param(from_workspace_list{i},'VariableName');
         
         parent = get_param(from_workspace_list{i},'Parent');
@@ -35,7 +35,7 @@ if not(isempty(from_workspace_list))
             goto_block_process(model,goto_block);
         end
     end
-    fprintf('Done\n\n');
+    display_msg('Done\n\n', Constants.INFO, 'from_workspace_process', ''); 
 end
 end
 
