@@ -39,6 +39,7 @@ try
 catch
    timeout = '60';
 end
+
 properties_summary = [];
 if exist(ZUSTRE,'file')
     % Create a date time value to be used for files post-fixing
