@@ -40,13 +40,15 @@ end
 
 un_bl = unique(blocks);
 unsupported = {};
+preprocessed = {};
 masks = {};
 for idx=1:numel(un_bl)
     type = get_param(un_bl(idx), 'BlockType');
     
-    if ~(ismember(type, handled_blocks.classic) || ismember(type, handled_blocks.masked) ||...
-         ismember(type, handled_blocks.pp) || ismember(type, handled_blocks.masked_pp)   )
-     
+    if (ismember(type, handled_blocks.pp) || ismember(type, handled_blocks.masked_pp))
+        preprocessed{numel(preprocessed)+1} = getfullname(un_bl(idx));
+        
+    elseif ~(ismember(type, handled_blocks.classic) || ismember(type, handled_blocks.masked))  
         set_param(un_bl(idx), 'ForegroundColor', 'red');
         unsupported{numel(unsupported)+1} = getfullname(un_bl(idx));
     end
@@ -61,28 +63,49 @@ end
 masks = unique(masks);
 
 
-if numel(unsupported)>0
-    actions = '';
-    for idx=1:numel(unsupported)
-        title = sprintf('Block %s',char(unsupported{idx}));
-        action = fileread(fullfile(cocoSim_path , 'backEnd' , 'templates' , 'list_item_mat_code.html'));
-        action = strrep(action, '[Item]', title);
-        content = sprintf('open_system(''%s'',''tab'')\n',unsupported{idx});
-        action = strrep(action, '[Matlab_code]', content);
-        actions = [actions action];
-    end
+if numel(unsupported)>0 || numel(preprocessed)>0
+    
 
     annot_text = fileread(fullfile(cocoSim_path, 'backEnd', 'templates', 'header.html'));
     title = fileread(fullfile(cocoSim_path, 'backEnd', 'templates', 'title2.html'));
-    title = strrep(title, '[observer_full_name]', 'Unsupported blocks:');
+    title = strrep(title, '[observer_full_name]', 'Unsupported blocks or blocks that can be preprocessed by CocoSim:');
     annot_text = [annot_text title];
-    
-    list_title = fileread(fullfile(cocoSim_path , 'backEnd' , 'templates' , 'list_title.html'));
-    list_title = strrep(list_title, '[Title]', 'blocks');
-    
-    list_title = strrep(list_title, '[List_Content]', actions);
-    annot_text = [annot_text list_title];
-    
+    %blocks can be preprocessed
+    if numel(preprocessed)>0
+        list_title = fileread(fullfile(cocoSim_path , 'backEnd' , 'templates' , 'list_title.html'));
+        list_title = strrep(list_title, '[Title]', 'Blocks can be pre-processed by CocoSim');
+        
+        actions = '';
+        for idx=1:numel(preprocessed)
+            title = sprintf('Block %s',char(preprocessed{idx}));
+            action = fileread(fullfile(cocoSim_path , 'backEnd' , 'templates' , 'list_item_mat_code.html'));
+            action = strrep(action, '[Item]', title);
+            content = sprintf('open_system(''%s'',''tab'')\n',preprocessed{idx});
+            action = strrep(action, '[Matlab_code]', content);
+            actions = [actions action];
+        end
+        
+        list_title = strrep(list_title, '[List_Content]', actions);
+        annot_text = [annot_text list_title];
+    end
+    %unsupported blocks
+    if numel(unsupported)>0
+        list_title = fileread(fullfile(cocoSim_path , 'backEnd' , 'templates' , 'list_title.html'));
+        list_title = strrep(list_title, '[Title]', 'Unsupported blocks');
+        
+        actions = '';
+        for idx=1:numel(unsupported)
+            title = sprintf('Block %s',char(unsupported{idx}));
+            action = fileread(fullfile(cocoSim_path , 'backEnd' , 'templates' , 'list_item_mat_code.html'));
+            action = strrep(action, '[Item]', title);
+            content = sprintf('open_system(''%s'',''tab'')\n',unsupported{idx});
+            action = strrep(action, '[Matlab_code]', content);
+            actions = [actions action];
+        end
+        
+        list_title = strrep(list_title, '[List_Content]', actions);
+        annot_text = [annot_text list_title];
+    end
     annot_text = [annot_text '</body></html>'];
     html_output = fullfile(model_path, strcat(f_name,'unsupported_blocks','.html'));
     fid = fopen(html_output, 'w');
