@@ -7,7 +7,7 @@ function add_property( model_full_path )
 % add_cocospec help creqting observer block for q specific subsystem
 
 %%  Create and then hide the UI as it is being constructed.
-window_name = 'Create CocoSim Property ...';
+window_name = 'Create Property';
 try
     close(window_name)
 catch
@@ -25,11 +25,7 @@ space = 1/(fields_nb + 1);
 upper_panel = uipanel(window,'Title','',...
     'Units', 'Normalized','Position',[.0 0 1 1]);
 
-
-msg1 = '+-----------------------------------------------------------------------+';
-msg2 = '|    Welcome to the CoCoSim Property stub creator block insertion tool  |';
-msg3 = '+-----------------------------------------------------------------------+';
-welcome_msg = sprintf('%s\n%s\n%s', msg1, msg2, msg3);
+welcome_msg = '    CoCoSim Property Block Creator     ';
 
 welcome_handle = uicontrol(upper_panel,'Style','text',...
     'String',welcome_msg,'HorizontalAlignment','center',...
