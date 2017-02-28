@@ -30,8 +30,18 @@ denum = get_param(init_block, 'Denominator');
 denum = evalin('base',denum);
 num = get_param(init_block, 'Numerator');
 num = evalin('base',num);
+%change from s domaine to z domaine
+try
+Hc = tf(num, denum);
+Hd = c2d(Hc,1);% we suppose sample time is 1
+num_d = Hd.Numerator{:};
+denum_d = Hd.Denominator{:};
+catch
+    num_d = num;
+    denum_d = denum;
+end
 % Computing state space representation
-[A,B,C,D]=tf2ss(num,denum);
+[A,B,C,D]=tf2ss(num_d,denum_d);
 
 % Generating null Initial Conditions
 sizeA=size(A);
