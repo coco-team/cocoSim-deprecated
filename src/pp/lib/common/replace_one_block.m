@@ -28,10 +28,8 @@ if verif
     verif_model = strcat(fname,'_verif');
     if exist(verif_file)==0
         % If the file doesn't exist, we generate a new one
-        script_path = which('PreGAL.m');
-        script_path = strrep(script_path,'/PreGAL.m','');
-        verif_template = strcat(script_path,...
-            '/lib/common/verification_template.slx');
+        [script_path, ~, ~] = fileparts(mfilename('fullpath'));
+        verif_template = fullfile(script_path, 'verification_template.slx');
         copyfile(verif_template,verif_file);
         disp('A verification file has been created');
     end

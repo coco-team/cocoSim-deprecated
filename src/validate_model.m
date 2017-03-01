@@ -150,15 +150,7 @@ else
         % set_param(getActiveConfigSet(file_name), 'Solver', 'FixedStepDiscrete');
         stop_time = 100;
         try
-            ts = Simulink.BlockDiagram.getSampleTimes(file_name);
-            min = 1;
-            for t=ts
-                tv = t.Value(1);
-                if ~(isnan(tv) || tv==Inf)
-                    min = gcd(min*10,tv*10)/10;
-                    
-                end
-            end
+            min = Utils.get_BlockDiagram_SampleTime(file_name); 
             if ~FixedStep_is_defined || min==0 || isnan(min) || min==Inf
                 simulation_step = 1;
             else
