@@ -23,7 +23,7 @@ evalin('base','global verif;');
 [model_path, model, ext] = fileparts(file_name);
 new_file = fullfile(model_path,strcat(model, '_PP', ext));
 new_model = strcat(model,'_PP');
-
+addpath(model_path);
 if nargin > 2
     if strcmp(varargin{1},'verif')
         evalin('base','verif = true;');
