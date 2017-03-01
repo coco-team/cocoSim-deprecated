@@ -1,7 +1,6 @@
 Model {
-  Name			  "property_3_safe"
-  Version		  8.5
-  MdlSubVersion		  0
+  Name			  "safe_1"
+  Version		  8.4
   SavedCharacterEncoding  "ISO-8859-1"
   GraphicalInterface {
     NumRootInports	    2
@@ -25,7 +24,7 @@ Model {
       BusOutputAsStruct	      "off"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.27"
+    ComputedModelVersion    "1.29"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -71,7 +70,7 @@ Model {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[723.0, 462.0]
+	Extents			[723.0, 459.0]
 	ZoomFactor		[1.0]
 	Offset			[0.0, 0.0]
       }
@@ -83,9 +82,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Teme"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Sep 30 12:47:29 2016"
-  RTWModifiedTimeStamp	  397140446
-  ModelVersionFormat	  "1.%<AutoIncrement:27>"
+  LastModifiedDate	  "Tue Feb 28 18:18:16 2017"
+  RTWModifiedTimeStamp	  410206696
+  ModelVersionFormat	  "1.%<AutoIncrement:29>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -128,11 +127,11 @@ Model {
     $PropName		    "DataLoggingOverride"
     $ObjectID		    6
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
-    model_		    "property_3_safe"
+    model_		    "safe_1"
     Array {
       Type		      "Cell"
       Dimension		      1
-      Cell		      "property_3_safe"
+      Cell		      "safe_1"
       PropName		      "logAsSpecifiedByModels_"
     }
     Array {
@@ -191,13 +190,13 @@ Model {
     Dimension		    1
     Simulink.ConfigSet {
       $ObjectID		      7
-      Version		      "1.15.0"
+      Version		      "1.14.3"
       Array {
 	Type			"Handle"
 	Dimension		9
 	Simulink.SolverCC {
 	  $ObjectID		  8
-	  Version		  "1.15.0"
+	  Version		  "1.14.3"
 	  StartTime		  "0.0"
 	  StopTime		  "10.0"
 	  AbsTol		  "auto"
@@ -232,7 +231,7 @@ Model {
 	}
 	Simulink.DataIOCC {
 	  $ObjectID		  9
-	  Version		  "1.15.0"
+	  Version		  "1.14.3"
 	  Decimation		  "1"
 	  ExternalInput		  "[t, u]"
 	  FinalStateName	  "xFinal"
@@ -265,7 +264,7 @@ Model {
 	}
 	Simulink.OptimizationCC {
 	  $ObjectID		  10
-	  Version		  "1.15.0"
+	  Version		  "1.14.3"
 	  Array {
 	    Type		    "Cell"
 	    Dimension		    4
@@ -279,7 +278,7 @@ Model {
 	  BooleanDataType	  on
 	  ConditionallyExecuteInputs on
 	  InlineParams		  off
-	  UseDivisionForNetSlopeComputation "off"
+	  UseDivisionForNetSlopeComputation "Off"
 	  UseFloatMulNetSlope	  off
 	  DefaultUnderspecifiedDataType	"double"
 	  UseSpecifiedMinMax	  off
@@ -296,7 +295,6 @@ Model {
 	  EnableMemcpy		  on
 	  MemcpyThreshold	  64
 	  PassReuseOutputArgsAs	  "Structure reference"
-	  PassReuseOutputArgsThreshold 12
 	  ExpressionDepthLimit	  2147483647
 	  LocalBlockOutputs	  on
 	  RollThreshold		  5
@@ -313,12 +311,12 @@ Model {
 	  LifeSpan		  "inf"
 	  MaxStackSize		  "Inherit from target"
 	  BufferReusableBoundary  on
-	  SimCompilerOptimization "off"
+	  SimCompilerOptimization "Off"
 	  AccelVerboseBuild	  off
 	}
 	Simulink.DebuggingCC {
 	  $ObjectID		  11
-	  Version		  "1.15.0"
+	  Version		  "1.14.3"
 	  RTPrefix		  "error"
 	  ConsistencyChecking	  "none"
 	  ArrayBoundsChecking	  "none"
@@ -345,7 +343,6 @@ Model {
 	  IgnoredZcDiagnostic	  "warning"
 	  SolverPrmCheckMsg	  "warning"
 	  InheritedTsInSrcMsg	  "warning"
-	  DiscreteInheritContinuousMsg "warning"
 	  MultiTaskDSMMsg	  "error"
 	  MultiTaskCondExecSysMsg "error"
 	  MultiTaskRateTransMsg	  "error"
@@ -402,12 +399,12 @@ Model {
 	  SFUnconditionalTransitionShadowingDiag "warning"
 	  SFUndirectedBroadcastEventsDiag "warning"
 	  SFTransitionActionBeforeConditionDiag	"warning"
-	  SFOutputUsedAsStateInMooreChartDiag "error"
 	  IntegerSaturationMsg	  "warning"
+	  ModelReferenceCSMismatchMessage "none"
 	}
 	Simulink.HardwareCC {
 	  $ObjectID		  12
-	  Version		  "1.15.0"
+	  Version		  "1.14.3"
 	  ProdBitPerChar	  8
 	  ProdBitPerShort	  16
 	  ProdBitPerInt		  32
@@ -447,7 +444,7 @@ Model {
 	}
 	Simulink.ModelReferenceCC {
 	  $ObjectID		  13
-	  Version		  "1.15.0"
+	  Version		  "1.14.3"
 	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
 	  CheckModelReferenceTargetMessage "error"
 	  EnableParallelModelReferenceBuilds off
@@ -462,8 +459,7 @@ Model {
 	}
 	Simulink.SFSimCC {
 	  $ObjectID		  14
-	  Version		  "1.15.0"
-	  SFSimOverflowDetection  on
+	  Version		  "1.14.3"
 	  SFSimEcho		  on
 	  SimCtrlC		  on
 	  SimIntegrity		  on
@@ -475,7 +471,7 @@ Model {
 	Simulink.RTWCC {
 	  $BackupClass		  "Simulink.RTWCC"
 	  $ObjectID		  15
-	  Version		  "1.15.0"
+	  Version		  "1.14.3"
 	  Array {
 	    Type		    "Cell"
 	    Dimension		    6
@@ -493,7 +489,6 @@ Model {
 	  MakeCommand		  "make_rtw"
 	  GenerateMakefile	  on
 	  PackageGeneratedCodeAndArtifacts off
-	  PackageName		  ""
 	  TemplateMakefile	  "grt_default_tmf"
 	  PostCodeGenCommand	  ""
 	  Description		  ""
@@ -507,13 +502,6 @@ Model {
 	  TLCAssert		  off
 	  RTWUseLocalCustomCode	  off
 	  RTWUseSimCustomCode	  off
-	  CustomSourceCode	  ""
-	  CustomHeaderCode	  ""
-	  CustomInclude		  ""
-	  CustomSource		  ""
-	  CustomLibrary		  ""
-	  CustomInitializer	  ""
-	  CustomTerminator	  ""
 	  Toolchain		  "Automatically locate an installed toolchain"
 	  BuildConfiguration	  "Faster Builds"
 	  IncludeHyperlinkInReport off
@@ -535,8 +523,7 @@ Model {
 	  GenerateWebview	  off
 	  GenerateCodeMetricsReport off
 	  GenerateCodeReplacementReport	off
-	  GenerateMissedCodeReplacementReport off
-	  RTWCompilerOptimization "off"
+	  RTWCompilerOptimization "Off"
 	  RTWCustomCompilerOptimizations ""
 	  CheckMdlBeforeBuild	  "Off"
 	  SharedConstantsCachingThreshold 1024
@@ -545,7 +532,7 @@ Model {
 	    Dimension		    2
 	    Simulink.CodeAppCC {
 	      $ObjectID		      16
-	      Version		      "1.15.0"
+	      Version		      "1.14.3"
 	      Array {
 		Type			"Cell"
 		Dimension		17
@@ -610,7 +597,7 @@ Model {
 	    Simulink.GRTTargetCC {
 	      $BackupClass	      "Simulink.TargetCC"
 	      $ObjectID		      17
-	      Version		      "1.15.0"
+	      Version		      "1.14.3"
 	      Array {
 		Type			"Cell"
 		Dimension		14
@@ -632,7 +619,6 @@ Model {
 	      }
 	      TargetFcnLib	      "ansi_tfl_table_tmw.mat"
 	      TargetLibSuffix	      ""
-	      TargetPreCompLibLocation ""
 	      GenFloatMathFcnCalls    "NOT IN USE"
 	      TargetLangStandard      "C89/C90 (ANSI)"
 	      CodeReplacementLibrary  "None"
@@ -641,7 +627,6 @@ Model {
 	      ERTMultiwordLength      256
 	      MultiwordLength	      2048
 	      GenerateFullHeader      on
-	      InferredTypesCompatibility off
 	      GenerateSampleERTMain   off
 	      GenerateTestInterfaces  off
 	      ModelReferenceCompliant on
@@ -695,8 +680,8 @@ Model {
 	  }
 	}
 	hdlcoderui.hdlcc {
-	  $ObjectID		  18
-	  Version		  "1.15.0"
+	  $ObjectID		  19
+	  Version		  "1.14.3"
 	  Description		  "HDL Coder custom configuration component"
 	  Name			  "HDL Coder"
 	  Array {
@@ -711,7 +696,7 @@ Model {
       }
       Name		      "Configuration"
       CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition     [ 500, 484, 1420, 1210 ] 
+      ConfigPrmDlgPosition    [ 500, 484, 1420, 1210 ]  
     }
     PropName		    "ConfigurationSets"
   }
@@ -721,7 +706,7 @@ Model {
   }
   Object {
     $PropName		    "DataTransfer"
-    $ObjectID		    19
+    $ObjectID		    20
     $ClassName		    "Simulink.GlobalDataTransfer"
     DefaultTransitionBetweenSyncTasks "Ensure deterministic transfer (maximum delay)"
     DefaultTransitionBetweenAsyncTasks "Ensure data integrity only"
@@ -871,10 +856,9 @@ Model {
       Opaque		      off
       MaskHideContents	      off
       SFBlockType	      "NONE"
-      Variant		      off
       GeneratePreprocessorConditionals off
+      TreatAsGroupedWhenPropagatingVariantConditions on
       ContentPreviewEnabled   off
-      IsWebBlock	      off
     }
     Block {
       BlockType		      Switch
@@ -896,9 +880,9 @@ Model {
     }
   }
   System {
-    Name		    "property_3_safe"
+    Name		    "safe_1"
     Location		    [186, 164, 943, 796]
-    Open		    on
+    Open		    off
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
     ScreenColor		    "white"
@@ -911,7 +895,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "20"
+    SIDHighWatermark	    "21"
     Block {
       BlockType		      Inport
       Name		      "In1"
@@ -974,9 +958,10 @@ Model {
       ForegroundColor	      "red"
       TreatAsAtomicUnit	      on
       RequestExecContextInheritance off
+      Variant		      off
       Object {
 	$PropName		"MaskObject"
-	$ObjectID		20
+	$ObjectID		21
 	$ClassName		"Simulink.Mask"
 	Type			"Observer"
 	Description		"Set an observer for the system.\nThe annotation type parameter sets the type of observer:\n- requires :"
@@ -988,7 +973,7 @@ Model {
 	  Type			  "Simulink.MaskParameter"
 	  Dimension		  2
 	  Object {
-	    $ObjectID		    21
+	    $ObjectID		    22
 	    Type		    "popup"
 	    Array {
 	      Type		      "Cell"
@@ -1007,7 +992,7 @@ Model {
 	    " set_param(gcb,'MaskVisibilities',{'on';'off'});\nend"
 	  }
 	  Object {
-	    $ObjectID		    22
+	    $ObjectID		    23
 	    Type		    "edit"
 	    Name		    "ObserverType"
 	    Prompt		    "Observer type"
@@ -1389,6 +1374,23 @@ Model {
 	DstBlock		"observer"
 	DstPort			4
       }
+    }
+    Annotation {
+      SID		      "21"
+      Name		      "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+      "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }"
+      "\n</style></head><body style=\" font-family:'Helvetica'; font-size:10px; font-weight:400; font-style:normal;\">\n"
+      "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-inden"
+      "t:0px;\"><span style=\" font-size:18px;\">Go to Tools -&gt; CoCoSim -&gt; Verify with -&gt; Zuste (or Kind2 or J"
+      "Kind)</span></p></body></html>"
+      Position		      [87, 363, 617, 383]
+      InternalMargins	      [0, 0, 0, 0]
+      FixedHeight	      off
+      FixedWidth	      off
+      HorizontalAlignment     "left"
+      VerticalAlignment	      "top"
+      Interpreter	      "rich"
+      ZOrder		      -1
     }
   }
 }
