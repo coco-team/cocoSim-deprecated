@@ -7,14 +7,14 @@ function [] = discrete_state_space_process(model)
 dss_list = find_system(model,'BlockType','DiscreteStateSpace');
 if not(isempty(dss_list))
     % Apply the z-transform to the discrete state space block
-    disp('Processing Discrete State Space blocks...')
+    display_msg('Processing Discrete State Space blocks...', Constants.INFO, 'discrete_state_space_process', ''); 
     for i=1:length(dss_list)
-        disp(dss_list{i})
+        display_msg(dss_list{i}, Constants.INFO, 'discrete_state_space_process', ''); 
         new_block_name = discrete_state_space_block_process(dss_list{i});
         replace_one_block(dss_list{i},new_block_name);
         delete_block(new_block_name)
     end
-    fprintf('Done\n\n');
+    display_msg('Done\n\n', Constants.INFO, 'discrete_state_space_process', ''); 
 end
 end
 

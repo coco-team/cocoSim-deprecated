@@ -7,14 +7,15 @@ function [] = transfer_function_process(model)
 transfer_function_list = find_system(model,'BlockType','TransferFcn');
 if not(isempty(transfer_function_list))
     % Apply the z-transform to the function block
-    disp('Processing Transfer Functions blocks...')
+    display_msg('Processing Transfer Functions blocks...', Constants.INFO,...
+        'transfer_function_process', ''); 
     for i=1:length(transfer_function_list)
-        disp(transfer_function_list{i})
+        display_msg(transfer_function_list{i}, Constants.INFO, 'transfer_function_process', ''); 
         new_block_name = transfer_fcn_block_process(transfer_function_list{i});
         replace_one_block(transfer_function_list{i},new_block_name);
         delete_block(new_block_name)
     end
-    fprintf('Done\n\n');
+    display_msg('Done\n\n', Constants.INFO, 'transfer_function_process', ''); 
 end
 end
 
@@ -29,8 +30,18 @@ denum = get_param(init_block, 'Denominator');
 denum = evalin('base',denum);
 num = get_param(init_block, 'Numerator');
 num = evalin('base',num);
+%change from s domaine to z domaine
+try
+Hc = tf(num, denum);
+Hd = c2d(Hc,1);% we suppose sample time is 1
+num_d = Hd.Numerator{:};
+denum_d = Hd.Denominator{:};
+catch
+    num_d = num;
+    denum_d = denum;
+end
 % Computing state space representation
-[A,B,C,D]=tf2ss(num,denum);
+[A,B,C,D]=tf2ss(num_d,denum_d);
 
 % Generating null Initial Conditions
 sizeA=size(A);

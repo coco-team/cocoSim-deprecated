@@ -48,7 +48,7 @@ for i = 1:n
         set_param(name,'SampleTime', SampleTime);
     else
         % We use the default value
-        set_param(name,'SampleTime', 'sample');
+        set_param(name,'SampleTime', '-1');
     end
 end
 

@@ -6,12 +6,15 @@ function [] = math_process(model)
 % Processing Math unsupported blocks
 math_list = find_system(model,'BlockType','Math');
 if not(isempty(math_list))
-    disp('Processing Math blocks...')
+    display_msg('Processing Math blocks...', Constants.INFO, ...
+        'math_process', '');
     for i=1:length(math_list)
         func = get_param(math_list{i},'Operator');
         switch func
             case 'magnitude^2'
                 disp(math_list{i})
+                display_msg(math_list{i}, Constants.INFO,...
+                    'math_process', '');
                 new_block = strcat(math_list{i},'_p');
                 expression_process('u^2',new_block,1);
                 replace_one_block(math_list{i},new_block);
@@ -21,7 +24,7 @@ if not(isempty(math_list))
                 % do.
         end
     end
-    fprintf('Done\n\n');
+    display_msg('Done\n\n', Constants.INFO, 'math_process', ''); 
 end
 end
 

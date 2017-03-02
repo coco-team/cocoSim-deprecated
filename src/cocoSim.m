@@ -3,15 +3,16 @@
 % Copyright (C) 2014-2016  Carnegie Mellon University
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function [nom_lustre_file, sf2lus_Time, nb_actions]=cocoSim(model_full_path, const_files, default_Ts, trace, dfexport)
+% Main file for CoCoSim
 
+function [nom_lustre_file, sf2lus_Time, nb_actions, Query_time]=cocoSim(model_full_path, const_files, default_Ts, trace, dfexport)
+bdclose('all')
+open(model_full_path);
 % Checking the number of arguments
 if ~exist('trace', 'var')
     trace = false;
 end
-if ~exist('default_Ts', 'var')
-    default_Ts = 0.1;
-end
+
 if ~exist('const_files', 'var')
     const_files = {};
 end
@@ -23,19 +24,27 @@ if nargin < 1
     return
 end
 
-
+Utils.update_status('Configuration');
 % Get start time
 t_start = now;
 sf2lus_start = tic;
 % Retrieving of the path containing the cocoSim file
-[cocoSim_path, function_name, ext] = fileparts(mfilename('fullpath'));
+[cocoSim_path, ~, ~] = fileparts(mfilename('fullpath'));
 % Retrieving of the path containing the model for which we generate the code
-[model_path, file_name, ext] = fileparts(model_full_path);
+[model_path, file_name, ~] = fileparts(model_full_path);
 
-
+if ~exist('default_Ts', 'var')
+    try
+        ts = Simulink.BlockDiagram.getSampleTimes(file_name);
+        default_Ts = ts(1).Value(1);
+    catch
+        default_Ts = 0.1;
+    end
+end
 addpath(fullfile(cocoSim_path, 'backEnd'));
 addpath(fullfile(cocoSim_path, 'middleEnd'));
 addpath(fullfile(cocoSim_path, 'frontEnd'));
+addpath(fullfile(cocoSim_path, 'pp'));
 addpath(fullfile(cocoSim_path, 'utils'));
 addpath(fullfile(cocoSim_path, '.'));
 
@@ -65,26 +74,27 @@ config_msg = [config_msg '|  Z3: ' Z3 '\n'];
 config_msg = [config_msg '--------------------------------------------------\n'];
 display_msg(config_msg, Constants.INFO, 'cocoSim', '');
 
-
+Utils.update_status('Loading model');
 msg = ['Loading model: ' model_full_path];
 display_msg(msg, Constants.INFO, 'cocoSim', '');
 
-% add path the directory where the model is
+% add path the model directory
 addpath(model_path);
 
 load_system(char(model_full_path));
 
 % Load all intialisation values and constants
+Utils.update_status('Loading constants');
 const_files_bak = const_files;
 try
     const_files = evalin('base', const_files);
-catch ERR
+catch
     const_files = const_files_bak;
 end
 
 mat_files = {};
 % Are we dealing with a list of files provided by the user or just a simple file
-if strcmp(class(const_files), 'cell')
+if iscell(const_files)
     for i=1:numel(const_files)
         if strcmp(const_files{i}(end-1:end), '.m')
             evalin('base', ['run ' const_files{i} ';']);
@@ -98,7 +108,7 @@ if strcmp(class(const_files), 'cell')
             mat_files{numel(mat_files) + 1} = const_files{i};
         end
     end
-elseif strcmp(class(const_files), 'char')
+elseif ischar(const_files)
     if strcmp(const_files(end-1:end), '.m')
         evalin('base', ['run ' const_files ';']);
     else
@@ -116,7 +126,6 @@ end
 display_msg('Getting bus struct', Constants.INFO, 'cocoSim', '');
 bus_struct = BusUtils.get_bus_struct();
 
-
 % Save current path, model path and cocoSim path informations to temporary file
 origin_path = pwd;
 if strcmp(model_path, '')
@@ -125,45 +134,46 @@ end
 save 'tmp_data' origin_path model_path cocoSim_path bus_struct
 
 % Pre-process model
+Utils.update_status('Pre-processing');
 display_msg('Pre-processing', Constants.INFO, 'cocoSim', '');
-[new_file_name] = preprocess_model(file_name, cocoSim_path, ext);
+new_file_name = cocosim_pp(model_full_path);
 
 if ~strcmp(new_file_name, '')
-    file_name = new_file_name;
-    model_full_path = fullfile(model_path, file_name);
+    model_full_path = new_file_name;
+    [model_path, file_name, ~] = fileparts(model_full_path);
+    open(model_full_path);
 end
 
 % Definition of the output files names
 output_dir = fullfile(model_path, strcat('lustre_files/src_', file_name));
-% TODO: Add message if the folder already exists to ask the user if he
-% really wants to override the existing folder
-[status, message, message_id] = mkdir(output_dir);
 nom_lustre_file = fullfile(output_dir, strcat(file_name, '.lus'));
-
+mkdir(output_dir);
 trace_file_name = fullfile(output_dir, strcat(file_name, '.cocosim.trace.xml'));
 property_file_base_name = fullfile(output_dir, strcat(file_name, '.property'));
 
-% TODO: Ask the user for file overriding
 initialize_files(nom_lustre_file);
 
+Utils.update_status('Building internal format');
 display_msg('Building internal format', Constants.INFO, 'cocoSim', '');
 %%%%%%% Load all the systems including the referenced ones %%%%
 [models, subsystems] = find_mdlrefs(file_name);
 
 %%%%%% Internal representation building %%%%%%
-[inter_blk, blks, complex_structs]= mk_internalRep(file_name, dfexport, models, subsystems, mat_files, default_Ts);
+[inter_blk, blks, complex_structs]= mk_internalRep(file_name, ...
+    dfexport, models, ...
+    subsystems, mat_files, ...
+    default_Ts);
 
-% Creation of the traceability XML node
+% Create traceability informations in XML format
 display_msg('Start tracebility', Constants.INFO, 'cocoSim', '');
 xml_trace = XML_Trace(model_full_path, trace_file_name);
 xml_trace.init();
 
-% Print buses declarations
+% Print bus declarations
 bus_decl = write_buses(bus_struct);
 
-
 %%%%%%%%%%%%%%% Retrieving nodes code %%%%%%%%%%%%%%%
-
+Utils.update_status('Lustre generation');
 display_msg('Lustre generation', Constants.INFO, 'cocoSim', '');
 
 extern_nodes_string = '';
@@ -184,7 +194,7 @@ for idx_subsys=numel(inter_blk):-1:1
     msg = sprintf('Compiling %s:%s', inter_blk{idx_subsys}{1}.origin_name{1}, ...
         inter_blk{idx_subsys}{1}.type{1});
     display_msg(msg, Constants.DEBUG, 'cocoSim', '');
-	
+    
     %%%%%%% Matlab functions and CoCoSpec code generation %%%%%%%%%%%%%%%
     is_matlab_function = false;
     is_cocospec = false;
@@ -220,7 +230,7 @@ for idx_subsys=numel(inter_blk):-1:1
         else
             print_spec = true;
         end
-                
+        
     elseif is_matlab_function
         display_msg('Found Embedded Matlab', Constants.INFO, 'cocoSim', '');
         try
@@ -240,8 +250,8 @@ for idx_subsys=numel(inter_blk):-1:1
             fclose(fid);
             display_msg('Successfully done processing Embedded Matlab', Constants.INFO, 'cocoSim', '');
         catch ME
-            disp(ME.message)
-            display_msg('Unable to process Embedded Matlab', Constants.ERROR, 'cocoSim', '');
+            display_msg(ME.getReport(), Constants.DEBUG, 'cocoSim', '');
+            display_msg(['Unable to process Embedded Matlab :' ME.message], Constants.ERROR, 'cocoSim', '');
         end
         
         
@@ -260,7 +270,7 @@ for idx_subsys=numel(inter_blk):-1:1
         end
         nodes_string = [nodes_string block_string];
         extern_Stateflow_nodes_fun = [extern_Stateflow_nodes_fun, external_nodes_i];
-       %%%%% Standard Simulink blocks code generation %%%%%%%%%%%%%%%
+        %%%%% Standard Simulink blocks code generation %%%%%%%%%%%%%%%
     elseif (idx_subsys == 1 || ~Constants.is_property(inter_blk{idx_subsys}{1}.mask_type)) && inter_blk{idx_subsys}{1}.num_output ~= 0
         
         if strcmp(inter_blk{idx_subsys}{1}.type, 'SubSystem')
@@ -276,7 +286,7 @@ for idx_subsys=numel(inter_blk):-1:1
                 extern_Stateflow_nodes_fun = [extern_Stateflow_nodes_fun, external_nodes_i];
             end
         end
-    
+        
         
         [node_header, let_tel_code, extern_s_functions_string, extern_funs, properties_nodes, property_node_name, extern_matlab_funs, c_code, external_nodes_i] = ...
             blocks2lustre(file_name, nom_lustre_file, inter_blk, blks, mat_files, idx_subsys, trace, xml_trace);
@@ -291,7 +301,7 @@ for idx_subsys=numel(inter_blk):-1:1
         
         for idx_ext_mat=1:numel(extern_matlab_funs)
             extern_matlab_functions{numel(extern_matlab_functions)+1} = extern_matlab_funs{idx_ext_mat};
-        end 
+        end
         
         properties_nodes_string = [properties_nodes_string properties_nodes];
         if numel(property_node_name) > 0
@@ -321,11 +331,7 @@ end
 % Open file for writing
 fid = fopen(nom_lustre_file, 'a');
 
-[str_include, extern_functions_string] = write_extern_functions(extern_functions, output_dir);
-% Write include for external functions
-if ~strcmp(str_include, '')
-    fprintf(fid, str_include);
-end
+
 
 % add external nodes called from action like min, max and matlab functions
 % or int_to_real and real_to_int
@@ -336,7 +342,10 @@ functions_names(:) = {''};
 j = 1;
 for i=1:n
     fun = extern_Stateflow_nodes_fun(i);
-    if isempty(find(strcmp(functions_names,fun.Name),1))  
+    if strcmp(fun.Name,'trigo')
+        extern_functions{cpt_extern_functions} = fun.Type;
+        cpt_extern_functions = cpt_extern_functions + 1;
+    elseif isempty(find(strcmp(functions_names,fun.Name),1))
         functions_names{j} = fun.Name;
         j=j+1;
         if strcmp(fun.Name,'lustre_math_fun')
@@ -346,13 +355,20 @@ for i=1:n
             extern_Stateflow_nodes_fun_string = ['#open <conv>\n', extern_Stateflow_nodes_fun_string];
             
         elseif strcmp(fun.Name,'after')
-            extern_Stateflow_nodes_fun_string = [extern_Stateflow_nodes_fun_string temporal_operators(fun)];    
+            extern_Stateflow_nodes_fun_string = [extern_Stateflow_nodes_fun_string temporal_operators(fun)];
             
         else
             extern_Stateflow_nodes_fun_string = [extern_Stateflow_nodes_fun_string math_functions(fun)];
         end
     end
 end
+
+[str_include, extern_functions_string] = write_extern_functions(extern_functions, output_dir);
+% Write include for external functions
+if ~strcmp(str_include, '')
+    fprintf(fid, str_include);
+end
+
 if ~strcmp(extern_Stateflow_nodes_fun_string, '')
     fprintf(fid, '-- External Stateflow functions\n');
     fprintf(fid, extern_Stateflow_nodes_fun_string);
@@ -435,18 +451,23 @@ display_msg('End of code generation', Constants.INFO, 'cocoSim', '');
 % Write traceability informations
 xml_trace.write();
 msg = sprintf(' %s', trace_file_name);
-display_msg(msg, Constants.INFO, 'Traceability', '');
+display_msg(msg, Constants.RESULT, 'Traceability', '');
 
 % Generated files informations
+
+sf2lus_Time = toc(sf2lus_start);
 msg = sprintf(' %s', nom_lustre_file);
-display_msg(msg, Constants.INFO, 'Lustre Code', '');
+display_msg(msg, Constants.RESULT, 'Lustre Code', '');
+
 
 %%%%%%%%%%%%% Compilation to C or Rust %%%%%%%%%%%%%
+Utils.update_status('Compilation');
 if RUST_GEN
     display_msg('Generating Rust Code', Constants.INFO, 'Rust Compilation', '');
     try
         rust(nom_lustre_file);
     catch ME
+        display_msg(ME.getReport(), Constants.DEBUG, 'Rust Compilation', '');
         display_msg(ME.message, Constants.ERROR, 'Rust Compilation', '');
     end
 elseif C_GEN
@@ -455,12 +476,15 @@ elseif C_GEN
         lustrec(nom_lustre_file);
     catch ME
         display_msg(ME.message, Constants.ERROR, 'C Compilation', '');
+        display_msg(ME.getReport(), Constants.DEBUG, 'C Compilation', '');
     end
 end
 
 
 %%%%%%%%%%%%% Verification %%%%%%%%%%%%%%%
+Utils.update_status('Verification');
 smt_file = '';
+Query_time = 0;
 if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
     if not (strcmp(SOLVER, 'Z') || strcmp(SOLVER,'K') || strcmp(SOLVER, 'J'))
         display_msg('Available solvers are Z for Zustre and K for Kind2', Constants.WARNING, 'cocoSim', '');
@@ -477,15 +501,18 @@ if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
             end
         catch ME
             display_msg(ME.message, Constants.ERROR, 'SEAHORN', '');
+            display_msg(ME.getReport(), Constants.DEBUG, 'SEAHORN', '');
         end
     end
     open(models{end});
     if strcmp(SOLVER, 'Z')
         display_msg('Running Zustre', Constants.INFO, 'Verification', '');
         try
-            zustre(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace, is_SF, smt_file);
+            [Query_time, properties_summary] = zustre(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace, is_SF, smt_file);
+            update_properties_gui(properties_summary, model_full_path, output_dir);
         catch ME
-            display_msg(ME.message, Constants.ERROR, 'Verification', '');
+            display_msg(['Zustre has failed :' ME.message], Constants.ERROR, 'Verification', '');
+            display_msg(ME.getReport(), Constants.DEBUG, 'Verification', '');
         end
     elseif strcmp(SOLVER, 'K')
         display_msg('Running Kind2', Constants.INFO, 'Verification', '');
@@ -493,6 +520,7 @@ if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
             kind2(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace);
         catch ME
             display_msg(ME.message, Constants.ERROR, 'Verification', '');
+            display_msg(ME.getReport(), Constants.DEBUG, 'Verification', '');
         end
     elseif strcmp(SOLVER, 'J')
         display_msg('Running JKind', Constants.INFO, 'Verification', '');
@@ -500,10 +528,11 @@ if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
             jkind(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace);
         catch ME
             display_msg(ME.message, Constants.ERROR, 'Verification', '');
+            display_msg(ME.getReport(), Constants.DEBUG, 'Verification', '');
         end
     end
 else
-    display_msg('No property to prove', Constants.INFO, 'Verification', '');
+    display_msg('No property to prove', Constants.RESULT, 'Verification', '');
 end
 
 %%%%%%%%%%%% Cleaning and end of operations %%%%%%%%%%
@@ -516,9 +545,8 @@ end
 
 t_end = now;
 t_compute = t_end - t_start;
-sf2lus_Time = toc(sf2lus_start);
-display_msg(['Total computation time: ' datestr(t_compute, 'HH:MM:SS.FFF')], Constants.INFO, 'Time', '');
-
+display_msg(['Total computation time: ' datestr(t_compute, 'HH:MM:SS.FFF')], Constants.RESULT, 'Time', '');
+Utils.update_status('Done');
 end
 
 function display_help_message()
@@ -545,15 +573,6 @@ cprintf('blue', msg);
 end
 
 
-
-% function welcome_msg(model_full_path)
-% disp('here');
-% msg = {'Welcome to the CoCoSim Automated Analysis Framework'};
-% display_msg(msg, Constants.INFO, 'cocoSim', '');
-% msg = sprintf('Generating Lustre code ... : %s', model_full_path);
-% display_msg(msg, Constants.INFO, 'cocoSim', '');
-% end
-
 function initialize_files(lustre_file)
 % Create lustre file
 fid = fopen(lustre_file, 'w');
@@ -562,10 +581,6 @@ fclose(fid);
 end
 
 function [str] = print_int_to_real()
-% str = ['node int_to_real (In : int)\n'];
-% str = [str 'returns (Out : real)\n'];
-% str = [str 'let\n\tOut = 0.0;\ntel'];
-% str = sprintf('%s\n', str);
 str = '#open <conv>\n';
 end
 
@@ -586,4 +601,148 @@ if numel(elems) > 0
     end
 end
 nodes = sprintf('%s', nodes);
+end
+
+%% update gui
+function update_properties_gui(properties_summary, model_full_path, lus_dir)
+[~, file_name, ~] = fileparts(model_full_path);
+try
+    tgroup = evalin('base','cocosim_tgroup_handle');
+    if (tgroup.isvalid)
+        tgroup_found  = true;
+    else
+        tgroup_found  = false;
+    end
+catch
+    tgroup_found  = false;
+end
+if tgroup_found && isa(tgroup,'matlab.ui.container.TabGroup')
+    nb_pp = numel(properties_summary);
+    fields_nb = nb_pp + 4;% properties +  titles +buttons
+    space = 1 / (fields_nb + 1);
+    panel = tgroup.Children(6).Children(1);
+    if panel.isvalid && isa(panel,'matlab.ui.container.Panel')
+        panel.Children = [];
+        uicontrol(panel,'Style','text',...
+            'String','Safe properties :','HorizontalAlignment','left',...
+            'FontUnits', 'Normalized', 'FontSize',space, 'FontWeight', 'bold', ...
+            'Units', 'Normalized','Position',[0.05 space*fields_nb 0.8 space]);
+        j = 1;
+        cex_indexes = [];
+        timeout_indexes = [];
+        unknown_indexes = [];
+        for i=1:nb_pp
+            answer = properties_summary(i).Answer;
+            if strcmp(answer, 'SAFE')
+                name = properties_summary(i).Name;
+                uicontrol(panel,'Style','text',...
+                    'String',name,'HorizontalAlignment','left',...
+                    'FontUnits', 'Normalized', 'FontSize',space, 'FontWeight', 'bold', ...
+                    'ForegroundColor', 'blue', ...
+                    'Units', 'Normalized','Position',[0.15 space*(fields_nb - j) 0.8 space]);
+                j = j + 1;
+            elseif strcmp(answer, 'CEX')
+                cex_indexes = [cex_indexes, i];
+            elseif strcmp(answer, 'TIMEOUT')
+                timeout_indexes = [timeout_indexes, i];
+            else
+                unknown_indexes = [unknown_indexes, i];
+            end
+        end
+        if j > 1
+            uicontrol(panel,'Style','pushbutton',...
+                'String','View generated CoCoSpec (Experimental)','HorizontalAlignment','left',...
+                'FontUnits', 'Normalized', 'FontSize',space, 'FontWeight', 'bold', ...
+                'Units', 'Normalized','Position',[0.15 space*(fields_nb - j) 0.3 space],...
+                'Callback', @viewContractCallback)
+            j = j + 1;
+        else
+            uicontrol(panel,'Style','text',...
+                    'String','No safe properties','HorizontalAlignment','left',...
+                    'FontUnits', 'Normalized', 'FontSize',space, 'FontWeight', 'bold', ...
+                    'ForegroundColor', 'blue', ...
+                    'Units', 'Normalized','Position',[0.15 space*(fields_nb - j) 0.8 space]);
+            j = j + 1;
+        end
+        %CEX
+        if numel(cex_indexes) > 0
+            uicontrol(panel,'Style','text',...
+                'String','Unsafe properties :','HorizontalAlignment','left',...
+                'FontUnits', 'Normalized', 'FontSize',space, 'FontWeight', 'bold', ...
+                'Units', 'Normalized','Position',[0.05 space*(fields_nb - j) 0.8 space]);
+            j = j + 1;
+            for i=cex_indexes
+                name = properties_summary(i).Name;
+                uicontrol(panel,'Style','text',...
+                    'String',name,'HorizontalAlignment','left',...
+                    'FontUnits', 'Normalized', 'FontSize',space, 'FontWeight', 'bold', ...
+                    'ForegroundColor', 'red', ...
+                    'Units', 'Normalized','Position',[0.15 space*(fields_nb - j) 0.3 space]);
+                
+                uicontrol(panel,'Style','pushbutton',...
+                    'String','View Counter example','HorizontalAlignment','left',...
+                    'FontUnits', 'Normalized', 'FontSize',space, 'FontWeight', 'bold', ...
+                    'Units', 'Normalized','Position',[0.5 space*(fields_nb - j+ 0.25) 0.25 space],...
+                    'Callback', {@viewCEX,name})
+                
+                j = j + 1;
+            end
+        end
+        
+        if numel(timeout_indexes) > 0
+            uicontrol(panel,'Style','text',...
+                'String','TIMEOUT properties :','HorizontalAlignment','left',...
+                'FontUnits', 'Normalized', 'FontSize',space, 'FontWeight', 'bold', ...
+                'Units', 'Normalized','Position',[0.05 space*(fields_nb - j) 0.8 space]);
+            j = j + 1;
+            for i=timeout_indexes
+                name = properties_summary(i).Name;
+                uicontrol(panel,'Style','text',...
+                    'String',name,'HorizontalAlignment','left',...
+                    'FontUnits', 'Normalized', 'FontSize',space, 'FontWeight', 'bold', ...
+                    'ForegroundColor', 'red', ...
+                    'Units', 'Normalized','Position',[0.15 space*(fields_nb - j) 0.8 space]);
+                j = j + 1;
+            end
+        end
+        
+        if numel(unknown_indexes) > 0
+            uicontrol(panel,'Style','text',...
+                'String','UNKNOWN properties :','HorizontalAlignment','left',...
+                'FontUnits', 'Normalized', 'FontSize',space, 'FontWeight', 'bold', ...
+                'Units', 'Normalized','Position',[0.05 space*(fields_nb - j) 0.8 space]);
+            j = j + 1;
+            for i=unknown_indexes
+                name = properties_summary(i).Name;
+                uicontrol(panel,'Style','text',...
+                    'String',name,'HorizontalAlignment','left',...
+                    'FontUnits', 'Normalized', 'FontSize',space, 'FontWeight', 'bold', ...
+                    'ForegroundColor', 'red', ...
+                    'Units', 'Normalized','Position',[0.15 space*(fields_nb - j) 0.8 space]);
+                j = j + 1;
+            end
+        end
+    end
+end
+
+    function viewCEX(src, callbackInfo, prop_name)
+        html_output = fullfile(lus_dir, strcat(file_name,prop_name,'.html'));
+        open(html_output);
+    end
+    function viewContractCallback(src, callbackInfo)
+        emf_name = [file_name '_EMF'];
+        try
+            EMF = evalin('base', emf_name);
+        catch ME
+            display_msg(ME.getReport(),Constants.DEBUG,'viewContract','');
+            msg = sprintf('No CoCoSpec Contract for %s \n Verify the model with Zustre', file_name);
+            warndlg(msg,'CoCoSim: Warning');
+        end
+        try
+            Output_url = view_cocospec(model_full_path, char(EMF));
+            open(Output_url);
+        catch ME
+            display_msg(ME.getReport(),Constants.DEBUG,'viewContract','');
+        end
+    end
 end

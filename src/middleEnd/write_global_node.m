@@ -99,25 +99,32 @@ function [initial_values, variables] = initial_values_initialisation( data, vari
         n = numel(Parameters);
         for i=1:n
             par = Parameters(i);
+            
             try
+                type = sT2fT(par.get('CompiledType'));
                 par_base = evalin('base',par.Name);
+                if isstruct(par_base) && isfield(par_base,'Value')
+                    par_base = par_base.Value;
+                elseif isa(par_base, 'Simulink.Parameter')
+                    par_base = par_base.Value;
+                end
                 
-                type = sT2fT(par_base.get('DataType'));
                 if strcmp(type,'real')
-                    value = sprintf('%f',par_base.Value);
+                    value = sprintf('%f',par_base);
                 else
                     if strcmp(type,'bool')
-                        if par_base.Value~=0
+                        if par_base~=0
                             value ='true';
                         else
                             value = 'false';
                         end
                     else
-                        value = num2str(par_base.Value);
+                        value = sprintf('%d',par_base);
                     end
                     
                 end
-                initialisation = [par.Name ' = ',num2str(value), ';\n\n\t'];
+
+                initialisation = [par.Name ' = ',value, ';\n\n\t'];
                 initial_values = [initial_values, initialisation];
                 variables = [variables, '\t', par.Name, ': ', type , ';\n\n\t'];
             catch ME

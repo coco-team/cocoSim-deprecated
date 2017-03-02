@@ -3,12 +3,12 @@
 # to install it, create a symbolic link in the projects .git/hooks folder
 #
 #       i.e. - from the .git/hooks directory, run
-#               $ ln -s ../../git-hooks/pre-commit.sh pre-commit
+#               $ ln -s ../../pre-commit.sh pre-commit
 #
 # to skip the tests, run with the --no-verify argument
 #       i.e. - $ 'git commit --no-verify'
 
-echo "CoCoSim Pre Commit checks ... (you better have run the regression tests)"
+echo "CoCoSim Pre Commit checks ..."
 # stash any unstaged changes
 git stash -q --keep-index
 

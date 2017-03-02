@@ -54,13 +54,19 @@ full_observer_name = regexp(block.origin_name, '/', 'split');
 if numel(full_observer_name{1}(1:end-1)) == 1
 	idx_parent_subsystem = 1;
 	parent_subsystem = main_blk{idx_parent_subsystem};
-	[model_path, parent_node_name, ext] = fileparts(nom_lustre_file);
+	[~, parent_node_name, ~] = fileparts(nom_lustre_file);
 else
     
 	idx_parent_subsystem = get_subsys_index(main_blk, Utils.concat_delim(full_observer_name{1}(1:end-1), '/'));
-    parent_subsystem = main_blk{idx_parent_subsystem};
-	full_parent_name = regexp(parent_subsystem{1}.name, '/', 'split');
-	parent_node_name = Utils.concat_delim(full_parent_name{1}, '_');
+    if idx_parent_subsystem == 0
+        idx_parent_subsystem = 1;
+        parent_subsystem = main_blk{idx_parent_subsystem};
+        [~, parent_node_name, ~] = fileparts(nom_lustre_file);
+    else
+        parent_subsystem = main_blk{idx_parent_subsystem};
+        full_parent_name = regexp(parent_subsystem{1}.name, '/', 'split');
+        parent_node_name = Utils.concat_delim(full_parent_name{1}, '_');
+    end
 end
 
 % Prepare observer node header
@@ -317,6 +323,12 @@ function [main_sub_idx] = get_subsys_index(inter_blk, origin_name)
 			return
 		end
     end
+    if main_sub_idx==0
+            msg = sprintf('Make sure that the subsystem %s is atomic\n', origin_name);
+            warndlg(msg,'CoCoSim: Warning');
+            display_msg(msg, Constants.WARNING, 'write_property', '');
+    end
+            
 end
 
 function [res_idx] = get_block_index(blks, name)

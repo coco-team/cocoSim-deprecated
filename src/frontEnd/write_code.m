@@ -99,9 +99,32 @@ for idx_block=1:nblk
 
 	%%%%%%%%%%%%% DiscreteIntegrator %%%%%%%%%%%%%
 	elseif strcmp(inter_blk{idx_block}.type, 'DiscreteIntegrator')
-
+        %Gain
 		K = evalin('base', get_param(blks{idx_block}, 'gainval'));
-		T = evalin('base', inter_blk{idx_block}.sample_time);
+        
+        
+        
+        %Method
+        method = get_param(blks{idx_block},'IntegratorMethod');
+        if strcmp(method,'Integration: Forward Euler')
+            %Sample Time
+            msg = sprintf('Make sure that the sample time of block %s is the same as the sample time of the simulation'...
+                , char(inter_blk{idx_block}.origin_name));
+            display_msg(msg,Constants.WARNING,'DiscreteIntegrator','');
+            try
+                T = get_param(blks{idx_block}, 'CompiledSampleTime');
+                T = T(1);
+            catch
+                T = evalin('base', inter_blk{idx_block}.sample_time);
+            end
+        elseif strcmp(method,'Accumulation: Forward Euler')
+            T = 1;
+        else
+            msg = sprintf('method : %s is not supported yet in block %s',char(method), char(inter_blk{idx_block}.origin_name));
+            display_msg(msg,Constants.ERROR,'DiscreteIntegrator','');
+%             return;
+        end
+        
 		% The initial condition is defined unsing an external constant block
 		if strcmp(get_param(inter_blk{idx_block}.origin_name, 'InitialConditionSource'), 'external')
 			vinit = '';
@@ -131,7 +154,7 @@ for idx_block=1:nblk
                  sat_int.list_var=list_var;
          end
          
-        block_string = write_discreteintegrator(inter_blk{idx_block}, K, external_reset,...
+        [block_string, var_str] = write_discreteintegrator(inter_blk{idx_block}, K, external_reset,...
             T, vinit, inter_blk,sat_int);
 
 	%%%%%%%%%%%%%%%% Sum %%%%%%%%%%%%%%%%%%%
@@ -151,11 +174,17 @@ for idx_block=1:nblk
 
         
 		list_signs = [];
-		for sign_iter=1:numel(signs)
+                % check the case where signs is a integer (ie. the number of plus)
+                [nb_plus, was_uint] = str2num(['uint16(' signs ')']);
+                if was_uint && nb_plus > 0
+                    list_signs=repmat('+',1,nb_plus);                    
+                else % the is a classical ++-- string
+                    for sign_iter=1:numel(signs)
 			if not(strcmp(signs(sign_iter), '|'))
-				list_signs = [list_signs signs(sign_iter)];
-			end
-		end
+                            list_signs = [list_signs signs(sign_iter)];
+                        end
+                    end
+                end
 		
 		collapse_mode = get_param(blks{idx_block}, 'CollapseMode');
 		collapse_dim = str2num(get_param(blks{idx_block}, 'CollapseDim'));
@@ -602,13 +631,13 @@ for idx_block=1:nblk
 				     property_node_names{nb}.annotation = inter_blk{idx_block}.annotation;
                      external_math_functions = [external_math_functions, external_math_functions_i];
                 catch ME
-                    disp(ME.message)
+%                     disp(ME.getReport())
                    if strcmp(ME.identifier, 'MATLAB:badsubscript')
                        msg= 'Bad encoding of the property. Make sure to link the main input of the model into the observer';
                        display_msg(msg, Constants.ERROR, 'cocoSim', '');
                    
                    else
-                     display_msg(ME.message, Constants.ERROR, 'cocoSim', '');
+                     display_msg(ME.getReport(), Constants.ERROR, 'cocoSim', '');
                    end
                 end
 

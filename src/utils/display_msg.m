@@ -20,57 +20,94 @@ function display_msg(str, type, from_str, err_code)
 final_message = '';
 
 if type == 1
-	final_message = '(Info)';
+    final_message = '(Info)';
 elseif type == 2
-	final_message = '(Warning)';
-elseif type == 3 
-	final_message = '(Error)';
+    final_message = '(Warning)';
+elseif type == 3
+    final_message = '(Error)';
 elseif type == 4
-	final_message = '(Debug)';
+    final_message = '(Debug)';
 elseif type == 5
     final_message = '(Result)';
 end
 
 if not(strcmp(from_str, ''))
-	final_message = [final_message '[' from_str ']'];
+    final_message = [final_message '[' from_str ']'];
 end
 
 if not(strcmp(err_code, ''))
-	final_message = [final_message '(code: ' err_code ')'];
+    final_message = [final_message '(code: ' err_code ')'];
 end
 
-str = regexp(str, '\\n', 'split');
+str_sp = regexp(str, '\\n', 'split');
 
 % disp([final_message ' ' str{1}]);
 
-msg = [final_message ' ' str{1} '\n'];
+msg = [final_message ' ' str_sp{1} '\n'];
 try
-   cocosim_debug = evalin('base','cocosim_debug');
+    tgroup = evalin('base','cocosim_tgroup_handle');
+    if (tgroup.isvalid)
+        tgroup_found  = true;
+    else
+        tgroup_found  = false;
+    end
+catch
+    tgroup_found  = false;
+end
+
+try
+    cocosim_debug = evalin('base','cocosim_debug');
 catch
     cocosim_debug  = false;
 end
-
-if type == 1
-    cprintf('black', msg);
-elseif type == 3
-    cprintf('red', msg)
-elseif (type == 4 && cocosim_debug)
-    cprintf([1,0.5,0], msg)
-elseif type == 2
-    cprintf('cyan', msg)
-elseif type == 5
-    cprintf('*blue', msg)
+% color = {'black','cyan','red','[1,0.5,0]','blue'};
+if tgroup_found && isa(tgroup,'matlab.ui.container.TabGroup')
+    msg = sprintf('%s %s\n',final_message, str);
+    old_str = tgroup.Children(type).Children(1).String;
+    splited_msg = regexp(msg,'\n','split');
+    htmlmsg = html_text(splited_msg,type);
+    string = [old_str; htmlmsg'];
+    tgroup.Children(type).Children(1).String = string;
+    tgroup.Children(type).Children(1).Value = numel(string);
+    if (type~=4 || cocosim_debug), tgroup.SelectedTab = tgroup.Children(type); end
+    drawnow limitrate
+else
+    if type == 1
+        cprintf('black', msg);
+    elseif type == 3
+        cprintf('red', msg)
+    elseif (type == 4 && cocosim_debug)
+        cprintf([1,0.5,0], msg)
+    elseif type == 2
+        cprintf('cyan', msg)
+    elseif type == 5
+        cprintf('*blue', msg)
+    end
+    for idx_str=2:numel(str_sp)
+        if ~strcmp(str_sp{idx_str}, '')
+            disp(sprintf('\t %s',str_sp{idx_str}));
+        end
+    end
 end
 
-for idx_str=2:numel(str)
-	if ~strcmp(str{idx_str}, '')
-		disp(sprintf('\t %s',str{idx_str}));
-	end
-end
 
 % if type == 3
 % 	warning off backtrace
 % 	error('The transformation process will now stop')
 % end
 
+end
+function htmlmsg = html_text(splited_msg, type)
+if type~=4
+    htmlmsg = splited_msg;
+else
+    htmlmsg = {};
+    for i=1:numel(splited_msg)
+        if strfind(splited_msg{i},' href')
+            htmlmsg{i} = sprintf('<HTML><BODY>%s</BODY></HTML>', splited_msg{i});
+        else
+            htmlmsg{i} = splited_msg{i};
+        end
+    end
+end
 end

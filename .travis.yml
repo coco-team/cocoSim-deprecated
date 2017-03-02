@@ -96,7 +96,7 @@ after_script:
 
 ###############################################################################
 after_success:
-  -  echo "After sucess"
+  -  echo "After success"
 
 ###############################################################################
 # Enable archiving of artifacts on Shippable (does nothing on Travis)

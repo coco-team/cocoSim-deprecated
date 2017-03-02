@@ -17,33 +17,35 @@ else
 end
 
 % Create the verification model if necessary
-if verif
-    newline = sprintf('\n');
-    fname = get_param(block,'Name');
-    fname = strrep(fname,newline,'_');
-    fname = strrep(fname,'-','_');
-    fname = strrep(fname,' ','_');
-    fname = strrep(fname,'.','_');
-    verif_file = strcat('Verification/',fname,'_verif.slx');
-    verif_model = strcat(fname,'_verif');
-    if exist(verif_file)==0
-        % If the file doesn't exist, we generate a new one
-        script_path = which('PreGAL.m');
-        script_path = strrep(script_path,'/PreGAL.m','');
-        verif_template = strcat(script_path,...
-            '/lib/common/verification_template.slx');
-        copyfile(verif_template,verif_file);
-        disp('A verification file has been created');
+try
+    if verif
+        newline = sprintf('\n');
+        fname = get_param(block,'Name');
+        fname = strrep(fname,newline,'_');
+        fname = strrep(fname,'-','_');
+        fname = strrep(fname,' ','_');
+        fname = strrep(fname,'.','_');
+        verif_file = strcat('Verification/',fname,'_verif.slx');
+        verif_model = strcat(fname,'_verif');
+        if exist('Verification','dir')  && exist(verif_file,'file')
+            % If the file doesn't exist, we generate a new one
+            [script_path, ~, ~] = fileparts(mfilename('fullpath'));
+            verif_template = fullfile(script_path, 'verification_template.slx');
+            copyfile(verif_template,verif_file);
+            disp('A verification file has been created');
+        end
+        load_system(verif_model);
+        replace_one_block(strcat(verif_model,'/original'),...
+            block,'verif_off');
+        replace_one_block(strcat(verif_model,'/generated'),...
+            new_block,'verif_off');
+        save_system(verif_model);
+        close_system(verif_model);
     end
-    load_system(verif_model);
-    replace_one_block(strcat(verif_model,'/original'),...
-        block,'verif_off');
-    replace_one_block(strcat(verif_model,'/generated'),...
-        new_block,'verif_off');
-    save_system(verif_model);
-    close_system(verif_model);
+catch ME
+    display_msg(ME.message, Constants.ERROR, 'simplifier', '');
+    display_msg(ME.getReport(), Constants.DEBUG, 'simplifier', '');
 end
-
 % Replace the block by the new_block
 Orient=get_param(block,'orientation');
 Size=get_param(block,'position');

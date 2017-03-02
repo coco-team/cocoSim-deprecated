@@ -6,11 +6,15 @@ function [] = discrete_integrator_process(model)
 % Processing Discrete Integrator blocks
 discrete_intr_list = find_system(model,'BlockType',...
     'DiscreteIntegrator');
+model_smtp = Utils.get_BlockDiagram_SampleTime(model);
 if not(isempty(discrete_intr_list))
-    disp('Processing Discrete Integrator blocks...')
+    display_msg('Processing Discrete Integrator blocks...', Constants.INFO, 'discrete_integrator_process', ''); 
     for i=1:length(discrete_intr_list)
-        disp(discrete_intr_list{i})
-        sample_tmp = get_param(discrete_intr_list{i},'SampleTime');
+        display_msg(discrete_intr_list{i}, Constants.INFO, 'discrete_integrator_process', ''); 
+        sample_tmp = get_param(discrete_intr_list{i},'SampleTime'); 
+        if strcmp(sample_tmp,'-1')
+            sample_tmp = num2str(model_smtp);
+        end
         ICS = get_param(discrete_intr_list{i},'InitialConditionSource');
         ER = get_param(discrete_intr_list{i},'ExternalReset');
         % Handle internal/external initial value
@@ -18,31 +22,43 @@ if not(isempty(discrete_intr_list))
             x0 = get_param(discrete_intr_list{i},'InitialCondition');
             switch ER
                 case 'none'
-                    replace_one_block(discrete_intr_list{i},'gal_lib/integrator');
+                    replace_one_block(discrete_intr_list{i},'gal_lib/atomic_integrator');
                     set_param(strcat(discrete_intr_list{i},'/UnitDelay'),...
                         'InitialCondition',x0);
-                case 'level'
-                    replace_one_block(discrete_intr_list{i},'gal_lib/integrator_reset');
+                case {'level', 'rising', 'falling', 'either', 'sampled level'}
+                    reset = strrep(ER, ' ', '_');
+                    name = strcat('gal_lib/atomic_integrator_reset_', reset);
+                    replace_one_block(discrete_intr_list{i},name);
                     set_param(strcat(discrete_intr_list{i},'/Init'),'Value',x0);
                     % Set the sample time of the Discrete integrator
                     set_param(strcat(discrete_intr_list{i},'/UnitDelay1'),...
                         'SampleTime',sample_tmp);
-                    set_param(strcat(discrete_intr_list{i},'/UnitDelay2'),...
+                    if ~strcmp(ER,'sampled level')
+                        set_param(strcat(discrete_intr_list{i},'/UnitDelay2'),...
                         'SampleTime',sample_tmp);
+                    end
                     set_param(strcat(discrete_intr_list{i},'/Sum6'),...
                         'SampleTime',sample_tmp);
+                otherwise
+                        continue;
             end
         else
             switch ER
                 case 'none'
-                    replace_one_block(discrete_intr_list{i},'gal_lib/integrator_ic');
-                case 'level'
-                    replace_one_block(discrete_intr_list{i},'gal_lib/integrator_reset_ic');
+                    replace_one_block(discrete_intr_list{i},'gal_lib/atomic_integrator_ic');
+                case {'level', 'rising', 'falling', 'either', 'sampled level'}
+                    reset = strrep(ER, ' ', '_');
+                    name = strcat('gal_lib/atomic_integrator_reset_', reset,'_ic');
+                    replace_one_block(discrete_intr_list{i},name);
                     % Set the sample time of the Discrete integrator
+                    if ~strcmp(ER,'sampled level')
                     set_param(strcat(discrete_intr_list{i},'/UnitDelay2'),...
                         'SampleTime',sample_tmp);
+                    end
                     set_param(strcat(discrete_intr_list{i},'/Sum6'),...
                         'SampleTime',sample_tmp);
+                otherwise
+                    continue;
             end
             % Set the sample time of the Discrete integrator
             set_param(strcat(discrete_intr_list{i},'/UnitDelay1'),...
@@ -54,7 +70,7 @@ if not(isempty(discrete_intr_list))
         set_param(strcat(discrete_intr_list{i},'/UnitDelay'),...
             'SampleTime',sample_tmp);
     end
-    fprintf('Done\n\n');
+    display_msg('Done\n\n', Constants.INFO, 'discrete_integrator_process', ''); 
 end
 end
 
