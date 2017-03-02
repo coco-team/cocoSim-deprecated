@@ -104,8 +104,7 @@ deadzone_process(new_model);
 deadzone_dynamic_process(new_model);
 
 % Processing Discrete Integrator blocks
-%we handle it directly
-% discrete_integrator_process(new_model);
+discrete_integrator_process(new_model);
 
 % Processing Discrete State Space blocks
 discrete_state_space_process(new_model);

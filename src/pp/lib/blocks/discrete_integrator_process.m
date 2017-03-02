@@ -11,7 +11,7 @@ if not(isempty(discrete_intr_list))
     display_msg('Processing Discrete Integrator blocks...', Constants.INFO, 'discrete_integrator_process', ''); 
     for i=1:length(discrete_intr_list)
         display_msg(discrete_intr_list{i}, Constants.INFO, 'discrete_integrator_process', ''); 
-        sample_tmp = get_param(discrete_intr_list{i},'SampleTime');
+        sample_tmp = get_param(discrete_intr_list{i},'SampleTime'); 
         if strcmp(sample_tmp,'-1')
             sample_tmp = num2str(model_smtp);
         end
@@ -25,28 +25,40 @@ if not(isempty(discrete_intr_list))
                     replace_one_block(discrete_intr_list{i},'gal_lib/atomic_integrator');
                     set_param(strcat(discrete_intr_list{i},'/UnitDelay'),...
                         'InitialCondition',x0);
-                case 'level'
-                    replace_one_block(discrete_intr_list{i},'gal_lib/atomic_integrator_reset');
+                case {'level', 'rising', 'falling', 'either', 'sampled level'}
+                    reset = strrep(ER, ' ', '_');
+                    name = strcat('gal_lib/atomic_integrator_reset_', reset);
+                    replace_one_block(discrete_intr_list{i},name);
                     set_param(strcat(discrete_intr_list{i},'/Init'),'Value',x0);
                     % Set the sample time of the Discrete integrator
                     set_param(strcat(discrete_intr_list{i},'/UnitDelay1'),...
                         'SampleTime',sample_tmp);
-                    set_param(strcat(discrete_intr_list{i},'/UnitDelay2'),...
+                    if ~strcmp(ER,'sampled level')
+                        set_param(strcat(discrete_intr_list{i},'/UnitDelay2'),...
                         'SampleTime',sample_tmp);
+                    end
                     set_param(strcat(discrete_intr_list{i},'/Sum6'),...
                         'SampleTime',sample_tmp);
+                otherwise
+                        continue;
             end
         else
             switch ER
                 case 'none'
                     replace_one_block(discrete_intr_list{i},'gal_lib/atomic_integrator_ic');
-                case 'level'
-                    replace_one_block(discrete_intr_list{i},'gal_lib/atomic_integrator_reset_ic');
+                case {'level', 'rising', 'falling', 'either', 'sampled level'}
+                    reset = strrep(ER, ' ', '_');
+                    name = strcat('gal_lib/atomic_integrator_reset_', reset,'_ic');
+                    replace_one_block(discrete_intr_list{i},name);
                     % Set the sample time of the Discrete integrator
+                    if ~strcmp(ER,'sampled level')
                     set_param(strcat(discrete_intr_list{i},'/UnitDelay2'),...
                         'SampleTime',sample_tmp);
+                    end
                     set_param(strcat(discrete_intr_list{i},'/Sum6'),...
                         'SampleTime',sample_tmp);
+                otherwise
+                    continue;
             end
             % Set the sample time of the Discrete integrator
             set_param(strcat(discrete_intr_list{i},'/UnitDelay1'),...
