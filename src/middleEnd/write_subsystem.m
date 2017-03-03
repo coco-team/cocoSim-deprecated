@@ -399,7 +399,8 @@ if ~strcmp(unbloc.type, 'ModelReference')
         is_Chart = true;
         rt = sfroot;
         m = rt.find('-isa', 'Simulink.BlockDiagram');
-        events = m.find('-isa','Stateflow.Event','Scope','Input');
+        chart = m.find('-isa','Stateflow.Chart', 'Path', char(unbloc.origin_name));
+        events = chart.find('-isa','Stateflow.Event','Scope','Input');
         show_port = 'off';
     else
         trigger_type = get_param(unbloc.triggerblock, 'TriggerType');

@@ -31,7 +31,11 @@ if not(isempty(block_list))
     for i=1:length(block_list)
         variable = get_param(block_list{i},param_name);
         % get the actual value from the 'base' workspace
-        value = evalin('base',variable);
+        if strcmp(variable,'true') || strcmp(variable,'true')
+            value = variable;
+        else
+            value = evalin('base',variable);
+        end
         % check if the variable is a scalar
         command = strcat('length(',variable,');');
         issimple = evalin('base',command);

@@ -259,9 +259,9 @@ for idx_subsys=numel(inter_blk):-1:1
         display_msg('Found Stateflow', Constants.INFO, 'cocoSim', '');
         load_system(char(inter_blk{idx_subsys}{1}.origin_name));
         rt = sfroot;
-        m = rt.find('-isa', 'Simulink.BlockDiagram');
-        chartArray = m.find('-isa','Stateflow.Chart');
-        chart = chartArray(strcmp(chartArray.get('Path'),inter_blk{idx_subsys}{1}.origin_name));
+        m = rt.find('-isa', 'Simulink.BlockDiagram', 'Name',file_name);
+        chart = m.find('-isa','Stateflow.Chart', 'Path', char(inter_blk{idx_subsys}{1}.origin_name));
+%         chart = chartArray(strcmp(chartArray.get('Path'),inter_blk{idx_subsys}{1}.origin_name));
         [ block_string,external_nodes_i,nb_actions, ~] = chart2lus( chart, 0, xml_trace,file_name );
         if ~strcmp(SOLVER, 'Z') && ~strcmp(SOLVER, 'NONE')
             msg = 'Currently only Zustre can be used to verify Stateflow models';

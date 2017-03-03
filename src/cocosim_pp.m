@@ -171,7 +171,10 @@ if not(isempty(ssys_list))
     display_msg('Processing Subsystem blocks', Constants.INFO, 'simplifier', ''); 
     for i=1:length(ssys_list)
         %disp(ssys_list{i})
-        set_param(ssys_list{i},'TreatAsAtomicUnit','on');   
+        try
+            set_param(ssys_list{i},'TreatAsAtomicUnit','on');  
+        catch
+        end
     end
     display_msg('Done\n\n', Constants.INFO, 'simplifier', ''); 
 end
