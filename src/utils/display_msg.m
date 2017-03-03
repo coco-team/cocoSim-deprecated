@@ -98,7 +98,7 @@ end
 
 end
 function htmlmsg = html_text(splited_msg, type)
-if type~=4
+if type~=4 && type~=3
     htmlmsg = splited_msg;
 else
     htmlmsg = {};

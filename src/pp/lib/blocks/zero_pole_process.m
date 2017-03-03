@@ -26,11 +26,11 @@ function [new_block] = zero_pole_block_process(init_block)
 %   the block to process.
 
 % Obtaining z-expression parameters
-zeros = eval(get_param(init_block, 'Zeros'));
+zeros1 = eval(get_param(init_block, 'Zeros'));
 poles = eval(get_param(init_block, 'Poles'));
 gain = eval(get_param(init_block, 'Gain'));
 % Computing state space representation
-[A,B,C,D]=zp2ss(zeros,poles,gain);
+[A,B,C,D]=zp2ss(zeros1,poles,gain);
 
 % Generating null Initial Conditions
 sizeA=size(A);

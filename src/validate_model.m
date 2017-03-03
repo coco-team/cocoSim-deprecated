@@ -67,12 +67,13 @@ catch ME
     rethrow(ME);
 end
 validation_start = tic;
-command = sprintf('%s -I %s -node %s %s',LUSTREC,LUCTREC_INCLUDE_DIR, Utils.name_format(chart_name), lus_file_path);
+command = sprintf('%s -I "%s" -node %s "%s"',LUSTREC,LUCTREC_INCLUDE_DIR, Utils.name_format(chart_name), lus_file_path);
 msg = sprintf('LUSTREC_COMMAND : %s\n',command);
 display_msg(msg, Constants.INFO, 'validation', '');
 Utils.update_status('Runing Lustrec compiler');
 [status, lustre_out] = system(command);
 if status
+    display_msg(msg, Constants.DEBUG, 'validation', '');
     msg = sprintf('lustrec failed for model "%s"',file_name);
     display_msg(msg, Constants.INFO, 'validation', '');
     display_msg(msg, Constants.ERROR, 'validation', '');
@@ -88,12 +89,12 @@ else
     msg = sprintf('start compiling model "%s"\n',file_name);
     display_msg(msg, Constants.INFO, 'validation', '');
     makefile_name = fullfile(lus_file_dir,strcat(file_name,'.makefile'));
-    command = sprintf('make -f %s', makefile_name);
+    command = sprintf('make -f "%s"', makefile_name);
     msg = sprintf('MAKE_LUSTREC_COMMAND : %s\n',command);
     display_msg(msg, Constants.INFO, 'validation', '');
     [status, make_out] = system(command);
     if status
-        err = printf('Compilation failed for model "%s" ',file_name);
+        err = sprintf('Compilation failed for model "%s" ',file_name);
         display_msg(err, Constants.ERROR, 'validation', '');
         display_msg(err, Constants.DEBUG, 'validation', '');
         display_msg(make_out, Constants.DEBUG, 'validation', '');

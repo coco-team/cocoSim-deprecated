@@ -42,7 +42,11 @@ for i = 1:n
     name = strcat(new_block, '/', delay(i));
     add_block('built-in/UnitDelay',name, 'Position', pos(i,n+r+1));
     % Adding the Initial Condition of the state vector
-    set_param(name,'InitialCondition',num2str(IC(i)));
+    if numel(IC)>=i
+        set_param(name,'InitialCondition',num2str(IC(i)));
+    else
+        set_param(name,'InitialCondition',num2str(IC));
+    end
     if nargin==7
         % If a SampleTime is specified when calling the function
         set_param(name,'SampleTime', SampleTime);

@@ -40,7 +40,7 @@ l = sizeC(1);
 
 new_block = strcat(init_block,'_p');
 
-if (m==1)&(l==1)
+if (m==1)&&(l==1)
     % If the block have a single input and a single output
     state_matrix_process(A,B,C,D,IC,new_block,sample_time);
 else

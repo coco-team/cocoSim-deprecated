@@ -87,6 +87,7 @@ obs_inputs_outputs_dt = '';
 assertions = '';
 
 % Get observer inputs
+obs_inputs_pre_as_inport = {};
 for idx_in=1:numel(block.pre)
 	in_type = get_param(block.pre{idx_in}, 'BlockType');
 	inport_block = obs_inter_blk{idx_in + 1};

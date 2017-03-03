@@ -103,6 +103,8 @@ deadzone_process(new_model);
 % Processing Dead Zone Dynamic blocks
 deadzone_dynamic_process(new_model);
 
+% Processing Integrator blocks
+integrator_process(new_model);
 % Processing Discrete Integrator blocks
 discrete_integrator_process(new_model);
 
@@ -125,8 +127,7 @@ gain_process(new_model);
 % Processing Goto/From pattern
 goto_process(new_model);
 
-% Processing Integrator blocks
-integrator_process(new_model);
+
 
 % Processing Lookup table blocks
 lookuptable_process(new_model)

@@ -4,12 +4,21 @@ function [] = signalbuilder_process(model)
 %   model is a string containing the name of the model to search in
 
 % Processing Signal Builder blocks
+
 signal_list = find_system(model,'MaskType','Sigbuilder block');
+try
+    signal_builder_sample = Utils.get_BlockDiagram_SampleTime(model);
+    if   signal_builder_sample==0 || isnan(signal_builder_sample) || signal_builder_sample==Inf
+        signal_builder_sample = 1;
+    end
+catch
+    signal_builder_sample = Constants.clock_sample;
+end
 if not(isempty(signal_list))
     display_msg('Processing Signal Builder blocks...', Constants.INFO, 'signalbuilder_process', '');
     for i=1:length(signal_list)
         display_msg(signal_list{i}, Constants.INFO, 'signalbuilder_process', '');
-        new_block_name = signalbuilder_block_process(signal_list{i});   
+        new_block_name = signalbuilder_block_process(signal_list{i}, signal_builder_sample);   
         replace_one_block(signal_list{i},new_block_name);
         delete_block(new_block_name);
     end
@@ -17,7 +26,7 @@ if not(isempty(signal_list))
 end
 end
 
-function [new_block] = signalbuilder_block_process(init_block)
+function [new_block] = signalbuilder_block_process(init_block, signal_builder_sample)
 % SIGNAL_BUILDER_BLOCK_PROCESS Changes the signal builder block into a 
 % GAL-friendly block.
 %   init_block is a sting containing the name of 
@@ -34,14 +43,15 @@ end
 new_block = strcat(init_block,'_p');
 add_block('built-in/SubSystem',new_block);
 % Add an input in order to GAL to convert the block to a node
-add_block('built-in/Inport',strcat(new_block,'/GAL_in'),...
-    'Position',pos(0,0));
+% add_block('built-in/Inport',strcat(new_block,'/GAL_in'),...
+%     'Position',pos(0,0));
 
 for i = 1:sig_nb
     sig = strcat(new_block,'/',signames{i});
     sig_gen = strcat(sig,'_gen');
     add_block('gal_lib/signal',sig_gen,...
         'Position',pos(4,i,'w',80));
+    set_param(strcat(sig_gen,'/Sample'),'Gain', num2str(signal_builder_sample));
     add_block('built-in/Outport',sig,'Position',pos(7,i));
     add_line(new_block,strcat(signames{i},'_gen/1'),...
         strcat(signames{i},'/1'));
