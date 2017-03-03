@@ -68,6 +68,7 @@ More information about CoCoSim can be found [here](https://github.com/coco-team/
 * Claire Pagetti (Onera - France)
 * Eric Noulard (Onera - France)
 * Thomas Loquen (Onera - France)
+* Xavier Thirioux (ENSEEIHT - France)
 
 ## Past Contributors
 
