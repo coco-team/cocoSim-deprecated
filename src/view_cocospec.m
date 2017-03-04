@@ -56,7 +56,7 @@ try
     %change the solver of the new model
     configSet = getActiveConfigSet(new_model_name);
     set_param(configSet, 'Solver', 'FixedStepDiscrete');
-    set_param(configSet, 'FixedStep', '1.0');
+%     set_param(configSet, 'FixedStep', '1.0');
     
     %this is related with the position of the blocks inside the COCOSPEC
     %subsytem

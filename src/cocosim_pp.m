@@ -164,6 +164,11 @@ zero_pole_process(new_model);
 
 
 
+%% level 2 optimization
+product_process(new_model);
+
+%%
+
 
 % Configure any subsystem to be treated as Atomic
 ssys_list = find_system(new_model,'BlockType','SubSystem');
