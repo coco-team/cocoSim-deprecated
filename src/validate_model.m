@@ -8,7 +8,7 @@ function [valid, validation_compute,lustrec_failed, ...
     lustrec_binary_failed, sim_failed, lus_file_path, ...
     sf2lus_time, nb_actions, Query_time] = validate_model(model_full_path,cocoSim_path, show_models, L, FixedStep_is_defined, min_max_constraints)
 bdclose('all')
-
+clc
 if ~exist('show_models', 'var')
     show_models = 0;
 elseif show_models
@@ -182,6 +182,9 @@ else
                 input_struct.signals(i).dimensions = dim;
             elseif strcmp(sT2fT(inports(i).DataType),'int')
                 input_struct.signals(i).values = Utils.construct_random_integers(nb_steps, IMIN, IMAX, inports(i).DataType, dim);
+                input_struct.signals(i).dimensions = dim;
+            elseif strcmp(inports(i).DataType,'single')
+                input_struct.signals(i).values = single(Utils.construct_random_doubles(nb_steps, IMIN, IMAX,dim));
                 input_struct.signals(i).dimensions = dim;
             else
                 input_struct.signals(i).values = Utils.construct_random_doubles(nb_steps, IMIN, IMAX,dim);

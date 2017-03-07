@@ -38,15 +38,16 @@ catch
         set_param(init_block,'Value',tree)
     catch error
         
-        fprintf(2,'%s%s%s\n%s\n',...
+        msg = sprintf('%s%s%s\n%s\n',...
             'error occured while parsing the expression : "',value,...
             '" of block :',init_block);
+        display_msg(msg, Constants.DEBUG, 'constant_process', '');
         if not(strcmp('Python:BadMatlabVersion',error.identifier))
-            fprintf(2,'the block must be processed manually\n');
+            msg = sprintf('the block will be processed manually\n');
+            display_msg(msg, Constants.DEBUG, 'constant_process', '');
         end
         err = 1;
         tree = 'err'; % To go threw the next if test
-        fprintf(2,error.message);
     end
 end
 
@@ -56,7 +57,8 @@ if isa(tree,'cell')
     % Creating a block from the expression
     success = expression_process(value,new_block);
     if not(success)
-        fprintf(2,'The block %s has to be handled manually\n',init_block);
+        msg = sprintf('The block %s will be handled manually\n',init_block);
+        display_msg(msg, Constants.DEBUG, 'constant_process', '');
     else
         display_msg(init_block, Constants.INFO, 'constant_process', '');
         replace_one_block(init_block,new_block);

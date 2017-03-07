@@ -38,12 +38,16 @@ code_off = sprintf('%s([], [], [], ''term'')', model);
 eval(code_off);
 warning on;
 
-if port_widths.Outport(1) > 1 && numel(output_dim)>=3
+if port_widths.Outport(1) > 1 && numel(output_dim)>=2
     str = {};
     for i=2:numel(output_dim)
         str{i-1} =  num2str(output_dim(i));
     end
-    I  = strcat('ones(',Utils.concat_delim(str,', ') ,')');
+    if output_dim(1)==1
+        I  = strcat('ones(',Utils.concat_delim(str,', ') ,',1)');
+    else
+        I  = strcat('ones(',Utils.concat_delim(str,', ') ,')');
+    end
     for idx=1:numel(port_widths.Inport)
         if port_widths.Inport(idx) == 1
             pos = get_param(port_handles.Inport(idx),'Position');

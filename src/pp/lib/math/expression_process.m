@@ -193,9 +193,9 @@ for i=argIdx:length(tree)
             % Handle function block with a scalar input
             % The 'constant' "u" found by the parser is the input of the
             % block
-            add_block('built-in/Inport',strcat(sys,'/In'),...
-                'Position',pos(Xinit-posX-1,ind+op-1));
-            add_line(sys,'In/1',strcat(opname,'/',num2str(ind)))
+%             add_block('built-in/Inport',strcat(sys,'/In'),...
+%                 'Position',pos(Xinit-posX-1,ind+op-1));
+            add_line(sys,'u/1',strcat(opname,'/',num2str(ind)))
         else
             name = strcat('Constant',num2str(num));
             block = strcat(sys,'/',name);
