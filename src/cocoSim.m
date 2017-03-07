@@ -279,8 +279,7 @@ for idx_subsys=numel(inter_blk):-1:1
                 load_system(char(inter_blk{idx_subsys}{1}.origin_name));
                 rt = sfroot;
                 m = rt.find('-isa', 'Simulink.BlockDiagram');
-                chartArray = m.find('-isa','Stateflow.Chart');
-                chart = chartArray(strcmp(chartArray.Path,inter_blk{idx_subsys}{1}.origin_name));
+                chart = m.find('-isa','Stateflow.Chart', 'Path', char(inter_blk{idx_subsys}{1}.origin_name));
                 [ block_string,external_nodes_i,nb_actions, ~] = chart2lus( chart, 0, xml_trace,file_name );
                 nodes_string = [nodes_string block_string];
                 extern_Stateflow_nodes_fun = [extern_Stateflow_nodes_fun, external_nodes_i];

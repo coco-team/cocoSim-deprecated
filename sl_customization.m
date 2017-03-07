@@ -51,7 +51,7 @@ try
     [cocoSim_path, ~, ~] = fileparts(mfilename('fullpath'));
     model_full_path = get_file_name(gcs) ;
     L = log4m.getLogger(fullfile(fileparts(model_full_path),'logfile.txt'));
-    validate_window(model_full_path,cocoSim_path,1,L,1);
+    validate_window(model_full_path,cocoSim_path,1,L);
 catch ME
     display_msg(ME.getReport(), Constants.DEBUG,'Validate_model','');
     display_msg(ME.message, Constants.ERROR,'Validate_model','');

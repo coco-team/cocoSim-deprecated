@@ -1,6 +1,6 @@
 function [valid, validation_compute,lustrec_failed, ...
     lustrec_binary_failed, sim_failed, lus_file_path, ...
-    sf2lus_time, nb_actions, Query_time] = validate_window(model_full_path,cocoSim_path, show_models,L,FixedStep_is_defined)
+    sf2lus_time, nb_actions, Query_time] = validate_window(model_full_path,cocoSim_path, show_models,L)
 % validate_window plot the output of the call to cocosim function
 
 
@@ -165,11 +165,7 @@ nb_argin = nargin;
             elseif nb_argin==4
                 [valid, validation_compute,lustrec_failed, ...
                     lustrec_binary_failed, sim_failed, lus_file_path, ...
-                    sf2lus_time, nb_actions, Query_time] = validate_model(model_full_path,cocoSim_path, show_models,L);
-            elseif nb_argin==5
-                [valid, validation_compute,lustrec_failed, ...
-                    lustrec_binary_failed, sim_failed, lus_file_path, ...
-                    sf2lus_time, nb_actions, Query_time] = validate_model(model_full_path,cocoSim_path, show_models,L,FixedStep_is_defined,min_max_constraints);
+                    sf2lus_time, nb_actions, Query_time] = validate_model(model_full_path,cocoSim_path, show_models,L,min_max_constraints);
             end
             [~, file_name, ~] = fileparts(lus_file_path);
             open(file_name);

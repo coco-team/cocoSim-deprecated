@@ -762,10 +762,10 @@ classdef Utils
             ts = Simulink.BlockDiagram.getSampleTimes(file_name);
             st = 1;
             for t=ts
-                if ~isempty(t.Value)
+                if ~isempty(t.Value) && isnumeric(t.Value)
                     tv = t.Value(1);
                     if ~(isnan(tv) || tv==Inf)
-                        st = gcd(st*10,tv*10)/10;
+                        st = gcd(st*100,tv*100)/100;
                         
                     end
                 end

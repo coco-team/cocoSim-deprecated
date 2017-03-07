@@ -6,7 +6,7 @@
 
 function [valid, validation_compute,lustrec_failed, ...
     lustrec_binary_failed, sim_failed, lus_file_path, ...
-    sf2lus_time, nb_actions, Query_time] = validate_model(model_full_path,cocoSim_path, show_models, L, FixedStep_is_defined, min_max_constraints)
+    sf2lus_time, nb_actions, Query_time] = validate_model(model_full_path,cocoSim_path, show_models, L, min_max_constraints)
 bdclose('all')
 clc
 if ~exist('show_models', 'var')
@@ -17,9 +17,7 @@ end
 if ~exist('cocoSim_path', 'var')
     cocoSim_path = pwd;
 end
-if ~exist('FixedStep_is_defined', 'var')
-    FixedStep_is_defined = 0;
-end
+
 addpath(fullfile(cocoSim_path,'src/'));
 addpath(fullfile(cocoSim_path,'src/utils/'));
 config;
@@ -152,7 +150,7 @@ else
         stop_time = 100;
         try
             min = Utils.get_BlockDiagram_SampleTime(file_name); 
-            if ~FixedStep_is_defined || min==0 || isnan(min) || min==Inf
+            if  min==0 || isnan(min) || min==Inf
                 simulation_step = 1;
             else
                 simulation_step = min;
