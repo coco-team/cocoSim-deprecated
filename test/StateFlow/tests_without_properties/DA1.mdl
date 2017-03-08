@@ -1,149 +1,111 @@
 Model {
-  Name			  "DA1"
-  Version		  8.7
-  MdlSubVersion		  1
-  SavedCharacterEncoding  "UTF-8"
+  Name			  "DA1_tmp"
+  Version		  8.4
+  SavedCharacterEncoding  "ISO-8859-1"
   GraphicalInterface {
     NumRootInports	    13
     Inport {
       Name		      "GroundTrack_OrbitalPosition"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "GroundTrack_OrbitalVelocity"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "dockVisibility_status"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "opticsAvailability_status"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "sunlight_status"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "GPS_satelliteVisibility_status"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "GPS_receiverAvailability_status"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "StarPlanetTracker_planetVisibility"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "StarPlanetTracker_starVisibility"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "InertialNavigation_time"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "GroundTrack_Time"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "RealTimeClock_time"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "StageTransition"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     NumRootOutports	    9
     Outport {
       Name		      "CaptureApproachComplete"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
     }
     Outport {
       Name		      "DockingApproachComplete"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
     }
     Outport {
       Name		      "AttemptingToDock"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
     }
     Outport {
       Name		      "LatchCaptureComplete"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
     }
     Outport {
       Name		      "ApproachOrbitComplete"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
     }
     Outport {
       Name		      "FarApproachComplete"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
     }
     Outport {
       Name		      "ProximityOperationsComplete"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
     }
     Outport {
       Name		      "FailedApproach"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
     }
     Outport {
       Name		      "JointMission"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.492"
+    ComputedModelVersion    "1.494"
     NumModelReferences	    0
     NumTestPointedSignals   0
-    NumProvidedFunctions    0
-    NumRequiredFunctions    0
   }
   ScopeRefreshTime	  0.035000
   OverrideScopeRefreshTime off
@@ -154,7 +116,6 @@ Model {
   MinMaxOverflowArchiveMode "Overwrite"
   FPTRunName		  "Run 1"
   MaxMDLFileLineLength	  120
-  LastSavedArchitecture	  "glnxa64"
   Object {
     $PropName		    "BdWindowsInfo"
     $ObjectID		    1
@@ -198,11 +159,11 @@ Model {
   Creator		  "mwwhalen"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "bourbouh"
+  LastModifiedBy	  "hbourbou"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sat Jul 16 23:47:45 2016"
-  RTWModifiedTimeStamp	  390613663
-  ModelVersionFormat	  "1.%<AutoIncrement:492>"
+  LastModifiedDate	  "Tue Mar 07 16:14:05 2017"
+  RTWModifiedTimeStamp	  410804045
+  ModelVersionFormat	  "1.%<AutoIncrement:494>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -210,10 +171,6 @@ Model {
   WideLines		  off
   ShowLineDimensions	  off
   ShowPortDataTypes	  off
-  ShowEditTimeErrors	  on
-  ShowEditTimeWarnings	  off
-  ShowEditTimeAdvisorChecks off
-  ShowPortUnits		  off
   ShowDesignRanges	  off
   ShowLoopsOnError	  on
   IgnoreBidirectionalLines off
@@ -222,10 +179,8 @@ Model {
   ShowSignalResolutionIcons on
   ShowViewerIcons	  on
   SortedOrder		  off
-  VariantCondition	  off
   ExecutionContextIcon	  off
   ShowLinearizationAnnotations on
-  ShowVisualizeInsertedRTB on
   ShowMarkup		  on
   BlockNameDataTip	  on
   BlockParametersDataTip  on
@@ -233,7 +188,6 @@ Model {
   ToolBar		  on
   StatusBar		  on
   BrowserShowLibraryLinks off
-  FunctionConnectors	  off
   BrowserLookUnderMasks	  off
   SimulationMode	  "normal"
   PauseTimes		  "5"
@@ -252,11 +206,11 @@ Model {
     $PropName		    "DataLoggingOverride"
     $ObjectID		    6
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
-    model_		    "DA1"
+    model_		    "DA1_tmp"
     Array {
       Type		      "Cell"
       Dimension		      1
-      Cell		      "DA1"
+      Cell		      "DA1_tmp"
       PropName		      "logAsSpecifiedByModels_"
     }
     Array {
@@ -266,6 +220,27 @@ Model {
       PropName		      "logAsSpecifiedByModelsSSIDs_"
     }
   }
+  RecordCoverage	  off
+  CovPath		  "/"
+  CovSaveName		  "covdata"
+  CovMetricSettings	  "dw"
+  CovNameIncrementing	  off
+  CovHtmlReporting	  on
+  CovForceBlockReductionOff on
+  CovEnableCumulative	  on
+  covSaveCumulativeToWorkspaceVar on
+  CovSaveSingleToWorkspaceVar on
+  CovCumulativeVarName	  "covCumulativeData"
+  CovCumulativeReport	  off
+  CovReportOnPause	  on
+  CovModelRefEnable	  "Off"
+  CovExternalEMLEnable	  off
+  CovSFcnEnable		  on
+  CovBoundaryAbsTol	  0.000010
+  CovBoundaryRelTol	  0.010000
+  CovUseTimeInterval	  off
+  CovStartTime		  0
+  CovStopTime		  0
   ExtModeBatchMode	  off
   ExtModeEnableFloating	  on
   ExtModeTrigType	  "manual"
@@ -294,13 +269,13 @@ Model {
     Dimension		    1
     Simulink.ConfigSet {
       $ObjectID		      7
-      Version		      "1.16.2"
+      Version		      "1.14.3"
       Array {
 	Type			"Handle"
-	Dimension		9
+	Dimension		8
 	Simulink.SolverCC {
 	  $ObjectID		  8
-	  Version		  "1.16.2"
+	  Version		  "1.14.3"
 	  StartTime		  "0.0"
 	  StopTime		  "300"
 	  AbsTol		  "auto"
@@ -327,8 +302,6 @@ Model {
 	  ZeroCrossControl	  "UseLocalSettings"
 	  ZeroCrossAlgorithm	  "Nonadaptive"
 	  AlgebraicLoopSolver	  "TrustRegion"
-	  SolverInfoToggleStatus  off
-	  IsAutoAppliedInSIP	  off
 	  SolverResetMethod	  "Fast"
 	  PositivePriorityOrder	  off
 	  AutoInsertRateTranBlk	  off
@@ -337,7 +310,7 @@ Model {
 	}
 	Simulink.DataIOCC {
 	  $ObjectID		  9
-	  Version		  "1.16.2"
+	  Version		  "1.14.3"
 	  Decimation		  "1"
 	  ExternalInput		  "[t,u]"
 	  FinalStateName	  "xFinal"
@@ -356,8 +329,6 @@ Model {
 	  DSMLogging		  on
 	  InspectSignalLogs	  off
 	  VisualizeSimOutput	  on
-	  StreamToWorkspace	  off
-	  StreamVariableName	  "streamout"
 	  SaveTime		  on
 	  ReturnWorkspaceOutputs  off
 	  StateSaveName		  "xout"
@@ -369,27 +340,28 @@ Model {
 	  OutputTimes		  "[]"
 	  ReturnWorkspaceOutputsName "out"
 	  Refine		  "1"
-	  LoggingToFile		  off
-	  LoggingFileName	  "out.mat"
-	  LoggingIntervals	  "[-inf, inf]"
 	}
 	Simulink.OptimizationCC {
 	  $ObjectID		  10
-	  Version		  "1.16.2"
+	  Version		  "1.14.3"
 	  Array {
 	    Type		    "Cell"
-	    Dimension		    4
+	    Dimension		    8
 	    Cell		    "ZeroExternalMemoryAtStartup"
 	    Cell		    "ZeroInternalMemoryAtStartup"
 	    Cell		    "NoFixptDivByZeroProtection"
 	    Cell		    "OptimizeModelRefInitCode"
+	    Cell		    "BooleansAsBitfields"
+	    Cell		    "PassReuseOutputArgsAs"
+	    Cell		    "PassReuseOutputArgsThreshold"
+	    Cell		    "UseSpecifiedMinMax"
 	    PropName		    "DisabledProps"
 	  }
 	  BlockReduction	  on
 	  BooleanDataType	  on
 	  ConditionallyExecuteInputs on
-	  DefaultParameterBehavior "Tunable"
-	  UseDivisionForNetSlopeComputation "off"
+	  InlineParams		  off
+	  UseDivisionForNetSlopeComputation "Off"
 	  UseFloatMulNetSlope	  off
 	  DefaultUnderspecifiedDataType	"double"
 	  UseSpecifiedMinMax	  off
@@ -406,7 +378,6 @@ Model {
 	  EnableMemcpy		  on
 	  MemcpyThreshold	  64
 	  PassReuseOutputArgsAs	  "Structure reference"
-	  PassReuseOutputArgsThreshold 12
 	  ExpressionDepthLimit	  2147483647
 	  LocalBlockOutputs	  on
 	  RollThreshold		  5
@@ -423,12 +394,12 @@ Model {
 	  LifeSpan		  "inf"
 	  MaxStackSize		  "Inherit from target"
 	  BufferReusableBoundary  on
-	  SimCompilerOptimization "off"
+	  SimCompilerOptimization "Off"
 	  AccelVerboseBuild	  off
 	}
 	Simulink.DebuggingCC {
 	  $ObjectID		  11
-	  Version		  "1.16.2"
+	  Version		  "1.14.3"
 	  RTPrefix		  "error"
 	  ConsistencyChecking	  "none"
 	  ArrayBoundsChecking	  "none"
@@ -476,7 +447,7 @@ Model {
 	  UnnecessaryDatatypeConvMsg "none"
 	  VectorMatrixConversionMsg "none"
 	  InvalidFcnCallConnMsg	  "error"
-	  FcnCallInpInsideContextMsg "UseLocalSettings"
+	  FcnCallInpInsideContextMsg "EnableAllAsWarning"
 	  SignalLabelMismatchMsg  "none"
 	  UnconnectedInputMsg	  "warning"
 	  UnconnectedOutputMsg	  "warning"
@@ -487,7 +458,6 @@ Model {
 	  BusObjectLabelMismatch  "warning"
 	  RootOutportRequireBusObject "warning"
 	  AssertControl		  "UseLocalSettings"
-	  AllowSymbolicDim	  on
 	  ModelReferenceIOMsg	  "none"
 	  ModelReferenceMultiInstanceNormalModeStructChecksumCheck "error"
 	  ModelReferenceVersionMismatchMessage "none"
@@ -503,9 +473,6 @@ Model {
 	  StrictBusMsg		  "None"
 	  BusNameAdapt		  "WarnAndRepair"
 	  NonBusSignalsTreatedAsBus "none"
-	  SymbolicDimMinMaxWarning "warning"
-	  LossOfSymbolicDimsSimulationWarning "warning"
-	  LossOfSymbolicDimsCodeGenerationWarning "error"
 	  BlockIODiagnostic	  "none"
 	  SFUnusedDataAndEventsDiag "warning"
 	  SFUnexpectedBacktrackingDiag "warning"
@@ -515,15 +482,12 @@ Model {
 	  SFUnconditionalTransitionShadowingDiag "warning"
 	  SFUndirectedBroadcastEventsDiag "warning"
 	  SFTransitionActionBeforeConditionDiag	"warning"
-	  SFOutputUsedAsStateInMooreChartDiag "error"
 	  IntegerSaturationMsg	  "warning"
-	  AllowedUnitSystems	  "all"
-	  UnitsInconsistencyMsg	  "warning"
-	  AllowAutomaticUnitConversions	on
+	  ModelReferenceCSMismatchMessage "none"
 	}
 	Simulink.HardwareCC {
 	  $ObjectID		  12
-	  Version		  "1.16.2"
+	  Version		  "1.14.3"
 	  ProdBitPerChar	  8
 	  ProdBitPerShort	  16
 	  ProdBitPerInt		  32
@@ -560,14 +524,11 @@ Model {
 	  TargetHWDeviceType	  "Specified"
 	  TargetUnknown		  off
 	  ProdEqTarget		  on
-	  UseEmbeddedCoderFeatures on
-	  UseSimulinkCoderFeatures on
 	}
 	Simulink.ModelReferenceCC {
 	  $ObjectID		  13
-	  Version		  "1.16.2"
+	  Version		  "1.14.3"
 	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
-	  EnableRefExpFcnMdlSchedulingChecks on
 	  CheckModelReferenceTargetMessage "error"
 	  EnableParallelModelReferenceBuilds off
 	  ParallelModelReferenceErrorOnInvalidPool on
@@ -581,7 +542,7 @@ Model {
 	}
 	Simulink.SFSimCC {
 	  $ObjectID		  14
-	  Version		  "1.16.2"
+	  Version		  "1.14.3"
 	  SFSimEcho		  on
 	  SimCtrlC		  on
 	  SimIntegrity		  on
@@ -593,15 +554,26 @@ Model {
 	Simulink.RTWCC {
 	  $BackupClass		  "Simulink.RTWCC"
 	  $ObjectID		  15
-	  Version		  "1.16.2"
+	  Version		  "1.14.3"
 	  Array {
 	    Type		    "Cell"
-	    Dimension		    1
+	    Dimension		    13
 	    Cell		    "IncludeHyperlinkInReport"
+	    Cell		    "GenerateTraceInfo"
+	    Cell		    "GenerateTraceReport"
+	    Cell		    "GenerateTraceReportSl"
+	    Cell		    "GenerateTraceReportSf"
+	    Cell		    "GenerateTraceReportEml"
+	    Cell		    "PortableWordSizes"
+	    Cell		    "GenerateWebview"
+	    Cell		    "GenerateCodeMetricsReport"
+	    Cell		    "GenerateCodeReplacementReport"
+	    Cell		    "GenerateMissedCodeReplacementReport"
+	    Cell		    "GenerateErtSFunction"
+	    Cell		    "CreateSILPILBlock"
 	    PropName		    "DisabledProps"
 	  }
 	  SystemTargetFile	  "grt.tlc"
-	  HardwareBoard		  "None"
 	  TLCOptions		  ""
 	  GenCodeOnly		  off
 	  MakeCommand		  "make_rtw"
@@ -609,7 +581,6 @@ Model {
 	  PackageGeneratedCodeAndArtifacts off
 	  TemplateMakefile	  "grt_default_tmf"
 	  PostCodeGenCommand	  ""
-	  Description		  ""
 	  GenerateReport	  off
 	  SaveLog		  off
 	  RTWVerbose		  on
@@ -641,8 +612,7 @@ Model {
 	  GenerateWebview	  off
 	  GenerateCodeMetricsReport off
 	  GenerateCodeReplacementReport	off
-	  GenerateMissedCodeReplacementReport off
-	  RTWCompilerOptimization "off"
+	  RTWCompilerOptimization "Off"
 	  RTWCustomCompilerOptimizations ""
 	  CheckMdlBeforeBuild	  "Off"
 	  SharedConstantsCachingThreshold 1024
@@ -651,10 +621,10 @@ Model {
 	    Dimension		    2
 	    Simulink.CodeAppCC {
 	      $ObjectID		      16
-	      Version		      "1.16.2"
+	      Version		      "1.14.3"
 	      Array {
 		Type			"Cell"
-		Dimension		9
+		Dimension		25
 		Cell			"IgnoreCustomStorageClasses"
 		Cell			"InsertBlockDesc"
 		Cell			"SFDataObjDesc"
@@ -664,6 +634,22 @@ Model {
 		Cell			"ParamNamingRule"
 		Cell			"InlinedPrmAccess"
 		Cell			"CustomSymbolStr"
+		Cell			"IgnoreTestpoints"
+		Cell			"InsertPolySpaceComments"
+		Cell			"MATLABFcnDesc"
+		Cell			"InternalIdentifier"
+		Cell			"CustomSymbolStrGlobalVar"
+		Cell			"CustomSymbolStrType"
+		Cell			"CustomSymbolStrField"
+		Cell			"CustomSymbolStrFcn"
+		Cell			"CustomSymbolStrModelFcn"
+		Cell			"CustomSymbolStrFcnArg"
+		Cell			"CustomSymbolStrBlkIO"
+		Cell			"CustomSymbolStrTmpVar"
+		Cell			"CustomSymbolStrMacro"
+		Cell			"CustomSymbolStrUtil"
+		Cell			"CustomUserTokenString"
+		Cell			"ReqsInCode"
 		PropName		"DisabledProps"
 	      }
 	      ForceParamTrailComments off
@@ -708,10 +694,10 @@ Model {
 	    Simulink.GRTTargetCC {
 	      $BackupClass	      "Simulink.TargetCC"
 	      $ObjectID		      17
-	      Version		      "1.16.2"
+	      Version		      "1.14.3"
 	      Array {
 		Type			"Cell"
-		Dimension		10
+		Dimension		15
 		Cell			"IncludeMdlTerminateFcn"
 		Cell			"GenerateAllocFcn"
 		Cell			"SuppressErrorStatus"
@@ -722,10 +708,16 @@ Model {
 		Cell			"SupportNonInlinedSFcns"
 		Cell			"SupportComplex"
 		Cell			"SupportAbsoluteTime"
+		Cell			"RemoveResetFunc"
+		Cell			"ExistingSharedCode"
+		Cell			"GenerateTestInterfaces"
+		Cell			"ModelStepFunctionPrototypeControlCompliant"
+		Cell			"RemoveDisableFunc"
 		PropName		"DisabledProps"
 	      }
 	      TargetFcnLib	      "ansi_tfl_tmw.mat"
 	      TargetLibSuffix	      ""
+	      TargetPreCompLibLocation ""
 	      GenFloatMathFcnCalls    "NOT IN USE"
 	      TargetLangStandard      "C89/C90 (ANSI)"
 	      CodeReplacementLibrary  "None"
@@ -734,7 +726,6 @@ Model {
 	      ERTMultiwordLength      256
 	      MultiwordLength	      2048
 	      GenerateFullHeader      on
-	      InferredTypesCompatibility off
 	      GenerateSampleERTMain   off
 	      GenerateTestInterfaces  off
 	      ModelReferenceCompliant on
@@ -768,7 +759,6 @@ Model {
 	      AutosarCompliant	      off
 	      GRTInterface	      on
 	      GenerateAllocFcn	      off
-	      UseToolchainInfoCompliant	on
 	      GenerateSharedConstants on
 	      UseMalloc		      off
 	      ExtMode		      off
@@ -788,44 +778,11 @@ Model {
 	    PropName		    "Components"
 	  }
 	}
-	SlCovCC.ConfigComp {
-	  $ObjectID		  18
-	  Version		  "1.16.2"
-	  Description		  "Simulink Coverage Configuration Component"
-	  Name			  "Simulink Coverage"
-	  CovEnable		  off
-	  CovScope		  "EntireSystem"
-	  CovIncludeTopModel	  on
-	  RecordCoverage	  off
-	  CovPath		  "/"
-	  CovSaveName		  "covdata"
-	  CovMetricSettings	  "dw"
-	  CovNameIncrementing	  off
-	  CovHtmlReporting	  on
-	  CovForceBlockReductionOff on
-	  CovEnableCumulative	  on
-	  CovSaveCumulativeToWorkspaceVar on
-	  CovSaveSingleToWorkspaceVar on
-	  CovCumulativeVarName	  "covCumulativeData"
-	  CovCumulativeReport	  off
-	  CovSaveOutputData	  on
-	  CovOutputDir		  "slcov_output/$ModelName$"
-	  CovDataFileName	  "$ModelName$_cvdata"
-	  CovReportOnPause	  on
-	  CovModelRefEnable	  "Off"
-	  CovExternalEMLEnable	  off
-	  CovSFcnEnable		  on
-	  CovBoundaryAbsTol	  1e-05
-	  CovBoundaryRelTol	  0.01
-	  CovUseTimeInterval	  off
-	  CovStartTime		  0
-	  CovStopTime		  0
-	}
 	PropName		"Components"
       }
       Name		      "Configuration"
       CurrentDlgPage	      "Data Import//Export"
-      ConfigPrmDlgPosition     [ 840, 485, 1720, 1115 ] 
+      ConfigPrmDlgPosition    [ 840, 485, 1720, 1115 ]  
     }
     PropName		    "ConfigurationSets"
   }
@@ -878,7 +835,7 @@ Model {
   MaskDefaults {
     SelfModifiable	    "off"
     IconFrame		    "on"
-    IconOpaque		    "opaque"
+    IconOpaque		    "on"
     RunInitForIconRedraw    "off"
     IconRotate		    "none"
     PortRotate		    "default"
@@ -910,7 +867,6 @@ Model {
       OutDataTypeStr	      "Inherit: auto"
       LockScale		      off
       BusOutputAsStruct	      off
-      Unit		      "inherit"
       PortDimensions	      "-1"
       VarSizeSig	      "Inherit"
       SampleTime	      "-1"
@@ -928,7 +884,6 @@ Model {
       OutDataTypeStr	      "Inherit: auto"
       LockScale		      off
       BusOutputAsStruct	      off
-      Unit		      "inherit"
       PortDimensions	      "-1"
       VarSizeSig	      "Inherit"
       SampleTime	      "-1"
@@ -952,7 +907,6 @@ Model {
       TreatAsAtomicUnit	      off
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
-      CheckFcnCallInpInsideContextMsg off
       SystemSampleTime	      "-1"
       RTWSystemCode	      "Auto"
       RTWFcnNameOpts	      "Auto"
@@ -972,16 +926,16 @@ Model {
       MaskHideContents	      off
       SFBlockType	      "NONE"
       GeneratePreprocessorConditionals off
+      PropagateVariantConditions off
       TreatAsGroupedWhenPropagatingVariantConditions on
       ContentPreviewEnabled   off
-      IsWebBlock	      off
     }
     Block {
       BlockType		      Terminator
     }
   }
   System {
-    Name		    "DA1"
+    Name		    "DA1_tmp"
     Location		    [49, 18, 1600, 916]
     Open		    off
     ModelBrowserVisibility  on
@@ -1121,7 +1075,7 @@ Model {
       Position		      [545, 29, 1010, 901]
       ZOrder		      -14
       ErrorFcn		      "Stateflow.Translate.translate"
-      PermitHierarchicalResolution "ExplicitOnly"
+      PermitHierarchicalResolution "ParametersOnly"
       TreatAsAtomicUnit	      on
       RequestExecContextInheritance off
       SFBlockType	      "Chart"
@@ -1129,7 +1083,7 @@ Model {
       System {
 	Name			"Chart"
 	Location		[49, 18, 1600, 916]
-	Open			on
+	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -1141,7 +1095,7 @@ Model {
 	TiledPageScale		1
 	ShowPageBoundaries	off
 	ZoomFactor		"100"
-	SIDHighWatermark	"37"
+	SIDHighWatermark	"43"
 	Block {
 	  BlockType		  Inport
 	  Name			  "GroundTrack_OrbitalPosition"
@@ -1261,20 +1215,20 @@ Model {
 	Block {
 	  BlockType		  Demux
 	  Name			  " Demux "
-	  SID			  "14::36"
+	  SID			  "14::42"
 	  Ports			  [1, 1]
 	  Position		  [270, 460, 320, 500]
-	  ZOrder		  5
+	  ZOrder		  11
 	  Outputs		  "1"
 	}
 	Block {
 	  BlockType		  S-Function
 	  Name			  " SFunction "
-	  SID			  "14::35"
-	  Tag			  "Stateflow S-Function DA1 1"
+	  SID			  "14::41"
+	  Tag			  "Stateflow S-Function DA1_tmp 1"
 	  Ports			  [13, 10]
 	  Position		  [180, 90, 230, 370]
-	  ZOrder		  4
+	  ZOrder		  10
 	  FunctionName		  "sf_sfun"
 	  PortCounts		  "[13 10]"
 	  SFunctionDeploymentMode off
@@ -1337,9 +1291,9 @@ Model {
 	Block {
 	  BlockType		  Terminator
 	  Name			  " Terminator "
-	  SID			  "14::37"
+	  SID			  "14::43"
 	  Position		  [460, 471, 480, 489]
-	  ZOrder		  6
+	  ZOrder		  12
 	}
 	Block {
 	  BlockType		  Outport
@@ -1422,91 +1376,91 @@ Model {
 	  IconDisplay		  "Port number"
 	}
 	Line {
-	  ZOrder		  104
+	  ZOrder		  152
 	  SrcBlock		  "GroundTrack_OrbitalPosition"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  105
+	  ZOrder		  153
 	  SrcBlock		  "GroundTrack_OrbitalVelocity"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  2
 	}
 	Line {
-	  ZOrder		  106
+	  ZOrder		  154
 	  SrcBlock		  "dockVisibility_status"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  3
 	}
 	Line {
-	  ZOrder		  107
+	  ZOrder		  155
 	  SrcBlock		  "opticsAvailability_status"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  4
 	}
 	Line {
-	  ZOrder		  108
+	  ZOrder		  156
 	  SrcBlock		  "sunlight_status"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  5
 	}
 	Line {
-	  ZOrder		  109
+	  ZOrder		  157
 	  SrcBlock		  "GPS_satelliteVisibility_status"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  6
 	}
 	Line {
-	  ZOrder		  110
+	  ZOrder		  158
 	  SrcBlock		  "GPS_receiverAvailability_status"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  7
 	}
 	Line {
-	  ZOrder		  111
+	  ZOrder		  159
 	  SrcBlock		  "StarPlanetTracker_planetVisibility"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  8
 	}
 	Line {
-	  ZOrder		  112
+	  ZOrder		  160
 	  SrcBlock		  "StarPlanetTracker_starVisibility"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  9
 	}
 	Line {
-	  ZOrder		  113
+	  ZOrder		  161
 	  SrcBlock		  "InertialNavigation_time"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  10
 	}
 	Line {
-	  ZOrder		  114
+	  ZOrder		  162
 	  SrcBlock		  "GroundTrack_Time"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  11
 	}
 	Line {
-	  ZOrder		  115
+	  ZOrder		  163
 	  SrcBlock		  "RealTimeClock_time"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  12
 	}
 	Line {
-	  ZOrder		  116
+	  ZOrder		  164
 	  SrcBlock		  "StageTransition"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
@@ -1514,7 +1468,7 @@ Model {
 	}
 	Line {
 	  Name			  "CaptureApproachComplete"
-	  ZOrder		  117
+	  ZOrder		  165
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  2
@@ -1523,7 +1477,7 @@ Model {
 	}
 	Line {
 	  Name			  "DockingApproachComplete"
-	  ZOrder		  118
+	  ZOrder		  166
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  3
@@ -1532,7 +1486,7 @@ Model {
 	}
 	Line {
 	  Name			  "AttemptingToDock"
-	  ZOrder		  119
+	  ZOrder		  167
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  4
@@ -1541,7 +1495,7 @@ Model {
 	}
 	Line {
 	  Name			  "LatchCaptureComplete"
-	  ZOrder		  120
+	  ZOrder		  168
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  5
@@ -1550,7 +1504,7 @@ Model {
 	}
 	Line {
 	  Name			  "ApproachOrbitComplete"
-	  ZOrder		  121
+	  ZOrder		  169
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  6
@@ -1559,7 +1513,7 @@ Model {
 	}
 	Line {
 	  Name			  "FarApproachComplete"
-	  ZOrder		  122
+	  ZOrder		  170
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  7
@@ -1568,7 +1522,7 @@ Model {
 	}
 	Line {
 	  Name			  "ProximityOperationsComplete"
-	  ZOrder		  123
+	  ZOrder		  171
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  8
@@ -1577,7 +1531,7 @@ Model {
 	}
 	Line {
 	  Name			  "FailedApproach"
-	  ZOrder		  124
+	  ZOrder		  172
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  9
@@ -1586,7 +1540,7 @@ Model {
 	}
 	Line {
 	  Name			  "JointMission"
-	  ZOrder		  125
+	  ZOrder		  173
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  10
@@ -1594,14 +1548,14 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  126
+	  ZOrder		  174
 	  SrcBlock		  " Demux "
 	  SrcPort		  1
 	  DstBlock		  " Terminator "
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  127
+	  ZOrder		  175
 	  SrcBlock		  " SFunction "
 	  SrcPort		  1
 	  DstBlock		  " Demux "
@@ -1855,20 +1809,21 @@ Model {
 }
 #Finite State Machines
 #
-#   Stateflow 80000009
+#   Stateflow 80000010
 #
 #
 Stateflow {
   machine {
     id			    1
-    name		    "DA1"
+    name		    "DA1_tmp"
     created		    "26-Jul-2006 11:31:47"
     isLibrary		    0
+    sfVersion		    80000001
     firstTarget		    111
-    sfVersion		    80000009
   }
   chart {
     id			    2
+    machine		    1
     name		    "Chart"
     windowPosition	    [18.75 -446.25 1535 1065]
     viewLimits		    [-125.523 2550.685 447.172 2108.685]
@@ -1876,8 +1831,6 @@ Stateflow {
     screen		    [1 1 1600 900 1.333333333333333]
     treeNode		    [0 20 0 0]
     viewObj		    2
-    visible		    1
-    machine		    1
     subviewS {
       x1		      145.373
       y1		      1284.886
@@ -1885,12 +1838,12 @@ Stateflow {
     }
     ssIdHighWaterMark	    283
     decomposition	    SET_CHART
-    firstData		    68
     updateMethod	    DISCRETE
     sampleTime		    "1"
     chartFileNumber	    1
     disableImplicitCasting  1
     supportVariableSizing   0
+    firstData		    68
   }
   state {
     id			    3
@@ -2136,7 +2089,6 @@ Stateflow {
     fontSize		    32
     chart		    2
     treeNode		    [2 6 0 0]
-    firstTransition	    27
     subviewer		    2
     subviewS {
       x1		      -50
@@ -2147,6 +2099,7 @@ Stateflow {
     type		    AND_STATE
     decomposition	    CLUSTER_STATE
     executionOrder	    1
+    firstTransition	    27
   }
   state {
     id			    21
@@ -2184,7 +2137,6 @@ Stateflow {
     arrowSize		    23.771
     chart		    2
     treeNode		    [20 25 5 0]
-    firstTransition	    47
     superState		    SUBCHART
     subviewer		    2
     subviewS {
@@ -2198,6 +2150,7 @@ Stateflow {
     ssIdNumber		    29
     type		    OR_STATE
     decomposition	    SET_STATE
+    firstTransition	    47
   }
   state {
     id			    24
@@ -2221,14 +2174,14 @@ Stateflow {
     arrowSize		    7.691
     chart		    2
     treeNode		    [23 10 0 26]
-    firstTransition	    50
-    firstJunction	    49
     visible		    0
     subviewer		    23
     ssIdNumber		    30
     type		    AND_STATE
     decomposition	    CLUSTER_STATE
     executionOrder	    1
+    firstTransition	    50
+    firstJunction	    49
   }
   state {
     id			    26
@@ -2238,14 +2191,14 @@ Stateflow {
     arrowSize		    7.691
     chart		    2
     treeNode		    [23 22 25 0]
-    firstTransition	    58
-    firstJunction	    57
     visible		    0
     subviewer		    23
     ssIdNumber		    37
     type		    AND_STATE
     decomposition	    CLUSTER_STATE
     executionOrder	    2
+    firstTransition	    58
+    firstJunction	    57
   }
   transition {
     id			    27
@@ -2261,7 +2214,6 @@ Stateflow {
     }
     midPoint		    [203.8409 271.0602]
     chart		    2
-    linkNode		    [20 0 28]
     dataLimits		    [183.469 248.889 263.31 278.812]
     subviewer		    2
     drawStyle		    SMART
@@ -2270,6 +2222,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    138
+    linkNode		    [20 0 28]
   }
   transition {
     id			    28
@@ -2287,7 +2240,6 @@ Stateflow {
     }
     midPoint		    [333.0436 342.4575]
     chart		    2
-    linkNode		    [20 27 29]
     dataLimits		    [325.293 340.794 282.094 424.164]
     subviewer		    2
     drawStyle		    SMART
@@ -2296,6 +2248,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    175
+    linkNode		    [20 27 29]
   }
   transition {
     id			    29
@@ -2313,7 +2266,6 @@ Stateflow {
     }
     midPoint		    [632.9278 452.7933]
     chart		    2
-    linkNode		    [20 28 30]
     dataLimits		    [452.908 800.542 445.042 460.544]
     stampAngle		    -1
     subviewer		    2
@@ -2323,6 +2275,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    93
+    linkNode		    [20 28 30]
   }
   transition {
     id			    30
@@ -2340,7 +2293,6 @@ Stateflow {
     }
     midPoint		    [353.5648 568.1345]
     chart		    2
-    linkNode		    [20 29 31]
     dataLimits		    [345.807 361.309 473.153 642.98]
     stampAngle		    -1
     subviewer		    2
@@ -2350,6 +2302,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    140
+    linkNode		    [20 29 31]
   }
   transition {
     id			    31
@@ -2367,7 +2320,6 @@ Stateflow {
     }
     midPoint		    [424.495 547.9868]
     chart		    2
-    linkNode		    [20 30 32]
     dataLimits		    [414.325 441.172 473.153 642.98]
     stampAngle		    -1
     subviewer		    2
@@ -2377,6 +2329,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    176
+    linkNode		    [20 30 32]
   }
   transition {
     id			    32
@@ -2394,7 +2347,6 @@ Stateflow {
     }
     midPoint		    [768.9998 738.7438]
     chart		    2
-    linkNode		    [20 31 33]
     dataLimits		    [570.997 858.198 520.492 906.752]
     stampAngle		    -1
     subviewer		    2
@@ -2404,6 +2356,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    174
+    linkNode		    [20 31 33]
   }
   transition {
     id			    33
@@ -2420,7 +2373,6 @@ Stateflow {
     }
     midPoint		    [798.187 806.2017]
     chart		    2
-    linkNode		    [20 32 34]
     dataLimits		    [609.164 971.829 520.492 1086.8]
     stampAngle		    NaN
     subviewer		    2
@@ -2430,6 +2382,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    282
+    linkNode		    [20 32 34]
   }
   transition {
     id			    34
@@ -2447,7 +2400,6 @@ Stateflow {
     }
     midPoint		    [1027.8838 652.5112]
     chart		    2
-    linkNode		    [20 33 35]
     dataLimits		    [990.82 1065.723 520.492 767.872]
     stampAngle		    -1
     subviewer		    2
@@ -2457,6 +2409,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    136
+    linkNode		    [20 33 35]
   }
   transition {
     id			    35
@@ -2473,7 +2426,6 @@ Stateflow {
     }
     midPoint		    [1307.6106 710.7532]
     chart		    2
-    linkNode		    [20 34 36]
     dataLimits		    [1232.663 1371.67 520.492 893.82]
     stampAngle		    -1
     subviewer		    2
@@ -2482,6 +2434,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    173
+    linkNode		    [20 34 36]
   }
   transition {
     id			    36
@@ -2499,7 +2452,6 @@ Stateflow {
     }
     midPoint		    [478.8184 779.2916]
     chart		    2
-    linkNode		    [20 35 37]
     dataLimits		    [417.797 538.805 698.637 875.816]
     stampAngle		    -1
     subviewer		    2
@@ -2509,6 +2461,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    172
+    linkNode		    [20 35 37]
   }
   transition {
     id			    37
@@ -2526,7 +2479,6 @@ Stateflow {
     }
     midPoint		    [1066.609 1116.0424]
     chart		    2
-    linkNode		    [20 36 38]
     dataLimits		    [973.507 1167.097 851.843 1377.311]
     stampAngle		    -1
     subviewer		    2
@@ -2536,6 +2488,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    135
+    linkNode		    [20 36 38]
   }
   transition {
     id			    38
@@ -2553,7 +2506,6 @@ Stateflow {
     }
     midPoint		    [443.1582 1048.9859]
     chart		    2
-    linkNode		    [20 37 39]
     dataLimits		    [435.17 516.227 937.271 1111.753]
     stampAngle		    -1
     subviewer		    2
@@ -2562,6 +2514,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    142
+    linkNode		    [20 37 39]
   }
   transition {
     id			    39
@@ -2579,7 +2532,6 @@ Stateflow {
     }
     midPoint		    [1350.4352 1261.8076]
     chart		    2
-    linkNode		    [20 38 40]
     dataLimits		    [1321.391 1383.676 1129.433 1377.311]
     stampAngle		    -1
     subviewer		    2
@@ -2589,6 +2541,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    178
+    linkNode		    [20 38 40]
   }
   transition {
     id			    40
@@ -2606,7 +2559,6 @@ Stateflow {
     }
     midPoint		    [568.1074 1296.3494]
     chart		    2
-    linkNode		    [20 39 41]
     dataLimits		    [555.314 636.128 1148.255 1374.364]
     stampAngle		    -1
     subviewer		    2
@@ -2616,6 +2568,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    180
+    linkNode		    [20 39 41]
   }
   transition {
     id			    41
@@ -2633,7 +2586,6 @@ Stateflow {
     }
     midPoint		    [681.7717 1239.1449]
     chart		    2
-    linkNode		    [20 40 42]
     dataLimits		    [610.601 750.665 1148.255 1345.202]
     stampAngle		    -1
     subviewer		    2
@@ -2642,6 +2594,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    190
+    linkNode		    [20 40 42]
   }
   transition {
     id			    42
@@ -2659,7 +2612,6 @@ Stateflow {
     }
     midPoint		    [564.2078 1580.1952]
     chart		    2
-    linkNode		    [20 41 43]
     dataLimits		    [525.476 662.28 1406.657 1672.17]
     stampAngle		    NaN
     subviewer		    2
@@ -2670,6 +2622,7 @@ Stateflow {
     }
     executionOrder	    4294967295
     ssIdNumber		    283
+    linkNode		    [20 41 43]
   }
   transition {
     id			    43
@@ -2687,7 +2640,6 @@ Stateflow {
     }
     midPoint		    [746.8402 1506.8702]
     chart		    2
-    linkNode		    [20 42 44]
     dataLimits		    [710.177 760.038 1406.657 1623.733]
     stampAngle		    -1
     subviewer		    2
@@ -2696,6 +2648,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    189
+    linkNode		    [20 42 44]
   }
   transition {
     id			    44
@@ -2713,7 +2666,6 @@ Stateflow {
     }
     midPoint		    [1179.627 1766.9649]
     chart		    2
-    linkNode		    [20 43 45]
     dataLimits		    [658.095 1258.61 1438.974 1859.121]
     stampAngle		    -1
     subviewer		    2
@@ -2724,6 +2676,7 @@ Stateflow {
       midPointSticky	      1
     }
     ssIdNumber		    186
+    linkNode		    [20 43 45]
   }
   transition {
     id			    45
@@ -2741,7 +2694,6 @@ Stateflow {
     }
     midPoint		    [4.3478 13.5623]
     chart		    2
-    linkNode		    [20 44 46]
     visible		    0
     dataLimits		    [0 1293.105 0 1460.717]
     subviewer		    2
@@ -2752,6 +2704,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    97
+    linkNode		    [20 44 46]
   }
   transition {
     id			    46
@@ -2769,7 +2722,6 @@ Stateflow {
     }
     midPoint		    [4.3478 13.5623]
     chart		    2
-    linkNode		    [20 45 0]
     visible		    0
     dataLimits		    [0 1072 0 639.564]
     subviewer		    2
@@ -2780,6 +2732,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    103
+    linkNode		    [20 45 0]
   }
   transition {
     id			    47
@@ -2797,7 +2750,6 @@ Stateflow {
     }
     midPoint		    [152.688 491.4103]
     chart		    2
-    linkNode		    [23 0 48]
     visible		    0
     dataLimits		    [51 262.718 320.945 677.085]
     stampAngle		    -1
@@ -2810,6 +2762,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    137
+    linkNode		    [23 0 48]
   }
   transition {
     id			    48
@@ -2827,7 +2780,6 @@ Stateflow {
     }
     midPoint		    [658.3003 781.7506]
     chart		    2
-    linkNode		    [23 47 0]
     visible		    0
     dataLimits		    [586.514 792.035 746.861 867]
     stampAngle		    -1
@@ -2840,17 +2792,18 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    134
+    linkNode		    [23 47 0]
   }
   junction {
     id			    49
     position		    [482.679 598.8235 5.2987]
     arrowSize		    20
     chart		    2
-    linkNode		    [25 0 0]
     visible		    0
     subviewer		    23
     ssIdNumber		    195
     type		    CONNECTIVE_JUNCTION
+    linkNode		    [25 0 0]
   }
   transition {
     id			    50
@@ -2866,7 +2819,6 @@ Stateflow {
     }
     midPoint		    [203.727 365.2719]
     chart		    2
-    linkNode		    [25 0 51]
     visible		    0
     dataLimits		    [196.156 232.958 349.176 379.866]
     subviewer		    23
@@ -2875,6 +2827,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    115
+    linkNode		    [25 0 51]
   }
   transition {
     id			    51
@@ -2892,7 +2845,6 @@ Stateflow {
     }
     midPoint		    [763.1615 373.2094]
     chart		    2
-    linkNode		    [25 50 52]
     visible		    0
     dataLimits		    [660.886 877.33 367.209 379.209]
     stampAngle		    -1
@@ -2903,6 +2855,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    116
+    linkNode		    [25 50 52]
   }
   transition {
     id			    52
@@ -2920,7 +2873,6 @@ Stateflow {
     }
     midPoint		    [892.3437 562.7812]
     chart		    2
-    linkNode		    [25 51 53]
     visible		    0
     dataLimits		    [891.159 1025.765 396.488 714.592]
     stampAngle		    -1
@@ -2932,6 +2884,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    119
+    linkNode		    [25 51 53]
   }
   transition {
     id			    53
@@ -2949,7 +2902,6 @@ Stateflow {
     }
     midPoint		    [718.5906 501.7947]
     chart		    2
-    linkNode		    [25 52 54]
     visible		    0
     dataLimits		    [485.998 890.715 396.488 594.693]
     stampAngle		    0.4201
@@ -2961,6 +2913,7 @@ Stateflow {
     }
     executionOrder	    3
     ssIdNumber		    117
+    linkNode		    [25 52 54]
   }
   transition {
     id			    54
@@ -2978,7 +2931,6 @@ Stateflow {
     }
     midPoint		    [746.1079 575.8196]
     chart		    2
-    linkNode		    [25 53 55]
     visible		    0
     dataLimits		    [487.827 895.062 396.488 614.43]
     stampAngle		    -0.7129
@@ -2992,6 +2944,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    118
+    linkNode		    [25 53 55]
   }
   transition {
     id			    55
@@ -3009,7 +2962,6 @@ Stateflow {
     }
     midPoint		    [279.3034 531.8991]
     chart		    2
-    linkNode		    [25 54 56]
     visible		    0
     dataLimits		    [273.303 285.303 421.285 653.711]
     stampAngle		    -1
@@ -3020,6 +2972,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    120
+    linkNode		    [25 54 56]
   }
   transition {
     id			    56
@@ -3036,7 +2989,6 @@ Stateflow {
     }
     midPoint		    [452.8196 650.6803]
     chart		    2
-    linkNode		    [25 55 0]
     visible		    0
     dataLimits		    [398.667 479.298 602.904 680.055]
     stampAngle		    0.3002
@@ -3048,17 +3000,18 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    121
+    linkNode		    [25 55 0]
   }
   junction {
     id			    57
     position		    [2011.8826 661.4113 6.7152]
     arrowSize		    7.674
     chart		    2
-    linkNode		    [26 0 0]
     visible		    0
     subviewer		    23
     ssIdNumber		    199
     type		    CONNECTIVE_JUNCTION
+    linkNode		    [26 0 0]
   }
   transition {
     id			    58
@@ -3074,7 +3027,6 @@ Stateflow {
     }
     midPoint		    [1480.5629 188.541]
     chart		    2
-    linkNode		    [26 0 59]
     visible		    0
     dataLimits		    [1417 1516.802 188.544 211.98]
     subviewer		    23
@@ -3084,6 +3036,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    124
+    linkNode		    [26 0 59]
   }
   transition {
     id			    59
@@ -3100,7 +3053,6 @@ Stateflow {
     }
     midPoint		    [2009.7678 382.8413]
     chart		    2
-    linkNode		    [26 58 60]
     visible		    0
     dataLimits		    [1869.581 2032.879 237.698 654.866]
     stampAngle		    5.7038
@@ -3114,6 +3066,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    126
+    linkNode		    [26 58 60]
   }
   transition {
     id			    60
@@ -3131,7 +3084,6 @@ Stateflow {
     }
     midPoint		    [1465.3914 333.9141]
     chart		    2
-    linkNode		    [26 59 61]
     visible		    0
     dataLimits		    [1419.483 1515.078 276.108 395.405]
     stampAngle		    -1
@@ -3142,6 +3094,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    127
+    linkNode		    [26 59 61]
   }
   transition {
     id			    61
@@ -3159,7 +3112,6 @@ Stateflow {
     }
     midPoint		    [1813.8074 311.3989]
     chart		    2
-    linkNode		    [26 60 62]
     visible		    0
     dataLimits		    [1685.5 1928.715 276.108 355.21]
     stampAngle		    -1
@@ -3170,6 +3122,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    128
+    linkNode		    [26 60 62]
   }
   transition {
     id			    62
@@ -3187,7 +3140,6 @@ Stateflow {
     }
     midPoint		    [1684.1646 432.428]
     chart		    2
-    linkNode		    [26 61 63]
     visible		    0
     dataLimits		    [1603.001 1731.745 416.611 433.197]
     stampAngle		    -1
@@ -3198,6 +3150,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    130
+    linkNode		    [26 61 63]
   }
   transition {
     id			    63
@@ -3215,7 +3168,6 @@ Stateflow {
     }
     midPoint		    [1260.662 586.4084]
     chart		    2
-    linkNode		    [26 62 64]
     visible		    0
     dataLimits		    [1258.36 1262.964 454.32 715.323]
     stampAngle		    -1
@@ -3226,6 +3178,7 @@ Stateflow {
     }
     executionOrder	    3
     ssIdNumber		    132
+    linkNode		    [26 62 64]
   }
   transition {
     id			    64
@@ -3243,7 +3196,6 @@ Stateflow {
     }
     midPoint		    [1596.0582 487.8479]
     chart		    2
-    linkNode		    [26 63 65]
     visible		    0
     dataLimits		    [1509.983 1673.902 454.32 528.57]
     stampAngle		    -1
@@ -3254,6 +3206,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    133
+    linkNode		    [26 63 65]
   }
   transition {
     id			    65
@@ -3271,7 +3224,6 @@ Stateflow {
     }
     midPoint		    [1497.198 627]
     chart		    2
-    linkNode		    [26 64 66]
     visible		    0
     dataLimits		    [1323.76 2005.179 454.32 679.645]
     stampAngle		    0.5278
@@ -3283,6 +3235,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    131
+    linkNode		    [26 64 66]
   }
   transition {
     id			    66
@@ -3300,7 +3253,6 @@ Stateflow {
     }
     midPoint		    [1889.4303 602.8315]
     chart		    2
-    linkNode		    [26 65 67]
     visible		    0
     dataLimits		    [1767.34 2005.543 565.006 659.198]
     stampAngle		    -0.0307
@@ -3312,6 +3264,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    123
+    linkNode		    [26 65 67]
   }
   transition {
     id			    67
@@ -3328,7 +3281,6 @@ Stateflow {
     }
     midPoint		    [1820.9111 715.6952]
     chart		    2
-    linkNode		    [26 66 0]
     visible		    0
     dataLimits		    [1626.418 2005.293 661.919 753.53]
     stampAngle		    0.0546
@@ -3340,12 +3292,12 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    122
+    linkNode		    [26 66 0]
   }
   data {
     id			    68
     ssIdNumber		    201
     name		    "INDETERMINATE"
-    linkNode		    [2 0 69]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -3355,17 +3307,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 0 69]
   }
   data {
     id			    69
     ssIdNumber		    202
     name		    "OPEN"
-    linkNode		    [2 68 70]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -3376,17 +3325,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 68 70]
   }
   data {
     id			    70
     ssIdNumber		    203
     name		    "CLOSEDBUTUNMATED"
-    linkNode		    [2 69 71]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -3397,17 +3343,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 69 71]
   }
   data {
     id			    71
     ssIdNumber		    204
     name		    "MATED"
-    linkNode		    [2 70 72]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -3418,17 +3361,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 70 72]
   }
   data {
     id			    72
     ssIdNumber		    205
     name		    "EXIST"
-    linkNode		    [2 71 73]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -3439,17 +3379,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 71 73]
   }
   data {
     id			    73
     ssIdNumber		    206
     name		    "AVAILABLE"
-    linkNode		    [2 72 74]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -3460,17 +3397,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 72 74]
   }
   data {
     id			    74
     ssIdNumber		    207
     name		    "EXPIRED"
-    linkNode		    [2 73 75]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -3481,17 +3415,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 73 75]
   }
   data {
     id			    75
     ssIdNumber		    212
     name		    "NONE"
-    linkNode		    [2 74 76]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -3501,17 +3432,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 74 76]
   }
   data {
     id			    76
     ssIdNumber		    213
     name		    "POOR"
-    linkNode		    [2 75 77]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -3522,17 +3450,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 75 77]
   }
   data {
     id			    77
     ssIdNumber		    214
     name		    "GOOD"
-    linkNode		    [2 76 78]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -3543,17 +3468,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 76 78]
   }
   data {
     id			    78
     ssIdNumber		    218
     name		    "GroundTrack_OrbitalPosition"
-    linkNode		    [2 77 79]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -3563,17 +3485,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 77 79]
   }
   data {
     id			    79
     ssIdNumber		    221
     name		    "GroundTrack_OrbitalVelocity"
-    linkNode		    [2 78 80]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -3583,17 +3502,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 78 80]
   }
   data {
     id			    80
     ssIdNumber		    235
     name		    "dockVisibility_status"
-    linkNode		    [2 79 81]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -3603,17 +3519,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 79 81]
   }
   data {
     id			    81
     ssIdNumber		    236
     name		    "opticsAvailability_status"
-    linkNode		    [2 80 82]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -3623,17 +3536,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 80 82]
   }
   data {
     id			    82
     ssIdNumber		    237
     name		    "sunlight_status"
-    linkNode		    [2 81 83]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -3643,17 +3553,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 81 83]
   }
   data {
     id			    83
     ssIdNumber		    238
     name		    "GPS_satelliteVisibility_status"
-    linkNode		    [2 82 84]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -3663,17 +3570,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 82 84]
   }
   data {
     id			    84
     ssIdNumber		    239
     name		    "GPS_receiverAvailability_status"
-    linkNode		    [2 83 85]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -3683,17 +3587,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 83 85]
   }
   data {
     id			    85
     ssIdNumber		    240
     name		    "StarPlanetTracker_planetVisibility"
-    linkNode		    [2 84 86]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -3703,17 +3604,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 84 86]
   }
   data {
     id			    86
     ssIdNumber		    241
     name		    "StarPlanetTracker_starVisibility"
-    linkNode		    [2 85 87]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -3723,17 +3621,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 85 87]
   }
   data {
     id			    87
     ssIdNumber		    242
     name		    "InertialNavigation_time"
-    linkNode		    [2 86 88]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -3743,17 +3638,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 86 88]
   }
   data {
     id			    88
     ssIdNumber		    243
     name		    "GroundTrack_Time"
-    linkNode		    [2 87 89]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -3763,17 +3655,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 87 89]
   }
   data {
     id			    89
     ssIdNumber		    244
     name		    "latch_status"
-    linkNode		    [2 88 90]
     scope		    LOCAL_DATA
     machine		    1
     props {
@@ -3783,17 +3672,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 88 90]
   }
   data {
     id			    90
     ssIdNumber		    245
     name		    "LatchCapture_timer"
-    linkNode		    [2 89 91]
     scope		    LOCAL_DATA
     machine		    1
     props {
@@ -3803,17 +3689,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 89 91]
   }
   data {
     id			    91
     ssIdNumber		    250
     name		    "RealTimeClock_time"
-    linkNode		    [2 90 92]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -3823,17 +3706,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 90 92]
   }
   data {
     id			    92
     ssIdNumber		    251
     name		    "BRIGHT"
-    linkNode		    [2 91 93]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -3844,17 +3724,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 91 93]
   }
   data {
     id			    93
     ssIdNumber		    252
     name		    "StageTransition"
-    linkNode		    [2 92 94]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -3864,17 +3741,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 92 94]
   }
   data {
     id			    94
     ssIdNumber		    253
     name		    "CaptureApproach_timer_upper_limit"
-    linkNode		    [2 93 95]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -3885,17 +3759,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 93 95]
   }
   data {
     id			    95
     ssIdNumber		    254
     name		    "CaptureApproachComplete"
-    linkNode		    [2 94 96]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -3906,17 +3777,14 @@ Stateflow {
 	}
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 94 96]
   }
   data {
     id			    96
     ssIdNumber		    255
     name		    "DockingApproachComplete"
-    linkNode		    [2 95 97]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -3927,17 +3795,14 @@ Stateflow {
 	}
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 95 97]
   }
   data {
     id			    97
     ssIdNumber		    256
     name		    "AttemptingToDock"
-    linkNode		    [2 96 98]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -3948,17 +3813,14 @@ Stateflow {
 	}
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 96 98]
   }
   data {
     id			    98
     ssIdNumber		    257
     name		    "LatchCaptureComplete"
-    linkNode		    [2 97 99]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -3969,17 +3831,14 @@ Stateflow {
 	}
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 97 99]
   }
   data {
     id			    99
     ssIdNumber		    259
     name		    "ApproachOrbitComplete"
-    linkNode		    [2 98 100]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -3990,17 +3849,14 @@ Stateflow {
 	}
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 98 100]
   }
   data {
     id			    100
     ssIdNumber		    260
     name		    "FarApproachComplete"
-    linkNode		    [2 99 101]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -4011,17 +3867,14 @@ Stateflow {
 	}
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 99 101]
   }
   data {
     id			    101
     ssIdNumber		    261
     name		    "ProximityOperationsComplete"
-    linkNode		    [2 100 102]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -4032,17 +3885,14 @@ Stateflow {
 	}
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 100 102]
   }
   data {
     id			    102
     ssIdNumber		    262
     name		    "FailedApproach"
-    linkNode		    [2 101 103]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -4053,17 +3903,14 @@ Stateflow {
 	}
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 101 103]
   }
   data {
     id			    103
     ssIdNumber		    263
     name		    "JointMission"
-    linkNode		    [2 102 104]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -4074,17 +3921,14 @@ Stateflow {
 	}
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 102 104]
   }
   data {
     id			    104
     ssIdNumber		    264
     name		    "StarPlanetTracker_timer_upper_limit"
-    linkNode		    [2 103 105]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -4095,17 +3939,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 103 105]
   }
   data {
     id			    105
     ssIdNumber		    265
     name		    "InertialNavigation_timer_upper_limit"
-    linkNode		    [2 104 106]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -4116,17 +3957,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 104 106]
   }
   data {
     id			    106
     ssIdNumber		    266
     name		    "GPS_timer_upper_limit"
-    linkNode		    [2 105 107]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -4137,17 +3975,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 105 107]
   }
   data {
     id			    107
     ssIdNumber		    267
     name		    "DockingApproach_timer_upper_limit"
-    linkNode		    [2 106 108]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -4158,17 +3993,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 106 108]
   }
   data {
     id			    108
     ssIdNumber		    268
     name		    "dockingSensor_timer_upper_limit"
-    linkNode		    [2 107 109]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -4179,17 +4011,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 107 109]
   }
   data {
     id			    109
     ssIdNumber		    269
     name		    "LatchCapture_timer_upper_limit"
-    linkNode		    [2 108 0]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -4200,23 +4029,21 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 108 0]
   }
   instance {
     id			    110
-    name		    "Chart"
     machine		    1
+    name		    "Chart"
     chart		    2
   }
   target {
     id			    111
+    machine		    1
     name		    "sfun"
     codeFlags		    ""
-    machine		    1
     linkNode		    [1 0 0]
   }
 }

@@ -1,45 +1,32 @@
 Model {
-  Name			  "GPCA_Logging"
-  Version		  8.7
-  MdlSubVersion		  1
-  SavedCharacterEncoding  "UTF-8"
+  Name			  "GPCA_Logging_tmp"
+  Version		  8.4
+  SavedCharacterEncoding  "ISO-8859-1"
   GraphicalInterface {
     NumRootInports	    6
     Inport {
       Name		      "In1"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In2"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In3"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In4"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In5"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "In6"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     NumRootOutports	    2
     Outport {
@@ -47,21 +34,17 @@ Model {
       BusObject		      ""
       BusOutputAsStruct	      "off"
       SignalName	      "Log"
-      UnitExpr		      "inherit"
     }
     Outport {
       Name		      "Out2"
       BusObject		      ""
       BusOutputAsStruct	      "off"
       SignalName	      "Logging_Failed"
-      UnitExpr		      "inherit"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.3"
+    ComputedModelVersion    "1.5"
     NumModelReferences	    0
     NumTestPointedSignals   0
-    NumProvidedFunctions    0
-    NumRequiredFunctions    0
   }
   ScopeRefreshTime	  0.035000
   OverrideScopeRefreshTime on
@@ -72,7 +55,6 @@ Model {
   MinMaxOverflowArchiveMode "Overwrite"
   FPTRunName		  "Run 1"
   MaxMDLFileLineLength	  120
-  LastSavedArchitecture	  "glnxa64"
   Object {
     $PropName		    "BdWindowsInfo"
     $ObjectID		    1
@@ -116,11 +98,11 @@ Model {
   Creator		  "bourbouh"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "bourbouh"
+  LastModifiedBy	  "hbourbou"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sat Jul 16 23:45:49 2016"
-  RTWModifiedTimeStamp	  390613548
-  ModelVersionFormat	  "1.%<AutoIncrement:3>"
+  LastModifiedDate	  "Tue Mar 07 16:14:09 2017"
+  RTWModifiedTimeStamp	  410804049
+  ModelVersionFormat	  "1.%<AutoIncrement:5>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -128,10 +110,6 @@ Model {
   WideLines		  off
   ShowLineDimensions	  off
   ShowPortDataTypes	  off
-  ShowEditTimeErrors	  on
-  ShowEditTimeWarnings	  off
-  ShowEditTimeAdvisorChecks off
-  ShowPortUnits		  off
   ShowDesignRanges	  off
   ShowLoopsOnError	  on
   IgnoreBidirectionalLines off
@@ -140,10 +118,8 @@ Model {
   ShowSignalResolutionIcons on
   ShowViewerIcons	  on
   SortedOrder		  off
-  VariantCondition	  off
   ExecutionContextIcon	  off
   ShowLinearizationAnnotations on
-  ShowVisualizeInsertedRTB on
   ShowMarkup		  on
   BlockNameDataTip	  off
   BlockParametersDataTip  off
@@ -151,7 +127,6 @@ Model {
   ToolBar		  on
   StatusBar		  on
   BrowserShowLibraryLinks off
-  FunctionConnectors	  off
   BrowserLookUnderMasks	  off
   SimulationMode	  "normal"
   PauseTimes		  "5"
@@ -170,12 +145,12 @@ Model {
     $PropName		    "DataLoggingOverride"
     $ObjectID		    6
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
-    model_		    "GPCA_Logging"
+    model_		    "GPCA_Logging_tmp"
     overrideMode_	    [0.0]
     Array {
       Type		      "Cell"
       Dimension		      1
-      Cell		      "GPCA_Logging"
+      Cell		      "GPCA_Logging_tmp"
       PropName		      "logAsSpecifiedByModels_"
     }
     Array {
@@ -185,6 +160,27 @@ Model {
       PropName		      "logAsSpecifiedByModelsSSIDs_"
     }
   }
+  RecordCoverage	  off
+  CovPath		  "/"
+  CovSaveName		  "covdata"
+  CovMetricSettings	  "dw"
+  CovNameIncrementing	  off
+  CovHtmlReporting	  on
+  CovForceBlockReductionOff on
+  CovEnableCumulative	  on
+  covSaveCumulativeToWorkspaceVar on
+  CovSaveSingleToWorkspaceVar on
+  CovCumulativeVarName	  "covCumulativeData"
+  CovCumulativeReport	  off
+  CovReportOnPause	  on
+  CovModelRefEnable	  "Off"
+  CovExternalEMLEnable	  off
+  CovSFcnEnable		  on
+  CovBoundaryAbsTol	  0.000010
+  CovBoundaryRelTol	  0.010000
+  CovUseTimeInterval	  off
+  CovStartTime		  0
+  CovStopTime		  0
   ExtModeBatchMode	  off
   ExtModeEnableFloating	  on
   ExtModeTrigType	  "manual"
@@ -213,13 +209,13 @@ Model {
     Dimension		    1
     Simulink.ConfigSet {
       $ObjectID		      7
-      Version		      "1.16.2"
+      Version		      "1.14.3"
       Array {
 	Type			"Handle"
-	Dimension		10
+	Dimension		9
 	Simulink.SolverCC {
 	  $ObjectID		  8
-	  Version		  "1.16.2"
+	  Version		  "1.14.3"
 	  StartTime		  "0.0"
 	  StopTime		  "10.0"
 	  AbsTol		  "auto"
@@ -239,15 +235,13 @@ Model {
 	  SolverMode		  "Auto"
 	  EnableConcurrentExecution off
 	  ConcurrentTasks	  off
-	  Solver		  "VariableStepAuto"
-	  SolverName		  "VariableStepAuto"
+	  Solver		  "ode45"
+	  SolverName		  "ode45"
 	  SolverJacobianMethodControl "auto"
 	  ShapePreserveControl	  "DisableAll"
 	  ZeroCrossControl	  "UseLocalSettings"
 	  ZeroCrossAlgorithm	  "Nonadaptive"
 	  AlgebraicLoopSolver	  "TrustRegion"
-	  SolverInfoToggleStatus  off
-	  IsAutoAppliedInSIP	  off
 	  SolverResetMethod	  "Fast"
 	  PositivePriorityOrder	  off
 	  AutoInsertRateTranBlk	  off
@@ -256,7 +250,7 @@ Model {
 	}
 	Simulink.DataIOCC {
 	  $ObjectID		  9
-	  Version		  "1.16.2"
+	  Version		  "1.14.3"
 	  Decimation		  "1"
 	  ExternalInput		  "[t, u]"
 	  FinalStateName	  "xFinal"
@@ -267,7 +261,7 @@ Model {
 	  LoadInitialState	  off
 	  SaveFinalState	  off
 	  SaveCompleteFinalSimState off
-	  SaveFormat		  "Dataset"
+	  SaveFormat		  "StructureWithTime"
 	  SignalLoggingSaveFormat "Dataset"
 	  SaveOutput		  on
 	  SaveState		  off
@@ -275,8 +269,6 @@ Model {
 	  DSMLogging		  on
 	  InspectSignalLogs	  off
 	  VisualizeSimOutput	  on
-	  StreamToWorkspace	  off
-	  StreamVariableName	  "streamout"
 	  SaveTime		  on
 	  ReturnWorkspaceOutputs  off
 	  StateSaveName		  "xout"
@@ -288,13 +280,10 @@ Model {
 	  OutputTimes		  "[]"
 	  ReturnWorkspaceOutputsName "out"
 	  Refine		  "1"
-	  LoggingToFile		  off
-	  LoggingFileName	  "out.mat"
-	  LoggingIntervals	  "[-inf, inf]"
 	}
 	Simulink.OptimizationCC {
 	  $ObjectID		  10
-	  Version		  "1.16.2"
+	  Version		  "1.14.3"
 	  Array {
 	    Type		    "Cell"
 	    Dimension		    8
@@ -311,8 +300,8 @@ Model {
 	  BlockReduction	  on
 	  BooleanDataType	  on
 	  ConditionallyExecuteInputs on
-	  DefaultParameterBehavior "Tunable"
-	  UseDivisionForNetSlopeComputation "off"
+	  InlineParams		  off
+	  UseDivisionForNetSlopeComputation "Off"
 	  UseFloatMulNetSlope	  off
 	  DefaultUnderspecifiedDataType	"double"
 	  UseSpecifiedMinMax	  off
@@ -329,7 +318,6 @@ Model {
 	  EnableMemcpy		  on
 	  MemcpyThreshold	  64
 	  PassReuseOutputArgsAs	  "Structure reference"
-	  PassReuseOutputArgsThreshold 12
 	  ExpressionDepthLimit	  128
 	  LocalBlockOutputs	  on
 	  RollThreshold		  5
@@ -346,12 +334,12 @@ Model {
 	  LifeSpan		  "inf"
 	  MaxStackSize		  "Inherit from target"
 	  BufferReusableBoundary  on
-	  SimCompilerOptimization "off"
+	  SimCompilerOptimization "Off"
 	  AccelVerboseBuild	  off
 	}
 	Simulink.DebuggingCC {
 	  $ObjectID		  11
-	  Version		  "1.16.2"
+	  Version		  "1.14.3"
 	  RTPrefix		  "error"
 	  ConsistencyChecking	  "none"
 	  ArrayBoundsChecking	  "none"
@@ -410,7 +398,6 @@ Model {
 	  BusObjectLabelMismatch  "warning"
 	  RootOutportRequireBusObject "warning"
 	  AssertControl		  "UseLocalSettings"
-	  AllowSymbolicDim	  on
 	  ModelReferenceIOMsg	  "none"
 	  ModelReferenceMultiInstanceNormalModeStructChecksumCheck "error"
 	  ModelReferenceVersionMismatchMessage "none"
@@ -426,9 +413,6 @@ Model {
 	  StrictBusMsg		  "ErrorLevel1"
 	  BusNameAdapt		  "WarnAndRepair"
 	  NonBusSignalsTreatedAsBus "none"
-	  SymbolicDimMinMaxWarning "warning"
-	  LossOfSymbolicDimsSimulationWarning "warning"
-	  LossOfSymbolicDimsCodeGenerationWarning "error"
 	  BlockIODiagnostic	  "none"
 	  SFUnusedDataAndEventsDiag "warning"
 	  SFUnexpectedBacktrackingDiag "warning"
@@ -438,15 +422,12 @@ Model {
 	  SFUnconditionalTransitionShadowingDiag "warning"
 	  SFUndirectedBroadcastEventsDiag "warning"
 	  SFTransitionActionBeforeConditionDiag	"warning"
-	  SFOutputUsedAsStateInMooreChartDiag "error"
 	  IntegerSaturationMsg	  "warning"
-	  AllowedUnitSystems	  "all"
-	  UnitsInconsistencyMsg	  "warning"
-	  AllowAutomaticUnitConversions	on
+	  ModelReferenceCSMismatchMessage "none"
 	}
 	Simulink.HardwareCC {
 	  $ObjectID		  12
-	  Version		  "1.16.2"
+	  Version		  "1.14.3"
 	  ProdBitPerChar	  8
 	  ProdBitPerShort	  16
 	  ProdBitPerInt		  32
@@ -459,10 +440,10 @@ Model {
 	  ProdLargestAtomicFloat  "Float"
 	  ProdIntDivRoundTo	  "Zero"
 	  ProdEndianess		  "LittleEndian"
-	  ProdWordSize		  64
+	  ProdWordSize		  32
 	  ProdShiftRightIntArith  on
 	  ProdLongLongMode	  off
-	  ProdHWDeviceType	  "Intel->x86-64 (Windows64)"
+	  ProdHWDeviceType	  "Specified"
 	  TargetBitPerChar	  8
 	  TargetBitPerShort	  16
 	  TargetBitPerInt	  32
@@ -483,14 +464,11 @@ Model {
 	  TargetHWDeviceType	  "Specified"
 	  TargetUnknown		  off
 	  ProdEqTarget		  on
-	  UseEmbeddedCoderFeatures on
-	  UseSimulinkCoderFeatures on
 	}
 	Simulink.ModelReferenceCC {
 	  $ObjectID		  13
-	  Version		  "1.16.2"
+	  Version		  "1.14.3"
 	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
-	  EnableRefExpFcnMdlSchedulingChecks on
 	  CheckModelReferenceTargetMessage "error"
 	  EnableParallelModelReferenceBuilds off
 	  ParallelModelReferenceErrorOnInvalidPool on
@@ -504,7 +482,7 @@ Model {
 	}
 	Simulink.SFSimCC {
 	  $ObjectID		  14
-	  Version		  "1.16.2"
+	  Version		  "1.14.3"
 	  SFSimEcho		  on
 	  SimCtrlC		  on
 	  SimIntegrity		  on
@@ -516,10 +494,10 @@ Model {
 	Simulink.RTWCC {
 	  $BackupClass		  "Simulink.RTWCC"
 	  $ObjectID		  15
-	  Version		  "1.16.2"
+	  Version		  "1.14.3"
 	  Array {
 	    Type		    "Cell"
-	    Dimension		    15
+	    Dimension		    16
 	    Cell		    "IncludeHyperlinkInReport"
 	    Cell		    "GenerateTraceInfo"
 	    Cell		    "GenerateTraceReport"
@@ -535,10 +513,10 @@ Model {
 	    Cell		    "CodeExecutionProfiling"
 	    Cell		    "CodeProfilingSaveOptions"
 	    Cell		    "CodeProfilingInstrumentation"
+	    Cell		    "GenerateMissedCodeReplacementReport"
 	    PropName		    "DisabledProps"
 	  }
 	  SystemTargetFile	  "grt.tlc"
-	  HardwareBoard		  "None"
 	  TLCOptions		  ""
 	  GenCodeOnly		  off
 	  MakeCommand		  "make_rtw"
@@ -546,7 +524,6 @@ Model {
 	  PackageGeneratedCodeAndArtifacts off
 	  TemplateMakefile	  "grt_default_tmf"
 	  PostCodeGenCommand	  ""
-	  Description		  ""
 	  GenerateReport	  off
 	  SaveLog		  off
 	  RTWVerbose		  on
@@ -578,8 +555,7 @@ Model {
 	  GenerateWebview	  off
 	  GenerateCodeMetricsReport off
 	  GenerateCodeReplacementReport	off
-	  GenerateMissedCodeReplacementReport off
-	  RTWCompilerOptimization "off"
+	  RTWCompilerOptimization "Off"
 	  RTWCustomCompilerOptimizations ""
 	  CheckMdlBeforeBuild	  "Off"
 	  SharedConstantsCachingThreshold 1024
@@ -588,10 +564,10 @@ Model {
 	    Dimension		    2
 	    Simulink.CodeAppCC {
 	      $ObjectID		      16
-	      Version		      "1.16.2"
+	      Version		      "1.14.3"
 	      Array {
 		Type			"Cell"
-		Dimension		23
+		Dimension		25
 		Cell			"IgnoreCustomStorageClasses"
 		Cell			"IgnoreTestpoints"
 		Cell			"InsertBlockDesc"
@@ -615,6 +591,8 @@ Model {
 		Cell			"CustomSymbolStrMacro"
 		Cell			"CustomSymbolStrUtil"
 		Cell			"ReqsInCode"
+		Cell			"CustomSymbolStrModelFcn"
+		Cell			"CustomUserTokenString"
 		PropName		"DisabledProps"
 	      }
 	      ForceParamTrailComments off
@@ -659,10 +637,10 @@ Model {
 	    Simulink.GRTTargetCC {
 	      $BackupClass	      "Simulink.TargetCC"
 	      $ObjectID		      17
-	      Version		      "1.16.2"
+	      Version		      "1.14.3"
 	      Array {
 		Type			"Cell"
-		Dimension		13
+		Dimension		16
 		Cell			"GeneratePreprocessorConditionals"
 		Cell			"IncludeMdlTerminateFcn"
 		Cell			"SupportNonInlinedSFcns"
@@ -676,10 +654,14 @@ Model {
 		Cell			"SupportComplex"
 		Cell			"SupportAbsoluteTime"
 		Cell			"SupportContinuousTime"
+		Cell			"ExistingSharedCode"
+		Cell			"RemoveDisableFunc"
+		Cell			"RemoveResetFunc"
 		PropName		"DisabledProps"
 	      }
 	      TargetFcnLib	      "ansi_tfl_table_tmw.mat"
 	      TargetLibSuffix	      ""
+	      TargetPreCompLibLocation ""
 	      GenFloatMathFcnCalls    "NOT IN USE"
 	      TargetLangStandard      "C89/C90 (ANSI)"
 	      CodeReplacementLibrary  "None"
@@ -688,7 +670,6 @@ Model {
 	      ERTMultiwordLength      256
 	      MultiwordLength	      2048
 	      GenerateFullHeader      on
-	      InferredTypesCompatibility off
 	      GenerateSampleERTMain   off
 	      GenerateTestInterfaces  off
 	      ModelReferenceCompliant on
@@ -722,7 +703,6 @@ Model {
 	      AutosarCompliant	      off
 	      GRTInterface	      off
 	      GenerateAllocFcn	      off
-	      UseToolchainInfoCompliant	on
 	      GenerateSharedConstants on
 	      UseMalloc		      off
 	      ExtMode		      off
@@ -742,42 +722,9 @@ Model {
 	    PropName		    "Components"
 	  }
 	}
-	SlCovCC.ConfigComp {
-	  $ObjectID		  18
-	  Version		  "1.16.2"
-	  Description		  "Simulink Coverage Configuration Component"
-	  Name			  "Simulink Coverage"
-	  CovEnable		  off
-	  CovScope		  "EntireSystem"
-	  CovIncludeTopModel	  on
-	  RecordCoverage	  off
-	  CovPath		  "/"
-	  CovSaveName		  "covdata"
-	  CovMetricSettings	  "dw"
-	  CovNameIncrementing	  off
-	  CovHtmlReporting	  on
-	  CovForceBlockReductionOff on
-	  CovEnableCumulative	  on
-	  CovSaveCumulativeToWorkspaceVar on
-	  CovSaveSingleToWorkspaceVar on
-	  CovCumulativeVarName	  "covCumulativeData"
-	  CovCumulativeReport	  off
-	  CovSaveOutputData	  on
-	  CovOutputDir		  "slcov_output/$ModelName$"
-	  CovDataFileName	  "$ModelName$_cvdata"
-	  CovReportOnPause	  on
-	  CovModelRefEnable	  "off"
-	  CovExternalEMLEnable	  off
-	  CovSFcnEnable		  on
-	  CovBoundaryAbsTol	  1e-05
-	  CovBoundaryRelTol	  0.01
-	  CovUseTimeInterval	  off
-	  CovStartTime		  0
-	  CovStopTime		  0
-	}
 	hdlcoderui.hdlcc {
 	  $ObjectID		  19
-	  Version		  "1.16.2"
+	  Version		  "1.14.3"
 	  Description		  "HDL Coder custom configuration component"
 	  Name			  "HDL Coder"
 	  Array {
@@ -792,7 +739,7 @@ Model {
       }
       Name		      "Configuration"
       CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition     [ 65, 0, 1024, 768 ] 
+      ConfigPrmDlgPosition    [ 65, 0, 1024, 768 ]  
     }
     PropName		    "ConfigurationSets"
   }
@@ -845,7 +792,7 @@ Model {
   MaskDefaults {
     SelfModifiable	    "off"
     IconFrame		    "on"
-    IconOpaque		    "opaque"
+    IconOpaque		    "on"
     RunInitForIconRedraw    "off"
     IconRotate		    "none"
     PortRotate		    "default"
@@ -877,7 +824,6 @@ Model {
       OutDataTypeStr	      "Inherit: auto"
       LockScale		      off
       BusOutputAsStruct	      off
-      Unit		      "inherit"
       PortDimensions	      "-1"
       VarSizeSig	      "Inherit"
       SampleTime	      "-1"
@@ -895,7 +841,6 @@ Model {
       OutDataTypeStr	      "Inherit: auto"
       LockScale		      off
       BusOutputAsStruct	      off
-      Unit		      "inherit"
       PortDimensions	      "-1"
       VarSizeSig	      "Inherit"
       SampleTime	      "-1"
@@ -919,7 +864,6 @@ Model {
       TreatAsAtomicUnit	      off
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
-      CheckFcnCallInpInsideContextMsg off
       SystemSampleTime	      "-1"
       RTWSystemCode	      "Auto"
       RTWFcnNameOpts	      "Auto"
@@ -939,16 +883,16 @@ Model {
       MaskHideContents	      off
       SFBlockType	      "NONE"
       GeneratePreprocessorConditionals off
+      PropagateVariantConditions off
       TreatAsGroupedWhenPropagatingVariantConditions on
       ContentPreviewEnabled   off
-      IsWebBlock	      off
     }
     Block {
       BlockType		      Terminator
     }
   }
   System {
-    Name		    "GPCA_Logging"
+    Name		    "GPCA_Logging_tmp"
     Location		    [92, 70, 908, 629]
     Open		    off
     ModelBrowserVisibility  off
@@ -1028,7 +972,7 @@ Model {
       FontName		      "Arial Narrow"
       FontSize		      8
       ErrorFcn		      "Stateflow.Translate.translate"
-      PermitHierarchicalResolution "ExplicitOnly"
+      PermitHierarchicalResolution "ParametersOnly"
       TreatAsAtomicUnit	      on
       RequestExecContextInheritance off
       SFBlockType	      "Chart"
@@ -1050,7 +994,7 @@ Model {
       System {
 	Name			"Log Sub-System"
 	Location		[100, 78, 900, 600]
-	Open			on
+	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -1062,7 +1006,7 @@ Model {
 	TiledPageScale		1
 	ShowPageBoundaries	off
 	ZoomFactor		"100"
-	SIDHighWatermark	"346"
+	SIDHighWatermark	"352"
 	Block {
 	  BlockType		  Inport
 	  Name			  "TLM_MODE_IN_System_On"
@@ -1119,20 +1063,20 @@ Model {
 	Block {
 	  BlockType		  Demux
 	  Name			  " Demux "
-	  SID			  "7::345"
+	  SID			  "7::351"
 	  Ports			  [1, 1]
 	  Position		  [270, 230, 320, 270]
-	  ZOrder		  301
+	  ZOrder		  307
 	  Outputs		  "1"
 	}
 	Block {
 	  BlockType		  S-Function
 	  Name			  " SFunction "
-	  SID			  "7::344"
-	  Tag			  "Stateflow S-Function GPCA_Logging 2"
+	  SID			  "7::350"
+	  Tag			  "Stateflow S-Function GPCA_Logging_tmp 2"
 	  Ports			  [6, 3]
 	  Position		  [180, 102, 230, 243]
-	  ZOrder		  300
+	  ZOrder		  306
 	  FunctionName		  "sf_sfun"
 	  PortCounts		  "[6 3]"
 	  SFunctionDeploymentMode off
@@ -1153,9 +1097,9 @@ Model {
 	Block {
 	  BlockType		  Terminator
 	  Name			  " Terminator "
-	  SID			  "7::346"
+	  SID			  "7::352"
 	  Position		  [460, 241, 480, 259]
-	  ZOrder		  302
+	  ZOrder		  308
 	}
 	Block {
 	  BlockType		  Outport
@@ -1175,42 +1119,42 @@ Model {
 	  IconDisplay		  "Port number"
 	}
 	Line {
-	  ZOrder		  1
+	  ZOrder		  21
 	  SrcBlock		  "TLM_MODE_IN_System_On"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  2
+	  ZOrder		  22
 	  SrcBlock		  "TLM_MODE_IN_Log_Message_ID"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  2
 	}
 	Line {
-	  ZOrder		  3
+	  ZOrder		  23
 	  SrcBlock		  "SYS_STAT_IN_Log_Message_ID"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  3
 	}
 	Line {
-	  ZOrder		  4
+	  ZOrder		  24
 	  SrcBlock		  "ALARM_IN_Log_Message_ID"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  4
 	}
 	Line {
-	  ZOrder		  5
+	  ZOrder		  25
 	  SrcBlock		  "CONFIG_IN_Log_Message_ID"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  5
 	}
 	Line {
-	  ZOrder		  6
+	  ZOrder		  26
 	  SrcBlock		  "IM_IN_Log_Message_ID"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
@@ -1218,7 +1162,7 @@ Model {
 	}
 	Line {
 	  Name			  "logging_OUT_Log"
-	  ZOrder		  7
+	  ZOrder		  27
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  2
@@ -1227,7 +1171,7 @@ Model {
 	}
 	Line {
 	  Name			  "logging_OUT_Logging_Failed"
-	  ZOrder		  8
+	  ZOrder		  28
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  3
@@ -1235,14 +1179,14 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  9
+	  ZOrder		  29
 	  SrcBlock		  " Demux "
 	  SrcPort		  1
 	  DstBlock		  " Terminator "
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  10
+	  ZOrder		  30
 	  SrcBlock		  " SFunction "
 	  SrcPort		  1
 	  DstBlock		  " Demux "
@@ -1329,7 +1273,7 @@ Model {
     }
     Annotation {
       SID		      "10"
-      Position		      [831, 264, 833, 278]
+      Position		      [832, 270, 834, 282]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -1339,36 +1283,35 @@ Model {
 }
 #Finite State Machines
 #
-#   Stateflow 80000009
+#   Stateflow 80000010
 #
 #
 Stateflow {
   machine {
     id			    1
-    name		    "GPCA_Logging"
+    name		    "GPCA_Logging_tmp"
     created		    "13-Jul-2016 11:24:04"
     isLibrary		    0
+    sfVersion		    80000001
     firstTarget		    30
-    sfVersion		    80000009
   }
   chart {
     id			    2
+    machine		    1
     name		    "Log Sub-System"
     windowPosition	    [-8 0 2576 1576]
     viewLimits		    [319.43 1085.172 -7.601 438.249]
     zoomFactor		    1.333
     screen		    [1 1 1366 768 1.333333333333333]
     treeNode		    [0 3 0 0]
-    firstTransition	    25
     viewObj		    2
-    visible		    1
-    machine		    1
     ssIdHighWaterMark	    4070
     decomposition	    CLUSTER_CHART
-    firstData		    17
     chartFileNumber	    2
     userSpecifiedStateTransitionExecutionOrder 1
     disableImplicitCasting  1
+    firstData		    17
+    firstTransition	    25
   }
   state {
     id			    3
@@ -1430,20 +1373,19 @@ Stateflow {
     fontSize		    12
     chart		    2
     treeNode		    [2 0 5 0]
-    firstTransition	    15
-    firstJunction	    13
     visible		    0
     subviewer		    2
     ssIdNumber		    4055
     type		    FUNC_STATE
     decomposition	    CLUSTER_STATE
     firstData		    7
+    firstTransition	    15
+    firstJunction	    13
   }
   data {
     id			    7
     ssIdNumber		    4065
     name		    "logging_OUT_Log"
-    linkNode		    [6 0 8]
     scope		    FUNCTION_OUTPUT_DATA
     machine		    1
     props {
@@ -1452,17 +1394,14 @@ Stateflow {
 	isSigned		1
 	wordLength		"16"
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
+    linkNode		    [6 0 8]
   }
   data {
     id			    8
     ssIdNumber		    4066
     name		    "TLM_MODE_IN_Log_Message_ID"
-    linkNode		    [6 7 9]
     scope		    FUNCTION_INPUT_DATA
     machine		    1
     props {
@@ -1471,17 +1410,14 @@ Stateflow {
 	isSigned		1
 	wordLength		"16"
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
+    linkNode		    [6 7 9]
   }
   data {
     id			    9
     ssIdNumber		    4067
     name		    "SYS_STAT_IN_Log_Message_ID"
-    linkNode		    [6 8 10]
     scope		    FUNCTION_INPUT_DATA
     machine		    1
     props {
@@ -1490,17 +1426,14 @@ Stateflow {
 	isSigned		1
 	wordLength		"16"
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
+    linkNode		    [6 8 10]
   }
   data {
     id			    10
     ssIdNumber		    4068
     name		    "ALARM_IN_Log_Message_ID"
-    linkNode		    [6 9 11]
     scope		    FUNCTION_INPUT_DATA
     machine		    1
     props {
@@ -1509,17 +1442,14 @@ Stateflow {
 	isSigned		1
 	wordLength		"16"
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
+    linkNode		    [6 9 11]
   }
   data {
     id			    11
     ssIdNumber		    4069
     name		    "CONFIG_IN_Log_Message_ID"
-    linkNode		    [6 10 12]
     scope		    FUNCTION_INPUT_DATA
     machine		    1
     props {
@@ -1528,17 +1458,14 @@ Stateflow {
 	isSigned		1
 	wordLength		"16"
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
+    linkNode		    [6 10 12]
   }
   data {
     id			    12
     ssIdNumber		    4070
     name		    "IM_IN_Log_Message_ID"
-    linkNode		    [6 11 0]
     scope		    FUNCTION_INPUT_DATA
     machine		    1
     props {
@@ -1547,31 +1474,29 @@ Stateflow {
 	isSigned		1
 	wordLength		"16"
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
+    linkNode		    [6 11 0]
   }
   junction {
     id			    13
     position		    [411.5498 585.2907 12.6001]
     chart		    2
-    linkNode		    [6 0 14]
     visible		    0
     subviewer		    2
     ssIdNumber		    4058
     type		    CONNECTIVE_JUNCTION
+    linkNode		    [6 0 14]
   }
   junction {
     id			    14
     position		    [1221.5498 585.2907 12.6001]
     chart		    2
-    linkNode		    [6 13 0]
     visible		    0
     subviewer		    2
     ssIdNumber		    4056
     type		    CONNECTIVE_JUNCTION
+    linkNode		    [6 13 0]
   }
   transition {
     id			    15
@@ -1587,7 +1512,6 @@ Stateflow {
     }
     midPoint		    [411.6618 539.324]
     chart		    2
-    linkNode		    [6 0 16]
     dataLimits		    [409.2 414 513.957 572.691]
     subviewer		    2
     drawStyle		    SMART
@@ -1596,6 +1520,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    4059
+    linkNode		    [6 0 16]
   }
   transition {
     id			    16
@@ -1613,7 +1538,6 @@ Stateflow {
     }
     midPoint		    [812.5498 585.2907]
     chart		    2
-    linkNode		    [6 15 0]
     visible		    0
     dataLimits		    [424.15 1208.95 582.891 587.691]
     subviewer		    2
@@ -1622,12 +1546,12 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    4057
+    linkNode		    [6 15 0]
   }
   data {
     id			    17
     ssIdNumber		    4053
     name		    "TLM_MODE_IN_System_On"
-    linkNode		    [2 0 18]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -1640,17 +1564,14 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 0 18]
   }
   data {
     id			    18
     ssIdNumber		    4064
     name		    "TLM_MODE_IN_Log_Message_ID"
-    linkNode		    [2 17 19]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -1663,17 +1584,14 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
+    linkNode		    [2 17 19]
   }
   data {
     id			    19
     ssIdNumber		    4063
     name		    "SYS_STAT_IN_Log_Message_ID"
-    linkNode		    [2 18 20]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -1686,17 +1604,14 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
+    linkNode		    [2 18 20]
   }
   data {
     id			    20
     ssIdNumber		    4060
     name		    "ALARM_IN_Log_Message_ID"
-    linkNode		    [2 19 21]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -1709,17 +1624,14 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
+    linkNode		    [2 19 21]
   }
   data {
     id			    21
     ssIdNumber		    4061
     name		    "CONFIG_IN_Log_Message_ID"
-    linkNode		    [2 20 22]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -1732,17 +1644,14 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
+    linkNode		    [2 20 22]
   }
   data {
     id			    22
     ssIdNumber		    4050
     name		    "logging_OUT_Log"
-    linkNode		    [2 21 23]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -1752,17 +1661,14 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
+    linkNode		    [2 21 23]
   }
   data {
     id			    23
     ssIdNumber		    4052
     name		    "logging_OUT_Logging_Failed"
-    linkNode		    [2 22 24]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -1772,17 +1678,14 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 22 24]
   }
   data {
     id			    24
     ssIdNumber		    4062
     name		    "IM_IN_Log_Message_ID"
-    linkNode		    [2 23 0]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -1795,11 +1698,9 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_INHERITED
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint8"
+    linkNode		    [2 23 0]
   }
   transition {
     id			    25
@@ -1814,7 +1715,6 @@ Stateflow {
     }
     midPoint		    [457.3493 219.8116]
     chart		    2
-    linkNode		    [2 0 26]
     dataLimits		    [454.949 459.749 185.779 261.844]
     subviewer		    2
     slide {
@@ -1822,6 +1722,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    4038
+    linkNode		    [2 0 26]
   }
   transition {
     id			    26
@@ -1838,7 +1739,6 @@ Stateflow {
     }
     midPoint		    [930.3239 225.5621]
     chart		    2
-    linkNode		    [2 25 27]
     dataLimits		    [928.521 932.591 207.863 261.844]
     subviewer		    2
     slide {
@@ -1846,6 +1746,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    4040
+    linkNode		    [2 25 27]
   }
   transition {
     id			    27
@@ -1863,7 +1764,6 @@ Stateflow {
     }
     midPoint		    [691.9635 280.809]
     chart		    2
-    linkNode		    [2 26 28]
     dataLimits		    [594.621 796.089 278.774 282.844]
     stampAngle		    NaN
     subviewer		    2
@@ -1872,6 +1772,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    4042
+    linkNode		    [2 26 28]
   }
   transition {
     id			    28
@@ -1888,7 +1789,6 @@ Stateflow {
     }
     midPoint		    [699.3551 314.809]
     chart		    2
-    linkNode		    [2 27 0]
     dataLimits		    [594.621 796.089 312.409 317.209]
     subviewer		    2
     slide {
@@ -1896,18 +1796,19 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    4039
+    linkNode		    [2 27 0]
   }
   instance {
     id			    29
-    name		    "Log Sub-System"
     machine		    1
+    name		    "Log Sub-System"
     chart		    2
   }
   target {
     id			    30
+    machine		    1
     name		    "sfun"
     description		    "Default Simulink S-Function Target."
-    machine		    1
     linkNode		    [1 0 0]
   }
 }

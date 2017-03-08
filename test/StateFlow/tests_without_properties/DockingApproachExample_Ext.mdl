@@ -1,167 +1,126 @@
 Model {
-  Name			  "DockingApproachExample_Ext"
-  Version		  8.7
-  MdlSubVersion		  1
-  SavedCharacterEncoding  "UTF-8"
+  Name			  "DockingApproachExample_Ext_tmp"
+  Version		  8.4
+  SavedCharacterEncoding  "ISO-8859-1"
   GraphicalInterface {
     NumRootInports	    13
     Inport {
       Name		      "GroundTrack_OrbitalPosition"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "GroundTrack_OrbitalVelocity"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "dockVisibility_status"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "opticsAvailability_status"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "sunlight_status"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "GPS_satelliteVisibility_status"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "GPS_receiverAvailability_status"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "StarPlanetTracker_planetVisibility"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "StarPlanetTracker_starVisibility"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "InertialNavigation_time"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "GroundTrack_Time"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "RealTimeClock_time"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     Inport {
       Name		      "StageTransition"
       BusObject		      ""
-      OutputFunctionCall      "off"
-      UnitExpr		      "inherit"
     }
     NumRootOutports	    12
     Outport {
       Name		      "CaptureApproachComplete"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
     }
     Outport {
       Name		      "DockingApproachComplete"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
     }
     Outport {
       Name		      "AttemptingToDock"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
     }
     Outport {
       Name		      "LatchCaptureComplete"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
     }
     Outport {
       Name		      "DockingApproach"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
     }
     Outport {
       Name		      "ApproachOrbitComplete"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
     }
     Outport {
       Name		      "FarApproachComplete"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
     }
     Outport {
       Name		      "ProximityOperationsComplete"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
     }
     Outport {
       Name		      "FailedApproach"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
     }
     Outport {
       Name		      "JointMission"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
     }
     Outport {
       Name		      "CaptureApproachFailed"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
     }
     Outport {
       Name		      "LatchCapture_timer"
       BusObject		      ""
       BusOutputAsStruct	      "off"
-      UnitExpr		      "inherit"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.499"
+    ComputedModelVersion    "1.501"
     NumModelReferences	    0
     NumTestPointedSignals   0
-    NumProvidedFunctions    0
-    NumRequiredFunctions    0
   }
   ScopeRefreshTime	  0.035000
   OverrideScopeRefreshTime on
@@ -172,7 +131,6 @@ Model {
   MinMaxOverflowArchiveMode "Overwrite"
   FPTRunName		  "Run 1"
   MaxMDLFileLineLength	  120
-  LastSavedArchitecture	  "glnxa64"
   Object {
     $PropName		    "BdWindowsInfo"
     $ObjectID		    1
@@ -216,11 +174,11 @@ Model {
   Creator		  "mwwhalen"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "hamza"
+  LastModifiedBy	  "hbourbou"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Jul 22 23:27:30 2016"
-  RTWModifiedTimeStamp	  391130703
-  ModelVersionFormat	  "1.%<AutoIncrement:499>"
+  LastModifiedDate	  "Tue Mar 07 16:14:06 2017"
+  RTWModifiedTimeStamp	  410804046
+  ModelVersionFormat	  "1.%<AutoIncrement:501>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -228,10 +186,6 @@ Model {
   WideLines		  off
   ShowLineDimensions	  off
   ShowPortDataTypes	  off
-  ShowEditTimeErrors	  on
-  ShowEditTimeWarnings	  off
-  ShowEditTimeAdvisorChecks off
-  ShowPortUnits		  off
   ShowDesignRanges	  off
   ShowLoopsOnError	  on
   IgnoreBidirectionalLines off
@@ -240,10 +194,8 @@ Model {
   ShowSignalResolutionIcons on
   ShowViewerIcons	  on
   SortedOrder		  off
-  VariantCondition	  off
   ExecutionContextIcon	  off
   ShowLinearizationAnnotations on
-  ShowVisualizeInsertedRTB on
   ShowMarkup		  on
   BlockNameDataTip	  on
   BlockParametersDataTip  on
@@ -251,7 +203,6 @@ Model {
   ToolBar		  on
   StatusBar		  on
   BrowserShowLibraryLinks off
-  FunctionConnectors	  off
   BrowserLookUnderMasks	  off
   SimulationMode	  "normal"
   PauseTimes		  "5"
@@ -270,11 +221,11 @@ Model {
     $PropName		    "DataLoggingOverride"
     $ObjectID		    6
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
-    model_		    "DockingApproachExample_Ext"
+    model_		    "DockingApproachExample_Ext_tmp"
     Array {
       Type		      "Cell"
       Dimension		      1
-      Cell		      "DockingApproachExample_Ext"
+      Cell		      "DockingApproachExample_Ext_tmp"
       PropName		      "logAsSpecifiedByModels_"
     }
     Array {
@@ -284,6 +235,27 @@ Model {
       PropName		      "logAsSpecifiedByModelsSSIDs_"
     }
   }
+  RecordCoverage	  off
+  CovPath		  "/"
+  CovSaveName		  "covdata"
+  CovMetricSettings	  "dw"
+  CovNameIncrementing	  off
+  CovHtmlReporting	  on
+  CovForceBlockReductionOff on
+  CovEnableCumulative	  on
+  covSaveCumulativeToWorkspaceVar on
+  CovSaveSingleToWorkspaceVar on
+  CovCumulativeVarName	  "covCumulativeData"
+  CovCumulativeReport	  off
+  CovReportOnPause	  on
+  CovModelRefEnable	  "Off"
+  CovExternalEMLEnable	  off
+  CovSFcnEnable		  on
+  CovBoundaryAbsTol	  0.000010
+  CovBoundaryRelTol	  0.010000
+  CovUseTimeInterval	  off
+  CovStartTime		  0
+  CovStopTime		  0
   ExtModeBatchMode	  off
   ExtModeEnableFloating	  on
   ExtModeTrigType	  "manual"
@@ -312,13 +284,13 @@ Model {
     Dimension		    1
     Simulink.ConfigSet {
       $ObjectID		      7
-      Version		      "1.16.2"
+      Version		      "1.14.3"
       Array {
 	Type			"Handle"
-	Dimension		9
+	Dimension		8
 	Simulink.SolverCC {
 	  $ObjectID		  8
-	  Version		  "1.16.2"
+	  Version		  "1.14.3"
 	  StartTime		  "0.0"
 	  StopTime		  "300"
 	  AbsTol		  "auto"
@@ -345,8 +317,6 @@ Model {
 	  ZeroCrossControl	  "UseLocalSettings"
 	  ZeroCrossAlgorithm	  "Nonadaptive"
 	  AlgebraicLoopSolver	  "TrustRegion"
-	  SolverInfoToggleStatus  off
-	  IsAutoAppliedInSIP	  off
 	  SolverResetMethod	  "Fast"
 	  PositivePriorityOrder	  off
 	  AutoInsertRateTranBlk	  off
@@ -355,7 +325,7 @@ Model {
 	}
 	Simulink.DataIOCC {
 	  $ObjectID		  9
-	  Version		  "1.16.2"
+	  Version		  "1.14.3"
 	  Decimation		  "1"
 	  ExternalInput		  "[t,u]"
 	  FinalStateName	  "xFinal"
@@ -366,7 +336,7 @@ Model {
 	  LoadInitialState	  off
 	  SaveFinalState	  off
 	  SaveCompleteFinalSimState off
-	  SaveFormat		  "Dataset"
+	  SaveFormat		  "StructureWithTime"
 	  SignalLoggingSaveFormat "ModelDataLogs"
 	  SaveOutput		  on
 	  SaveState		  off
@@ -374,8 +344,6 @@ Model {
 	  DSMLogging		  on
 	  InspectSignalLogs	  off
 	  VisualizeSimOutput	  on
-	  StreamToWorkspace	  off
-	  StreamVariableName	  "streamout"
 	  SaveTime		  on
 	  ReturnWorkspaceOutputs  off
 	  StateSaveName		  "xout"
@@ -387,13 +355,10 @@ Model {
 	  OutputTimes		  "[]"
 	  ReturnWorkspaceOutputsName "out"
 	  Refine		  "1"
-	  LoggingToFile		  off
-	  LoggingFileName	  "out.mat"
-	  LoggingIntervals	  "[-inf, inf]"
 	}
 	Simulink.OptimizationCC {
 	  $ObjectID		  10
-	  Version		  "1.16.2"
+	  Version		  "1.14.3"
 	  Array {
 	    Type		    "Cell"
 	    Dimension		    8
@@ -410,8 +375,8 @@ Model {
 	  BlockReduction	  on
 	  BooleanDataType	  on
 	  ConditionallyExecuteInputs on
-	  DefaultParameterBehavior "Tunable"
-	  UseDivisionForNetSlopeComputation "off"
+	  InlineParams		  off
+	  UseDivisionForNetSlopeComputation "Off"
 	  UseFloatMulNetSlope	  off
 	  DefaultUnderspecifiedDataType	"double"
 	  UseSpecifiedMinMax	  off
@@ -428,7 +393,6 @@ Model {
 	  EnableMemcpy		  on
 	  MemcpyThreshold	  64
 	  PassReuseOutputArgsAs	  "Structure reference"
-	  PassReuseOutputArgsThreshold 12
 	  ExpressionDepthLimit	  2147483647
 	  LocalBlockOutputs	  on
 	  RollThreshold		  5
@@ -445,12 +409,12 @@ Model {
 	  LifeSpan		  "inf"
 	  MaxStackSize		  "Inherit from target"
 	  BufferReusableBoundary  on
-	  SimCompilerOptimization "off"
+	  SimCompilerOptimization "Off"
 	  AccelVerboseBuild	  off
 	}
 	Simulink.DebuggingCC {
 	  $ObjectID		  11
-	  Version		  "1.16.2"
+	  Version		  "1.14.3"
 	  RTPrefix		  "error"
 	  ConsistencyChecking	  "none"
 	  ArrayBoundsChecking	  "none"
@@ -498,7 +462,7 @@ Model {
 	  UnnecessaryDatatypeConvMsg "none"
 	  VectorMatrixConversionMsg "none"
 	  InvalidFcnCallConnMsg	  "error"
-	  FcnCallInpInsideContextMsg "UseLocalSettings"
+	  FcnCallInpInsideContextMsg "EnableAllAsWarning"
 	  SignalLabelMismatchMsg  "none"
 	  UnconnectedInputMsg	  "warning"
 	  UnconnectedOutputMsg	  "warning"
@@ -509,7 +473,6 @@ Model {
 	  BusObjectLabelMismatch  "warning"
 	  RootOutportRequireBusObject "warning"
 	  AssertControl		  "UseLocalSettings"
-	  AllowSymbolicDim	  on
 	  ModelReferenceIOMsg	  "none"
 	  ModelReferenceMultiInstanceNormalModeStructChecksumCheck "error"
 	  ModelReferenceVersionMismatchMessage "none"
@@ -525,9 +488,6 @@ Model {
 	  StrictBusMsg		  "ErrorLevel1"
 	  BusNameAdapt		  "WarnAndRepair"
 	  NonBusSignalsTreatedAsBus "none"
-	  SymbolicDimMinMaxWarning "warning"
-	  LossOfSymbolicDimsSimulationWarning "warning"
-	  LossOfSymbolicDimsCodeGenerationWarning "error"
 	  BlockIODiagnostic	  "none"
 	  SFUnusedDataAndEventsDiag "warning"
 	  SFUnexpectedBacktrackingDiag "warning"
@@ -537,15 +497,12 @@ Model {
 	  SFUnconditionalTransitionShadowingDiag "warning"
 	  SFUndirectedBroadcastEventsDiag "warning"
 	  SFTransitionActionBeforeConditionDiag	"warning"
-	  SFOutputUsedAsStateInMooreChartDiag "error"
 	  IntegerSaturationMsg	  "warning"
-	  AllowedUnitSystems	  "all"
-	  UnitsInconsistencyMsg	  "warning"
-	  AllowAutomaticUnitConversions	on
+	  ModelReferenceCSMismatchMessage "none"
 	}
 	Simulink.HardwareCC {
 	  $ObjectID		  12
-	  Version		  "1.16.2"
+	  Version		  "1.14.3"
 	  ProdBitPerChar	  8
 	  ProdBitPerShort	  16
 	  ProdBitPerInt		  32
@@ -582,14 +539,11 @@ Model {
 	  TargetHWDeviceType	  "Specified"
 	  TargetUnknown		  off
 	  ProdEqTarget		  on
-	  UseEmbeddedCoderFeatures on
-	  UseSimulinkCoderFeatures on
 	}
 	Simulink.ModelReferenceCC {
 	  $ObjectID		  13
-	  Version		  "1.16.2"
+	  Version		  "1.14.3"
 	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
-	  EnableRefExpFcnMdlSchedulingChecks on
 	  CheckModelReferenceTargetMessage "error"
 	  EnableParallelModelReferenceBuilds off
 	  ParallelModelReferenceErrorOnInvalidPool on
@@ -603,7 +557,7 @@ Model {
 	}
 	Simulink.SFSimCC {
 	  $ObjectID		  14
-	  Version		  "1.16.2"
+	  Version		  "1.14.3"
 	  SFSimEcho		  on
 	  SimCtrlC		  on
 	  SimIntegrity		  on
@@ -615,10 +569,10 @@ Model {
 	Simulink.RTWCC {
 	  $BackupClass		  "Simulink.RTWCC"
 	  $ObjectID		  15
-	  Version		  "1.16.2"
+	  Version		  "1.14.3"
 	  Array {
 	    Type		    "Cell"
-	    Dimension		    15
+	    Dimension		    16
 	    Cell		    "IncludeHyperlinkInReport"
 	    Cell		    "GenerateTraceInfo"
 	    Cell		    "GenerateTraceReport"
@@ -634,10 +588,10 @@ Model {
 	    Cell		    "CodeExecutionProfiling"
 	    Cell		    "CodeProfilingSaveOptions"
 	    Cell		    "CodeProfilingInstrumentation"
+	    Cell		    "GenerateMissedCodeReplacementReport"
 	    PropName		    "DisabledProps"
 	  }
 	  SystemTargetFile	  "grt.tlc"
-	  HardwareBoard		  "None"
 	  TLCOptions		  ""
 	  GenCodeOnly		  off
 	  MakeCommand		  "make_rtw"
@@ -646,7 +600,6 @@ Model {
 	  PackageName		  "DockingApproachExample_Ext_Code.zip"
 	  TemplateMakefile	  "grt_default_tmf"
 	  PostCodeGenCommand	  ""
-	  Description		  ""
 	  GenerateReport	  off
 	  SaveLog		  off
 	  RTWVerbose		  on
@@ -678,8 +631,7 @@ Model {
 	  GenerateWebview	  off
 	  GenerateCodeMetricsReport off
 	  GenerateCodeReplacementReport	off
-	  GenerateMissedCodeReplacementReport off
-	  RTWCompilerOptimization "on"
+	  RTWCompilerOptimization "On"
 	  Array {
 	    Type		    "Cell"
 	    Dimension		    1
@@ -694,10 +646,10 @@ Model {
 	    Dimension		    2
 	    Simulink.CodeAppCC {
 	      $ObjectID		      16
-	      Version		      "1.16.2"
+	      Version		      "1.14.3"
 	      Array {
 		Type			"Cell"
-		Dimension		22
+		Dimension		25
 		Cell			"IgnoreCustomStorageClasses"
 		Cell			"InsertBlockDesc"
 		Cell			"SFDataObjDesc"
@@ -720,6 +672,9 @@ Model {
 		Cell			"CustomSymbolStrTmpVar"
 		Cell			"CustomSymbolStrMacro"
 		Cell			"ReqsInCode"
+		Cell			"CustomSymbolStrModelFcn"
+		Cell			"CustomSymbolStrUtil"
+		Cell			"CustomUserTokenString"
 		PropName		"DisabledProps"
 	      }
 	      ForceParamTrailComments off
@@ -764,10 +719,10 @@ Model {
 	    Simulink.GRTTargetCC {
 	      $BackupClass	      "Simulink.TargetCC"
 	      $ObjectID		      17
-	      Version		      "1.16.2"
+	      Version		      "1.14.3"
 	      Array {
 		Type			"Cell"
-		Dimension		14
+		Dimension		17
 		Cell			"IncludeMdlTerminateFcn"
 		Cell			"CPPClassGenCompliant"
 		Cell			"SuppressErrorStatus"
@@ -782,10 +737,14 @@ Model {
 		Cell			"GeneratePreprocessorConditionals"
 		Cell			"GenerateTestInterfaces"
 		Cell			"ModelStepFunctionPrototypeControlCompliant"
+		Cell			"RemoveResetFunc"
+		Cell			"ExistingSharedCode"
+		Cell			"RemoveDisableFunc"
 		PropName		"DisabledProps"
 	      }
 	      TargetFcnLib	      "ansi_tfl_tmw.mat"
 	      TargetLibSuffix	      ""
+	      TargetPreCompLibLocation ""
 	      GenFloatMathFcnCalls    "NOT IN USE"
 	      TargetLangStandard      "C89/C90 (ANSI)"
 	      CodeReplacementLibrary  "None"
@@ -794,7 +753,6 @@ Model {
 	      ERTMultiwordLength      256
 	      MultiwordLength	      2048
 	      GenerateFullHeader      on
-	      InferredTypesCompatibility off
 	      GenerateSampleERTMain   off
 	      GenerateTestInterfaces  off
 	      ModelReferenceCompliant on
@@ -828,7 +786,6 @@ Model {
 	      AutosarCompliant	      off
 	      GRTInterface	      on
 	      GenerateAllocFcn	      off
-	      UseToolchainInfoCompliant	on
 	      GenerateSharedConstants on
 	      UseMalloc		      off
 	      ExtMode		      off
@@ -848,45 +805,12 @@ Model {
 	    PropName		    "Components"
 	  }
 	}
-	SlCovCC.ConfigComp {
-	  $ObjectID		  18
-	  Version		  "1.16.2"
-	  Description		  "Simulink Coverage Configuration Component"
-	  Name			  "Simulink Coverage"
-	  CovEnable		  off
-	  CovScope		  "EntireSystem"
-	  CovIncludeTopModel	  on
-	  RecordCoverage	  off
-	  CovPath		  "/"
-	  CovSaveName		  "covdata"
-	  CovMetricSettings	  "dw"
-	  CovNameIncrementing	  off
-	  CovHtmlReporting	  on
-	  CovForceBlockReductionOff on
-	  CovEnableCumulative	  on
-	  CovSaveCumulativeToWorkspaceVar on
-	  CovSaveSingleToWorkspaceVar on
-	  CovCumulativeVarName	  "covCumulativeData"
-	  CovCumulativeReport	  off
-	  CovSaveOutputData	  on
-	  CovOutputDir		  "slcov_output/$ModelName$"
-	  CovDataFileName	  "$ModelName$_cvdata"
-	  CovReportOnPause	  on
-	  CovModelRefEnable	  "Off"
-	  CovExternalEMLEnable	  off
-	  CovSFcnEnable		  on
-	  CovBoundaryAbsTol	  1e-05
-	  CovBoundaryRelTol	  0.01
-	  CovUseTimeInterval	  off
-	  CovStartTime		  0
-	  CovStopTime		  0
-	}
 	PropName		"Components"
       }
       Name		      "Configuration"
       ExtraOptions	      "-aGenerateTraceInfo=0 -aIgnoreTestpoints=0 "
       CurrentDlgPage	      "Data Import//Export"
-      ConfigPrmDlgPosition     [ 258, 88, 1555, 766 ] 
+      ConfigPrmDlgPosition    [ 258, 88, 1555, 766 ]  
     }
     PropName		    "ConfigurationSets"
   }
@@ -939,7 +863,7 @@ Model {
   MaskDefaults {
     SelfModifiable	    "off"
     IconFrame		    "on"
-    IconOpaque		    "opaque"
+    IconOpaque		    "on"
     RunInitForIconRedraw    "off"
     IconRotate		    "none"
     PortRotate		    "default"
@@ -971,7 +895,6 @@ Model {
       OutDataTypeStr	      "Inherit: auto"
       LockScale		      off
       BusOutputAsStruct	      off
-      Unit		      "inherit"
       PortDimensions	      "-1"
       VarSizeSig	      "Inherit"
       SampleTime	      "-1"
@@ -1007,7 +930,6 @@ Model {
       OutDataTypeStr	      "Inherit: auto"
       LockScale		      off
       BusOutputAsStruct	      off
-      Unit		      "inherit"
       PortDimensions	      "-1"
       VarSizeSig	      "Inherit"
       SampleTime	      "-1"
@@ -1031,7 +953,6 @@ Model {
       TreatAsAtomicUnit	      off
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
-      CheckFcnCallInpInsideContextMsg off
       SystemSampleTime	      "-1"
       RTWSystemCode	      "Auto"
       RTWFcnNameOpts	      "Auto"
@@ -1051,18 +972,18 @@ Model {
       MaskHideContents	      off
       SFBlockType	      "NONE"
       GeneratePreprocessorConditionals off
+      PropagateVariantConditions off
       TreatAsGroupedWhenPropagatingVariantConditions on
       ContentPreviewEnabled   off
-      IsWebBlock	      off
     }
     Block {
       BlockType		      Terminator
     }
   }
   System {
-    Name		    "DockingApproachExample_Ext"
+    Name		    "DockingApproachExample_Ext_tmp"
     Location		    [65, 24, 1920, 1080]
-    Open		    on
+    Open		    off
     ModelBrowserVisibility  on
     ModelBrowserWidth	    212
     ScreenColor		    "white"
@@ -1200,7 +1121,7 @@ Model {
       Position		      [545, 29, 1010, 901]
       ZOrder		      -14
       ErrorFcn		      "Stateflow.Translate.translate"
-      PermitHierarchicalResolution "ExplicitOnly"
+      PermitHierarchicalResolution "ParametersOnly"
       TreatAsAtomicUnit	      on
       RequestExecContextInheritance off
       SFBlockType	      "Chart"
@@ -1220,7 +1141,7 @@ Model {
 	TiledPageScale		1
 	ShowPageBoundaries	off
 	ZoomFactor		"100"
-	SIDHighWatermark	"40"
+	SIDHighWatermark	"46"
 	Block {
 	  BlockType		  Inport
 	  Name			  "GroundTrack_OrbitalPosition"
@@ -1340,24 +1261,24 @@ Model {
 	Block {
 	  BlockType		  Demux
 	  Name			  " Demux "
-	  SID			  "14::36"
+	  SID			  "14::45"
 	  Ports			  [1, 1]
 	  Position		  [270, 570, 320, 610]
-	  ZOrder		  5
+	  ZOrder		  12
 	  Outputs		  "1"
 	}
 	Block {
 	  BlockType		  S-Function
 	  Name			  " SFunction "
-	  SID			  "14::35"
-	  Tag			  "Stateflow S-Function DockingApproachExample_Ext 1"
+	  SID			  "14::44"
+	  Tag			  "Stateflow S-Function DockingApproachExample_Ext_tmp 1"
 	  Ports			  [13, 13]
 	  Position		  [180, 90, 230, 370]
-	  ZOrder		  4
+	  ZOrder		  11
 	  FunctionName		  "sf_sfun"
 	  PortCounts		  "[13 13]"
 	  SFunctionDeploymentMode off
-	  EnableBusSupport	  on
+	  EnableBusSupport	  off
 	  Port {
 	    PortNumber		    2
 	    Name		    "CaptureApproachComplete"
@@ -1434,9 +1355,9 @@ Model {
 	Block {
 	  BlockType		  Terminator
 	  Name			  " Terminator "
-	  SID			  "14::37"
+	  SID			  "14::46"
 	  Position		  [460, 581, 480, 599]
-	  ZOrder		  6
+	  ZOrder		  13
 	}
 	Block {
 	  BlockType		  Outport
@@ -1546,91 +1467,91 @@ Model {
 	  IconDisplay		  "Port number"
 	}
 	Line {
-	  ZOrder		  163
+	  ZOrder		  217
 	  SrcBlock		  "GroundTrack_OrbitalPosition"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  164
+	  ZOrder		  218
 	  SrcBlock		  "GroundTrack_OrbitalVelocity"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  2
 	}
 	Line {
-	  ZOrder		  165
+	  ZOrder		  219
 	  SrcBlock		  "dockVisibility_status"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  3
 	}
 	Line {
-	  ZOrder		  166
+	  ZOrder		  220
 	  SrcBlock		  "opticsAvailability_status"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  4
 	}
 	Line {
-	  ZOrder		  167
+	  ZOrder		  221
 	  SrcBlock		  "sunlight_status"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  5
 	}
 	Line {
-	  ZOrder		  168
+	  ZOrder		  222
 	  SrcBlock		  "GPS_satelliteVisibility_status"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  6
 	}
 	Line {
-	  ZOrder		  169
+	  ZOrder		  223
 	  SrcBlock		  "GPS_receiverAvailability_status"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  7
 	}
 	Line {
-	  ZOrder		  170
+	  ZOrder		  224
 	  SrcBlock		  "StarPlanetTracker_planetVisibility"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  8
 	}
 	Line {
-	  ZOrder		  171
+	  ZOrder		  225
 	  SrcBlock		  "StarPlanetTracker_starVisibility"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  9
 	}
 	Line {
-	  ZOrder		  172
+	  ZOrder		  226
 	  SrcBlock		  "InertialNavigation_time"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  10
 	}
 	Line {
-	  ZOrder		  173
+	  ZOrder		  227
 	  SrcBlock		  "GroundTrack_Time"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  11
 	}
 	Line {
-	  ZOrder		  174
+	  ZOrder		  228
 	  SrcBlock		  "RealTimeClock_time"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  12
 	}
 	Line {
-	  ZOrder		  175
+	  ZOrder		  229
 	  SrcBlock		  "StageTransition"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
@@ -1638,7 +1559,7 @@ Model {
 	}
 	Line {
 	  Name			  "CaptureApproachComplete"
-	  ZOrder		  176
+	  ZOrder		  230
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  2
@@ -1647,7 +1568,7 @@ Model {
 	}
 	Line {
 	  Name			  "DockingApproachComplete"
-	  ZOrder		  177
+	  ZOrder		  231
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  3
@@ -1656,7 +1577,7 @@ Model {
 	}
 	Line {
 	  Name			  "AttemptingToDock"
-	  ZOrder		  178
+	  ZOrder		  232
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  4
@@ -1665,7 +1586,7 @@ Model {
 	}
 	Line {
 	  Name			  "LatchCaptureComplete"
-	  ZOrder		  179
+	  ZOrder		  233
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  5
@@ -1674,7 +1595,7 @@ Model {
 	}
 	Line {
 	  Name			  "DockingApproach"
-	  ZOrder		  180
+	  ZOrder		  234
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  6
@@ -1683,7 +1604,7 @@ Model {
 	}
 	Line {
 	  Name			  "ApproachOrbitComplete"
-	  ZOrder		  181
+	  ZOrder		  235
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  7
@@ -1692,7 +1613,7 @@ Model {
 	}
 	Line {
 	  Name			  "FarApproachComplete"
-	  ZOrder		  182
+	  ZOrder		  236
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  8
@@ -1701,7 +1622,7 @@ Model {
 	}
 	Line {
 	  Name			  "ProximityOperationsComplete"
-	  ZOrder		  183
+	  ZOrder		  237
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  9
@@ -1710,7 +1631,7 @@ Model {
 	}
 	Line {
 	  Name			  "FailedApproach"
-	  ZOrder		  184
+	  ZOrder		  238
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  10
@@ -1719,7 +1640,7 @@ Model {
 	}
 	Line {
 	  Name			  "JointMission"
-	  ZOrder		  185
+	  ZOrder		  239
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  11
@@ -1728,7 +1649,7 @@ Model {
 	}
 	Line {
 	  Name			  "CaptureApproachFailed"
-	  ZOrder		  186
+	  ZOrder		  240
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  12
@@ -1737,7 +1658,7 @@ Model {
 	}
 	Line {
 	  Name			  "LatchCapture_timer"
-	  ZOrder		  187
+	  ZOrder		  241
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  13
@@ -1745,14 +1666,14 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  188
+	  ZOrder		  242
 	  SrcBlock		  " Demux "
 	  SrcPort		  1
 	  DstBlock		  " Terminator "
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  189
+	  ZOrder		  243
 	  SrcBlock		  " SFunction "
 	  SrcPort		  1
 	  DstBlock		  " Demux "
@@ -1975,7 +1896,7 @@ Model {
 	  Ports			  [1, 1]
 	  Position		  [690, 590, 720, 620]
 	  ZOrder		  32
-	  LibraryVersion	  "1.386"
+	  LibraryVersion	  "1.388"
 	  SourceBlock		  "simulink/Logic and Bit\nOperations/Compare\nTo Constant"
 	  SourceType		  "Compare To Constant"
 	  ContentPreviewEnabled	  off
@@ -2458,7 +2379,7 @@ Model {
 	  Ports			  [1, 1]
 	  Position		  [725, 585, 755, 615]
 	  ZOrder		  33
-	  LibraryVersion	  "1.386"
+	  LibraryVersion	  "1.388"
 	  SourceBlock		  "simulink/Logic and Bit\nOperations/Compare\nTo Constant"
 	  SourceType		  "Compare To Constant"
 	  ContentPreviewEnabled	  off
@@ -3322,20 +3243,21 @@ Model {
 }
 #Finite State Machines
 #
-#   Stateflow 80000009
+#   Stateflow 80000010
 #
 #
 Stateflow {
   machine {
     id			    1
-    name		    "DockingApproachExample_Ext"
+    name		    "DockingApproachExample_Ext_tmp"
     created		    "26-Jul-2006 11:31:47"
     isLibrary		    0
+    sfVersion		    80000001
     firstTarget		    281
-    sfVersion		    80000009
   }
   chart {
     id			    2
+    machine		    1
     name		    "Chart"
     windowPosition	    [65 24 1571 930]
     viewLimits		    [918.197 2218.997 195.352 924.152]
@@ -3343,19 +3265,18 @@ Stateflow {
     screen		    [1 1 1600 900 1.611111111111111]
     treeNode		    [0 20 0 0]
     viewObj		    2
-    machine		    1
     subviewS {
       y1		      356.802
       zoomFactor	      2.315
     }
     ssIdHighWaterMark	    421
     decomposition	    SET_CHART
-    firstData		    210
     updateMethod	    DISCRETE
     sampleTime		    "1"
     chartFileNumber	    1
     disableImplicitCasting  1
     supportVariableSizing   0
+    firstData		    210
   }
   state {
     id			    3
@@ -3439,13 +3360,13 @@ Stateflow {
     fontSize		    12
     chart		    2
     treeNode		    [10 0 17 0]
-    firstTransition	    75
-    firstJunction	    74
     subviewer		    2
     ssIdNumber		    6
     type		    FUNC_STATE
     decomposition	    CLUSTER_STATE
     firstData		    72
+    firstTransition	    75
+    firstJunction	    74
   }
   state {
     id			    9
@@ -3561,13 +3482,13 @@ Stateflow {
     fontSize		    12
     chart		    2
     treeNode		    [10 0 0 8]
-    firstTransition	    78
-    firstJunction	    77
     subviewer		    2
     ssIdNumber		    15
     type		    FUNC_STATE
     decomposition	    CLUSTER_STATE
     firstData		    76
+    firstTransition	    78
+    firstJunction	    77
   }
   state {
     id			    18
@@ -3609,7 +3530,6 @@ Stateflow {
     fontSize		    32
     chart		    2
     treeNode		    [2 6 0 10]
-    firstTransition	    79
     subviewer		    2
     subviewS {
       x1		      -50
@@ -3620,6 +3540,7 @@ Stateflow {
     type		    AND_STATE
     decomposition	    CLUSTER_STATE
     executionOrder	    1
+    firstTransition	    79
   }
   state {
     id			    21
@@ -3630,7 +3551,6 @@ Stateflow {
     arrowSize		    23.771
     chart		    2
     treeNode		    [20 22 16 5]
-    firstTransition	    103
     superState		    SUBCHART
     subviewer		    2
     subviewS {
@@ -3643,6 +3563,7 @@ Stateflow {
     ssIdNumber		    19
     type		    OR_STATE
     decomposition	    SET_STATE
+    firstTransition	    103
   }
   state {
     id			    22
@@ -3652,7 +3573,6 @@ Stateflow {
     fontSize		    24
     chart		    2
     treeNode		    [21 24 0 30]
-    firstTransition	    106
     visible		    0
     subviewer		    21
     subviewS {
@@ -3665,6 +3585,7 @@ Stateflow {
     type		    AND_STATE
     decomposition	    CLUSTER_STATE
     executionOrder	    1
+    firstTransition	    106
   }
   state {
     id			    23
@@ -3778,7 +3699,6 @@ Stateflow {
     fontSize		    24
     chart		    2
     treeNode		    [21 25 22 0]
-    firstTransition	    117
     superState		    GROUPED
     visible		    0
     subviewer		    21
@@ -3793,6 +3713,7 @@ Stateflow {
     decomposition	    CLUSTER_STATE
     executionOrder	    2
     firstData		    116
+    firstTransition	    117
   }
   state {
     id			    31
@@ -3802,7 +3723,6 @@ Stateflow {
     arrowSize		    16
     chart		    2
     treeNode		    [20 32 12 16]
-    firstTransition	    125
     superState		    SUBCHART
     subviewer		    2
     subviewS {
@@ -3816,6 +3736,7 @@ Stateflow {
     ssIdNumber		    283
     type		    OR_STATE
     decomposition	    SET_STATE
+    firstTransition	    125
   }
   state {
     id			    32
@@ -3826,7 +3747,6 @@ Stateflow {
     arrowSize		    6.639
     chart		    2
     treeNode		    [31 33 0 38]
-    firstTransition	    128
     superState		    SUBCHART
     visible		    0
     subviewer		    31
@@ -3842,6 +3762,7 @@ Stateflow {
     type		    AND_STATE
     decomposition	    CLUSTER_STATE
     executionOrder	    1
+    firstTransition	    128
   }
   state {
     id			    33
@@ -3962,14 +3883,14 @@ Stateflow {
     arrowSize		    9.669
     chart		    2
     treeNode		    [39 41 0 45]
-    firstTransition	    144
-    firstJunction	    140
     visible		    0
     subviewer		    38
     ssIdNumber		    309
     type		    AND_STATE
     decomposition	    CLUSTER_STATE
     executionOrder	    1
+    firstTransition	    144
+    firstJunction	    140
   }
   state {
     id			    41
@@ -4039,8 +3960,6 @@ Stateflow {
     arrowSize		    7.576
     chart		    2
     treeNode		    [39 0 40 46]
-    firstTransition	    158
-    firstJunction	    157
     superState		    GROUPED
     visible		    0
     subviewer		    38
@@ -4048,6 +3967,8 @@ Stateflow {
     type		    FUNC_STATE
     decomposition	    CLUSTER_STATE
     firstData		    156
+    firstTransition	    158
+    firstJunction	    157
   }
   state {
     id			    46
@@ -4057,7 +3978,6 @@ Stateflow {
     arrowSize		    9.669
     chart		    2
     treeNode		    [39 47 45 0]
-    firstTransition	    159
     superState		    GROUPED
     visible		    0
     subviewer		    38
@@ -4065,6 +3985,7 @@ Stateflow {
     type		    AND_STATE
     decomposition	    CLUSTER_STATE
     executionOrder	    2
+    firstTransition	    159
   }
   state {
     id			    47
@@ -4104,13 +4025,13 @@ Stateflow {
     arrowSize		    9.243
     chart		    2
     treeNode		    [38 50 39 53]
-    firstTransition	    163
     visible		    0
     subviewer		    38
     ssIdNumber		    341
     type		    AND_STATE
     decomposition	    CLUSTER_STATE
     executionOrder	    2
+    firstTransition	    163
   }
   state {
     id			    50
@@ -4166,13 +4087,13 @@ Stateflow {
     arrowSize		    9.243
     chart		    2
     treeNode		    [38 54 49 57]
-    firstTransition	    171
     visible		    0
     subviewer		    38
     ssIdNumber		    353
     type		    AND_STATE
     decomposition	    CLUSTER_STATE
     executionOrder	    3
+    firstTransition	    171
   }
   state {
     id			    54
@@ -4232,8 +4153,6 @@ Stateflow {
     arrowSize		    8.13
     chart		    2
     treeNode		    [38 58 53 0]
-    firstTransition	    181
-    firstJunction	    180
     visible		    0
     subviewer		    38
     ssIdNumber		    366
@@ -4241,6 +4160,8 @@ Stateflow {
     decomposition	    CLUSTER_STATE
     executionOrder	    4
     firstData		    179
+    firstTransition	    181
+    firstJunction	    180
   }
   state {
     id			    58
@@ -4280,7 +4201,6 @@ Stateflow {
     arrowSize		    23.771
     chart		    2
     treeNode		    [20 61 5 0]
-    firstTransition	    189
     superState		    SUBCHART
     subviewer		    2
     subviewS {
@@ -4294,6 +4214,7 @@ Stateflow {
     ssIdNumber		    385
     type		    OR_STATE
     decomposition	    SET_STATE
+    firstTransition	    189
   }
   state {
     id			    61
@@ -4304,14 +4225,14 @@ Stateflow {
     arrowSize		    7.691
     chart		    2
     treeNode		    [60 62 0 66]
-    firstTransition	    192
-    firstJunction	    191
     visible		    0
     subviewer		    60
     ssIdNumber		    390
     type		    AND_STATE
     decomposition	    CLUSTER_STATE
     executionOrder	    1
+    firstTransition	    192
+    firstJunction	    191
   }
   state {
     id			    62
@@ -4377,14 +4298,14 @@ Stateflow {
     arrowSize		    7.691
     chart		    2
     treeNode		    [60 67 61 0]
-    firstTransition	    200
-    firstJunction	    199
     visible		    0
     subviewer		    60
     ssIdNumber		    403
     type		    AND_STATE
     decomposition	    CLUSTER_STATE
     executionOrder	    2
+    firstTransition	    200
+    firstJunction	    199
   }
   state {
     id			    67
@@ -4460,7 +4381,6 @@ Stateflow {
     id			    72
     ssIdNumber		    274
     name		    "missionstate"
-    linkNode		    [8 0 73]
     scope		    FUNCTION_INPUT_DATA
     machine		    1
     props {
@@ -4470,17 +4390,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [8 0 73]
   }
   data {
     id			    73
     ssIdNumber		    275
     name		    "y"
-    linkNode		    [8 72 0]
     scope		    FUNCTION_OUTPUT_DATA
     machine		    1
     props {
@@ -4490,20 +4407,18 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [8 72 0]
   }
   junction {
     id			    74
     position		    [1888.5625 392.9168 7]
     chart		    2
-    linkNode		    [8 0 0]
     subviewer		    2
     ssIdNumber		    192
     type		    CONNECTIVE_JUNCTION
+    linkNode		    [8 0 0]
   }
   transition {
     id			    75
@@ -4519,7 +4434,6 @@ Stateflow {
     }
     midPoint		    [1777.9822 392.9168]
     chart		    2
-    linkNode		    [8 0 0]
     dataLimits		    [1673.894 1881.562 390.517 395.317]
     subviewer		    2
     slide {
@@ -4527,12 +4441,12 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    74
+    linkNode		    [8 0 0]
   }
   data {
     id			    76
     ssIdNumber		    273
     name		    "y"
-    linkNode		    [17 0 0]
     scope		    FUNCTION_OUTPUT_DATA
     machine		    1
     props {
@@ -4542,20 +4456,18 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "double"
+    linkNode		    [17 0 0]
   }
   junction {
     id			    77
     position		    [1861.6517 306.6542 7]
     chart		    2
-    linkNode		    [17 0 0]
     subviewer		    2
     ssIdNumber		    191
     type		    CONNECTIVE_JUNCTION
+    linkNode		    [17 0 0]
   }
   transition {
     id			    78
@@ -4571,7 +4483,6 @@ Stateflow {
     }
     midPoint		    [1766.6046 306.6542]
     chart		    2
-    linkNode		    [17 0 0]
     dataLimits		    [1679.462 1854.652 304.254 309.054]
     subviewer		    2
     slide {
@@ -4579,6 +4490,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    75
+    linkNode		    [17 0 0]
   }
   transition {
     id			    79
@@ -4594,7 +4506,6 @@ Stateflow {
     }
     midPoint		    [227.8409 297.0602]
     chart		    2
-    linkNode		    [20 0 80]
     dataLimits		    [207.469 272.889 289.31 304.812]
     subviewer		    2
     drawStyle		    SMART
@@ -4603,6 +4514,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    138
+    linkNode		    [20 0 80]
   }
   transition {
     id			    80
@@ -4620,7 +4532,6 @@ Stateflow {
     }
     midPoint		    [357.0436 368.4575]
     chart		    2
-    linkNode		    [20 79 81]
     dataLimits		    [349.293 364.794 308.094 450.164]
     subviewer		    2
     drawStyle		    SMART
@@ -4629,6 +4540,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    175
+    linkNode		    [20 79 81]
   }
   transition {
     id			    81
@@ -4646,7 +4558,6 @@ Stateflow {
     }
     midPoint		    [656.9278 478.7933]
     chart		    2
-    linkNode		    [20 80 82]
     dataLimits		    [476.908 824.542 471.042 486.544]
     stampAngle		    -1
     subviewer		    2
@@ -4656,6 +4567,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    93
+    linkNode		    [20 80 82]
   }
   transition {
     id			    82
@@ -4673,7 +4585,6 @@ Stateflow {
     }
     midPoint		    [377.5648 594.1345]
     chart		    2
-    linkNode		    [20 81 83]
     dataLimits		    [369.807 385.309 499.153 668.98]
     stampAngle		    -1
     subviewer		    2
@@ -4683,6 +4594,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    140
+    linkNode		    [20 81 83]
   }
   transition {
     id			    83
@@ -4700,7 +4612,6 @@ Stateflow {
     }
     midPoint		    [448.495 573.9868]
     chart		    2
-    linkNode		    [20 82 84]
     dataLimits		    [438.325 465.172 499.153 668.98]
     stampAngle		    -1
     subviewer		    2
@@ -4710,6 +4621,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    176
+    linkNode		    [20 82 84]
   }
   transition {
     id			    84
@@ -4727,7 +4639,6 @@ Stateflow {
     }
     midPoint		    [792.9998 764.7438]
     chart		    2
-    linkNode		    [20 83 85]
     dataLimits		    [594.997 882.198 546.492 932.752]
     stampAngle		    -1
     subviewer		    2
@@ -4737,6 +4648,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    174
+    linkNode		    [20 83 85]
   }
   transition {
     id			    85
@@ -4754,7 +4666,6 @@ Stateflow {
     }
     midPoint		    [830.4338 809.3415]
     chart		    2
-    linkNode		    [20 84 86]
     dataLimits		    [647.533 998.702 546.492 1064.97]
     stampAngle		    NaN
     subviewer		    2
@@ -4765,6 +4676,7 @@ Stateflow {
     }
     executionOrder	    4294967295
     ssIdNumber		    380
+    linkNode		    [20 84 86]
   }
   transition {
     id			    86
@@ -4782,7 +4694,6 @@ Stateflow {
     }
     midPoint		    [1051.8838 678.5112]
     chart		    2
-    linkNode		    [20 85 87]
     dataLimits		    [1014.82 1089.723 546.492 793.872]
     stampAngle		    -1
     subviewer		    2
@@ -4792,6 +4703,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    136
+    linkNode		    [20 85 87]
   }
   transition {
     id			    87
@@ -4808,7 +4720,6 @@ Stateflow {
     }
     midPoint		    [1331.6106 736.7532]
     chart		    2
-    linkNode		    [20 86 88]
     dataLimits		    [1256.663 1395.67 546.492 919.82]
     stampAngle		    -1
     subviewer		    2
@@ -4817,6 +4728,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    173
+    linkNode		    [20 86 88]
   }
   transition {
     id			    88
@@ -4834,7 +4746,6 @@ Stateflow {
     }
     midPoint		    [502.8184 805.2916]
     chart		    2
-    linkNode		    [20 87 89]
     dataLimits		    [441.797 562.805 724.637 901.816]
     stampAngle		    -1
     subviewer		    2
@@ -4844,6 +4755,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    172
+    linkNode		    [20 87 89]
   }
   transition {
     id			    89
@@ -4861,7 +4773,6 @@ Stateflow {
     }
     midPoint		    [1090.609 1142.0424]
     chart		    2
-    linkNode		    [20 88 90]
     dataLimits		    [997.507 1191.097 877.843 1403.311]
     stampAngle		    -1
     subviewer		    2
@@ -4871,6 +4782,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    135
+    linkNode		    [20 88 90]
   }
   transition {
     id			    90
@@ -4888,7 +4800,6 @@ Stateflow {
     }
     midPoint		    [450.6784 1008.0915]
     chart		    2
-    linkNode		    [20 89 91]
     dataLimits		    [450.677 500.576 963.271 1086.173]
     stampAngle		    NaN
     subviewer		    2
@@ -4898,6 +4809,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    384
+    linkNode		    [20 89 91]
   }
   transition {
     id			    91
@@ -4915,7 +4827,6 @@ Stateflow {
     }
     midPoint		    [471.2621 1195.8632]
     chart		    2
-    linkNode		    [20 90 92]
     dataLimits		    [471.222 519.256 1098.017 1372.507]
     stampAngle		    -1
     subviewer		    2
@@ -4926,6 +4837,7 @@ Stateflow {
       midPointSticky	      1
     }
     ssIdNumber		    180
+    linkNode		    [20 90 92]
   }
   transition {
     id			    92
@@ -4943,7 +4855,6 @@ Stateflow {
     }
     midPoint		    [1374.4352 1287.8076]
     chart		    2
-    linkNode		    [20 91 93]
     dataLimits		    [1345.391 1407.676 1155.433 1403.311]
     stampAngle		    -1
     subviewer		    2
@@ -4953,6 +4864,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    178
+    linkNode		    [20 91 93]
   }
   transition {
     id			    93
@@ -4970,7 +4882,6 @@ Stateflow {
     }
     midPoint		    [629.2122 1258.0742]
     chart		    2
-    linkNode		    [20 92 94]
     dataLimits		    [611.611 651.791 1180.159 1353.827]
     stampAngle		    NaN
     subviewer		    2
@@ -4981,6 +4892,7 @@ Stateflow {
     }
     executionOrder	    4294967295
     ssIdNumber		    382
+    linkNode		    [20 92 94]
   }
   transition {
     id			    94
@@ -4998,7 +4910,6 @@ Stateflow {
     }
     midPoint		    [1215.1074 1785.4525]
     chart		    2
-    linkNode		    [20 93 95]
     dataLimits		    [775.417 1277.744 1464.974 1879.035]
     stampAngle		    NaN
     subviewer		    2
@@ -5010,6 +4921,7 @@ Stateflow {
     }
     executionOrder	    4294967295
     ssIdNumber		    420
+    linkNode		    [20 93 95]
   }
   transition {
     id			    95
@@ -5027,7 +4939,6 @@ Stateflow {
     }
     midPoint		    [634.0614 1638.424]
     chart		    2
-    linkNode		    [20 94 96]
     dataLimits		    [632.831 668.651 1487.96 1729.414]
     stampAngle		    NaN
     subviewer		    2
@@ -5038,6 +4949,7 @@ Stateflow {
     }
     executionOrder	    4294967295
     ssIdNumber		    421
+    linkNode		    [20 94 96]
   }
   transition {
     id			    96
@@ -5055,7 +4967,6 @@ Stateflow {
     }
     midPoint		    [788.6618 1576.0226]
     chart		    2
-    linkNode		    [20 95 97]
     dataLimits		    [685.871 886.005 1487.96 1682.664]
     stampAngle		    -1
     subviewer		    2
@@ -5065,6 +4976,7 @@ Stateflow {
       sticky		      BOTH_STICK
     }
     ssIdNumber		    189
+    linkNode		    [20 95 97]
   }
   transition {
     id			    97
@@ -5082,7 +4994,6 @@ Stateflow {
     }
     midPoint		    [28.3478 39.5623]
     chart		    2
-    linkNode		    [20 96 98]
     visible		    0
     dataLimits		    [24 1468.278 34.191 1608.005]
     subviewer		    2
@@ -5093,6 +5004,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    181
+    linkNode		    [20 96 98]
   }
   transition {
     id			    98
@@ -5110,7 +5022,6 @@ Stateflow {
     }
     midPoint		    [28.3478 39.5623]
     chart		    2
-    linkNode		    [20 97 99]
     visible		    0
     dataLimits		    [24 580.931 40.38 919.484]
     subviewer		    2
@@ -5121,6 +5032,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    143
+    linkNode		    [20 97 99]
   }
   transition {
     id			    99
@@ -5138,7 +5050,6 @@ Stateflow {
     }
     midPoint		    [367.8521 1146.6627]
     chart		    2
-    linkNode		    [20 98 100]
     visible		    0
     dataLimits		    [826.285 838.285 1146.663 1166.663]
     subviewer		    2
@@ -5149,6 +5060,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    288
+    linkNode		    [20 98 100]
   }
   transition {
     id			    100
@@ -5166,7 +5078,6 @@ Stateflow {
     }
     midPoint		    [367.8521 1146.6627]
     chart		    2
-    linkNode		    [20 99 101]
     visible		    0
     dataLimits		    [354.007 1067.74 1092.69 1426.807]
     subviewer		    2
@@ -5177,6 +5088,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    299
+    linkNode		    [20 99 101]
   }
   transition {
     id			    101
@@ -5194,7 +5106,6 @@ Stateflow {
     }
     midPoint		    [515.2484 1610.3692]
     chart		    2
-    linkNode		    [20 100 102]
     visible		    0
     dataLimits		    [1275.966 1287.966 1610.369 1630.369]
     subviewer		    2
@@ -5205,6 +5116,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    388
+    linkNode		    [20 100 102]
   }
   transition {
     id			    102
@@ -5222,7 +5134,6 @@ Stateflow {
     }
     midPoint		    [515.2484 1610.3692]
     chart		    2
-    linkNode		    [20 101 0]
     visible		    0
     dataLimits		    [645.84 657.84 1610.369 1630.369]
     subviewer		    2
@@ -5233,6 +5144,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    386
+    linkNode		    [20 101 0]
   }
   transition {
     id			    103
@@ -5250,7 +5162,6 @@ Stateflow {
     }
     midPoint		    [84.223 661.528]
     chart		    2
-    linkNode		    [21 0 104]
     visible		    0
     dataLimits		    [84.206 316.311 58 1064.922]
     stampAngle		    -1
@@ -5263,6 +5174,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    177
+    linkNode		    [21 0 104]
   }
   transition {
     id			    104
@@ -5280,7 +5192,6 @@ Stateflow {
     }
     midPoint		    [1288.9694 1183.7344]
     chart		    2
-    linkNode		    [21 103 105]
     visible		    0
     dataLimits		    [1231.09 1358.141 786.746 1577.126]
     stampAngle		    -1
@@ -5292,6 +5203,7 @@ Stateflow {
       midPointSticky	      1
     }
     ssIdNumber		    188
+    linkNode		    [21 103 105]
   }
   transition {
     id			    105
@@ -5309,7 +5221,6 @@ Stateflow {
     }
     midPoint		    [1574.8427 1362.7159]
     chart		    2
-    linkNode		    [21 104 0]
     visible		    0
     dataLimits		    [1495.498 1650.515 1123.369 1577.126]
     stampAngle		    -1
@@ -5321,6 +5232,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    184
+    linkNode		    [21 104 0]
   }
   transition {
     id			    106
@@ -5339,7 +5251,6 @@ Stateflow {
     }
     midPoint		    [959.5996 570.3654]
     chart		    2
-    linkNode		    [22 0 107]
     visible		    0
     dataLimits		    [806.193 1035.177 519.792 705.72]
     stampAngle		    -1
@@ -5350,6 +5261,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    94
+    linkNode		    [22 0 107]
   }
   transition {
     id			    107
@@ -5365,7 +5277,6 @@ Stateflow {
     }
     midPoint		    [382.5781 536.8912]
     chart		    2
-    linkNode		    [22 106 108]
     visible		    0
     dataLimits		    [324.008 446.388 530.888 542.888]
     stampAngle		    -1
@@ -5375,6 +5286,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    95
+    linkNode		    [22 106 108]
   }
   transition {
     id			    108
@@ -5392,7 +5304,6 @@ Stateflow {
     }
     midPoint		    [403.3524 800.6442]
     chart		    2
-    linkNode		    [22 107 109]
     visible		    0
     dataLimits		    [334.439 470.495 558.625 1042.144]
     stampAngle		    -1
@@ -5402,6 +5313,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    96
+    linkNode		    [22 107 109]
   }
   transition {
     id			    109
@@ -5419,7 +5331,6 @@ Stateflow {
     }
     midPoint		    [569.5599 807.7303]
     chart		    2
-    linkNode		    [22 108 110]
     visible		    0
     dataLimits		    [384.183 932.935 736.866 1042.144]
     stampAngle		    -1
@@ -5430,6 +5341,7 @@ Stateflow {
     }
     executionOrder	    5
     ssIdNumber		    99
+    linkNode		    [22 108 110]
   }
   transition {
     id			    110
@@ -5448,7 +5360,6 @@ Stateflow {
     }
     midPoint		    [619.6339 829.1265]
     chart		    2
-    linkNode		    [22 109 111]
     visible		    0
     dataLimits		    [460.697 932.935 760.858 1042.144]
     stampAngle		    -1
@@ -5459,6 +5370,7 @@ Stateflow {
     }
     executionOrder	    4
     ssIdNumber		    101
+    linkNode		    [22 109 111]
   }
   transition {
     id			    111
@@ -5478,7 +5390,6 @@ Stateflow {
     }
     midPoint		    [1386.0272 851.5021]
     chart		    2
-    linkNode		    [22 110 112]
     visible		    0
     dataLimits		    [1282.78 1418.204 762.827 1019.619]
     stampAngle		    -1
@@ -5489,6 +5400,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    98
+    linkNode		    [22 110 112]
   }
   transition {
     id			    112
@@ -5506,7 +5418,6 @@ Stateflow {
     }
     midPoint		    [671.9474 958.6768]
     chart		    2
-    linkNode		    [22 111 113]
     visible		    0
     dataLimits		    [508 983.277 786.746 1042.144]
     stampAngle		    -1
@@ -5518,6 +5429,7 @@ Stateflow {
     }
     executionOrder	    3
     ssIdNumber		    187
+    linkNode		    [22 111 113]
   }
   transition {
     id			    113
@@ -5535,7 +5447,6 @@ Stateflow {
     }
     midPoint		    [1028.3639 1064.9312]
     chart		    2
-    linkNode		    [22 112 114]
     visible		    0
     dataLimits		    [1022.372 1034.372 786.746 1346.134]
     stampAngle		    -1
@@ -5546,6 +5457,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    100
+    linkNode		    [22 112 114]
   }
   transition {
     id			    114
@@ -5565,7 +5477,6 @@ Stateflow {
     }
     midPoint		    [993.9994 1067.9489]
     chart		    2
-    linkNode		    [22 113 115]
     visible		    0
     dataLimits		    [987.999 999.999 786.746 1346.134]
     stampAngle		    -1
@@ -5576,6 +5487,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    102
+    linkNode		    [22 113 115]
   }
   transition {
     id			    115
@@ -5594,7 +5506,6 @@ Stateflow {
     }
     midPoint		    [523.6875 1329.4375]
     chart		    2
-    linkNode		    [22 114 0]
     visible		    0
     dataLimits		    [450.997 928.696 1086.597 1399.059]
     stampAngle		    -1
@@ -5606,12 +5517,12 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    104
+    linkNode		    [22 114 0]
   }
   data {
     id			    116
     ssIdNumber		    272
     name		    "targetState"
-    linkNode		    [30 0 0]
     scope		    LOCAL_DATA
     machine		    1
     props {
@@ -5621,11 +5532,9 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [30 0 0]
   }
   transition {
     id			    117
@@ -5641,7 +5550,6 @@ Stateflow {
     }
     midPoint		    [1958.3464 573.2849]
     chart		    2
-    linkNode		    [30 0 118]
     visible		    0
     isGrouped		    1
     dataLimits		    [1922.579 2019.685 536.125 600.374]
@@ -5651,6 +5559,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    107
+    linkNode		    [30 0 118]
   }
   transition {
     id			    118
@@ -5669,7 +5578,6 @@ Stateflow {
     }
     midPoint		    [2795.9431 639.8416]
     chart		    2
-    linkNode		    [30 117 119]
     visible		    0
     isGrouped		    1
     dataLimits		    [2567.225 2907.996 558.482 835.188]
@@ -5681,6 +5589,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    108
+    linkNode		    [30 117 119]
   }
   transition {
     id			    119
@@ -5698,7 +5607,6 @@ Stateflow {
     }
     midPoint		    [2685.5039 676.8472]
     chart		    2
-    linkNode		    [30 118 120]
     visible		    0
     isGrouped		    1
     dataLimits		    [2567.225 2733.4 602.467 835.188]
@@ -5710,6 +5618,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    110
+    linkNode		    [30 118 120]
   }
   transition {
     id			    120
@@ -5727,7 +5636,6 @@ Stateflow {
     }
     midPoint		    [2072.5786 729.625]
     chart		    2
-    linkNode		    [30 119 121]
     visible		    0
     isGrouped		    1
     dataLimits		    [2062.046 2138.31 673.493 732.626]
@@ -5739,6 +5647,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    109
+    linkNode		    [30 119 121]
   }
   transition {
     id			    121
@@ -5758,7 +5667,6 @@ Stateflow {
     }
     midPoint		    [2497.0786 906.625]
     chart		    2
-    linkNode		    [30 120 122]
     visible		    0
     isGrouped		    1
     dataLimits		    [2497.181 2566.27 878.133 954.387]
@@ -5770,6 +5678,7 @@ Stateflow {
     }
     executionOrder	    3
     ssIdNumber		    111
+    linkNode		    [30 120 122]
   }
   transition {
     id			    122
@@ -5788,7 +5697,6 @@ Stateflow {
     }
     midPoint		    [2544.2098 1108.5583]
     chart		    2
-    linkNode		    [30 121 123]
     visible		    0
     isGrouped		    1
     dataLimits		    [2412.41 2667.13 1003.6 1193.359]
@@ -5800,6 +5708,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    112
+    linkNode		    [30 121 123]
   }
   transition {
     id			    123
@@ -5818,7 +5727,6 @@ Stateflow {
     }
     midPoint		    [2750.9149 1088.5408]
     chart		    2
-    linkNode		    [30 122 124]
     visible		    0
     isGrouped		    1
     dataLimits		    [2635.695 2873.936 1003.6 1193.359]
@@ -5830,6 +5738,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    113
+    linkNode		    [30 122 124]
   }
   transition {
     id			    124
@@ -5848,7 +5757,6 @@ Stateflow {
     }
     midPoint		    [2862.9786 1368.625]
     chart		    2
-    linkNode		    [30 123 0]
     visible		    0
     isGrouped		    1
     dataLimits		    [2504.166 2881.101 1353.56 1426.372]
@@ -5860,6 +5768,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    114
+    linkNode		    [30 123 0]
   }
   transition {
     id			    125
@@ -5877,7 +5786,6 @@ Stateflow {
     }
     midPoint		    [343.6819 148.3778]
     chart		    2
-    linkNode		    [31 0 126]
     visible		    0
     dataLimits		    [196.77 476.162 65 241.477]
     stampAngle		    -1
@@ -5889,6 +5797,7 @@ Stateflow {
       midPointSticky	      1
     }
     ssIdNumber		    284
+    linkNode		    [31 0 126]
   }
   transition {
     id			    126
@@ -5906,7 +5815,6 @@ Stateflow {
     }
     midPoint		    [124.1732 313.3338]
     chart		    2
-    linkNode		    [31 125 127]
     visible		    0
     dataLimits		    [65 202.467 277.229 350.432]
     stampAngle		    -1
@@ -5918,6 +5826,7 @@ Stateflow {
       midPointSticky	      1
     }
     ssIdNumber		    285
+    linkNode		    [31 125 127]
   }
   transition {
     id			    127
@@ -5935,7 +5844,6 @@ Stateflow {
     }
     midPoint		    [455.5929 463.0656]
     chart		    2
-    linkNode		    [31 126 0]
     visible		    0
     dataLimits		    [356.469 564.498 389.639 527.548]
     stampAngle		    -1
@@ -5946,6 +5854,7 @@ Stateflow {
       sticky		      BOTH_STICK
     }
     ssIdNumber		    286
+    linkNode		    [31 126 0]
   }
   transition {
     id			    128
@@ -5963,7 +5872,6 @@ Stateflow {
     }
     midPoint		    [40.4286 557.1266]
     chart		    2
-    linkNode		    [32 0 129]
     visible		    0
     dataLimits		    [68 163.932 65 889.377]
     stampAngle		    -1
@@ -5976,6 +5884,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    289
+    linkNode		    [32 0 129]
   }
   transition {
     id			    129
@@ -5991,7 +5900,6 @@ Stateflow {
     }
     midPoint		    [183.6516 221.8551]
     chart		    2
-    linkNode		    [32 128 130]
     visible		    0
     dataLimits		    [153.412 221.035 206.364 232.669]
     stampAngle		    -1
@@ -6001,6 +5909,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    290
+    linkNode		    [32 128 130]
   }
   transition {
     id			    130
@@ -6020,7 +5929,6 @@ Stateflow {
     }
     midPoint		    [702.6958 284.4033]
     chart		    2
-    linkNode		    [32 129 131]
     visible		    0
     dataLimits		    [664.718 711.656 237.75 366.955]
     stampAngle		    -1
@@ -6030,6 +5938,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    291
+    linkNode		    [32 129 131]
   }
   transition {
     id			    131
@@ -6047,7 +5956,6 @@ Stateflow {
     }
     midPoint		    [264.2083 565.5163]
     chart		    2
-    linkNode		    [32 130 132]
     visible		    0
     dataLimits		    [258.208 270.208 269.86 856.95]
     stampAngle		    -1
@@ -6058,6 +5966,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    292
+    linkNode		    [32 130 132]
   }
   transition {
     id			    132
@@ -6075,7 +5984,6 @@ Stateflow {
     }
     midPoint		    [340.796 401.0889]
     chart		    2
-    linkNode		    [32 131 133]
     visible		    0
     dataLimits		    [68 624.931 392.281 412.978]
     stampAngle		    -1
@@ -6087,6 +5995,7 @@ Stateflow {
       midPointSticky	      1
     }
     ssIdNumber		    293
+    linkNode		    [32 131 133]
   }
   transition {
     id			    133
@@ -6105,7 +6014,6 @@ Stateflow {
     }
     midPoint		    [1231.2096 562.3598]
     chart		    2
-    linkNode		    [32 132 134]
     visible		    0
     dataLimits		    [1036.375 1289.604 394.316 838.106]
     stampAngle		    -1
@@ -6115,6 +6023,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    294
+    linkNode		    [32 132 134]
   }
   transition {
     id			    134
@@ -6132,7 +6041,6 @@ Stateflow {
     }
     midPoint		    [979.875 637.6937]
     chart		    2
-    linkNode		    [32 133 135]
     visible		    0
     dataLimits		    [973.875 985.875 448.239 834.931]
     stampAngle		    -1
@@ -6143,6 +6051,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    295
+    linkNode		    [32 133 135]
   }
   transition {
     id			    135
@@ -6161,7 +6070,6 @@ Stateflow {
     }
     midPoint		    [724.875 645.4769]
     chart		    2
-    linkNode		    [32 134 136]
     visible		    0
     dataLimits		    [718.875 730.875 448.239 834.932]
     stampAngle		    -1
@@ -6171,6 +6079,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    296
+    linkNode		    [32 134 136]
   }
   transition {
     id			    136
@@ -6190,7 +6099,6 @@ Stateflow {
     }
     midPoint		    [477.337 655.6558]
     chart		    2
-    linkNode		    [32 135 137]
     visible		    0
     dataLimits		    [317.324 652.406 448.239 856.95]
     stampAngle		    -1
@@ -6200,6 +6108,7 @@ Stateflow {
     }
     executionOrder	    3
     ssIdNumber		    297
+    linkNode		    [32 135 137]
   }
   transition {
     id			    137
@@ -6218,7 +6127,6 @@ Stateflow {
     }
     midPoint		    [590.0164 878.9271]
     chart		    2
-    linkNode		    [32 136 138]
     visible		    0
     dataLimits		    [495.585 670.761 873.005 885.005]
     stampAngle		    -1
@@ -6229,6 +6137,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    298
+    linkNode		    [32 136 138]
   }
   transition {
     id			    138
@@ -6246,7 +6155,6 @@ Stateflow {
     }
     midPoint		    [1155.8264 986.949]
     chart		    2
-    linkNode		    [32 137 0]
     visible		    0
     dataLimits		    [1067.931 1243.247 930.451 1035.781]
     stampAngle		    -1
@@ -6258,59 +6166,60 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    300
+    linkNode		    [32 137 0]
   }
   event {
     id			    139
     ssIdNumber		    306
     name		    "callibrate"
-    linkNode		    [38 0 0]
     scope		    LOCAL_EVENT
     trigger		    EITHER_EDGE_EVENT
     machine		    1
+    linkNode		    [38 0 0]
   }
   junction {
     id			    140
     position		    [252.057 1310.0442 6.7651]
     arrowSize		    20
     chart		    2
-    linkNode		    [40 0 141]
     visible		    0
     subviewer		    38
     ssIdNumber		    310
     type		    CONNECTIVE_JUNCTION
+    linkNode		    [40 0 141]
   }
   junction {
     id			    141
     position		    [620.8569 1406.8175 6.7651]
     arrowSize		    20
     chart		    2
-    linkNode		    [40 140 142]
     visible		    0
     subviewer		    38
     ssIdNumber		    311
     type		    CONNECTIVE_JUNCTION
+    linkNode		    [40 140 142]
   }
   junction {
     id			    142
     position		    [351.307 1512.5062 6.7651]
     arrowSize		    7.732
     chart		    2
-    linkNode		    [40 141 143]
     visible		    0
     subviewer		    38
     ssIdNumber		    312
     type		    CONNECTIVE_JUNCTION
+    linkNode		    [40 141 143]
   }
   junction {
     id			    143
     position		    [639.495 1591.2515 6.7651]
     arrowSize		    20
     chart		    2
-    linkNode		    [40 142 0]
     visible		    0
     subviewer		    38
     ssIdNumber		    313
     type		    CONNECTIVE_JUNCTION
+    linkNode		    [40 142 0]
   }
   transition {
     id			    144
@@ -6330,7 +6239,6 @@ Stateflow {
     }
     midPoint		    [312.9362 430.3036]
     chart		    2
-    linkNode		    [40 0 145]
     visible		    0
     dataLimits		    [312.765 491.779 409.776 499.956]
     stampAngle		    -1
@@ -6341,6 +6249,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    314
+    linkNode		    [40 0 145]
   }
   transition {
     id			    145
@@ -6356,7 +6265,6 @@ Stateflow {
     }
     midPoint		    [398.1268 527.0741]
     chart		    2
-    linkNode		    [40 144 146]
     visible		    0
     dataLimits		    [382.483 422.243 521.075 533.075]
     subviewer		    38
@@ -6365,6 +6273,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    315
+    linkNode		    [40 144 146]
   }
   transition {
     id			    146
@@ -6384,7 +6293,6 @@ Stateflow {
     }
     midPoint		    [573.1875 725.9309]
     chart		    2
-    linkNode		    [40 145 147]
     visible		    0
     dataLimits		    [567.171 579.171 555.344 889.754]
     stampAngle		    -1
@@ -6395,6 +6303,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    316
+    linkNode		    [40 145 147]
   }
   transition {
     id			    147
@@ -6414,7 +6323,6 @@ Stateflow {
     }
     midPoint		    [658.1504 719.1669]
     chart		    2
-    linkNode		    [40 146 148]
     visible		    0
     dataLimits		    [652.162 664.162 555.344 889.754]
     stampAngle		    -1
@@ -6425,6 +6333,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    317
+    linkNode		    [40 146 148]
   }
   transition {
     id			    148
@@ -6446,7 +6355,6 @@ Stateflow {
     }
     midPoint		    [326.8025 1082.1292]
     chart		    2
-    linkNode		    [40 147 149]
     visible		    0
     dataLimits		    [255.082 483.278 937.242 1303.994]
     stampAngle		    0.1774
@@ -6457,6 +6365,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    318
+    linkNode		    [40 147 149]
   }
   transition {
     id			    149
@@ -6478,7 +6387,6 @@ Stateflow {
     }
     midPoint		    [648.531 1192.8654]
     chart		    2
-    linkNode		    [40 148 150]
     visible		    0
     dataLimits		    [604.402 730.885 1000.141 1400.675]
     stampAngle		    -5.8508
@@ -6490,6 +6398,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    319
+    linkNode		    [40 148 150]
   }
   transition {
     id			    150
@@ -6511,7 +6420,6 @@ Stateflow {
     }
     midPoint		    [301.8975 1411.7149]
     chart		    2
-    linkNode		    [40 149 151]
     visible		    0
     dataLimits		    [255.035 348.329 1316.119 1506.432]
     subviewer		    38
@@ -6523,6 +6431,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    320
+    linkNode		    [40 149 151]
   }
   transition {
     id			    151
@@ -6540,7 +6449,6 @@ Stateflow {
     }
     midPoint		    [630.216 1499.4301]
     chart		    2
-    linkNode		    [40 150 152]
     visible		    0
     dataLimits		    [617.599 638.81 1413.548 1584.521]
     subviewer		    38
@@ -6550,6 +6458,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    321
+    linkNode		    [40 150 152]
   }
   transition {
     id			    152
@@ -6567,7 +6476,6 @@ Stateflow {
     }
     midPoint		    [372.1727 1627.5135]
     chart		    2
-    linkNode		    [40 151 153]
     visible		    0
     dataLimits		    [351.976 391.021 1519.238 1736.73]
     stampAngle		    0.0991
@@ -6579,6 +6487,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    322
+    linkNode		    [40 151 153]
   }
   transition {
     id			    153
@@ -6600,7 +6509,6 @@ Stateflow {
     }
     midPoint		    [595.0719 1819.3561]
     chart		    2
-    linkNode		    [40 152 154]
     visible		    0
     dataLimits		    [587.377 637.883 1597.754 2044.373]
     stampAngle		    -0.2793
@@ -6614,6 +6522,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    323
+    linkNode		    [40 152 154]
   }
   transition {
     id			    154
@@ -6634,7 +6543,6 @@ Stateflow {
     }
     midPoint		    [461.2375 1936.7383]
     chart		    2
-    linkNode		    [40 153 155]
     visible		    0
     dataLimits		    [455.238 467.238 1841.591 2044.373]
     stampAngle		    -1
@@ -6645,6 +6553,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    324
+    linkNode		    [40 153 155]
   }
   transition {
     id			    155
@@ -6665,7 +6574,6 @@ Stateflow {
     }
     midPoint		    [717.3277 2205.3471]
     chart		    2
-    linkNode		    [40 154 0]
     visible		    0
     dataLimits		    [552.166 733.264 2093.93 2231.176]
     stampAngle		    -1
@@ -6676,12 +6584,12 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    325
+    linkNode		    [40 154 0]
   }
   data {
     id			    156
     ssIdNumber		    330
     name		    "y"
-    linkNode		    [45 0 0]
     scope		    FUNCTION_OUTPUT_DATA
     machine		    1
     props {
@@ -6691,23 +6599,21 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "uint32"
+    linkNode		    [45 0 0]
   }
   junction {
     id			    157
     position		    [1372.2764 584.7851 6.6293]
     arrowSize		    7.576
     chart		    2
-    linkNode		    [45 0 0]
     visible		    0
     isGrouped		    1
     subviewer		    38
     ssIdNumber		    332
     type		    CONNECTIVE_JUNCTION
+    linkNode		    [45 0 0]
   }
   transition {
     id			    158
@@ -6724,7 +6630,6 @@ Stateflow {
     }
     midPoint		    [1269.4922 584.7851]
     chart		    2
-    linkNode		    [45 0 0]
     visible		    0
     isGrouped		    1
     dataLimits		    [1172.977 1365.647 582.512 587.058]
@@ -6734,6 +6639,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    333
+    linkNode		    [45 0 0]
   }
   transition {
     id			    159
@@ -6749,7 +6655,6 @@ Stateflow {
     }
     midPoint		    [1146.7871 772.2846]
     chart		    2
-    linkNode		    [46 0 160]
     visible		    0
     isGrouped		    1
     dataLimits		    [1131.583 1172.517 766.287 778.287]
@@ -6759,6 +6664,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    335
+    linkNode		    [46 0 160]
   }
   transition {
     id			    160
@@ -6776,7 +6682,6 @@ Stateflow {
     }
     midPoint		    [1212.625 1104.7373]
     chart		    2
-    linkNode		    [46 159 161]
     visible		    0
     isGrouped		    1
     dataLimits		    [1206.616 1218.616 837.471 1374.028]
@@ -6788,6 +6693,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    336
+    linkNode		    [46 159 161]
   }
   transition {
     id			    161
@@ -6806,7 +6712,6 @@ Stateflow {
     }
     midPoint		    [1360.75 1106.7623]
     chart		    2
-    linkNode		    [46 160 162]
     visible		    0
     isGrouped		    1
     dataLimits		    [1354.74 1366.74 837.472 1374.028]
@@ -6818,6 +6723,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    337
+    linkNode		    [46 160 162]
   }
   transition {
     id			    162
@@ -6836,7 +6742,6 @@ Stateflow {
     }
     midPoint		    [1516.375 1465.3022]
     chart		    2
-    linkNode		    [46 161 0]
     visible		    0
     isGrouped		    1
     dataLimits		    [1272.644 1554.74 1459.516 1534.767]
@@ -6848,6 +6753,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    338
+    linkNode		    [46 161 0]
   }
   transition {
     id			    163
@@ -6866,7 +6772,6 @@ Stateflow {
     }
     midPoint		    [2369.0589 659.9417]
     chart		    2
-    linkNode		    [49 0 164]
     visible		    0
     dataLimits		    [2204.375 2405.449 497.896 972.116]
     stampAngle		    -1
@@ -6877,6 +6782,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    342
+    linkNode		    [49 0 164]
   }
   transition {
     id			    164
@@ -6892,7 +6798,6 @@ Stateflow {
     }
     midPoint		    [1774.3545 503.3189]
     chart		    2
-    linkNode		    [49 163 165]
     visible		    0
     dataLimits		    [1690.311 1859.77 500.552 506.087]
     subviewer		    38
@@ -6901,6 +6806,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    343
+    linkNode		    [49 163 165]
   }
   transition {
     id			    165
@@ -6918,7 +6824,6 @@ Stateflow {
     }
     midPoint		    [1773.7128 570.4729]
     chart		    2
-    linkNode		    [49 164 166]
     visible		    0
     dataLimits		    [1770.887 1944.381 525.672 602.363]
     stampAngle		    -1
@@ -6929,6 +6834,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    344
+    linkNode		    [49 164 166]
   }
   transition {
     id			    166
@@ -6946,7 +6852,6 @@ Stateflow {
     }
     midPoint		    [2214.4756 777.7879]
     chart		    2
-    linkNode		    [49 165 167]
     visible		    0
     dataLimits		    [2170.603 2255.731 576.259 972.116]
     stampAngle		    -1
@@ -6957,6 +6862,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    345
+    linkNode		    [49 165 167]
   }
   transition {
     id			    167
@@ -6976,7 +6882,6 @@ Stateflow {
     }
     midPoint		    [2095.1561 1057.2045]
     chart		    2
-    linkNode		    [49 166 168]
     visible		    0
     dataLimits		    [2095.194 2201.432 1021.087 1089.074]
     stampAngle		    -1
@@ -6987,6 +6892,7 @@ Stateflow {
     }
     executionOrder	    3
     ssIdNumber		    346
+    linkNode		    [49 166 168]
   }
   transition {
     id			    168
@@ -7005,7 +6911,6 @@ Stateflow {
     }
     midPoint		    [2230.5245 1394.7274]
     chart		    2
-    linkNode		    [49 167 169]
     visible		    0
     dataLimits		    [2227.756 2233.291 1121.564 1654.544]
     stampAngle		    -1
@@ -7016,6 +6921,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    348
+    linkNode		    [49 167 169]
   }
   transition {
     id			    169
@@ -7034,7 +6940,6 @@ Stateflow {
     }
     midPoint		    [2363.1031 1381.3803]
     chart		    2
-    linkNode		    [49 168 170]
     visible		    0
     dataLimits		    [2360.319 2365.854 1121.564 1654.544]
     stampAngle		    -1
@@ -7045,6 +6950,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    347
+    linkNode		    [49 168 170]
   }
   transition {
     id			    170
@@ -7063,7 +6969,6 @@ Stateflow {
     }
     midPoint		    [2581.2644 1768.4465]
     chart		    2
-    linkNode		    [49 169 0]
     visible		    0
     dataLimits		    [2343.948 2600.178 1737.095 1847.579]
     stampAngle		    -1
@@ -7074,6 +6979,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    349
+    linkNode		    [49 169 0]
   }
   transition {
     id			    171
@@ -7089,7 +6995,6 @@ Stateflow {
     }
     midPoint		    [717.7245 2510.871]
     chart		    2
-    linkNode		    [53 0 172]
     visible		    0
     dataLimits		    [711.76 723.73 2496.305 2534.454]
     subviewer		    38
@@ -7098,6 +7003,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    354
+    linkNode		    [53 0 172]
   }
   transition {
     id			    172
@@ -7116,7 +7022,6 @@ Stateflow {
     }
     midPoint		    [625.0287 2683.158]
     chart		    2
-    linkNode		    [53 171 173]
     visible		    0
     dataLimits		    [575.744 903.521 2679.386 2770.797]
     stampAngle		    -1
@@ -7127,6 +7032,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    355
+    linkNode		    [53 171 173]
   }
   transition {
     id			    173
@@ -7145,7 +7051,6 @@ Stateflow {
     }
     midPoint		    [925.3629 2868.7572]
     chart		    2
-    linkNode		    [53 172 174]
     visible		    0
     dataLimits		    [919.408 931.378 2724.979 3010.784]
     stampAngle		    -1
@@ -7156,6 +7061,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    356
+    linkNode		    [53 172 174]
   }
   transition {
     id			    174
@@ -7175,7 +7081,6 @@ Stateflow {
     }
     midPoint		    [1110.7544 2867.0064]
     chart		    2
-    linkNode		    [53 173 175]
     visible		    0
     dataLimits		    [1104.791 1116.76 2724.979 3010.784]
     stampAngle		    -1
@@ -7186,6 +7091,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    357
+    linkNode		    [53 173 175]
   }
   transition {
     id			    175
@@ -7206,7 +7112,6 @@ Stateflow {
     }
     midPoint		    [741.5164 3146.3987]
     chart		    2
-    linkNode		    [53 174 176]
     visible		    0
     dataLimits		    [738.203 827.209 3065.481 3188.526]
     stampAngle		    -1
@@ -7217,6 +7122,7 @@ Stateflow {
     }
     executionOrder	    3
     ssIdNumber		    358
+    linkNode		    [53 174 176]
   }
   transition {
     id			    176
@@ -7236,7 +7142,6 @@ Stateflow {
     }
     midPoint		    [944.7782 3320.9638]
     chart		    2
-    linkNode		    [53 175 177]
     visible		    0
     dataLimits		    [938.821 950.791 3229.834 3414.731]
     stampAngle		    -1
@@ -7247,6 +7152,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    359
+    linkNode		    [53 175 177]
   }
   transition {
     id			    177
@@ -7265,7 +7171,6 @@ Stateflow {
     }
     midPoint		    [1176.5684 3323.6005]
     chart		    2
-    linkNode		    [53 176 178]
     visible		    0
     dataLimits		    [1170.56 1182.53 3229.834 3414.731]
     stampAngle		    -1
@@ -7276,6 +7181,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    360
+    linkNode		    [53 176 178]
   }
   transition {
     id			    178
@@ -7294,7 +7200,6 @@ Stateflow {
     }
     midPoint		    [1465.3501 3612.3166]
     chart		    2
-    linkNode		    [53 177 0]
     visible		    0
     dataLimits		    [917.689 1497.543 3539.382 3675.352]
     stampAngle		    -1
@@ -7305,12 +7210,12 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    361
+    linkNode		    [53 177 0]
   }
   data {
     id			    179
     ssIdNumber		    365
     name		    "VALID"
-    linkNode		    [57 0 0]
     scope		    LOCAL_DATA
     machine		    1
     props {
@@ -7320,21 +7225,19 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [57 0 0]
   }
   junction {
     id			    180
     position		    [2679.6151 2918.6316 7]
     chart		    2
-    linkNode		    [57 0 0]
     visible		    0
     subviewer		    38
     ssIdNumber		    367
     type		    CONNECTIVE_JUNCTION
+    linkNode		    [57 0 0]
   }
   transition {
     id			    181
@@ -7350,7 +7253,6 @@ Stateflow {
     }
     midPoint		    [1888.5571 2653.0983]
     chart		    2
-    linkNode		    [57 0 182]
     visible		    0
     dataLimits		    [1840.551 1940.236 2650.138 2656.071]
     subviewer		    38
@@ -7359,6 +7261,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    368
+    linkNode		    [57 0 182]
   }
   transition {
     id			    182
@@ -7376,7 +7279,6 @@ Stateflow {
     }
     midPoint		    [2292.6553 2825.9647]
     chart		    2
-    linkNode		    [57 181 183]
     visible		    0
     dataLimits		    [2287.086 2298.224 2737.631 2925.887]
     stampAngle		    -1
@@ -7387,6 +7289,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    369
+    linkNode		    [57 181 183]
   }
   transition {
     id			    183
@@ -7404,7 +7307,6 @@ Stateflow {
     }
     midPoint		    [2581.5527 2826.9755]
     chart		    2
-    linkNode		    [57 182 184]
     visible		    0
     dataLimits		    [2492.524 2679.615 2737.631 2911.632]
     stampAngle		    5.6092
@@ -7417,6 +7319,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    370
+    linkNode		    [57 182 184]
   }
   transition {
     id			    184
@@ -7432,7 +7335,6 @@ Stateflow {
     }
     midPoint		    [2811.6603 3299.6878]
     chart		    2
-    linkNode		    [57 183 185]
     visible		    0
     dataLimits		    [2607.764 2816.156 2922.515 3616.506]
     stampAngle		    1.1152
@@ -7444,6 +7346,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    371
+    linkNode		    [57 183 185]
   }
   transition {
     id			    185
@@ -7459,7 +7362,6 @@ Stateflow {
     }
     midPoint		    [2660.4322 3032.1995]
     chart		    2
-    linkNode		    [57 184 186]
     visible		    0
     dataLimits		    [2578.896 2684.112 2925.561 3091.11]
     stampAngle		    1.6408
@@ -7471,6 +7373,7 @@ Stateflow {
     }
     executionOrder	    3
     ssIdNumber		    372
+    linkNode		    [57 184 186]
   }
   transition {
     id			    186
@@ -7488,7 +7391,6 @@ Stateflow {
     }
     midPoint		    [1988.5559 3179.2427]
     chart		    2
-    linkNode		    [57 185 187]
     visible		    0
     dataLimits		    [1955.974 2093.481 3019.066 3207.234]
     stampAngle		    -1
@@ -7499,6 +7401,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    373
+    linkNode		    [57 185 187]
   }
   transition {
     id			    187
@@ -7516,7 +7419,6 @@ Stateflow {
     }
     midPoint		    [2256.5464 3324.9275]
     chart		    2
-    linkNode		    [57 186 188]
     visible		    0
     dataLimits		    [2250.978 2262.116 3191.196 3458.358]
     stampAngle		    -1
@@ -7526,6 +7428,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    375
+    linkNode		    [57 186 188]
   }
   transition {
     id			    188
@@ -7543,7 +7446,6 @@ Stateflow {
     }
     midPoint		    [2339.0106 3324.6268]
     chart		    2
-    linkNode		    [57 187 0]
     visible		    0
     dataLimits		    [2333.441 2344.58 3191.196 3458.358]
     stampAngle		    -1
@@ -7553,6 +7455,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    374
+    linkNode		    [57 187 0]
   }
   transition {
     id			    189
@@ -7570,7 +7473,6 @@ Stateflow {
     }
     midPoint		    [152.688 491.4103]
     chart		    2
-    linkNode		    [60 0 190]
     visible		    0
     dataLimits		    [51 262.718 320.945 677.085]
     stampAngle		    -1
@@ -7583,6 +7485,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    387
+    linkNode		    [60 0 190]
   }
   transition {
     id			    190
@@ -7600,7 +7503,6 @@ Stateflow {
     }
     midPoint		    [658.3003 781.7506]
     chart		    2
-    linkNode		    [60 189 0]
     visible		    0
     dataLimits		    [586.514 792.035 746.861 867]
     stampAngle		    -1
@@ -7613,17 +7515,18 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    389
+    linkNode		    [60 189 0]
   }
   junction {
     id			    191
     position		    [482.679 598.8235 5.2987]
     arrowSize		    20
     chart		    2
-    linkNode		    [61 0 0]
     visible		    0
     subviewer		    60
     ssIdNumber		    391
     type		    CONNECTIVE_JUNCTION
+    linkNode		    [61 0 0]
   }
   transition {
     id			    192
@@ -7639,7 +7542,6 @@ Stateflow {
     }
     midPoint		    [203.727 365.2719]
     chart		    2
-    linkNode		    [61 0 193]
     visible		    0
     dataLimits		    [196.156 232.958 349.176 379.866]
     subviewer		    60
@@ -7648,6 +7550,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    392
+    linkNode		    [61 0 193]
   }
   transition {
     id			    193
@@ -7665,7 +7568,6 @@ Stateflow {
     }
     midPoint		    [763.1615 373.2094]
     chart		    2
-    linkNode		    [61 192 194]
     visible		    0
     dataLimits		    [660.886 877.33 367.209 379.209]
     stampAngle		    -1
@@ -7676,6 +7578,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    393
+    linkNode		    [61 192 194]
   }
   transition {
     id			    194
@@ -7693,7 +7596,6 @@ Stateflow {
     }
     midPoint		    [892.3437 562.7812]
     chart		    2
-    linkNode		    [61 193 195]
     visible		    0
     dataLimits		    [891.159 1025.765 396.488 714.592]
     stampAngle		    -1
@@ -7705,6 +7607,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    394
+    linkNode		    [61 193 195]
   }
   transition {
     id			    195
@@ -7722,7 +7625,6 @@ Stateflow {
     }
     midPoint		    [718.5906 501.7947]
     chart		    2
-    linkNode		    [61 194 196]
     visible		    0
     dataLimits		    [485.998 890.715 396.488 594.693]
     stampAngle		    0.4201
@@ -7734,6 +7636,7 @@ Stateflow {
     }
     executionOrder	    3
     ssIdNumber		    395
+    linkNode		    [61 194 196]
   }
   transition {
     id			    196
@@ -7751,7 +7654,6 @@ Stateflow {
     }
     midPoint		    [746.1079 575.8196]
     chart		    2
-    linkNode		    [61 195 197]
     visible		    0
     dataLimits		    [487.827 895.062 396.488 614.43]
     stampAngle		    -0.7129
@@ -7765,6 +7667,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    396
+    linkNode		    [61 195 197]
   }
   transition {
     id			    197
@@ -7782,7 +7685,6 @@ Stateflow {
     }
     midPoint		    [279.3034 531.8991]
     chart		    2
-    linkNode		    [61 196 198]
     visible		    0
     dataLimits		    [273.303 285.303 421.285 653.711]
     stampAngle		    -1
@@ -7793,6 +7695,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    397
+    linkNode		    [61 196 198]
   }
   transition {
     id			    198
@@ -7809,7 +7712,6 @@ Stateflow {
     }
     midPoint		    [452.8196 650.6803]
     chart		    2
-    linkNode		    [61 197 0]
     visible		    0
     dataLimits		    [398.667 479.298 602.904 680.055]
     stampAngle		    0.3002
@@ -7821,17 +7723,18 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    398
+    linkNode		    [61 197 0]
   }
   junction {
     id			    199
     position		    [2011.8826 661.4113 6.7152]
     arrowSize		    7.674
     chart		    2
-    linkNode		    [66 0 0]
     visible		    0
     subviewer		    60
     ssIdNumber		    404
     type		    CONNECTIVE_JUNCTION
+    linkNode		    [66 0 0]
   }
   transition {
     id			    200
@@ -7847,7 +7750,6 @@ Stateflow {
     }
     midPoint		    [1480.5629 188.541]
     chart		    2
-    linkNode		    [66 0 201]
     visible		    0
     dataLimits		    [1417 1516.802 188.544 211.98]
     subviewer		    60
@@ -7856,6 +7758,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    405
+    linkNode		    [66 0 201]
   }
   transition {
     id			    201
@@ -7872,7 +7775,6 @@ Stateflow {
     }
     midPoint		    [2009.7678 382.8413]
     chart		    2
-    linkNode		    [66 200 202]
     visible		    0
     dataLimits		    [1869.581 2032.879 237.698 654.866]
     stampAngle		    5.7038
@@ -7886,6 +7788,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    406
+    linkNode		    [66 200 202]
   }
   transition {
     id			    202
@@ -7903,7 +7806,6 @@ Stateflow {
     }
     midPoint		    [1465.3914 333.9141]
     chart		    2
-    linkNode		    [66 201 203]
     visible		    0
     dataLimits		    [1419.483 1515.078 276.108 395.405]
     stampAngle		    -1
@@ -7914,6 +7816,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    407
+    linkNode		    [66 201 203]
   }
   transition {
     id			    203
@@ -7931,7 +7834,6 @@ Stateflow {
     }
     midPoint		    [1813.8074 311.3989]
     chart		    2
-    linkNode		    [66 202 204]
     visible		    0
     dataLimits		    [1685.5 1928.715 276.108 355.21]
     stampAngle		    -1
@@ -7942,6 +7844,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    408
+    linkNode		    [66 202 204]
   }
   transition {
     id			    204
@@ -7959,7 +7862,6 @@ Stateflow {
     }
     midPoint		    [1684.1646 432.428]
     chart		    2
-    linkNode		    [66 203 205]
     visible		    0
     dataLimits		    [1603.001 1731.745 416.611 433.197]
     stampAngle		    -1
@@ -7970,6 +7872,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    409
+    linkNode		    [66 203 205]
   }
   transition {
     id			    205
@@ -7987,7 +7890,6 @@ Stateflow {
     }
     midPoint		    [1260.662 586.4084]
     chart		    2
-    linkNode		    [66 204 206]
     visible		    0
     dataLimits		    [1258.36 1262.964 454.32 715.323]
     stampAngle		    -1
@@ -7998,6 +7900,7 @@ Stateflow {
     }
     executionOrder	    3
     ssIdNumber		    410
+    linkNode		    [66 204 206]
   }
   transition {
     id			    206
@@ -8015,7 +7918,6 @@ Stateflow {
     }
     midPoint		    [1596.0582 487.8479]
     chart		    2
-    linkNode		    [66 205 207]
     visible		    0
     dataLimits		    [1509.983 1673.902 454.32 528.57]
     stampAngle		    -1
@@ -8026,6 +7928,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    411
+    linkNode		    [66 205 207]
   }
   transition {
     id			    207
@@ -8043,7 +7946,6 @@ Stateflow {
     }
     midPoint		    [1497.198 627]
     chart		    2
-    linkNode		    [66 206 208]
     visible		    0
     dataLimits		    [1323.76 2005.179 454.32 679.645]
     stampAngle		    0.5278
@@ -8055,6 +7957,7 @@ Stateflow {
     }
     executionOrder	    2
     ssIdNumber		    412
+    linkNode		    [66 206 208]
   }
   transition {
     id			    208
@@ -8072,7 +7975,6 @@ Stateflow {
     }
     midPoint		    [1889.4303 602.8315]
     chart		    2
-    linkNode		    [66 207 209]
     visible		    0
     dataLimits		    [1767.34 2005.543 565.006 659.198]
     stampAngle		    -0.0307
@@ -8084,6 +7986,7 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    413
+    linkNode		    [66 207 209]
   }
   transition {
     id			    209
@@ -8100,7 +8003,6 @@ Stateflow {
     }
     midPoint		    [1820.9111 715.6952]
     chart		    2
-    linkNode		    [66 208 0]
     visible		    0
     dataLimits		    [1626.418 2005.293 661.919 753.53]
     stampAngle		    0.0546
@@ -8112,12 +8014,12 @@ Stateflow {
     }
     executionOrder	    1
     ssIdNumber		    414
+    linkNode		    [66 208 0]
   }
   data {
     id			    210
     ssIdNumber		    201
     name		    "INDETERMINATE"
-    linkNode		    [2 0 211]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -8127,17 +8029,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 0 211]
   }
   data {
     id			    211
     ssIdNumber		    202
     name		    "OPEN"
-    linkNode		    [2 210 212]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -8148,17 +8047,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 210 212]
   }
   data {
     id			    212
     ssIdNumber		    203
     name		    "CLOSEDBUTUNMATED"
-    linkNode		    [2 211 213]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -8169,17 +8065,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 211 213]
   }
   data {
     id			    213
     ssIdNumber		    204
     name		    "MATED"
-    linkNode		    [2 212 214]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -8190,17 +8083,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 212 214]
   }
   data {
     id			    214
     ssIdNumber		    205
     name		    "EXIST"
-    linkNode		    [2 213 215]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -8211,17 +8101,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 213 215]
   }
   data {
     id			    215
     ssIdNumber		    206
     name		    "AVAILABLE"
-    linkNode		    [2 214 216]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -8232,17 +8119,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 214 216]
   }
   data {
     id			    216
     ssIdNumber		    207
     name		    "EXPIRED"
-    linkNode		    [2 215 217]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -8253,17 +8137,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 215 217]
   }
   data {
     id			    217
     ssIdNumber		    208
     name		    "OrbitalState_Position"
-    linkNode		    [2 216 218]
     scope		    LOCAL_DATA
     machine		    1
     props {
@@ -8273,17 +8154,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 216 218]
   }
   data {
     id			    218
     ssIdNumber		    209
     name		    "OrbitalState_Velocity"
-    linkNode		    [2 217 219]
     scope		    LOCAL_DATA
     machine		    1
     props {
@@ -8293,17 +8171,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 217 219]
   }
   data {
     id			    219
     ssIdNumber		    210
     name		    "OrbitalState_Attitude"
-    linkNode		    [2 218 220]
     scope		    LOCAL_DATA
     machine		    1
     props {
@@ -8313,17 +8188,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 218 220]
   }
   data {
     id			    220
     ssIdNumber		    211
     name		    "OrbitalState_Time"
-    linkNode		    [2 219 221]
     scope		    LOCAL_DATA
     machine		    1
     props {
@@ -8333,17 +8205,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 219 221]
   }
   data {
     id			    221
     ssIdNumber		    212
     name		    "NONE"
-    linkNode		    [2 220 222]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -8353,17 +8222,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 220 222]
   }
   data {
     id			    222
     ssIdNumber		    213
     name		    "POOR"
-    linkNode		    [2 221 223]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -8374,17 +8240,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 221 223]
   }
   data {
     id			    223
     ssIdNumber		    214
     name		    "GOOD"
-    linkNode		    [2 222 224]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -8395,17 +8258,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 222 224]
   }
   data {
     id			    224
     ssIdNumber		    215
     name		    "InertialNavigation_AbsolutePosition"
-    linkNode		    [2 223 225]
     scope		    LOCAL_DATA
     machine		    1
     props {
@@ -8415,17 +8275,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 223 225]
   }
   data {
     id			    225
     ssIdNumber		    216
     name		    "InertialNavigation_AbsoluteAttitude"
-    linkNode		    [2 224 226]
     scope		    LOCAL_DATA
     machine		    1
     props {
@@ -8435,17 +8292,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 224 226]
   }
   data {
     id			    226
     ssIdNumber		    217
     name		    "InertialNavigation_AbsoluteVelocity"
-    linkNode		    [2 225 227]
     scope		    LOCAL_DATA
     machine		    1
     props {
@@ -8455,17 +8309,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 225 227]
   }
   data {
     id			    227
     ssIdNumber		    218
     name		    "GroundTrack_OrbitalPosition"
-    linkNode		    [2 226 228]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -8475,17 +8326,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 226 228]
   }
   data {
     id			    228
     ssIdNumber		    219
     name		    "GPS_AbsoluteVelocity"
-    linkNode		    [2 227 229]
     scope		    LOCAL_DATA
     machine		    1
     props {
@@ -8495,17 +8343,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 227 229]
   }
   data {
     id			    229
     ssIdNumber		    220
     name		    "GPS_AbsoluteTime"
-    linkNode		    [2 228 230]
     scope		    LOCAL_DATA
     machine		    1
     props {
@@ -8515,17 +8360,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 228 230]
   }
   data {
     id			    230
     ssIdNumber		    221
     name		    "GroundTrack_OrbitalVelocity"
-    linkNode		    [2 229 231]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -8535,17 +8377,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 229 231]
   }
   data {
     id			    231
     ssIdNumber		    222
     name		    "StarPlanetTracker_AbsoluteAttitude"
-    linkNode		    [2 230 232]
     scope		    LOCAL_DATA
     machine		    1
     props {
@@ -8555,17 +8394,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 230 232]
   }
   data {
     id			    232
     ssIdNumber		    223
     name		    "StarPlanetTracker_AbsolutePosition"
-    linkNode		    [2 231 233]
     scope		    LOCAL_DATA
     machine		    1
     props {
@@ -8575,17 +8411,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 231 233]
   }
   data {
     id			    233
     ssIdNumber		    224
     name		    "StarPlanetTracker_AbsoluteTime"
-    linkNode		    [2 232 234]
     scope		    LOCAL_DATA
     machine		    1
     props {
@@ -8595,17 +8428,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 232 234]
   }
   data {
     id			    234
     ssIdNumber		    225
     name		    "StarPlanetTracker_AbsoluteVelocity"
-    linkNode		    [2 233 235]
     scope		    LOCAL_DATA
     machine		    1
     props {
@@ -8615,17 +8445,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 233 235]
   }
   data {
     id			    235
     ssIdNumber		    226
     name		    "GPS_AbsolutePosition"
-    linkNode		    [2 234 236]
     scope		    LOCAL_DATA
     machine		    1
     props {
@@ -8635,17 +8462,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 234 236]
   }
   data {
     id			    236
     ssIdNumber		    227
     name		    "dockingSensor_RelativePosition"
-    linkNode		    [2 235 237]
     scope		    LOCAL_DATA
     machine		    1
     props {
@@ -8655,17 +8479,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 235 237]
   }
   data {
     id			    237
     ssIdNumber		    228
     name		    "dockingSensor_RelativeVelocity"
-    linkNode		    [2 236 238]
     scope		    LOCAL_DATA
     machine		    1
     props {
@@ -8675,17 +8496,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 236 238]
   }
   data {
     id			    238
     ssIdNumber		    229
     name		    "dockingSensor_RelativeAttitude"
-    linkNode		    [2 237 239]
     scope		    LOCAL_DATA
     machine		    1
     props {
@@ -8695,17 +8513,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 237 239]
   }
   data {
     id			    239
     ssIdNumber		    230
     name		    "dockingSensor_targetState"
-    linkNode		    [2 238 240]
     scope		    LOCAL_DATA
     machine		    1
     props {
@@ -8715,17 +8530,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 238 240]
   }
   data {
     id			    240
     ssIdNumber		    231
     name		    "thrust_status"
-    linkNode		    [2 239 241]
     scope		    LOCAL_DATA
     machine		    1
     props {
@@ -8735,17 +8547,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 239 241]
   }
   data {
     id			    241
     ssIdNumber		    232
     name		    "fuel_status"
-    linkNode		    [2 240 242]
     scope		    LOCAL_DATA
     machine		    1
     props {
@@ -8755,17 +8564,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 240 242]
   }
   data {
     id			    242
     ssIdNumber		    233
     name		    "DockingApproach_timer"
-    linkNode		    [2 241 243]
     scope		    LOCAL_DATA
     machine		    1
     props {
@@ -8775,17 +8581,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 241 243]
   }
   data {
     id			    243
     ssIdNumber		    234
     name		    "CaptureApproach_timer"
-    linkNode		    [2 242 244]
     scope		    LOCAL_DATA
     machine		    1
     props {
@@ -8795,17 +8598,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 242 244]
   }
   data {
     id			    244
     ssIdNumber		    235
     name		    "dockVisibility_status"
-    linkNode		    [2 243 245]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -8815,17 +8615,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 243 245]
   }
   data {
     id			    245
     ssIdNumber		    236
     name		    "opticsAvailability_status"
-    linkNode		    [2 244 246]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -8835,17 +8632,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 244 246]
   }
   data {
     id			    246
     ssIdNumber		    237
     name		    "sunlight_status"
-    linkNode		    [2 245 247]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -8855,17 +8649,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 245 247]
   }
   data {
     id			    247
     ssIdNumber		    238
     name		    "GPS_satelliteVisibility_status"
-    linkNode		    [2 246 248]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -8875,17 +8666,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 246 248]
   }
   data {
     id			    248
     ssIdNumber		    239
     name		    "GPS_receiverAvailability_status"
-    linkNode		    [2 247 249]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -8895,17 +8683,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 247 249]
   }
   data {
     id			    249
     ssIdNumber		    240
     name		    "StarPlanetTracker_planetVisibility"
-    linkNode		    [2 248 250]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -8915,17 +8700,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 248 250]
   }
   data {
     id			    250
     ssIdNumber		    241
     name		    "StarPlanetTracker_starVisibility"
-    linkNode		    [2 249 251]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -8935,17 +8717,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 249 251]
   }
   data {
     id			    251
     ssIdNumber		    242
     name		    "InertialNavigation_time"
-    linkNode		    [2 250 252]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -8955,17 +8734,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 250 252]
   }
   data {
     id			    252
     ssIdNumber		    243
     name		    "GroundTrack_Time"
-    linkNode		    [2 251 253]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -8975,17 +8751,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 251 253]
   }
   data {
     id			    253
     ssIdNumber		    244
     name		    "latch_status"
-    linkNode		    [2 252 254]
     scope		    LOCAL_DATA
     machine		    1
     props {
@@ -8995,17 +8768,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 252 254]
   }
   data {
     id			    254
     ssIdNumber		    246
     name		    "dockingSensor_timer"
-    linkNode		    [2 253 255]
     scope		    LOCAL_DATA
     machine		    1
     props {
@@ -9015,17 +8785,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 253 255]
   }
   data {
     id			    255
     ssIdNumber		    247
     name		    "InertialNavigation_timer"
-    linkNode		    [2 254 256]
     scope		    LOCAL_DATA
     machine		    1
     props {
@@ -9035,17 +8802,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 254 256]
   }
   data {
     id			    256
     ssIdNumber		    248
     name		    "StarPlanetTracker_timer"
-    linkNode		    [2 255 257]
     scope		    LOCAL_DATA
     machine		    1
     props {
@@ -9055,17 +8819,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 255 257]
   }
   data {
     id			    257
     ssIdNumber		    249
     name		    "GPS_timer"
-    linkNode		    [2 256 258]
     scope		    LOCAL_DATA
     machine		    1
     props {
@@ -9075,17 +8836,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 256 258]
   }
   data {
     id			    258
     ssIdNumber		    250
     name		    "RealTimeClock_time"
-    linkNode		    [2 257 259]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -9095,17 +8853,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 257 259]
   }
   data {
     id			    259
     ssIdNumber		    251
     name		    "BRIGHT"
-    linkNode		    [2 258 260]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -9116,17 +8871,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 258 260]
   }
   data {
     id			    260
     ssIdNumber		    252
     name		    "StageTransition"
-    linkNode		    [2 259 261]
     scope		    INPUT_DATA
     machine		    1
     props {
@@ -9136,17 +8888,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 259 261]
   }
   data {
     id			    261
     ssIdNumber		    253
     name		    "CaptureApproach_timer_upper_limit"
-    linkNode		    [2 260 262]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -9157,17 +8906,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 260 262]
   }
   data {
     id			    262
     ssIdNumber		    254
     name		    "CaptureApproachComplete"
-    linkNode		    [2 261 263]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -9178,17 +8924,14 @@ Stateflow {
 	}
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 261 263]
   }
   data {
     id			    263
     ssIdNumber		    255
     name		    "DockingApproachComplete"
-    linkNode		    [2 262 264]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -9199,17 +8942,14 @@ Stateflow {
 	}
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 262 264]
   }
   data {
     id			    264
     ssIdNumber		    256
     name		    "AttemptingToDock"
-    linkNode		    [2 263 265]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -9220,17 +8960,14 @@ Stateflow {
 	}
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 263 265]
   }
   data {
     id			    265
     ssIdNumber		    257
     name		    "LatchCaptureComplete"
-    linkNode		    [2 264 266]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -9241,17 +8978,14 @@ Stateflow {
 	}
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 264 266]
   }
   data {
     id			    266
     ssIdNumber		    258
     name		    "DockingApproach"
-    linkNode		    [2 265 267]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -9262,17 +8996,14 @@ Stateflow {
 	}
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 265 267]
   }
   data {
     id			    267
     ssIdNumber		    259
     name		    "ApproachOrbitComplete"
-    linkNode		    [2 266 268]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -9283,17 +9014,14 @@ Stateflow {
 	}
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 266 268]
   }
   data {
     id			    268
     ssIdNumber		    260
     name		    "FarApproachComplete"
-    linkNode		    [2 267 269]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -9304,17 +9032,14 @@ Stateflow {
 	}
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 267 269]
   }
   data {
     id			    269
     ssIdNumber		    261
     name		    "ProximityOperationsComplete"
-    linkNode		    [2 268 270]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -9325,17 +9050,14 @@ Stateflow {
 	}
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 268 270]
   }
   data {
     id			    270
     ssIdNumber		    262
     name		    "FailedApproach"
-    linkNode		    [2 269 271]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -9346,17 +9068,14 @@ Stateflow {
 	}
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 269 271]
   }
   data {
     id			    271
     ssIdNumber		    263
     name		    "JointMission"
-    linkNode		    [2 270 272]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -9367,17 +9086,14 @@ Stateflow {
 	}
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 270 272]
   }
   data {
     id			    272
     ssIdNumber		    264
     name		    "StarPlanetTracker_timer_upper_limit"
-    linkNode		    [2 271 273]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -9388,17 +9104,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 271 273]
   }
   data {
     id			    273
     ssIdNumber		    265
     name		    "InertialNavigation_timer_upper_limit"
-    linkNode		    [2 272 274]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -9409,17 +9122,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 272 274]
   }
   data {
     id			    274
     ssIdNumber		    267
     name		    "DockingApproach_timer_upper_limit"
-    linkNode		    [2 273 275]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -9430,17 +9140,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 273 275]
   }
   data {
     id			    275
     ssIdNumber		    268
     name		    "dockingSensor_timer_upper_limit"
-    linkNode		    [2 274 276]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -9451,17 +9158,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 274 276]
   }
   data {
     id			    276
     ssIdNumber		    279
     name		    "CaptureApproachFailed"
-    linkNode		    [2 275 277]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -9471,17 +9175,14 @@ Stateflow {
 	wordLength		"16"
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "boolean"
+    linkNode		    [2 275 277]
   }
   data {
     id			    277
     ssIdNumber		    245
     name		    "LatchCapture_timer"
-    linkNode		    [2 276 278]
     scope		    OUTPUT_DATA
     machine		    1
     props {
@@ -9492,17 +9193,14 @@ Stateflow {
 	}
       }
       frame		      SF_FRAME_NO
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 276 278]
   }
   data {
     id			    278
     ssIdNumber		    266
     name		    "GPS_timer_upper_limit"
-    linkNode		    [2 277 279]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -9513,17 +9211,14 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 277 279]
   }
   data {
     id			    279
     ssIdNumber		    269
     name		    "LatchCapture_timer_upper_limit"
-    linkNode		    [2 278 0]
     scope		    CONSTANT_DATA
     machine		    1
     props {
@@ -9534,29 +9229,27 @@ Stateflow {
 	  scalingMode		  SF_FIXPT_BINARY_POINT
 	}
       }
-      unit {
-	name			"inherit"
-      }
     }
     dataType		    "int8"
+    linkNode		    [2 278 0]
   }
   instance {
     id			    280
-    name		    "Chart"
     machine		    1
+    name		    "Chart"
     chart		    2
   }
   target {
     id			    281
+    machine		    1
     name		    "sfun"
     codeFlags		    ""
-    machine		    1
     linkNode		    [1 0 282]
   }
   target {
     id			    282
-    name		    "rtw"
     machine		    1
+    name		    "rtw"
     linkNode		    [1 281 0]
   }
 }
