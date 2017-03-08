@@ -2,7 +2,12 @@
 
 # CoCoSim
 
-CoCoSim is an automated analysis framework for Simulink and Stateflow models. CoCoSim is currently under development. We welcome any feedback and bug report.
+CoCoSim is an automated analysis and code generation framework for
+Simulink and Stateflow models. Specifically, CoCoSim can be used to
+verify automatically user-supplied safety requirements. Moreover,
+CoCoSim can be used to generate C and/or Rust code. CoCoSim uses
+Lustre as its intermediate language. CoCoSim is currently under
+development. We welcome any feedback and bug report.
 
 [![ScreenCast of CoCoSim](http://i.imgur.com/itLte0X.png)](https://youtu.be/iqwVCiU46Y4)
 
@@ -61,15 +66,21 @@ More information about CoCoSim can be found [here](https://github.com/coco-team/
 
 * Lead Developer: [Temesghen Kahsai](http://www.lememta.info/)
 
-## Current Contributors
+* Current Contributors: Hamza Bourbouh (SGT - USA), Pierre-Loic
+  Garoche (Onera - France), Claire Pagetti (Onera - France), Eric
+  Noulard (Onera - France), Thomas Loquen (Onera - France), Xavier
+  Thirioux (ENSEEIHT - France)
 
-* [Hamza Bourbouh] (https://hbourbouh.github.io/)
-* Pierre-Loic Garoche (Onera - France)
-* Claire Pagetti (Onera - France)
-* Eric Noulard (Onera - France)
-* Thomas Loquen (Onera - France)
-* Xavier Thirioux (ENSEEIHT - France)
+* Past Contributors: Arnaud Dieumegard (Fabruary - August 2015)
 
-## Past Contributors
 
-* Arnaud Dieumegard (Fabruary - August 2015)
+## Acknowledgments and Disclaimers
+
+CoCoSim is partially funded by:
+
+   * NASA NRA NNX14AI09G
+   * NSF award 1136008
+
+Any opinions, findings and conclusions or recommendations expressed in
+this material are those of the author(s) do not necessarily
+reflect the views of NASA and NSF.

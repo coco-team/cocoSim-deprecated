@@ -13,7 +13,7 @@ cocosim_path = os.path.abspath(os.path.join(current_path, os.pardir))
 cocoTeam_path = os.path.abspath(os.path.join(cocosim_path, os.pardir))
 regression_runner_path = os.path.abspath(os.path.join(cocoTeam_path, "regression-test/scripts"))
 add_path = "addpath('"+regression_runner_path+"')"
-bashCommand = "matlab -nodisplay -r \"try, "+add_path+"; test_all; catch e, disp(getReport(e)), exit(7); end, exit()\""
+bashCommand = "matlab -nodisplay -r \"try, "+add_path+"; test_all; bdclose('all'); catch e, disp(getReport(e)), exit(7); end, exit()\""
 return_val = os.system(bashCommand)
 
 if return_val == 0:
