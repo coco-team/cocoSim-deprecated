@@ -20,7 +20,7 @@ Model {
       SignalName	      "c"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.4"
+    ComputedModelVersion    "1.5"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -78,9 +78,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "hbourbou"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Mar 07 16:14:04 2017"
-  RTWModifiedTimeStamp	  410804044
-  ModelVersionFormat	  "1.%<AutoIncrement:4>"
+  LastModifiedDate	  "Thu Mar 09 16:50:59 2017"
+  RTWModifiedTimeStamp	  410979059
+  ModelVersionFormat	  "1.%<AutoIncrement:5>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -934,7 +934,7 @@ Model {
 	TiledPageScale		1
 	ShowPageBoundaries	off
 	ZoomFactor		"100"
-	SIDHighWatermark	"335"
+	SIDHighWatermark	"338"
 	Block {
 	  BlockType		  Inport
 	  Name			  "p"
@@ -955,20 +955,20 @@ Model {
 	Block {
 	  BlockType		  Demux
 	  Name			  " Demux "
-	  SID			  "1::334"
+	  SID			  "1::337"
 	  Ports			  [1, 1]
 	  Position		  [270, 230, 320, 270]
-	  ZOrder		  293
+	  ZOrder		  296
 	  Outputs		  "1"
 	}
 	Block {
 	  BlockType		  S-Function
 	  Name			  " SFunction "
-	  SID			  "1::333"
+	  SID			  "1::336"
 	  Tag			  "Stateflow S-Function BSCU_Duration_tmp 3"
 	  Ports			  [2, 2]
 	  Position		  [180, 100, 230, 160]
-	  ZOrder		  292
+	  ZOrder		  295
 	  FunctionName		  "sf_sfun"
 	  PortCounts		  "[2 2]"
 	  SFunctionDeploymentMode off
@@ -983,9 +983,9 @@ Model {
 	Block {
 	  BlockType		  Terminator
 	  Name			  " Terminator "
-	  SID			  "1::335"
+	  SID			  "1::338"
 	  Position		  [460, 241, 480, 259]
-	  ZOrder		  294
+	  ZOrder		  297
 	}
 	Block {
 	  BlockType		  Outport
@@ -996,7 +996,7 @@ Model {
 	  IconDisplay		  "Port number"
 	}
 	Line {
-	  ZOrder		  11
+	  ZOrder		  16
 	  SrcBlock		  "p"
 	  SrcPort		  1
 	  Points		  [120, 0]
@@ -1004,7 +1004,7 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  12
+	  ZOrder		  17
 	  SrcBlock		  "pre_c"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
@@ -1012,7 +1012,7 @@ Model {
 	}
 	Line {
 	  Name			  "c"
-	  ZOrder		  13
+	  ZOrder		  18
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  2
@@ -1020,14 +1020,14 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  14
+	  ZOrder		  19
 	  SrcBlock		  " Demux "
 	  SrcPort		  1
 	  DstBlock		  " Terminator "
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  15
+	  ZOrder		  20
 	  SrcBlock		  " SFunction "
 	  SrcPort		  1
 	  DstBlock		  " Demux "

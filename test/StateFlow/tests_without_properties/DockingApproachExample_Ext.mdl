@@ -118,7 +118,7 @@ Model {
       BusOutputAsStruct	      "off"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.501"
+    ComputedModelVersion    "1.502"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -176,9 +176,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "hbourbou"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Mar 07 16:14:06 2017"
-  RTWModifiedTimeStamp	  410804046
-  ModelVersionFormat	  "1.%<AutoIncrement:501>"
+  LastModifiedDate	  "Thu Mar 09 16:51:01 2017"
+  RTWModifiedTimeStamp	  410979061
+  ModelVersionFormat	  "1.%<AutoIncrement:502>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1141,7 +1141,7 @@ Model {
 	TiledPageScale		1
 	ShowPageBoundaries	off
 	ZoomFactor		"100"
-	SIDHighWatermark	"46"
+	SIDHighWatermark	"49"
 	Block {
 	  BlockType		  Inport
 	  Name			  "GroundTrack_OrbitalPosition"
@@ -1261,20 +1261,20 @@ Model {
 	Block {
 	  BlockType		  Demux
 	  Name			  " Demux "
-	  SID			  "14::45"
+	  SID			  "14::48"
 	  Ports			  [1, 1]
 	  Position		  [270, 570, 320, 610]
-	  ZOrder		  12
+	  ZOrder		  15
 	  Outputs		  "1"
 	}
 	Block {
 	  BlockType		  S-Function
 	  Name			  " SFunction "
-	  SID			  "14::44"
+	  SID			  "14::47"
 	  Tag			  "Stateflow S-Function DockingApproachExample_Ext_tmp 1"
 	  Ports			  [13, 13]
 	  Position		  [180, 90, 230, 370]
-	  ZOrder		  11
+	  ZOrder		  14
 	  FunctionName		  "sf_sfun"
 	  PortCounts		  "[13 13]"
 	  SFunctionDeploymentMode off
@@ -1355,9 +1355,9 @@ Model {
 	Block {
 	  BlockType		  Terminator
 	  Name			  " Terminator "
-	  SID			  "14::46"
+	  SID			  "14::49"
 	  Position		  [460, 581, 480, 599]
-	  ZOrder		  13
+	  ZOrder		  16
 	}
 	Block {
 	  BlockType		  Outport
@@ -1467,91 +1467,91 @@ Model {
 	  IconDisplay		  "Port number"
 	}
 	Line {
-	  ZOrder		  217
+	  ZOrder		  244
 	  SrcBlock		  "GroundTrack_OrbitalPosition"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  218
+	  ZOrder		  245
 	  SrcBlock		  "GroundTrack_OrbitalVelocity"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  2
 	}
 	Line {
-	  ZOrder		  219
+	  ZOrder		  246
 	  SrcBlock		  "dockVisibility_status"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  3
 	}
 	Line {
-	  ZOrder		  220
+	  ZOrder		  247
 	  SrcBlock		  "opticsAvailability_status"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  4
 	}
 	Line {
-	  ZOrder		  221
+	  ZOrder		  248
 	  SrcBlock		  "sunlight_status"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  5
 	}
 	Line {
-	  ZOrder		  222
+	  ZOrder		  249
 	  SrcBlock		  "GPS_satelliteVisibility_status"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  6
 	}
 	Line {
-	  ZOrder		  223
+	  ZOrder		  250
 	  SrcBlock		  "GPS_receiverAvailability_status"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  7
 	}
 	Line {
-	  ZOrder		  224
+	  ZOrder		  251
 	  SrcBlock		  "StarPlanetTracker_planetVisibility"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  8
 	}
 	Line {
-	  ZOrder		  225
+	  ZOrder		  252
 	  SrcBlock		  "StarPlanetTracker_starVisibility"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  9
 	}
 	Line {
-	  ZOrder		  226
+	  ZOrder		  253
 	  SrcBlock		  "InertialNavigation_time"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  10
 	}
 	Line {
-	  ZOrder		  227
+	  ZOrder		  254
 	  SrcBlock		  "GroundTrack_Time"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  11
 	}
 	Line {
-	  ZOrder		  228
+	  ZOrder		  255
 	  SrcBlock		  "RealTimeClock_time"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  12
 	}
 	Line {
-	  ZOrder		  229
+	  ZOrder		  256
 	  SrcBlock		  "StageTransition"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
@@ -1559,7 +1559,7 @@ Model {
 	}
 	Line {
 	  Name			  "CaptureApproachComplete"
-	  ZOrder		  230
+	  ZOrder		  257
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  2
@@ -1568,7 +1568,7 @@ Model {
 	}
 	Line {
 	  Name			  "DockingApproachComplete"
-	  ZOrder		  231
+	  ZOrder		  258
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  3
@@ -1577,7 +1577,7 @@ Model {
 	}
 	Line {
 	  Name			  "AttemptingToDock"
-	  ZOrder		  232
+	  ZOrder		  259
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  4
@@ -1586,7 +1586,7 @@ Model {
 	}
 	Line {
 	  Name			  "LatchCaptureComplete"
-	  ZOrder		  233
+	  ZOrder		  260
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  5
@@ -1595,7 +1595,7 @@ Model {
 	}
 	Line {
 	  Name			  "DockingApproach"
-	  ZOrder		  234
+	  ZOrder		  261
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  6
@@ -1604,7 +1604,7 @@ Model {
 	}
 	Line {
 	  Name			  "ApproachOrbitComplete"
-	  ZOrder		  235
+	  ZOrder		  262
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  7
@@ -1613,7 +1613,7 @@ Model {
 	}
 	Line {
 	  Name			  "FarApproachComplete"
-	  ZOrder		  236
+	  ZOrder		  263
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  8
@@ -1622,7 +1622,7 @@ Model {
 	}
 	Line {
 	  Name			  "ProximityOperationsComplete"
-	  ZOrder		  237
+	  ZOrder		  264
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  9
@@ -1631,7 +1631,7 @@ Model {
 	}
 	Line {
 	  Name			  "FailedApproach"
-	  ZOrder		  238
+	  ZOrder		  265
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  10
@@ -1640,7 +1640,7 @@ Model {
 	}
 	Line {
 	  Name			  "JointMission"
-	  ZOrder		  239
+	  ZOrder		  266
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  11
@@ -1649,7 +1649,7 @@ Model {
 	}
 	Line {
 	  Name			  "CaptureApproachFailed"
-	  ZOrder		  240
+	  ZOrder		  267
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  12
@@ -1658,7 +1658,7 @@ Model {
 	}
 	Line {
 	  Name			  "LatchCapture_timer"
-	  ZOrder		  241
+	  ZOrder		  268
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  13
@@ -1666,14 +1666,14 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  242
+	  ZOrder		  269
 	  SrcBlock		  " Demux "
 	  SrcPort		  1
 	  DstBlock		  " Terminator "
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  243
+	  ZOrder		  270
 	  SrcBlock		  " SFunction "
 	  SrcPort		  1
 	  DstBlock		  " Demux "

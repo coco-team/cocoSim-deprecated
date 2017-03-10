@@ -32,7 +32,7 @@ Model {
       BusOutputAsStruct	      "off"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.17"
+    ComputedModelVersion    "1.18"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -101,9 +101,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "hbourbou"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Mar 07 16:14:10 2017"
-  RTWModifiedTimeStamp	  410804050
-  ModelVersionFormat	  "1.%<AutoIncrement:17>"
+  LastModifiedDate	  "Thu Mar 09 16:51:06 2017"
+  RTWModifiedTimeStamp	  410979066
+  ModelVersionFormat	  "1.%<AutoIncrement:18>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -973,7 +973,7 @@ Model {
 	TiledPageScale		1
 	ShowPageBoundaries	off
 	ZoomFactor		"100"
-	SIDHighWatermark	"22"
+	SIDHighWatermark	"25"
 	Block {
 	  BlockType		  Inport
 	  Name			  "start"
@@ -1012,20 +1012,20 @@ Model {
 	Block {
 	  BlockType		  Demux
 	  Name			  " Demux "
-	  SID			  "1::21"
+	  SID			  "1::24"
 	  Ports			  [1, 1]
 	  Position		  [270, 230, 320, 270]
-	  ZOrder		  11
+	  ZOrder		  14
 	  Outputs		  "1"
 	}
 	Block {
 	  BlockType		  S-Function
 	  Name			  " SFunction "
-	  SID			  "1::20"
+	  SID			  "1::23"
 	  Tag			  "Stateflow S-Function MicrowaveModified_tmp 1"
 	  Ports			  [4, 3]
 	  Position		  [180, 102, 230, 203]
-	  ZOrder		  10
+	  ZOrder		  13
 	  FunctionName		  "sf_sfun"
 	  PortCounts		  "[4 3]"
 	  SFunctionDeploymentMode off
@@ -1046,9 +1046,9 @@ Model {
 	Block {
 	  BlockType		  Terminator
 	  Name			  " Terminator "
-	  SID			  "1::22"
+	  SID			  "1::25"
 	  Position		  [460, 241, 480, 259]
-	  ZOrder		  12
+	  ZOrder		  15
 	}
 	Block {
 	  BlockType		  Outport
@@ -1068,28 +1068,28 @@ Model {
 	  IconDisplay		  "Port number"
 	}
 	Line {
-	  ZOrder		  42
+	  ZOrder		  50
 	  SrcBlock		  "start"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  43
+	  ZOrder		  51
 	  SrcBlock		  "clear"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  2
 	}
 	Line {
-	  ZOrder		  44
+	  ZOrder		  52
 	  SrcBlock		  "steps_to_cook"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  3
 	}
 	Line {
-	  ZOrder		  45
+	  ZOrder		  53
 	  SrcBlock		  "door_closed"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
@@ -1097,7 +1097,7 @@ Model {
 	}
 	Line {
 	  Name			  "mode"
-	  ZOrder		  46
+	  ZOrder		  54
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  2
@@ -1106,7 +1106,7 @@ Model {
 	}
 	Line {
 	  Name			  "steps_remaining"
-	  ZOrder		  47
+	  ZOrder		  55
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  3
@@ -1114,14 +1114,14 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  48
+	  ZOrder		  56
 	  SrcBlock		  " Demux "
 	  SrcPort		  1
 	  DstBlock		  " Terminator "
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  49
+	  ZOrder		  57
 	  SrcBlock		  " SFunction "
 	  SrcPort		  1
 	  Points		  [20, 0]

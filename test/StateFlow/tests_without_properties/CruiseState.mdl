@@ -48,7 +48,7 @@ Model {
       SignalName	      "Regul_STDBY"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.7"
+    ComputedModelVersion    "1.8"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -118,9 +118,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "hbourbou"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Mar 07 16:14:04 2017"
-  RTWModifiedTimeStamp	  410804044
-  ModelVersionFormat	  "1.%<AutoIncrement:7>"
+  LastModifiedDate	  "Thu Mar 09 16:51:00 2017"
+  RTWModifiedTimeStamp	  410979060
+  ModelVersionFormat	  "1.%<AutoIncrement:8>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1008,7 +1008,7 @@ Model {
 	TiledPageScale		1
 	ShowPageBoundaries	off
 	ZoomFactor		"100"
-	SIDHighWatermark	"21"
+	SIDHighWatermark	"24"
 	Block {
 	  BlockType		  Inport
 	  Name			  "BrakePressed"
@@ -1065,20 +1065,20 @@ Model {
 	Block {
 	  BlockType		  Demux
 	  Name			  " Demux "
-	  SID			  "4::20"
+	  SID			  "4::23"
 	  Ports			  [1, 1]
 	  Position		  [270, 245, 320, 285]
-	  ZOrder		  8
+	  ZOrder		  11
 	  Outputs		  "1"
 	}
 	Block {
 	  BlockType		  S-Function
 	  Name			  " SFunction "
-	  SID			  "4::19"
+	  SID			  "4::22"
 	  Tag			  "Stateflow S-Function CruiseState_tmp 1"
 	  Ports			  [6, 4]
 	  Position		  [180, 102, 230, 243]
-	  ZOrder		  7
+	  ZOrder		  10
 	  FunctionName		  "sf_sfun"
 	  PortCounts		  "[6 4]"
 	  SFunctionDeploymentMode off
@@ -1105,9 +1105,9 @@ Model {
 	Block {
 	  BlockType		  Terminator
 	  Name			  " Terminator "
-	  SID			  "4::21"
+	  SID			  "4::24"
 	  Position		  [460, 256, 480, 274]
-	  ZOrder		  9
+	  ZOrder		  12
 	}
 	Block {
 	  BlockType		  Outport
@@ -1136,42 +1136,42 @@ Model {
 	  IconDisplay		  "Port number"
 	}
 	Line {
-	  ZOrder		  23
+	  ZOrder		  34
 	  SrcBlock		  "BrakePressed"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  24
+	  ZOrder		  35
 	  SrcBlock		  "AccelPressed"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  2
 	}
 	Line {
-	  ZOrder		  25
+	  ZOrder		  36
 	  SrcBlock		  "Resume"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  3
 	}
 	Line {
-	  ZOrder		  26
+	  ZOrder		  37
 	  SrcBlock		  "On"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  4
 	}
 	Line {
-	  ZOrder		  27
+	  ZOrder		  38
 	  SrcBlock		  "Off"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  5
 	}
 	Line {
-	  ZOrder		  28
+	  ZOrder		  39
 	  SrcBlock		  "SpeedOutOffLimits"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
@@ -1179,7 +1179,7 @@ Model {
 	}
 	Line {
 	  Name			  "Regul_ON"
-	  ZOrder		  29
+	  ZOrder		  40
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  2
@@ -1188,7 +1188,7 @@ Model {
 	}
 	Line {
 	  Name			  "Regul_OFF"
-	  ZOrder		  30
+	  ZOrder		  41
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  3
@@ -1197,7 +1197,7 @@ Model {
 	}
 	Line {
 	  Name			  "Regul_STDBY"
-	  ZOrder		  31
+	  ZOrder		  42
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  4
@@ -1205,14 +1205,14 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  32
+	  ZOrder		  43
 	  SrcBlock		  " Demux "
 	  SrcPort		  1
 	  DstBlock		  " Terminator "
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  33
+	  ZOrder		  44
 	  SrcBlock		  " SFunction "
 	  SrcPort		  1
 	  Points		  [20, 0]
