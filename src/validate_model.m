@@ -8,14 +8,15 @@ function [valid, validation_compute,lustrec_failed, ...
     lustrec_binary_failed, sim_failed, lus_file_path, ...
     sf2lus_time, nb_actions, Query_time] = validate_model(model_full_path,cocoSim_path, show_models, L, min_max_constraints)
 bdclose('all')
-clc
+% clc
 if ~exist('show_models', 'var')
     show_models = 0;
 elseif show_models
     open(model_full_path);
 end
 if ~exist('cocoSim_path', 'var')
-    cocoSim_path = pwd;
+    file_path = fileparts(mfilename('fullpath'));
+    cocoSim_path = fileparts(file_path);
 end
 
 addpath(fullfile(cocoSim_path,'src/'));
