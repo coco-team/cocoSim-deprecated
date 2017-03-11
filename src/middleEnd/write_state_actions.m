@@ -467,8 +467,8 @@ if ~isempty(var_index)
     variables_struct(var_index).index = index+1;
     action_code = ['-- set state as inactive \n\t', action_code];
 end
-
-if ~isempty(state.findShallow('State'))
+hjunctions = state.find('-isa','Stateflow.Junction','Type','HISTORY','-depth',1);
+if (~isempty(state.findShallow('State')) && isempty(hjunctions))
     variable_to_be_updated = strcat('id',get_full_name(state));
     action = [variable_to_be_updated ' = 0' ];
     [action_code_i, ~, variables_struct, node_struct] = write_action(chart,data, action, 'inactive', false, variables_struct, node_struct, global_nodes_struct);

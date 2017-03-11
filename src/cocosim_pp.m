@@ -162,7 +162,7 @@ to_workspace_process(new_model);
 % Processing ZeroPole defined transfer functions blocks
 zero_pole_process(new_model);
 
-
+chart_process(new_model);
 
 %% level 2 optimization
 product_process(new_model);

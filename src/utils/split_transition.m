@@ -84,9 +84,11 @@ if ~isempty(operands)
                         index = 1;
                     end
                     if ~isempty(strfind(transition_label,'en(')) || ~isempty(strfind(transition_label,'enter('))
-                        event = ['id', get_full_name(state), '_', num2str(index), ' = ', num2str(child.Id)];
+                        event = ['(id', get_full_name(state), '_', num2str(index), ' = ', num2str(child.Id), ')'];
                     elseif  ~isempty(strfind(transition_label,'ex(')) || ~isempty(strfind(transition_label,'exit('))
-                        event = ['id', get_full_name(state), '_', num2str(index), ' != ', num2str(child.Id)];
+                        c1 = ['( (pre id', get_full_name(state), '_', num2str(index), ') = ', num2str(child.Id), ')'];
+                        c2 = ['( id', get_full_name(state), '_', num2str(index), ' != ', num2str(child.Id), ')'];
+                        event = ['(', c1, ' and ', c2, ')'];
                     end
                 else
                     error('I can not parse this expression "%s" ',char(tokens{1}))
