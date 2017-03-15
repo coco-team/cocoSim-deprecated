@@ -641,7 +641,9 @@ classdef Utils
             newline = sprintf('\n');
             str_out = strrep(str, newline, '');
             str_out = strrep(str_out, ' ', '');
-            str_out = strrep(str_out, '-', '');
+            str_out = strrep(str_out, '-', '_minus_');
+            str_out = strrep(str_out, '+', '_plus_');
+            str_out = strrep(str_out, '*', '_mult_');
             str_out = strrep(str_out, '.', '_dot_');
             str_out = strrep(str_out, '#', '_sharp_');
             str_out = strrep(str_out, '(', '_lpar_');
@@ -656,6 +658,7 @@ classdef Utils
             str_out = strrep(str_out, '=', '_equal_');
             
             str_out = regexprep(str_out, '/(\d+)', '/_$1');
+            str_out = regexprep(str_out, '[^a-zA-Z0-9_/]', '_');
         end
         
         function [found, idx_sub_res, idx_block_res] = get_block_position(inter_blk, origin_name)
