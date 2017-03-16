@@ -59,7 +59,7 @@ for idx_fun=1:numel(functions)
     str = '';
     fun_kind = get_function_kind(fun);
     fun_split = regexp(fun, ' ', 'split');
-    if strcmp(fun_kind, 'lustrec_math') && ~strfind(extern_Stateflow_nodes_fun_string,'<math>')
+    if strcmp(fun_kind, 'lustrec_math') && isempty(strfind(extern_Stateflow_nodes_fun_string,'<math>'))
         if ~included_lustrec_math
             str_include = [str_include '#open <math>\n'];
         end

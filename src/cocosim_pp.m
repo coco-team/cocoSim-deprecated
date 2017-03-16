@@ -1,4 +1,4 @@
-function new_file = cocosim_pp(file_name, constant_file, varargin)
+function [new_file, err] = cocosim_pp(file_name, constant_file, varargin)
 % PP processes a Simulink model in order to make it CoCoSim friendly.
 %   It changes the differents blocks into their equivalent that is 
 %   supported by CoCoSim.
@@ -15,7 +15,7 @@ function new_file = cocosim_pp(file_name, constant_file, varargin)
 
 % Reading options
 evalin('base','global verif;');
-
+err = 0;
 % Getting info of this file
 [pp_path, ~, ~] = fileparts(mfilename('fullpath'));
 
@@ -229,15 +229,22 @@ display_msg(['Simplified model path: ' new_file], Constants.INFO, 'simplifier', 
 %make sure that the model compile with fixedstep solver
 try
     save_system(new_model,new_file,'OverwriteIfChangedOnDisk',true);
-    load_system(new_file);
+    open(new_file);
     configSet = getActiveConfigSet(new_model);
     set_param(configSet, 'Solver', 'FixedStepDiscrete');
 %     set_param(configSet, 'FixedStep', '1');% we do not need to force the
 %     sample time
     code_on=sprintf('%s([], [], [], ''compile'')', new_model);
     evalin('base',code_on);
+    loops = Simulink.BlockDiagram.getAlgebraicLoops(bdroot);
+    
     code_on=sprintf('%s([], [], [], ''term'')', new_model);
     evalin('base',code_on);
+    if numel(loops) > 0
+        err = 1;
+        errordlg('Please fix these algebric loops (maybe by adding unit Delays)', 'CocoSim')
+        return;
+    end
 catch me
     display_msg(me.message, Constants.ERROR, 'simplifier', '');
     display_msg(me.getReport(), Constants.DEBUG, 'simplifier', '');

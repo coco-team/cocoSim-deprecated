@@ -136,8 +136,10 @@ save 'tmp_data' origin_path model_path cocoSim_path bus_struct
 % Pre-process model
 Utils.update_status('Pre-processing');
 display_msg('Pre-processing', Constants.INFO, 'cocoSim', '');
-new_file_name = cocosim_pp(model_full_path);
-
+[new_file_name, err] = cocosim_pp(model_full_path);
+if err
+    return;
+end
 if ~strcmp(new_file_name, '')
     model_full_path = new_file_name;
     [model_path, file_name, ~] = fileparts(model_full_path);
