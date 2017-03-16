@@ -19,7 +19,11 @@ else
 end
 expression = '(\s*|\-|/)';
 replace = '';
+try
 object_name = regexprep(object.Name,expression,replace);
+catch
+    object_name = strcat('Junction',num2str(object.Id));
+end
 object_parent_name = regexprep(object_parent_name,expression,replace);
 if isChart
     object_full_name = Utils.name_format(strcat(object_parent_name,'_',object_name));

@@ -32,7 +32,7 @@ for ind_in=1:numel_out:numel_in
     %equal to previous value.
 %     condition={};
 %     for k=1:numel_out
-%         condition{k} = ['(' char(list_in(ind_in+k-1)) ' != pre ' char(list_in(ind_in+k-1)) ')'];
+%         condition{k} = ['(' char(list_in(ind_in+k-1)) ' <> pre ' char(list_in(ind_in+k-1)) ')'];
 %     end
 %     condition_str = ['(' Utils.concat_delim(condition, ' or ') ')'];
 

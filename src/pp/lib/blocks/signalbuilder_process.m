@@ -12,7 +12,7 @@ try
         signal_builder_sample = 1;
     end
 catch
-    signal_builder_sample = Constants.clock_sample;
+    signal_builder_sample = Constants.signal_builder_sample;
 end
 if not(isempty(signal_list))
     display_msg('Processing Signal Builder blocks...', Constants.INFO, 'signalbuilder_process', '');

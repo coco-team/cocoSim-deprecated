@@ -34,10 +34,10 @@ classdef Constants
         RESULT = 5;
 
         %GAL_LIB constants
-        sample = -1;
-        integrator_sample = -1;
+        sample = 0.2;
+        integrator_sample = 0.2;
         clock_sample = 0.2;
-        signal_builder_sample = -1;
+        signal_builder_sample = 0.2;
         
 		% Combinatorial block types (having rounding)
 		SWITCH = 'Switch';

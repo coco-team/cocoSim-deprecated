@@ -29,7 +29,7 @@ Model {
       BusOutputAsStruct	      "off"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.37"
+    ComputedModelVersion    "1.38"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -87,9 +87,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "hbourbou"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Mar 07 16:14:01 2017"
-  RTWModifiedTimeStamp	  410804041
-  ModelVersionFormat	  "1.%<AutoIncrement:37>"
+  LastModifiedDate	  "Thu Mar 09 16:50:55 2017"
+  RTWModifiedTimeStamp	  410979055
+  ModelVersionFormat	  "1.%<AutoIncrement:38>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -986,7 +986,7 @@ Model {
 	TiledPageScale		1
 	ShowPageBoundaries	off
 	ZoomFactor		"100"
-	SIDHighWatermark	"20"
+	SIDHighWatermark	"23"
 	Block {
 	  BlockType		  TriggerPort
 	  Name			  "input events"
@@ -1000,20 +1000,20 @@ Model {
 	Block {
 	  BlockType		  Demux
 	  Name			  " Demux "
-	  SID			  "1::19"
+	  SID			  "1::22"
 	  Ports			  [1, 1]
 	  Position		  [270, 245, 320, 285]
-	  ZOrder		  13
+	  ZOrder		  16
 	  Outputs		  "1"
 	}
 	Block {
 	  BlockType		  S-Function
 	  Name			  " SFunction "
-	  SID			  "1::18"
+	  SID			  "1::21"
 	  Tag			  "Stateflow S-Function Arrays1V2_tmp 1"
 	  Ports			  [1, 4]
 	  Position		  [180, 102, 230, 203]
-	  ZOrder		  12
+	  ZOrder		  15
 	  FunctionName		  "sf_sfun"
 	  PortCounts		  "[1 4]"
 	  SFunctionDeploymentMode off
@@ -1040,9 +1040,9 @@ Model {
 	Block {
 	  BlockType		  Terminator
 	  Name			  " Terminator "
-	  SID			  "1::20"
+	  SID			  "1::23"
 	  Position		  [460, 256, 480, 274]
-	  ZOrder		  14
+	  ZOrder		  17
 	}
 	Block {
 	  BlockType		  Outport
@@ -1072,7 +1072,7 @@ Model {
 	}
 	Line {
 	  Name			  "x1"
-	  ZOrder		  45
+	  ZOrder		  51
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  2
@@ -1081,7 +1081,7 @@ Model {
 	}
 	Line {
 	  Name			  "x2"
-	  ZOrder		  46
+	  ZOrder		  52
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  3
@@ -1090,7 +1090,7 @@ Model {
 	}
 	Line {
 	  Name			  "x3"
-	  ZOrder		  47
+	  ZOrder		  53
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  4
@@ -1098,21 +1098,21 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  48
+	  ZOrder		  54
 	  SrcBlock		  " Demux "
 	  SrcPort		  1
 	  DstBlock		  " Terminator "
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  49
+	  ZOrder		  55
 	  SrcBlock		  "input events"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  50
+	  ZOrder		  56
 	  SrcBlock		  " SFunction "
 	  SrcPort		  1
 	  DstBlock		  " Demux "

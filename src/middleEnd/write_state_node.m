@@ -194,13 +194,13 @@ classdef write_state_node < handle
             end
             source = transition.Source;
             dest_state = transition.Destination;
-            if strcmp(dest_state.Type,'CONNECTIVE')
+            if strcmp(dest_state.Type,'CONNECTIVE') || strcmp(dest_state.Type,'HISTORY')
                 dest_name = strcat(get_full_name(chart),'Junction',num2str(dest_state.Id));
             else
                 dest_name = get_full_name(dest_state);
             end
             if ~isempty(source)
-                if strcmp(source.Type,'CONNECTIVE')
+                if strcmp(source.Type,'CONNECTIVE') 
                     source_name = strcat(get_full_name(chart),'Junction',num2str(source.Id));
                 else
                     source_name = get_full_name(source);
@@ -249,7 +249,7 @@ classdef write_state_node < handle
                 end
             end
             
-            if  strcmp(output_updated(end-3:end),'else')
+            if  numel(output_updated) > 3 && strcmp(output_updated(end-3:end),'else')
                 [~, right_exp] = add_variables(outputs,false, old_struct);
                 output_updated = [output_updated,' ', right_exp];
             elseif strcmp(output_updated,'')
@@ -502,7 +502,7 @@ classdef write_state_node < handle
             b = false;
             not_finish = true;
             while ~b && not_finish
-                if strcmp(t.Destination.Type,'CONNECTIVE')
+                if strcmp(t.Destination.Type,'CONNECTIVE') || strcmp(t.Destination.Type,'HISTORY') 
                     transitions = sort_by_order(chart.find('-isa','Stateflow.Transition', '-and','Source', t.Destination));
                     if numel(transitions)==0
                         not_finish = false;
