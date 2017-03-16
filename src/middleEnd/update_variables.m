@@ -110,7 +110,7 @@ for i=1:n
             
             if ~isempty(data_index) %&& ~first_action
                 index = variables_struct(data_index).index;
-                s = struct('Name',d.Name,'DataType',sT2fT(d.DataType,d.Name),'Type',typeData);
+                s = struct('Name',d.Name,'DataType',sT2fT(d.DataType),'Type',typeData);
                 node_struct.Parameters = [node_struct.Parameters, setdiff_struct( s, node_struct.Parameters)];
                 node_struct.Outputs = [node_struct.Outputs, setdiff_struct( s, node_struct.Outputs)];
             else
@@ -151,7 +151,7 @@ for i=1:n
                     
                     if ~isempty(data_index) %&& ~first_action
                         index = variables_struct(data_index).index;
-                        s = struct('Name',char(tokens{i}),'DataType',sT2fT(d.DataType,d.Name),'Type',typeData);
+                        s = struct('Name',char(tokens{i}),'DataType',sT2fT(d.DataType),'Type',typeData);
                         node_struct.Parameters = [node_struct.Parameters, setdiff_struct( s, node_struct.Parameters)];
                         node_struct.Outputs = [node_struct.Outputs, setdiff_struct( s, node_struct.Outputs)];
                     else
@@ -184,10 +184,18 @@ for i=1:n
             elseif strcmp(char(tokens{i}),'acos') ||  strcmp(char(tokens{i}),'asin') ...
                     || strcmp(char(tokens{i}),'atan') || strcmp(char(tokens{i}),'atan2') ...
                     || strcmp(char(tokens{i}),'cos') || strcmp(char(tokens{i}),'sin') || strcmp(char(tokens{i}),'tan') 
+                try
+                    SOLVER = evalin('base','SOLVER');
+                catch
+                    SOLVER = 'NONE';
+                end
                 
-                external_nodes = [external_nodes, struct('Name','trigo','Type',strcat(char(tokens{i}),' real'))];
-                right_expression = regexprep(right_expression,char(tokens{i}),strcat('z',char(tokens{i})));
-                
+                if strcmp(SOLVER,'Z') || strcmp(SOLVER,'K') || strcmp(SOLVER,'J')
+                    external_nodes = [external_nodes, struct('Name','trigo','Type',strcat(char(tokens{i}),' real'))];
+                    right_expression = regexprep(right_expression,char(tokens{i}),strcat('z',char(tokens{i})));
+                else
+                    external_nodes = [external_nodes, struct('Name','lustre_math_fun','Type','function')];
+                end
             elseif strcmp(char(tokens{i}),'acosh') || strcmp(char(tokens{i}),'asinh') ...
                     || strcmp(char(tokens{i}),'atanh')|| strcmp(char(tokens{i}),'cosh') ...
                     || strcmp(char(tokens{i}),'ceil') || strcmp(char(tokens{i}),'erf') ...

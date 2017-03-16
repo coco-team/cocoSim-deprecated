@@ -362,7 +362,7 @@ for i=1:n
     end
 end
 
-[str_include, extern_functions_string] = write_extern_functions(extern_functions, output_dir);
+[str_include, extern_functions_string] = write_extern_functions(extern_functions, output_dir, extern_Stateflow_nodes_fun_string);
 % Write include for external functions
 if ~strcmp(str_include, '')
     fprintf(fid, str_include);

@@ -39,7 +39,7 @@
 % operations only apply on real values of type real or int: AND, OR, NAND,
 % NOR, XOR
 %
-function [str_include, extern_fun_string] = write_extern_functions(extern_functions, output_dir)
+function [str_include, extern_fun_string] = write_extern_functions(extern_functions, output_dir, extern_Stateflow_nodes_fun_string)
 
 str_include = '';
 extern_fun_string = '';
@@ -59,7 +59,7 @@ for idx_fun=1:numel(functions)
     str = '';
     fun_kind = get_function_kind(fun);
     fun_split = regexp(fun, ' ', 'split');
-    if strcmp(fun_kind, 'lustrec_math')
+    if strcmp(fun_kind, 'lustrec_math') && ~strfind(extern_Stateflow_nodes_fun_string,'<math>')
         if ~included_lustrec_math
             str_include = [str_include '#open <math>\n'];
         end
@@ -236,7 +236,7 @@ elseif numel(elems) == 1
 else
     fun_name = 'none';
 end
-if  strcmp(fun_name, 'pow') || strcmp(fun_name, 'sqrt') || strcmp(fun_name, 'rSqrt')
+if  strcmp(fun_name, 'pow') || strcmp(fun_name, 'sqrt') || strcmp(fun_name, 'rSqrt') || strcmp(fun_name, 'lustrec_math')
     res = 'lustrec_math';
 elseif strcmp(fun_name, 'sin') || strcmp(fun_name, 'cos') || strcmp(fun_name, 'asin') ...
         || strcmp(fun_name, 'acos') || strcmp(fun_name, 'atan') || strcmp(fun_name, 'atan2') ...

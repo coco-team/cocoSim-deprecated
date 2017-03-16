@@ -246,7 +246,7 @@ for i=1:n
             
             if ~isempty(data_index)
                 index = variables_struct(data_index).index;
-                s = struct('Name',d.Name,'DataType',sT2fT(d.DataType,d.Name),'Type',typeData);
+                s = struct('Name',d.Name,'DataType',sT2fT(d.DataType),'Type',typeData);
                 node_struct.Parameters = [node_struct.Parameters, setdiff_struct( s, node_struct.Parameters)];
 %                 node_struct.Outputs = [node_struct.Outputs, setdiff_struct( s, node_struct.Outputs)];
                 expression = strcat('(\s|+|-|*|/|=|&|<|>|\||\<|\W)(', char(tokens{i}), ')(\s|+|-|*|/|=|&|<|>|\||$|\W)');

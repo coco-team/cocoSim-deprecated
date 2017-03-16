@@ -160,49 +160,65 @@ expression = '(abs\()(\w+)(\))';
 replace = '(if $2 > 0.0 then $2 else -$2 )';
 label_mod = regexprep(label_mod,expression,replace);
 
-if ~isempty(strfind(fun_expr,'acos'))
-    external_math_functions = [external_math_functions, struct('Name','trigo','Type','acos real')];
-    label_mod = regexprep(label_mod,'(\W)(acos)(\W)','$1zacos$3'); 
-    
+try
+    SOLVER = evalin('base','SOLVER');
+catch
+    SOLVER = 'NONE';
 end
-if  ~isempty(strfind(fun_expr,'asin'))
-    external_math_functions = [external_math_functions, struct('Name','trigo','Type','asin real')];
-    label_mod = regexprep(label_mod,'(\W)(asin)(\W)','$1zasin$3'); 
-    
+
+if strcmp(SOLVER,'Z') || strcmp(SOLVER,'K') || strcmp(SOLVER,'J')
+    if ~isempty(strfind(label_mod,'acos'))
+        external_math_functions = [external_math_functions, struct('Name','trigo','Type','acos real')];
+        label_mod = regexprep(label_mod,'(\W)(acos)(\W)','$1zacos$3');
+        
+    end
+    if  ~isempty(strfind(label_mod,'asin'))
+        external_math_functions = [external_math_functions, struct('Name','trigo','Type','asin real')];
+        label_mod = regexprep(label_mod,'(\W)(asin)(\W)','$1zasin$3');
+        
+    end
+    if ~isempty(strfind(label_mod,'atan'))
+        external_math_functions = [external_math_functions, struct('Name','trigo','Type','atan real')];
+        label_mod = regexprep(label_mod,'(\W)(atan)(\W)','$1zatan$3');
+        
+    end
+    if ~isempty(strfind(label_mod,'atan2'))
+        external_math_functions = [external_math_functions, struct('Name','trigo','Type','atan2 real')];
+        label_mod = regexprep(label_mod,'(\W)(atan2)(\W)','$1zatan2$3');
+        
+    end
+    if ~isempty(strfind(label_mod,'cos'))
+        external_math_functions = [external_math_functions, struct('Name','trigo','Type','cos real')];
+        label_mod = regexprep(label_mod,'(\W)(cos)(\W)','$1zcos$3');
+        
+    end
+    if ~isempty(strfind(label_mod,'sin'))
+        external_math_functions = [external_math_functions, struct('Name','trigo','Type','sin real')];
+        label_mod = regexprep(label_mod,'(\W|^)(sin)(\W)','$1zsin$3');
+        
+    end
+    if ~isempty(strfind(label_mod,'tan'))
+        external_math_functions = [external_math_functions, struct('Name','trigo','Type','tan real')];
+        label_mod = regexprep(label_mod,'(\W)(tan)(\W)','$1ztan$3');
+    end
+else
+    if ~isempty(strfind(label_mod,'tan')) ||  ~isempty(strfind(label_mod,'sin'))...
+            ||  ~isempty(strfind(label_mod,'cos')) || ~isempty(strfind(label_mod,'atan2'))...
+            || ~isempty(strfind(label_mod,'atan')) || ~isempty(strfind(label_mod,'asin'))...
+            || ~isempty(strfind(label_mod,'acos'))
+        external_math_functions = [external_math_functions, struct('Name','lustre_math_fun','Type','function')];
+    end
 end
-if ~isempty(strfind(fun_expr,'atan'))
-    external_math_functions = [external_math_functions, struct('Name','trigo','Type','atan real')];
-    label_mod = regexprep(label_mod,'(\W)(atan)(\W)','$1zatan$3'); 
-    
-end
-if ~isempty(strfind(fun_expr,'atan2'))
-    external_math_functions = [external_math_functions, struct('Name','trigo','Type','atan2 real')];
-    label_mod = regexprep(label_mod,'(\W)(atan2)(\W)','$1zatan2$3'); 
-    
-elseif ~isempty(strfind(fun_expr,'cos')) 
-    external_math_functions = [external_math_functions, struct('Name','trigo','Type','cos real')];
-    label_mod = regexprep(label_mod,'(\W)(cos)(\W)','$1zcos$3'); 
-    
-end
-if ~isempty(strfind(fun_expr,'sin'))
-    external_math_functions = [external_math_functions, struct('Name','trigo','Type','sin real')];
-    label_mod = regexprep(label_mod,'(\W|^)(sin)(\W)','$1zsin$3'); 
-    
-end
-if ~isempty(strfind(fun_expr,'tan'))
-    external_math_functions = [external_math_functions, struct('Name','trigo','Type','tan real')];
-    label_mod = regexprep(label_mod,'(\W)(tan)(\W)','$1ztan$3'); 
-end
-if  ~isempty(strfind(fun_expr,'acosh')) ||  ~isempty(strfind(fun_expr,'asinh')) ...
-        || ~isempty(strfind(fun_expr,'atanh')) || ~isempty(strfind(fun_expr,'cosh')) ...
-        || ~isempty(strfind(fun_expr,'ceil')) || ~isempty(strfind(fun_expr,'erf')) ...
-        || ~isempty(strfind(fun_expr,'cbrt')) || ~isempty(strfind(fun_expr,'fabs'))...
-        || ~isempty(strfind(fun_expr,'pow')) || ~isempty(strfind(fun_expr,'sinh'))...
-        || ~isempty(strfind(fun_expr,'sqrt'))
+if  ~isempty(strfind(label_mod,'acosh')) ||  ~isempty(strfind(label_mod,'asinh')) ...
+        || ~isempty(strfind(label_mod,'atanh')) || ~isempty(strfind(label_mod,'cosh')) ...
+        || ~isempty(strfind(label_mod,'ceil')) || ~isempty(strfind(label_mod,'erf')) ...
+        || ~isempty(strfind(label_mod,'cbrt')) || ~isempty(strfind(label_mod,'fabs'))...
+        || ~isempty(strfind(label_mod,'pow')) || ~isempty(strfind(label_mod,'sinh'))...
+        || ~isempty(strfind(label_mod,'sqrt'))
     external_math_functions = [external_math_functions, struct('Name','lustre_math_fun','Type','function')];
 end
-if ~isempty(strfind(fun_expr,'&&')) || ~isempty(strfind(fun_expr,'||')) || ~isempty(strfind(fun_expr,'!'))...
-        || ~isempty(strfind(fun_expr,'==')) || ~isempty(strfind(fun_expr,'!=')) || ~isempty(strfind(fun_expr,'>')) || ~isempty(strfind(fun_expr,'<'))
+if ~isempty(strfind(label_mod,'&&')) || ~isempty(strfind(label_mod,'||')) || ~isempty(strfind(label_mod,'!'))...
+        || ~isempty(strfind(label_mod,'==')) || ~isempty(strfind(label_mod,'!=')) || ~isempty(strfind(label_mod,'>')) || ~isempty(strfind(label_mod,'<'))
     
     ext_node = app_sprintf(ext_node, 'var expr:bool;\n');
     code = ['expr = ', label_mod, ';\n\tout = if expr then 1.0 else 0.0;'];

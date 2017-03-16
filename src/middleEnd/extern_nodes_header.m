@@ -104,7 +104,7 @@ end
             typec = 'bool';
             vector_size = '';
         else
-            typec = sT2fT(inportsChart(idx_in).get('DataType'),inportsChart(idx_in).Name );
+            typec = sT2fT(inportsChart(idx_in).get('DataType') );
             vector_size = inportsChart(idx_in).get('Props').array.size;
         end
         

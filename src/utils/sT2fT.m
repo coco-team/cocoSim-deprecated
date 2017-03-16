@@ -13,12 +13,12 @@ function [ Lustre_type, initial_value ] = sT2fT( stateflow_Type, data_name )
         elseif strncmp(stateflow_Type, 'int', 3) || strncmp(stateflow_Type, 'uint', 4) || strncmp(stateflow_Type, 'fixdt(1,16,', 11) || strncmp(stateflow_Type, 'sfix64', 6)
             Lustre_type = 'int';
             initial_value = '0';
-        elseif ~isempty(strfind(stateflow_Type,'Inherit'))
+        elseif ~isempty(strfind(stateflow_Type,'Inherit')) && nargin==2
             try
                 var = evalin('base',data_name);
                 [ Lustre_type, initial_value ] = sT2fT( var.DataType, data_name );
             catch ME
-                msg = ['Parameter :' data_name ' declared as type :"' stateflow_Type '" does not exit in workspace base.\n',...
+                msg = ['Parameter :' char(data_name) ' declared as type :"' char(stateflow_Type) '" does not exit in workspace base.\n',...
                     'Make sure you set all model parameters in workspace before you run the tool.\n'];
                 causeException = MException('simulinkParameter:UnknownData',msg);
                 ME = addCause(ME,causeException);

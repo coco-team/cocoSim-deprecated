@@ -48,6 +48,9 @@ end
 
 function validateCallBack(callbackInfo)
 try
+    assignin('base', 'SOLVER', 'V');
+    assignin('base', 'RUST_GEN', 0);
+    assignin('base', 'C_GEN', 0);
     [cocoSim_path, ~, ~] = fileparts(mfilename('fullpath'));
     model_full_path = get_file_name(gcs) ;
     L = log4m.getLogger(fullfile(fileparts(model_full_path),'logfile.txt'));
