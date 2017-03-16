@@ -117,7 +117,7 @@ for i=1:n
                 error('ubnormal behavior data %s not in variables struct',char(d.Name))
                 index = 1;
             end
-            expression = strcat('(\(|\s|+|-|*|/|[!]?=|&|<[=]?|>[=]?|\||\<|\W)(', char(tokens{i}), ')(\s|+|-|*|/|[!]?=|&|<[=]?|>[=]?|\||$|\W|\))');
+            expression = strcat('(\(|\s|+|-|*|/|[!]?=|<>|&|<[=]?|>[=]?|\||\<|\W)(', char(tokens{i}), ')(\s|+|-|*|/|[!]?=|<>|&|<[=]?|>[=]?|\||$|\W|\))');
             replace = strcat('$1 $2_', num2str(index), ' $3');
             right_expression = regexprep(right_expression,expression,replace);
         elseif strcmp(typeData,'Input') || strcmp(typeData,'Constant') || strcmp(typeData,'Parameter')
@@ -159,7 +159,7 @@ for i=1:n
                         index = 1;
                     end
                     
-                    expression = strcat('(\(|\s|+|-|*|/|[!]?=|&|<[=]?|>[=]?|\||\<|\W)(', char(tokens{i}), ')(\s|+|-|*|/|[!]?=|&|<[=]?|>[=]?|\||$|\W|\))');
+                    expression = strcat('(\(|\s|+|-|*|/|[!]?=|<>|&|<[=]?|>[=]?|\||\<|\W)(', char(tokens{i}), ')(\s|+|-|*|/|[!]?=|<>|&|<[=]?|>[=]?|\||$|\W|\))');
                     replace = strcat('$1 $2_', num2str(index), ' $3');
                     right_expression = regexprep(right_expression,expression,replace);
                 elseif strcmp(typeData,'Input') || strcmp(typeData,'Constant') || strcmp(typeData,'Parameter')

@@ -89,7 +89,7 @@ else
 	elseif strcmp(in_dt, 'int')
 		if strcmp(conv_dt, 'bool')
 			% int -> bool conversion
-			out_str = sprintf('%s != 0', in_str);
+			out_str = sprintf('%s <> 0', in_str);
 	    else
 			% int -> real conversion
 			if numel(str2num(in_str)) == 0
@@ -126,7 +126,7 @@ else
 			end
 		else
 			% real -> bool conversion
-			out_str = sprintf('%s != 0.0', in_str);
+			out_str = sprintf('%s <> 0.0', in_str);
 		end
 	end
 end

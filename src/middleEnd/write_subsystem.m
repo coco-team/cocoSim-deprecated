@@ -273,7 +273,7 @@ if activated
             var_str = [var_str '\t' name ': bool;\n'];
             condition={};
             for k=1:numel(list_out)
-                condition{k} = ['(' char(list_out(k)) ' != pre ' char(list_out(k)) ')'];
+                condition{k} = ['(' char(list_out(k)) ' <> pre ' char(list_out(k)) ')'];
             end
             condition_str = ['(' Utils.concat_delim(condition, ' or ') ')'];
 
@@ -374,7 +374,7 @@ else
         var_str = [var_str '\t' name ': bool;\n'];
         condition={};
         for k=1:numel(list_out)
-            condition{k} = ['(' char(list_out(k)) ' != pre ' char(list_out(k)) ')'];
+            condition{k} = ['(' char(list_out(k)) ' <> pre ' char(list_out(k)) ')'];
         end
         condition_str = ['(' Utils.concat_delim(condition, ' or ') ')'];
         output_string = app_sprintf(output_string, '\t%s = %s;\n', name, condition_str);

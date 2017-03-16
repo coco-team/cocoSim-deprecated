@@ -253,7 +253,7 @@ if strcmp(trigger_dt, 'bool')
     elseif strcmp(external_reset, 'either')
         expression = sprintf('false -> (not(pre(%s) = %s))', cond_var, cond_var);
     elseif strcmp(external_reset, 'level')
-        expression = sprintf('false -> %s or (pre(%s)!= %s)', cond_var, cond_var, cond_var);
+        expression = sprintf('false -> %s or (pre(%s) <> %s)', cond_var, cond_var, cond_var);
     elseif strcmp(external_reset, 'sampled level')
         expression = cond_var;
     else
@@ -277,7 +277,7 @@ else
         expression = sprintf('false -> ((pre(%s) > %s and %s <= %s) or (pre(%s) <= %s and %s > %s))', ...
                                         cond_var, zero, cond_var, zero, cond_var, zero, cond_var, zero);
     elseif strcmp(external_reset, 'level')
-        expression = sprintf('false -> (%s!=%s) or (pre(%s) != %s and %s =%s)',...
+        expression = sprintf('false -> (%s<>%s) or (pre(%s) <> %s and %s = %s)',...
                                     cond_var, zero, cond_var, zero, cond_var, zero);
     elseif strcmp(external_reset, 'sampled level')
         expression = sprintf('false -> (%s != %s)', cond_var, zero);

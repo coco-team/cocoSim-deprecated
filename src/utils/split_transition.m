@@ -18,11 +18,11 @@ label_mod = regexprep(label_mod,expression,replace);
 expression = '(!|~)([^=]\w*)';
 replace = 'not $2';
 label_mod = regexprep(label_mod,expression,replace);
-expression = '<>';
-replace = '!=';
+expression = '!=';
+replace = '<>';
 label_mod = regexprep(label_mod,expression,replace);
 expression = '~=';
-replace = '!=';
+replace = '<>';
 label_mod = regexprep(label_mod,expression,replace);
 expression = '%%';
 replace = ' mod ';
@@ -47,7 +47,7 @@ multiple_math_exp = strcat('(','(',po,basic_math_expression,'(',math_op,basic_ma
 function_call = strcat('(',po,ident,'\(','(',multiple_math_exp ,'[,\.]?',')*','\)',pf,')');
 exp  = strcat('(',function_call,'|',multiple_math_exp,')');
 
-comparison = '(=|>=?|<=?|!=|~=)'; % "==" changed to "=" by section above
+comparison = '(=|>=?|<=?|!=|~=|<>)'; % "==" changed to "=" by section above
 basic_condition = strcat('(',po,negation_exp,exp,'(',comparison,exp ,')?',pf,')');
 cond_op = '([\|&]{2}|[\|&])'; % we can add "&" and "|"  :Bitwise AND , OR of two operands
 multiple_conditions = strcat('(','(',po,basic_condition,'(',cond_op,basic_condition ,')*',pf,')*',')');
@@ -87,7 +87,7 @@ if ~isempty(operands)
                         event = ['(id', get_full_name(state), '_', num2str(index), ' = ', num2str(child.Id), ')'];
                     elseif  ~isempty(strfind(transition_label,'ex(')) || ~isempty(strfind(transition_label,'exit('))
                         c1 = ['( (pre id', get_full_name(state), '_', num2str(index), ') = ', num2str(child.Id), ')'];
-                        c2 = ['( id', get_full_name(state), '_', num2str(index), ' != ', num2str(child.Id), ')'];
+                        c2 = ['( id', get_full_name(state), '_', num2str(index), ' <> ', num2str(child.Id), ')'];
                         event = ['(', c1, ' and ', c2, ')'];
                     end
                 else
@@ -105,8 +105,8 @@ if ~isempty(operands)
 %                 data_name = variables_struct(data_index).Name;
 %                 s = struct('Name',data_name,'DataType',variables_struct(data_index).DataType,'Type',variables_struct(data_index).Type);
 %                 node_struct.Parameters = [node_struct.Parameters, setdiff_struct( s, node_struct.Parameters)];
-% %                 change_code = ['((',data_name, '_', num2str(index) ,' -> pre ', data_name, '_', num2str(index), ') != ',  data_name, '_', num2str(index), ')'];
-%                 change_code = ['(( pre ', data_name, '_', num2str(index), ') != ',  data_name, '_', num2str(index), ')'];
+% %                 change_code = ['((',data_name, '_', num2str(index) ,' -> pre ', data_name, '_', num2str(index), ') <> ',  data_name, '_', num2str(index), ')'];
+%                 change_code = ['(( pre ', data_name, '_', num2str(index), ') <> ',  data_name, '_', num2str(index), ')'];
 %                 event = strcat('change_',data_name,'_output');
 %                 additional_outputs{numel(additional_outputs)+1} = strcat('\t', event, ' = ', change_code, ';\n');
 %                 add_vars{numel(add_vars)+1} = sprintf('\t%s: bool;\n',event);
@@ -201,12 +201,12 @@ number = '([-+]?\d*\.?\d+)';
 ident = '([a-zA-Z]\w*)';
 var_or_number = strcat('(',number,'|',ident,')');
 basic_exp = strcat('(',var_or_number,')');
-math_op = '\s*(+|+{2}|-|-{2}|*|/|\^|mod|=|>=?|<=?|!=|~=)\s*';
+math_op = '\s*(+|+{2}|-|-{2}|*|/|\^|mod|=|>=?|<=?|!=|~=|<>)\s*';
 expression = strcat('(',basic_exp,math_op,basic_exp ,')');
 
 expressions = regexp(condition_modified,expression,'match');
 for j=1:numel(expressions)
-    expression = '\s*(+|+{2}|-|-{2}|*|/|\^|mod|=|>=?|<=?|!=|~=)\s*';
+    expression = '\s*(+|+{2}|-|-{2}|*|/|\^|mod|=|>=?|<=?|!=|~=|<>)\s*';
     operands = regexp(char(expressions{j}),expression,'split');
     %             operands{:}
     Data_indice = find(strcmp(data.get('Name'),char(operands{1})));
