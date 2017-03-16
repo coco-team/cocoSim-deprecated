@@ -17,7 +17,7 @@ variables_struct_new = initialize_unused_variables(variables_struct,old_variable
 code = '';
 
 % output_updated = struct('condition',[],'variables_struct',[]);
-if strcmp(transitions(end).Destination.Type,'CONNECTIVE')
+if strcmp(transitions(end).Destination.Type,'CONNECTIVE') || strcmp(transitions(end).Destination.Type,'HISTORY')
     
     transitions2 = sort_by_order(chart.find('-isa','Stateflow.Transition', '-and','Source', transitions(end).Destination));
     n = numel(transitions2);
@@ -60,7 +60,7 @@ for i=1:n
     transition = transitions(i);
     source = transition.Source;
     dest_state = transition.Destination;
-    if strcmp(dest_state.Type,'CONNECTIVE')
+    if strcmp(dest_state.Type,'CONNECTIVE') || strcmp(dest_state.Type,'HISTORY')
         dest_name = strcat(get_full_name(chart),'Junction',num2str(dest_state.Id));
     else
         dest_name = get_full_name(dest_state);
@@ -155,7 +155,7 @@ end
 if ~strcmp(transitions(end).Destination.Type,'CONNECTIVE')
     first_source = transitions(1).Source;
     last_destination = transitions(end).Destination;
-    if ~isempty(first_source) && ~strcmp(last_destination.Type,'CONNECTIVE')
+    if ~isempty(first_source) && ~strcmp(last_destination.Type,'CONNECTIVE') 
         source_parent = first_source;
         
         if ~strcmp(get_full_name(source_parent), get_full_name(Parentstate))
@@ -306,7 +306,7 @@ if ~strcmp(transitions(end).Destination.Type,'CONNECTIVE')
         transition = transitions(i);
         source = transition.Source;
         dest_state = transition.Destination;
-        if strcmp(dest_state.Type,'CONNECTIVE')
+        if strcmp(dest_state.Type,'CONNECTIVE') || strcmp(dest_state.Type,'HISTORY')
             dest_name = strcat(get_full_name(chart),'Junction',num2str(dest_state.Id));
         else
             dest_name = get_full_name(dest_state);
@@ -374,9 +374,14 @@ if ~strcmp(transitions(end).Destination.Type,'CONNECTIVE')
     end
 
     dest_parent = last_destination;
+    is_HJ = 0;
+    if strcmp(dest_parent.Type,'HISTORY')
+        dest_parent = dest_parent.getParent();
+        is_HJ = 1;
+    end
     if ~strcmp(get_full_name(dest_parent), get_full_name(Parentstate))
         while ~isParent(dest_parent.getParent(),first_source)
-            if ~strcmp(dest_parent.Type,'CONNECTIVE')
+            if ~strcmp(dest_parent.Type,'CONNECTIVE') &&  ~is_HJ
                 [action_code, variables_struct, node_struct, old_variables_struct] = update_IDs(chart, data, dest_parent, variables_struct, node_struct, nodes_struct, old_variables_struct, first_action );
                 path_code = [path_code '\n\t\t' action_code];
             end
@@ -391,7 +396,7 @@ if ~strcmp(transitions(end).Destination.Type,'CONNECTIVE')
                 if strcmp(get_full_name(siblings(i)), get_full_name(dest_parent))
                     dest_parent = last_destination;
                     while ~isParent(dest_parent.getParent(),first_source)
-                        if ~strcmp(dest_parent.Type,'CONNECTIVE')
+                        if ~strcmp(dest_parent.Type,'CONNECTIVE') &&  ~is_HJ
                             [action_code, variables_struct, node_struct, old_variables_struct] = update_IDs(chart, data, dest_parent, variables_struct, node_struct, nodes_struct, old_variables_struct, first_action );
                             path_code = [path_code '\n\t\t' action_code];
                         end
@@ -505,11 +510,12 @@ if ~strcmp(transitions(end).Destination.Type,'CONNECTIVE')
                 [~, right_variables] = add_variables(node_struct2.Outputs,false, variables_struct);
             end
             
-            variable_to_be_updated = strcat('id',get_full_name(dest_parent));
-            action = [variable_to_be_updated ' = 0'];
-            [action_code, ~, variables_struct, node_struct] = write_action(chart,data, action, 'inactive', false, variables_struct, node_struct, nodes_struct );
-            path_code = [path_code '\n\t\t' action_code];
-
+            if ~is_HJ
+                variable_to_be_updated = strcat('id',get_full_name(dest_parent));
+                action = [variable_to_be_updated ' = 0'];
+                [action_code, ~, variables_struct, node_struct] = write_action(chart,data, action, 'inactive', false, variables_struct, node_struct, nodes_struct );
+                path_code = [path_code '\n\t\t' action_code];
+            end
         
 
             if first_action
@@ -595,7 +601,7 @@ for i=1:numel(transitions)
     transition = transitions(i);
     source = transition.Source;
     dest_state = transition.Destination;
-    if strcmp(dest_state.Type,'CONNECTIVE')
+    if strcmp(dest_state.Type,'CONNECTIVE') || strcmp(dest_state.Type,'HISTORY')
     dest_name = strcat('Junction',num2str(dest_state.Id));
     else
     dest_name = get_full_name(dest_state);

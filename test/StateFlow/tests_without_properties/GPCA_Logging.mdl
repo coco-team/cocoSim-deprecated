@@ -42,7 +42,7 @@ Model {
       SignalName	      "Logging_Failed"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.5"
+    ComputedModelVersion    "1.6"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -100,9 +100,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "hbourbou"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Mar 07 16:14:09 2017"
-  RTWModifiedTimeStamp	  410804049
-  ModelVersionFormat	  "1.%<AutoIncrement:5>"
+  LastModifiedDate	  "Thu Mar 09 16:51:04 2017"
+  RTWModifiedTimeStamp	  410979064
+  ModelVersionFormat	  "1.%<AutoIncrement:6>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1006,7 +1006,7 @@ Model {
 	TiledPageScale		1
 	ShowPageBoundaries	off
 	ZoomFactor		"100"
-	SIDHighWatermark	"352"
+	SIDHighWatermark	"355"
 	Block {
 	  BlockType		  Inport
 	  Name			  "TLM_MODE_IN_System_On"
@@ -1063,20 +1063,20 @@ Model {
 	Block {
 	  BlockType		  Demux
 	  Name			  " Demux "
-	  SID			  "7::351"
+	  SID			  "7::354"
 	  Ports			  [1, 1]
 	  Position		  [270, 230, 320, 270]
-	  ZOrder		  307
+	  ZOrder		  310
 	  Outputs		  "1"
 	}
 	Block {
 	  BlockType		  S-Function
 	  Name			  " SFunction "
-	  SID			  "7::350"
+	  SID			  "7::353"
 	  Tag			  "Stateflow S-Function GPCA_Logging_tmp 2"
 	  Ports			  [6, 3]
 	  Position		  [180, 102, 230, 243]
-	  ZOrder		  306
+	  ZOrder		  309
 	  FunctionName		  "sf_sfun"
 	  PortCounts		  "[6 3]"
 	  SFunctionDeploymentMode off
@@ -1097,9 +1097,9 @@ Model {
 	Block {
 	  BlockType		  Terminator
 	  Name			  " Terminator "
-	  SID			  "7::352"
+	  SID			  "7::355"
 	  Position		  [460, 241, 480, 259]
-	  ZOrder		  308
+	  ZOrder		  311
 	}
 	Block {
 	  BlockType		  Outport
@@ -1119,42 +1119,42 @@ Model {
 	  IconDisplay		  "Port number"
 	}
 	Line {
-	  ZOrder		  21
+	  ZOrder		  31
 	  SrcBlock		  "TLM_MODE_IN_System_On"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  22
+	  ZOrder		  32
 	  SrcBlock		  "TLM_MODE_IN_Log_Message_ID"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  2
 	}
 	Line {
-	  ZOrder		  23
+	  ZOrder		  33
 	  SrcBlock		  "SYS_STAT_IN_Log_Message_ID"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  3
 	}
 	Line {
-	  ZOrder		  24
+	  ZOrder		  34
 	  SrcBlock		  "ALARM_IN_Log_Message_ID"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  4
 	}
 	Line {
-	  ZOrder		  25
+	  ZOrder		  35
 	  SrcBlock		  "CONFIG_IN_Log_Message_ID"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  5
 	}
 	Line {
-	  ZOrder		  26
+	  ZOrder		  36
 	  SrcBlock		  "IM_IN_Log_Message_ID"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
@@ -1162,7 +1162,7 @@ Model {
 	}
 	Line {
 	  Name			  "logging_OUT_Log"
-	  ZOrder		  27
+	  ZOrder		  37
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  2
@@ -1171,7 +1171,7 @@ Model {
 	}
 	Line {
 	  Name			  "logging_OUT_Logging_Failed"
-	  ZOrder		  28
+	  ZOrder		  38
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  3
@@ -1179,14 +1179,14 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  29
+	  ZOrder		  39
 	  SrcBlock		  " Demux "
 	  SrcPort		  1
 	  DstBlock		  " Terminator "
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  30
+	  ZOrder		  40
 	  SrcBlock		  " SFunction "
 	  SrcPort		  1
 	  DstBlock		  " Demux "

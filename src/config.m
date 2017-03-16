@@ -33,8 +33,10 @@ if ~exist('solvers_path', 'var')
         %setenv('LD_LIBRARY_PATH',[getenv('LD_LIBRARY_PATH')  Z3Library_path ':']);
     end
 end
+if ~ispc
 LUSTREC = fullfile(solvers_path,'lustrec');
 LUCTREC_INCLUDE_DIR = include_dir;
+end
 ZUSTRE = fullfile(solvers_path,'zustre');
 Z3 = fullfile(solvers_path,'z3');
 KIND2 = fullfile(solvers_path,'kind2');

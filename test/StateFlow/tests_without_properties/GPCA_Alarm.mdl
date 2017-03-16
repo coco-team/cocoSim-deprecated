@@ -208,7 +208,7 @@ Model {
       SignalName	      "ALARM_OUT_Log_Message_ID"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.30"
+    ComputedModelVersion    "1.31"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -277,9 +277,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "hbourbou"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Mar 07 16:14:07 2017"
-  RTWModifiedTimeStamp	  410804047
-  ModelVersionFormat	  "1.%<AutoIncrement:30>"
+  LastModifiedDate	  "Thu Mar 09 16:51:02 2017"
+  RTWModifiedTimeStamp	  410979062
+  ModelVersionFormat	  "1.%<AutoIncrement:31>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1502,7 +1502,7 @@ Model {
 	TiledPageScale		1
 	ShowPageBoundaries	off
 	ZoomFactor		"100"
-	SIDHighWatermark	"334"
+	SIDHighWatermark	"337"
 	Block {
 	  BlockType		  Inport
 	  Name			  "IM_IN_Flow_Rate_Commanded"
@@ -1892,20 +1892,20 @@ Model {
 	Block {
 	  BlockType		  Demux
 	  Name			  " Demux "
-	  SID			  "1::333"
+	  SID			  "1::336"
 	  Ports			  [1, 1]
 	  Position		  [270, 315, 320, 355]
-	  ZOrder		  292
+	  ZOrder		  295
 	  Outputs		  "1"
 	}
 	Block {
 	  BlockType		  S-Function
 	  Name			  " SFunction "
-	  SID			  "1::332"
+	  SID			  "1::335"
 	  Tag			  "Stateflow S-Function GPCA_Alarm_tmp 2"
 	  Ports			  [43, 6]
 	  Position		  [180, 15, 230, 895]
-	  ZOrder		  291
+	  ZOrder		  294
 	  FunctionName		  "sf_sfun"
 	  Parameters		  "step_size"
 	  PortCounts		  "[43 6]"
@@ -1945,9 +1945,9 @@ Model {
 	Block {
 	  BlockType		  Terminator
 	  Name			  " Terminator "
-	  SID			  "1::334"
+	  SID			  "1::337"
 	  Position		  [460, 326, 480, 344]
-	  ZOrder		  293
+	  ZOrder		  296
 	}
 	Block {
 	  BlockType		  Outport
@@ -1994,301 +1994,301 @@ Model {
 	  IconDisplay		  "Port number"
 	}
 	Line {
-	  ZOrder		  101
+	  ZOrder		  151
 	  SrcBlock		  "IM_IN_Flow_Rate_Commanded"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  102
+	  ZOrder		  152
 	  SrcBlock		  "IM_IN_Current_System_Mode"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  2
 	}
 	Line {
-	  ZOrder		  103
+	  ZOrder		  153
 	  SrcBlock		  "TLM_MODE_IN_System_On"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  3
 	}
 	Line {
-	  ZOrder		  104
+	  ZOrder		  154
 	  SrcBlock		  "SYS_MON_IN_System_Monitor_Failed"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  4
 	}
 	Line {
-	  ZOrder		  105
+	  ZOrder		  155
 	  SrcBlock		  "LOGGING_IN_Logging_Failed"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  5
 	}
 	Line {
-	  ZOrder		  106
+	  ZOrder		  156
 	  SrcBlock		  "OP_CMD_IN_Disable_Audio"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  6
 	}
 	Line {
-	  ZOrder		  107
+	  ZOrder		  157
 	  SrcBlock		  "OP_CMD_IN_Notification_Cancel"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  7
 	}
 	Line {
-	  ZOrder		  108
+	  ZOrder		  158
 	  SrcBlock		  "DB_IN_Flow_Rate_High"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  8
 	}
 	Line {
-	  ZOrder		  109
+	  ZOrder		  159
 	  SrcBlock		  "DB_IN_Flow_Rate_Low"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  9
 	}
 	Line {
-	  ZOrder		  110
+	  ZOrder		  160
 	  SrcBlock		  "DB_IN_VTBI_High"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  10
 	}
 	Line {
-	  ZOrder		  111
+	  ZOrder		  161
 	  SrcBlock		  "SENSOR_IN_Flow_Rate_Monitored"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  11
 	}
 	Line {
-	  ZOrder		  112
+	  ZOrder		  162
 	  SrcBlock		  "SENSOR_IN_Flow_Rate_Not_Stable"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  12
 	}
 	Line {
-	  ZOrder		  113
+	  ZOrder		  163
 	  SrcBlock		  "SENSOR_IN_Air_In_line"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  13
 	}
 	Line {
-	  ZOrder		  114
+	  ZOrder		  164
 	  SrcBlock		  "SENSOR_IN_Occlusion"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  14
 	}
 	Line {
-	  ZOrder		  115
+	  ZOrder		  165
 	  SrcBlock		  "SENSOR_IN_Door_Open"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  15
 	}
 	Line {
-	  ZOrder		  116
+	  ZOrder		  166
 	  SrcBlock		  "SENSOR_IN_Air_Pressure_Out_Of_Range"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  16
 	}
 	Line {
-	  ZOrder		  117
+	  ZOrder		  167
 	  SrcBlock		  "SENSOR_IN_Temperature_Out_Of_Range"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  17
 	}
 	Line {
-	  ZOrder		  118
+	  ZOrder		  168
 	  SrcBlock		  "SENSOR_IN_Humidity_Out_Of_Range"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  18
 	}
 	Line {
-	  ZOrder		  119
+	  ZOrder		  169
 	  SrcBlock		  "SENSOR_IN_Battery_Depleted"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  19
 	}
 	Line {
-	  ZOrder		  120
+	  ZOrder		  170
 	  SrcBlock		  "SENSOR_IN_Battery_Low"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  20
 	}
 	Line {
-	  ZOrder		  121
+	  ZOrder		  171
 	  SrcBlock		  "SENSOR_IN_Battery_Unable_To_Charge"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  21
 	}
 	Line {
-	  ZOrder		  122
+	  ZOrder		  172
 	  SrcBlock		  "SENSOR_IN_Supply_Voltage_Out_Of_Range"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  22
 	}
 	Line {
-	  ZOrder		  123
+	  ZOrder		  173
 	  SrcBlock		  "SENSOR_IN_CPU_Error"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  23
 	}
 	Line {
-	  ZOrder		  124
+	  ZOrder		  174
 	  SrcBlock		  "SENSOR_IN_RTC_Error"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  24
 	}
 	Line {
-	  ZOrder		  125
+	  ZOrder		  175
 	  SrcBlock		  "SENSOR_IN_WatchDog_Interrupt_Detected"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  25
 	}
 	Line {
-	  ZOrder		  126
+	  ZOrder		  176
 	  SrcBlock		  "SENSOR_IN_Memory_Corrupted"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  26
 	}
 	Line {
-	  ZOrder		  127
+	  ZOrder		  177
 	  SrcBlock		  "SENSOR_IN_Pump_Overheated"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  27
 	}
 	Line {
-	  ZOrder		  128
+	  ZOrder		  178
 	  SrcBlock		  "SENSOR_IN_Pump_Too_Hot"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  28
 	}
 	Line {
-	  ZOrder		  129
+	  ZOrder		  179
 	  SrcBlock		  "CONST_IN_Audio_Auto_Enable_Duration"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  29
 	}
 	Line {
-	  ZOrder		  130
+	  ZOrder		  180
 	  SrcBlock		  "CONST_IN_Audio_Level"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  30
 	}
 	Line {
-	  ZOrder		  131
+	  ZOrder		  181
 	  SrcBlock		  "CONST_IN_Low_Reservoir"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  31
 	}
 	Line {
-	  ZOrder		  132
+	  ZOrder		  182
 	  SrcBlock		  "CONST_IN_Max_Duration_Over_Infusion"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  32
 	}
 	Line {
-	  ZOrder		  133
+	  ZOrder		  183
 	  SrcBlock		  "CONST_IN_Max_Duration_Under_Infusion"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  33
 	}
 	Line {
-	  ZOrder		  134
+	  ZOrder		  184
 	  SrcBlock		  "CONST_IN_Tolerance_Max"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  34
 	}
 	Line {
-	  ZOrder		  135
+	  ZOrder		  185
 	  SrcBlock		  "CONST_IN_Tolerance_Min"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  35
 	}
 	Line {
-	  ZOrder		  136
+	  ZOrder		  186
 	  SrcBlock		  "CONST_IN_Config_Warning_Duration"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  36
 	}
 	Line {
-	  ZOrder		  137
+	  ZOrder		  187
 	  SrcBlock		  "CONST_IN_Max_Idle_Duration"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  37
 	}
 	Line {
-	  ZOrder		  138
+	  ZOrder		  188
 	  SrcBlock		  "CONST_IN_Max_Paused_Duration"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  38
 	}
 	Line {
-	  ZOrder		  139
+	  ZOrder		  189
 	  SrcBlock		  "SYS_STAT_IN_Reservoir_Empty"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  39
 	}
 	Line {
-	  ZOrder		  140
+	  ZOrder		  190
 	  SrcBlock		  "SYS_STAT_IN_Reservoir_Volume"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  40
 	}
 	Line {
-	  ZOrder		  141
+	  ZOrder		  191
 	  SrcBlock		  "SYS_STAT_IN_Volume_Infused"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  41
 	}
 	Line {
-	  ZOrder		  142
+	  ZOrder		  192
 	  SrcBlock		  "SYS_STAT_IN_In_Therapy"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  42
 	}
 	Line {
-	  ZOrder		  143
+	  ZOrder		  193
 	  SrcBlock		  "CONFIG_IN_Config_Timer"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
@@ -2296,7 +2296,7 @@ Model {
 	}
 	Line {
 	  Name			  "ALARM_OUT_Is_Audio_Disabled"
-	  ZOrder		  144
+	  ZOrder		  194
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  2
@@ -2305,7 +2305,7 @@ Model {
 	}
 	Line {
 	  Name			  "ALARM_OUT_Visual_Notification_Message"
-	  ZOrder		  145
+	  ZOrder		  195
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  3
@@ -2314,7 +2314,7 @@ Model {
 	}
 	Line {
 	  Name			  "ALARM_OUT_Audio_Notification_Command"
-	  ZOrder		  146
+	  ZOrder		  196
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  4
@@ -2323,7 +2323,7 @@ Model {
 	}
 	Line {
 	  Name			  "ALARM_OUT_Highest_Level_Alarm"
-	  ZOrder		  147
+	  ZOrder		  197
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  5
@@ -2332,7 +2332,7 @@ Model {
 	}
 	Line {
 	  Name			  "ALARM_OUT_Log_Message_ID"
-	  ZOrder		  148
+	  ZOrder		  198
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  6
@@ -2340,14 +2340,14 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  149
+	  ZOrder		  199
 	  SrcBlock		  " Demux "
 	  SrcPort		  1
 	  DstBlock		  " Terminator "
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  150
+	  ZOrder		  200
 	  SrcBlock		  " SFunction "
 	  SrcPort		  1
 	  DstBlock		  " Demux "

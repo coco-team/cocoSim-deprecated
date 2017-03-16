@@ -292,7 +292,7 @@ Model {
       SignalName	      "CONFIG_OUT_Config_Mode"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.14"
+    ComputedModelVersion    "1.15"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -361,9 +361,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "hbourbou"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Mar 07 16:14:07 2017"
-  RTWModifiedTimeStamp	  410804047
-  ModelVersionFormat	  "1.%<AutoIncrement:14>"
+  LastModifiedDate	  "Thu Mar 09 16:51:03 2017"
+  RTWModifiedTimeStamp	  410979063
+  ModelVersionFormat	  "1.%<AutoIncrement:15>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1504,7 +1504,7 @@ Model {
 	TiledPageScale		1
 	ShowPageBoundaries	off
 	ZoomFactor		"100"
-	SIDHighWatermark	"394"
+	SIDHighWatermark	"397"
 	Block {
 	  BlockType		  Inport
 	  Name			  "TLM_MODE_IN_System_On"
@@ -1813,20 +1813,20 @@ Model {
 	Block {
 	  BlockType		  Demux
 	  Name			  " Demux "
-	  SID			  "35::393"
+	  SID			  "35::396"
 	  Ports			  [1, 1]
 	  Position		  [270, 1035, 320, 1075]
-	  ZOrder		  350
+	  ZOrder		  353
 	  Outputs		  "1"
 	}
 	Block {
 	  BlockType		  S-Function
 	  Name			  " SFunction "
-	  SID			  "35::392"
+	  SID			  "35::395"
 	  Tag			  "Stateflow S-Function GPCA_CONFIG_tmp 2"
 	  Ports			  [34, 26]
 	  Position		  [180, 40, 230, 740]
-	  ZOrder		  349
+	  ZOrder		  352
 	  FunctionName		  "sf_sfun"
 	  Parameters		  "step_size"
 	  PortCounts		  "[34 26]"
@@ -1986,9 +1986,9 @@ Model {
 	Block {
 	  BlockType		  Terminator
 	  Name			  " Terminator "
-	  SID			  "35::394"
+	  SID			  "35::397"
 	  Position		  [460, 1046, 480, 1064]
-	  ZOrder		  351
+	  ZOrder		  354
 	}
 	Block {
 	  BlockType		  Outport
@@ -2215,238 +2215,238 @@ Model {
 	  IconDisplay		  "Port number"
 	}
 	Line {
-	  ZOrder		  123
+	  ZOrder		  184
 	  SrcBlock		  "TLM_MODE_IN_System_On"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  124
+	  ZOrder		  185
 	  SrcBlock		  "PRES_IN_Patient_ID"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  2
 	}
 	Line {
-	  ZOrder		  125
+	  ZOrder		  186
 	  SrcBlock		  "PRES_IN_Drug_Name"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  3
 	}
 	Line {
-	  ZOrder		  126
+	  ZOrder		  187
 	  SrcBlock		  "PRES_IN_Drug_Concentration"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  4
 	}
 	Line {
-	  ZOrder		  127
+	  ZOrder		  188
 	  SrcBlock		  "PRES_IN_Total_Duration"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  5
 	}
 	Line {
-	  ZOrder		  128
+	  ZOrder		  189
 	  SrcBlock		  "PRES_IN_VTBI_Total"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  6
 	}
 	Line {
-	  ZOrder		  129
+	  ZOrder		  190
 	  SrcBlock		  "PRES_IN_Flow_Rate_Basal"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  7
 	}
 	Line {
-	  ZOrder		  130
+	  ZOrder		  191
 	  SrcBlock		  "PRES_IN_Flow_Rate_Intermittent_Bolus"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  8
 	}
 	Line {
-	  ZOrder		  131
+	  ZOrder		  192
 	  SrcBlock		  "PRES_IN_Duration_Intermittent_Bolus"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  9
 	}
 	Line {
-	  ZOrder		  132
+	  ZOrder		  193
 	  SrcBlock		  "PRES_IN_Interval_Intermittent_Bolus"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  10
 	}
 	Line {
-	  ZOrder		  133
+	  ZOrder		  194
 	  SrcBlock		  "PRES_IN_Flow_Rate_Patient_Bolus"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  11
 	}
 	Line {
-	  ZOrder		  134
+	  ZOrder		  195
 	  SrcBlock		  "PRES_IN_Duration_Patient_Bolus"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  12
 	}
 	Line {
-	  ZOrder		  135
+	  ZOrder		  196
 	  SrcBlock		  "PRES_IN_Lockout_Period_Patient_Bolus"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  13
 	}
 	Line {
-	  ZOrder		  136
+	  ZOrder		  197
 	  SrcBlock		  "PRES_IN_Max_Number_of_Patient_Bolus"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  14
 	}
 	Line {
-	  ZOrder		  137
+	  ZOrder		  198
 	  SrcBlock		  "PRES_IN_Entered_Reservoir_Volume"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  15
 	}
 	Line {
-	  ZOrder		  138
+	  ZOrder		  199
 	  SrcBlock		  "OP_CMD_IN_Infusion_Initiate"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  16
 	}
 	Line {
-	  ZOrder		  139
+	  ZOrder		  200
 	  SrcBlock		  "OP_CMD_IN_Data_Config"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  17
 	}
 	Line {
-	  ZOrder		  140
+	  ZOrder		  201
 	  SrcBlock		  "OP_CMD_IN_Next"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  18
 	}
 	Line {
-	  ZOrder		  141
+	  ZOrder		  202
 	  SrcBlock		  "OP_CMD_IN_Back"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  19
 	}
 	Line {
-	  ZOrder		  142
+	  ZOrder		  203
 	  SrcBlock		  "OP_CMD_IN_Cancel"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  20
 	}
 	Line {
-	  ZOrder		  143
+	  ZOrder		  204
 	  SrcBlock		  "OP_CMD_IN_Configuration_Type"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  21
 	}
 	Line {
-	  ZOrder		  144
+	  ZOrder		  205
 	  SrcBlock		  "DB_IN_Drug_Name"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  22
 	}
 	Line {
-	  ZOrder		  145
+	  ZOrder		  206
 	  SrcBlock		  "DB_IN_Drug_Concentration_High"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  23
 	}
 	Line {
-	  ZOrder		  146
+	  ZOrder		  207
 	  SrcBlock		  "DB_IN_Drug_Concentration_Low"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  24
 	}
 	Line {
-	  ZOrder		  147
+	  ZOrder		  208
 	  SrcBlock		  "DB_IN_VTBI_High"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  25
 	}
 	Line {
-	  ZOrder		  148
+	  ZOrder		  209
 	  SrcBlock		  "DB_IN_VTBI_Low"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  26
 	}
 	Line {
-	  ZOrder		  149
+	  ZOrder		  210
 	  SrcBlock		  "DB_IN_Flow_Rate_High"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  27
 	}
 	Line {
-	  ZOrder		  150
+	  ZOrder		  211
 	  SrcBlock		  "DB_IN_Flow_Rate_Low"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  28
 	}
 	Line {
-	  ZOrder		  151
+	  ZOrder		  212
 	  SrcBlock		  "DB_IN_Number_Max_Patient_Bolus"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  29
 	}
 	Line {
-	  ZOrder		  152
+	  ZOrder		  213
 	  SrcBlock		  "DB_IN_Flow_Rate_KVO"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  30
 	}
 	Line {
-	  ZOrder		  153
+	  ZOrder		  214
 	  SrcBlock		  "CONST_IN_Empty_Reservoir"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  31
 	}
 	Line {
-	  ZOrder		  154
+	  ZOrder		  215
 	  SrcBlock		  "CONST_IN_Max_Config_Duration"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  32
 	}
 	Line {
-	  ZOrder		  155
+	  ZOrder		  216
 	  SrcBlock		  "SYS_STAT_IN_In_Therapy"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  33
 	}
 	Line {
-	  ZOrder		  156
+	  ZOrder		  217
 	  SrcBlock		  "SYS_STAT_IN_Reservoir_Volume"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
@@ -2454,7 +2454,7 @@ Model {
 	}
 	Line {
 	  Name			  "CONFIG_OUT_Patient_ID"
-	  ZOrder		  157
+	  ZOrder		  218
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  2
@@ -2463,7 +2463,7 @@ Model {
 	}
 	Line {
 	  Name			  "CONFIG_OUT_Drug_Name"
-	  ZOrder		  158
+	  ZOrder		  219
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  3
@@ -2472,7 +2472,7 @@ Model {
 	}
 	Line {
 	  Name			  "CONFIG_OUT_Drug_Concentration"
-	  ZOrder		  159
+	  ZOrder		  220
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  4
@@ -2481,7 +2481,7 @@ Model {
 	}
 	Line {
 	  Name			  "CONFIG_OUT_Total_Duration"
-	  ZOrder		  160
+	  ZOrder		  221
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  5
@@ -2490,7 +2490,7 @@ Model {
 	}
 	Line {
 	  Name			  "CONFIG_OUT_VTBI_Total"
-	  ZOrder		  161
+	  ZOrder		  222
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  6
@@ -2499,7 +2499,7 @@ Model {
 	}
 	Line {
 	  Name			  "CONFIG_OUT_Flow_Rate_Basal"
-	  ZOrder		  162
+	  ZOrder		  223
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  7
@@ -2508,7 +2508,7 @@ Model {
 	}
 	Line {
 	  Name			  "CONFIG_OUT_Flow_Rate_Intermittent_Bolus"
-	  ZOrder		  163
+	  ZOrder		  224
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  8
@@ -2517,7 +2517,7 @@ Model {
 	}
 	Line {
 	  Name			  "CONFIG_OUT_Duration_Intermittent_Bolus"
-	  ZOrder		  164
+	  ZOrder		  225
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  9
@@ -2526,7 +2526,7 @@ Model {
 	}
 	Line {
 	  Name			  "CONFIG_OUT_Interval_Intermittent_Bolus"
-	  ZOrder		  165
+	  ZOrder		  226
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  10
@@ -2535,7 +2535,7 @@ Model {
 	}
 	Line {
 	  Name			  "CONFIG_OUT_Flow_Rate_Patient_Bolus"
-	  ZOrder		  166
+	  ZOrder		  227
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  11
@@ -2544,7 +2544,7 @@ Model {
 	}
 	Line {
 	  Name			  "CONFIG_OUT_Duration_Patient_Bolus"
-	  ZOrder		  167
+	  ZOrder		  228
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  12
@@ -2553,7 +2553,7 @@ Model {
 	}
 	Line {
 	  Name			  "CONFIG_OUT_Lockout_Period_Patient_Bolus"
-	  ZOrder		  168
+	  ZOrder		  229
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  13
@@ -2562,7 +2562,7 @@ Model {
 	}
 	Line {
 	  Name			  "CONFIG_OUT_Max_Number_of_Patient_Bolus"
-	  ZOrder		  169
+	  ZOrder		  230
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  14
@@ -2571,7 +2571,7 @@ Model {
 	}
 	Line {
 	  Name			  "CONFIG_OUT_Flow_Rate_KVO"
-	  ZOrder		  170
+	  ZOrder		  231
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  15
@@ -2580,7 +2580,7 @@ Model {
 	}
 	Line {
 	  Name			  "CONFIG_OUT_Entered_Reservoir_Volume"
-	  ZOrder		  171
+	  ZOrder		  232
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  16
@@ -2589,7 +2589,7 @@ Model {
 	}
 	Line {
 	  Name			  "CONFIG_OUT_Reservoir_Volume"
-	  ZOrder		  172
+	  ZOrder		  233
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  17
@@ -2598,7 +2598,7 @@ Model {
 	}
 	Line {
 	  Name			  "CONFIG_OUT_Configured"
-	  ZOrder		  173
+	  ZOrder		  234
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  18
@@ -2607,7 +2607,7 @@ Model {
 	}
 	Line {
 	  Name			  "CONFIG_OUT_Error_Message_ID"
-	  ZOrder		  174
+	  ZOrder		  235
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  19
@@ -2616,7 +2616,7 @@ Model {
 	}
 	Line {
 	  Name			  "CONFIG_OUT_Request_Config_Type"
-	  ZOrder		  175
+	  ZOrder		  236
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  20
@@ -2625,7 +2625,7 @@ Model {
 	}
 	Line {
 	  Name			  "CONFIG_OUT_Request_Confirm_Infusion_Initiate"
-	  ZOrder		  176
+	  ZOrder		  237
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  21
@@ -2634,7 +2634,7 @@ Model {
 	}
 	Line {
 	  Name			  "CONFIG_OUT_Request_Patient_Drug_Info"
-	  ZOrder		  177
+	  ZOrder		  238
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  22
@@ -2643,7 +2643,7 @@ Model {
 	}
 	Line {
 	  Name			  "CONFIG_OUT_Request_Infusion_Info"
-	  ZOrder		  178
+	  ZOrder		  239
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  23
@@ -2652,7 +2652,7 @@ Model {
 	}
 	Line {
 	  Name			  "CONFIG_OUT_Log_Message_ID"
-	  ZOrder		  179
+	  ZOrder		  240
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  24
@@ -2661,7 +2661,7 @@ Model {
 	}
 	Line {
 	  Name			  "CONFIG_OUT_Config_Timer"
-	  ZOrder		  180
+	  ZOrder		  241
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  25
@@ -2670,7 +2670,7 @@ Model {
 	}
 	Line {
 	  Name			  "CONFIG_OUT_Config_Mode"
-	  ZOrder		  181
+	  ZOrder		  242
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  26
@@ -2678,14 +2678,14 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  182
+	  ZOrder		  243
 	  SrcBlock		  " Demux "
 	  SrcPort		  1
 	  DstBlock		  " Terminator "
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  183
+	  ZOrder		  244
 	  SrcBlock		  " SFunction "
 	  SrcPort		  1
 	  DstBlock		  " Demux "

@@ -40,7 +40,7 @@ Model {
       SignalName	      "tLM_MODE_OUT_Log_Message_ID"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.4"
+    ComputedModelVersion    "1.5"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -98,9 +98,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "hbourbou"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Mar 07 16:14:10 2017"
-  RTWModifiedTimeStamp	  410804050
-  ModelVersionFormat	  "1.%<AutoIncrement:4>"
+  LastModifiedDate	  "Thu Mar 09 16:51:05 2017"
+  RTWModifiedTimeStamp	  410979065
+  ModelVersionFormat	  "1.%<AutoIncrement:5>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -972,7 +972,7 @@ Model {
 	TiledPageScale		1
 	ShowPageBoundaries	off
 	ZoomFactor		"100"
-	SIDHighWatermark	"348"
+	SIDHighWatermark	"351"
 	Block {
 	  BlockType		  Inport
 	  Name			  "OP_CMD_IN_System_Start"
@@ -1011,20 +1011,20 @@ Model {
 	Block {
 	  BlockType		  Demux
 	  Name			  " Demux "
-	  SID			  "1::347"
+	  SID			  "1::350"
 	  Ports			  [1, 1]
 	  Position		  [270, 245, 320, 285]
-	  ZOrder		  303
+	  ZOrder		  306
 	  Outputs		  "1"
 	}
 	Block {
 	  BlockType		  S-Function
 	  Name			  " SFunction "
-	  SID			  "1::346"
+	  SID			  "1::349"
 	  Tag			  "Stateflow S-Function GPCA_Top_Level_Mode_tmp 2"
 	  Ports			  [4, 4]
 	  Position		  [180, 102, 230, 203]
-	  ZOrder		  302
+	  ZOrder		  305
 	  FunctionName		  "sf_sfun"
 	  Parameters		  "step_size"
 	  PortCounts		  "[4 4]"
@@ -1052,9 +1052,9 @@ Model {
 	Block {
 	  BlockType		  Terminator
 	  Name			  " Terminator "
-	  SID			  "1::348"
+	  SID			  "1::351"
 	  Position		  [460, 256, 480, 274]
-	  ZOrder		  304
+	  ZOrder		  307
 	}
 	Block {
 	  BlockType		  Outport
@@ -1083,28 +1083,28 @@ Model {
 	  IconDisplay		  "Port number"
 	}
 	Line {
-	  ZOrder		  19
+	  ZOrder		  28
 	  SrcBlock		  "OP_CMD_IN_System_Start"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  20
+	  ZOrder		  29
 	  SrcBlock		  "OP_CMD_IN_System_Stop"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  2
 	}
 	Line {
-	  ZOrder		  21
+	  ZOrder		  30
 	  SrcBlock		  "OP_CMD_IN_Cancel"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  3
 	}
 	Line {
-	  ZOrder		  22
+	  ZOrder		  31
 	  SrcBlock		  "CONST_IN_Max_Confirm_Stop_Duration"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
@@ -1112,7 +1112,7 @@ Model {
 	}
 	Line {
 	  Name			  "tLM_MODE_OUT_System_On"
-	  ZOrder		  23
+	  ZOrder		  32
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  2
@@ -1121,7 +1121,7 @@ Model {
 	}
 	Line {
 	  Name			  "tLM_MODE_OUT_Request_Confirm_Stop"
-	  ZOrder		  24
+	  ZOrder		  33
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  3
@@ -1130,7 +1130,7 @@ Model {
 	}
 	Line {
 	  Name			  "tLM_MODE_OUT_Log_Message_ID"
-	  ZOrder		  25
+	  ZOrder		  34
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  4
@@ -1138,14 +1138,14 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  26
+	  ZOrder		  35
 	  SrcBlock		  " Demux "
 	  SrcPort		  1
 	  DstBlock		  " Terminator "
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  27
+	  ZOrder		  36
 	  SrcBlock		  " SFunction "
 	  SrcPort		  1
 	  DstBlock		  " Demux "

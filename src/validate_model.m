@@ -174,7 +174,7 @@ else
                 IMAX = min_max_constraints{i,3};
             end
             if find(strcmp(inputEvents_names,inports(i).Name))
-                input_struct.signals(i).values = square(i*input_struct.time);
+                input_struct.signals(i).values = square((numberOfInports-i+1)*rand(1)*input_struct.time);
                 input_struct.signals(i).dimensions = 1;%dim;
             elseif strcmp(sT2fT(inports(i).DataType),'bool')
                 input_struct.signals(i).values = Utils.construct_random_booleans(nb_steps, IMIN, IMAX, dim);
