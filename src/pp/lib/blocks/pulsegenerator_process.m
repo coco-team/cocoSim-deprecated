@@ -57,15 +57,21 @@ if phase_delay
     data(1) = 0;
     i=2;
 else
-    i = 1;
+    time(1) = 0;
+    data(1) = 1;
+    i=2;
 end
 current_t = 0;
 num_period = 0;
+eps = 0.01;
 while current_t < 100
+    if ~phase_delay && num_period==0
+        current_t = phase_delay + num_period * period -eps;
+        time(i) = current_t;
+        data(i) = 0;
+        i = i + 1;
+    end
     current_t = phase_delay + num_period * period;
-    time(i) = current_t;
-    data(i) = 0;
-    i = i + 1;
     time(i) = current_t;
     data(i) = amplitud;
     i = i + 1;
@@ -73,36 +79,33 @@ while current_t < 100
     time(i) = current_t;
     data(i) = amplitud;
     i = i + 1;
+    current_t = current_t + pulse_width + eps;
     time(i) = current_t;
     data(i) = 0;
     i = i + 1;
     num_period = num_period + 1;
 end
+data
+time
 
-time = {time};
-data = {data};
-
-signames = {'PG1'};
+signame = 'PG1';
 new_block = strcat(init_block,'_p');
 add_block('built-in/SubSystem',new_block);
-% Add an input in order to GAL to convert the block to a node
-% add_block('built-in/Inport',strcat(new_block,'/GAL_in'),...
-%     'Position',pos(0,0));
-sig_nb = 1;
-for i = 1:sig_nb
-    sig = strcat(new_block,'/',signames{i});
-    sig_gen = strcat(sig,'_gen');
-    add_block('gal_lib/signal',sig_gen,...
-        'Position',pos(4,i,'w',80));
-    set_param(strcat(sig_gen,'/Sample'),'Gain', num2str(pulsegen_sample));
-    add_block('built-in/Outport',sig,'Position',pos(7,i));
-    add_line(new_block,strcat(signames{i},'_gen/1'),...
-        strcat(signames{i},'/1'));
-    
-    tmp_block = strcat(sig_gen,'/tmp_block');
-    datatable_process(time{i},data{i},tmp_block);
-    replace_one_block(strcat(sig_gen,'/signal_generator'),tmp_block);
-    delete_block(tmp_block);
-end
+
+
+sig = strcat(new_block,'/',signame);
+sig_gen = strcat(sig,'_gen');
+add_block('gal_lib/signal',sig_gen,...
+    'Position',pos(4,i,'w',80));
+set_param(strcat(sig_gen,'/Sample'),'Gain', num2str(pulsegen_sample));
+add_block('built-in/Outport',sig,'Position',pos(7,i));
+add_line(new_block,strcat(signame,'_gen/1'),...
+    strcat(signame,'/1'));
+
+tmp_block = strcat(sig_gen,'/tmp_block');
+datatable_process(time,data,tmp_block);
+replace_one_block(strcat(sig_gen,'/signal_generator'),tmp_block);
+delete_block(tmp_block);
+
 
 end
