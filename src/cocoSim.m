@@ -506,11 +506,12 @@ if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
         end
     end
     open(models{end});
+    properties_summary = [];
     if strcmp(SOLVER, 'Z')
         display_msg('Running Zustre', Constants.INFO, 'Verification', '');
         try
             [Query_time, properties_summary] = zustre(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace, is_SF, smt_file);
-            update_properties_gui(properties_summary, model_full_path, output_dir);
+            
         catch ME
             display_msg(['Zustre has failed :' ME.message], Constants.ERROR, 'Verification', '');
             display_msg(ME.getReport(), Constants.DEBUG, 'Verification', '');
@@ -518,7 +519,7 @@ if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
     elseif strcmp(SOLVER, 'K')
         display_msg('Running Kind2', Constants.INFO, 'Verification', '');
         try
-            kind2(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace);
+            [Query_time, properties_summary] = kind2(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace);
         catch ME
             display_msg(ME.message, Constants.ERROR, 'Verification', '');
             display_msg(ME.getReport(), Constants.DEBUG, 'Verification', '');
@@ -526,11 +527,14 @@ if numel(property_node_names) > 0 && not (strcmp(SOLVER, 'NONE'))
     elseif strcmp(SOLVER, 'J')
         display_msg('Running JKind', Constants.INFO, 'Verification', '');
         try
-            jkind(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace);
+            [Query_time, properties_summary] = jkind(nom_lustre_file, property_node_names, property_file_base_name, inter_blk, xml_trace);
         catch ME
             display_msg(ME.message, Constants.ERROR, 'Verification', '');
             display_msg(ME.getReport(), Constants.DEBUG, 'Verification', '');
         end
+    end
+    if ~isempty(properties_summary) 
+        update_properties_gui(properties_summary, model_full_path, output_dir);
     end
 else
     display_msg('No property to prove', Constants.RESULT, 'Verification', '');
