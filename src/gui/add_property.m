@@ -232,20 +232,20 @@ end
 %% Creates the Observer block object
 function observer = create_observer_block(parent_system, output_names, observer_name, assert_string)
 
-% Create block
+%% Create block
 observer_path = [parent_system '/' observer_name];
 observer = add_block('built-in/Subsystem', observer_path, 'TreatAsAtomicUnit', 'on');
 
-%add assertion annotation
+%% add assertion annotation
 if ~strcmp(assert_string,'')
     assert_note = Simulink.Annotation([observer_path '/' 'assertions']);
     assert_note.Name = assert_string;
 end
-% Set block position
+%% Set block position
 obs_pos = get_obs_position(parent_system);
 set_param(observer_path, 'Position', obs_pos);
 
-% Set mask parameters
+%% Set mask parameters
 mask = Simulink.Mask.create(observer_path);
 mask.Display = sprintf('%s', get_observer_display());
 mask.IconUnits = 'normalized';
@@ -256,7 +256,7 @@ mask.addParameter('Type', 'edit', 'Prompt', 'Observer type', 'Name', 'ObserverTy
 set_param(observer_path, 'ForegroundColor', 'red');
 set_param(observer_path, 'BackgroundColor', 'white');
 
-% Add observer inports from Inport blocks
+%% Add observer inports from Inport blocks
 inports = find_system(parent_system, 'SearchDepth', 1, 'Type', 'Block', 'BlockType', 'Inport');
 for idx_in=1:numel(inports)
     inport_name = [observer_path '/' get_param(inports{idx_in}, 'Name')];
@@ -271,7 +271,7 @@ for idx_in=1:numel(inports)
         'autorouting','on')
 end
 
-% Add observer inports from Outport blocks
+%% Add observer inports from Outport blocks
 for idx_out=1:numel(output_names)
     outport_name_array = regexp(output_names{idx_out}, '/', 'split');
     outport_name = outport_name_array{end};
@@ -289,11 +289,11 @@ for idx_out=1:numel(output_names)
         'autorouting','on')
 end
 
-% Add observer outport
+%% Add observer outport
 outport_name = [observer_path '/' observer_name];
 add_block('built-in/Outport', outport_name, 'Position', pos(1, 1, 'Outport'));
 
-% Add observer terminator
+%% Add observer terminator
 obs_term_name = [parent_system '/' observer_name '_term'];
 term_pos = [(obs_pos(3) + 40) (obs_pos(2) + 20) (obs_pos(3) + 60) (obs_pos(2) + 40)];
 obs_term = add_block('built-in/Terminator', obs_term_name, 'Position', term_pos);
