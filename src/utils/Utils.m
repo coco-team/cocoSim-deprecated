@@ -798,6 +798,17 @@ classdef Utils
             obs_pos = [(max_x+200) max_y (max_x + 350) (max_y + 60)];
         end
         
+        %% return xmin and ymin
+        function [max_x, max_y] = get_xmax_ymax(parent_subsystem)
+            blocks = find_system(parent_subsystem,'LookUnderMasks','all', 'SearchDepth', 1, 'FindAll', 'on', 'Type', 'Block');
+            positions = get_param(blocks, 'Position');
+            max_x = 0;
+            max_y = 0;
+            for idx_pos=1:numel(positions)
+                max_x = max(max_x, positions{idx_pos}(3));
+                max_y = max(max_y, positions{idx_pos}(4));
+            end
+        end
     end
     
     

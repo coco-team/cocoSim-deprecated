@@ -71,13 +71,13 @@ if exist(ZUSTRE,'file')
             elseif strcmp(answer, 'UNKNOWN')
                 set_param(property_node_names{idx_prop}.origin_block_name, 'BackgroundColor', 'yellow');
                 set_param(property_node_names{idx_prop}.origin_block_name, 'ForegroundColor', 'yellow');
-            else
+            elseif strcmp(answer, 'CEX')
                 set_param(property_node_names{idx_prop}.origin_block_name, 'BackgroundColor', 'red');
                 set_param(property_node_names{idx_prop}.origin_block_name, 'ForegroundColor', 'red');
                 Query_time.nb_properties_unsafe = Query_time.nb_properties_unsafe +1;
                 Query_time.time_unsafe = Query_time.time_unsafe + Query_time_t;
                 
-                if strcmp(answer, 'CEX') && ~strcmp(cex, '')
+                if ~strcmp(cex, '')
                     try
                         date_value = datestr(now, 'ddmmyyyyHHMMSS');
                         BackEndUtils.display_cex(cex, property_node_names{idx_prop}, ...

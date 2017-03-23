@@ -16,6 +16,7 @@ fprintf(fid, xml_result);
 fclose(fid);
 Query_time = 0;
 s = dir(prop_file_name);
+property_summary = [];
 if s.bytes ~= 0
     try
         xml_doc = xmlread(prop_file_name);

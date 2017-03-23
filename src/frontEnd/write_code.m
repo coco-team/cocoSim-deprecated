@@ -635,9 +635,11 @@ for idx_block=1:nblk
                    if strcmp(ME.identifier, 'MATLAB:badsubscript')
                        msg= 'Bad encoding of the property. Make sure to link the main input of the model into the observer';
                        display_msg(msg, Constants.ERROR, 'cocoSim', '');
-                   
+                       display_msg(msg, Constants.DEBUG, 'cocoSim', ''); 
+                       display_msg(ME.getReport(), Constants.DEBUG, 'cocoSim', '');
                    else
-                     display_msg(ME.getReport(), Constants.ERROR, 'cocoSim', '');
+                     display_msg(ME.getReport(), Constants.DEBUG, 'cocoSim', '');
+                     display_msg(ME.message, Constants.ERROR, 'cocoSim', '');
                    end
                 end
 
