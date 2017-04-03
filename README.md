@@ -9,7 +9,7 @@ CoCoSim can be used to generate C and/or Rust code. CoCoSim uses
 Lustre as its intermediate language. CoCoSim is currently under
 development. We welcome any feedback and bug report.
 
-[![ScreenCast of CoCoSim](http://i.imgur.com/itLte0X.png)](https://youtu.be/iqwVCiU46Y4)
+[![ScreenCast of CoCoSim](http://i.imgur.com/itLte0X.png)](https://youtu.be/dcs8GOeFI9c)
 
 ## CoCoSim ToolBox
 
