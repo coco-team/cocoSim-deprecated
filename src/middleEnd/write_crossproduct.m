@@ -11,9 +11,9 @@
 %
 %%% Output is real
 %
-%  Output_1_1 = Input_1_2 * Input_2_3 + Input_1_3 * Input_2_2;
-%  Output_1_2 = Input_1_1 * Input_2_3 + Input_1_3 * Input_2_1;
-%  Output_1_3 = Input_1_1 * Input_2_2 + Input_1_2 * Input_2_1;
+%  Output_1_1 = Input_1_2 * Input_2_3 - Input_1_3 * Input_2_2;
+%  Output_1_2 = -(Input_1_1 * Input_2_3 - Input_1_3 * Input_2_1);
+%  Output_1_3 = Input_1_1 * Input_2_2 - Input_1_2 * Input_2_1;
 %
 %%% Output is complex
 %
@@ -34,13 +34,13 @@ output_string = '';
 [list_in] = list_var_entree(unbloc, inter_blk);
 
 if ~unbloc.out_cpx_sig(1)
-	lhs_str = sprintf('%s * %s + %s * %s', list_in{2}, list_in{6}, list_in{3}, list_in{5});
+	lhs_str = sprintf('%s * %s - %s * %s', list_in{2}, list_in{6}, list_in{3}, list_in{5});
 	output_string = app_sprintf(output_string, '\t%s = %s;\n', list_out{1}, lhs_str);
 
-	lhs_str = sprintf('%s * %s + %s * %s', list_in{1}, list_in{6}, list_in{3}, list_in{4});
+	lhs_str = sprintf('-(%s * %s - %s * %s)', list_in{1}, list_in{6}, list_in{3}, list_in{4});
 	output_string = app_sprintf(output_string, '\t%s = %s;\n', list_out{2}, lhs_str);
 
-	lhs_str = sprintf('%s * %s + %s * %s', list_in{1}, list_in{5}, list_in{2}, list_in{4});
+	lhs_str = sprintf('%s * %s - %s * %s', list_in{1}, list_in{5}, list_in{2}, list_in{4});
 	output_string = app_sprintf(output_string, '\t%s = %s;\n', list_out{3}, lhs_str);
 else
 	lhs_down_str = sprintf('%s.r * %s.r - %s.i * %s.i', list_in{2}, list_in{6}, list_in{2}, list_in{6});
